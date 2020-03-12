@@ -8,3 +8,7 @@
 * Email：    huweiguo@do-vfx.com
 * 微信公众号：    CGRnDStudio
 * GitHub：  https://github.com/CGRnDStudio
+
+--------------------------------------------
+
+.. image:: https://wx2.sinaimg.cn/mw690/006JeHt2gy1gcrnuqe3mwj30j605qwf7.jpg
