@@ -11,4 +11,5 @@ Welcome to CG TD Course's documentation!
    :glob:
 
    chapters/*
+   contents.rst
    readme.rst
