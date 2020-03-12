@@ -12,4 +12,3 @@ Welcome to CG TD Course's documentation!
 
    chapters/*
    contents.rst
-   readme.rst
