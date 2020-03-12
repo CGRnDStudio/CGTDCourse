@@ -13,4 +13,4 @@ CG TD Course's documentation
 
    preface
    chapters/*
-   contents.rst
+   readme
