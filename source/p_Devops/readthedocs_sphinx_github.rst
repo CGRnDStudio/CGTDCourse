@@ -22,7 +22,7 @@ ReadTheDocs+Sphinx+Github搭建写书环境
 
 通过pip安装Sphinx，如果使用国外镜像源安装会非常慢，可以通过阿里云的镜像安装。
 
-.. code-block::
+.. code-block:: python
 
     pip install sphinx
     pip install sphinx-autobuild
@@ -32,7 +32,7 @@ ReadTheDocs+Sphinx+Github搭建写书环境
 
 或
 
-.. code-block::
+.. code-block:: python
 
     pip install sphinx -i https://mirrors.aliyun.com/pypi/simple
     pip install sphinx-autobuild -i https://mirrors.aliyun.com/pypi/simple
@@ -46,21 +46,21 @@ ReadTheDocs+Sphinx+Github搭建写书环境
 
 在计算机中随便创建个文件夹，比如CGTDCourse。打开命令行窗口，将当前路径切换到此文件夹，执行命令。
 
-.. code-block::
+.. code-block:: python
 
     sphinx-quickstart
 
 写上项目名，作者名，版本号，其它默认，如果顺利完成则会产生两个文件夹和两个文件。
 找到 source\\conf.py 文件，添加两行，将主页修改，不然后面ReadTheDocs编译会遇到contents.rst问题。
 
-.. code-block::
+.. code-block:: python
 
     # The master toctree document.
     master_doc = 'index'
 
 修改主题风格
 
-.. code-block::
+.. code-block:: python
 
     # html_theme = 'alabaster'
     html_theme = 'sphinx_rtd_theme'
@@ -78,7 +78,7 @@ ReadTheDocs+Sphinx+Github搭建写书环境
 
 此时在命令行窗口继续执行下面的命令。
 
-.. code-block::
+.. code-block:: python
 
     make clean
     make html

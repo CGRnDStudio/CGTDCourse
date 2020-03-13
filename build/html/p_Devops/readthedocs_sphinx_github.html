@@ -182,7 +182,7 @@
 <div class="section" id="sphinx">
 <h2>安装Sphinx<a class="headerlink" href="#sphinx" title="永久链接至标题">¶</a></h2>
 <p>通过pip安装Sphinx，如果使用国外镜像源安装会非常慢，可以通过阿里云的镜像安装。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx_rtd_theme</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">recommonmark</span>
@@ -190,7 +190,7 @@
 </pre></div>
 </div>
 <p>或</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pypi</span><span class="o">/</span><span class="n">simple</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pypi</span><span class="o">/</span><span class="n">simple</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pypi</span><span class="o">/</span><span class="n">simple</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx_rtd_theme</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pypi</span><span class="o">/</span><span class="n">simple</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">recommonmark</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pypi</span><span class="o">/</span><span class="n">simple</span>
@@ -201,17 +201,17 @@
 <div class="section" id="id1">
 <h2>初始化项目配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>在计算机中随便创建个文件夹，比如CGTDCourse。打开命令行窗口，将当前路径切换到此文件夹，执行命令。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
 </pre></div>
 </div>
 <p>写上项目名，作者名，版本号，其它默认，如果顺利完成则会产生两个文件夹和两个文件。
 找到 source\conf.py 文件，添加两行，将主页修改，不然后面ReadTheDocs编译会遇到contents.rst问题。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># The master toctree document.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The master toctree document.</span>
 <span class="n">master_doc</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>
 </pre></div>
 </div>
 <p>修改主题风格</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># html_theme = &#39;alabaster&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># html_theme = &#39;alabaster&#39;</span>
 <span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
 </pre></div>
 </div>
@@ -224,7 +224,7 @@
 <div class="section" id="id3">
 <h2>清空编译项目<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>此时在命令行窗口继续执行下面的命令。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
 <span class="n">make</span> <span class="n">html</span>
 </pre></div>
 </div>
