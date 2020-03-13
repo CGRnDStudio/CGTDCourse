@@ -12,5 +12,5 @@ CG TD Course's documentation
    :glob:
 
    preface
-   chapters/*
+   parts/*
    readme

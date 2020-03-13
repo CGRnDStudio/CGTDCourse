@@ -1,14 +1,10 @@
 =============================
-第一部分：Python
+Devops
 =============================
-
-Python ``collections`` 。
-
-
 
 
 .. toctree::
    :maxdepth: 1
    :glob:
 
-   ../chapter01/*
+   ../p_Devops/*
