@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ReadTheDocs+Sphinx+Github搭建写书环境 &mdash; CG TD Course 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="关于作者" href="../readme.html" />
+    <link rel="prev" title="第二部分: Devops" href="../parts/p02_Devops.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/p01_Python.html">第一部分: Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/p02_Devops.html">第二部分: Devops</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ReadTheDocs+Sphinx+Github搭建写书环境</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python">安装Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#path">配置环境变量Path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sphinx">安装Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">初始化项目配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">创建案例文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">清空编译项目</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github">托管Github</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#readthedocs">ReadTheDocs配置自动编译</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">关于作者</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/p02_Devops.html">第二部分: Devops</a> &raquo;</li>
+        
+      <li>ReadTheDocs+Sphinx+Github搭建写书环境</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Devops/readthedocs_sphinx_github.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readthedocs-sphinx-github">
+<h1>ReadTheDocs+Sphinx+Github搭建写书环境<a class="headerlink" href="#readthedocs-sphinx-github" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="python">
+<h2>安装Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<p>作者使用的是Python 3.7.2，你可以选用更高的版本，未做测试。
+上官网下载
+安装的时候记得自定义安装路径选择C:Python37</p>
+</div>
+<div class="section" id="path">
+<h2>配置环境变量Path<a class="headerlink" href="#path" title="Permalink to this headline">¶</a></h2>
+<p>这里为了以下指令能使用，需要将C:Python37和C:Python37Scripts加入到用户变量或者系统变量Path
+注意如果有安装Python其它版本注意Path的先后问题。</p>
+</div>
+<div class="section" id="sphinx">
+<h2>安装Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h2>
+<p>通过pip安装Sphinx，如果使用国外镜像源安装会非常慢，这里通过阿里云的镜像安装。
+pip install sphinx
+pip install sphinx-autobuild
+pip install sphinx_rtd_theme
+pip install recommonmark
+pip install sphinx-markdown-tables</p>
+</div>
+<div class="section" id="id1">
+<h2>初始化项目配置<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>随便创建个文件夹，比如CGTDCourse
+打开命令行窗口，将当前路径指到此文件夹，执行指令
+sphinx-quickstart
+写上项目名，作者名，版本号，其它默认
+如果顺利完成则会产生两个文件夹和两个文件
+找到sourceconf.py文件，添加两行，将主页修改，不然后面ReadTheDocs编译遇到contents.rst问题
+# The master toctree document.
+master_doc = ‘index’</p>
+<p>修改主题风格
+# html_theme = ‘alabaster’
+html_theme = ‘sphinx_rtd_theme’</p>
+</div>
+<div class="section" id="id2">
+<h2>创建案例文件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>主要以rst为格式的文件，创建个readme.rst，里面通过rst语法格式书写作者信息
+在index.rst中配置readme</p>
+</div>
+<div class="section" id="id3">
+<h2>清空编译项目<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>make clean
+make html</p>
+<p>到此本地文档就完成了，可以打开build中index.html查看</p>
+</div>
+<div class="section" id="github">
+<h2>托管Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h2>
+<p>Github上创建一个项目CGTDCourse，将项目所有文件上传Github</p>
+</div>
+<div class="section" id="readthedocs">
+<h2>ReadTheDocs配置自动编译<a class="headerlink" href="#readthedocs" title="Permalink to this headline">¶</a></h2>
+<p>登陆ReadTheDocs官网，import这个Github项目之后构建，阅读文档即可</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../readme.html" class="btn btn-neutral float-right" title="关于作者" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../parts/p02_Devops.html" class="btn btn-neutral float-left" title="第二部分: Devops" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
