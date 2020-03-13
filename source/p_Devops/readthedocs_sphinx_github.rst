@@ -6,13 +6,13 @@ ReadTheDocs+Sphinx+Github搭建写书环境
 安装Python
 -----------
 
-测试的操作系统 ``Windows 10 1809``，Python版本 ``3.7.2`` ，你可以选用py更高的版本，未做测试。上官网 https://www.python.org/ 下载。py3安装的时候记得自定义安装路径选择 ``C:\\Python37`` ，默认路径是在当前用户文件夹，使用起来不太方便。
+测试的操作系统 ``Windows 10 1809``，Python版本 ``3.7.2`` ，你可以选用py更高的版本，未做测试。上官网 https://www.python.org/ 下载。py3安装的时候记得自定义安装路径选择 ``C:\Python37`` ，默认路径是在当前用户文件夹，使用起来不太方便。
 
 ----------------
 配置环境变量Path
 ----------------
 
-这里为了下文命令能使用，需要将 ``C:\\Python37`` 和 ``C:\\Python37\\Scripts`` 两个路径加入到用户变量或者系统变量Path中。注意如果有安装Python其它版本注意Path的先后问题，确保下文所调用的命令是文件夹 ``C:\\Python37\\Scripts`` 中的应用，如果确实搞不定这个，直接用绝对路径执行亦可。
+这里为了下文命令能使用，需要将 ``C:\Python37`` 和 ``C:\Python37\Scripts`` 两个路径加入到用户变量或者系统变量Path中。注意如果有安装Python其它版本注意Path的先后问题，确保下文所调用的命令是文件夹 ``C:\Python37\Scripts`` 中的应用，如果确实搞不定这个，直接用绝对路径执行亦可。
 
 -----------
 安装Sphinx
@@ -48,7 +48,7 @@ ReadTheDocs+Sphinx+Github搭建写书环境
 
     sphinx-quickstart
 
-写上项目名，作者名，版本号，其它默认，如果顺利完成则会产生两个文件夹和两个文件。找到 ``source\\conf.py`` 配置文件，添加下面两行配置，将主页配置修改，否则后面ReadTheDocs构建文档时会遇到contents.rst错误。
+写上项目名，作者名，版本号，其它默认，如果顺利完成则会产生两个文件夹和两个文件。找到 ``source\conf.py`` 配置文件，添加下面两行配置，将主页配置修改，否则后面ReadTheDocs构建文档时会遇到contents.rst错误。
 
 .. code-block:: python
 

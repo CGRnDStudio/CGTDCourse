@@ -171,11 +171,11 @@
 <h1>ReadTheDocs+Sphinx+Github搭建写书环境<a class="headerlink" href="#readthedocs-sphinx-github" title="永久链接至标题">¶</a></h1>
 <div class="section" id="python">
 <h2>安装Python<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h2>
-<p>测试的操作系统 <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">10</span> <span class="pre">1809</span></code>，Python版本 <code class="docutils literal notranslate"><span class="pre">3.7.2</span></code> ，你可以选用py更高的版本，未做测试。上官网 <a class="reference external" href="https://www.python.org/">https://www.python.org/</a> 下载。py3安装的时候记得自定义安装路径选择 <code class="docutils literal notranslate"><span class="pre">C:\\Python37</span></code> ，默认路径是在当前用户文件夹，使用起来不太方便。</p>
+<p>测试的操作系统 <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">10</span> <span class="pre">1809</span></code>，Python版本 <code class="docutils literal notranslate"><span class="pre">3.7.2</span></code> ，你可以选用py更高的版本，未做测试。上官网 <a class="reference external" href="https://www.python.org/">https://www.python.org/</a> 下载。py3安装的时候记得自定义安装路径选择 <code class="docutils literal notranslate"><span class="pre">C:\Python37</span></code> ，默认路径是在当前用户文件夹，使用起来不太方便。</p>
 </div>
 <div class="section" id="path">
 <h2>配置环境变量Path<a class="headerlink" href="#path" title="永久链接至标题">¶</a></h2>
-<p>这里为了下文命令能使用，需要将 <code class="docutils literal notranslate"><span class="pre">C:\\Python37</span></code> 和 <code class="docutils literal notranslate"><span class="pre">C:\\Python37\\Scripts</span></code> 两个路径加入到用户变量或者系统变量Path中。注意如果有安装Python其它版本注意Path的先后问题，确保下文所调用的命令是文件夹 <code class="docutils literal notranslate"><span class="pre">C:\\Python37\\Scripts</span></code> 中的应用，如果确实搞不定这个，直接用绝对路径执行亦可。</p>
+<p>这里为了下文命令能使用，需要将 <code class="docutils literal notranslate"><span class="pre">C:\Python37</span></code> 和 <code class="docutils literal notranslate"><span class="pre">C:\Python37\Scripts</span></code> 两个路径加入到用户变量或者系统变量Path中。注意如果有安装Python其它版本注意Path的先后问题，确保下文所调用的命令是文件夹 <code class="docutils literal notranslate"><span class="pre">C:\Python37\Scripts</span></code> 中的应用，如果确实搞不定这个，直接用绝对路径执行亦可。</p>
 </div>
 <div class="section" id="sphinx">
 <h2>安装Sphinx<a class="headerlink" href="#sphinx" title="永久链接至标题">¶</a></h2>
@@ -202,7 +202,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
 </pre></div>
 </div>
-<p>写上项目名，作者名，版本号，其它默认，如果顺利完成则会产生两个文件夹和两个文件。找到 <code class="docutils literal notranslate"><span class="pre">source\\conf.py</span></code> 配置文件，添加下面两行配置，将主页配置修改，否则后面ReadTheDocs构建文档时会遇到contents.rst错误。</p>
+<p>写上项目名，作者名，版本号，其它默认，如果顺利完成则会产生两个文件夹和两个文件。找到 <code class="docutils literal notranslate"><span class="pre">source\conf.py</span></code> 配置文件，添加下面两行配置，将主页配置修改，否则后面ReadTheDocs构建文档时会遇到contents.rst错误。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The master toctree document.</span>
 <span class="n">master_doc</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>
 </pre></div>
