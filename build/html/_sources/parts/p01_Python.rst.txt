@@ -1,5 +1,5 @@
 =============================
-Devops
+Part01: Python
 =============================
 
 
@@ -7,4 +7,4 @@ Devops
    :maxdepth: 1
    :glob:
 
-   ../p_Devops/*
+   ../p_Python/*
