@@ -2,6 +2,7 @@
 Git
 =============================
 
+Contents:
 
 .. toctree::
    :maxdepth: 1

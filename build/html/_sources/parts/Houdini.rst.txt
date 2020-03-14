@@ -2,6 +2,7 @@
 Houdini
 =============================
 
+Contents:
 
 .. toctree::
    :maxdepth: 1
