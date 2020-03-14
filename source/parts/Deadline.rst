@@ -7,4 +7,4 @@ Deadline
    :maxdepth: 1
    :glob:
 
-   ../p_Python/*
+   ../p_Deadline/*
