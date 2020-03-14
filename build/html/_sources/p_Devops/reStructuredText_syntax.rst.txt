@@ -2,7 +2,25 @@
 reStructuredText(rst)语法说明文档
 =================================
 
-.. TODO
+-----
+注释
+-----
+
+.. code-block:: python
+
+    .. contexts
+
+
+------
+代码块
+------
+
+.. code-block:: python
+
+    .. code-block:: python
+        
+        code
+
 
 --------
 参考文档

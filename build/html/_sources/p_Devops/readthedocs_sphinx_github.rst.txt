@@ -1,12 +1,12 @@
-=====================================
-ReadTheDocs+Sphinx+Github搭建写书环境
-=====================================
+=========================================
+ReadTheDocs+Sphinx+Github搭建文档发布环境
+=========================================
 
 -----------
 安装Python
 -----------
 
-测试的操作系统 ``Windows 10 1809``，Python版本 ``3.7.2`` ，你可以选用py更高的版本，未做测试。上官网 https://www.python.org/ 下载。py3安装的时候记得自定义安装路径选择 ``C:\Python37`` ，默认路径是在当前用户文件夹，使用起来不太方便。
+测试的操作系统版本 ``Windows 10 1809``，Python版本 ``3.7.2`` ，你可以选用Python更高的版本。上官网 https://www.python.org/downloads/ 下载。Python 3在安装的时候记得自定义安装路径选择 ``C:\Python37`` ，默认路径是在当前用户文件夹，后面使用起来不太方便。
 
 ----------------
 配置环境变量Path
@@ -18,7 +18,7 @@ ReadTheDocs+Sphinx+Github搭建写书环境
 安装Sphinx
 -----------
 
-通过pip安装Sphinx，如果使用国外镜像源安装会非常慢，可以通过阿里云的镜像安装。
+通过下面的pip命令安装Sphinx。
 
 .. code-block:: python
 
@@ -28,7 +28,7 @@ ReadTheDocs+Sphinx+Github搭建写书环境
     pip install recommonmark
     pip install sphinx-markdown-tables
 
-或
+如果使用国外镜像源安装非常慢并且经常报错失败，可以像下面命令添加阿里云的镜像安装。
 
 .. code-block:: python
 
