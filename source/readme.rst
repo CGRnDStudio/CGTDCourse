@@ -8,4 +8,4 @@
 * 微信公众号：    CGRnDStudio
 * GitHub：  https://github.com/CGRnDStudio
 
-.. image:: https://wx2.sinaimg.cn/mw1024/006JeHt2gy1gcrnuqe3mwj30j605qwf7.jpg
+.. image:: https://i.postimg.cc/PxF7VW4x/CGRn-DStudio.jpg
