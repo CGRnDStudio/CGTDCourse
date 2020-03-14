@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Deadline安装、配置与使用 &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Deadline服务器安装部署 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -84,12 +84,8 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Deadline.html">Deadline</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Deadline安装、配置与使用</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">坐井观天: 知识体系</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">Deadline服务器部署搭建</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">管中窥豹: 延伸阅读</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deadline服务器安装部署</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">管中窥豹: 延伸阅读</a></li>
 </ul>
 </li>
 </ul>
@@ -150,13 +146,13 @@
         
           <li><a href="../parts/Deadline.html">Deadline</a> &raquo;</li>
         
-      <li>Deadline安装、配置与使用</li>
+      <li>Deadline服务器安装部署</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Deadline/deadline_install_config.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Deadline/deadline_install_deploy.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,11 +166,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="deadline">
-<h1>Deadline安装、配置与使用<a class="headerlink" href="#deadline" title="永久链接至标题">¶</a></h1>
-<div class="section" id="id1">
-<h2>坐井观天: 知识体系<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id2">
-<h3>Deadline服务器部署搭建<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<h1>Deadline服务器安装部署<a class="headerlink" href="#deadline" title="永久链接至标题">¶</a></h1>
+<p>这里使用的是服务器集中式部署方案，即将DeadlineRepository与DeadlineClient全部部署在服务器，从而客户端无需安装任何东西即可使用的方案。</p>
+<p>部署环境</p>
+<ul class="simple">
+<li><p>服务器：Windows Server 2012 R2 Standard</p></li>
+<li><p>客户端：Window 10 企业版</p></li>
+<li><p>Deadline版本：Thinkbox Deadline v10.0.20.2 Win</p></li>
+</ul>
 <ul class="simple">
 <li><p>DeadlineRepository10pluginsHoudiniHoudini.param</p></li>
 <li><p>Configure Plugins</p></li>
@@ -191,10 +190,16 @@
 </pre></div>
 </div>
 <p>远程控制 开启deadlinepulse.exe</p>
-</div>
-</div>
-<div class="section" id="id3">
-<h2>管中窥豹: 延伸阅读<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>## Deadline客户端电脑配置
+- C:ProgramDataThinkboxDeadline10 deadline.ini</p>
+<p>## Deadline使用与配置
+- Deadline软件界面
+- Deadline使用方法
+- Deadline简单配置</p>
+<p># 坐井观天：本节知识点
+- 案例：编写Houdini、Nuke提交工具</p>
+<div class="section" id="id1">
+<h2>管中窥豹: 延伸阅读<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 </div>
 </div>
 

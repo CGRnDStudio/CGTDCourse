@@ -50,7 +50,7 @@ reStructuredText(rst)语法说明文档
 参考文档
 --------
 
-`Quick reStructured Text <https://docutils.sourceforge.io/docs/user/rst/quickref.html>`_
+《`Quick reStructured Text <https://docutils.sourceforge.io/docs/user/rst/quickref.html>`_》
 
-`reStructuredText(rst)快速入门语法说明 <https://www.jianshu.com/p/1885d5570b37?from=timeline&isappinstalled=0>`_
+《`reStructuredText(rst)快速入门语法说明 <https://www.jianshu.com/p/1885d5570b37?from=timeline&isappinstalled=0>`_》
 

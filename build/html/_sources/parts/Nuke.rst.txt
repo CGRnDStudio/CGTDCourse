@@ -7,4 +7,4 @@ Nuke
    :maxdepth: 1
    :glob:
 
-   ../p_Python/*
+..   ../p_Nuke/*
