@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Maya &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Maya自定义菜单 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Maya命令行脚本" href="../p_Maya/maya_batch_script.html" />
-    <link rel="prev" title="Linux" href="Linux.html" /> 
+    <link rel="next" title="Maya环境变量" href="maya_env_variables.html" />
+    <link rel="prev" title="Maya命令行脚本" href="maya_batch_script.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,24 +83,24 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deadline.html">Deadline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Devops.html">Devops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Git.html">Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Houdini.html">Houdini</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Linux.html">Linux</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Maya</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../p_Maya/maya_batch_script.html">Maya命令行脚本</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Maya/maya_custom_menu.html">Maya自定义菜单</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Maya/maya_env_variables.html">Maya环境变量</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Maya/maya_help_document.html">Maya帮助文档</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Maya/maya_pymel.html">Maya PyMEL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Maya/maya_shelf_tools.html">Maya工具架工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Maya.html">Maya</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="maya_batch_script.html">Maya命令行脚本</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_env_variables.html">Maya环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_help_document.html">Maya帮助文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pymel.html">Maya PyMEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_shelf_tools.html">Maya工具架工具</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Nuke.html">Nuke</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PyQt.html">PyQt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../readme.html">关于作者</a></li>
 </ul>
 
@@ -147,13 +147,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Maya</li>
+          <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
+        
+      <li>Maya自定义菜单</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/parts/Maya.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Maya/maya_custom_menu.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,18 +169,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="maya">
-<h1>Maya<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../p_Maya/maya_batch_script.html">Maya命令行脚本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Maya/maya_custom_menu.html">Maya自定义菜单</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Maya/maya_env_variables.html">Maya环境变量</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Maya/maya_help_document.html">Maya帮助文档</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Maya/maya_pymel.html">Maya PyMEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Maya/maya_shelf_tools.html">Maya工具架工具</a></li>
-</ul>
-</div>
+<h1>Maya自定义菜单<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
 </div>
 
 
@@ -189,10 +180,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../p_Maya/maya_batch_script.html" class="btn btn-neutral float-right" title="Maya命令行脚本" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="maya_env_variables.html" class="btn btn-neutral float-right" title="Maya环境变量" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Linux.html" class="btn btn-neutral float-left" title="Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="maya_batch_script.html" class="btn btn-neutral float-left" title="Maya命令行脚本" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
