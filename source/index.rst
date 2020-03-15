@@ -12,5 +12,14 @@ CG TD Course's documentation
    :glob:
 
    preface
-   parts/*
+   parts/Python
+   parts/PyQt
+   parts/Git
+   parts/Houdini
+   parts/Maya
+   parts/Nuke
+   parts/Shotgun
+   parts/Deadline
+   parts/Linux
+   parts/Devops
    readme

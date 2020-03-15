@@ -10,5 +10,5 @@ Contents:
    :maxdepth: 1
    :glob:
 
-   ../p_Houdini/houdini_environment_variables.rst
-   ../p_Houdini/houdini_custom_menu.rst
+   ../p_Houdini/houdini_environment_variables
+   ../p_Houdini/houdini_custom_menu
