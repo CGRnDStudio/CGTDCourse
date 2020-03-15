@@ -91,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Pipeline.html">Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Python.html">Python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_anonymous_function.html">Python匿名函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container.html">Python容器</a></li>
@@ -99,18 +100,11 @@
 <li class="toctree-l2"><a class="reference internal" href="python_custom_module.html">Python自定义模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_package.html">Python自定义包</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python数据类型</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">坐井观天: 知识体系</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">整型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">浮点型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">字符串</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">布尔值</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">空值</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">管中窥豹: 延伸阅读</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">坐井观天: 知识体系</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_generator.html">Python生成器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_higher_order_function.html">Python高阶函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_indentation_principle.html">Python缩进原则</a></li>
@@ -191,25 +185,220 @@
 <h1>Python数据类型<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id1">
 <h2>坐井观天: 知识体系<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id2">
-<h3>整型<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<p>测试</p>
+<p>五大基本数据类型
+整型
+浮点型
+字符串
+布尔值
+None</p>
+<p>算术运算符
+逻辑运算符
+比较运算符</p>
+<p>变量
+变量命名
+下划线命名法 &amp; 驼峰命名法</p>
+<p>管中窥豹：延伸阅读
+- 掌握字符串所有操作函数
+- 掌握所有转义字符
+- 熟练使用字符串格式化</p>
+<dl class="simple">
+<dt>Python选择哪个版本？</dt><dd><ul class="simple">
+<li><p>Python 2.x？Python 3.x？</p></li>
+<li><p>x64？x32？</p></li>
+</ul>
+</dd>
+</dl>
+<p>import sys
+sys.executable</p>
+<p>Python基本数据类型以及操作方法
+- 整型
+- 浮点型
+- 布尔
+- 字符串
+- 字符串函数
+- 字符串格式化
+- 字符编码
+- 转义字符</p>
+<p>数据类型
+五大类基本数据类型
+int 整型
+float 浮点型
+string 字符串 取值 format join replace split  转义字符 n 格式化
+bool True False
+None</p>
+<p>内置函数(学习方法) built-in function
+type() 是什么数据类型
+dir() 某一个数据类型的属性跟方法
+help() 看某一个方法的帮助</p>
+<p>算数运算
+逻辑运算 and or not 与或非
+比较运算 ==，&lt;，&gt;, !=, &lt;=, &gt;=, in, not in, is, is not</p>
+<p>计算机编码
+ASCII
+gb23112
+GBK
+UNICODE 中间平台
+UTF-8</p>
+<p>四种数据结构
+list 列表 [] 有序的 可迭代的 切片
+dict 字典 {key: value}  无序的 可迭代的 散列表
+tuple  元组 () 不可变 可以迭代的 切片 有序的
+set 集合 {} 元素唯一性</p>
+<p>接下来采用ipython来讲解一些Python基本数据类型</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">3.3</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;andy&quot;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">b</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+
+<span class="n">a</span> <span class="o">!=</span> <span class="n">b</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;My Name is Andy&quot;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;Hello &quot;</span>
+<span class="n">s2</span> <span class="o">+</span> <span class="n">s</span>
+<span class="n">s</span> <span class="o">-</span> <span class="s2">&quot;Name&quot;</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="n">s</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="s2">&quot;My name is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="s2">&quot;Andy&quot;</span>
+<span class="s2">&quot;My name is </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Andy&quot;</span><span class="p">)</span>
+<span class="s2">&quot;My name is </span><span class="si">{0}</span><span class="s2">, age is </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Andy&quot;</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="s2">&quot;My name is </span><span class="si">%s</span><span class="s2">, age is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;Andy&quot;</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<span class="s2">&quot;流浪地球&quot;</span>
+<span class="sa">u</span><span class="s2">&quot;流浪地球&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;My name is Andy.</span><span class="se">\n</span><span class="s2">My age is 28.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;My name is Andy.\nMy age is 28.&quot;</span><span class="p">)</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="s2">&quot;Hello Andy  &quot;</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">s4</span> <span class="o">=</span> <span class="s2">&quot;Name1 Name2 Name3&quot;</span>
+<span class="n">s4</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">s4</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">()</span>
+<span class="nb">dir</span><span class="p">()</span>
+<span class="n">help</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;world&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;how are you?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;m OK!&quot;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="id3">
-<h3>浮点型<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>转义字符</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;这是字符串&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;这是字符串&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">this is a multi-line string.</span>
+<span class="s2">it has two lines.</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">this is a multi-line string.</span>
+<span class="s1">it has two lines.</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="section" id="id4">
-<h3>字符串<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>n
+单行代码注释
+多行代码注释
+docstring</p>
+<p>常见异常
+语法错误
+缩进错误</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world)</span>
+
+<span class="nb">int</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;321&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">999</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">99999999999999999999999999999999999999999999</span><span class="p">)</span>
+<span class="nb">float</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">3.14159265358979323</span><span class="p">)</span>
+<span class="nb">bool</span>
+<span class="kc">True</span>
+<span class="kc">False</span>
+<span class="ow">and</span> <span class="ow">or</span> <span class="ow">not</span>
+</pre></div>
 </div>
-<div class="section" id="id5">
-<h3>布尔值<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>算数运算符
+比较运算符
+逻辑运算符</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">10.0</span> <span class="o">/</span> <span class="mf">3.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">10.0</span> <span class="o">//</span> <span class="mf">3.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">1.1</span> <span class="o">%</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span> <span class="o">+</span> <span class="s2">&quot;world&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">/</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span>  <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="ow">is</span> <span class="mi">5</span><span class="p">)</span>
+<span class="ow">is</span> <span class="n">VS</span> <span class="o">==</span>
+
+<span class="ow">and</span>
+<span class="ow">or</span>
+<span class="ow">not</span>
+</pre></div>
 </div>
-<div class="section" id="id6">
-<h3>空值<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>内置函数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="nb">int</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">)</span>
+<span class="nb">bool</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
 </div>
-</div>
-<div class="section" id="id7">
-<h2>管中窥豹: 延伸阅读<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>解决一个中心问题：数据类型的共性是什么?</p>
+<p>内功心法三个内置函数：type() dir() help()</p>
+<p>变量
+变量命名 下划线命名法 驼峰命名法</p>
+<p>Python逻辑运算符的短路规则
+如果你了解二进制以及逻辑电路的知识，对逻辑运算符应该不会陌生。十进制数有加减乘除等算术运算，二进制作为另一种进制规则，自然也会有自己的运算方法，这种运算方法叫做逻辑运算。在Python中逻辑运算符有三个and、or和not，对应逻辑电路里的与、或、非门。
+短路规则，又称最小化求值。是一种逻辑运算符的求值策略。只有当第一个运算数的值无法确定逻辑运算的结果时，才对第二个运算数进行求值。例如，当and的第一个运算数的值为False时，其结果必定为False；当or的第一个运算数为True时，最后结果必定为True，在这种情况下，就不需要知道第二个运算数的具体值。
+那么Python中如何判定一个对象的真假呢？下面列举的是Python中的默认为假值的对象。
+None
+False
+0
+0.0
+0j
+Decimal(0)
+Fraction(0, 1)
+[] - an empty list
+{} - an empty dict
+() - an empty tuple
+‘’ - an empty str
+b’’ - an empty bytes
+set() - an empty set
+an empty range, like range(0)
+objects for which
+obj.__bool__() returns False
+obj.__len__() returns 0
+如果不在</p>
+<p>用and和or实现三元表达式（也叫三目运算符）
+x = 5
+y = “A” if x &gt; 0 else “B”
+用or提供默认值</p>
+<p>两个案例写法
+如果一个全整数的列表求最大值与最小值的差，一个全整数的列表求大于9000的数，如果没有返回默认值9000</p>
+<p>path in sys.path or sys.path.insert(0, path)
+基于这种惰性求值方法，尽可能将需要求值时间短的表达式放前面</p>
+<p>运维利器 SpaceSniffer C盘空间总是不够用？</p>
 </div>
 </div>
 
