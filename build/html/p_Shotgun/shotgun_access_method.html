@@ -90,13 +90,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../parts/Pipeline.html">Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Shotgun API访问的两种方式</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">用户名</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#scripts">Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">通过用户名访问</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scripts">通过Scripts访问</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">参考文档</a></li>
 </ul>
 </li>
@@ -172,7 +171,7 @@
   <div class="section" id="shotgun-api">
 <h1>Shotgun API访问的两种方式<a class="headerlink" href="#shotgun-api" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id1">
-<h2>用户名<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h2>通过用户名访问<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>管理员用户登陆找到People entity，记住两个字段值Login和Password。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sg</span> <span class="o">=</span> <span class="n">shotgun_api3</span><span class="o">.</span><span class="n">Shotgun</span><span class="p">(</span><span class="s2">&quot;https://do-vfx.shotgunstudio.com&quot;</span><span class="p">,</span>
                           <span class="n">login</span><span class="o">=</span><span class="s2">&quot;字段Login值&quot;</span><span class="p">,</span>
@@ -182,7 +181,7 @@
 </div>
 </div>
 <div class="section" id="scripts">
-<h2>Scripts<a class="headerlink" href="#scripts" title="永久链接至标题">¶</a></h2>
+<h2>通过Scripts访问<a class="headerlink" href="#scripts" title="永久链接至标题">¶</a></h2>
 <p>管理员用户登陆找到Scripts entity，通过Add Script添加一条Script，记住两个字段值Script Name和Application Key。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sg</span> <span class="o">=</span> <span class="n">shotgun_api3</span><span class="o">.</span><span class="n">Shotgun</span><span class="p">(</span><span class="s2">&quot;https://do-vfx.shotgunstudio.com&quot;</span><span class="p">,</span>
                           <span class="n">login</span><span class="o">=</span><span class="s2">&quot;字段Script Name值&quot;</span><span class="p">,</span>
@@ -190,11 +189,12 @@
 <span class="n">sg</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Shot&quot;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;sg_status_list&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">]],</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="s2">&quot;sg_status_list&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
+<p>如果是写工具来访问Shotgun数据，推荐使用Scripts的方法来访问。</p>
 </div>
 <div class="section" id="id2">
 <h2>参考文档<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>《<a class="reference external" href="https://developer.shotgunsoftware.com/">Shotgun开发人员文档</a>》
-《<a class="reference external" href="https://developer.shotgunsoftware.com/python-api/">Shotgun python-api</a>》</p>
+<p>《<a class="reference external" href="https://developer.shotgunsoftware.com/">Shotgun开发人员文档</a>》</p>
+<p>《<a class="reference external" href="https://developer.shotgunsoftware.com/python-api/">Shotgun python-api</a>》</p>
 </div>
 </div>
 

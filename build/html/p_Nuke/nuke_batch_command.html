@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Nuke执行后台命令脚本方案 &mdash; CG TD Course 1.0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Nuke中心化配置插件" href="nuke_centralized_tools.html" />
+    <link rel="prev" title="Nuke" href="../parts/Nuke.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Nuke.html">Nuke</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke执行后台命令脚本方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_centralized_tools.html">Nuke中心化配置插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_custom_menu.html">Nuke自定义菜单</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">关于作者</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Nuke.html">Nuke</a> &raquo;</li>
+        
+      <li>Nuke执行后台命令脚本方案</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Nuke/nuke_batch_command.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nuke">
+<h1>Nuke执行后台命令脚本方案<a class="headerlink" href="#nuke" title="永久链接至标题">¶</a></h1>
+<p>两种后台命令脚本的模式</p>
+<p>打开命令行可以通过标签-h或者–help查询帮助
+“C:Program FilesNuke10.5v1Nuke10.5.exe” -h</p>
+<p>基本语法</p>
+<p>./Nuke (–nukex) &lt;switches&gt; &lt;script&gt; &lt;argv&gt;</p>
+<p>&lt;switches&gt; 标签flag
+&lt;script&gt; .nk文件的路径
+&lt;argv&gt; 传入的参数可以中.nk文件中以[arg n]来使用</p>
+<p>简单的案例
+“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” “D:/test.nk”
+“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” –nukex “D:/test.nk”
+直接跟.nk文件，表示打开这个合成文件</p>
+<p>“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” -x -F 1-80 -X Write1 -m 8 –cont “D:/test.nk”
+标签-x 将.nk文件输出
+标签-F起始帧-结束帧
+标签-X 输出节点名称
+标签-m 设置线程数，默认占用电脑所有线程
+标签–cont 渲染出错继续</p>
+<p>命令行输出多个Write，创建一个txt文件，将扩展名改为bat，内容写入
+“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” -x -F 1-80 -X Write1 -m 8 –cont “D:/test.nk”
+“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” -x -F 1-80 -X Write2 -m 8 –cont “D:/test.nk”
+“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” -x -F 1-80 -X Write3 -m 8 –cont “D:/test.nk”</p>
+<p>写个渲染完自动关机的bat，加shutdown关机命令
+“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” -x -F 1-80 -X Write1 -m 8 –cont “D:/test.nk”
+“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” -x -F 1-80 -X Write2 -m 8 –cont “D:/test.nk”
+“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” -x -F 1-80 -X Write3 -m 8 –cont “D:/test.nk”
+shutdown /f /s</p>
+<p>-F range的三种写法：A、A-B、A-BxC</p>
+<p>标签-t后面可以跟.py文件，案例
+“C:/Program Files/Nuke10.5v1/Nuke10.5.exe” -t “W:/houdini/scripts/python/slateMov/nkSlate.py”</p>
+<p>另一种方案是通过
+“C:/Program Files/Nuke10.5v1/python.exe” “W:/houdini/scripts/python/slateMov/nkSlate.py”</p>
+<p>.py文件一般有两种写法，一种是通过代码生成或读取.nk模板文件输出，另一种是不生成nk文件直接输出</p>
+<p>分块合并的原理一般来说是几张图通过Read节点读入，然后连接不同的transform节点（注意transform参数需要按具体几张图来设置），最后通过merge节点将分块的图缝合拼接，再接Write节点输出一整张图（注意nuke不认中文或特殊字符的文件路径）</p>
+<p>比如一张2500x1250的图被分16块，(156x1250x15张+160x1250x1张)
+渲染出了16张图，在Nuke中先创建一个2500宽x1250高的constant
+然后将16张图依次和constant背景merge中一起输出</p>
+<p>算好每个transform的水平位置的平移值</p>
+<p>subprocess模块进程通信
+subprocess.Popen类初始化
+__init__(self, args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)
+创建并返回一个子进程，并在这个进程中执行指定的程序。
+　　实例化 Popen 可以通过许多参数详细定制子进程的环境，但是只有一个参数是必须的，即位置参数 args ，下面也会详细介绍剩余的具名参数。
+args：要执行的命令或可执行文件的路径。一个由字符串组成的序列（通常是列表），列表的第一个元素是可执行程序的路径，剩下的是传给这个程序的参数，如果没有要传给这个程序的参数，args 参数可以仅仅是一个字符串。</p>
+<p>案例</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="c1"># Start Houdini</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="s2">&quot;C:/Program Files/Side Effects Software/Houdini 16.5.378/bin/houdinifx.exe&quot;</span><span class="p">)</span>
+<span class="c1"># Start Nuke</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="s2">&quot;C:/Program Files/Nuke10.5v1/Nuke10.5.exe&quot;</span><span class="p">)</span>
+<span class="c1"># Start NukeX</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="s2">&quot;&#39;C:/Program Files/Nuke10.5v1/Nuke10.5.exe&#39; -nukex&quot;</span><span class="p">)</span>
+<span class="c1"># Start Nukex</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;C:/Program Files/Nuke10.5v1/Nuke10.5.exe&quot;</span><span class="p">,</span> <span class="s2">&quot;-nukex&quot;</span><span class="p">])</span>
+<span class="c1"># Nuke Write</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;C:/Program Files/Nuke10.5v1/Nuke10.5.exe&quot;</span><span class="p">,</span> <span class="s2">&quot;-nukex -x -F 1&quot;</span><span class="p">,</span> <span class="s2">&quot;A:/working/101011621/b34dfc17-6395-4150-b310-7761074d26b6/Bin/tmp/7712/tmp370147.tga.nk&quot;</span><span class="p">,</span> <span class="s2">&quot;D:/2019/aaa/test.exr&quot;</span><span class="p">])</span>
+<span class="c1"># Python Write</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s2">&quot;C:/Program Files/Nuke10.5v1/Nuke10.5.exe&quot;</span><span class="p">,</span> <span class="s2">&quot;-nukex&quot;</span><span class="p">,</span> <span class="s2">&quot;-t&quot;</span><span class="p">,</span> <span class="s2">&quot;D:/2019/aaa/test.py&quot;</span><span class="p">,</span> <span class="s2">&quot;A:/working/101011621/b34dfc17-6395-4150-b310-7761074d26b6/Bin/tmp/7712/Tile&quot;</span><span class="p">,</span> <span class="s2">&quot;D:/2019/aaa/test.exr&quot;</span><span class="p">])</span>
+<span class="c1"># subprocess.Popen([&quot;C:/Program Files/Nuke10.5v1/python.exe&quot;, pyModule, nkPath, movPath, fileStepName, reviewPath, USER, ext])</span>
+
+<span class="c1"># nuke.scriptOpen(nk)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># test.py</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">nuke</span>
+
+<span class="c1"># print(sys.argv)</span>
+
+<span class="k">def</span> <span class="nf">abortSelected</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="s1">&#39;selected&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nuke</span><span class="o">.</span><span class="n">allNodes</span><span class="p">()]</span>
+
+<span class="n">abortSelected</span><span class="p">()</span>
+<span class="n">mergeNode</span> <span class="o">=</span> <span class="n">nuke</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;Merge2&quot;</span><span class="p">,</span> <span class="n">inpanel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">abortSelected</span><span class="p">()</span>
+<span class="n">writeNode</span> <span class="o">=</span> <span class="n">nuke</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;Write&quot;</span><span class="p">,</span> <span class="n">inpanel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">writeNode</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mergeNode</span><span class="p">)</span>
+<span class="n">writeNode</span><span class="p">[</span><span class="s2">&quot;file&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">abortSelected</span><span class="p">()</span>
+<span class="n">consNode</span> <span class="o">=</span> <span class="n">nuke</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;Constant&quot;</span><span class="p">,</span> <span class="n">inpanel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nuke</span><span class="o">.</span><span class="n">addFormat</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="mi">1250</span><span class="p">,</span> <span class="s2">&quot;newRes&quot;</span><span class="p">))</span>
+<span class="n">consNode</span><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;newRes&quot;</span><span class="p">)</span>
+
+<span class="n">mergeNode</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">consNode</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">sort_item</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?&lt;=__1x)\d+&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+
+<span class="n">tempWidth</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">key</span><span class="o">=</span><span class="n">sort_item</span><span class="p">):</span>
+    <span class="c1"># print(elem)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">sort_item</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">res_check</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?&lt;=__)\d+x\d+_[Ww]\d+[Hh]\d+(?=__.)&#39;</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="n">cur_Width</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?&lt;=_[Ww])\d+(?=[Hh])&#39;</span><span class="p">,</span> <span class="n">res_check</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+    <span class="n">cur_Height</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?&lt;=[Hh])\d+$&#39;</span><span class="p">,</span> <span class="n">res_check</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+    <span class="c1"># print(res_check.group())</span>
+    <span class="c1"># print(cur_Width.group())</span>
+    <span class="c1"># print(cur_Height.group())</span>
+
+    <span class="n">readNode</span> <span class="o">=</span> <span class="n">nuke</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">Read</span><span class="p">()</span>
+    <span class="n">readNode</span><span class="p">[</span><span class="s2">&quot;file&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fromUserText</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="n">abortSelected</span><span class="p">()</span>
+    <span class="n">tranNode</span> <span class="o">=</span> <span class="n">nuke</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;Transform&quot;</span><span class="p">,</span> <span class="n">inpanel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># print(tempWidth)</span>
+    <span class="n">tranNode</span><span class="o">.</span><span class="n">knob</span><span class="p">(</span><span class="s2">&quot;translate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setValue</span><span class="p">((</span><span class="n">tempWidth</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="n">tranNode</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">readNode</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tranNode</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+    <span class="n">mergeNode</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">tranNode</span><span class="p">)</span>
+
+    <span class="n">tempWidth</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cur_Width</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+
+<span class="c1"># nuke.scriptSave(&quot;D:/2019/aaa/test.nk&quot;)</span>
+<span class="n">nuke</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">writeNode</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nuke_centralized_tools.html" class="btn btn-neutral float-right" title="Nuke中心化配置插件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../parts/Nuke.html" class="btn btn-neutral float-left" title="Nuke" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
