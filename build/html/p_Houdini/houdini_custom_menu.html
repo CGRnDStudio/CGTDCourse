@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Houdini自定义菜单 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini自定义菜单" href="../p_Houdini/houdini_custom_menu.html" />
-    <link rel="prev" title="Git基本简单工作流程" href="../p_Git/git_simple_workflow.html" /> 
+    <link rel="next" title="Houdini环境变量" href="houdini_environment_variables.html" />
+    <link rel="prev" title="Houdini" href="../parts/Houdini.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,20 +83,20 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deadline.html">Deadline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Devops.html">Devops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Git.html">Git</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Houdini</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_custom_menu.html">Houdini自定义菜单</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_environment_variables.html">Houdini环境变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Houdini.html">Houdini</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_environment_variables.html">Houdini环境变量</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Linux.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Maya.html">Maya</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nuke.html">Nuke</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PyQt.html">PyQt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../readme.html">关于作者</a></li>
 </ul>
 
@@ -143,13 +143,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Houdini</li>
+          <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
+        
+      <li>Houdini自定义菜单</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/parts/Houdini.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Houdini/houdini_custom_menu.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,15 +165,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="houdini">
-<h1>Houdini<a class="headerlink" href="#houdini" title="永久链接至标题">¶</a></h1>
-<p>Houdini是一款三维计算机图形软件，由加拿大Side Effects Software Inc.（简称SESI）公司开发，SESI公司由Kim Davidson和Greg Hermanovic创建于1987年。Houdini是在Prisms基础上重新开发而来，可运行于Linux, Windows, Mac OS等操作系统，是完全基于节点模式设计的产物，其结构、操作方式等和其它的三维软件有很大的差异。Houdini自带的渲染器是Mantra，基于Reyes渲染架构，因此也能够快速的渲染运动模糊、景深和置换效果。[1] Mantra是经过产品验证的成熟渲染器，可以满足电影级别的渲染要求。当然，Houdini也有第三方渲染器的接口，比如：RenderMan、Mental ray、V-Ray和Torque等，可以把场景导出到这些渲染引擎进行渲染。此部分文档主要用来探讨在Houdini中所有可行的编程方案以及更好的Pipeline解决方案。</p>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_custom_menu.html">Houdini自定义菜单</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_environment_variables.html">Houdini环境变量</a></li>
-</ul>
-</div>
+<h1>Houdini自定义菜单<a class="headerlink" href="#houdini" title="永久链接至标题">¶</a></h1>
 </div>
 
 
@@ -182,10 +176,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../p_Houdini/houdini_custom_menu.html" class="btn btn-neutral float-right" title="Houdini自定义菜单" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="houdini_environment_variables.html" class="btn btn-neutral float-right" title="Houdini环境变量" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../p_Git/git_simple_workflow.html" class="btn btn-neutral float-left" title="Git基本简单工作流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../parts/Houdini.html" class="btn btn-neutral float-left" title="Houdini" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
