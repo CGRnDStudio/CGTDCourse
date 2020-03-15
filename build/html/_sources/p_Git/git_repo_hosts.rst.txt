@@ -2,6 +2,8 @@
 Git代码仓库托管平台有哪些？
 =============================
 
+Git托管平台推荐使用Github、Gitlab，国外服务器访问上可能有些丢包延时的问题，也可以使用本地服务器安装虚拟机搭建本地Gitlab以满足大型团队协作。
+
 ------------------
 国外平台
 ------------------
@@ -29,22 +31,6 @@ Git代码仓库托管平台有哪些？
 * 码云
 
 网址：https://gitee.com/
-
-* 阿里云 Code
-
-网址：https://code.aliyun.com/
-
-* 码市
-
-网址：https://coding.net/
-
-* CSDN Code
-
-网址：https://code.csdn.net
-
-* 百度效率云
-
-网址：http://xiaolvyun.baidu.com/
 
 ------------------
 参考文档

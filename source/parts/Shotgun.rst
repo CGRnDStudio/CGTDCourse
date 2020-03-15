@@ -10,4 +10,4 @@ Contents:
    :maxdepth: 1
    :glob:
 
-..   ../p_Nuke/*
+   ../p_Shotgun/*
