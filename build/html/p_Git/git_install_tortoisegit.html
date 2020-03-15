@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Git &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Git以及TortoiseGit安装以及使用 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Git以及TortoiseGit安装以及使用" href="../p_Git/git_install_tortoisegit.html" />
-    <link rel="prev" title="reStructuredText(rst)语法说明文档" href="../p_Devops/devops_rst_syntax.html" /> 
+    <link rel="next" title="Git代码仓库托管平台有哪些？" href="git_repo_hosts.html" />
+    <link rel="prev" title="Git" href="../parts/Git.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,21 +83,25 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deadline.html">Deadline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Devops.html">Devops</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Git</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../p_Git/git_install_tortoisegit.html">Git以及TortoiseGit安装以及使用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Git/git_repo_hosts.html">Git代码仓库托管平台有哪些？</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Git.html">Git</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Git以及TortoiseGit安装以及使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#git">安装Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tortoisegit">安装TortoiseGit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Houdini.html">Houdini</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Linux.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Maya.html">Maya</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nuke.html">Nuke</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Pipeline.html">Pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PyQt.html">PyQt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Shotgun.html">Shotgun</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_repo_hosts.html">Git代码仓库托管平台有哪些？</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Pipeline.html">Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../readme.html">关于作者</a></li>
 </ul>
 
@@ -144,13 +148,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Git</li>
+          <li><a href="../parts/Git.html">Git</a> &raquo;</li>
+        
+      <li>Git以及TortoiseGit安装以及使用</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/parts/Git.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Git/git_install_tortoisegit.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,15 +169,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="git">
-<h1>Git<a class="headerlink" href="#git" title="永久链接至标题">¶</a></h1>
-<p>Git是一个分布式版本控制软件，最初目的是为更好地管理Linux内核开发而设计，后来Git内核已经成熟到可以独立地用作版本控制。</p>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../p_Git/git_install_tortoisegit.html">Git以及TortoiseGit安装以及使用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Git/git_repo_hosts.html">Git代码仓库托管平台有哪些？</a></li>
-</ul>
+  <div class="section" id="gittortoisegit">
+<h1>Git以及TortoiseGit安装以及使用<a class="headerlink" href="#gittortoisegit" title="永久链接至标题">¶</a></h1>
+<p>svn和Git都是代码版本控制软件，Git更是分布式版本控制系统，目前市面比较常用，而TortoiseGit是Git图形化软件，使代码管理更高效。</p>
+<div class="section" id="git">
+<h2>安装Git<a class="headerlink" href="#git" title="永久链接至标题">¶</a></h2>
+<p>官网下载地址：<a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+</div>
+<div class="section" id="tortoisegit">
+<h2>安装TortoiseGit<a class="headerlink" href="#tortoisegit" title="永久链接至标题">¶</a></h2>
+<p>官网下载地址：<a class="reference external" href="https://tortoisegit.org/download/">https://tortoisegit.org/download/</a></p>
 </div>
 </div>
 
@@ -183,10 +190,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../p_Git/git_install_tortoisegit.html" class="btn btn-neutral float-right" title="Git以及TortoiseGit安装以及使用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="git_repo_hosts.html" class="btn btn-neutral float-right" title="Git代码仓库托管平台有哪些？" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../p_Devops/devops_rst_syntax.html" class="btn btn-neutral float-left" title="reStructuredText(rst)语法说明文档" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../parts/Git.html" class="btn btn-neutral float-left" title="Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
