@@ -34,6 +34,5 @@ Shotgun API访问的两种方式
 参考文档
 ------------------
 
-《`Shotgun开发人员文档 <https://developer.shotgunsoftware.com/>`_》
-
-《`Shotgun python-api <https://developer.shotgunsoftware.com/python-api/>`_》
+* 《`Shotgun开发人员文档 <https://developer.shotgunsoftware.com/>`_》
+* 《`Shotgun python-api <https://developer.shotgunsoftware.com/python-api/>`_》
