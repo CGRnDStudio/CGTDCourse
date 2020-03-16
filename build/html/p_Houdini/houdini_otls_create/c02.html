@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini otls开发流程 &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Houdini自定义参数Folder的几种模式 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="Houdini自定义参数Folder的几种模式" href="c02.html" />
-    <link rel="prev" title="Houdini创建otl工作流程" href="../houdini_otls_create.html" /> 
+    <link rel="next" title="Maya" href="../../parts/Maya.html" />
+    <link rel="prev" title="Houdini otls开发流程" href="c01.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,11 +92,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../houdini_hou_module.html">Houdini hou模块分解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../houdini_custom_menu.html">Houdini自定义菜单</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../houdini_otls_create.html">Houdini创建otl工作流程</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Houdini otls开发流程</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">参考文档</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="c02.html">Houdini自定义参数Folder的几种模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="c01.html">Houdini otls开发流程</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Houdini自定义参数Folder的几种模式</a></li>
 </ul>
 </li>
 </ul>
@@ -157,13 +154,13 @@
         
           <li><a href="../houdini_otls_create.html">Houdini创建otl工作流程</a> &raquo;</li>
         
-      <li>Houdini otls开发流程</li>
+      <li>Houdini自定义参数Folder的几种模式</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/p_Houdini/houdini_otls_create/c01.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/p_Houdini/houdini_otls_create/c02.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -176,45 +173,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="houdini-otls">
-<h1>Houdini otls开发流程<a class="headerlink" href="#houdini-otls" title="永久链接至标题">¶</a></h1>
-<p>otls如何开发？</p>
-<p>Subnet自定义HDA方法
-HOUDINI_PATH &amp; HOUDINI_OTLSCAN_PATH
-Operator Name &amp; Operator Label
-自定义参数齿轮菜单</p>
-<p>正常流程
-Match Current Definition</p>
-<p>Allow Editing of Contents</p>
-<p>otls如何更新？</p>
-<p>otls如何升级？</p>
-<p>案例</p>
-<p>创建一个pack cache的otl</p>
-<p>要求能打包当前文件中所有filecache节点缓存，并生成新的hip文件</p>
-<p>知识点</p>
+  <div class="section" id="houdinifolder">
+<h1>Houdini自定义参数Folder的几种模式<a class="headerlink" href="#houdinifolder" title="永久链接至标题">¶</a></h1>
+<p>Houdini创建otl的时候，想要将自己的参数面板做些布局，学会使用参数Folder的用法是比较有意思的。</p>
+<p>Folder参数有以下几种类型模式：</p>
 <ul class="simple">
-<li><p>获取所有filecache节点</p></li>
-<li><p>获取所有filecache节点上缓存路径</p></li>
-<li><p>拷贝文件操作</p></li>
-<li><p>修改所有filecache节点上缓存路径</p></li>
-<li><p>保存成新的hip文件</p></li>
+<li><p>Collapsible # 加减号收缩与伸展</p></li>
+<li><p>Simple # 简单的框框</p></li>
+<li><p>Tabs # 选项卡式</p></li>
+<li><p>Radio Buttons # 和Tabs类似，多了一个Radio按钮显示</p></li>
+<li><p>Import Block</p></li>
+<li><p>Multiparm Block (list) # 可以加减控件数量以列表的形式</p></li>
+<li><p>Multiparm Block (scrolling) # 可以加减控件数量以下拉滑条的形式</p></li>
+<li><p>Multiparm Block (tabs) # 可以加减控件数量以选项卡的形式</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取某节点下的所有filecache节点</span>
-<span class="kn">import</span> <span class="nn">toolutils</span>
-
-<span class="n">rootNode</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-
-<span class="n">nodes</span> <span class="o">=</span> <span class="n">toolutils</span><span class="o">.</span><span class="n">findAllChildNodesOfType</span><span class="p">(</span><span class="n">rootNode</span><span class="p">,</span> <span class="s2">&quot;filecache&quot;</span><span class="p">,</span> <span class="n">dorecurse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># 获取所有filecache节点上缓存路径</span>
-<span class="n">node</span><span class="o">.</span><span class="n">parm</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-<span class="n">node</span><span class="o">.</span><span class="n">parm</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">unexpandedString</span><span class="p">()</span>
-</pre></div>
-</div>
-<div class="section" id="id1">
-<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p><a class="reference external" href="https://www.sidefx.com/docs/houdini/assets/index.html">https://www.sidefx.com/docs/houdini/assets/index.html</a></p>
-</div>
+<img alt="../../_images/folder.png" src="../../_images/folder.png" />
 </div>
 
 
@@ -225,10 +198,10 @@ Match Current Definition</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="c02.html" class="btn btn-neutral float-right" title="Houdini自定义参数Folder的几种模式" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../parts/Maya.html" class="btn btn-neutral float-right" title="Maya" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../houdini_otls_create.html" class="btn btn-neutral float-left" title="Houdini创建otl工作流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="c01.html" class="btn btn-neutral float-left" title="Houdini otls开发流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
