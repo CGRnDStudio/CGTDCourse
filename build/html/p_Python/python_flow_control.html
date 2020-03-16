@@ -85,8 +85,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Python.html">Python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_anonymous_function.html">Python匿名函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置模块</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_built_in_module.html">Python内置函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module.html">Python内置模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container.html">Python容器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
@@ -263,6 +263,13 @@
     <span class="n">statement</span> <span class="n">block</span>
 </pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>异常捕获对于调试代码并不是一件友好的事情，经常在调试代码过程中我们会避免使用try语句以获得代码异常的详细信息。</p>
 </div>
 </div>
 

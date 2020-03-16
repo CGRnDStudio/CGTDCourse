@@ -86,3 +86,12 @@ try异常中断语句
         statement block
     finally:
         statement block
+
+.. code-block:: python
+
+    try:
+        1 / 0
+    except ZeroDivisionError as e:
+        print(e)
+
+异常捕获对于调试代码并不是一件友好的事情，经常在调试代码过程中我们会避免使用try语句以获得代码异常的详细信息。

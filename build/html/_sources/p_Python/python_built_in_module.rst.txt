@@ -1,10 +1,3 @@
 =============================
-Python内置函数
+Python内置模块
 =============================
-
-* enumerate
-
-.. code-block:: python
-
-    for i, item in enumerate(myList):
-        print(i, "-->", item)
