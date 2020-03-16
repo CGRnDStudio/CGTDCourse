@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python缩进原则 &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Python流控制语句 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Python迭代器" href="python_iterator.html" />
-    <link rel="prev" title="Python高阶函数" href="python_higher_order_function.html" /> 
+    <link rel="next" title="Python生成器" href="python_generator.html" />
+    <link rel="prev" title="Python文件操作" href="python_file_operator.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,14 +96,16 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types.html">Python数据类型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_generator.html">Python生成器</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_higher_order_function.html">Python高阶函数</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python缩进原则</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">坐井观天: 知识体系</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">管中窥豹: 延伸阅读</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python流控制语句</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#if">if条件判断语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for">for循环语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#while">while循环语句</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#try">try异常中断语句</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="python_generator.html">Python生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_higher_order_function.html">Python高阶函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_indentation_principle.html">Python缩进原则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_iterator.html">Python迭代器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_name_rules.html">Python命名规则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
@@ -167,13 +169,13 @@
         
           <li><a href="../parts/Python.html">Python</a> &raquo;</li>
         
-      <li>Python缩进原则</li>
+      <li>Python流控制语句</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Python/python_indentation_principle.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Python/python_flow_control.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,12 +189,80 @@
            <div itemprop="articleBody">
             
   <div class="section" id="python">
-<h1>Python缩进原则<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<div class="section" id="id1">
-<h2>坐井观天: 知识体系<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h1>Python流控制语句<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
+<p>Python流控制语句包括if条件判断语句、for循环语句、while循环语句以及try异常中断语句。</p>
+<div class="section" id="if">
+<h2>if条件判断语句<a class="headerlink" href="#if" title="永久链接至标题">¶</a></h2>
+<p>if语句如果条件太多，可以使用字典替代方案。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># if语句的几种常见写法</span>
+<span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+
+<span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+
+<span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="k">elif</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="o">...</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+</pre></div>
 </div>
-<div class="section" id="id2">
-<h2>管中窥豹: 延伸阅读<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="for">
+<h2>for循环语句<a class="headerlink" href="#for" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># for语句的写法</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+</pre></div>
+</div>
+<p>break与continue的区别</p>
+<ul class="simple">
+<li><p>break中断整个循环语句</p></li>
+<li><p>continue中断本次循环，继续下一次循环</p></li>
+</ul>
+</div>
+<div class="section" id="while">
+<h2>while循环语句<a class="headerlink" href="#while" title="永久链接至标题">¶</a></h2>
+<p>while循环需要注意避免死循环，语句块中需要有自增或自检以结束循环条件。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># while语句的写法</span>
+<span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="try">
+<h2>try异常中断语句<a class="headerlink" href="#try" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># try语句的写法</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="k">except</span> <span class="n">A</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="k">except</span> <span class="n">B</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">statement</span> <span class="n">block</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -204,10 +274,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="python_iterator.html" class="btn btn-neutral float-right" title="Python迭代器" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_generator.html" class="btn btn-neutral float-right" title="Python生成器" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_higher_order_function.html" class="btn btn-neutral float-left" title="Python高阶函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_file_operator.html" class="btn btn-neutral float-left" title="Python文件操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
