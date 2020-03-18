@@ -30,11 +30,6 @@ Python递归函数
 
         return fibonacci(n - 2) + fibonacci(n - 1)
 
-
-------------------
-管中窥豹: 延伸阅读
-------------------
-
 从递归函数谈
 os.walk()
 os.listdir()

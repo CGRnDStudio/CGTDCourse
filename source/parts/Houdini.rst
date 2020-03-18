@@ -10,8 +10,4 @@ Contents:
    :maxdepth: 1
    :glob:
 
-   ../p_Houdini/houdini_environment_variables
-   ../p_Houdini/houdini_development_environment
-   ../p_Houdini/houdini_hou_module
-   ../p_Houdini/houdini_custom_menu
-   ../p_Houdini/houdini_otls_create
+   ../p_Houdini/*
