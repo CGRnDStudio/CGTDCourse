@@ -269,7 +269,19 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>异常捕获对于调试代码并不是一件友好的事情，经常在调试代码过程中我们会避免使用try语句以获得代码异常的详细信息。</p>
+<p>异常捕获对于调试代码并不是一件友好的事情，经常在调试代码过程中我们会避免使用try语句以获得代码异常的详细信息。
+异常也可以自定义，可以通过关键字raise来抛出异常。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">checkAbs</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;x only support int or float&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">x</span>
+</pre></div>
+</div>
 </div>
 </div>
 

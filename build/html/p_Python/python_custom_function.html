@@ -91,8 +91,8 @@
 <li class="toctree-l2"><a class="reference internal" href="python_container.html">Python容器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python自定义函数</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">坐井观天: 知识体系</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">管中窥豹: 延伸阅读</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">函数的几个概念</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">形参的几种形式</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_module.html">Python自定义模块</a></li>
@@ -188,11 +188,32 @@
             
   <div class="section" id="python">
 <h1>Python自定义函数<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
+<p>函数是为了代码去重而存在的，一个函数可以经过多次调用，而且函数的代码也必须通过调用才能执行。</p>
 <div class="section" id="id1">
-<h2>坐井观天: 知识体系<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h2>函数的几个概念<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>基本语法</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">函数名</span><span class="p">(</span><span class="n">形参</span><span class="p">):</span>
+    <span class="n">函数体</span>
+    <span class="k">return</span> <span class="n">返回值</span>
+</pre></div>
+</div>
+<p>形参和返回值不是必须的，但函数都是有返回值的，如果没有return返回值，则函数默认返回值为None。</p>
+<ul class="simple">
+<li><p>形式参数</p></li>
+<li><p>实际参数</p></li>
+<li><p>返回值</p></li>
+</ul>
 </div>
 <div class="section" id="id2">
-<h2>管中窥豹: 延伸阅读<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2>形参的几种形式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>缺省参数，又叫默认参数</p></li>
+<li><p>可变参数 <code class="docutils literal notranslate"><span class="pre">*args</span></code> 将传入的参数打包成元组</p></li>
+<li><p>关键字参数 <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> 将传入的参数打包成字典</p></li>
+<li><p>不同形式参数之间组合</p></li>
+</ul>
 </div>
 </div>
 

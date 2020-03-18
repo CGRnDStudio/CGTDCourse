@@ -95,3 +95,16 @@ try异常中断语句
         print(e)
 
 异常捕获对于调试代码并不是一件友好的事情，经常在调试代码过程中我们会避免使用try语句以获得代码异常的详细信息。
+异常也可以自定义，可以通过关键字raise来抛出异常。
+
+.. code-block:: python
+
+    def checkAbs(x):
+
+        if not isinstance(x, (int, float)):
+            raise TypeError("x only support int or float")
+
+        if x >= 0:
+            return x
+        else:
+            return -x
