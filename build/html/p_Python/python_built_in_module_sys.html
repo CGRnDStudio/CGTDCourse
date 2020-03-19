@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python生成器 &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Python内置模块：sys &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Python高阶函数" href="python_higher_order_function.html" />
-    <link rel="prev" title="Python流控制语句" href="python_flow_control.html" /> 
+    <link rel="next" title="Python推导" href="python_comprehensions.html" />
+    <link rel="prev" title="Python内置模块：shutil" href="python_built_in_module_shutil.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,7 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_sys.html">Python内置模块：sys</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python内置模块：sys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container.html">Python容器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
@@ -102,11 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python生成器</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">坐井观天: 知识体系</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">管中窥豹: 延伸阅读</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="python_generator.html">Python生成器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_higher_order_function.html">Python高阶函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_indentation_principle.html">Python缩进原则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_iterator.html">Python迭代器</a></li>
@@ -173,13 +169,13 @@
         
           <li><a href="../parts/Python.html">Python</a> &raquo;</li>
         
-      <li>Python生成器</li>
+      <li>Python内置模块：sys</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Python/python_generator.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Python/python_built_in_module_sys.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,28 +188,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="python">
-<h1>Python生成器<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<p>生成器的本质也是迭代器，惰性迭代，在于减少内存占用。</p>
-<div class="section" id="id1">
-<h2>坐井观天: 知识体系<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>yield与return的区别</p>
-<p>next()与__next__()</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generatorFunc</span><span class="p">():</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">yield</span> <span class="n">a</span>
-
-    <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="k">yield</span> <span class="n">a</span>
-
-    <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="k">yield</span> <span class="n">a</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id2">
-<h2>管中窥豹: 延伸阅读<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-</div>
+  <div class="section" id="python-sys">
+<h1>Python内置模块：sys<a class="headerlink" href="#python-sys" title="永久链接至标题">¶</a></h1>
 </div>
 
 
@@ -224,10 +200,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="python_higher_order_function.html" class="btn btn-neutral float-right" title="Python高阶函数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_comprehensions.html" class="btn btn-neutral float-right" title="Python推导" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_flow_control.html" class="btn btn-neutral float-left" title="Python流控制语句" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_built_in_module_shutil.html" class="btn btn-neutral float-left" title="Python内置模块：shutil" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -86,7 +86,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Python.html">Python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_anonymous_function.html">Python匿名函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_built_in_module.html">Python内置模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_copy.html">Python内置模块：copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_sys.html">Python内置模块：sys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container.html">Python容器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
@@ -101,8 +106,13 @@
 <li class="toctree-l2"><a class="reference internal" href="python_higher_order_function.html">Python高阶函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_indentation_principle.html">Python缩进原则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_iterator.html">Python迭代器</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python命名规则</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python命名规则</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vs">驼峰命名法VS下划线命名法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">关键字 | 保留字</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_variables_reference.html">Python变量引用</a></li>
 </ul>
 </li>
@@ -184,19 +194,81 @@
             
   <div class="section" id="python">
 <h1>Python命名规则<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<p>变量命名
-函数命名
-模块命名
-类命名，首字母大写，尽量使用驼峰命名法</p>
+<p>编程的时候遇到变量、函数、模块以及类的时候都要给它们起名字，起名字不能张三李四这样随便乱起，否则会导致代码的阅读性降低，后期维护变得困难。命名一般遵循以下几条规则：</p>
 <ul class="simple">
-<li><p>变量名全部由数字字母下划线任意组合。</p></li>
-<li><p>不能以数字开头。</p></li>
-<li><p>不能是Python关键字。</p></li>
-<li><p>要具有描述性。</p></li>
-<li><p>不能使用中文。</p></li>
-<li><p>不能过长。</p></li>
-<li><p>推荐使用驼峰命名法和下划线命名法。</p></li>
+<li><p>命名要具有描述性。</p></li>
+<li><p>必须以字母或下划线开头，且只能是下划线、字母和数字的组合。</p></li>
+<li><p>不能使用Python的关键字，也称保留字。</p></li>
+<li><p>命名是区分大小写的。</p></li>
+<li><p>模块中以下划线开头的名字是模块私有的。</p></li>
+<li><p>以双下划线开头的类成员名字是类私有的。</p></li>
+<li><p>同时以双下划线开头和结尾的名字，叫做特殊方法，也叫双下方法或魔术方法。</p></li>
+<li><p>推荐使用驼峰命名法或下划线命名法。</p></li>
+<li><p>类命名，首字母大写，尽量使用驼峰命名法。</p></li>
 </ul>
+<div class="section" id="vs">
+<h2>驼峰命名法VS下划线命名法<a class="headerlink" href="#vs" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">myFirstVarable</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">my_first_varable</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>关键字 | 保留字<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>class</p></td>
+<td><p>finally</p></td>
+<td><p>is</p></td>
+<td><p>return</p></td>
+</tr>
+<tr class="row-even"><td><p>None</p></td>
+<td><p>continue</p></td>
+<td><p>for</p></td>
+<td><p>lambda</p></td>
+<td><p>try</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>def</p></td>
+<td><p>from</p></td>
+<td><p>nolcoal</p></td>
+<td><p>while</p></td>
+</tr>
+<tr class="row-even"><td><p>and</p></td>
+<td><p>del</p></td>
+<td><p>global</p></td>
+<td><p>not</p></td>
+<td><p>with</p></td>
+</tr>
+<tr class="row-odd"><td><p>as</p></td>
+<td><p>elif</p></td>
+<td><p>if</p></td>
+<td><p>or</p></td>
+<td><p>yield</p></td>
+</tr>
+<tr class="row-even"><td><p>assert</p></td>
+<td><p>else</p></td>
+<td><p>import</p></td>
+<td><p>pass</p></td>
+<td><p>break</p></td>
+</tr>
+<tr class="row-odd"><td><p>except</p></td>
+<td><p>in</p></td>
+<td><p>raise</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
