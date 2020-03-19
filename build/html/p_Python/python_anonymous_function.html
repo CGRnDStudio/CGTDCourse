@@ -87,6 +87,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python匿名函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_copy.html">Python内置模块：copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_itertools.html">Python内置模块：itertools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
@@ -190,7 +191,15 @@
             
   <div class="section" id="python">
 <h1>Python匿名函数<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<p>匿名函数不代表函数没有名字。</p>
+<p>匿名函数并不是说函数没有名字，而是def自定义函数如果简单到只用一句表达式就可以描述的时候，就可以使用lambda关键字来替代。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">add</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">x</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>lambda函数也支持缺省参数、可变参数以及关键字参数，和def自定义函数参数规则完全相同。</p>
 </div>
 
 
