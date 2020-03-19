@@ -2,6 +2,8 @@
 Houdini流程介绍及渲染代码分析
 =================================
 
+Houdini是一款三维计算机图形软件，由加拿大Side Effects Software Inc.（简称SESI）公司开发，SESI公司由Kim Davidson和Greg Hermanovic创建于1987年。Houdini是在Prisms基础上重新开发而来，可运行于Linux, Windows, Mac OS等操作系统，是完全基于节点模式设计的产物，其结构、操作方式等和其它的三维软件有很大的差异。Houdini自带的渲染器是Mantra，基于Reyes渲染架构，因此也能够快速的渲染运动模糊、景深和置换效果。Mantra是经过产品验证的成熟渲染器，可以满足电影级别的渲染要求。当然，Houdini也有第三方渲染器的接口，比如：RenderMan、Mental ray、V-Ray和Torque等，可以把场景导出到这些渲染引擎进行渲染。此部分文档主要用来探讨在Houdini中所有可行的编程方案以及更好的Pipeline解决方案。
+
 ----------------------
 几种渲染器介绍
 ----------------------
@@ -19,7 +21,7 @@ RenderMan
 认识环境变量HOUDINI_PATH
 ------------------------
 
-环境变量可以让所有扩展插件共存。
+环境变量可以让所有扩展插件共存，HOUDINI_PATH。
 
 .. code-block:: bash
 
@@ -40,10 +42,48 @@ RenderMan
     HOUDINI_PATH = $HTOA;&
 
 ----------------------
+渲染的模式
+----------------------
+
+串联与并联的区别
+
+prepost与merge的区别
+
+FrameByFrame与RopByRop区别
+
+.. code-block:: python
+
+    Help on method render in module houpythonportion:
+
+    render(*args, **kwargs) method of hou.RopNode instance
+        render(self, frame_range=(), res=(), output_file=None,
+        output_format=None, to_flipbook=False, quality=2, ignore_inputs=False,
+        method=RopByRop, ignore_bypass_flags=False, ignore_lock_flags=False,
+        verbose=False, output_progress=False)
+
+----------------------
 后台渲染的三种方案
 ----------------------
 
-* hbatch
+Houdini后台输出一般支持所有的ROP节点，比如：
+
+ - ROP Output Driver(rop_geometry)
+ - ROP Alembic Output(rop_alembic)
+ - File Cache(filecache)
+ - RF Mesh Export(rf_mesh_export)
+ - RF Particle Export(rf_particle_export)
+ - Mantra(ifd)
+ - Arnold(arnold)
+ - OpenGL(opengl)
+ - Fetch(fetch)
+ - Geometry(geometry)
+ - Prepost(prepost)
+ - Merge(merge)
+ - Redshift(Redshift_ROP)
+
+* hbatch | hscript
+
+安装路径bin文件夹下的hscript.exe和hbatch是一样的东西，没有任何区别，正常我们会使用hbatch.exe。
 
 .. code-block:: python
 
@@ -80,11 +120,19 @@ RenderMan
 .. code-block:: bash
 
     hbatch myscene.hip
-    / -> cd out
-    /out -> help render
-    /out -> render mantra1
+    Director -> help render
+    Director -> render mantra1
+
+.. code-block:: bash
+
+    hbatch
+    Director -> mread myscene.hip
+    Director -> help render
+    Director -> render mantra1
 
 * hrender
+
+hrender是通过csh.exe来调用的，所以得编写csh脚本。
 
 .. code-block:: bash
 
@@ -122,6 +170,8 @@ RenderMan
     hrender -e -f 1 10 -v -d /obj/ropnet1/mantra1 D:/test/test2.hip
 
 * hython
+
+自从Houdini引入Python接口之后，逐渐Python成为了HScript的替代品。
 
 .. code-block:: python
 
@@ -187,6 +237,15 @@ RenderMan
 
 .. code-block:: bash
 
+    hython
+    import hou
+    hou.hipFile.load(myscene.hip)
+    rnode = hou.node("/out/mantra1")
+    help(rnode)
+    rnode.render()
+
+.. code-block:: bash
+
     hython -c "hou.hipFile.load('hip文件路径'); ropNode = hou.node('输出节点路径'); ropNode.render(frame_range=(1, 10), verbose=True)"
     hython rRop.py
 
@@ -194,14 +253,14 @@ RenderMan
 认识hou模块
 ------------------------
 
-* 获取资产
+hou模块可以分为三大类sub-modules、classes、functions。
 
-.. code-block:: python
+* sub-modules：首字母小写，不带括号为module，module可能又有classes以及functions。
+* classes：首字母大写，不带括号为class。class必须实例化使用，class的属性以及方法必须通过实例化对象调用。
+* functions：首字母小写，带括号为function。
 
-    hou.fileReferences()
+------------------------
+参考文档
+------------------------
 
-* 三大类
-
-    - function
-    - class
-    - module
+* 《`Rendering as part of a workflow <https://www.sidefx.com/docs/houdini/render/batch.html#hython-and-hbatch>`_》
