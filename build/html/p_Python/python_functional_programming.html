@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python函数式编程 &mdash; CG TD Course 1.0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Python生成器" href="python_generator.html" />
+    <link rel="prev" title="Python流控制语句" href="python_flow_control.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Python.html">Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_anonymous_function.html">Python匿名函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_copy.html">Python内置模块：copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_itertools.html">Python内置模块：itertools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_sys.html">Python内置模块：sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_closure_function.html">Python闭包函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_container.html">Python容器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_custom_function.html">Python自定义函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_custom_module.html">Python自定义模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_custom_package.html">Python自定义包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_data_types.html">Python数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python函数式编程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">高阶函数</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python_generator.html">Python生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_indentation_principle.html">Python缩进原则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_iterator.html">Python迭代器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_name_rules.html">Python命名规则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_property_file.html">Python特殊属性：__file__ | __path__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_property_name.html">Python特殊属性：__name__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_third_party_module_yaml.html">Python第三方模块：yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_variables_reference.html">Python变量引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">关于作者</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Python.html">Python</a> &raquo;</li>
+        
+      <li>Python函数式编程</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Python/python_functional_programming.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<h1>Python函数式编程<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>函数式编程，也可以归到面向过程的程序设计，但思想更接近于数学计算。</p></li>
+<li><p>函数式编程是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此任意一个函数，只要输入时确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p></li>
+<li><p>函数式编程的一个特点是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数。</p></li>
+</ul>
+<div class="section" id="id1">
+<h2>高阶函数<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>map
+filter
+reduce
+sorted</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="python_generator.html" class="btn btn-neutral float-right" title="Python生成器" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="python_flow_control.html" class="btn btn-neutral float-left" title="Python流控制语句" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
