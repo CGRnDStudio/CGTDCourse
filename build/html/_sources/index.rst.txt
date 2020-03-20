@@ -22,4 +22,3 @@ CG TD Course's documentation
    parts/Deadline
    parts/Linux
    parts/Devops
-   readme

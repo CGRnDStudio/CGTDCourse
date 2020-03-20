@@ -14,6 +14,19 @@
 
 https://github.com/CGRnDStudio/CGTDCourse
 
+--------
+关于作者
+--------
+
+* 姓名：    胡安迪
+* 微信：    13851709904
+* Email：    huweiguo@do-vfx.com
+* 微信公众号：    CGRnDStudio
+* GitHub：  https://github.com/CGRnDStudio
+
+.. image:: qcode.jpg
+
+
 -----
 致谢
 -----
