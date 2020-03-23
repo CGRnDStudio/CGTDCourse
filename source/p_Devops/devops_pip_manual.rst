@@ -2,10 +2,5 @@
 pip命令使用手册
 =========================================
 
-
-
------------------
-参考文档
------------------
-
-.. 《` <>`_》
+* pip install <pkg>
+* pip install <pkg> -i https://mirrors.aliyun.com/pypi/simple
