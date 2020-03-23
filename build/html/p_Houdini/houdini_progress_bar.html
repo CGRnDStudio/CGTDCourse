@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Houdini进度条 &mdash; CG TD Course 1.0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Maya" href="../parts/Maya.html" />
+    <link rel="prev" title="Houdini升级otl的两种方案" href="houdini_otls_create/c03.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Houdini.html">Houdini</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="houdini_batch_render_script.html">Houdini流程介绍及渲染代码分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_arnold.html">Houdini中心化部署：Arnold渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_redshift.html">Houdini中心化部署：Redshift渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_custom_menu.html">Houdini自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_development_environment.html">Houdini开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_environment_variables.html">Houdini环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_hou_module.html">Houdini hou模块分解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_create.html">Houdini创建otl工作流程</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini进度条</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
+        
+      <li>Houdini进度条</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Houdini/houdini_progress_bar.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="houdini">
+<h1>Houdini进度条<a class="headerlink" href="#houdini" title="永久链接至标题">¶</a></h1>
+<p>Houdini Python API中提供hou.InteruptableOperation类来处理进度条，还有一种进度条方案是通过PyQt来实现。此文档介绍一下官方提供的接口的使用方法。</p>
+<p>如果只有一个循环任务可以使用下面的套路代码，将time.sleep(1)替换成任务代码。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">hou</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">with</span> <span class="n">hou</span><span class="o">.</span><span class="n">InterruptableOperation</span><span class="p">(</span><span class="s2">&quot;Performing Tasks&quot;</span><span class="p">,</span> <span class="n">open_interrupt_dialog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">operation</span><span class="p">:</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+        <span class="c1"># Perform task here.</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Update operation progress.</span>
+        <span class="n">percent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+        <span class="n">operation</span><span class="o">.</span><span class="n">updateProgress</span><span class="p">(</span><span class="n">percent</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果有两个循环嵌套的子任务，可以用下面的套路代码模板来写，将time.sleep(1)替换成任务代码即可。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">hou</span>
+
+<span class="n">taskNum</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">subTaskNum</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">with</span> <span class="n">hou</span><span class="o">.</span><span class="n">InterruptableOperation</span><span class="p">(</span><span class="s2">&quot;Performing&quot;</span><span class="p">,</span> <span class="s2">&quot;Performing Tasks&quot;</span><span class="p">,</span> <span class="n">open_interrupt_dialog</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">operation</span><span class="p">:</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">taskNum</span><span class="p">):</span>
+        <span class="c1"># Update long operation progress.</span>
+        <span class="n">longPercent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">taskNum</span><span class="p">)</span>
+        <span class="n">operation</span><span class="o">.</span><span class="n">updateLongProgress</span><span class="p">(</span><span class="n">longPercent</span><span class="p">)</span>
+
+        <span class="c1"># Start the sub-operation.</span>
+        <span class="k">with</span> <span class="n">hou</span><span class="o">.</span><span class="n">InterruptableOperation</span><span class="p">(</span><span class="s2">&quot;Performing Task </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">as</span> <span class="n">suboperation</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">subTaskNum</span><span class="p">):</span>
+                <span class="c1"># Update sub-operation progress.</span>
+                <span class="n">percent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">subTaskNum</span><span class="p">)</span>
+                <span class="n">suboperation</span><span class="o">.</span><span class="n">updateProgress</span><span class="p">(</span><span class="n">percent</span><span class="p">)</span>
+
+                <span class="c1"># Perform subtask here.</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../parts/Maya.html" class="btn btn-neutral float-right" title="Maya" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="houdini_otls_create/c03.html" class="btn btn-neutral float-left" title="Houdini升级otl的两种方案" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

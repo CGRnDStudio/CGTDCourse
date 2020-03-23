@@ -2,7 +2,10 @@
 Python自定义类
 =============================
 
+* self
 
-------------------
-坐井观天: 知识体系
-------------------
+.. code-block:: python
+
+    class CustomClass(object):
+
+        pass
