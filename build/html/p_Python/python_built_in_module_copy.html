@@ -204,6 +204,73 @@
             
   <div class="section" id="python-copy">
 <h1>Python内置模块：copy<a class="headerlink" href="#python-copy" title="永久链接至标题">¶</a></h1>
+<p>内置模块copy的存在主要为了深度拷贝，那么什么是深度拷贝呢？</p>
+<p>深度拷贝会递归拷贝所有深度成员。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">copy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+<span class="go">&lt;type &#39;module&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+<span class="go">[&#39;Error&#39;, &#39;PyStringMap&#39;, &#39;_EmptyClass&#39;, &#39;__all__&#39;, &#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;_copy_dispatch&#39;, &#39;_copy_immutable&#39;, &#39;_copy_inst&#39;, &#39;_copy_with_constructor&#39;, &#39;_copy_with_copy_method&#39;, &#39;_deepcopy_atomic&#39;, &#39;_deepcopy_dict&#39;, &#39;_deepcopy_dispatch&#39;, &#39;_deepcopy_inst&#39;, &#39;_deepcopy_list&#39;, &#39;_deepcopy_method&#39;, &#39;_deepcopy_tuple&#39;, &#39;_keep_alive&#39;, &#39;_reconstruct&#39;, &#39;_test&#39;, &#39;copy&#39;, &#39;deepcopy&#39;, &#39;dispatch_table&#39;, &#39;error&#39;, &#39;name&#39;, &#39;t&#39;, &#39;weakref&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">)</span>
+<span class="go">Help on function deepcopy in module copy:</span>
+
+<span class="go">deepcopy(x, memo=None, _nil=[])</span>
+<span class="go">    Deep copy operation on arbitrary Python objects.</span>
+
+<span class="go">    See the module&#39;s __doc__ string for more info.</span>
+
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>存在深度拷贝主要原因是可变数据类型可能会触碰到这个问题。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2</span> <span class="o">=</span> <span class="n">l1</span><span class="p">[:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span>
+<span class="go">[1, [2, 3], 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2</span>
+<span class="go">[1, [2, 3], 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
+<span class="go">52764264</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">l2</span><span class="p">)</span>
+<span class="go">52762824</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">52786560</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">l2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">52786560</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span>
+<span class="go">[1, [2, 3], 4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2</span>
+<span class="go">[1, [2, 3], 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span>
+<span class="go">[1, [2, 3, 100], 4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2</span>
+<span class="go">[1, [2, 3, 100], 4]</span>
+</pre></div>
+</div>
+<p>上面代码是一个浅拷贝的例子，不经意间你的代码就会出现问题，如果用copy模块呢？</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">copy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span>
+<span class="go">[1, [2, 3, 100], 4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l3</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
+<span class="go">52764264</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">l3</span><span class="p">)</span>
+<span class="go">52786520</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">l1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">52786560</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="n">l3</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">52788600</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="go">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l1</span>
+<span class="go">[1, [2, 3], 4, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l3</span>
+<span class="go">[1, [2, 3, 100], 4, 5]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
 </div>
 
 

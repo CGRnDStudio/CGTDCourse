@@ -238,6 +238,25 @@
 </div>
 <div class="section" id="id3">
 <h2>作用域<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>在函数外部，locals()和globals()作用完全相同。而当在函数内部调用时，locals()则是获取当前函数堆栈中的名字空间，其中存储的时函数参数、局部变量等信息。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">locals</span><span class="p">()</span>
+<span class="go">{&#39;__builtins__&#39;: &lt;module &#39;__builtin__&#39; (built-in)&gt;, &#39;__name__&#39;: &#39;__main__&#39;, &#39;__doc__&#39;: None, &#39;__package__&#39;: None}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">globals</span><span class="p">()</span>
+<span class="go">{&#39;__builtins__&#39;: &lt;module &#39;__builtin__&#39; (built-in)&gt;, &#39;__name__&#39;: &#39;__main__&#39;, &#39;__doc__&#39;: None, &#39;__package__&#39;: None}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">locals</span><span class="p">()</span> <span class="ow">is</span> <span class="nb">globals</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">2</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">())</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">locals</span><span class="p">()</span> <span class="ow">is</span> <span class="nb">globals</span><span class="p">())</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">func</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">{&#39;a&#39;: 5, &#39;b&#39;: 1}</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">locals</span><span class="p">()</span> <span class="ow">is</span> <span class="nb">globals</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
 </div>
 </div>
 

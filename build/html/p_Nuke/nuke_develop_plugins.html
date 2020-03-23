@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>reStructuredText(rst)语法说明文档 &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Nuke扩展开发插件的层级结构 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,7 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="prev" title="ReadTheDocs+Sphinx+Github搭建托管文档环境" href="devops_readthedocs_sphinx_github.html" /> 
+    <link rel="next" title="Shotgun" href="../parts/Shotgun.html" />
+    <link rel="prev" title="Nuke自定义菜单" href="nuke_custom_menu.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,23 +88,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Nuke.html">Nuke</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nuke_batch_script.html">Nuke执行后台命令脚本方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_centralized_tools.html">Nuke中心化配置插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_create_read.html">Nuke Python创建Read节点小技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_custom_menu.html">Nuke自定义菜单</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke扩展开发插件的层级结构</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../parts/Devops.html">Devops</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="devops_pip_manual.html">pip命令使用手册</a></li>
-<li class="toctree-l2"><a class="reference internal" href="devops_readthedocs_sphinx_github.html">ReadTheDocs+Sphinx+Github搭建托管文档环境</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">reStructuredText(rst)语法说明文档</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">注释</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">代码块</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">标题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">列表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">参考文档</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
 </ul>
 
             
@@ -149,15 +145,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../parts/Devops.html">Devops</a> &raquo;</li>
+          <li><a href="../parts/Nuke.html">Nuke</a> &raquo;</li>
         
-      <li>reStructuredText(rst)语法说明文档</li>
+      <li>Nuke扩展开发插件的层级结构</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Devops/devops_rst_syntax.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Nuke/nuke_develop_plugins.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,45 +166,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="restructuredtext-rst">
-<h1>reStructuredText(rst)语法说明文档<a class="headerlink" href="#restructuredtext-rst" title="永久链接至标题">¶</a></h1>
-<div class="section" id="id1">
-<h2>注释<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">comment</span>
+  <div class="section" id="nuke">
+<h1>Nuke扩展开发插件的层级结构<a class="headerlink" href="#nuke" title="永久链接至标题">¶</a></h1>
+<p>扩展开发的层级结构大概如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">package1</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">module1</span><span class="o">.</span><span class="n">py</span>
+<span class="n">package2</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">module2</span><span class="o">.</span><span class="n">py</span>
+<span class="n">gizmo</span>
+    <span class="n">xxx1</span><span class="o">.</span><span class="n">gizmo</span>
+    <span class="n">xxx2</span><span class="o">.</span><span class="n">gizmo</span>
+<span class="n">icons</span>
+    <span class="n">xxx1</span><span class="o">.</span><span class="n">png</span>
+    <span class="n">xxx2</span><span class="o">.</span><span class="n">svg</span>
+<span class="n">xxx1</span><span class="o">.</span><span class="n">gizmo</span>
+<span class="n">xxx1</span><span class="o">.</span><span class="n">png</span>
+<span class="n">module1</span><span class="o">.</span><span class="n">py</span>
+<span class="n">module2</span><span class="o">.</span><span class="n">py</span>
+<span class="n">init</span><span class="o">.</span><span class="n">py</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id2">
-<h2>代码块<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+<p>他们围绕着一个方法来控制路径查询机制，可以修改C:Users{用户名}.nukeinit.py文件。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
 
-    <span class="n">code</span>
+<span class="n">nuke</span><span class="o">.</span><span class="n">pluginAddPath</span><span class="p">(</span><span class="s2">&quot;插件路径&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="section" id="id3">
-<h2>标题<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">=========</span>
-<span class="n">一级标题</span>
-<span class="o">=========</span>
-
-<span class="o">---------</span>
-<span class="n">二级标题</span>
-<span class="o">---------</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id4">
-<h2>列表<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">符号列表1</span>
-<span class="o">*</span> <span class="n">符号列表2</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id5">
-<h2>参考文档<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
-<p>《<a class="reference external" href="https://docutils.sourceforge.io/docs/user/rst/quickref.html">Quick reStructured Text</a>》</p>
-<p>《<a class="reference external" href="https://www.jianshu.com/p/1885d5570b37?from=timeline&amp;isappinstalled=0">reStructuredText(rst)快速入门语法说明</a>》</p>
 </div>
 </div>
 
@@ -220,8 +205,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../parts/Shotgun.html" class="btn btn-neutral float-right" title="Shotgun" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="devops_readthedocs_sphinx_github.html" class="btn btn-neutral float-left" title="ReadTheDocs+Sphinx+Github搭建托管文档环境" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="nuke_custom_menu.html" class="btn btn-neutral float-left" title="Nuke自定义菜单" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

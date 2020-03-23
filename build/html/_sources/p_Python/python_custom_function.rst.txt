@@ -41,3 +41,25 @@ Python自定义函数
 作用域
 ------------------
 
+在函数外部，locals()和globals()作用完全相同。而当在函数内部调用时，locals()则是获取当前函数堆栈中的名字空间，其中存储的时函数参数、局部变量等信息。
+
+.. code-block:: python
+
+    >>> locals()
+    {'__builtins__': <module '__builtin__' (built-in)>, '__name__': '__main__', '__doc__': None, '__package__': None}
+    >>> globals()
+    {'__builtins__': <module '__builtin__' (built-in)>, '__name__': '__main__', '__doc__': None, '__package__': None}
+    >>> locals() is globals()
+    True
+    >>> def func(a):
+    ...     b = a % 2
+    ...     print(locals())
+    ...     print(locals() is globals())
+    ...
+    >>> func(5)
+    {'a': 5, 'b': 1}
+    False
+    >>> locals() is globals()
+    True
+
+

@@ -93,6 +93,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke中心化配置插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_read.html">Nuke Python创建Read节点小技巧</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_custom_menu.html">Nuke自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_develop_plugins.html">Nuke扩展开发插件的层级结构</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
@@ -167,11 +168,12 @@
             
   <div class="section" id="nuke">
 <h1>Nuke中心化配置插件<a class="headerlink" href="#nuke" title="永久链接至标题">¶</a></h1>
-<p>init.py
-menu.py</p>
-<p>import nuke</p>
-<p>nuke.menu(“Nodes”)
-nuke.menu(“”)</p>
+<p>init.py</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
+
+<span class="n">nuke</span><span class="o">.</span><span class="n">pluginAddPath</span><span class="p">(</span><span class="s2">&quot;插件路径&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 

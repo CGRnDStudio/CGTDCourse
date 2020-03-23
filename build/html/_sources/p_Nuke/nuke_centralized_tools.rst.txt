@@ -4,9 +4,9 @@ Nuke中心化配置插件
 
 
 init.py
-menu.py
 
-import nuke
+.. code-block:: python
 
-nuke.menu("Nodes")
-nuke.menu("")
+    import nuke
+
+    nuke.pluginAddPath("插件路径")

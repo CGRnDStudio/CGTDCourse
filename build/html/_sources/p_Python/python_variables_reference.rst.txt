@@ -9,6 +9,10 @@ Python变量引用
 
 =
 
+is
+
+==
+
 变量交换
 
 .. code-block:: python

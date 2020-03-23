@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Shotgun" href="../parts/Shotgun.html" />
+    <link rel="next" title="Nuke扩展开发插件的层级结构" href="nuke_develop_plugins.html" />
     <link rel="prev" title="Nuke Python创建Read节点小技巧" href="nuke_create_read.html" /> 
 </head>
 
@@ -93,6 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_centralized_tools.html">Nuke中心化配置插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_read.html">Nuke Python创建Read节点小技巧</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_develop_plugins.html">Nuke扩展开发插件的层级结构</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
@@ -167,11 +168,54 @@
             
   <div class="section" id="nuke">
 <h1>Nuke自定义菜单<a class="headerlink" href="#nuke" title="永久链接至标题">¶</a></h1>
-<p>init.py
-menu.py</p>
-<p>import nuke</p>
-<p>nuke.menu(“Nodes”)
-nuke.menu(“”)</p>
+<p>Nuke自定义菜单是通过Python脚本来实现的，打开Windows&gt;Script Editor查看nuke.menu帮助文档。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="n">menu</span><span class="p">))</span>
+
+<span class="c1"># Result: Help on built-in function menu in module _nuke:</span>
+
+<span class="n">menu</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">menu</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Menu</span>
+
+    <span class="n">Find</span> <span class="ow">and</span> <span class="k">return</span> <span class="n">the</span> <span class="n">Menu</span> <span class="nb">object</span> <span class="k">with</span> <span class="n">the</span> <span class="n">given</span> <span class="n">name</span><span class="o">.</span> <span class="n">Current</span> <span class="n">valid</span> <span class="n">menus</span> <span class="n">are</span><span class="p">:</span>
+
+    <span class="s1">&#39;Nuke&#39;</span>          <span class="n">the</span> <span class="n">application</span> <span class="n">menu</span>
+    <span class="s1">&#39;Pane&#39;</span>          <span class="n">the</span> <span class="n">UI</span> <span class="n">Panes</span> <span class="o">&amp;</span> <span class="n">Panels</span> <span class="n">menu</span>
+    <span class="s1">&#39;Nodes&#39;</span>         <span class="n">the</span> <span class="n">Nodes</span> <span class="n">toolbar</span> <span class="p">(</span><span class="ow">and</span> <span class="n">Nodegraph</span> <span class="n">right</span> <span class="n">mouse</span> <span class="n">menu</span><span class="p">)</span>
+    <span class="s1">&#39;Properties&#39;</span>    <span class="n">the</span> <span class="n">Properties</span> <span class="n">panel</span> <span class="n">right</span> <span class="n">mouse</span> <span class="n">menu</span>
+    <span class="s1">&#39;Animation&#39;</span>     <span class="n">the</span> <span class="n">knob</span> <span class="n">Animation</span> <span class="n">menu</span> <span class="ow">and</span> <span class="n">Curve</span> <span class="n">Editor</span> <span class="n">right</span> <span class="n">mouse</span> <span class="n">menu</span>
+    <span class="s1">&#39;Viewer&#39;</span>        <span class="n">the</span> <span class="n">Viewer</span> <span class="n">right</span> <span class="n">mouse</span> <span class="n">menu</span>
+    <span class="s1">&#39;Node Graph&#39;</span>    <span class="n">the</span> <span class="n">Node</span> <span class="n">Graph</span> <span class="n">right</span> <span class="n">mouse</span> <span class="n">menu</span>
+    <span class="s1">&#39;Axis&#39;</span>          <span class="n">functions</span> <span class="n">which</span> <span class="n">appear</span> <span class="ow">in</span> <span class="n">menus</span> <span class="n">on</span> <span class="nb">all</span> <span class="n">Axis_Knobs</span><span class="o">.</span>
+
+    <span class="nd">@param</span> <span class="n">name</span><span class="p">:</span> <span class="n">The</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">menu</span> <span class="n">to</span> <span class="n">get</span><span class="o">.</span> <span class="n">Must</span> <span class="n">be</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">values</span> <span class="n">above</span><span class="o">.</span>
+    <span class="nd">@return</span><span class="p">:</span> <span class="n">The</span> <span class="n">menu</span><span class="o">.</span>
+    <span class="nd">@raise</span> <span class="ne">RuntimeError</span><span class="p">:</span> <span class="k">if</span> <span class="n">Nuke</span> <span class="n">isn</span><span class="s1">&#39;t in GUI mode.</span>
+
+<span class="kc">None</span>
+</pre></div>
+</div>
+<p>可以通过nuke.menu(“Nuke”)来获取菜单实例，再次查看实例对象的属性与方法。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mainMenu</span> <span class="o">=</span> <span class="n">nuke</span><span class="o">.</span><span class="n">menu</span><span class="p">(</span><span class="s2">&quot;Nuke&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">mainMenu</span><span class="p">))</span>
+
+<span class="c1"># Result: [&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__doc__&#39;, &#39;__format__&#39;, &#39;__getattribute__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;action&#39;, &#39;addAction&#39;, &#39;addCommand&#39;, &#39;addMenu&#39;, &#39;addSeparator&#39;, &#39;clearMenu&#39;, &#39;findItem&#39;, &#39;icon&#39;, &#39;invoke&#39;, &#39;items&#39;, &#39;menu&#39;, &#39;name&#39;, &#39;removeItem&#39;, &#39;script&#39;, &#39;setEnabled&#39;, &#39;setIcon&#39;, &#39;setScript&#39;, &#39;setShortcut&#39;, &#39;setVisible&#39;, &#39;shortcut&#39;, &#39;updateMenuItems&#39;]</span>
+</pre></div>
+</div>
+<p>其中addMenu方法可以在此菜单对象上添加一个菜单，返回此菜单的实例对象，addCommand可以添加一个执行命令的菜单。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">toolMenu</span> <span class="o">=</span> <span class="n">mainMenu</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s2">&quot;DO-VFX&quot;</span><span class="p">)</span>
+<span class="n">toolMenu</span><span class="o">.</span><span class="n">addCommand</span><span class="p">(</span><span class="s2">&quot;Choose Task&quot;</span><span class="p">,</span> <span class="s2">&quot;print(100)&quot;</span><span class="p">,</span> <span class="n">shortcut</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>nuke.menu(“Nuke”)是主菜单的实例对象，如果想创建左侧工具栏工具，可以通过nuke.menu(“Nodes”)或者nuke.toolbar(“Nodes”)来获取实例对象。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
+
+<span class="n">toolbar</span> <span class="o">=</span> <span class="n">nuke</span><span class="o">.</span><span class="n">toolbar</span><span class="p">(</span><span class="s2">&quot;Nodes&quot;</span><span class="p">)</span>
+<span class="n">doToolbar</span> <span class="o">=</span> <span class="n">toolbar</span><span class="o">.</span><span class="n">addMenu</span><span class="p">(</span><span class="s2">&quot;DO-VFX&quot;</span><span class="p">,</span> <span class="s2">&quot;设置图标路径&quot;</span><span class="p">)</span>
+<span class="n">doToolbar</span><span class="o">.</span><span class="n">addCommand</span><span class="p">(</span><span class="s2">&quot;Choose Task&quot;</span><span class="p">,</span> <span class="s2">&quot;print(100)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -182,7 +226,7 @@ nuke.menu(“”)</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../parts/Shotgun.html" class="btn btn-neutral float-right" title="Shotgun" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nuke_develop_plugins.html" class="btn btn-neutral float-right" title="Nuke扩展开发插件的层级结构" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="nuke_create_read.html" class="btn btn-neutral float-left" title="Nuke Python创建Read节点小技巧" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -94,7 +94,12 @@
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_subprocess.html">Python内置模块：subprocess</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python内置模块：sys</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python内置模块：sys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sys-argv">sys.argv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sys-path">sys.path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sys-modules">sys.modules</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="python_closure_function.html">Python闭包函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container.html">Python容器</a></li>
@@ -204,8 +209,35 @@
             
   <div class="section" id="python-sys">
 <h1>Python内置模块：sys<a class="headerlink" href="#python-sys" title="永久链接至标题">¶</a></h1>
-<p>sys.path</p>
-<p>sys.modules</p>
+<p>内置模块sys是用来描述与Python解释器密切相关的一些功能，而非操作系统的功能，操作系统相关功能都在内置模块os中，这也是两个模块主要区别。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="go">&lt;type &#39;module&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="go">[&#39;__displayhook__&#39;, &#39;__doc__&#39;, &#39;__excepthook__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__stderr__&#39;, &#39;__stdin__&#39;, &#39;__stdout__&#39;, &#39;_clear_type_cache&#39;, &#39;_current_frames&#39;, &#39;_getframe&#39;, &#39;_git&#39;, &#39;api_version&#39;, &#39;argv&#39;, &#39;builtin_module_names&#39;, &#39;byteorder&#39;, &#39;call_tracing&#39;, &#39;callstats&#39;, &#39;copyright&#39;, &#39;displayhook&#39;, &#39;dllhandle&#39;, &#39;dont_write_bytecode&#39;, &#39;exc_clear&#39;, &#39;exc_info&#39;, &#39;exc_type&#39;, &#39;excepthook&#39;, &#39;exec_prefix&#39;, &#39;executable&#39;, &#39;exit&#39;, &#39;exitfunc&#39;, &#39;flags&#39;, &#39;float_info&#39;, &#39;float_repr_style&#39;, &#39;getcheckinterval&#39;, &#39;getdefaultencoding&#39;, &#39;getfilesystemencoding&#39;, &#39;getprofile&#39;, &#39;getrecursionlimit&#39;, &#39;getrefcount&#39;, &#39;getsizeof&#39;, &#39;gettrace&#39;, &#39;getwindowsversion&#39;, &#39;hexversion&#39;, &#39;last_traceback&#39;, &#39;last_type&#39;, &#39;last_value&#39;, &#39;long_info&#39;, &#39;maxint&#39;, &#39;maxsize&#39;, &#39;maxunicode&#39;, &#39;meta_path&#39;, &#39;modules&#39;, &#39;path&#39;, &#39;path_hooks&#39;, &#39;path_importer_cache&#39;, &#39;platform&#39;, &#39;prefix&#39;, &#39;ps1&#39;, &#39;ps2&#39;, &#39;py3kwarning&#39;, &#39;setcheckinterval&#39;, &#39;setprofile&#39;, &#39;setrecursionlimit&#39;, &#39;settrace&#39;, &#39;stderr&#39;, &#39;stdin&#39;, &#39;stdout&#39;, &#39;subversion&#39;, &#39;version&#39;, &#39;version_info&#39;, &#39;warnoptions&#39;, &#39;winver&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">api_version</span>
+<span class="go">1013</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span>
+<span class="go">&#39;C:\\Python27\\python.exe&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span>
+<span class="go">&#39;win32&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version</span>
+<span class="go">&#39;2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:19:30) [MSC v.1500 32 bit (Intel)]&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span>
+<span class="go">sys.version_info(major=2, minor=7, micro=14, releaselevel=&#39;final&#39;, serial=0)</span>
+</pre></div>
+</div>
+<div class="section" id="sys-argv">
+<h2>sys.argv<a class="headerlink" href="#sys-argv" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="sys-path">
+<h2>sys.path<a class="headerlink" href="#sys-path" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="sys-modules">
+<h2>sys.modules<a class="headerlink" href="#sys-modules" title="永久链接至标题">¶</a></h2>
+</div>
 </div>
 
 
