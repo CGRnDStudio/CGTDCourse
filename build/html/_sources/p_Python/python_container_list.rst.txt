@@ -20,4 +20,16 @@ Python容器：列表 []
 索引 & 切片
 ----------------
 
+----------------
+列表方法
+----------------
+
+.. code-block:: python
+
+    >>> type([])
+    <type 'list'>
+    >>> dir([])
+    ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__delslice__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__setslice__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+    >>>
+
 在Python 2中，如果你调用 ``range(100000000)`` ，需要等待好几秒才能拿到结果，因为它需要返回一个巨大的列表，花费了非常多的时间在内存分配与计算上。但在Python 3中，同样的调用马上就能拿到结果。因为函数返回的不再是列表，而是一个类型为 ``range`` 的懒惰对象，只有在你迭代它、或是对它进行切片时，它才会返回真正的数字给你。

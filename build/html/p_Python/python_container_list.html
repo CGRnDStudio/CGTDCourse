@@ -103,6 +103,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">有序</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">可迭代</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">索引 &amp; 切片</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">列表方法</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_set.html">Python容器：集合 {}</a></li>
@@ -226,6 +227,16 @@
 </div>
 <div class="section" id="id3">
 <h2>索引 &amp; 切片<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>列表方法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">([])</span>
+<span class="go">&lt;type &#39;list&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">([])</span>
+<span class="go">[&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__delitem__&#39;, &#39;__delslice__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__getslice__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__iadd__&#39;, &#39;__imul__&#39;, &#39;__init__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__reversed__&#39;, &#39;__rmul__&#39;, &#39;__setattr__&#39;, &#39;__setitem__&#39;, &#39;__setslice__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;append&#39;, &#39;count&#39;, &#39;extend&#39;, &#39;index&#39;, &#39;insert&#39;, &#39;pop&#39;, &#39;remove&#39;, &#39;reverse&#39;, &#39;sort&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
 <p>在Python 2中，如果你调用 <code class="docutils literal notranslate"><span class="pre">range(100000000)</span></code> ，需要等待好几秒才能拿到结果，因为它需要返回一个巨大的列表，花费了非常多的时间在内存分配与计算上。但在Python 3中，同样的调用马上就能拿到结果。因为函数返回的不再是列表，而是一个类型为 <code class="docutils literal notranslate"><span class="pre">range</span></code> 的懒惰对象，只有在你迭代它、或是对它进行切片时，它才会返回真正的数字给你。</p>
 </div>
 </div>
