@@ -93,7 +93,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_custom_menu.html">Houdini自定义菜单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_development_environment.html">Houdini开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_environment_variables.html">Houdini环境变量</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_hou_module.html">Houdini hou模块分解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_hou_module.html">Houdini接口hou模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_create.html">Houdini创建otl工作流程</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini进度条</a></li>
 </ul>
@@ -202,7 +202,7 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">taskNum</span><span class="p">):</span>
         <span class="c1"># Update long operation progress.</span>
         <span class="n">longPercent</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">taskNum</span><span class="p">)</span>
-        <span class="n">operation</span><span class="o">.</span><span class="n">updateLongProgress</span><span class="p">(</span><span class="n">longPercent</span><span class="p">)</span>
+        <span class="n">operation</span><span class="o">.</span><span class="n">updateLongProgress</span><span class="p">(</span><span class="n">longPercent</span><span class="p">,</span> <span class="n">long_op_status</span><span class="o">=</span><span class="s2">&quot;Performing Tasks </span><span class="si">%d%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">longPercent</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
 
         <span class="c1"># Start the sub-operation.</span>
         <span class="k">with</span> <span class="n">hou</span><span class="o">.</span><span class="n">InterruptableOperation</span><span class="p">(</span><span class="s2">&quot;Performing Task </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">as</span> <span class="n">suboperation</span><span class="p">:</span>

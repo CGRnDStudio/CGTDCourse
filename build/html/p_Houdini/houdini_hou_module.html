@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini hou模块分解 &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Houdini接口hou模块 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -93,7 +93,9 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_custom_menu.html">Houdini自定义菜单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_development_environment.html">Houdini开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_environment_variables.html">Houdini环境变量</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini hou模块分解</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini接口hou模块</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sub-modules">sub-modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">举例</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">案例</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">参考文档</a></li>
@@ -156,7 +158,7 @@
         
           <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
         
-      <li>Houdini hou模块分解</li>
+      <li>Houdini接口hou模块</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +177,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="houdini-hou">
-<h1>Houdini hou模块分解<a class="headerlink" href="#houdini-hou" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="houdinihou">
+<h1>Houdini接口hou模块<a class="headerlink" href="#houdinihou" title="永久链接至标题">¶</a></h1>
 <p>hou模块可以分为三大类sub-modules、classes、functions。</p>
 <ul class="simple">
 <li><p>sub-modules：首字母小写，不带括号为module，module可能又有classes以及functions。</p></li>
@@ -190,6 +192,38 @@
 <li><p>dir() # 查看对象的属性与方法</p></li>
 <li><p>help() # 查看具体方法的帮助</p></li>
 </ul>
+<div class="section" id="sub-modules">
+<h2>sub-modules<a class="headerlink" href="#sub-modules" title="永久链接至标题">¶</a></h2>
+<p># hou.hipFile</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hou</span>
+
+<span class="c1"># 获取当前的文件名</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">basename</span><span class="p">()</span>
+<span class="c1"># 获取文件的完整路径</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+<span class="c1"># 新建文件</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="c1"># 判断当前文件是否有未保存的修改</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">hasUnsavedChanges</span><span class="p">()</span>
+<span class="c1"># 保存文件</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;D:/scene.hip&quot;</span><span class="p">)</span>
+<span class="c1"># 将选择节点保存成文件</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>functions<a class="headerlink" href="#functions" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hou</span>
+
+<span class="c1"># 获取环境变量值</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">expandString</span><span class="p">(</span><span class="s2">&quot;$HIPNAME&quot;</span><span class="p">)</span>
+<span class="c1"># 获取节点实例对象</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;/obj&quot;</span><span class="p">)</span>
+<span class="c1"># 获取所有选择节点</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">selectedNodes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="id1">
 <h2>举例<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 函数</span>
@@ -203,7 +237,6 @@
 <span class="n">hou</span><span class="o">.</span><span class="n">applicationVersionString</span><span class="p">()</span>
 <span class="n">hou</span><span class="o">.</span><span class="n">homeHoudiniDirectory</span><span class="p">()</span>
 <span class="c1"># 模块</span>
-<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span>
 <span class="n">hou</span><span class="o">.</span><span class="n">session</span>
 <span class="n">hou</span><span class="o">.</span><span class="n">ui</span>
 <span class="n">hou</span><span class="o">.</span><span class="n">qt</span>
@@ -246,6 +279,10 @@
 <span class="n">scene_viewer</span> <span class="o">=</span> <span class="n">toolutils</span><span class="o">.</span><span class="n">sceneViewer</span><span class="p">()</span>
 <span class="n">selected_objects</span> <span class="o">=</span> <span class="n">scene_viewer</span><span class="o">.</span><span class="n">selectObjects</span><span class="p">(</span><span class="s2">&quot;Select a camera and press Enter&quot;</span><span class="p">,</span> <span class="n">allowed_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cam&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">selected_objects</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>案例：将某个文件夹中所有abc导入到Houdini中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">pass</span>
 </pre></div>
 </div>
 </div>

@@ -38,7 +38,7 @@ Houdini Python API中提供hou.InteruptableOperation类来处理进度条，还�
         for i in range(taskNum):
             # Update long operation progress.
             longPercent = float(i) / float(taskNum)
-            operation.updateLongProgress(longPercent)
+            operation.updateLongProgress(longPercent, long_op_status="Performing Tasks %d%%" % (longPercent * 100))
 
             # Start the sub-operation.
             with hou.InterruptableOperation("Performing Task %i" % i) as suboperation:
