@@ -109,6 +109,10 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python数据类型：字符串</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#str">字符串 str</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">字符串格式化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">字符串方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">转义字符</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">字符编码</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
@@ -213,19 +217,35 @@
 <h1>Python数据类型：字符串<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
 <div class="section" id="str">
 <h2>字符串 str<a class="headerlink" href="#str" title="永久链接至标题">¶</a></h2>
-<p>字符串格式化</p>
+</div>
+<div class="section" id="id1">
+<h2>字符串格式化<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>%</p></li>
-<li><p>format()</p></li>
+<li><p>.format()</p></li>
 </ul>
-<p>字符串方法</p>
-<p>转义字符</p>
+</div>
+<div class="section" id="id2">
+<h2>字符串方法<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="go">&lt;type &#39;str&#39;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="go">[&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__getnewargs__&#39;, &#39;__getslice__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mod__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__rmod__&#39;, &#39;__rmul__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;_formatter_field_name_split&#39;, &#39;_formatter_parser&#39;, &#39;capitalize&#39;, &#39;center&#39;, &#39;count&#39;, &#39;decode&#39;, &#39;encode&#39;, &#39;endswith&#39;, &#39;expandtabs&#39;, &#39;find&#39;, &#39;format&#39;, &#39;index&#39;, &#39;isalnum&#39;, &#39;isalpha&#39;, &#39;isdigit&#39;, &#39;islower&#39;, &#39;isspace&#39;, &#39;istitle&#39;, &#39;isupper&#39;, &#39;join&#39;, &#39;ljust&#39;, &#39;lower&#39;, &#39;lstrip&#39;, &#39;partition&#39;, &#39;replace&#39;, &#39;rfind&#39;, &#39;rindex&#39;, &#39;rjust&#39;, &#39;rpartition&#39;, &#39;rsplit&#39;, &#39;rstrip&#39;, &#39;split&#39;, &#39;splitlines&#39;, &#39;startswith&#39;, &#39;strip&#39;, &#39;swapcase&#39;, &#39;title&#39;, &#39;translate&#39;, &#39;upper&#39;, &#39;zfill&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>转义字符<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>n</p></li>
 <li><p>%%</p></li>
 <li><p>\</p></li>
 </ul>
-<p>字符编码</p>
+</div>
+<div class="section" id="id4">
+<h2>字符编码<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>ASCII</p></li>
 <li><p>GB2312</p></li>

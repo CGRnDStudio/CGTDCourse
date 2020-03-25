@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Devops &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Linux常用指令大全 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="pip命令使用手册" href="../p_Devops/devops_pip_manual.html" />
-    <link rel="prev" title="Linux常用指令大全" href="../p_Linux/linux_command.html" /> 
+    <link rel="next" title="Devops" href="../parts/Devops.html" />
+    <link rel="prev" title="Linux" href="../parts/Linux.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,21 +83,19 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PyQt.html">PyQt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Git.html">Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Houdini.html">Houdini</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Maya.html">Maya</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nuke.html">Nuke</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Shotgun.html">Shotgun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deadline.html">Deadline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Linux.html">Linux</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Devops</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../p_Devops/devops_pip_manual.html">pip命令使用手册</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Devops/devops_readthedocs_sphinx_github.html">ReadTheDocs+Sphinx+Github搭建托管文档环境</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Devops/devops_rst_syntax.html">reStructuredText(rst)语法说明文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Linux.html">Linux</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Linux常用指令大全</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
 </ul>
 
             
@@ -143,13 +141,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Devops</li>
+          <li><a href="../parts/Linux.html">Linux</a> &raquo;</li>
+        
+      <li>Linux常用指令大全</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/parts/Devops.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Linux/linux_command.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -162,16 +162,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="devops">
-<h1>Devops<a class="headerlink" href="#devops" title="永久链接至标题">¶</a></h1>
-<p>DevOps（Development和Operations的组合詞）是一种重视「软件开发人员（Dev）」和「IT运维技术人员（Ops）」之间沟通合作的文化、运动或慣例。透过自动化「软件交付」和「架构变更」的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。</p>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../p_Devops/devops_pip_manual.html">pip命令使用手册</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Devops/devops_readthedocs_sphinx_github.html">ReadTheDocs+Sphinx+Github搭建托管文档环境</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Devops/devops_rst_syntax.html">reStructuredText(rst)语法说明文档</a></li>
-</ul>
+  <div class="section" id="linux">
+<h1>Linux常用指令大全<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl status firewalld
+systemctl start firewalld
+systemctl stop firewalld
+systemctl disable firewalld
+systemctl <span class="nb">enable</span> firewalld
+</pre></div>
 </div>
 </div>
 
@@ -183,10 +181,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../p_Devops/devops_pip_manual.html" class="btn btn-neutral float-right" title="pip命令使用手册" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../parts/Devops.html" class="btn btn-neutral float-right" title="Devops" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../p_Linux/linux_command.html" class="btn btn-neutral float-left" title="Linux常用指令大全" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../parts/Linux.html" class="btn btn-neutral float-left" title="Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

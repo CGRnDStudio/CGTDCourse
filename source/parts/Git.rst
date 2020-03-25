@@ -6,9 +6,6 @@ Git是一个分布式版本控制软件，最初目的是为更好地管理Linux
 
 Contents:
 
-.. TODO: Git基本简单工作流程
-.. TODO: Git配置代理访问
-
 .. toctree::
    :maxdepth: 1
    :glob:
