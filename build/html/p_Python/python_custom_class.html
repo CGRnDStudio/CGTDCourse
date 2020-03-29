@@ -108,7 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
@@ -216,6 +218,278 @@
     <span class="k">pass</span>
 </pre></div>
 </div>
+<p>坐井观天：本节知识点</p>
+<p>类封装
+类继承
+类多态</p>
+<p>实例属性和实例方法
+类属性和类方法
+静态方法</p>
+<p>以人作为案例讲解
+管中窥豹：延伸阅读
+自定义数据类型</p>
+<p>class MyClass(object):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def __init__(self, var1, var2):</dt><dd><p>self.a = var1
+self.b = var2</p>
+</dd>
+<dt>def sum(self):</dt><dd><p>return self.a + self.b</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>a = MyClass(200, 300)
+print(a)
+print(a.sum())</p>
+<p>特殊方法__repr__</p>
+<dl class="simple">
+<dt>class Car(object):</dt><dd><dl class="simple">
+<dt>def __init__(self, name, eng, year):</dt><dd><p>self.name = name
+self.eng = eng
+self.year = year</p>
+</dd>
+<dt>def __repr__(self):</dt><dd><p>return “My car name is %s” % self.name</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>car = Car(“Jili”, 120, 2019)
+print(car)</p>
+<p>类继承
+class Car(object):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def __init__(self, name, eng, year):</dt><dd><p>self.name = name
+self.eng = eng
+self.year = year</p>
+</dd>
+<dt>def __repr__(self):</dt><dd><p>return “My car name is %s” % self.name</p>
+</dd>
+<dt>def orderParts(self, <a href="#id1"><span class="problematic" id="id2">*</span></a>args):</dt><dd><p>print(“Connecting to server…”)
+print(“Ordering parts %s: for car %s” % (args, self.name))
+print(“Checking status”)</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="simple">
+<dt>class Truck(Car):</dt><dd><dl class="simple">
+<dt>def __init__(self, name, eng, year):</dt><dd><p>Car.__init__(self, name, eng, year)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>truck = Truck(“Benz”, 800, 2008)
+truck.orderParts(“Wheels”, “Silencer”)</p>
+<p>自定义向量类型</p>
+<dl class="simple">
+<dt>class Vector(object):</dt><dd><dl class="simple">
+<dt>def __init__(self, x, y, z):</dt><dd><p>self.x = x
+self.y = y
+self.z = z</p>
+</dd>
+<dt>def __repr__(self):</dt><dd><p>return “Vector(%f, %f, %f)” % (self.x, self.y, self.z)</p>
+</dd>
+<dt>def __add__(self, other):</dt><dd><p>return Vector(self.x + other.x, self.y + other.y, self.z + other.z)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>v1 = Vector(2, 1.5, 3.2)
+v2 = Vector(3, 4, 5)
+print(v1)
+print(v1 + v2)</p>
+<p>import math
+from __future__ import division</p>
+<dl class="simple">
+<dt>class Vector(object):</dt><dd><dl class="simple">
+<dt>def __init__(self, x, y, z):</dt><dd><p>self.x = x
+self.y = y
+self.z = z</p>
+</dd>
+<dt>def __repr__(self):</dt><dd><p>return “Vector(%f, %f, %f)” % (self.x, self.y, self.z)</p>
+</dd>
+<dt>def __add__(self, other):</dt><dd><p>return Vector(self.x + other.x, self.y + other.y, self.z + other.z)</p>
+</dd>
+<dt>def __sub__(self, other):</dt><dd><p>return Vector(self.x - other.x, self.y - other.y, self.z - other.z)</p>
+</dd>
+<dt>def __mul__(self, other):</dt><dd><p>return Vector(self.x * other.x, self.y * other.y, self.z * other.z)</p>
+</dd>
+<dt>def __div__(self, other):</dt><dd><p>return Vector(self.x / other.x, self.y / other.y, self.z / other.z)</p>
+</dd>
+<dt>def __getitem__(self, item):</dt><dd><dl class="simple">
+<dt>if item == 0:</dt><dd><p>return self.x</p>
+</dd>
+<dt>elif item == 1:</dt><dd><p>return self.y</p>
+</dd>
+<dt>elif item == 2:</dt><dd><p>return self.z</p>
+</dd>
+<dt>else:</dt><dd><p>raise IndexError(“There is no vector index: %d” % item)</p>
+</dd>
+</dl>
+</dd>
+<dt>def __setitem__(self, key, value):</dt><dd><dl class="simple">
+<dt>if key == 0:</dt><dd><p>self.x = value</p>
+</dd>
+<dt>elif key == 1:</dt><dd><p>self.y = value</p>
+</dd>
+<dt>elif key == 2:</dt><dd><p>self.z = value</p>
+</dd>
+<dt>else:</dt><dd><p>raise IndexError(“There is no vector index: %d” % key)</p>
+</dd>
+</dl>
+</dd>
+<dt>def dot(self, other):</dt><dd><p>return self.x * other.x + self.y * other.y + self.z * other.z</p>
+</dd>
+<dt>def cross(self, other):</dt><dd><p>return Vector(self.x * other.x, self.y * other.y, self.z * other.z)</p>
+</dd>
+<dt>def length(self):</dt><dd><p>return math.sqrt(pow(self.x, 2) + pow(self.y, 2) + pow(self.z, 2))</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>v1 = Vector(2, 1.5, 3.2)
+v2 = Vector(3, 4, 5)
+print(v1)
+print(v1 + v2)
+print(v1.dot(v2))
+print(v1.length())
+print(v1[2])
+v1[2] = 10
+print(v1)</p>
+<p>实例方法&amp;类方法&amp;静态方法
+生成器
+import string</p>
+<dl>
+<dt>def getAllChars():</dt><dd><p>all_letters = string.ascii_lowercase
+result=[]
+for letter in all_letters:</p>
+<blockquote>
+<div><p>result.append([letter, all_letters.find(letter)])</p>
+</div></blockquote>
+<p>return result</p>
+</dd>
+<dt>def generateChars():</dt><dd><p>all_letters = string.ascii_lowercase
+for letter in all_letters:</p>
+<blockquote>
+<div><p>yield letter, all_letters.find(letter)</p>
+</div></blockquote>
+</dd>
+<dt>for i in generateChars():</dt><dd><p>print(“Letter: {0} - Index: {1}”.format(<a href="#id3"><span class="problematic" id="id4">*</span></a>i))</p>
+</dd>
+</dl>
+<p>语法糖</p>
+<p>&#64;property
+&#64;classmethod
+&#64;staticmethod</p>
+<p>装饰器</p>
+<dl>
+<dt>def check_args(func):</dt><dd><dl class="simple">
+<dt>def wrap(<a href="#id5"><span class="problematic" id="id6">*</span></a>args):</dt><dd><p>args = filter(bool, args)
+func(<a href="#id7"><span class="problematic" id="id8">*</span></a>args)</p>
+</dd>
+</dl>
+<p>return wrap</p>
+</dd>
+</dl>
+<p>&#64;check_args
+def test(<a href="#id9"><span class="problematic" id="id10">*</span></a>args):</p>
+<blockquote>
+<div><p>print(args)</p>
+</div></blockquote>
+<p>print(test)
+test(1, 0, 2, “”, [], 3)</p>
+<p>装饰器不一定非得是个函数返回包装对象，也可以是个类，通过__call__完成目标调用</p>
+<dl class="simple">
+<dt>class CheckArgs(object):</dt><dd><dl class="simple">
+<dt>def __init__(self, func):</dt><dd><p>self._func = func</p>
+</dd>
+<dt>def __call__(self, <a href="#id11"><span class="problematic" id="id12">*</span></a>args):</dt><dd><p>args = filter(bool, args)
+self._func(<a href="#id13"><span class="problematic" id="id14">*</span></a>args)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>&#64;CheckArgs
+def test(<a href="#id15"><span class="problematic" id="id16">*</span></a>args):</p>
+<blockquote>
+<div><p>print(args)</p>
+</div></blockquote>
+<p>print(test)
+test(1, 0, 2, “”, [], 3)</p>
+<p>为class提供装饰器
+def singleton(cls):</p>
+<blockquote>
+<div><dl>
+<dt>def wrap(<a href="#id17"><span class="problematic" id="id18">*</span></a>args, <a href="#id19"><span class="problematic" id="id20">**</span></a>kwargs):</dt><dd><p>o = getattr(cls, “__instance__”, None)</p>
+<dl class="simple">
+<dt>if not o:</dt><dd><p>o = cls(<a href="#id21"><span class="problematic" id="id22">*</span></a>args, <a href="#id23"><span class="problematic" id="id24">**</span></a>kwargs)
+cls.__instance__ = o</p>
+</dd>
+</dl>
+<p>return o</p>
+</dd>
+</dl>
+<p>return wrap</p>
+</div></blockquote>
+<p>&#64;singleton
+class A(object):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def __init__(self, x):</dt><dd><p>self.x = x</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>print(A)
+a, b = A(1), A(2)
+print(a is b)</p>
+<dl>
+<dt>class Artist(object):</dt><dd><p>_hits = [“John”]</p>
+<dl class="simple">
+<dt>def __init__(self, name):</dt><dd><p>self._name = name</p>
+</dd>
+</dl>
+<p>&#64;property
+def name(self):</p>
+<blockquote>
+<div><p>return self._name</p>
+</div></blockquote>
+<p>&#64;name.setter
+def name(self, name):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if name not in CUSTOM_ARTIST:</dt><dd><p>raise ValueError(“%s is not a custom artist” % name)</p>
+</dd>
+</dl>
+<p>self._name = name</p>
+</div></blockquote>
+<p>&#64;staticmethod
+def random_artist():</p>
+<blockquote>
+<div><p>return Artist(random.choice(CUSTOM_ARTIST))</p>
+</div></blockquote>
+<p>&#64;classmethod
+def hits(cls):</p>
+<blockquote>
+<div><p>return cls._hits</p>
+</div></blockquote>
+</dd>
+</dl>
+<p># rr = Artist(“Andy Hu”)
+# print(rr.name)
+# print(type(rr.name))
+# rr.name = “Andy”
+# print(rr.name)
+# rr2 = Artist.random_artist()
+# print(rr2.name)
+# print(Artist.hits())
+# print(Artist._hits)
+rr = Artist(“Andy”)
+print(rr.random_artist())
+# print(rr.hits())</p>
+<p># 类属性和类方法可以被实例对象来调用，也可以通过类名直接调用，一般是通过类名调用
+# 静态方法可以被实例对象来调用
+# 实例属性和实例方法只能通过实例对象来调用，不能通过类名直接调用
+# 静态方法和类方法的区别是类方法可能需要访问类属性，和类还有那么点关系，静态方法是访问不了任何类属性或者实例属性的</p>
 </div>
 
 

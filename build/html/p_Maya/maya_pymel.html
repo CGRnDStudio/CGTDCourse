@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Maya工具架工具" href="maya_shelf_tools.html" />
-    <link rel="prev" title="Maya帮助文档" href="maya_help_document.html" /> 
+    <link rel="next" title="Maya重命名工具" href="maya_rename_tool.html" />
+    <link rel="prev" title="Maya材质导入导出工具" href="maya_pack_tool.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,11 +88,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Maya.html">Maya</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="maya_aov_tool.html">Maya AOV分层工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_batch_script.html">Maya命令行脚本</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_menu.html">Maya自定义菜单</a></li>
-<li class="toctree-l2"><a class="reference internal" href="maya_env_variables.html">Maya环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_plugin.html">Maya自定义插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_development_environment.html">Maya开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_environment_variables.html">Maya环境变量</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_help_document.html">Maya帮助文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya材质导入导出工具</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Maya PyMEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_rename_tool.html">Maya重命名工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_shelf_tools.html">Maya工具架工具</a></li>
 </ul>
 </li>
@@ -169,6 +176,53 @@
             
   <div class="section" id="maya-pymel">
 <h1>Maya PyMEL<a class="headerlink" href="#maya-pymel" title="永久链接至标题">¶</a></h1>
+<p>什么是pymel?
+pymel 与mel以及cmds区别?</p>
+<p>import pymel.core as pm
+import maya.cmds as cmds</p>
+<p>返回类型不同
+cmds只返回字符串
+pymel返回实例对象，可以用type，dir以及help内置函数</p>
+<p>渲染设置节点
+大纲视图中Show DAG Objects Only</p>
+<p>aiDriver = pm.PyNode(“defaultArnoldDriver”)
+om.listAttr(aiDirver)</p>
+<p>defaultRenderGlobals不在大纲中
+Select by name</p>
+<p>pm.PyNode() 节点实例化</p>
+<p>resNode = pm.PyNode(“defaultResolution”)
+resNode.listAttr() 列出节点所有属性
+resNode.width.set(720)
+resNode.width.get()
+pm.selected()</p>
+<p>Node Editor</p>
+<p>node.inputs()</p>
+<p>pm.sceneName() 获取的是实例化对象，有属性和方法
+pm.env.minTime
+pm.env.maxTime
+pm.listCameras()</p>
+<p>import pymel.core as pm</p>
+<dl class="simple">
+<dt>for k, v in pm.language.Env.envVars.items():</dt><dd><p>print(k, v)</p>
+</dd>
+</dl>
+<p>fileName = pm.sceneName().splitext()[0].basename()
+startFrame = pm.env.minTime
+endFrame = pm.env.maxTime
+cameraName = “%s_f%03d_f%03d” % (fileName, startFrame, endFrame)
+cameraList = [cam for cam in pm.listCameras(p = True)]
+selPanel = pm.getPanel(withFocus = True)
+selCam = pm.modelPanel(selPanel, q=True, camera=True)
+cam = pm.PyNode(selCam)
+cam.rename(cameraName)</p>
+<p>node = pm.PyNode(“defaultRenderGlobals”)
+pm.listAttr(node)
+node.imageFilePrefix.set(“&lt;Scene&gt;/&lt;RenderLayer&gt;”)
+node.animation.set(1)
+node.startFrame.set(startFrame)
+node.endFrame.set(endFrame)
+pm.setAttr(“defaultResolution.width”, 1280)
+pm.setAttr(“defaultResolution.height”, 720)</p>
 <p><a class="reference external" href="https://help.autodesk.com/cloudhelp/2017/ENU/Maya-Tech-Docs/PyMel/">https://help.autodesk.com/cloudhelp/2017/ENU/Maya-Tech-Docs/PyMel/</a></p>
 </div>
 
@@ -180,10 +234,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="maya_shelf_tools.html" class="btn btn-neutral float-right" title="Maya工具架工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="maya_rename_tool.html" class="btn btn-neutral float-right" title="Maya重命名工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="maya_help_document.html" class="btn btn-neutral float-left" title="Maya帮助文档" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="maya_pack_tool.html" class="btn btn-neutral float-left" title="Maya材质导入导出工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

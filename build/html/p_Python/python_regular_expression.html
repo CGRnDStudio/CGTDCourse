@@ -108,7 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
@@ -209,6 +211,203 @@
   <div class="section" id="python">
 <h1>Python正则表达式<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
 <p>内置模块re</p>
+<p>坐井观天：本节知识点</p>
+<p>理解正则表达式的概念
+re模块</p>
+<p>管中窥豹：延伸阅读
+雨痕 《Python学习笔记》</p>
+<p>正则表达式（Regular Expression）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些符合某个模式的文本。</p>
+<p>正则表达式中特殊符号的作用
+.^$*+?{}[]|()</p>
+<p>import re
+dir(re)
+re模块中的函数
+re.compile # 生成一个匹配器实例，用来匹配，不用重复编译，优化代码执行时间
+re.findall # 找到全部匹配字符串，以列表返回
+re.finditer # 找到全部匹配实例对象，以迭代器返回
+re.match # 匹配字符串开始位置
+re.search # 扫描字符串，找到第一个位置
+re.split # 根据规则切分字符串
+re.sub # 查询替换字符串，返回替换结果
+re.subn # 查询替换字符串，返回替换结果和替换次数</p>
+<p>re.match、re.search、re.finditer返回匹配结果的实例对象，实例对象有如下方法
+instance.group() # 返回匹配的完整字符串
+instance.start() # 匹配的开始位置
+instance.end() # 匹配的结束位置
+instance.span() # 包含起始、结束位置的元组
+instance.groups() # 返回分组信息
+instance.groupdict() # 返回命名分组信息</p>
+<p>import re</p>
+<p>s = “12abc345ab”
+m = re.match(r”d+”, s)
+print(dir(m))
+print(m.group())
+print(m.span()) # 返回index</p>
+<p>m = re.match(r”d{3,}”, s)
+print(m is None)
+m = re.search(r”d{3,}”, s)
+print(m.group())
+print(m.span())</p>
+<p>m = re.search(r”d+”, s)
+print(m.group())
+print(m.span())</p>
+<p>ms = re.findall(r”d+”, s)
+print(ms)
+ms = re.findall(r”d{5}”, s)
+print(ms)</p>
+<dl class="simple">
+<dt>for m in re.finditer(r”d+”, s):</dt><dd><p>print(m.group())
+print(m.span())</p>
+</dd>
+<dt>for m in re.finditer(r”d{5}”, s):</dt><dd><p>print(m.group())
+print(m.span())</p>
+</dd>
+</dl>
+<p>m = re.match(r”(d+)(?P&lt;letter&gt;[abc]+)”, s)
+print(m.group())
+print(m.start())
+print(m.end())
+print(m.span())
+print(m.groups())
+print(m.groupdict())
+print(m.group(0))
+print(m.group(1))
+print(m.group(2))
+print(m.group(1, 2))
+print(m.group(0, 1, 2))
+print(m.start(0), m.end(0))
+print(m.start(1), m.end(1))
+print(m.start(2), m.end(2))
+print(m.span(0))
+print(m.span(1))
+print(m.span(2))</p>
+<p>res = re.search(“<a href="#id1"><span class="problematic" id="id2">ch_</span></a>”, “proj_ch_dog”)
+res = re.search(“d[aoes]g”, “dog dag deg dsg”)
+res = re.search(“d[a-zA-Z0-9]g”, “dog dag deg dsg”)</p>
+<p># d 数字 [0-9]
+# w 字母或数字 a-z A-Z 0-9 _
+# s 空白字符 space
+# D W S 与小写相反
+# . 任意字符
+# | 或
+# ^ 非，或者开始位置标记
+# $ 结束位置标记
+# b 单词边界
+# B 非单词边界
+匹配变长的字符
+# ? 表示 0 - 1次 ab?c匹配abc或者ac
+# + 表示1 - 无数次 ab+c匹配abc abbc abbbbbbc
+# * 表示0 - 无数次 ab*c匹配ac abc abbbbbbc
+# {m, n} 表示匹配m到n次 ab{2, 5}c匹配abbbc abbbbbbbc
+# {m} 表示只匹配m次
+# {m,} 表示匹配最少m次
+# {, n} 表示匹配最多n次
+res = re.search(r”awt”, “adfaa_tfagdga”)
+res = re.search(“1[357]d{9}”, “phone number: 13851709904”)</p>
+<p># ()表达式编组，括号里面的表达式作为一个整体逻辑</p>
+<p>res = re.search(“SSNI-d{3}.avi”, “this is budsfaf SSNI-518.avi dfaganiojfoas”)
+if res:</p>
+<blockquote>
+<div><p>print(res.group(), res.start(), res.end())</p>
+</div></blockquote>
+<dl class="simple">
+<dt>else:</dt><dd><p>print(“Not found!”)</p>
+</dd>
+</dl>
+<p>res = re.findall(“[a-zA-Z]+.html”, sss)</p>
+<p>(?P&lt;name&gt;)
+(?=name)
+(mov|exr)</p>
+<p>match = re.search(“(?P&lt;id&gt;d+), Date: (?P&lt;date&gt;.+)”, “ID: 021523, Date: Feb/12/2017”)
+print(match.group(“id”))
+print(match.group(“date”))</p>
+<p>res = re.search(“w+(?=.jpg)”, “image.jpg”)</p>
+<p>(?=abc) 判断字符后面包含abc
+(?!abc) 判断字符后面不包含abc
+(?&lt;=abc) 判断字符前面包含abc
+(?&lt;!abc) 判断字符前面不包含abc
+(?#…) 注释</p>
+<p>re.split(r”W”, “abc,123,x”)
+re.split(r”(W)”, “abc,123,x”)
+re.sub(r”[a-z]+”, “abc,123,x”)
+re.sub(r”[a-z]+”, “abc,123,x”, 1)
+re.subn(r”[a-z]+”, “*”, “abc,123,x”)</p>
+<p>编译标志(?iLmsux)
+可以用re.I、re.M等参数，也可以直接在表达式中添加(?)</p>
+<p>s       单行
+i       忽略大小写
+L       让w匹配本地字符，对中文支持不好
+m       多行
+x       忽略多余的空白字符
+u       unicode</p>
+<p>(?i)忽略大小写</p>
+<p>组操作，小括号即组，分组的概念
+import re</p>
+<p>s1 = “%123Abc%45xyz&amp;”
+re.findall(r”(d+)(w+)”, s1)
+re.findall(r”(d+(w+))”, s1)</p>
+<p>命名组 (?P&lt;name&gt;…)</p>
+<dl class="simple">
+<dt>for m in re.finditer(r”(?P&lt;number&gt;d+)(?P&lt;letter&gt;[a-z]+)”, “%123Abc%45xyz&amp;”, re.I):</dt><dd><p>print(m.group())
+print(m.groupdict())</p>
+</dd>
+</dl>
+<p>无捕获组(?:…)，作为匹配条件，匹配的对象在无名的组中，无需关心
+import re</p>
+<p>s1 = “%123Abc%45xyz&amp;”
+print(re.findall(r”(?:d+)([a-z]+)”, s1))
+print(re.findall(r”(?:d+)([a-z]+)”, s1, re.I))</p>
+<p>反向引用
+&lt;number&gt;或(?P=name)，引用前面的组
+for m in re.finditer(r”&lt;a&gt;w+&lt;/a&gt;”, “%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;”):</p>
+<blockquote>
+<div><p>print(m.group())</p>
+</div></blockquote>
+<dl class="simple">
+<dt>for m in re.finditer(r”&lt;w&gt;w+&lt;/(1)&gt;”, “%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;”):</dt><dd><p>print(m.group())</p>
+</dd>
+<dt>for m in re.finditer(r”&lt;(?P&lt;tag&gt;w)&gt;w+&lt;/(?P=tag)&gt;”, “%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;”):</dt><dd><p>print(m.group())</p>
+</dd>
+</dl>
+<p>(?=…) # 组内容必须出现在右侧
+(?!…) # 组内容不能出现在右侧
+(?&lt;=…) # 组内容必须出现在左侧
+(?&lt;!…) # 组内容不能出现在左侧</p>
+<p>re.split用pattern做分隔符切割字符串，如果用(pattern)，分隔符也会返回
+import re</p>
+<p>s1 = “abc,123,x”
+print(re.split(r”W”, s1))
+print(re.split(r”(W)”, s1))</p>
+<p>re.sub 替换查找到的字符串，返回新的字符串，可指定替换次数
+import re</p>
+<p>s1 = “abc,123,x”
+print(re.sub(r”[a-z]+”, “*”, s1))
+print(re.sub(r”[a-z]+”, “*”, s1, 1))</p>
+<p>re.subn和re.sub用法一样，只是返回值不同，返回(新的字符串，被替换的次数)
+import re</p>
+<p>s1 = “abc,123,x”
+print(re.subn(r”[a-z]+”, “*”, “abc,123,x”))
+print(re.subn(r”[a-z]+”, “*”, “abc,123,x”, 1))</p>
+<p>用来替换的参数repl可以接受自定义函数
+import re</p>
+<dl class="simple">
+<dt>def repl(m):</dt><dd><p>print(m.group())
+return “*” * len(m.group())</p>
+</dd>
+</dl>
+<p>s1 = “abc,123,x”
+print(re.sub(r”[a-z]+”, repl, s1))
+print(re.sub(r”[a-z]+”, repl, s1, 1))
+print(re.subn(r”[a-z]+”, repl, s1))
+print(re.subn(r”[a-z]+”, repl, s1, 1))</p>
+<p>结合匿名函数lambda可以更简洁
+import re
+s1 = “abc,123,x”
+print(re.sub(r”[a-z]+”, lambda x: “*” * len(x.group()), s1))</p>
+<p>import re
+s1 = “magicFireNezhaSpirit”
+re.sub(r”[A-Z]+”, lambda x: “_” + x.group().lower(), s1)</p>
+<p>辅助组</p>
 </div>
 
 

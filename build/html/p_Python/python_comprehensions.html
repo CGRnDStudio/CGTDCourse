@@ -114,7 +114,9 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
@@ -235,6 +237,35 @@
 </div>
 <div class="section" id="id4">
 <h2>字典推导<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>import logging</p>
+<dl>
+<dt>def wrap_func_log(level=”info”):</dt><dd><dl class="simple">
+<dt>LOG_LEVELS = {</dt><dd><p>“debug”: logging.debug,
+“info”: logging.info,
+“warning”: logging.warning,
+“error”: logging.error</p>
+</dd>
+</dl>
+<p>}
+log_command = LOG_LEVELS.get(level) or logging.info</p>
+<dl>
+<dt>def dec_wrapper(func):</dt><dd><dl class="simple">
+<dt>def wrapper(<a href="#id5"><span class="problematic" id="id6">*</span></a>args, <a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs):</dt><dd><p>log_command(func.__name__ + ” is running…”)
+return func(<a href="#id9"><span class="problematic" id="id10">*</span></a>args, <a href="#id11"><span class="problematic" id="id12">**</span></a>kwargs)</p>
+</dd>
+</dl>
+<p>return wrapper</p>
+</dd>
+</dl>
+<p>return dec_wrapper</p>
+</dd>
+</dl>
+<p>&#64;wrap_func_log(level=”error”)
+def add1(n):</p>
+<blockquote>
+<div><p>print(n + 1)</p>
+</div></blockquote>
+<p>add1(10)</p>
 </div>
 </div>
 

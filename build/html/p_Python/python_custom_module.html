@@ -103,16 +103,14 @@
 <li class="toctree-l2"><a class="reference internal" href="python_container_tuple.html">Python容器：元组 ()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_function.html">Python自定义函数</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python自定义模块</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">坐井观天: 知识体系</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">管中窥豹: 延伸阅读</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python自定义模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_package.html">Python自定义包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
@@ -212,12 +210,72 @@
             
   <div class="section" id="python">
 <h1>Python自定义模块<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<div class="section" id="id1">
-<h2>坐井观天: 知识体系<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="id2">
-<h2>管中窥豹: 延伸阅读<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-</div>
+<p>坐井观天：本节知识点
+❏几种常见的模块导入方式
+❏模块导入的搜索机制sys.path
+❏缓存区sys.modules、pyc以及reload
+❏查询模块路径__file__
+❏模块中__name__的作用
+❏模块帮助文档docstring（__doc__）</p>
+<p>管中窥豹：延伸阅读</p>
+<p>几种常见的模块导入方式
+Python允许开发者通过导入外部程序块的方式来扩展自己的程序，这些可以被导入（import）并使用的程序块就是模块（module）
+模块的基本单元是一个.py文件，Python的包在广义上也被称为模块（module）
+以内置模块datetime为例
+import datetime
+import datetime as dt
+print(dt.datetime.now())
+from datetime import datetime
+print(datetime.now())
+from datetime import *
+from datetime import datetime as ddt
+print(ddt.now())</p>
+<p>模块导入的搜索机制sys.path
+模块导入搜索路径是由多个目录路径组成的列表，第一个路径默认是当前模块所在的路径
+模块搜索路径 = 当前工作路径 + sys.path列表内的所有路径
+何为环境变量PYTHONPATH?
+sys.path在环境变量中起什么作用?
+sys.path添加路径的两种方案以及区别?
+path in sys.path or sys.path.insert(0, path)
+DCC软件如何管理sys.path?</p>
+<p>缓存区sys.modules、pyc以及reload
+import可以是属性方法类型，reload只能是模块
+查询模块路径__file__
+__file__属性是一个Python模块隐藏的默认属性，它描述了一个模块的完整路径。
+模块中__name__的作用
+__name__属性是所有Python模块自带的一个隐藏属性，用于标注模块在不同执行环境下的名称。
+当一个模块作为主模块运行（被Python解释器直接运行）时，__name__的值是”__main__”，否则，该模块的__name__属性值为此模块的名称。</p>
+<p>模块帮助文档docstring（__doc__）</p>
+<p>双三引号
+docstring写在什么位置?
+help()内置函数与docstring的关系?</p>
+<p>myFirstModule.py</p>
+<p># -<em>- coding: utf-8 -</em>-
+#!/usr/bin/python</p>
+<p>“””
+this is a doc string
+“””</p>
+<p>a = 5</p>
+<dl class="simple">
+<dt>def foo():</dt><dd><p>print(“this is foo function”)</p>
+</dd>
+</dl>
+<p>print(“hello, this is my first module”)</p>
+<dl class="simple">
+<dt>if __name__ == “__main__”:</dt><dd><p>print(“this string is under main”)</p>
+</dd>
+</dl>
+<p>main.py
+# -<em>- coding: utf-8 -</em>-
+#!/usr/bin/python</p>
+<p>print(“before import”)
+import myFirstModule as mfm</p>
+<p>print(“after import”)
+print(“my first module attr a is: “, mfm.a)
+print(“my first module method foo is: “,  mfm.foo)
+print(mfm.__name__)
+print(mfm.__file__)
+print(mfm.__doc__)</p>
 </div>
 
 

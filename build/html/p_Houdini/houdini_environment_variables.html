@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini环境变量 &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Houdini中心化理念：环境变量 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini接口hou模块" href="houdini_hou_module.html" />
-    <link rel="prev" title="Houdini开发环境" href="houdini_development_environment.html" /> 
+    <link rel="next" title="Houdini HScript命令" href="houdini_hscript_command.html" />
+    <link rel="prev" title="Houdini搭建VS Code开发环境" href="houdini_development_environment.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,11 +91,20 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_centralized_arnold.html">Houdini中心化部署：Arnold渲染器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_centralized_redshift.html">Houdini中心化部署：Redshift渲染器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_custom_menu.html">Houdini自定义菜单</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_development_environment.html">Houdini开发环境</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini环境变量</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_hou_module.html">Houdini接口hou模块</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_otls_create.html">Houdini创建otl工作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_development_environment.html">Houdini搭建VS Code开发环境</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini中心化理念：环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_hscript_command.html">Houdini HScript命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_module_hou.html">Houdini模块：hou</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_create.html">Houdini otl：创建以及更新的流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_parameter.html">Houdini otl：自定义参数Folder的几种模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_update.html">Houdini otl：升级的两种方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_program_types.html">Houdini编程语言种类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_progress_bar.html">Houdini进度条</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_python_executable_environment.html">Houdini中可执行Python代码的环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_python_panel.html">Houdini Python Panel创建流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_shelf_tools.html">Houdini工具架工具创建流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX基础语法</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
@@ -151,7 +160,7 @@
         
           <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
         
-      <li>Houdini环境变量</li>
+      <li>Houdini中心化理念：环境变量</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -171,9 +180,106 @@
            <div itemprop="articleBody">
             
   <div class="section" id="houdini">
-<h1>Houdini环境变量<a class="headerlink" href="#houdini" title="永久链接至标题">¶</a></h1>
-<p>HOUDINI_PATH</p>
-<p>hconfig -ap</p>
+<h1>Houdini中心化理念：环境变量<a class="headerlink" href="#houdini" title="永久链接至标题">¶</a></h1>
+<p>Houdini中心化理念又称集成式环境部署，中心化最重要的知识点就是环境变量，HOUDINI_PATH在Houdini中是及其重要的一个环境变量，它管控Houdini扩展开发插件的层级结构。</p>
+<p>打开菜单Windows&gt;Shell，输入hconfig -ap可以获取Houdini中所有环境变量的用途描述，第一个就是HOUDINI_PATH。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>C:<span class="se">\U</span>sers<span class="se">\h</span>uweiguo&gt;hconfig -ap
+Common paths are <span class="nb">set</span> to:
+<span class="nv">$JOB</span> <span class="o">=</span> C:/Users/huweiguo
+<span class="nv">$HIP</span> <span class="o">=</span> C:/Users/huweiguo
+<span class="nv">$HOUDINI_USER_PREF_DIR</span> <span class="o">=</span> C:/Users/huweiguo/Documents/houdini16.5
+<span class="nv">$HOME</span> <span class="o">=</span> C:/Users/huweiguo/Documents
+<span class="nv">$HSITE</span> <span class="o">=</span> C:/PROGRA~1/SIDEEF~1/HOUDIN~1.378/site
+<span class="nv">$HFS</span> <span class="o">=</span> C:/PROGRA~1/SIDEEF~1/HOUDIN~1.378
+
+HOUDINI_PATH :<span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    The path of directories where Houdini looks <span class="k">for</span> configuration files.
+
+    Directories searched <span class="o">(</span>in order<span class="o">)</span> are:
+        <span class="m">1</span><span class="o">)</span> <span class="s2">&quot;</span><span class="nv">$HIP</span><span class="s2">&quot;</span>
+        <span class="m">2</span><span class="o">)</span> <span class="s2">&quot;</span><span class="nv">$HOUDINI_USER_PREF_DIR</span><span class="s2">&quot;</span>
+        <span class="m">3</span><span class="o">)</span> <span class="s2">&quot;</span><span class="nv">$HFS</span><span class="s2">/houdini&quot;</span>
+        <span class="m">4</span><span class="o">)</span> <span class="s2">&quot;</span><span class="nv">$HFS</span><span class="s2">/bin&quot;</span>
+</pre></div>
+</div>
+<p>在Houdini中想扩展开发插件，插件的层级结构可参考”$HFS/houdini”，$HFS是Houdini安装所在的路径。</p>
+<ul class="simple">
+<li><p>config/Icons # 自定义图标</p></li>
+<li><p>desktop # 自定义布局</p></li>
+<li><p>dso # 自定义HDK C++编译的插件</p></li>
+<li><p>gallery # 自定义节点预设</p></li>
+<li><p>geo # 自定义一些bgeo缓存</p></li>
+<li><p>ocio # 自定义色彩空间</p></li>
+<li><p>otls # 自定义otl文件</p></li>
+<li><p>presets # 自定义节点参数预设</p></li>
+<li><p>python_panels # 自定义Python面板</p></li>
+<li><p>radialmenu # 自定义热盒菜单</p></li>
+<li><p>scripts/python # 自定义Python代码可以放这</p></li>
+<li><p>toolbar # 自定义工具架工具</p></li>
+<li><p>FBres # 自定义分辨率预设</p></li>
+<li><p>MainMenuCommon.xml # 自定义主菜单</p></li>
+<li><p>OPmenu.xml # 自定义节点右键菜单</p></li>
+<li><p>PARMmenu.xml # 自定义节点参数右键菜单</p></li>
+<li><p>VEXpressions.txt # 自定义VEX代码片段</p></li>
+</ul>
+<p>还有很多其它可以自定义的配置文件，可以详细研究一下。</p>
+<p>坐井观天：本节知识点
+认识环境变量HOUDINI_PATH
+如何部署qLib
+Shell &amp; hconfig
+houdini.env
+.bat批处理文件管理环境变量 伪装快捷方式
+集中式管理Arnold，Redshift，V-Ray，Renderman，RFConnect，Denoiser等
+集中式管理插件的好处，方便维护，方便版本切换
+几种常用的环境变量</p>
+<p>管中窥豹：延伸阅读
+<a class="reference external" href="http://127.0.0.1:48626/basics/config_env">http://127.0.0.1:48626/basics/config_env</a>
+<a class="reference external" href="http://127.0.0.1:48626/ref/env.html">http://127.0.0.1:48626/ref/env.html</a>
+<a class="reference external" href="https://github.com/qLab/qLib">https://github.com/qLab/qLib</a>
+<a class="reference external" href="https://docs.chaosgroup.com/display/VRAYHOUDINI/QuickStart+Guides">https://docs.chaosgroup.com/display/VRAYHOUDINI/QuickStart+Guides</a></p>
+<p>Shell</p>
+<p>hconfig
+hconfig -a
+hconfig -ap
+set 某个环境变量</p>
+<p>几种常用的环境变量
+HOUDINI_BUFFEREDSAVE 加速Houdini网盘文件存储
+HOUDINI_ACCESS_METHOD 控制abc, hip文件无权限读取
+HOUDINI_EXTERNAL_HELP_BROWSER 设置默认谷歌浏览器打开帮助文档
+HOUDINI_OTLSCAN_PATH
+HOUDINI_SPLASH_FILE 修改启动图片</p>
+<p>Arnold
+4.0.2htoa-4.0.2_r236e192_houdini-17.5.229</p>
+<p># Arnold env
+HTOA = //server/manager/thirdParty/tools/htoa/4.0.2/htoa-4.0.2_r236e192_houdini-17.5.229
+PATH = $PATH;$HTOA/scripts/bin
+solidangle_LICENSE = <a class="reference external" href="mailto:5053&#37;&#52;&#48;farm&#46;do-vfx&#46;com">5053<span>&#64;</span>farm<span>&#46;</span>do-vfx<span>&#46;</span>com</a></p>
+<p># HOUDINI_PATH
+HOUDINI_PATH = $HTOA;&amp;</p>
+<p>RedshiftPluginsHoudini16.5.268</p>
+<p># Redshift env
+RS_PATH = C:/ProgramData/Redshift
+PATH = $PATH;$RS_PATH/bin</p>
+<p># HOUDINI_PATH
+HOUDINI_PATH = $RS_PATH/Plugins/Houdini/16.5.268;&amp;</p>
+<p>PixarRenderManForHoudini-22.517.5</p>
+<p># RenderMan env
+RMAN = C:/Program Files/Pixar
+RMANTREE = $RMAN/RenderManProServer-22.5
+RFHTREE = $RMAN/RenderManForHoudini-22.5</p>
+<p># HOUDINI_PATH
+HOUDINI_PATH = $RFHTREE/17.5;&amp;</p>
+<p>vrayvfh_home</p>
+<p># V-Ray env
+VFH_ROOT=”//server/manager/thirdParty/tools/vray”
+VRAY_APPSDK=”$VFH_ROOT/appsdk”
+VRAY_OSL_PATH=”$VRAY_APPSDK/bin”
+VRAY_UI_DS_PATH=”$VFH_ROOT/ui”
+VFH_HOME=”$VFH_ROOT/vfh_home”
+VFH_PATH=”$VFH_HOME/bin;$VRAY_APPSDK/bin”
+PATH=”$VFH_PATH;$PATH”</p>
+<p># HOUDINI_PATH
+HOUDINI_PATH = $VFH_HOME;&amp;</p>
 </div>
 
 
@@ -184,10 +290,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="houdini_hou_module.html" class="btn btn-neutral float-right" title="Houdini接口hou模块" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="houdini_hscript_command.html" class="btn btn-neutral float-right" title="Houdini HScript命令" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_development_environment.html" class="btn btn-neutral float-left" title="Houdini开发环境" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_development_environment.html" class="btn btn-neutral float-left" title="Houdini搭建VS Code开发环境" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

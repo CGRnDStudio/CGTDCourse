@@ -108,7 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python文件操作</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#open">内置函数open</a></li>
@@ -320,6 +322,75 @@
 <p>dumps</p>
 <p>yaml模块</p>
 <p>xml</p>
+<p>坐井观天：本节知识点</p>
+<p>上下文管理器
+import os
+import sys
+import shutil
+import json
+import yaml</p>
+<p>管中窥豹：延伸阅读</p>
+<p>os模块是python与计算机操作系统交互的模块，它提供了一系列访问操作系统的相关功能。</p>
+<p>import os
+# 当前路径
+os.getcwd()
+os.mkdir()
+os.listdir(os.getcwd())
+# os.chdir VS os.getcwd
+os.chdir()
+os.rmdir()
+os.makedirs()
+os.rename()
+os.removedirs()
+os.path.join()
+os.path.exists()
+os.path.dirname()
+os.path.split()
+os.path.splitext()
+os.path.splitdriver()
+os.path.isdir()
+os.path.isfile()</p>
+<p>shutil模块是python内置的一个高级文件操作模块，提供了一些针对文件操作和文件采集相关的高级功能。在os模块相关功能基础上进行了升级，形成了一系列专门为文件操作而设计的功能集合。
+import shutil
+filePath = “D:/test”
+newFilePath = “D:/test_new”
+# copy函数将一个文件拷贝到另一个路径下
+shutil.copy(filePath, newFilePath)
+# copy2函数除了拷贝文件外，还会将源文件的权限，最后访问时间，最后修改时间等拷贝到目标文件上
+newFilePath2 = “D:/test_new2”
+shutil.copy2(filePath, newFilePath2)
+shutil.move()
+shutil.rmtree()</p>
+<p>上下文管理器
+上下文管理协议为代码块提供了包含初始化和清理操作的安全上下文环境。即便代码块发生异常，清理操作也会被执行。</p>
+<p>读写文件要注意编码转换的问题
+with open(“somefile.txt”, “rt”) as f:</p>
+<blockquote>
+<div><p>data = f.read()</p>
+</div></blockquote>
+<dl class="simple">
+<dt>with open(“somefile.txt”, “rt”) as f:</dt><dd><dl class="simple">
+<dt>for line in f:</dt><dd><p>pass</p>
+</dd>
+</dl>
+</dd>
+<dt>with open(“somefile.txt”, “wt”) as f:</dt><dd><p>f.write(text1)
+f.write(text2)</p>
+</dd>
+<dt>with open(“somefile.txt”, “wt”) as f:</dt><dd><p>print(line1, file=f)
+print(line2, file=f)</p>
+</dd>
+</dl>
+<p>py3 添加了编码的支持</p>
+<dl class="simple">
+<dt>with open(“somefile.txt”, “rt”， encoding=”gb2312”) as f:</dt><dd><p>pass</p>
+</dd>
+</dl>
+<p>上下文管理器with在语句块结束之后，文件会自动关闭</p>
+<p>f = open(“somefile.txt”, “rt”)
+data = f.read()
+f.close()
+配合json &amp; yaml模块可以读写文件</p>
 </div>
 </div>
 

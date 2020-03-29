@@ -1,0 +1,625 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python开发环境 &mdash; CG TD Course 1.0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Python注释文档" href="python_docstring.html" />
+    <link rel="prev" title="Python装饰器" href="python_decorator.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Python.html">Python</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="python_anonymous_function.html">Python匿名函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_api.html">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_copy.html">Python内置模块：copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_itertools.html">Python内置模块：itertools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_subprocess.html">Python内置模块：subprocess</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_sys.html">Python内置模块：sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_closure_function.html">Python闭包函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_container_dict.html">Python容器：字典 {key: value}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_container_list.html">Python容器：列表 []</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_container_set.html">Python容器：集合 {}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_container_tuple.html">Python容器：元组 ()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_custom_function.html">Python自定义函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_custom_module.html">Python自定义模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_custom_package.html">Python自定义包</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_functional_programming.html">Python函数式编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_generator.html">Python生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_ide.html">Python IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_indentation_principle.html">Python缩进原则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_iterator.html">Python迭代器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_module_import_principle.html">Python模块导入机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_name_rules.html">Python命名规则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_pep8.html">Python PEP8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_property_name.html">Python特殊属性：__name__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_third_party_module_yaml.html">Python第三方模块：yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_type_instance_concept.html">Python类型实例概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_variables_reference.html">Python变量引用</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Python.html">Python</a> &raquo;</li>
+        
+      <li>Python开发环境</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Python/python_development_environment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python">
+<h1>Python开发环境<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
+<p>解决两个问题
+CG软件中在哪里可以执行代码?
+学习print()函数
+独立环境如何执行代码?</p>
+<p>坐井观天：本节知识点
+❏独立执行环境
+❏DCC软件中的执行环境
+❏IDE中的执行环境
+❏print函数
+❏关键字
+❏转义字符
+❏注释</p>
+<p>管中窥豹：延伸阅读
+❏VS Code安装、配置以及使用 下载地址： <a class="reference external" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>
+❏Python 2.7.15安装 下载地址： <a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a>
+❏Git管理代码库 Git下载地址： <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>
+❏TortoiseGit 下载地址： <a class="reference external" href="https://tortoisegit.org/">https://tortoisegit.org/</a>
+❏掌握Markdown语法撰写文档
+❏Git Bash结合ipython使用 ipython安装： pip install ipython pip install PySide
+❏Python第三方库路径 C:Python27Libsite-packages</p>
+<p>Markdown语法
+Linux操作指令
+VS Code高级使用技巧
+PEP8规范
+Git指令
+ipython高级使用技巧</p>
+<p>TD日常工作内容
+❏撰写流程规范、软件工具说明文档等
+❏根据需求开发相应的软件工具或插件
+❏检查并修正生产过程中出现的错误文件
+❏维护公共服务系统，如渲染农场、存储设备、公共服务器等
+❏向软件工具或插件的使用者演示其功能及操作方式
+❏管理和维护生产素材、制作文件、输出序列、生产元数据</p>
+<p>TD日常工作流程
+选择集成开发环境（IDE）
+❏VS Code轻量跨平台免费
+❏VS Code基本配置以及用途</p>
+<dl>
+<dt>{</dt><dd><p>“python.linting.pylintEnabled”: false,
+“python.linting.pep8Enabled”: true,
+“editor.renderWhitespace”: “all”,
+“editor.mouseWheelZoom”: true,
+“editor.rulers”: [79, 120, 150],
+“workbench.iconTheme”: “vscode-icons”,
+“editor.tabSize”: 4,
+“window.title”: “${activeEditorLong}”,
+“vsicons.dontShowNewVersionMessage”: true,
+“python.disablePromptForFeatures”: [</p>
+<blockquote>
+<div><p>“pep8”</p>
+</div></blockquote>
+<p>],
+“extensions.ignoreRecommendations”: false,
+“python.pythonPath”: “C:/python27/python.exe”</p>
+</dd>
+</dl>
+<p>}</p>
+<p>❏VS Code Python开发环境
+❏VS Code调试以及断点调试 print是最简单的一种debug方法
+❏VS Code实用快捷键</p>
+<p>Ctrl+F2：批量选择相同字段并修改
+Ctrl+D：逐一加选相同字段并修改
+Alt+Z：自动换行查看
+Ctrl+/：注释与反注释
+Tab：
+Shift+Tab：
+Alt+Shift+左键：列模式编辑
+Ctrl+H：替换
+Ctrl+F：查找
+F5：Debug
+Ctrl+Shift+方向键：复制代码</p>
+<p>PEP8代码规范
+- 安装</p>
+<p><a class="reference external" href="https://pypi.org/project/pep8/">https://pypi.org/project/pep8/</a></p>
+<p>pip install pep8</p>
+<p>pip install –upgrade pep8
+- 向导</p>
+<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a></p>
+<p>#!/usr/bin/python
+# -<em>- coding: utf-8 -</em>-</p>
+<p>“”” 写个简单统计运行时间的函数
+“””</p>
+<p>import time</p>
+<p>def measure_time(func):</p>
+<blockquote>
+<div><dl>
+<dt>def wrapped(<a href="#id1"><span class="problematic" id="id2">*</span></a>args, <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs):</dt><dd><p>start = time.time()</p>
+<dl class="simple">
+<dt>try:</dt><dd><p>return func(<a href="#id5"><span class="problematic" id="id6">*</span></a>args, <a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs)</p>
+</dd>
+<dt>finally:</dt><dd><p>runtime = time.time() - start
+print(“Execution time: %.6f seconds” % runtime)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>return wrapped</p>
+</div></blockquote>
+<p>&#64;measure_time
+def f(n):</p>
+<blockquote>
+<div><p>l = []
+for i in range(n):</p>
+<blockquote>
+<div><p>l.append(i)</p>
+</div></blockquote>
+</div></blockquote>
+<dl class="simple">
+<dt>if __name__ == “__main__”:</dt><dd><p>f(1000000)</p>
+</dd>
+</dl>
+<p>其他IDE简单介绍
+VS Code
+Eclipse
+PyCharm
+Atom
+…</p>
+<p>文本编辑器
+Vim
+Emacs
+Sublime
+Notepad++
+….</p>
+<p>管理自己的代码
+- Git &amp; TortoiseGit
+- Github &amp; Gitlab
+- Gitlab创建私有代码仓库
+- Gitlab Release版本
+- Git最常用的操作指令
+git clone URL
+git config –global user.name “Your Name”
+git config –global user.email “Your Email”
+git status
+gitk
+git add .
+git commit -m “Your Comment” -a
+git push origin master
+git pull origin master</p>
+<ul class="simple">
+<li><p>TortoiseGit界面化提交代码</p></li>
+<li><p>Github拉取代码并使用</p></li>
+<li><p>反编译pyc文件 Easy Python Decompiler</p></li>
+<li><p>IPython &amp; Gitbash</p></li>
+</ul>
+<p># 更新pip
+python -m pip install –upgrade pip
+# 安装ipython
+pip install ipython
+pip install <a href="#id9"><span class="problematic" id="id10">*</span></a>.whl</p>
+<p>import this
+import antigravity
+dir(__builtin__)</p>
+<p>解决一个中心问题：在哪里可以执行Python代码? 认识第一句代码，内置函数print?</p>
+<p>Python 2.7 VS Python 3.7
+<a class="reference external" href="https://www.liaoxuefeng.com/">https://www.liaoxuefeng.com/</a>
+Google文档
+<a class="reference external" href="https://www.python.org/">https://www.python.org/</a>
+<a class="reference external" href="https://docs.python.org/zh-cn/3.9/">https://docs.python.org/zh-cn/3.9/</a></p>
+<p>python -V
+pip安装第三方模块</p>
+<p>pip install ipython
+Path环境变量</p>
+<p>Anaconda <a class="reference external" href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a>
+jupyter notebook
+IPython
+help()
+cls
+import sys
+help(sys)</p>
+<p>a = 100
+if isinstance(a, int):</p>
+<blockquote>
+<div><p>print(“a is int”)</p>
+</div></blockquote>
+<dl class="simple">
+<dt>else:</dt><dd><p>print(“a is not int”)</p>
+</dd>
+</dl>
+<p>help(isinstance)
+help(list)</p>
+<dl class="simple">
+<dt>for i in range(1, 11):</dt><dd><p>print(i)</p>
+</dd>
+</dl>
+<p>array = list()</p>
+<dl class="simple">
+<dt>for i in range(1, 11):</dt><dd><p>array.append(i)</p>
+</dd>
+</dl>
+<p>print(array)</p>
+<p>列表生成式
+array = [i for i in range(1, 11)]</p>
+<p>range(1, 100, 2)
+range(1, 100)[::2]
+[i for i in range(1, 100) if i % 2 != 0]
+[i for i in range(1, 100) if i % 2 != 0 and i &lt; 50]</p>
+<p>range(50, 10, -1)</p>
+<p>help(map)</p>
+<p>help(filter)</p>
+<p>%ls
+%cd D:
+?
+map?
+exit</p>
+<p>jupyter notebook</p>
+<p>array = [i for i in range(1, 11) if i % 2 == 0 or i == 1]</p>
+<dl class="simple">
+<dt>def getList(min, max, step):</dt><dd><p>return [i for i in range(min, max, step)]</p>
+</dd>
+</dl>
+<p>getList(1, 100, 5)</p>
+<p><a class="reference external" href="https://docs.python.org/zh-cn/3.9/">https://docs.python.org/zh-cn/3.9/</a></p>
+<p>入门教程
+标准库参考
+语言参考</p>
+<dl class="simple">
+<dt># 注释</dt><dd><p>缩进</p>
+</dd>
+</dl>
+<p>a = u”ccccc”
+b = “10”
+c = “””
+This is a three single quote
+This is a string %s : %s
+“”” % (a, b)</p>
+<p>c = “””
+This is a three single quote
+This is a string {0} : {0}
+“””.format(a, b)</p>
+<p>print(type(a))
+print(type(b))
+print(c)</p>
+<p>d = 1000
+e = 3.14159
+f = 0x400
+g = 3.14e-2
+print(d, e, f, g)</p>
+<p>a = 1000L
+print(type(a))</p>
+<p>print(oct(100))
+print(hex(100))
+print(bin(100))
+print(0.1234)
+print(.1234)
+print(3.14e-8)</p>
+<p>mySet = {1, 2, 3, 4, 3, 3, 3, 1}
+mySet.add(10)
+mySet.add(1)
+mySet = frozenset(mySet)
+print(mySet)</p>
+<p>生成器
+(i for i in range(1, 10))</p>
+<p>a = 99
+b = 77
+print(~a + 1)
+print(~b + 1)</p>
+<p>a = 2</p>
+<p>print(a &lt;&lt; 2)
+print(a &lt;&lt; 3)
+print(bin(a &lt;&lt; 1))
+print(bin(a &lt;&lt; 2))
+print(bin(a &lt;&lt; 3))</p>
+<p>cmd执行代码
+debug代码</p>
+<p>Git
+TortoiseGit</p>
+<p>解决一个中心问题：如何存储自己编写的代码?</p>
+<p>IPython
+VS Code
+Vim
+notepad++
+Sublime Text
+PyCharm</p>
+<p>Python执行环境
+Python IDE(集成开发环境)</p>
+<p>注释 #</p>
+<p>hello.py
+hou.py</p>
+<p>可以写代码的软件
+VS Code</p>
+<p>= 赋值
+== 等于 —–&gt;真假事件</p>
+<dl class="simple">
+<dt>if 真假事件:</dt><dd><p>do something</p>
+</dd>
+<dt>else:</dt><dd><p>do something</p>
+</dd>
+</dl>
+<p>自动补全</p>
+<p>代码健壮性</p>
+<p>量到质变
+代码量 记忆碎片 内功心法
+条件反射</p>
+<p>解决一个中心问题：如何区分Python和VEX? Python代码有哪些明显的特征?</p>
+<p>PEP8
+Google
+二进制
+计算机编码
+简单涉及一下基本数据类型</p>
+<p>Python执行环境
+Python IDE
+Python基本数据类型 (Pythond语法规则或者代码规范)  PEP8代码规范 Google代码规范</p>
+<p>Python VS VEX</p>
+<p>语句块
+Python有冒号，VEX没有冒号
+VEX有分号 Python没有
+Python import module</p>
+<p>基本数据类型(五大类)
+整型 int
+浮点型 float
+布尔值 bool  True&amp;False 1&amp;0 二进制 01010100 计算机编码(硬件环境) 0-9 二极管 电压高电压低 8位二进制==一个字节 16位二进制==2个字节 unicode?
+字符串 string
+None 假的事件 函数返回值默认是None
+bool函数
+id()</p>
+<p>0-0
+1-1
+2-10
+3-11
+4-100
+5-101
+6-110
+7-111
+8-1000
+9-1001
+10-1010</p>
+<p>八进制跟十六进制
+0</p>
+<p>8GB 1TB 8GB = 8*1024MB = 8*1024*1024KB = 8*1024*1024*1024字节 =8*1024*1024*1024*8二进制</p>
+<p>注释
+#
+# TODO
+docstring
+如何写help帮助文档
+Ctrl+/ 注释 反注释
+Tab 代码缩进
+多行注释
+“””
+“””</p>
+<p>In [10]: import os</p>
+<p>In [11]: print(os.__file__)
+c:python27libos.pyc</p>
+<p>In [12]: print(os.__doc__)</p>
+<p>In [13]: print(help(os))</p>
+<p>docstring规范
+都是以三引号的字符串
+自定义模块在开始
+自定义函数def之后
+自定义class之后
+def sceneViewer():</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“”” Returns an existing open Scene Viewer pane if there is one. A</dt><dd><p>Context viewer is also acceptable is no dedicated scene viewer
+is found.</p>
+</dd>
+</dl>
+<p>“””</p>
+</div></blockquote>
+<p>如何将docstring转成html文档？
+os中为什么有些方法找不见？
+sys是一个built-in module，何为内置模块？</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="python_docstring.html" class="btn btn-neutral float-right" title="Python注释文档" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="python_decorator.html" class="btn btn-neutral float-left" title="Python装饰器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

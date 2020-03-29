@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Maya自定义插件 &mdash; CG TD Course 1.0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Maya开发环境" href="maya_development_environment.html" />
+    <link rel="prev" title="Maya自定义菜单" href="maya_custom_menu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Maya.html">Maya</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="maya_aov_tool.html">Maya AOV分层工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_batch_script.html">Maya命令行脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_menu.html">Maya自定义菜单</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya自定义插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_development_environment.html">Maya开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_environment_variables.html">Maya环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_help_document.html">Maya帮助文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya材质导入导出工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pymel.html">Maya PyMEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_rename_tool.html">Maya重命名工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_shelf_tools.html">Maya工具架工具</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
+        
+      <li>Maya自定义插件</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Maya/maya_custom_plugin.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="maya">
+<h1>Maya自定义插件<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
+<p>代码所存在的问题
+类名大驼峰的写法
+代码不符合PEP8规范
+代码单引号双引号统一
+代码使用Git管理测试上线
+varName != None改成not varName
+docstring和注释需要规范</p>
+<p>如何编写一个简单的.py插件工具
+如何在启动的时候
+Maya扩展开发的层级结构</p>
+<p>插件环境变量部署
+# C:Program FilesAutodeskMaya2017moduleshprender.mod
++ hpRender any C:/Users/huweiguo/Documents/.RENDER_ROOT/MayaPlugin/Setup/2017
+PATH +:= bin</p>
+<p>PATH +:= bin意味着将路径C:/Users/huweiguo/Documents/.RENDER_ROOT/MayaPlugin/Setup/2017/bin路径添加到PATH环境变量中，这里的加bin文件夹并没有任何作用，可以删除</p>
+<p>扩展开发层级结构</p>
+<p>plug-ins中添加需要加载的插件
+scripts中写菜单工具执行的模块代码</p>
+<p>Maya环境变量
+MAYA_PLUG_IN_PATH 插件文件位置
+MAYA_MODULE_PATH mod文件位置
+MAYA_SCRIPT_PATH 脚本文件位置
+XBMLANGPATH 图标文件位置</p>
+<p>Maya.env配置的案例
+MTOAROOT = \servermanagerthirdPartymayamtoa3.1.2.12018</p>
+<p>REDSHIFT_COREDATAPATH = \servermanagerthirdPartymayaRedshift2.5.48</p>
+<p>QAULOTH_PATH = \servermanagerthirdPartymayaQualoth</p>
+<p>REDSHIFT_PLUG_IN_PATH = %REDSHIFT_COREDATAPATH%PluginsMaya2018nt-x86-64
+REDSHIFT_SCRIPT_PATH = %REDSHIFT_COREDATAPATH%PluginsMayaCommonscripts
+REDSHIFT_XBMLANGPATH = %REDSHIFT_COREDATAPATH%PluginsMayaCommonicons
+REDSHIFT_RENDER_DESC_PATH = %REDSHIFT_COREDATAPATH%PluginsMayaCommonrendererDesc
+REDSHIFT_CUSTOM_TEMPLATE_PATH = %REDSHIFT_COREDATAPATH%PluginsMayaCommonscriptsNETemplates
+REDSHIFT_MAYAEXTENSIONSPATH = %REDSHIFT_PLUG_IN_PATH%extensions
+REDSHIFT_PROCEDURALSPATH = %REDSHIFT_COREDATAPATH%Procedurals</p>
+<p>MAYA_MODULE_PATH = %MAYA_MODULE_PATH%;%MTOAROOT%
+PATH = %PATH%;%MTOAROOT%bin;%REDSHIFT_COREDATAPATH%bin
+MAYA_RENDER_DESC_PATH = %MAYA_RENDER_DESC_PATH%;%MTOAROOT%;%REDSHIFT_RENDER_DESC_PATH%
+PYTHONPATH = %PYTHONPATH%;%MTOAROOT%scripts;%REDSHIFT_SCRIPT_PATH%
+solidangle_LICENSE = <a class="reference external" href="mailto:5053&#37;&#52;&#48;farm&#46;do-vfx&#46;com">5053<span>&#64;</span>farm<span>&#46;</span>do-vfx<span>&#46;</span>com</a>
+MAYA_PLUG_IN_PATH = %REDSHIFT_PLUG_IN_PATH%;%QAULOTH_PATH%bin
+MAYA_SCRIPT_PATH = %REDSHIFT_SCRIPT_PATH%;%QAULOTH_PATH%script
+XBMLANGPATH = %REDSHIFT_XBMLANGPATH%
+MAYA_CUSTOM_TEMPLATE_PATH = %REDSHIFT_CUSTOM_TEMPLATE_PATH%</p>
+<p>MAYA_DISABLE_CLIC_IPM = 1</p>
+<p>来看下如何写个py的插件到插件管理器吧，分两步
+注册插件
+C:UsershuweiguoDocuments.RENDER_ROOTMayaPluginSetup2017plug-ins
+hpRender.py</p>
+<p>如何创建自定义菜单</p>
+<p>#!/usr/bin/python
+# -<em>- coding: utf-8 -</em>-</p>
+<p>“””
+Custom menu plug-in
+“””</p>
+<p>import os
+import sys</p>
+<p>import maya.cmds as cmds
+import maya.mel as mel
+import maya.OpenMayaMPx as omm</p>
+<dl>
+<dt>def initializePlugin(mobject):</dt><dd><p>“””
+Initialize the script plug-in
+“””
+mPlugin = omm.MFnPlugin(mobject, “tdUtils”, “1.0”, “any”)</p>
+<dl class="simple">
+<dt>if cmds.menu(“menuTD”, exists=1):</dt><dd><p>cmds.deleteUI(“menuTD”, menu=1)</p>
+</dd>
+</dl>
+<p>gMainWindow = mel.eval(“global string $gMainWindow;$temp = $gMainWindow”)
+cmds.menu(“menuTD”, label=”TD Tools”, parent=gMainWindow,</p>
+<blockquote>
+<div><p>tearOff=1, allowOptionBoxes=1)</p>
+</div></blockquote>
+<p>cmds.menuItem(dividerLabel=”General”, divider=True)
+cmds.menuItem(label=”Submit To Deadline”, parent=”menuTD”,</p>
+<blockquote>
+<div><p>command=”print(100)”)</p>
+</div></blockquote>
+<p>cmds.menuItem(dividerLabel=”Step”, divider=True)
+cmds.menuItem(“menuRIG”, label=”RIG”, parent=”menuTD”,</p>
+<blockquote>
+<div><p>subMenu=True, tearOff=True)</p>
+</div></blockquote>
+<dl class="simple">
+<dt>cmds.menuItem(label=”Select Skin Joint”, parent=”menuRIG”,</dt><dd><p>command=”print(100)”)</p>
+</dd>
+</dl>
+</dd>
+<dt>def uninitializePlugin(mobject):</dt><dd><p>“””
+Uninitialize the script plug-in
+“””
+mPlugin = omm.MFnPlugin(mobject)</p>
+<dl class="simple">
+<dt>if cmds.menu(“menuTD”, exists=1):</dt><dd><p>cmds.deleteUI(“menuTD”, menu=1)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>sys.path模块导入机制
+import hpMayaClient
+reload(hpMayaClient)
+hpMayaClient.client().main()</p>
+<p>main函数的核心
+checkList
+检测客户端是否安装
+检测C盘是否有读写权限
+检测文件是否保存
+检测每一层渲染层的渲染帧数范围，这块没必要用正则表达式，可以直接获取
+cmds.getAttr(“defaultRenderGlobals.startFrame”)
+分析渲染层的函数
+如何获取当前场景中用到的所有插件
+如何获取当前场景中用到的所有资产文件
+cmds.file(query=True, list=True, withoutCopyNumber=True)
+ver.ini检测Maya版本信息
+检测插件版本C:UsershuweiguoDocuments.RENDER_ROOTMayaPluginmayaPluginItems_2017.ini
+检测每一层的渲染设置
+UI
+cmds.window
+窗口如果存在删除
+控件(button, text, intFieldGrp, checkBox, textFieldGrp, radioButtonGrp)
+布局</p>
+<p>PyQt重写界面
+PySide &amp; PyQt4
+PySide2 &amp; PyQt5
+PyQt4和PyQt5 uic
+pyside-uic</p>
+<p># Maya Dialog
+import sys
+import maya.OpenMayaUI as omui
+from PySide2 import QtCore
+from PySide2 import QtWidgets
+from shiboken2 import wrapInstance</p>
+<p>path = “D:/2019/centralizeTools/houdini/scripts/python”</p>
+<p>path in sys.path or sys.path.insert(0, path)
+from houQt import mainDialog</p>
+<dl class="simple">
+<dt>def _get_maya_main_window():</dt><dd><p>pointer = omui.MQtUtil.mainWindow()
+return wrapInstance(long(pointer), QtWidgets.QWidget)</p>
+</dd>
+<dt>class WindowA(QtWidgets.QDialog, mainDialog.Ui_Dialog):</dt><dd><dl class="simple">
+<dt>def __init__(self, parent=None):</dt><dd><p>super(WindowA, self).__init__(parent)
+self.setupUi(self)</p>
+</dd>
+</dl>
+</dd>
+<dt>def show():</dt><dd><p>dialog = WindowA(_get_maya_main_window())
+dialog.show()</p>
+</dd>
+<dt>if __name__ == “__main__”:</dt><dd><p>show()</p>
+</dd>
+</dl>
+<p># Maya Main Window
+import sys
+import maya.OpenMayaUI as omui
+from PySide2 import QtCore
+from PySide2 import QtWidgets
+from shiboken2 import wrapInstance</p>
+<p>path = “D:/2019/centralizeTools/houdini/scripts/python”</p>
+<p>path in sys.path or sys.path.insert(0, path)
+from houQt import mainWin</p>
+<dl class="simple">
+<dt>def _get_maya_main_window():</dt><dd><p>pointer = omui.MQtUtil.mainWindow()
+return wrapInstance(long(pointer), QtWidgets.QWidget)</p>
+</dd>
+<dt>class WindowB(QtWidgets.QMainWindow, mainWin.Ui_MainWindow):</dt><dd><dl class="simple">
+<dt>def __init__(self, parent=None):</dt><dd><p>super(WindowB, self).__init__(parent)
+self.setupUi(self)</p>
+</dd>
+</dl>
+</dd>
+<dt>def show():</dt><dd><p>dialog = WindowB(_get_maya_main_window())
+dialog.show()</p>
+</dd>
+<dt>if __name__ == “__main__”:</dt><dd><p>show()</p>
+</dd>
+<dt>if cmds.window(WINDOW_NAME, exists=True, q=True):</dt><dd><p>cmds.deleteUI(WINDOW_NAME)</p>
+</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="maya_development_environment.html" class="btn btn-neutral float-right" title="Maya开发环境" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="maya_custom_menu.html" class="btn btn-neutral float-left" title="Maya自定义菜单" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

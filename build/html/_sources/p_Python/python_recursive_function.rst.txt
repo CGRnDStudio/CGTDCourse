@@ -43,3 +43,21 @@ copy.deepcopy()
 
 从递归函数谈reduce
 
+os.listdir递归查找文件
+
+
+children递归查找filecache
+
+斐波拉契数列
+1 1 2 3 5 8
+
+def fibonacci(num):
+    if isinstance(num, int):
+        if num <= 0:
+            return 0
+        elif num == 1:
+            return 1
+        else:
+            return fibonacci(num - 1) + fibonacci(num - 2)
+    else:
+         raise ValueError(“The input number error!”)

@@ -108,7 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
@@ -222,6 +224,82 @@
 <span class="go">[&#39;C:\\Python27\\lib\\site-packages\\PySide&#39;]</span>
 </pre></div>
 </div>
+<p>__file__
+__name__</p>
+<p>import random</p>
+<dl>
+<dt>class Point(object):</dt><dd><dl class="simple">
+<dt>def __init__(self, dist_from_origin, weight):</dt><dd><p>self.dist = dist_from_origin
+self.weight = weight</p>
+</dd>
+<dt>def __repr__(self):</dt><dd><p>return “Point dist: %f; weight: %f” % (self.dist, self.weight)</p>
+</dd>
+</dl>
+</dd>
+<dt>def getPointList(numPoints, maxDist):</dt><dd><p>l = []
+n = 0
+while n &lt;= numPoints:</p>
+<blockquote>
+<div><p>dist = random.random()
+random.seed()
+weight = random.uniform(0.01, 0.1)
+if dist &lt;= maxDist:</p>
+<blockquote>
+<div><p>l.append(Point(dist, weight))
+n += 1</p>
+</div></blockquote>
+</div></blockquote>
+<p>return l</p>
+</dd>
+</dl>
+<p>print(getPointList(100, 0.17))</p>
+<p>import random</p>
+<dl class="simple">
+<dt>class Point(object):</dt><dd><dl class="simple">
+<dt>def __init__(self, dist_from_origin, weight):</dt><dd><p>self.dist = dist_from_origin
+self.weight = weight</p>
+</dd>
+<dt>def __repr__(self):</dt><dd><p>return “Point dist: %f; weight: %f” % (self.dist, self.weight)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>&#64;measure_time
+def getPointList(numPoints, maxDist):</p>
+<blockquote>
+<div><p>l = []
+n = 0
+while n &lt;= numPoints:</p>
+<blockquote>
+<div><p>dist = random.random()
+random.seed()
+weight = random.uniform(0.01, 0.1)
+if dist &lt;= maxDist:</p>
+<blockquote>
+<div><p>l.append(Point(dist, weight))
+n += 1</p>
+</div></blockquote>
+</div></blockquote>
+<p>return l</p>
+</div></blockquote>
+<p>&#64;measure_time
+def pointGenerator(numPoints, maxDist):</p>
+<blockquote>
+<div><p>n = 0
+while n &lt;= numPoints:</p>
+<blockquote>
+<div><p>dist = random.random()
+random.seed()
+weight = random.uniform(0.01, 0.1)
+if dist &lt;= maxDist:</p>
+<blockquote>
+<div><p>n += 1
+yield Point(dist, weight)</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p>print(“List: “, getPointList(1000, 0.17))
+print(“Generator: “, pointGenerator(1000, 0.17))</p>
 </div>
 
 

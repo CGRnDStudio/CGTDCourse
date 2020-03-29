@@ -108,7 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
@@ -236,6 +238,95 @@ exec() 将一个字符串当成程序来执行。</p>
 <li><p>abs()</p></li>
 <li><p>hex() &amp; oct() &amp; bin()</p></li>
 </ul>
+<p>坐井观天：本节知识点
+Python内置函数大概60几个，可以直接使用</p>
+<p>管中窥豹：延伸阅读
+<a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html">https://docs.python.org/zh-cn/3/library/functions.html</a></p>
+<p>内置函数(built-in function)</p>
+<p>abs() 求绝对值
+abs(-100)
+complex() 复数
+divmod() 求商和余数
+pow() 求次方</p>
+<p>all(iterable) 所有元素都为真，则返回True
+any(iterable) 只要有一个元素为真，则返回True</p>
+<p>类型转换
+bin() 十进制&gt;二进制
+chr() 字符
+hex() 十进制&gt;十六进制
+oct() 十进制&gt;八进制
+ord()
+bool() 测试一个对象是True还是False
+int() 整型
+float() 浮点型
+str() 转字符串
+eval()
+list()
+set()
+dict()
+tuple()</p>
+<p>str(123)
+int(“123”)
+bin(17)
+int(“0b10001”, 2)
+oct(20)
+int(“024”, 8)
+hex(22)
+int(“0x16”, 16)
+str(0.9)
+float(“0.9”)
+str([0, 1, 2])
+eval(“[0, 1, 2]”)</p>
+<p>判断
+callable() 是否是一个函数
+isinstance() 是否是某一类数据类型
+issubclass()</p>
+<p>len() 元素数量
+enumerate() 返回迭代器的index
+open() 上下文管理器</p>
+<p>min() 最小元素
+max() 最大元素
+sum() 求和</p>
+<p>type() 获取实例对象数据类型
+dir() 获取实例对象的属性与方法
+help() 获取某一类方法的帮助文档
+id()
+print()</p>
+<p>classmethod
+staticmethod</p>
+<dl>
+<dt>class Demo:</dt><dd><p>&#64;classmethod
+def methodClass(<a href="#id1"><span class="problematic" id="id2">*</span></a>args):</p>
+<blockquote>
+<div><p>return args</p>
+</div></blockquote>
+<p>&#64;staticmethod
+def methodStatic(<a href="#id3"><span class="problematic" id="id4">*</span></a>args):</p>
+<blockquote>
+<div><p>return args</p>
+</div></blockquote>
+</dd>
+</dl>
+<p>exec()</p>
+<p>filter()
+map()
+reduce()
+range()
+xrange()
+reversed()
+sorted()</p>
+<p>map(bool, [None, 0, “”, u””, list(), tuple(), dict(), set(), frozenset()])</p>
+<p>filter(bool, [1, 0, 2, “”, [], 3])</p>
+<p>format() &amp; str.format()
+format(1/2.43, “0.4f”)
+“{:0.4f}”.format(1/2.43)</p>
+<p>input()
+iter()
+round()
+zip()</p>
+<p>很少用到的内置函数
+ascii()
+bytes()</p>
 </div>
 
 

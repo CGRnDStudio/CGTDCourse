@@ -172,6 +172,142 @@
             
   <div class="section" id="pyqthoudini">
 <h1>PyQt在Houdini中执行的模板代码<a class="headerlink" href="#pyqthoudini" title="永久链接至标题">¶</a></h1>
+<p>坐井观天：本节知识点
+PyQt的历史
+Dialog、Layout与Widget之间的关系
+setStyleSheet
+load</p>
+<p>管中窥豹：延伸阅读
+<a class="reference external" href="https://build-system.fman.io/qt-designer-download">https://build-system.fman.io/qt-designer-download</a>
+<a class="reference external" href="https://github.com/qt">https://github.com/qt</a></p>
+<p>#!/usr/bin/python
+# -<em>- coding: utf-8 -</em>-</p>
+<p>“””</p>
+<p>“””</p>
+<p>import os
+import sys</p>
+<p>import re</p>
+<dl>
+<dt>try:</dt><dd><p>APP = “houdini”
+import hou</p>
+<p>from PySide2 import QtCore
+from PySide2 import QtWidgets as QtGui</p>
+</dd>
+<dt>except Exception as e:</dt><dd><p>raise</p>
+</dd>
+<dt>class ActiveShotgun(QtGui.QDialog):</dt><dd><p>“””
+Initial main window
+“””
+def __init__(self, parent=None):</p>
+<blockquote>
+<div><p>super(ActiveShotgun, self).__init__(parent)</p>
+<p>self._initUI()</p>
+</div></blockquote>
+<p>def _initUI(self):</p>
+<blockquote>
+<div><p>gbChoose = QtGui.QGroupBox(“Choose Asset or Shot:”)
+hblChoose = QtGui.QVBoxLayout()
+self.rbAsset = QtGui.QRadioButton(“Asset”)
+self.rbShot = QtGui.QRadioButton(“Shot”)
+self.rbShot.setChecked(True)
+hblChoose.addWidget(self.rbAsset)
+hblChoose.addWidget(self.rbShot)
+gbChoose.setFixedHeight(100)
+gbChoose.setLayout(hblChoose)</p>
+<p># Initial labels
+hlLabel = QtGui.QHBoxLayout()
+lProj = QtGui.QLabel(“Proj:”)
+lTask = QtGui.QLabel(“Task:”)
+hlLabel.addWidget(lProj)
+hlLabel.addWidget(lTask)</p>
+<p># Initial choose asset or shot task
+hlListWidget = QtGui.QHBoxLayout()
+self.lwProj = QtGui.QListWidget()</p>
+<p>self.lwTask = QtGui.QListWidget()
+hlListWidget.addWidget(self.lwProj)
+hlListWidget.addWidget(self.lwTask)</p>
+<p># Initial buttons
+hlActive = QtGui.QHBoxLayout()
+pbActive = QtGui.QPushButton(“&amp;Active Shotgun…”)
+pbActive.setFixedWidth(120)
+pbActive.setFixedHeight(50)
+hlActive.addStretch(1)
+hlActive.addWidget(pbActive)</p>
+<p>v_box = QtGui.QVBoxLayout()
+v_box.addWidget(gbChoose)
+v_box.addLayout(hlLabel)
+v_box.addLayout(hlListWidget)
+v_box.addLayout(hlActive)</p>
+<p>self.setLayout(v_box)
+self.resize(QtCore.QSize(500, 600))
+self.setWindowTitle(“Active Shotgun Options: Hello, %s”)
+self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)</p>
+</div></blockquote>
+<dl class="simple">
+<dt>def closeEvent(self, event):</dt><dd><p>self.done(0)</p>
+</dd>
+</dl>
+</dd>
+<dt>def showUI(func):</dt><dd><p>“””
+Show UI instance
+“””
+app = QtGui.QApplication.instance()</p>
+<dl class="simple">
+<dt>if not app:</dt><dd><p>app = QtGui.QApplication([APP])</p>
+</dd>
+</dl>
+<p>dialog = func()
+dialog.raise_()
+dialog.show()
+dialog.exec_()</p>
+</dd>
+<dt>def main():</dt><dd><p>“””
+main function
+“””
+showUI(ActiveShotgun)</p>
+</dd>
+</dl>
+<p>main()</p>
+<p>import os
+import hou</p>
+<p>from hutil.Qt import QtCore, QtWidgets, QtUiTools
+from commonQt.appQss import qss
+path = os.path.dirname(__file__)
+print(path)</p>
+<dl>
+<dt>class AttribManager(QtWidgets.QWidget):</dt><dd><dl>
+<dt>def __init__(self):</dt><dd><p>QtWidgets.QWidget.__init__(self)
+print(“Hey I am in a class!!!”)</p>
+<p># load UI file
+loader = QtUiTools.QUiLoader()
+self.ui = loader.load(“D:/centralizeTools/houdini/scripts/python/houQt/untitled.ui”)</p>
+<p># Layout
+mainLayout = QtWidgets.QVBoxLayout()
+mainLayout.setContentsMargins(0, 0, 0, 0)
+mainLayout.addWidget(self.ui)
+self.setLayout(mainLayout)
+self.setStyleSheet(qss)</p>
+</dd>
+</dl>
+</dd>
+<dt>def show():</dt><dd><p>dialog = AttribManager()
+dialog.setParent(hou.qt.floatingPanelWindow(None), QtCore.Qt.Window)
+dialog.show()</p>
+</dd>
+<dt>if __name__ == “hou.session”:</dt><dd><p>show()</p>
+</dd>
+</dl>
+<p>将.ui文件转.py文件
+C:Python27Scriptspyside-uic.exe -o ???.py ???.ui
+将.qrc文件转.py文件
+C:Python27Libsite-packagesPySidepyside-rcc.exe -o ???.py ???.qrc</p>
+<p>Python代码将.ui转.py文件</p>
+<p>import pyside2uic</p>
+<dl class="simple">
+<dt>with open(“py文件路径”， “w”) as f:</dt><dd><p>pyside2uic.compileUi(“ui文件路径”, f)</p>
+</dd>
+</dl>
+<p># load ui</p>
 </div>
 
 

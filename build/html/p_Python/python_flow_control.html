@@ -108,7 +108,9 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python流控制语句</a><ul>
@@ -306,6 +308,141 @@
         <span class="k">return</span> <span class="o">-</span><span class="n">x</span>
 </pre></div>
 </div>
+<p>坐井观天：本节知识点</p>
+<p>异常中断</p>
+<p>三元赋值法
+冒号 + 严格缩进 = 代码块
+条件判断语句
+if
+循环语句
+for
+while</p>
+<p>break 完全中断循环
+continue 只中断本次循环</p>
+<dl>
+<dt>for i in range(10):</dt><dd><dl class="simple">
+<dt>if i == 5:</dt><dd><p>break</p>
+</dd>
+</dl>
+<p>print(i)</p>
+</dd>
+<dt>for i in range(10):</dt><dd><dl class="simple">
+<dt>if i == 5:</dt><dd><p>continue</p>
+</dd>
+</dl>
+<p>print(i)</p>
+</dd>
+</dl>
+<p>函数中return起到中断作用</p>
+<p>if语句的三种写法</p>
+<dl class="simple">
+<dt>if condition:</dt><dd><p>code block</p>
+</dd>
+<dt>if condition:</dt><dd><p>code block</p>
+</dd>
+<dt>else:</dt><dd><p>code block</p>
+</dd>
+</dl>
+<p>多个条件判断
+if condition:</p>
+<blockquote>
+<div><p>code block</p>
+</div></blockquote>
+<dl class="simple">
+<dt>elif condition:</dt><dd><p>code block</p>
+</dd>
+<dt>elif condition:</dt><dd><p>code block</p>
+</dd>
+<dt>else:</dt><dd><p>code block</p>
+</dd>
+</dl>
+<p>PS: condition如何写? 逻辑运算符, 内置函数bool()</p>
+<p>不要这样写
+if a == False:
+if a == 0:
+if a == None:
+if a == []:
+if a == “”:
+建议写成
+if not a:</p>
+<p>变量赋值
+a = 1
+a = “hello”
+print(a + “world”)
+print(a * 5)</p>
+<p>a = 10
+print(a * 5)</p>
+<p>a += 1
+print(a)</p>
+<p>a -= 1
+print(a)
+a, b = 1, 2
+a, b = b, a
+%history
+input?
+input(“请输入:”)
+# 转换为字符串
+raw_input(“请输入”)
+userSays = raw_input(“请输入:”) or “nothing”</p>
+<p># 三元赋值法
+“hello” if True else “world”
+“hello” if 1 &gt; 2 else “world”</p>
+<p>a = input(“请输入一个整数：”)</p>
+<dl class="simple">
+<dt>if a % 2 == 0:</dt><dd><p>print(“a是一个偶数”)</p>
+</dd>
+<dt>else:</dt><dd><p>print(“a是一个奇数”)</p>
+</dd>
+</dl>
+<p>a = -2
+if a &gt; 0:</p>
+<blockquote>
+<div><p>print(“a是正数”)</p>
+</div></blockquote>
+<dl class="simple">
+<dt>elif a &lt; 0:</dt><dd><p>print(“a是负数”)</p>
+</dd>
+<dt>else:</dt><dd><p>print(“a是零”)</p>
+</dd>
+</dl>
+<p>for循环语句</p>
+<p>while循环语句</p>
+<dl class="simple">
+<dt>while condition:</dt><dd><p>code
+自增或者自减以满足条件避免死循环</p>
+</dd>
+</dl>
+<p>a = 1
+while a &lt; 10:</p>
+<blockquote>
+<div><p>print(“now a is “, a)
+a += 1</p>
+</div></blockquote>
+<p>import this
+import antigravity
+import datetime
+print(datetime.datetime.now())</p>
+<p>as名称空间
+import datetime as dt
+print(dt.datetime.now())
+from datetime import datetime as dt
+print(dt.now())
+import random
+random.randint?</p>
+<p>异常中断</p>
+<dl class="simple">
+<dt>try:</dt><dd><dl class="simple">
+<dt>if True:</dt><dd><p>raise Exception(“Error Message!”)</p>
+</dd>
+</dl>
+</dd>
+<dt>except Exception as ex:</dt><dd><p>print(“Exception:”, ex.message)</p>
+</dd>
+<dt>else:</dt><dd><p>print(“Else….”)</p>
+</dd>
+<dt>finally:</dt><dd><p>print(“Finally…”)</p>
+</dd>
+</dl>
 </div>
 </div>
 

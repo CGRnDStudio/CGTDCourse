@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Houdini模块：hou &mdash; CG TD Course 1.0.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Houdini模块：toolutils" href="houdini_module_toolutils.html" />
+    <link rel="prev" title="Houdini HScript命令" href="houdini_hscript_command.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Houdini.html">Houdini</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="houdini_batch_render_script.html">Houdini流程介绍及渲染代码分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_arnold.html">Houdini中心化部署：Arnold渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_redshift.html">Houdini中心化部署：Redshift渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_custom_menu.html">Houdini自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_development_environment.html">Houdini搭建VS Code开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_environment_variables.html">Houdini中心化理念：环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_hscript_command.html">Houdini HScript命令</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini模块：hou</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sub-modules">子模块（sub-modules）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">类（classes）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">函数（functions）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">一些案例代码</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_create.html">Houdini otl：创建以及更新的流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_parameter.html">Houdini otl：自定义参数Folder的几种模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_update.html">Houdini otl：升级的两种方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_program_types.html">Houdini编程语言种类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_progress_bar.html">Houdini进度条</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_python_executable_environment.html">Houdini中可执行Python代码的环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_python_panel.html">Houdini Python Panel创建流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_shelf_tools.html">Houdini工具架工具创建流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX基础语法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
+        
+      <li>Houdini模块：hou</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Houdini/houdini_module_hou.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="houdini-hou">
+<h1>Houdini模块：hou<a class="headerlink" href="#houdini-hou" title="永久链接至标题">¶</a></h1>
+<p>hou模块按类型可以分为子模块（sub-modules）、类（classes）、函数（functions）。</p>
+<ul class="simple">
+<li><p>子模块（sub-modules）：首字母小写，不带括号为module，module里面可能又有classes以及functions。</p></li>
+<li><p>类（classes）：首字母大写，不带括号为class。class必须实例化使用，class的属性以及方法必须通过实例化对象调用。</p></li>
+<li><p>函数（functions）：首字母小写，带括号为function。</p></li>
+</ul>
+<p>Houdini Python API不止一个hou模块，还有其它模块在安装路径$HFShoudinipython2.7libs，如hutil、toolutils、husd、kramautils等，这些模块在帮助文档中并没有提到，只能从源代码docstring中查询一些帮助。</p>
+<p>抑或通过下面三个内置函数的通用心法来使用：</p>
+<ul class="simple">
+<li><p>type() # 查看对象的类型</p></li>
+<li><p>dir() # 查看对象的属性与方法</p></li>
+<li><p>help() # 查看具体方法的帮助</p></li>
+</ul>
+<div class="section" id="sub-modules">
+<h2>子模块（sub-modules）<a class="headerlink" href="#sub-modules" title="永久链接至标题">¶</a></h2>
+<p># hou.hipFile</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hou</span>
+
+<span class="c1"># 获取当前的文件名</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">basename</span><span class="p">()</span>
+<span class="c1"># 获取文件的完整路径</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+<span class="c1"># 新建文件</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="c1"># 判断当前文件是否有未保存的修改</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">hasUnsavedChanges</span><span class="p">()</span>
+<span class="c1"># 保存文件</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">hipFile</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;D:/scene.hip&quot;</span><span class="p">)</span>
+<span class="c1"># 将选择节点保存成文件</span>
+</pre></div>
+</div>
+<p># hou.session</p>
+<p># hou.ui</p>
+<p># hou.qt</p>
+</div>
+<div class="section" id="classes">
+<h2>类（classes）<a class="headerlink" href="#classes" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>hou.Node</p></li>
+<li><p>hou.Parm</p></li>
+<li><p>hou.Color</p></li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2>函数（functions）<a class="headerlink" href="#functions" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hou</span>
+
+<span class="c1"># 获取环境变量值</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">expandString</span><span class="p">(</span><span class="s2">&quot;$HIPNAME&quot;</span><span class="p">)</span>
+<span class="c1"># 获取节点实例对象</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;/obj&quot;</span><span class="p">)</span>
+<span class="c1"># 获取所有选择节点</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">selectedNodes</span><span class="p">()</span>
+<span class="c1"># 获取所有的外链资产文件</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">fileReferences</span><span class="p">()</span>
+<span class="c1"># 获取当前节点实例对象</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">pwd</span><span class="p">()</span>
+<span class="c1"># 获取节点参数实例对象</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">parm</span><span class="p">()</span>
+<span class="c1"># 获取文档文件夹路径</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">homeHoudiniDirectory</span><span class="p">()</span>
+<span class="c1"># 获取软件版本</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">applicationVersion</span><span class="p">()</span>
+<span class="c1"># 获取软件版本字符串</span>
+<span class="n">hou</span><span class="o">.</span><span class="n">applicationVersionString</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>一些案例代码<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取当前帧范围</span>
+<span class="k">def</span> <span class="nf">getFrameRange</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    getFrameRange will return a tuple of (fin, fout)</span>
+<span class="sd">    :returns: Returns the frame range in the form (fin, fout)</span>
+<span class="sd">    :rtype: tuple[int, int]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">currentIn</span><span class="p">,</span> <span class="n">currentOut</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">playbar</span><span class="o">.</span><span class="n">playbackRange</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">currentIn</span><span class="p">,</span> <span class="n">currentOut</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 设置当前帧范围以及帧速率</span>
+<span class="k">def</span> <span class="nf">setFrameRange</span><span class="p">(</span><span class="n">fin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    setFrameRange will set the frame range using `fin` and `fout`</span>
+
+<span class="sd">    :param int fin: fin for the current context</span>
+<span class="sd">        (e.g. the current shot, current asset etc)</span>
+<span class="sd">    :param int fout: fout for the current context</span>
+<span class="sd">        (e.g. the current shot, current asset etc)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">hou</span><span class="o">.</span><span class="n">script</span><span class="p">(</span><span class="s2">&quot;tset `((</span><span class="si">%s</span><span class="s2">-1)/$FPS)` `(</span><span class="si">%s</span><span class="s2">/$FPS)`&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="n">fout</span><span class="p">))</span>
+    <span class="n">hou</span><span class="o">.</span><span class="n">playbar</span><span class="o">.</span><span class="n">setPlaybackRange</span><span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="n">fout</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>坐井观天：本节知识点
+help(“modules”) 查看所有模块
+hou模块可以分为三大类sub-modules、classes、functions
+Python接口不止一个hou模块，还有其它模块 $HFShoudinipython2.7libs
+hutil、toolutils、husd、kramautils等
+type()、dir()、help()</p>
+<p>管中窥豹：延伸阅读
+<a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/index.html">https://www.sidefx.com/docs/houdini/hom/index.html</a>
+<a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/index.html">https://www.sidefx.com/docs/houdini/hom/hou/index.html</a>
+<a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/intro.html">https://www.sidefx.com/docs/houdini/hom/intro.html</a></p>
+<p>hou
+首字母大写，不带括号为class
+class必须实例化使用，class的属性以及方法必须通过实例化对象调用
+首字母小写，不带括号为module，module可能又有class以及function
+首字母小写，带括号为function</p>
+<p>函数
+hou.node()
+hou.selectedNodes()
+hou.fileReferences()
+hou.pwd()
+hou.parm()
+hou.homeHoudiniDirectory()
+hou.applicationVersion()
+hou.applicationVersionString()
+hou.homeHoudiniDirectory()
+模块
+hou.hipFile
+hou.session
+hou.ui
+hou.qt
+类
+hou.Node
+hou.Parm
+hou.Color</p>
+<p># 获取当前帧范围
+def getFrameRange(<a href="#id2"><span class="problematic" id="id3">**</span></a>kwargs):</p>
+<blockquote>
+<div><p>“””
+getFrameRange will return a tuple of (fin, fout)
+:returns: Returns the frame range in the form (fin, fout)
+:rtype: tuple[int, int]
+“””
+currentIn, currentOut = hou.playbar.playbackRange()
+return (currentIn, currentOut)</p>
+</div></blockquote>
+<p># 设置当前帧范围以及帧速率
+def setFrameRange(fin=None, fout=None, <a href="#id4"><span class="problematic" id="id5">**</span></a>kwargs):</p>
+<blockquote>
+<div><p>“””
+setFrameRange will set the frame range using <cite>fin</cite> and <cite>fout</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">param int fin</dt>
+<dd class="field-odd"><p>fin for the current context
+(e.g. the current shot, current asset etc)</p>
+</dd>
+<dt class="field-even">param int fout</dt>
+<dd class="field-even"><p>fout for the current context
+(e.g. the current shot, current asset etc)</p>
+</dd>
+</dl>
+<p>“””
+hou.script(“tset <cite>((%s-1)/$FPS)</cite> <cite>(%s/$FPS)</cite>” % (fin, fout))
+hou.playbar.setPlaybackRange(fin, fout)</p>
+</div></blockquote>
+<p><a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/Node.html">https://www.sidefx.com/docs/houdini/hom/hou/Node.html</a>
+<a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/Parm.html">https://www.sidefx.com/docs/houdini/hom/hou/Parm.html</a>
+<a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/hipFile.html">https://www.sidefx.com/docs/houdini/hom/hou/hipFile.html</a>
+<a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/ui.html">https://www.sidefx.com/docs/houdini/hom/hou/ui.html</a></p>
+<p>import toolutils</p>
+<p>scene_viewer = toolutils.sceneViewer()
+selected_objects = scene_viewer.selectObjects(“Select a camera and press Enter”, allowed_types = [“cam”])
+print(selected_objects)</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="houdini_module_toolutils.html" class="btn btn-neutral float-right" title="Houdini模块：toolutils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="houdini_hscript_command.html" class="btn btn-neutral float-left" title="Houdini HScript命令" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

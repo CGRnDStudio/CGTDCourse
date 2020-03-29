@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Maya PyMEL" href="maya_pymel.html" />
-    <link rel="prev" title="Maya环境变量" href="maya_env_variables.html" /> 
+    <link rel="next" title="Maya线性工作流工具" href="maya_linear_tool.html" />
+    <link rel="prev" title="Maya环境变量" href="maya_environment_variables.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -88,11 +88,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Maya.html">Maya</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="maya_aov_tool.html">Maya AOV分层工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_batch_script.html">Maya命令行脚本</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_menu.html">Maya自定义菜单</a></li>
-<li class="toctree-l2"><a class="reference internal" href="maya_env_variables.html">Maya环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_plugin.html">Maya自定义插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_development_environment.html">Maya开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_environment_variables.html">Maya环境变量</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Maya帮助文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya材质导入导出工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_pymel.html">Maya PyMEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_rename_tool.html">Maya重命名工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_shelf_tools.html">Maya工具架工具</a></li>
 </ul>
 </li>
@@ -169,6 +176,120 @@
             
   <div class="section" id="maya">
 <h1>Maya帮助文档<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
+<p>MEL Command &amp; Function
+import maya.cmds as cmds
+import maya.mel as mel
+import pymel.core as pm
+Maya Python API 1.0
+Maya Python API 2.0
+C++ API</p>
+<p><a class="reference external" href="https://vfxplatform.com/">https://vfxplatform.com/</a></p>
+<p>打开Script Editor</p>
+<p><a class="reference external" href="https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html">https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html</a></p>
+<p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2018/CHS/">http://help.autodesk.com/view/MAYAUL/2018/CHS/</a></p>
+<p>Script Editor</p>
+<p>MEL</p>
+<p>Command VS Function</p>
+<p>MEL命令基本语法 命令 参数 参数 参数 操作对象</p>
+<p>从历史记录中提取MEL命令</p>
+<p>help/whatIs方法</p>
+<p>whatIs scale;
+whatIs polyCube;
+whatIs polySmooth;
+whatIs polyCleanupArgList;</p>
+<p>MEL命令的CQEM模式</p>
+<p>C 新设置某个参数数值 直接使用 move -x -y -z
+Q 获取某个参数当前数值 前面加q, 后面不加值 xform -q -bb
+E 编辑已经存在的参数 前面加e, 后面加新值 joint -e -p 0 0 0
+M 多次调用当前参数 直接重复调用参数 curve -p 0 0 0 -p 0 1 0 -p…</p>
+<p>ls
+listRelatives
+getAttr
+setAttr</p>
+<p>Command VS Function</p>
+<p>很多MEL函数是不在帮助文档中的</p>
+<p>global proc</p>
+<p>两种函数  一种global function 一种helper function</p>
+<p>Python分四种</p>
+<p>包装MEL的maya.cmds
+包装C++ API的maya.OpenMaya 只有C++的doc
+Maya Python 1.0
+Maya Python 2.0
+import maya.api.OpenMaya as om</p>
+<p>pymel</p>
+<p>打印选择的物体</p>
+<p>MEL强类型语言
+string $sels[] = <cite>ls -sl</cite>;
+print($sels);</p>
+<p>string $sels[] = <cite>ls -sl -l</cite>;
+int $count = 1;</p>
+<dl class="simple">
+<dt>for ($sel in $sels) {</dt><dd><p>print((string)$count + ” : ” + $sel + “n”);
+$count++;</p>
+</dd>
+</dl>
+<p>}</p>
+<p>import maya.cmds as cmds</p>
+<p>sels = cmds.ls(sl=True, l=True)</p>
+<dl class="simple">
+<dt>for i, sel in enumerate(sels):</dt><dd><p>print(str(i) + ” : ” + sel + “n”)</p>
+</dd>
+</dl>
+<p>import maya.OpenMaya as om</p>
+<p>selslist = om.MSelectionList()
+om.MGlobal.getActiveSelection(selsList)</p>
+<dl class="simple">
+<dt>for idx in range(0,  selsList.length()):</dt><dd><p>dagPath = om.MDagPath()
+sels.getDagPath(idx, dagPath)
+print(dagPath.fullPathName())
+print(dagPath.partialPathName())
+print(“%d : long-name : %s” % (idx, dagPath.fullPathName()))</p>
+</dd>
+</dl>
+<p>pymel</p>
+<p>第三方包装MEL Command的pythonic的包</p>
+<p><a class="reference external" href="https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html">https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html</a></p>
+<p>import pymel.core as pm</p>
+<p>sels = pm.ls()
+for sel in sels:</p>
+<blockquote>
+<div><p>print(sel.longName())
+print(sel.shortName())
+print(“—————–”)
+print(sel.tx.get())
+print(sel.ty.get())
+print(sel.tz.get())
+sel.tx.set(0)
+sel.ty.set(0)
+sel.tz.set(0)</p>
+</div></blockquote>
+<p>setAttr
+listAttr
+getAttr</p>
+<p>MAttribute
+MFn</p>
+<p>import maya.OpenMaya as om</p>
+<p>selsList = om.MSelectionList()
+om.MGlobal.getActiveSelectionList(selsList)</p>
+<dl>
+<dt>for idx in range(0, selsList.length()):</dt><dd><p>mobject = om.MObject()
+selsList.getDependnode(idx, mobject)
+print(mobject.apiTypeStr())
+if mobject.apiType() == om.MFn.kTransform:</p>
+<blockquote>
+<div><p>print(“This is a transform!”)</p>
+</div></blockquote>
+<dl class="simple">
+<dt>elif mobject.apiType() == om.MFn.kMesh:</dt><dd><p>print(“This is a mesh!”)</p>
+</dd>
+<dt>else:</dt><dd><p>pass</p>
+</dd>
+</dl>
+<p>fnDependNode = om.MFnDependencyNode(mobject)
+print(fnDependnode.name())</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s">https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s</a></p>
 </div>
 
 
@@ -179,10 +300,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="maya_pymel.html" class="btn btn-neutral float-right" title="Maya PyMEL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="maya_linear_tool.html" class="btn btn-neutral float-right" title="Maya线性工作流工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="maya_env_variables.html" class="btn btn-neutral float-left" title="Maya环境变量" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="maya_environment_variables.html" class="btn btn-neutral float-left" title="Maya环境变量" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
