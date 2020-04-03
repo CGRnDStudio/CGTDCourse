@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Jira项目跟踪服务器部署 &mdash; CG TD Course 1.0.0 文档</title>
+  <title>FFmpeg批量转码工具 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="JupyterLab在线代码开发环境搭建" href="devops_deploy_jupyterlab.html" />
-    <link rel="prev" title="Gitlab代码仓库服务器部署" href="devops_deploy_gitlab.html" /> 
+    <link rel="next" title="花生壳内网穿透技术解析" href="devops_intranet_penetration.html" />
+    <link rel="prev" title="Squid代理服务器搭建" href="devops_deploy_squid.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,11 +96,11 @@
 <li class="toctree-l2"><a class="reference internal" href="devops_chrome_switchomega.html">谷歌浏览器代理插件SwithyOmega</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_deploy_confluence.html">Confluence文档服务器部署</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_deploy_gitlab.html">Gitlab代码仓库服务器部署</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Jira项目跟踪服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_jira.html">Jira项目跟踪服务器部署</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_deploy_jupyterlab.html">JupyterLab在线代码开发环境搭建</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_deploy_seafile.html">Seafile文件同步服务器部署</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_deploy_squid.html">Squid代理服务器搭建</a></li>
-<li class="toctree-l2"><a class="reference internal" href="devops_ffmpeg_codec.html">FFmpeg批量转码工具</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FFmpeg批量转码工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_intranet_penetration.html">花生壳内网穿透技术解析</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_pip_manual.html">pip命令使用手册</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_readthedocs_sphinx_github.html">ReadTheDocs+Sphinx+Github搭建托管文档环境</a></li>
@@ -155,13 +155,13 @@
         
           <li><a href="../parts/Devops.html">Devops</a> &raquo;</li>
         
-      <li>Jira项目跟踪服务器部署</li>
+      <li>FFmpeg批量转码工具</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Devops/devops_deploy_jira.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Devops/devops_ffmpeg_codec.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -174,8 +174,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="jira">
-<h1>Jira项目跟踪服务器部署<a class="headerlink" href="#jira" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="ffmpeg">
+<h1>FFmpeg批量转码工具<a class="headerlink" href="#ffmpeg" title="永久链接至标题">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> off
+M:
+<span class="nb">cd</span> M:<span class="se">\t</span>hirdParty<span class="se">\t</span>ools<span class="se">\f</span>fmpeg<span class="se">\b</span>in
+
+<span class="nb">set</span> <span class="nv">OUTPUT_PATH</span><span class="o">=</span>%1<span class="se">\b</span>uild
+
+<span class="k">if</span> not exist %OUTPUT_PATH% <span class="o">(</span>
+    md %OUTPUT_PATH%
+<span class="o">)</span>
+
+<span class="k">for</span> %%i in <span class="o">(</span>%1<span class="se">\*</span>.mov<span class="o">)</span> <span class="k">do</span> ffmpeg -i %%i -vcodec h264 -pix_fmt yuv420p -y %%~dpibuild<span class="se">\%</span>%~ni.mov
+<span class="k">for</span> %%i in <span class="o">(</span>%1<span class="se">\*</span>.mov<span class="o">)</span> <span class="k">do</span> <span class="nb">echo</span> %%~dpibuild<span class="se">\%</span>%~ni.mov
+<span class="nb">echo</span> <span class="s2">&quot;Convert H.264 Successed!&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Output Path---&gt;&quot;</span> %OUTPUT_PATH%
+pause
+</pre></div>
+</div>
 </div>
 
 
@@ -186,10 +203,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="devops_deploy_jupyterlab.html" class="btn btn-neutral float-right" title="JupyterLab在线代码开发环境搭建" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="devops_intranet_penetration.html" class="btn btn-neutral float-right" title="花生壳内网穿透技术解析" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="devops_deploy_gitlab.html" class="btn btn-neutral float-left" title="Gitlab代码仓库服务器部署" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="devops_deploy_squid.html" class="btn btn-neutral float-left" title="Squid代理服务器搭建" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

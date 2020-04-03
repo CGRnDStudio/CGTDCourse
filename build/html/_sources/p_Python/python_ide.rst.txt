@@ -22,3 +22,27 @@ IDE 通常包括程式语言编辑器、自动建立工具、通常还包括除�
     - IDLE
     - DreamPie
     - IPython
+
+* VSCode配置
+
+.. code-block:: bash
+
+    {
+    "python.linting.pylintEnabled": false,
+    "python.linting.pep8Enabled": true,
+    "editor.renderWhitespace": "all",
+    "editor.mouseWheelZoom": true,
+    "editor.rulers": [79, 120, 150],
+    "editor.tabSize": 4,
+    "window.title": "${activeEditorLong}",
+    "python.pythonPath": "C:/Python27/python.exe"
+    }
+
+
+* VSCode快捷键
+
+    - Ctrl + /：注释、反注释
+    - Ctrl + F2：选中所有相同字段以便批量修改
+    - Ctrl + D：逐个选中相同字段以便批量修改
+    - Shift + Alt + LM：列模式编辑
+    - Shift + Alt + ↑/↓：向上、向下复制

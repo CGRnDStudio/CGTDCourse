@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Maya如何获取拍屏面板参数？ &mdash; CG TD Course 1.0.0 文档</title>
+  <title>Maya Redshift修改缓存路径 &mdash; CG TD Course 1.0.0 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Maya插件：Arnold" href="maya_plugin_arnold.html" />
-    <link rel="prev" title="Maya打包工具" href="maya_pack_tool.html" /> 
+    <link rel="next" title="Maya Redshift批量转贴图rstexbin" href="maya_redshift_rstexbin.html" />
+    <link rel="prev" title="Maya PyMEL" href="maya_pymel.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya打包工具</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya如何获取拍屏面板参数？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_playblast_settings.html">Maya如何获取拍屏面板参数？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_arnold.html">Maya插件：Arnold</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_p+.html">Maya插件：p+</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_qualoth.html">Maya插件：Qualoth</a></li>
@@ -107,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_shave.html">Maya插件：Shave</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_yeti.html">Maya插件：Yeti</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_pymel.html">Maya PyMEL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="maya_redshift_cache.html">Maya Redshift修改缓存路径</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya Redshift修改缓存路径</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_redshift_rstexbin.html">Maya Redshift批量转贴图rstexbin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_rename_tool.html">Maya重命名工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_shelf_tools.html">Maya工具架工具</a></li>
@@ -165,13 +165,13 @@
         
           <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
         
-      <li>Maya如何获取拍屏面板参数？</li>
+      <li>Maya Redshift修改缓存路径</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Maya/maya_playblast_settings.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Maya/maya_redshift_cache.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -184,117 +184,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="maya">
-<h1>Maya如何获取拍屏面板参数？<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>optionVar命令可以获取一些Maya选项设置的参数</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+  <div class="section" id="maya-redshift">
+<h1>Maya Redshift修改缓存路径<a class="headerlink" href="#maya-redshift" title="永久链接至标题">¶</a></h1>
+<p>Maya Redshift插件默认缓存路径 <code class="docutils literal notranslate"><span class="pre">%LOCALAPPDATA%\Redshift\Cache</span></code>，如果使用默认缓存路径，很快C盘空间就会爆掉，此处的LOCALAPPDATA是环境变量路径，可以通过命令行窗口输入下面指令得到路径。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>C:<span class="se">\U</span>sers<span class="se">\h</span>uweiguo&gt;set LOCALAPPDATA
+<span class="nv">LOCALAPPDATA</span><span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\h</span>uweiguo<span class="se">\A</span>ppData<span class="se">\L</span>ocal
 
-<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">cmds</span><span class="o">.</span><span class="n">optionVar</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-
-    <span class="k">if</span> <span class="s2">&quot;playblast&quot;</span> <span class="ow">in</span> <span class="n">elem</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">cmds</span><span class="o">.</span><span class="n">optionVar</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">elem</span><span class="p">))</span>
+C:<span class="se">\U</span>sers<span class="se">\h</span>uweiguo&gt;
 </pre></div>
 </div>
-<p>通过上面的代码可以将与拍屏相关的参数筛选出来。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PlayblastCmdAvi</span>
-
-<span class="n">PlayblastCmdFormatAvi</span>
-
-<span class="n">PlayblastCmdFormatQuicktime</span>
-
-<span class="n">PlayblastCmdQuicktime</span>
-
-<span class="n">optionBoxDimensionsPlayblast</span>
-<span class="p">[</span><span class="mi">546</span><span class="n">L</span><span class="p">,</span> <span class="mi">350</span><span class="n">L</span><span class="p">]</span>
-<span class="n">playblastClearCache</span>
-<span class="mi">1</span>
-<span class="n">playblastCompression</span>
-<span class="n">H</span><span class="o">.</span><span class="mi">264</span>
-<span class="n">playblastDisplaySizeSource</span>
-<span class="mi">1</span>
-<span class="n">playblastEndTime</span>
-<span class="mf">10.0</span>
-<span class="n">playblastFile</span>
-<span class="n">playblast</span>
-<span class="n">playblastFormat</span>
-<span class="n">qt</span>
-<span class="n">playblastHeight</span>
-<span class="mi">256</span>
-<span class="n">playblastMultiCamera</span>
-<span class="mi">0</span>
-<span class="n">playblastOffscreen</span>
-<span class="mi">0</span>
-<span class="n">playblastPadding</span>
-<span class="mi">4</span>
-<span class="n">playblastQuality</span>
-<span class="mi">70</span>
-<span class="n">playblastSaveToFile</span>
-<span class="mi">0</span>
-<span class="n">playblastScale</span>
-<span class="mf">0.5</span>
-<span class="n">playblastShowOrnaments</span>
-<span class="mi">1</span>
-<span class="n">playblastStartTime</span>
-<span class="mf">1.0</span>
-<span class="n">playblastUseSequenceTime</span>
-<span class="mi">0</span>
-<span class="n">playblastUseStartEnd</span>
-<span class="mi">0</span>
-<span class="n">playblastViewerOn</span>
-<span class="mi">1</span>
-<span class="n">playblastWidth</span>
-<span class="mi">256</span>
-</pre></div>
-</div>
-<p>参数与具体option的对照表</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>View:</p></td>
-<td><p>playblastViewerOn</p></td>
-</tr>
-<tr class="row-even"><td><p>Show ornaments:</p></td>
-<td><p>playblastShowOrnaments</p></td>
-</tr>
-<tr class="row-odd"><td><p>Render offscreen:</p></td>
-<td><p>playblastOffscreen</p></td>
-</tr>
-<tr class="row-even"><td><p>Multi-Camera Output:</p></td>
-<td><p>playblastMultiCamera</p></td>
-</tr>
-<tr class="row-odd"><td><p>Format:</p></td>
-<td><p>playblastFormat</p></td>
-</tr>
-<tr class="row-even"><td><p>Encoding:</p></td>
-<td><p>playblastCompression</p></td>
-</tr>
-<tr class="row-odd"><td><p>Quality:</p></td>
-<td><p>playblastQuality</p></td>
-</tr>
-<tr class="row-even"><td><p>Display size:</p></td>
-<td><p>playblastWidth playblastHeight</p></td>
-</tr>
-<tr class="row-odd"><td><p>Scale:</p></td>
-<td><p>playblastScale</p></td>
-</tr>
-<tr class="row-even"><td><p>Frame padding:</p></td>
-<td><p>playblastPadding</p></td>
-</tr>
-<tr class="row-odd"><td><p>Remove temporary files:</p></td>
-<td><p>playblastClearCache</p></td>
-</tr>
-<tr class="row-even"><td><p>Save to file:</p></td>
-<td><p>playblastSaveToFile</p></td>
-</tr>
-<tr class="row-odd"><td><p>Movie file:</p></td>
-<td><p>playblastFile</p></td>
-</tr>
-</tbody>
-</table>
+<p>在Maya渲染面板Render Settings中切换Redshift渲染选项，找到System&gt;Global Preferences&gt;Cache Folder，可以修改缓存文件夹路径。</p>
 </div>
 
 
@@ -305,10 +204,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="maya_plugin_arnold.html" class="btn btn-neutral float-right" title="Maya插件：Arnold" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="maya_redshift_rstexbin.html" class="btn btn-neutral float-right" title="Maya Redshift批量转贴图rstexbin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="maya_pack_tool.html" class="btn btn-neutral float-left" title="Maya打包工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="maya_pymel.html" class="btn btn-neutral float-left" title="Maya PyMEL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
