@@ -2,18 +2,13 @@
 reStructuredText(rst)语法说明文档
 =================================
 
------
-注释
------
+* 注释
 
 .. code-block:: python
 
     .. comment
 
-
-------
-代码块
-------
+* 代码块
 
 .. code-block:: python
 
@@ -21,9 +16,7 @@ reStructuredText(rst)语法说明文档
         
         code
 
-------
-标题
-------
+* 标题
 
 .. code-block:: python
 
@@ -35,20 +28,24 @@ reStructuredText(rst)语法说明文档
     二级标题
     ---------
 
-------
-列表
-------
+* 列表
 
 .. code-block:: python
 
     * 符号列表1
     * 符号列表2
 
+* 表格
 
+.. code-block:: python
 
---------
+    ==========  =========
+    第一列       第二列
+    ==========  =========
+
+----------------
 参考文档
---------
+----------------
 
 《`Quick reStructured Text <https://docutils.sourceforge.io/docs/user/rst/quickref.html>`_》
 

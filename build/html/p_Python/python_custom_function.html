@@ -105,7 +105,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python自定义函数</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">函数的几个概念</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">形参的几种形式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">作用域</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">作用域</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_module.html">Python自定义模块</a></li>
@@ -129,6 +129,8 @@
 <li class="toctree-l2"><a class="reference internal" href="python_pep8.html">Python PEP8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
@@ -215,21 +217,21 @@
             
   <div class="section" id="python">
 <h1>Python自定义函数<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<p>函数是Python内建的一种封装，我们通过把大段代码拆成函数，通过一层一层的函数调用，就可以把复杂的任务分解成简单的任务，这种分解称为面向过程的程序设计。函数就是面向过程的程序设计的基本单元。</p>
+<p>函数是Python内建的一种封装，我们把大段代码拆成函数，通过一层一层的函数调用，就可以把复杂的任务分解成简单的任务，这种分解称为面向过程的程序设计。函数就是面向过程的程序设计的基本单元。Python提供了很多内置函数，比如print()，你也可以自己创建函数，这被叫做自定义函数。</p>
 <div class="section" id="id1">
 <h2>函数的几个概念<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>基本语法</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">函数名</span><span class="p">(</span><span class="n">形参</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">函数名</span><span class="p">(</span><span class="n">形式参数</span><span class="p">):</span>
     <span class="n">函数体</span>
     <span class="k">return</span> <span class="n">返回值</span>
 </pre></div>
 </div>
-<p>形参和返回值不是必须的，但函数都是有返回值的，如果没有return返回值，则函数默认返回值为None。</p>
+<p>形式参数和返回值不是必须的，但函数都是有返回值的，如果没有使用关键字return返回值，则函数默认返回None。</p>
 <ul class="simple">
-<li><p>形式参数</p></li>
-<li><p>实际参数</p></li>
+<li><p>形式参数(形参)</p></li>
+<li><p>实际参数(实参)</p></li>
 <li><p>返回值</p></li>
 </ul>
 </div>
@@ -237,13 +239,19 @@
 <h2>形参的几种形式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>缺省参数，又叫默认参数</p></li>
-<li><p>可变参数 <code class="docutils literal notranslate"><span class="pre">*args</span></code> 将传入的参数打包成元组</p></li>
-<li><p>关键字参数 <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> 将传入的参数打包成字典</p></li>
+<li><p>可变参数 <code class="docutils literal notranslate"><span class="pre">*args</span></code></p></li>
+</ul>
+<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">*</span></a>args``表示可变参数，就是传入的参数个数是可变的，可以是1个，2个到任意个或者0个。其实就是将传入的一堆参数打包成元组使用。</p>
+<ul class="simple">
+<li><p>关键字参数 <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code></p></li>
+</ul>
+<p><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">**</span></a>kwargs``将传入的0个或者多个含参数名的参数打包成字典使用。</p>
+<ul class="simple">
 <li><p>不同形式参数之间组合</p></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h2>作用域<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id11">
+<h2>作用域<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
 <p>在函数外部，locals()和globals()作用完全相同。而当在函数内部调用时，locals()则是获取当前函数堆栈中的名字空间，其中存储的时函数参数、局部变量等信息。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">locals</span><span class="p">()</span>
 <span class="go">{&#39;__builtins__&#39;: &lt;module &#39;__builtin__&#39; (built-in)&gt;, &#39;__name__&#39;: &#39;__main__&#39;, &#39;__doc__&#39;: None, &#39;__package__&#39;: None}</span>
@@ -263,46 +271,27 @@
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>坐井观天：本节知识点</p>
-<p>函数基本构成，函数名、参数表、函数体
-def functionName(形式参数):</p>
-<blockquote>
-<div><p>code block
-return 返回值</p>
-</div></blockquote>
-<p>管中窥豹：延伸阅读
-形式参数&amp;实际参数
-形参&amp;实参
-缺省参数&amp;默认参数 重要性
-可变参数
-关键字参数
-函数返回值
-匿名函数
-变量作用域
-闭包函数</p>
 <dl class="simple">
-<dt><a href="#id4"><span class="problematic" id="id5">*</span></a>args打包成元组，元组的特性属性方法</dt><dd><p><a href="#id6"><span class="problematic" id="id7">**</span></a>kwargs打包成字典，字典的特性属性方法</p>
-</dd>
 <dt>def f(arg1, arg2, arg3):</dt><dd><p>print(arg1, arg2, arg3)</p>
 </dd>
-<dt>def f(<a href="#id8"><span class="problematic" id="id9">*</span></a>args):</dt><dd><p>print(type(args))
+<dt>def f(<a href="#id12"><span class="problematic" id="id13">*</span></a>args):</dt><dd><p>print(type(args))
 print(args)</p>
 </dd>
 </dl>
 <p>f(3, 2, 1)</p>
 <dl class="simple">
-<dt>def f(<a href="#id10"><span class="problematic" id="id11">**</span></a>kwargs):</dt><dd><p>print(type(kwargs))
+<dt>def f(<a href="#id14"><span class="problematic" id="id15">**</span></a>kwargs):</dt><dd><p>print(type(kwargs))
 print(kwargs)</p>
 </dd>
 </dl>
 <p>f(name=”Andy”, lang=”Chinese”)</p>
 <dl class="simple">
-<dt>def f(<a href="#id12"><span class="problematic" id="id13">*</span></a>args, <a href="#id14"><span class="problematic" id="id15">**</span></a>kwargs):</dt><dd><p>print(args)
+<dt>def f(<a href="#id16"><span class="problematic" id="id17">*</span></a>args, <a href="#id18"><span class="problematic" id="id19">**</span></a>kwargs):</dt><dd><p>print(args)
 print(kwargs.items())</p>
 </dd>
 </dl>
 <p>f(1, 2, name=”Andy”, lang=”Chinese”)</p>
-<p>def setParms(<a href="#id16"><span class="problematic" id="id17">**</span></a>kwargs):</p>
+<p>def setParms(<a href="#id20"><span class="problematic" id="id21">**</span></a>kwargs):</p>
 <blockquote>
 <div><dl class="simple">
 <dt>for k,v in kwargs.items():</dt><dd><p>print(“Setting parameter {0} to {1}”.format(k,v))</p>
@@ -312,19 +301,19 @@ print(kwargs.items())</p>
 <p>setParms(streng=13, resistance=0.7, weigh=100)</p>
 <p>return</p>
 <dl class="simple">
-<dt>def double_parm(<a href="#id18"><span class="problematic" id="id19">**</span></a>kwargs):</dt><dd><p>return kwargs[“weigh”] * 2</p>
+<dt>def double_parm(<a href="#id22"><span class="problematic" id="id23">**</span></a>kwargs):</dt><dd><p>return kwargs[“weigh”] * 2</p>
 </dd>
 </dl>
 <p>print(double_parm(streng=13, resistance=0.7, weigh=100))</p>
 <p>函数赋值</p>
 <dl class="simple">
-<dt>def double_parm(<a href="#id20"><span class="problematic" id="id21">**</span></a>kwargs):</dt><dd><p>return kwargs[“weigh”] * 2, kwargs[“streng”]</p>
+<dt>def double_parm(<a href="#id24"><span class="problematic" id="id25">**</span></a>kwargs):</dt><dd><p>return kwargs[“weigh”] * 2, kwargs[“streng”]</p>
 </dd>
 </dl>
 <p>new_func = double_parm</p>
 <p>print(new_func(streng=13, resistance=0.7, weigh=100))</p>
 <p>函数中套函数</p>
-<p>def double_parm(<a href="#id22"><span class="problematic" id="id23">**</span></a>kwargs):</p>
+<p>def double_parm(<a href="#id26"><span class="problematic" id="id27">**</span></a>kwargs):</p>
 <blockquote>
 <div><dl class="simple">
 <dt>def check(weight):</dt><dd><dl class="simple">
@@ -467,8 +456,8 @@ len(range(10))
 100 + 200
 “hello ” + “python”</p>
 <p>Python函数没有重载的概念主要是因为动态语言特性以及缺省值</p>
-<p><a href="#id24"><span class="problematic" id="id25">*</span></a>args 如何打包参数
-<a href="#id26"><span class="problematic" id="id27">**</span></a>kwargs 如何打包参数</p>
+<p><a href="#id28"><span class="problematic" id="id29">*</span></a>args 如何打包参数
+<a href="#id30"><span class="problematic" id="id31">**</span></a>kwargs 如何打包参数</p>
 <p>复用性
 可扩展性</p>
 <dl class="simple">
@@ -493,7 +482,7 @@ def sayHello(name):</p>
 <p>sayHello()</p>
 <p># 形式参数&gt;缺省参数&gt;*args&gt;**kwargs
 # 可变参数
-def sayHello(<a href="#id28"><span class="problematic" id="id29">*</span></a>names):</p>
+def sayHello(<a href="#id32"><span class="problematic" id="id33">*</span></a>names):</p>
 <blockquote>
 <div><p>print(names)</p>
 </div></blockquote>
@@ -510,12 +499,12 @@ foo(a=1, b=2, c=3)
 foo(b=2, c=3, a=1)
 foo(1, c=3, b=2)</p>
 <dl class="simple">
-<dt>def sayHello(<a href="#id30"><span class="problematic" id="id31">**</span></a>names):</dt><dd><p>print(names, type(names))</p>
+<dt>def sayHello(<a href="#id34"><span class="problematic" id="id35">**</span></a>names):</dt><dd><p>print(names, type(names))</p>
 </dd>
 </dl>
 <p>sayHello(name=”andy”, age=30)</p>
 <dl class="simple">
-<dt>def foo(a, b=1, <a href="#id32"><span class="problematic" id="id33">*</span></a>args, <a href="#id34"><span class="problematic" id="id35">**</span></a>kwargs):</dt><dd><p>pass</p>
+<dt>def foo(a, b=1, <a href="#id36"><span class="problematic" id="id37">*</span></a>args, <a href="#id38"><span class="problematic" id="id39">**</span></a>kwargs):</dt><dd><p>pass</p>
 </dd>
 </dl>
 <p># 返回值
@@ -556,7 +545,7 @@ print(b)</p>
 <p>result = 1
 for n in range(1, number + 1)</p>
 <blockquote>
-<div><p>result <a href="#id36"><span class="problematic" id="id37">*</span></a>= n</p>
+<div><p>result <a href="#id40"><span class="problematic" id="id41">*</span></a>= n</p>
 </div></blockquote>
 <p>return result</p>
 </dd>

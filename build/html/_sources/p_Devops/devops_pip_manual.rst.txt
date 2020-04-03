@@ -2,5 +2,7 @@
 pip命令使用手册
 =========================================
 
+pip下载源决定了安装第三方模块的速度与稳定性，如果下载源在国外服务器可能会比较缓慢，可以切换到阿里云上安装。
+
 * pip install <pkg>
 * pip install <pkg> -i https://mirrors.aliyun.com/pypi/simple

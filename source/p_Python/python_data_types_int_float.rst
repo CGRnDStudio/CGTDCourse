@@ -12,9 +12,9 @@ Python数据类型：整型 & 浮点型
 
 .. code-block:: bash
 
-    +, -, *, /, %, //
+    +, -, *, /, %, //, **
 
-.. code-block:: bash
+.. code-block:: python
 
     >>> 1 + 2
     3
@@ -41,15 +41,7 @@ Python数据类型：整型 & 浮点型
     >>>
 
 
-坐井观天：本节知识点
-五大基本数据类型
-整型
-浮点型
-字符串
-布尔值
-None
 
-算术运算符
 逻辑运算符
 比较运算符
 
@@ -63,12 +55,7 @@ None
 - 掌握所有转义字符
 - 熟练使用字符串格式化
 
-Python选择哪个版本？
- - Python 2.x？Python 3.x？
- - x64？x32？
 
-import sys
-sys.executable
 
 Python基本数据类型以及操作方法
 - 整型

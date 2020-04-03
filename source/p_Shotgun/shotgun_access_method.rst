@@ -2,9 +2,7 @@
 Shotgun API访问的两种方式
 =============================
 
-------------------
-通过用户名访问
-------------------
+* 通过用户名访问
 
 管理员用户登陆找到People entity，记住两个字段值Login和Password。
 
@@ -15,9 +13,7 @@ Shotgun API访问的两种方式
                               password="字段Password值")
     sg.find("Shot", filters=[["sg_status_list", "is", "ip"]], fields=["code", "sg_status_list"])
 
-------------------
-通过Scripts访问
-------------------
+* 通过Scripts访问
 
 管理员用户登陆找到Scripts entity，通过Add Script添加一条Script，记住两个字段值Script Name和Application Key。
 

@@ -127,6 +127,8 @@
 <li class="toctree-l2"><a class="reference internal" href="python_pep8.html">Python PEP8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
@@ -217,43 +219,35 @@
 <h2>整型<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>小整数缓存池：[-5, 257)</p>
 <p>算术运算符</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>+, -, *, /, %, //
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>+, -, *, /, %, //, **
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; <span class="m">1</span> + <span class="m">2</span>
-<span class="m">3</span>
-&gt;&gt;&gt; <span class="m">1</span>.0 + <span class="m">2</span>
-<span class="m">3</span>.0
-&gt;&gt;&gt; <span class="m">10</span> / <span class="m">3</span>
-<span class="m">3</span>
-&gt;&gt;&gt; <span class="m">10</span> / <span class="m">3</span>.0
-<span class="m">3</span>.3333333333333335
-&gt;&gt;&gt; <span class="m">10</span>.0 // <span class="m">3</span>.3
-<span class="m">3</span>.0
-&gt;&gt;&gt; <span class="m">1</span>.1 % <span class="m">0</span>.3
-<span class="m">0</span>.20000000000000012
-&gt;&gt;&gt; <span class="s2">&quot;hello &quot;</span> + <span class="s2">&quot;world&quot;</span>
-<span class="s1">&#39;hello world&#39;</span>
-&gt;&gt;&gt; <span class="s2">&quot;hello&quot;</span> * <span class="m">5</span>
-<span class="s1">&#39;hellohellohellohellohello&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; 1 + 2
+3
+&gt;&gt;&gt; 1.0 + 2
+3.0
+&gt;&gt;&gt; 10 / 3
+3
+&gt;&gt;&gt; 10 / 3.0
+3.3333333333333335
+&gt;&gt;&gt; 10.0 // 3.3
+3.0
+&gt;&gt;&gt; 1.1 % 0.3
+0.20000000000000012
+&gt;&gt;&gt; &quot;hello &quot; + &quot;world&quot;
+&#39;hello world&#39;
+&gt;&gt;&gt; &quot;hello&quot; * 5
+&#39;hellohellohellohellohello&#39;
 &gt;&gt;&gt; True + True
-<span class="m">2</span>
-&gt;&gt;&gt; <span class="m">5</span> / False
-Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-File <span class="s2">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in &lt;module&gt;
+2
+&gt;&gt;&gt; 5 / False
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
 ZeroDivisionError: integer division or modulo by zero
 &gt;&gt;&gt;
 </pre></div>
 </div>
-<p>坐井观天：本节知识点
-五大基本数据类型
-整型
-浮点型
-字符串
-布尔值
-None</p>
-<p>算术运算符
-逻辑运算符
+<p>逻辑运算符
 比较运算符</p>
 <p>变量
 变量命名
@@ -262,15 +256,6 @@ None</p>
 - 掌握字符串所有操作函数
 - 掌握所有转义字符
 - 熟练使用字符串格式化</p>
-<dl class="simple">
-<dt>Python选择哪个版本？</dt><dd><ul class="simple">
-<li><p>Python 2.x？Python 3.x？</p></li>
-<li><p>x64？x32？</p></li>
-</ul>
-</dd>
-</dl>
-<p>import sys
-sys.executable</p>
 <p>Python基本数据类型以及操作方法
 - 整型
 - 浮点型

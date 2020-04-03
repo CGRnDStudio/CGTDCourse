@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Deadline" href="../parts/Deadline.html" />
+    <link rel="next" title="Shotgun Events开发流程" href="shotgun_events_develop.html" />
     <link rel="prev" title="Shotgun" href="../parts/Shotgun.html" /> 
 </head>
 
@@ -91,11 +91,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Shotgun API访问的两种方式</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">通过用户名访问</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#scripts">通过Scripts访问</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">参考文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="shotgun_events_develop.html">Shotgun Events开发流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shotgun_rv_screening_room.html">Shotgun RV审片工作流程</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
@@ -169,8 +169,9 @@
             
   <div class="section" id="shotgun-api">
 <h1>Shotgun API访问的两种方式<a class="headerlink" href="#shotgun-api" title="永久链接至标题">¶</a></h1>
-<div class="section" id="id1">
-<h2>通过用户名访问<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>通过用户名访问</p></li>
+</ul>
 <p>管理员用户登陆找到People entity，记住两个字段值Login和Password。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sg</span> <span class="o">=</span> <span class="n">shotgun_api3</span><span class="o">.</span><span class="n">Shotgun</span><span class="p">(</span><span class="s2">&quot;https://do-vfx.shotgunstudio.com&quot;</span><span class="p">,</span>
                           <span class="n">login</span><span class="o">=</span><span class="s2">&quot;字段Login值&quot;</span><span class="p">,</span>
@@ -178,9 +179,9 @@
 <span class="n">sg</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;Shot&quot;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;sg_status_list&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">]],</span> <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="s2">&quot;sg_status_list&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="scripts">
-<h2>通过Scripts访问<a class="headerlink" href="#scripts" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>通过Scripts访问</p></li>
+</ul>
 <p>管理员用户登陆找到Scripts entity，通过Add Script添加一条Script，记住两个字段值Script Name和Application Key。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sg</span> <span class="o">=</span> <span class="n">shotgun_api3</span><span class="o">.</span><span class="n">Shotgun</span><span class="p">(</span><span class="s2">&quot;https://do-vfx.shotgunstudio.com&quot;</span><span class="p">,</span>
                           <span class="n">login</span><span class="o">=</span><span class="s2">&quot;字段Script Name值&quot;</span><span class="p">,</span>
@@ -189,9 +190,8 @@
 </pre></div>
 </div>
 <p>如果是写工具来访问Shotgun数据，推荐使用Scripts的方法来访问。</p>
-</div>
-<div class="section" id="id2">
-<h2>参考文档<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>《<a class="reference external" href="https://developer.shotgunsoftware.com/">Shotgun开发人员文档</a>》</p></li>
 <li><p>《<a class="reference external" href="https://developer.shotgunsoftware.com/python-api/">Shotgun python-api</a>》</p></li>
@@ -207,7 +207,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../parts/Deadline.html" class="btn btn-neutral float-right" title="Deadline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="shotgun_events_develop.html" class="btn btn-neutral float-right" title="Shotgun Events开发流程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../parts/Shotgun.html" class="btn btn-neutral float-left" title="Shotgun" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

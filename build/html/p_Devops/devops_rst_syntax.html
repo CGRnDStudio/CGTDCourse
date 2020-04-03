@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="路由跟踪指令traceroute" href="devops_traceroute.html" />
     <link rel="prev" title="ReadTheDocs+Sphinx+Github搭建托管文档环境" href="devops_readthedocs_sphinx_github.html" /> 
 </head>
 
@@ -92,16 +93,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Devops.html">Devops</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="devops_chrome_switchomega.html">谷歌浏览器代理插件SwithyOmega</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_confluence.html">Confluence文档服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_gitlab.html">Gitlab代码仓库服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_jira.html">Jira项目跟踪服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_seafile.html">Seafile文件同步服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_squid.html">Squid代理服务器搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_intranet_penetration.html">花生壳内网穿透技术解析</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_pip_manual.html">pip命令使用手册</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_readthedocs_sphinx_github.html">ReadTheDocs+Sphinx+Github搭建托管文档环境</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">reStructuredText(rst)语法说明文档</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">注释</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">代码块</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">标题</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">列表</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">参考文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="devops_traceroute.html">路由跟踪指令traceroute</a></li>
 </ul>
 </li>
 </ul>
@@ -172,22 +177,23 @@
             
   <div class="section" id="restructuredtext-rst">
 <h1>reStructuredText(rst)语法说明文档<a class="headerlink" href="#restructuredtext-rst" title="永久链接至标题">¶</a></h1>
-<div class="section" id="id1">
-<h2>注释<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>注释</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">comment</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id2">
-<h2>代码块<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>代码块</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
 
     <span class="n">code</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h2>标题<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>标题</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">=========</span>
 <span class="n">一级标题</span>
 <span class="o">=========</span>
@@ -197,16 +203,23 @@
 <span class="o">---------</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id4">
-<h2>列表<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>列表</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">符号列表1</span>
 <span class="o">*</span> <span class="n">符号列表2</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>表格</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">==========</span>  <span class="o">=========</span>
+<span class="n">第一列</span>       <span class="n">第二列</span>
+<span class="o">==========</span>  <span class="o">=========</span>
+</pre></div>
 </div>
-<div class="section" id="id5">
-<h2>参考文档<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>《<a class="reference external" href="https://docutils.sourceforge.io/docs/user/rst/quickref.html">Quick reStructured Text</a>》</p>
 <p>《<a class="reference external" href="https://www.jianshu.com/p/1885d5570b37?from=timeline&amp;isappinstalled=0">reStructuredText(rst)快速入门语法说明</a>》</p>
 </div>
@@ -219,6 +232,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="devops_traceroute.html" class="btn btn-neutral float-right" title="路由跟踪指令traceroute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="devops_readthedocs_sphinx_github.html" class="btn btn-neutral float-left" title="ReadTheDocs+Sphinx+Github搭建托管文档环境" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

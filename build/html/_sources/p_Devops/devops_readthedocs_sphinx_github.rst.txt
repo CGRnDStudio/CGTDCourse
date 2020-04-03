@@ -2,21 +2,15 @@
 ReadTheDocs+Sphinx+Github搭建托管文档环境
 =========================================
 
--------------------
-Step 1. 安装Python
--------------------
+1. 安装Python
 
-测试的操作系统版本 ``Windows 10 1809``，Python版本 ``3.7.2`` ，你可以选用Python更高的版本。上官网 https://www.python.org/downloads/ 下载。Python 3在安装的时候记得自定义安装路径选择 ``C:\Python37`` ，默认路径是在当前用户文件夹，后面使用起来不太方便。
+测试的操作系统版本 Windows 10 1809，Python版本 3.7.2 ，你可以选用Python更高的版本。上官网 https://www.python.org/downloads/ 下载。Python 3在安装的时候记得自定义安装路径选择 ``C:\Python37`` ，默认路径是在当前用户文件夹，后面使用起来不太方便。
 
-------------------------
-Step 2. 配置环境变量Path
-------------------------
+2. 配置环境变量Path
 
 这里为了下文命令能使用，需要将 ``C:\Python37`` 和 ``C:\Python37\Scripts`` 两个路径加入到用户变量或者系统变量Path中。注意如果有安装Python其它版本注意Path的先后问题，确保下文所调用的命令是文件夹 ``C:\Python37\Scripts`` 中的应用，如果确实搞不定这个，直接用绝对路径执行亦可。
 
--------------------
-Step 3. 安装Sphinx
--------------------
+3. 安装Sphinx
 
 通过下面的pip命令安装Sphinx。
 
@@ -38,9 +32,7 @@ Step 3. 安装Sphinx
     pip install recommonmark -i https://mirrors.aliyun.com/pypi/simple
     pip install sphinx-markdown-tables -i https://mirrors.aliyun.com/pypi/simple
 
-----------------------
-Step 4. 初始化项目配置
-----------------------
+4. 初始化项目配置
 
 在计算机中任何位置创建个文件夹，比如CGTDCourse。打开命令行窗口，将当前路径切换到此文件夹，执行命令。
 
@@ -62,15 +54,11 @@ Step 4. 初始化项目配置
     # html_theme = 'alabaster'
     html_theme = 'sphinx_rtd_theme'
 
---------------------
-Step 5. 创建案例文件
---------------------
+5. 创建案例文件
 
 主要以rst为格式的文件，创建个readme.rst，里面通过rst语法格式书写作者信息，在index.rst中配置readme。具体内容可以研究文末参考文档。
 
---------------------
-Step 6. 清空编译项目
---------------------
+6. 清空编译项目
 
 此时在命令行窗口继续执行下面的命令。
 
@@ -79,22 +67,18 @@ Step 6. 清空编译项目
     make clean
     make html
 
-构建过程中如果报错，需要检查环境变量的设置以及配置或者文档写的语法不正确，到此本地文档就完成了，可以打开build中index.html查看。
+构建过程中如果报错，需要检查环境变量的设置以及配置或者文档写的语法不正确，到此本地文档就完成了，可以打开build中index.html查看，后面更改文件之后可以通过这两条命令迭代更新文档。
 
--------------------
-Step 7. 托管Github
--------------------
+7. 托管Github
 
 Github上创建一个项目CGTDCourse，将项目所有文件上传Github管理。
 
--------------------------------
-Step 8. ReadTheDocs配置自动编译
--------------------------------
+8. ReadTheDocs配置自动编译
 
 登陆ReadTheDocs官网，import这个Github项目之后构建，构建成功阅读文档即可，之后在本地写的文章只要通过Git提交到代码仓库，ReadTheDocs会自动构建成在线文档。
 
 -----------------
-Step 9. 参考文档
+参考文档
 -----------------
 
 《`Sphinx+github+ReadtheDocs书写笔记 <https://pengshiyu.blog.csdn.net/article/details/79388919>`_》

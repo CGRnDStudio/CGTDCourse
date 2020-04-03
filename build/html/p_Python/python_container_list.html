@@ -98,14 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_closure_function.html">Python闭包函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_dict.html">Python容器：字典 {key: value}</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python容器：列表 []</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#list">列表 list []</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">有序</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">可迭代</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">索引 &amp; 切片</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">列表方法</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python容器：列表 []</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_set.html">Python容器：集合 {}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_tuple.html">Python容器：元组 ()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
@@ -131,6 +124,8 @@
 <li class="toctree-l2"><a class="reference internal" href="python_pep8.html">Python PEP8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
@@ -217,21 +212,16 @@
             
   <div class="section" id="python">
 <h1>Python容器：列表 []<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<p>容器是对专门用来装其它对象的数据类型的统称。在Python中，有四种最常见的内建容器类型：列表（list）、元组（tuple）、字典（dict）、集合（set）。Python语言内部实现细节也与这些容器息息相关。比如Python的类实例属性、全局变量globals()等都是通过字典类型来存储的。</p>
-<div class="section" id="list">
-<h2>列表 list []<a class="headerlink" href="#list" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="id1">
-<h2>有序<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="id2">
-<h2>可迭代<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="id3">
-<h2>索引 &amp; 切片<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="id4">
-<h2>列表方法<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>容器是对专门用来装其它对象的数据类型的统称。在Python中，有四种最常见的内建容器类型：列表（list）、元组（tuple）、字典（dict）和集合（set）。Python语言内部实现细节也与这些容器息息相关。比如Python的类实例属性、全局变量globals()等都是通过字典类型来存储的。</p>
+<ul class="simple">
+<li><p>列表 list [] 中括号</p></li>
+<li><p>有序</p></li>
+<li><p>索引取值</p></li>
+<li><p>切片</p></li>
+<li><p>可变的</p></li>
+<li><p>可迭代</p></li>
+<li><p>列表的方法</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">([])</span>
 <span class="go">&lt;type &#39;list&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">([])</span>
@@ -239,21 +229,6 @@
 <span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
-<p>在Python 2中，如果你调用 <code class="docutils literal notranslate"><span class="pre">range(100000000)</span></code> ，需要等待好几秒才能拿到结果，因为它需要返回一个巨大的列表，花费了非常多的时间在内存分配与计算上。但在Python 3中，同样的调用马上就能拿到结果。因为函数返回的不再是列表，而是一个类型为 <code class="docutils literal notranslate"><span class="pre">range</span></code> 的懒惰对象，只有在你迭代它、或是对它进行切片时，它才会返回真正的数字给你。</p>
-<p>坐井观天：本节知识点
-掌握列表、列表推导</p>
-<p>管中窥豹：延伸阅读
-# Python基本数据类型以及操作方法
-- 列表
-- 列表操作函数
-- 集合
-- 集合操作函数
-- 字典
-- 字典操作函数
-- 列表切片操作
-- 列表推导
-- 列表迭代
-- 字典迭代</p>
 <p>l = []
 l.append(1)
 print(l)
@@ -326,24 +301,9 @@ range(5, 0, -1)
 g = xrange(1000000)
 print(g)
 print(g[1000])</p>
-<p>基本数据类型
-int
-float
-string
-bool
-None</p>
-<p>type()
-dir()
-help()</p>
-<p>四种组合数据类型
-列表 [] list
-可变的
-切片
-迭代 循环
-for i in 列表:</p>
-<blockquote>
-<div><p>code</p>
-</div></blockquote>
+<ul class="simple">
+<li><p>列表推导</p></li>
+</ul>
 <p>元组 () tuple
 不可变的</p>
 <p>字典 {“key”: “value”} dict
@@ -357,8 +317,6 @@ for i in 列表:</p>
 <dt>if 真假事件 and 真假事件:</dt><dd><p>code do sth</p>
 </dd>
 </dl>
-<p>开发效率比执行效率</p>
-<p>built-in function 内置函数</p>
 <p>列表</p>
 <p>intList = [1, 2, 3]
 print(intList)
@@ -487,7 +445,7 @@ releaseDate=2020</p>
 # print “Padding %5d” % 15
 # print “Here is new robot - {name}, it has {numCPU} CPU”.format(name = robot[‘name’],numCPU = robot[‘numCPU’])
 # print robot</p>
-<p># print “Here is new robot - {0}, it has {1} CPU’s, {2}GB of memory,n”#        “OS Version: {3}. It will be available in year {4}”.format(<a href="#id5"><span class="problematic" id="id6">*</span></a>robot.values()) ## New in python 2.6</p>
+<p># print “Here is new robot - {0}, it has {1} CPU’s, {2}GB of memory,n”#        “OS Version: {3}. It will be available in year {4}”.format(<a href="#id1"><span class="problematic" id="id2">*</span></a>robot.values()) ## New in python 2.6</p>
 <p># ## Floating point precision
 print “Round number {0:.3}”.format(5.00000009)
 print “{0:,.03f}”.format(1500000)
@@ -503,7 +461,6 @@ print “Zero padding: {0:04}”.format(19)</p>
 #         result += ‘{0}){0:.&gt; 10}*{0} = {1}n’.format(x, x * x)
 #     print result</p>
 <p># nice_print()</p>
-</div>
 </div>
 
 

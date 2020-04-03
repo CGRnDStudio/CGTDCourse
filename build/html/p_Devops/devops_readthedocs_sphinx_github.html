@@ -93,20 +93,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Devops.html">Devops</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="devops_chrome_switchomega.html">谷歌浏览器代理插件SwithyOmega</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_confluence.html">Confluence文档服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_gitlab.html">Gitlab代码仓库服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_jira.html">Jira项目跟踪服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_seafile.html">Seafile文件同步服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_squid.html">Squid代理服务器搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_intranet_penetration.html">花生壳内网穿透技术解析</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_pip_manual.html">pip命令使用手册</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ReadTheDocs+Sphinx+Github搭建托管文档环境</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#step-1-python">Step 1. 安装Python</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-2-path">Step 2. 配置环境变量Path</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-3-sphinx">Step 3. 安装Sphinx</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-4">Step 4. 初始化项目配置</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-5">Step 5. 创建案例文件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-6">Step 6. 清空编译项目</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-7-github">Step 7. 托管Github</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-8-readthedocs">Step 8. ReadTheDocs配置自动编译</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-9">Step 9. 参考文档</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="devops_rst_syntax.html">reStructuredText(rst)语法说明文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_traceroute.html">路由跟踪指令traceroute</a></li>
 </ul>
 </li>
 </ul>
@@ -177,16 +177,17 @@
             
   <div class="section" id="readthedocs-sphinx-github">
 <h1>ReadTheDocs+Sphinx+Github搭建托管文档环境<a class="headerlink" href="#readthedocs-sphinx-github" title="永久链接至标题">¶</a></h1>
-<div class="section" id="step-1-python">
-<h2>Step 1. 安装Python<a class="headerlink" href="#step-1-python" title="永久链接至标题">¶</a></h2>
-<p>测试的操作系统版本 <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">10</span> <span class="pre">1809</span></code>，Python版本 <code class="docutils literal notranslate"><span class="pre">3.7.2</span></code> ，你可以选用Python更高的版本。上官网 <a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> 下载。Python 3在安装的时候记得自定义安装路径选择 <code class="docutils literal notranslate"><span class="pre">C:\Python37</span></code> ，默认路径是在当前用户文件夹，后面使用起来不太方便。</p>
-</div>
-<div class="section" id="step-2-path">
-<h2>Step 2. 配置环境变量Path<a class="headerlink" href="#step-2-path" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><p>安装Python</p></li>
+</ol>
+<p>测试的操作系统版本 Windows 10 1809，Python版本 3.7.2 ，你可以选用Python更高的版本。上官网 <a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> 下载。Python 3在安装的时候记得自定义安装路径选择 <code class="docutils literal notranslate"><span class="pre">C:\Python37</span></code> ，默认路径是在当前用户文件夹，后面使用起来不太方便。</p>
+<ol class="arabic simple" start="2">
+<li><p>配置环境变量Path</p></li>
+</ol>
 <p>这里为了下文命令能使用，需要将 <code class="docutils literal notranslate"><span class="pre">C:\Python37</span></code> 和 <code class="docutils literal notranslate"><span class="pre">C:\Python37\Scripts</span></code> 两个路径加入到用户变量或者系统变量Path中。注意如果有安装Python其它版本注意Path的先后问题，确保下文所调用的命令是文件夹 <code class="docutils literal notranslate"><span class="pre">C:\Python37\Scripts</span></code> 中的应用，如果确实搞不定这个，直接用绝对路径执行亦可。</p>
-</div>
-<div class="section" id="step-3-sphinx">
-<h2>Step 3. 安装Sphinx<a class="headerlink" href="#step-3-sphinx" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple" start="3">
+<li><p>安装Sphinx</p></li>
+</ol>
 <p>通过下面的pip命令安装Sphinx。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span>
@@ -203,9 +204,9 @@
 <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">markdown</span><span class="o">-</span><span class="n">tables</span> <span class="o">-</span><span class="n">i</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pypi</span><span class="o">/</span><span class="n">simple</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="step-4">
-<h2>Step 4. 初始化项目配置<a class="headerlink" href="#step-4" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple" start="4">
+<li><p>初始化项目配置</p></li>
+</ol>
 <p>在计算机中任何位置创建个文件夹，比如CGTDCourse。打开命令行窗口，将当前路径切换到此文件夹，执行命令。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">quickstart</span>
 </pre></div>
@@ -220,30 +221,29 @@
 <span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="step-5">
-<h2>Step 5. 创建案例文件<a class="headerlink" href="#step-5" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple" start="5">
+<li><p>创建案例文件</p></li>
+</ol>
 <p>主要以rst为格式的文件，创建个readme.rst，里面通过rst语法格式书写作者信息，在index.rst中配置readme。具体内容可以研究文末参考文档。</p>
-</div>
-<div class="section" id="step-6">
-<h2>Step 6. 清空编译项目<a class="headerlink" href="#step-6" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple" start="6">
+<li><p>清空编译项目</p></li>
+</ol>
 <p>此时在命令行窗口继续执行下面的命令。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
 <span class="n">make</span> <span class="n">html</span>
 </pre></div>
 </div>
-<p>构建过程中如果报错，需要检查环境变量的设置以及配置或者文档写的语法不正确，到此本地文档就完成了，可以打开build中index.html查看。</p>
-</div>
-<div class="section" id="step-7-github">
-<h2>Step 7. 托管Github<a class="headerlink" href="#step-7-github" title="永久链接至标题">¶</a></h2>
+<p>构建过程中如果报错，需要检查环境变量的设置以及配置或者文档写的语法不正确，到此本地文档就完成了，可以打开build中index.html查看，后面更改文件之后可以通过这两条命令迭代更新文档。</p>
+<ol class="arabic simple" start="7">
+<li><p>托管Github</p></li>
+</ol>
 <p>Github上创建一个项目CGTDCourse，将项目所有文件上传Github管理。</p>
-</div>
-<div class="section" id="step-8-readthedocs">
-<h2>Step 8. ReadTheDocs配置自动编译<a class="headerlink" href="#step-8-readthedocs" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple" start="8">
+<li><p>ReadTheDocs配置自动编译</p></li>
+</ol>
 <p>登陆ReadTheDocs官网，import这个Github项目之后构建，构建成功阅读文档即可，之后在本地写的文章只要通过Git提交到代码仓库，ReadTheDocs会自动构建成在线文档。</p>
-</div>
-<div class="section" id="step-9">
-<h2>Step 9. 参考文档<a class="headerlink" href="#step-9" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>《<a class="reference external" href="https://pengshiyu.blog.csdn.net/article/details/79388919">Sphinx+github+ReadtheDocs书写笔记</a>》</p>
 <p>《<a class="reference external" href="https://github.com/yidao620c/python3-cookbook">Python Cookbook 3rd Edition Documentation</a>》</p>
 </div>
