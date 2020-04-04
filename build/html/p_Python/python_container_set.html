@@ -99,12 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_dict.html">Python容器：字典 {key: value}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_list.html">Python容器：列表 []</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python容器：集合 {}</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#set">集合 set {}</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">元素唯一性</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">集合的方法</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python容器：集合 {}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_tuple.html">Python容器：元组 ()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_function.html">Python自定义函数</a></li>
@@ -130,7 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__repr__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
@@ -218,22 +213,20 @@
   <div class="section" id="python">
 <h1>Python容器：集合 {}<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
 <p>容器是对专门用来装其它对象的数据类型的统称。在Python中，有四种最常见的内建容器类型：列表（list）、元组（tuple）、字典（dict）和集合（set）。Python语言内部实现细节也与这些容器息息相关。比如Python的类实例属性、全局变量globals()等都是通过字典类型来存储的。</p>
-<div class="section" id="set">
-<h2>集合 set {}<a class="headerlink" href="#set" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>集合 set {}</p></li>
+</ul>
 <p>集合与字典都是使用花括号{}来定义，区别是字典是通过键值对的方式存储。</p>
-</div>
-<div class="section" id="id1">
-<h2>元素唯一性<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-</div>
-<div class="section" id="id2">
-<h2>集合的方法<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>元素唯一性</p></li>
+<li><p>集合方法</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="nb">set</span><span class="p">())</span>
 <span class="go">&lt;type &#39;set&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="nb">set</span><span class="p">())</span>
 <span class="go">[&#39;__and__&#39;, &#39;__class__&#39;, &#39;__cmp__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__iand__&#39;, &#39;__init__&#39;, &#39;__ior__&#39;, &#39;__isub__&#39;, &#39;__iter__&#39;, &#39;__ixor__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__or__&#39;, &#39;__rand__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__ror__&#39;, &#39;__rsub__&#39;, &#39;__rxor__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__sub__&#39;, &#39;__subclasshook__&#39;, &#39;__xor__&#39;, &#39;add&#39;, &#39;clear&#39;, &#39;copy&#39;, &#39;difference&#39;, &#39;difference_update&#39;, &#39;discard&#39;, &#39;intersection&#39;, &#39;intersection_update&#39;, &#39;isdisjoint&#39;, &#39;issubset&#39;, &#39;issuperset&#39;, &#39;pop&#39;, &#39;remove&#39;, &#39;symmetric_difference&#39;, &#39;symmetric_difference_update&#39;, &#39;union&#39;, &#39;update&#39;]</span>
 <span class="go">&gt;&gt;&gt;</span>
 </pre></div>
-</div>
 </div>
 </div>
 

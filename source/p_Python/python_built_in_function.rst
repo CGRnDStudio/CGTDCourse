@@ -2,13 +2,11 @@
 Python内置函数
 =============================
 
-Python内置函数也叫内建函数（built-in function），内置函数大约有60来个，都非常有用。
+Python内置函数也叫Python内建函数（built-in function），内置函数大约有60来个，都非常有用。
 
-* print()
-
-* len()
-
-* enumerate()
+* print() # 打印任何对象
+* len() # 求容器元素个数
+* enumerate() # 索引遍历函数
 
 .. code-block:: python
 
@@ -17,17 +15,13 @@ Python内置函数也叫内建函数（built-in function），内置函数大约
 
 * int() & float() & str() & bool()
 
-* id() & type() & dir() & help()
 
-id() 返回对象的内存地址。
-type() 获取对象的类型。
-dir() 获取对象的属性和方法。
-help() 获取具体属性与方法的帮助文档。
-
-* eval() & exec()
-
-eval() 将一个字符串当成一个表达式来执行，返回表达式执行后的结果。
-exec() 将一个字符串当成程序来执行。
+* id() # 返回对象的内存地址
+* type() # 获取对象的类型
+* dir() # 获取对象的属性和方法
+* help() # 获取对象具体属性与方法的帮助文档
+* eval() # 将一个字符串当成一个表达式来执行，返回表达式执行后的结果。
+* exec() # 将一个字符串当成程序来执行。
 
 * max() & min() & sum()
 
@@ -35,15 +29,30 @@ exec() 将一个字符串当成程序来执行。
 
 * hex() & oct() & bin()
 
+.. code-block:: python
 
-坐井观天：本节知识点
-Python内置函数大概60几个，可以直接使用
+    >>> print(123)
+    123
+    >>> type(1)
+    <type 'int'>
+    >>> type("1")
+    <type 'str'>
+    >>> type(3 / 2.0)
+    <type 'float'>
+    >>> type(3 / 2)
+    <type 'int'>
+    >>> isinstance("1", int)
+    False
+    >>> int("123")
+    123
+    >>> bool(8)
+    True
+    >>>
+
 
 管中窥豹：延伸阅读
 https://docs.python.org/zh-cn/3/library/functions.html
 
-
-内置函数(built-in function)
 
 abs() 求绝对值
 abs(-100)
@@ -101,21 +110,6 @@ sum() 求和
 type() 获取实例对象数据类型
 dir() 获取实例对象的属性与方法
 help() 获取某一类方法的帮助文档
-id()
-print()
-
-classmethod
-staticmethod
-
-class Demo:
-    @classmethod
-    def methodClass(*args):
-        return args
-    @staticmethod
-    def methodStatic(*args):
-        return args
-
-exec()
 
 filter()
 map()
@@ -133,13 +127,7 @@ format() & str.format()
 format(1/2.43, "0.4f")
 "{:0.4f}".format(1/2.43)
 
-
 input()
 iter()
 round()
 zip()
-
-很少用到的内置函数
-ascii()
-bytes()
-

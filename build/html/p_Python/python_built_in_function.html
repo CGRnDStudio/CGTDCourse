@@ -125,7 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__repr__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
@@ -212,11 +212,11 @@
             
   <div class="section" id="python">
 <h1>Python内置函数<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<p>Python内置函数也叫内建函数（built-in function），内置函数大约有60来个，都非常有用。</p>
+<p>Python内置函数也叫Python内建函数（built-in function），内置函数大约有60来个，都非常有用。</p>
 <ul class="simple">
-<li><p>print()</p></li>
-<li><p>len()</p></li>
-<li><p>enumerate()</p></li>
+<li><p>print() # 打印任何对象</p></li>
+<li><p>len() # 求容器元素个数</p></li>
+<li><p>enumerate() # 索引遍历函数</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">myList</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s2">&quot;--&gt;&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
@@ -224,27 +224,37 @@
 </div>
 <ul class="simple">
 <li><p>int() &amp; float() &amp; str() &amp; bool()</p></li>
-<li><p>id() &amp; type() &amp; dir() &amp; help()</p></li>
-</ul>
-<p>id() 返回对象的内存地址。
-type() 获取对象的类型。
-dir() 获取对象的属性和方法。
-help() 获取具体属性与方法的帮助文档。</p>
-<ul class="simple">
-<li><p>eval() &amp; exec()</p></li>
-</ul>
-<p>eval() 将一个字符串当成一个表达式来执行，返回表达式执行后的结果。
-exec() 将一个字符串当成程序来执行。</p>
-<ul class="simple">
+<li><p>id() # 返回对象的内存地址</p></li>
+<li><p>type() # 获取对象的类型</p></li>
+<li><p>dir() # 获取对象的属性和方法</p></li>
+<li><p>help() # 获取对象具体属性与方法的帮助文档</p></li>
+<li><p>eval() # 将一个字符串当成一个表达式来执行，返回表达式执行后的结果。</p></li>
+<li><p>exec() # 将一个字符串当成程序来执行。</p></li>
 <li><p>max() &amp; min() &amp; sum()</p></li>
 <li><p>abs()</p></li>
 <li><p>hex() &amp; oct() &amp; bin()</p></li>
 </ul>
-<p>坐井观天：本节知识点
-Python内置函数大概60几个，可以直接使用</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="go">123</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;type &#39;int&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+<span class="go">&lt;type &#39;str&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="go">&lt;type &#39;float&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">&lt;type &#39;int&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">)</span>
+<span class="go">123</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">bool</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
 <p>管中窥豹：延伸阅读
 <a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html">https://docs.python.org/zh-cn/3/library/functions.html</a></p>
-<p>内置函数(built-in function)</p>
 <p>abs() 求绝对值
 abs(-100)
 complex() 复数
@@ -291,25 +301,7 @@ max() 最大元素
 sum() 求和</p>
 <p>type() 获取实例对象数据类型
 dir() 获取实例对象的属性与方法
-help() 获取某一类方法的帮助文档
-id()
-print()</p>
-<p>classmethod
-staticmethod</p>
-<dl>
-<dt>class Demo:</dt><dd><p>&#64;classmethod
-def methodClass(<a href="#id1"><span class="problematic" id="id2">*</span></a>args):</p>
-<blockquote>
-<div><p>return args</p>
-</div></blockquote>
-<p>&#64;staticmethod
-def methodStatic(<a href="#id3"><span class="problematic" id="id4">*</span></a>args):</p>
-<blockquote>
-<div><p>return args</p>
-</div></blockquote>
-</dd>
-</dl>
-<p>exec()</p>
+help() 获取某一类方法的帮助文档</p>
 <p>filter()
 map()
 reduce()
@@ -326,9 +318,6 @@ format(1/2.43, “0.4f”)
 iter()
 round()
 zip()</p>
-<p>很少用到的内置函数
-ascii()
-bytes()</p>
 </div>
 
 

@@ -112,14 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python文件操作</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#open">内置函数open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">上下文管理器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">文件读写模式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">文件对象的方法</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">第三方库</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_functional_programming.html">Python函数式编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_generator.html">Python生成器</a></li>
@@ -132,7 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__repr__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
@@ -220,8 +213,9 @@
   <div class="section" id="python">
 <h1>Python文件操作<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
 <p>Python文件操作实际就是内存数据与硬盘文件数据IO的一个过程，Python提供基础的内置函数以及所谓的上下文管理器来读写文件，也提供了很多第三方库来操作文件解析文件。</p>
-<div class="section" id="open">
-<h2>内置函数open<a class="headerlink" href="#open" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>内置函数open</p></li>
+</ul>
 <p>通过open()读写文件一要注意获取的文件对象需要最后通过close()方法关闭，以释放内存空间，二要注意编码转换的问题，py3添加了编码的支持。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># py2</span>
 <span class="nb">open</span><span class="p">(</span><span class="n">name</span><span class="p">[,</span><span class="n">mode</span><span class="p">[,</span><span class="n">buffering</span><span class="p">]])</span>
@@ -237,9 +231,9 @@
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id1">
-<h2>上下文管理器<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>上下文管理器</p></li>
+</ul>
 <p>上下文管理协议为代码块提供了包含初始化和清理操作的安全上下文环境。即便代码块发生异常，清理操作也会被执行。</p>
 <p>通过关键字with即可简单实现上下文管理器，上下文管理器with在语句块结束之后，文件会自动关闭，无需再编写close()方法，因此更推荐使用with open的写法。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;somefile.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -262,20 +256,20 @@
     <span class="k">pass</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id2">
-<h2>文件读写模式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>文件读写模式</p></li>
+</ul>
 <p>rb</p>
 <p>wt</p>
-</div>
-<div class="section" id="id3">
-<h2>文件对象的方法<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>文件对象的方法</p></li>
+</ul>
 <p>read()</p>
 <p>readlines()</p>
 <p>write()</p>
-</div>
-<div class="section" id="id4">
-<h2>第三方库<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>第三方库</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">json</span>
@@ -322,78 +316,8 @@
 <p>dump</p>
 <p>loads</p>
 <p>dumps</p>
-<p>yaml模块</p>
+<p>yaml</p>
 <p>xml</p>
-<p>坐井观天：本节知识点</p>
-<p>上下文管理器
-import os
-import sys
-import shutil
-import json
-import yaml</p>
-<p>管中窥豹：延伸阅读</p>
-<p>os模块是python与计算机操作系统交互的模块，它提供了一系列访问操作系统的相关功能。</p>
-<p>import os
-# 当前路径
-os.getcwd()
-os.mkdir()
-os.listdir(os.getcwd())
-# os.chdir VS os.getcwd
-os.chdir()
-os.rmdir()
-os.makedirs()
-os.rename()
-os.removedirs()
-os.path.join()
-os.path.exists()
-os.path.dirname()
-os.path.split()
-os.path.splitext()
-os.path.splitdriver()
-os.path.isdir()
-os.path.isfile()</p>
-<p>shutil模块是python内置的一个高级文件操作模块，提供了一些针对文件操作和文件采集相关的高级功能。在os模块相关功能基础上进行了升级，形成了一系列专门为文件操作而设计的功能集合。
-import shutil
-filePath = “D:/test”
-newFilePath = “D:/test_new”
-# copy函数将一个文件拷贝到另一个路径下
-shutil.copy(filePath, newFilePath)
-# copy2函数除了拷贝文件外，还会将源文件的权限，最后访问时间，最后修改时间等拷贝到目标文件上
-newFilePath2 = “D:/test_new2”
-shutil.copy2(filePath, newFilePath2)
-shutil.move()
-shutil.rmtree()</p>
-<p>上下文管理器
-上下文管理协议为代码块提供了包含初始化和清理操作的安全上下文环境。即便代码块发生异常，清理操作也会被执行。</p>
-<p>读写文件要注意编码转换的问题
-with open(“somefile.txt”, “rt”) as f:</p>
-<blockquote>
-<div><p>data = f.read()</p>
-</div></blockquote>
-<dl class="simple">
-<dt>with open(“somefile.txt”, “rt”) as f:</dt><dd><dl class="simple">
-<dt>for line in f:</dt><dd><p>pass</p>
-</dd>
-</dl>
-</dd>
-<dt>with open(“somefile.txt”, “wt”) as f:</dt><dd><p>f.write(text1)
-f.write(text2)</p>
-</dd>
-<dt>with open(“somefile.txt”, “wt”) as f:</dt><dd><p>print(line1, file=f)
-print(line2, file=f)</p>
-</dd>
-</dl>
-<p>py3 添加了编码的支持</p>
-<dl class="simple">
-<dt>with open(“somefile.txt”, “rt”， encoding=”gb2312”) as f:</dt><dd><p>pass</p>
-</dd>
-</dl>
-<p>上下文管理器with在语句块结束之后，文件会自动关闭</p>
-<p>f = open(“somefile.txt”, “rt”)
-data = f.read()
-f.close()
-配合json &amp; yaml模块可以读写文件</p>
-</div>
 </div>
 
 

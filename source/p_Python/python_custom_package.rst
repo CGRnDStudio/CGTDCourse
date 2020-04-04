@@ -24,25 +24,21 @@ __init__.py除了标识一个文件夹是包的作用以外，它还可以执行
 __path__是一个包自带的隐藏属性，它描述一个包的完整路径，也是包的一个标识。
 包的层级结构
 封装成包是很简单的。在文件系统上组织你的代码，并确保每个目录都定义了一个__init__.py文件。
-chooseTask/
-    __init__.py
-    ui/
+
+.. code-block:: python
+
+    chooseTask/
         __init__.py
-        resource.py
-    config/
-        __init__.py
-        user.py
-        sg.py
-    mainWin.py
+        ui/
+            __init__.py
+            resource.py
+        config/
+            __init__.py
+            user.py
+            sg.py
+        mainWin.py
 
 有了上面的层级结构，你可以执行各种import语句
-import chooseTask.ui.resource
-from chooseTask import mainWin
-import chooseTask.config.user as user
-
-通配导入__all__
-在__init__.py中定义__all__属性可以限制from module import *方式导入的子模块
-
 
 包的相对路径导入
 Python自定义包的相对导入问题?
@@ -50,15 +46,18 @@ Python 2.x和3.x包导入的区别
 相对导入对执行方式是有一定的要求，不同执行方式可能会报一种不是错误的错误
 
 假设现在有一个myPackage的包
-myPackage/
-    __init__.py
-    aaa/
+
+.. code-block:: python
+
+    myPackage/
         __init__.py
-        spam.py
-        grok.py
-    bbb/
-        __init__.py
-        bar.py
+        aaa/
+            __init__.py
+            spam.py
+            grok.py
+        bbb/
+            __init__.py
+            bar.py
 
 如果模块myPackage.aaa.spam要导入同目录下的模块grok
 # myPackage/aaa/spam.py

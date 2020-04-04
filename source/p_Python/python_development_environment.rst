@@ -44,24 +44,6 @@ TD日常工作流程
 选择集成开发环境（IDE）
 ❏VS Code轻量跨平台免费
 ❏VS Code基本配置以及用途
-
-{
-    "python.linting.pylintEnabled": false,
-    "python.linting.pep8Enabled": true,
-    "editor.renderWhitespace": "all",
-    "editor.mouseWheelZoom": true,
-    "editor.rulers": [79, 120, 150],
-    "workbench.iconTheme": "vscode-icons",
-    "editor.tabSize": 4,
-    "window.title": "${activeEditorLong}",
-    "vsicons.dontShowNewVersionMessage": true,
-    "python.disablePromptForFeatures": [
-        "pep8"
-    ],
-    "extensions.ignoreRecommendations": false,
-    "python.pythonPath": "C:/python27/python.exe"
-}
-
 ❏VS Code Python开发环境
 ❏VS Code调试以及断点调试 print是最简单的一种debug方法
 ❏VS Code实用快捷键
@@ -90,35 +72,37 @@ pip install --upgrade pep8
 
 https://www.python.org/dev/peps/pep-0008/
 
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+.. code-block:: python
 
-""" 写个简单统计运行时间的函数
-"""
+    #!/usr/bin/python
+    # -*- coding: utf-8 -*-
 
-import time
+    """ 写个简单统计运行时间的函数
+    """
 
-def measure_time(func):
+    import time
 
-    def wrapped(*args, **kwargs):
-        start = time.time()
-        
-        try:
-            return func(*args, **kwargs)
-        finally:
-            runtime = time.time() - start
-            print("Execution time: %.6f seconds" % runtime)
+    def measure_time(func):
+
+        def wrapped(*args, **kwargs):
+            start = time.time()
             
-    return wrapped
+            try:
+                return func(*args, **kwargs)
+            finally:
+                runtime = time.time() - start
+                print("Execution time: %.6f seconds" % runtime)
+                
+        return wrapped
 
-@measure_time
-def f(n):
-    l = []
-    for i in range(n):
-        l.append(i)
+    @measure_time
+    def f(n):
+        l = []
+        for i in range(n):
+            l.append(i)
 
-if __name__ == "__main__":
-    f(1000000)
+    if __name__ == "__main__":
+        f(1000000)
 
 其他IDE简单介绍
 VS Code
@@ -133,7 +117,6 @@ Emacs
 Sublime
 Notepad++
 ....
-
 
 管理自己的代码
 - Git & TortoiseGit
@@ -157,11 +140,13 @@ git pull origin master
 - 反编译pyc文件 Easy Python Decompiler
 - IPython & Gitbash
 
-# 更新pip
-python -m pip install --upgrade pip 
-# 安装ipython
-pip install ipython
-pip install *.whl
+.. code-block:: bash
+
+    # 更新pip
+    python -m pip install --upgrade pip 
+    # 安装ipython
+    pip install ipython
+    pip install *.whl
 
 import this
 import antigravity
@@ -189,24 +174,26 @@ cls
 import sys
 help(sys)
 
-a = 100
-if isinstance(a, int):
-     print("a is int")
-else:
-     print("a is not int")
+.. code-block:: python
 
-help(isinstance)
-help(list)
+    a = 100
+    if isinstance(a, int):
+        print("a is int")
+    else:
+        print("a is not int")
 
-for i in range(1, 11):
-    print(i)
+    help(isinstance)
+    help(list)
 
-array = list()
+    for i in range(1, 11):
+        print(i)
 
-for i in range(1, 11):
-    array.append(i)
+    array = list()
 
-print(array)
+    for i in range(1, 11):
+        array.append(i)
+
+    print(array)
 
 列表生成式
 array = [i for i in range(1, 11)]
@@ -402,9 +389,6 @@ Tab 代码缩进
 """
 """
 
-
-
-
 In [10]: import os
 
 In [11]: print(os.__file__)
@@ -419,12 +403,14 @@ docstring规范
 自定义模块在开始
 自定义函数def之后
 自定义class之后
-def sceneViewer():
-   """ Returns an existing open Scene Viewer pane if there is one. A
-       Context viewer is also acceptable is no dedicated scene viewer
-       is found.
-   """
 
+.. code-block:: python
+
+    def sceneViewer():
+        """ Returns an existing open Scene Viewer pane if there is one. A
+            Context viewer is also acceptable is no dedicated scene viewer
+            is found.
+        """
 
 如何将docstring转成html文档？
 os中为什么有些方法找不见？

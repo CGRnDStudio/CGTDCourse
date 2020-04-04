@@ -125,7 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__repr__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
@@ -212,18 +212,15 @@
             
   <div class="section" id="python">
 <h1>Python正则表达式<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<p>内置模块re</p>
-<p>坐井观天：本节知识点</p>
-<p>理解正则表达式的概念
-re模块</p>
-<p>管中窥豹：延伸阅读
-雨痕 《Python学习笔记》</p>
 <p>正则表达式（Regular Expression）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些符合某个模式的文本。</p>
+<p>Python中提供内置模块re处理正则表达式</p>
 <p>正则表达式中特殊符号的作用
 .^$*+?{}[]|()</p>
-<p>import re
-dir(re)
-re模块中的函数
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">re</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>re模块中的函数
 re.compile # 生成一个匹配器实例，用来匹配，不用重复编译，优化代码执行时间
 re.findall # 找到全部匹配字符串，以列表返回
 re.finditer # 找到全部匹配实例对象，以迭代器返回
@@ -239,53 +236,61 @@ instance.end() # 匹配的结束位置
 instance.span() # 包含起始、结束位置的元组
 instance.groups() # 返回分组信息
 instance.groupdict() # 返回命名分组信息</p>
-<p>import re</p>
-<p>s = “12abc345ab”
-m = re.match(r”d+”, s)
-print(dir(m))
-print(m.group())
-print(m.span()) # 返回index</p>
-<p>m = re.match(r”d{3,}”, s)
-print(m is None)
-m = re.search(r”d{3,}”, s)
-print(m.group())
-print(m.span())</p>
-<p>m = re.search(r”d+”, s)
-print(m.group())
-print(m.span())</p>
-<p>ms = re.findall(r”d+”, s)
-print(ms)
-ms = re.findall(r”d{5}”, s)
-print(ms)</p>
-<dl class="simple">
-<dt>for m in re.finditer(r”d+”, s):</dt><dd><p>print(m.group())
-print(m.span())</p>
-</dd>
-<dt>for m in re.finditer(r”d{5}”, s):</dt><dd><p>print(m.group())
-print(m.span())</p>
-</dd>
-</dl>
-<p>m = re.match(r”(d+)(?P&lt;letter&gt;[abc]+)”, s)
-print(m.group())
-print(m.start())
-print(m.end())
-print(m.span())
-print(m.groups())
-print(m.groupdict())
-print(m.group(0))
-print(m.group(1))
-print(m.group(2))
-print(m.group(1, 2))
-print(m.group(0, 1, 2))
-print(m.start(0), m.end(0))
-print(m.start(1), m.end(1))
-print(m.start(2), m.end(2))
-print(m.span(0))
-print(m.span(1))
-print(m.span(2))</p>
-<p>res = re.search(“<a href="#id1"><span class="problematic" id="id2">ch_</span></a>”, “proj_ch_dog”)
-res = re.search(“d[aoes]g”, “dog dag deg dsg”)
-res = re.search(“d[a-zA-Z0-9]g”, “dog dag deg dsg”)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;12abc345ab&quot;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">())</span> <span class="c1"># 返回index</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d{3,}&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d{3,}&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
+
+<span class="n">ms</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ms</span><span class="p">)</span>
+<span class="n">ms</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d</span><span class="si">{5}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ms</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d</span><span class="si">{5}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)(?P&lt;letter&gt;[abc]+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">groupdict</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;ch_&quot;</span><span class="p">,</span> <span class="s2">&quot;proj_ch_dog&quot;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;d[aoes]g&quot;</span><span class="p">,</span> <span class="s2">&quot;dog dag deg dsg&quot;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;d[a-zA-Z0-9]g&quot;</span><span class="p">,</span> <span class="s2">&quot;dog dag deg dsg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p># d 数字 [0-9]
 # w 字母或数字 a-z A-Z 0-9 _
 # s 空白字符 space
@@ -307,16 +312,15 @@ res = re.search(“d[a-zA-Z0-9]g”, “dog dag deg dsg”)</p>
 res = re.search(r”awt”, “adfaa_tfagdga”)
 res = re.search(“1[357]d{9}”, “phone number: 13851709904”)</p>
 <p># ()表达式编组，括号里面的表达式作为一个整体逻辑</p>
-<p>res = re.search(“SSNI-d{3}.avi”, “this is budsfaf SSNI-518.avi dfaganiojfoas”)
-if res:</p>
-<blockquote>
-<div><p>print(res.group(), res.start(), res.end())</p>
-</div></blockquote>
-<dl class="simple">
-<dt>else:</dt><dd><p>print(“Not found!”)</p>
-</dd>
-</dl>
-<p>res = re.findall(“[a-zA-Z]+.html”, sss)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;SSNI-\d</span><span class="si">{3}</span><span class="s2">\.avi&quot;</span><span class="p">,</span> <span class="s2">&quot;this is budsfaf SSNI-518.avi dfaganiojfoas&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">group</span><span class="p">(),</span> <span class="n">res</span><span class="o">.</span><span class="n">start</span><span class="p">(),</span> <span class="n">res</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not found!&quot;</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;[a-zA-Z]+\.html&quot;</span><span class="p">,</span> <span class="n">sss</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>(?P&lt;name&gt;)
 (?=name)
 (mov|exr)</p>
@@ -360,17 +364,17 @@ import re</p>
 print(re.findall(r”(?:d+)([a-z]+)”, s1))
 print(re.findall(r”(?:d+)([a-z]+)”, s1, re.I))</p>
 <p>反向引用
-&lt;number&gt;或(?P=name)，引用前面的组
-for m in re.finditer(r”&lt;a&gt;w+&lt;/a&gt;”, “%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;”):</p>
-<blockquote>
-<div><p>print(m.group())</p>
-</div></blockquote>
-<dl class="simple">
-<dt>for m in re.finditer(r”&lt;w&gt;w+&lt;/(1)&gt;”, “%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;”):</dt><dd><p>print(m.group())</p>
-</dd>
-<dt>for m in re.finditer(r”&lt;(?P&lt;tag&gt;w)&gt;w+&lt;/(?P=tag)&gt;”, “%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;”):</dt><dd><p>print(m.group())</p>
-</dd>
-</dl>
+&lt;number&gt;或(?P=name)，引用前面的组</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;a&gt;\w+&lt;/a&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;\w&gt;\w+&lt;/(\1)&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;(?P&lt;tag&gt;\w)&gt;\w+&lt;/(?P=tag)&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+</pre></div>
+</div>
 <p>(?=…) # 组内容必须出现在右侧
 (?!…) # 组内容不能出现在右侧
 (?&lt;=…) # 组内容必须出现在左侧

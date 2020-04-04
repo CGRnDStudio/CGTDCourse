@@ -66,198 +66,207 @@ Python自定义函数
     >>> locals() is globals()
     True
 
+.. code-block:: python
 
-def f(arg1, arg2, arg3):
-    print(arg1, arg2, arg3)
-    
-def f(*args):
-    print(type(args))
-    print(args)
-    
-f(3, 2, 1)
-
-def f(**kwargs):
-    print(type(kwargs))
-    print(kwargs)
-    
-f(name="Andy", lang="Chinese")
-
-def f(*args, **kwargs):
-    print(args)
-    print(kwargs.items())
-
-f(1, 2, name="Andy", lang="Chinese")
-
-def setParms(**kwargs):
-
-    for k,v in kwargs.items():
-        print("Setting parameter {0} to {1}".format(k,v))
+    def f(arg1, arg2, arg3):
+        print(arg1, arg2, arg3)
         
-setParms(streng=13, resistance=0.7, weigh=100)
+    def f(*args):
+        print(type(args))
+        print(args)
+        
+    f(3, 2, 1)
 
-return
+    def f(**kwargs):
+        print(type(kwargs))
+        print(kwargs)
+        
+    f(name="Andy", lang="Chinese")
 
-def double_parm(**kwargs):
-    return kwargs["weigh"] * 2
+    def f(*args, **kwargs):
+        print(args)
+        print(kwargs.items())
 
-print(double_parm(streng=13, resistance=0.7, weigh=100))
+    f(1, 2, name="Andy", lang="Chinese")
+
+    def setParms(**kwargs):
+
+        for k,v in kwargs.items():
+            print("Setting parameter {0} to {1}".format(k,v))
+            
+    setParms(streng=13, resistance=0.7, weigh=100)
+
+    return
+
+    def double_parm(**kwargs):
+        return kwargs["weigh"] * 2
+
+    print(double_parm(streng=13, resistance=0.7, weigh=100))
 
 函数赋值
 
-def double_parm(**kwargs):
-    return kwargs["weigh"] * 2, kwargs["streng"]
+.. code-block:: python
 
-new_func = double_parm
+    def double_parm(**kwargs):
+        return kwargs["weigh"] * 2, kwargs["streng"]
 
-print(new_func(streng=13, resistance=0.7, weigh=100))
+    new_func = double_parm
+
+    print(new_func(streng=13, resistance=0.7, weigh=100))
 
 函数中套函数
 
-def double_parm(**kwargs):
-    
-    def check(weight):
-        if weight < 100:
-            return False
+.. code-block:: python
+
+    def double_parm(**kwargs):
+        
+        def check(weight):
+            if weight < 100:
+                return False
+            else:
+                return True
+
+        if check(kwargs["weigh"]):
+            return kwargs["weigh"] * 2, kwargs["streng"] * 2
         else:
-            return True
+            return kwargs["weigh"] * 2, kwargs["streng"] * 4
 
-    if check(kwargs["weigh"]):
-        return kwargs["weigh"] * 2, kwargs["streng"] * 2
-    else:
-        return kwargs["weigh"] * 2, kwargs["streng"] * 4
+    new_func = double_parm
 
-new_func = double_parm
+    print(new_func(streng=13, resistance=0.7, weigh=60))
 
-print(new_func(streng=13, resistance=0.7, weigh=60))
+    import os
+    from sys import version
 
-import os
-from sys import version
-
-PATH = "/tmp/folder/name"
+    PATH = "/tmp/folder/name"
 
 
-# def localFunc():
-#     global version
-#     version = 13.3
-#     print("Local version", version)
+    # def localFunc():
+    #     global version
+    #     version = 13.3
+    #     print("Local version", version)
 
-# localFunc()
-# print(version)
-
-
-# def getTempContent():
-#     tempdir = os.listdir("C:/")
-
-# getTempContent()
-# print(tempdir)
+    # localFunc()
+    # print(version)
 
 
-def func1():
-    print(mvar)
-    print(PATH)
+    # def getTempContent():
+    #     tempdir = os.listdir("C:/")
+
+    # getTempContent()
+    # print(tempdir)
 
 
-def funcBase():
-    mvar = 15
-    func1()
+    def func1():
+        print(mvar)
+        print(PATH)
 
-funcBase()
+
+    def funcBase():
+        mvar = 15
+        func1()
+
+    funcBase()
 
 正则表达式
-### Various Sorting methods for lists and dicts
-import re
-import random
-import calendar
-from pprint import pprint
-files = ['tank_1_color_v0.rat',
-         'tank_2_color_v5.rat',
-         'tank_1_color_v3.rat',
-         'tank_3_color_v1.rat',
-         'tank_4_color_v2.rat',
-         'tank_4_color_v4.rat',
-         'tank_5_color_v1.rat',
-         'tank_6_color_v6.rat']
 
-pat_num = re.compile('\D+_(\d+)_')
-pat_ver = re.compile('(\d+)\D+$')
+.. code-block:: python
 
-def sorter_num(elem):
-    res = re.search(pat_num, elem)
-    return res.groups()[0]
+    ### Various Sorting methods for lists and dicts
+    import re
+    import random
+    import calendar
+    from pprint import pprint
+    files = ['tank_1_color_v0.rat',
+            'tank_2_color_v5.rat',
+            'tank_1_color_v3.rat',
+            'tank_3_color_v1.rat',
+            'tank_4_color_v2.rat',
+            'tank_4_color_v4.rat',
+            'tank_5_color_v1.rat',
+            'tank_6_color_v6.rat']
 
-def sorter_ver(elem):
-    res = re.search(pat_ver, elem)
-    return res.groups()[0]
+    pat_num = re.compile('\D+_(\d+)_')
+    pat_ver = re.compile('(\d+)\D+$')
 
-# pprint(sorted(files, key=sorter_num))
-# pprint(sorted(files, key=sorter_ver))
+    def sorter_num(elem):
+        res = re.search(pat_num, elem)
+        return res.groups()[0]
 
-s2 = "February January  May October August September April  November July March December"
+    def sorter_ver(elem):
+        res = re.search(pat_ver, elem)
+        return res.groups()[0]
 
-d = {}
-for i in range(1, 13):
-    d[calendar.month_name[i]] = i
-def sorter(elem):
-    return d[elem]
-# month_names = sorted(s2.split(), key=sorter)
+    # pprint(sorted(files, key=sorter_num))
+    # pprint(sorted(files, key=sorter_ver))
 
-month_names = [calendar.month_name[i] for i in range(1, 13)]
+    s2 = "February January  May October August September April  November July March December"
 
-pprint(sorted(s2.split(), key=month_names.index))
+    d = {}
+    for i in range(1, 13):
+        d[calendar.month_name[i]] = i
+    def sorter(elem):
+        return d[elem]
+    # month_names = sorted(s2.split(), key=sorter)
+
+    month_names = [calendar.month_name[i] for i in range(1, 13)]
+
+    pprint(sorted(s2.split(), key=month_names.index))
 
 处理路径
-import os
-houVersion = '12.1'
-version = 2
 
-###### Do not do this !!!!! #####
-filepath = "c:\Users\alex\Documents\houdini" + houVersion + "\tmp" + "\example_v0" + str(version) + ".py"
-filepath = os.path.join("c:\Users\\alex\Documents\houdini", houVersion, "tmp", "example", str(version), ".py")
-####################################
-# print filepath
-#
-#
-filepath = os.path.expanduser('~/Documents/houdini{0}/tmp/example_v{1:02}.py'.format(houVersion, version))
-filepath = os.path.normpath(filepath)
-# print filepath
-# print 'This is a file ? :', os.path.isfile(filepath)
-# print 'This is a directory ? :', os.path.isdir(r"c:\temp")
-#
-#
-# tempFolder = 'temp_2'
-# cacheType = 'bgeo'
-# cacheName = 'waterSplash.bgeo.gz'
-# filepath = os.path.join(r"c:\nrojects//bla", tempFolder, cacheType, cacheName)
-# print filepath
-# print os.path.normpath(filepath)
-#####
-#
-######
-# print os.path.split(filepath)
-#
-######
-# print os.path.dirname(filepath)
-#
-#####
-# print os.path.basename(filepath)
+.. code-block:: python
 
-#### PATH SEPARATOR #####
-HOUDINI_OTLSCAN_PATH = os.pathsep.join([os.path.expanduser('~/houdini12.1/otls'),
-                                       '/houdini_install/houdini/otls',
-                                       '/mnt/repo/houdini/otls',
-                                       '/mnt/projects/xyzproject/otls'])
-# print HOUDINI_OTLSCAN_PATH
-#
-#
-t = r'c:\temp'
-l = []
-#
-for f in os.listdir(t):
-	l.append(os.path.normpath(os.path.join(t, f)))
+    import os
+    houVersion = '12.1'
+    version = 2
 
-print l
+    ###### Do not do this !!!!! #####
+    filepath = "c:\Users\alex\Documents\houdini" + houVersion + "\tmp" + "\example_v0" + str(version) + ".py"
+    filepath = os.path.join("c:\Users\\alex\Documents\houdini", houVersion, "tmp", "example", str(version), ".py")
+    ####################################
+    # print filepath
+    #
+    #
+    filepath = os.path.expanduser('~/Documents/houdini{0}/tmp/example_v{1:02}.py'.format(houVersion, version))
+    filepath = os.path.normpath(filepath)
+    # print filepath
+    # print 'This is a file ? :', os.path.isfile(filepath)
+    # print 'This is a directory ? :', os.path.isdir(r"c:\temp")
+    #
+    #
+    # tempFolder = 'temp_2'
+    # cacheType = 'bgeo'
+    # cacheName = 'waterSplash.bgeo.gz'
+    # filepath = os.path.join(r"c:\nrojects//bla", tempFolder, cacheType, cacheName)
+    # print filepath
+    # print os.path.normpath(filepath)
+    #####
+    #
+    ######
+    # print os.path.split(filepath)
+    #
+    ######
+    # print os.path.dirname(filepath)
+    #
+    #####
+    # print os.path.basename(filepath)
 
+    #### PATH SEPARATOR #####
+    HOUDINI_OTLSCAN_PATH = os.pathsep.join([os.path.expanduser('~/houdini12.1/otls'),
+                                        '/houdini_install/houdini/otls',
+                                        '/mnt/repo/houdini/otls',
+                                        '/mnt/projects/xyzproject/otls'])
+    # print HOUDINI_OTLSCAN_PATH
+    #
+    #
+    t = r'c:\temp'
+    l = []
+    #
+    for f in os.listdir(t):
+        l.append(os.path.normpath(os.path.join(t, f)))
 
+    print l
 
 形式参数
 实际参数
@@ -349,8 +358,6 @@ foo(-9)
 闭包函数外的函数中
 局部作用域
 
-
-
 b = 5
 
 def foo():
@@ -396,4 +403,3 @@ def walkFolders(folderPath):
 
 闭包函数
 闭包函数指的是在函数内定义的内部函数
-

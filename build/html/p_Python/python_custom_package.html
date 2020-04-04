@@ -125,7 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__repr__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
@@ -230,49 +230,36 @@ __init__.py除了标识一个文件夹是包的作用以外，它还可以执行
 查询包路径__path__
 __path__是一个包自带的隐藏属性，它描述一个包的完整路径，也是包的一个标识。
 包的层级结构
-封装成包是很简单的。在文件系统上组织你的代码，并确保每个目录都定义了一个__init__.py文件。
-chooseTask/</p>
-<blockquote>
-<div><p>__init__.py
-ui/</p>
-<blockquote>
-<div><p>__init__.py
-resource.py</p>
-</div></blockquote>
-<dl class="simple">
-<dt>config/</dt><dd><p>__init__.py
-user.py
-sg.py</p>
-</dd>
-</dl>
-<p>mainWin.py</p>
-</div></blockquote>
-<p>有了上面的层级结构，你可以执行各种import语句
-import chooseTask.ui.resource
-from chooseTask import mainWin
-import chooseTask.config.user as user</p>
-<p>通配导入__all__
-在__init__.py中定义__all__属性可以限制from module import <a href="#id1"><span class="problematic" id="id2">*</span></a>方式导入的子模块</p>
+封装成包是很简单的。在文件系统上组织你的代码，并确保每个目录都定义了一个__init__.py文件。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chooseTask</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">ui</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">resource</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">config</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">user</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">sg</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">mainWin</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>有了上面的层级结构，你可以执行各种import语句</p>
 <p>包的相对路径导入
 Python自定义包的相对导入问题?
 Python 2.x和3.x包导入的区别
 相对导入对执行方式是有一定的要求，不同执行方式可能会报一种不是错误的错误</p>
-<p>假设现在有一个myPackage的包
-myPackage/</p>
-<blockquote>
-<div><p>__init__.py
-aaa/</p>
-<blockquote>
-<div><p>__init__.py
-spam.py
-grok.py</p>
-</div></blockquote>
-<dl class="simple">
-<dt>bbb/</dt><dd><p>__init__.py
-bar.py</p>
-</dd>
-</dl>
-</div></blockquote>
+<p>假设现在有一个myPackage的包</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">myPackage</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">aaa</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">spam</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">grok</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">bbb</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">bar</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
 <p>如果模块myPackage.aaa.spam要导入同目录下的模块grok
 # myPackage/aaa/spam.py
 from . import grok

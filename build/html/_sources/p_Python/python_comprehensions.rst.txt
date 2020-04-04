@@ -6,16 +6,12 @@ Python四种内建容器刚好对应有四种推导方式。
 
 * 列表推导
 
-Bad
-
 .. code-block:: python
 
     myList = []
 
     for i in range(10):
         myList.append(i * 2)
-
-Pythonic
 
 .. code-block:: python
 

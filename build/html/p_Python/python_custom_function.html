@@ -130,7 +130,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__repr__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
@@ -271,181 +271,199 @@
 <span class="go">True</span>
 </pre></div>
 </div>
-<dl class="simple">
-<dt>def f(arg1, arg2, arg3):</dt><dd><p>print(arg1, arg2, arg3)</p>
-</dd>
-<dt>def f(<a href="#id12"><span class="problematic" id="id13">*</span></a>args):</dt><dd><p>print(type(args))
-print(args)</p>
-</dd>
-</dl>
-<p>f(3, 2, 1)</p>
-<dl class="simple">
-<dt>def f(<a href="#id14"><span class="problematic" id="id15">**</span></a>kwargs):</dt><dd><p>print(type(kwargs))
-print(kwargs)</p>
-</dd>
-</dl>
-<p>f(name=”Andy”, lang=”Chinese”)</p>
-<dl class="simple">
-<dt>def f(<a href="#id16"><span class="problematic" id="id17">*</span></a>args, <a href="#id18"><span class="problematic" id="id19">**</span></a>kwargs):</dt><dd><p>print(args)
-print(kwargs.items())</p>
-</dd>
-</dl>
-<p>f(1, 2, name=”Andy”, lang=”Chinese”)</p>
-<p>def setParms(<a href="#id20"><span class="problematic" id="id21">**</span></a>kwargs):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>for k,v in kwargs.items():</dt><dd><p>print(“Setting parameter {0} to {1}”.format(k,v))</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>setParms(streng=13, resistance=0.7, weigh=100)</p>
-<p>return</p>
-<dl class="simple">
-<dt>def double_parm(<a href="#id22"><span class="problematic" id="id23">**</span></a>kwargs):</dt><dd><p>return kwargs[“weigh”] * 2</p>
-</dd>
-</dl>
-<p>print(double_parm(streng=13, resistance=0.7, weigh=100))</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Andy&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;Chinese&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Andy&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;Chinese&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">setParms</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setting parameter </span><span class="si">{0}</span><span class="s2"> to </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">))</span>
+
+<span class="n">setParms</span><span class="p">(</span><span class="n">streng</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">weigh</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">double_parm</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;weigh&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">double_parm</span><span class="p">(</span><span class="n">streng</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">weigh</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>函数赋值</p>
-<dl class="simple">
-<dt>def double_parm(<a href="#id24"><span class="problematic" id="id25">**</span></a>kwargs):</dt><dd><p>return kwargs[“weigh”] * 2, kwargs[“streng”]</p>
-</dd>
-</dl>
-<p>new_func = double_parm</p>
-<p>print(new_func(streng=13, resistance=0.7, weigh=100))</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">double_parm</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;weigh&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;streng&quot;</span><span class="p">]</span>
+
+<span class="n">new_func</span> <span class="o">=</span> <span class="n">double_parm</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">new_func</span><span class="p">(</span><span class="n">streng</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">weigh</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>函数中套函数</p>
-<p>def double_parm(<a href="#id26"><span class="problematic" id="id27">**</span></a>kwargs):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>def check(weight):</dt><dd><dl class="simple">
-<dt>if weight &lt; 100:</dt><dd><p>return False</p>
-</dd>
-<dt>else:</dt><dd><p>return True</p>
-</dd>
-</dl>
-</dd>
-<dt>if check(kwargs[“weigh”]):</dt><dd><p>return kwargs[“weigh”] * 2, kwargs[“streng”] * 2</p>
-</dd>
-<dt>else:</dt><dd><p>return kwargs[“weigh”] * 2, kwargs[“streng”] * 4</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>new_func = double_parm</p>
-<p>print(new_func(streng=13, resistance=0.7, weigh=60))</p>
-<p>import os
-from sys import version</p>
-<p>PATH = “/tmp/folder/name”</p>
-<p># def localFunc():
-#     global version
-#     version = 13.3
-#     print(“Local version”, version)</p>
-<p># localFunc()
-# print(version)</p>
-<p># def getTempContent():
-#     tempdir = os.listdir(“C:/”)</p>
-<p># getTempContent()
-# print(tempdir)</p>
-<dl class="simple">
-<dt>def func1():</dt><dd><p>print(mvar)
-print(PATH)</p>
-</dd>
-<dt>def funcBase():</dt><dd><p>mvar = 15
-func1()</p>
-</dd>
-</dl>
-<p>funcBase()</p>
-<p>正则表达式
-### Various Sorting methods for lists and dicts
-import re
-import random
-import calendar
-from pprint import pprint
-files = [‘tank_1_color_v0.rat’,</p>
-<blockquote>
-<div><p>‘tank_2_color_v5.rat’,
-‘tank_1_color_v3.rat’,
-‘tank_3_color_v1.rat’,
-‘tank_4_color_v2.rat’,
-‘tank_4_color_v4.rat’,
-‘tank_5_color_v1.rat’,
-‘tank_6_color_v6.rat’]</p>
-</div></blockquote>
-<p>pat_num = re.compile(‘D+_(d+)_’)
-pat_ver = re.compile(‘(d+)D+$’)</p>
-<dl class="simple">
-<dt>def sorter_num(elem):</dt><dd><p>res = re.search(pat_num, elem)
-return res.groups()[0]</p>
-</dd>
-<dt>def sorter_ver(elem):</dt><dd><p>res = re.search(pat_ver, elem)
-return res.groups()[0]</p>
-</dd>
-</dl>
-<p># pprint(sorted(files, key=sorter_num))
-# pprint(sorted(files, key=sorter_ver))</p>
-<p>s2 = “February January  May October August September April  November July March December”</p>
-<p>d = {}
-for i in range(1, 13):</p>
-<blockquote>
-<div><p>d[calendar.month_name[i]] = i</p>
-</div></blockquote>
-<dl class="simple">
-<dt>def sorter(elem):</dt><dd><p>return d[elem]</p>
-</dd>
-</dl>
-<p># month_names = sorted(s2.split(), key=sorter)</p>
-<p>month_names = [calendar.month_name[i] for i in range(1, 13)]</p>
-<p>pprint(sorted(s2.split(), key=month_names.index))</p>
-<p>处理路径
-import os
-houVersion = ‘12.1’
-version = 2</p>
-<p>###### Do not do this !!!!! #####
-filepath = “c:UsersalexDocumentshoudini” + houVersion + “tmp” + “example_v0” + str(version) + “.py”
-filepath = os.path.join(“c:Users\alexDocumentshoudini”, houVersion, “tmp”, “example”, str(version), “.py”)
-####################################
-# print filepath
-#
-#
-filepath = os.path.expanduser(‘~/Documents/houdini{0}/tmp/example_v{1:02}.py’.format(houVersion, version))
-filepath = os.path.normpath(filepath)
-# print filepath
-# print ‘This is a file ? :’, os.path.isfile(filepath)
-# print ‘This is a directory ? :’, os.path.isdir(r”c:temp”)
-#
-#
-# tempFolder = ‘temp_2’
-# cacheType = ‘bgeo’
-# cacheName = ‘waterSplash.bgeo.gz’
-# filepath = os.path.join(r”c:nrojects//bla”, tempFolder, cacheType, cacheName)
-# print filepath
-# print os.path.normpath(filepath)
-#####
-#
-######
-# print os.path.split(filepath)
-#
-######
-# print os.path.dirname(filepath)
-#
-#####
-# print os.path.basename(filepath)</p>
-<p>#### PATH SEPARATOR #####
-HOUDINI_OTLSCAN_PATH = os.pathsep.join([os.path.expanduser(‘~/houdini12.1/otls’),</p>
-<blockquote>
-<div><p>‘/houdini_install/houdini/otls’,
-‘/mnt/repo/houdini/otls’,
-‘/mnt/projects/xyzproject/otls’])</p>
-</div></blockquote>
-<p># print HOUDINI_OTLSCAN_PATH
-#
-#
-t = r’c:temp’
-l = []
-#
-for f in os.listdir(t):</p>
-<blockquote>
-<div><p>l.append(os.path.normpath(os.path.join(t, f)))</p>
-</div></blockquote>
-<p>print l</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">double_parm</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">weight</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">weight</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;weigh&quot;</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;weigh&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;streng&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;weigh&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;streng&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
+
+<span class="n">new_func</span> <span class="o">=</span> <span class="n">double_parm</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">new_func</span><span class="p">(</span><span class="n">streng</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">weigh</span><span class="o">=</span><span class="mi">60</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">version</span>
+
+<span class="n">PATH</span> <span class="o">=</span> <span class="s2">&quot;/tmp/folder/name&quot;</span>
+
+
+<span class="c1"># def localFunc():</span>
+<span class="c1">#     global version</span>
+<span class="c1">#     version = 13.3</span>
+<span class="c1">#     print(&quot;Local version&quot;, version)</span>
+
+<span class="c1"># localFunc()</span>
+<span class="c1"># print(version)</span>
+
+
+<span class="c1"># def getTempContent():</span>
+<span class="c1">#     tempdir = os.listdir(&quot;C:/&quot;)</span>
+
+<span class="c1"># getTempContent()</span>
+<span class="c1"># print(tempdir)</span>
+
+
+<span class="k">def</span> <span class="nf">func1</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mvar</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">funcBase</span><span class="p">():</span>
+    <span class="n">mvar</span> <span class="o">=</span> <span class="mi">15</span>
+    <span class="n">func1</span><span class="p">()</span>
+
+<span class="n">funcBase</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>正则表达式</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### Various Sorting methods for lists and dicts</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">calendar</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tank_1_color_v0.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_2_color_v5.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_1_color_v3.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_3_color_v1.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_4_color_v2.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_4_color_v4.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_5_color_v1.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_6_color_v6.rat&#39;</span><span class="p">]</span>
+
+<span class="n">pat_num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\D+_(\d+)_&#39;</span><span class="p">)</span>
+<span class="n">pat_ver</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(\d+)\D+$&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sorter_num</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_num</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">sorter_ver</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_ver</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># pprint(sorted(files, key=sorter_num))</span>
+<span class="c1"># pprint(sorted(files, key=sorter_ver))</span>
+
+<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;February January  May October August September April  November July March December&quot;</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+<span class="k">def</span> <span class="nf">sorter</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span>
+<span class="c1"># month_names = sorted(s2.split(), key=sorter)</span>
+
+<span class="n">month_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">month_names</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>处理路径</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">houVersion</span> <span class="o">=</span> <span class="s1">&#39;12.1&#39;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1">###### Do not do this !!!!! #####</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;c:\Users</span><span class="se">\a</span><span class="s2">lex\Documents\houdini&quot;</span> <span class="o">+</span> <span class="n">houVersion</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">mp&quot;</span> <span class="o">+</span> <span class="s2">&quot;\example_v0&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">version</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;c:\Users</span><span class="se">\\</span><span class="s2">alex\Documents\houdini&quot;</span><span class="p">,</span> <span class="n">houVersion</span><span class="p">,</span> <span class="s2">&quot;tmp&quot;</span><span class="p">,</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">version</span><span class="p">),</span> <span class="s2">&quot;.py&quot;</span><span class="p">)</span>
+<span class="c1">####################################</span>
+<span class="c1"># print filepath</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/Documents/houdini</span><span class="si">{0}</span><span class="s1">/tmp/example_v</span><span class="si">{1:02}</span><span class="s1">.py&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">houVersion</span><span class="p">,</span> <span class="n">version</span><span class="p">))</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="c1"># print filepath</span>
+<span class="c1"># print &#39;This is a file ? :&#39;, os.path.isfile(filepath)</span>
+<span class="c1"># print &#39;This is a directory ? :&#39;, os.path.isdir(r&quot;c:\temp&quot;)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># tempFolder = &#39;temp_2&#39;</span>
+<span class="c1"># cacheType = &#39;bgeo&#39;</span>
+<span class="c1"># cacheName = &#39;waterSplash.bgeo.gz&#39;</span>
+<span class="c1"># filepath = os.path.join(r&quot;c:\nrojects//bla&quot;, tempFolder, cacheType, cacheName)</span>
+<span class="c1"># print filepath</span>
+<span class="c1"># print os.path.normpath(filepath)</span>
+<span class="c1">#####</span>
+<span class="c1">#</span>
+<span class="c1">######</span>
+<span class="c1"># print os.path.split(filepath)</span>
+<span class="c1">#</span>
+<span class="c1">######</span>
+<span class="c1"># print os.path.dirname(filepath)</span>
+<span class="c1">#</span>
+<span class="c1">#####</span>
+<span class="c1"># print os.path.basename(filepath)</span>
+
+<span class="c1">#### PATH SEPARATOR #####</span>
+<span class="n">HOUDINI_OTLSCAN_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/houdini12.1/otls&#39;</span><span class="p">),</span>
+                                    <span class="s1">&#39;/houdini_install/houdini/otls&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;/mnt/repo/houdini/otls&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;/mnt/projects/xyzproject/otls&#39;</span><span class="p">])</span>
+<span class="c1"># print HOUDINI_OTLSCAN_PATH</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="n">t</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;c:\temp&#39;</span>
+<span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">#</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">)))</span>
+
+<span class="nb">print</span> <span class="n">l</span>
+</pre></div>
+</div>
 <p>形式参数
 实际参数</p>
 <p>默认值（缺省值）对函数重载的作用</p>
@@ -456,8 +474,8 @@ len(range(10))
 100 + 200
 “hello ” + “python”</p>
 <p>Python函数没有重载的概念主要是因为动态语言特性以及缺省值</p>
-<p><a href="#id28"><span class="problematic" id="id29">*</span></a>args 如何打包参数
-<a href="#id30"><span class="problematic" id="id31">**</span></a>kwargs 如何打包参数</p>
+<p><a href="#id12"><span class="problematic" id="id13">*</span></a>args 如何打包参数
+<a href="#id14"><span class="problematic" id="id15">**</span></a>kwargs 如何打包参数</p>
 <p>复用性
 可扩展性</p>
 <dl class="simple">
@@ -482,7 +500,7 @@ def sayHello(name):</p>
 <p>sayHello()</p>
 <p># 形式参数&gt;缺省参数&gt;*args&gt;**kwargs
 # 可变参数
-def sayHello(<a href="#id32"><span class="problematic" id="id33">*</span></a>names):</p>
+def sayHello(<a href="#id16"><span class="problematic" id="id17">*</span></a>names):</p>
 <blockquote>
 <div><p>print(names)</p>
 </div></blockquote>
@@ -499,12 +517,12 @@ foo(a=1, b=2, c=3)
 foo(b=2, c=3, a=1)
 foo(1, c=3, b=2)</p>
 <dl class="simple">
-<dt>def sayHello(<a href="#id34"><span class="problematic" id="id35">**</span></a>names):</dt><dd><p>print(names, type(names))</p>
+<dt>def sayHello(<a href="#id18"><span class="problematic" id="id19">**</span></a>names):</dt><dd><p>print(names, type(names))</p>
 </dd>
 </dl>
 <p>sayHello(name=”andy”, age=30)</p>
 <dl class="simple">
-<dt>def foo(a, b=1, <a href="#id36"><span class="problematic" id="id37">*</span></a>args, <a href="#id38"><span class="problematic" id="id39">**</span></a>kwargs):</dt><dd><p>pass</p>
+<dt>def foo(a, b=1, <a href="#id20"><span class="problematic" id="id21">*</span></a>args, <a href="#id22"><span class="problematic" id="id23">**</span></a>kwargs):</dt><dd><p>pass</p>
 </dd>
 </dl>
 <p># 返回值
@@ -545,7 +563,7 @@ print(b)</p>
 <p>result = 1
 for n in range(1, number + 1)</p>
 <blockquote>
-<div><p>result <a href="#id40"><span class="problematic" id="id41">*</span></a>= n</p>
+<div><p>result <a href="#id24"><span class="problematic" id="id25">*</span></a>= n</p>
 </div></blockquote>
 <p>return result</p>
 </dd>
