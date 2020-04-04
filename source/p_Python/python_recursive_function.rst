@@ -4,10 +4,6 @@ Python递归函数
 
 所谓递归就是在函数内部调用自己的函数被称之为递归，一般递归函数都有终止条件，采用的是后入先出的压栈数据结构。
 
-------------------
-坐井观天: 知识体系
-------------------
-
 阶乘函数 ``n!``
 
 .. code-block:: python
@@ -51,13 +47,52 @@ children递归查找filecache
 斐波拉契数列
 1 1 2 3 5 8
 
-def fibonacci(num):
-    if isinstance(num, int):
-        if num <= 0:
-            return 0
-        elif num == 1:
-            return 1
+.. code-block:: python
+
+    def fibonacci(num):
+        if isinstance(num, int):
+            if num <= 0:
+                return 0
+            elif num == 1:
+                return 1
+            else:
+                return fibonacci(num - 1) + fibonacci(num - 2)
         else:
-            return fibonacci(num - 1) + fibonacci(num - 2)
-    else:
-         raise ValueError(“The input number error!”)
+            raise ValueError("The input number error!")
+
+    def factorial(number):
+
+        if not isinstance(number, int) or number <= 0:
+            return
+
+        result = 1
+
+        for n in range(1, number + 1)
+            result *= n
+
+        return result
+
+    factorial(100)
+
+    def fact(number):
+        if number == 1:
+            return number
+        return number * fact(number - 1)
+
+.. code-block:: python
+
+    # os.walk()
+    import os
+    from pprint import pprint
+
+    def walkFolders(folderPath):
+        subFileList = []
+        for subFileName in os.listdir(folderPath):
+            subPath = os.path.join(folderPath, subFileName)
+            if os.path.isfile(subPath):
+                subFile = {"type": "file", "name": subFileName}
+                subFileList.append(subFile)
+            else:
+                subFolder = {"type": "folder", "name": subFileName, "subFiles": walkFolders(subPath)}
+                subFileList.append(subFolder)
+        return subFileList

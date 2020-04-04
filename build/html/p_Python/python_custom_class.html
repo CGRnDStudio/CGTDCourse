@@ -220,274 +220,273 @@
     <span class="k">pass</span>
 </pre></div>
 </div>
-<p>坐井观天：本节知识点</p>
 <p>类封装
 类继承
 类多态</p>
 <p>实例属性和实例方法
 类属性和类方法
 静态方法</p>
-<p>以人作为案例讲解
-管中窥豹：延伸阅读
-自定义数据类型</p>
-<p>class MyClass(object):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>def __init__(self, var1, var2):</dt><dd><p>self.a = var1
-self.b = var2</p>
-</dd>
-<dt>def sum(self):</dt><dd><p>return self.a + self.b</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>a = MyClass(200, 300)
-print(a)
-print(a.sum())</p>
+<p>自定义数据类型</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">var1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">var2</span>
+
+    <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
 <p>特殊方法__repr__</p>
-<dl class="simple">
-<dt>class Car(object):</dt><dd><dl class="simple">
-<dt>def __init__(self, name, eng, year):</dt><dd><p>self.name = name
-self.eng = eng
-self.year = year</p>
-</dd>
-<dt>def __repr__(self):</dt><dd><p>return “My car name is %s” % self.name</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>car = Car(“Jili”, 120, 2019)
-print(car)</p>
-<p>类继承
-class Car(object):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>def __init__(self, name, eng, year):</dt><dd><p>self.name = name
-self.eng = eng
-self.year = year</p>
-</dd>
-<dt>def __repr__(self):</dt><dd><p>return “My car name is %s” % self.name</p>
-</dd>
-<dt>def orderParts(self, <a href="#id1"><span class="problematic" id="id2">*</span></a>args):</dt><dd><p>print(“Connecting to server…”)
-print(“Ordering parts %s: for car %s” % (args, self.name))
-print(“Checking status”)</p>
-</dd>
-</dl>
-</div></blockquote>
-<dl class="simple">
-<dt>class Truck(Car):</dt><dd><dl class="simple">
-<dt>def __init__(self, name, eng, year):</dt><dd><p>Car.__init__(self, name, eng, year)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>truck = Truck(“Benz”, 800, 2008)
-truck.orderParts(“Wheels”, “Silencer”)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Car</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">eng</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eng</span> <span class="o">=</span> <span class="n">eng</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">year</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;My car name is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="n">car</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="s2">&quot;Jili&quot;</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">2019</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">car</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>类继承</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Car</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">eng</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eng</span> <span class="o">=</span> <span class="n">eng</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">year</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;My car name is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">orderParts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connecting to server...&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ordering parts </span><span class="si">%s</span><span class="s2">: for car </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking status&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Truck</span><span class="p">(</span><span class="n">Car</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">eng</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+        <span class="n">Car</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">eng</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+
+<span class="n">truck</span> <span class="o">=</span> <span class="n">Truck</span><span class="p">(</span><span class="s2">&quot;Benz&quot;</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">2008</span><span class="p">)</span>
+<span class="n">truck</span><span class="o">.</span><span class="n">orderParts</span><span class="p">(</span><span class="s2">&quot;Wheels&quot;</span><span class="p">,</span> <span class="s2">&quot;Silencer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>自定义向量类型</p>
-<dl class="simple">
-<dt>class Vector(object):</dt><dd><dl class="simple">
-<dt>def __init__(self, x, y, z):</dt><dd><p>self.x = x
-self.y = y
-self.z = z</p>
-</dd>
-<dt>def __repr__(self):</dt><dd><p>return “Vector(%f, %f, %f)” % (self.x, self.y, self.z)</p>
-</dd>
-<dt>def __add__(self, other):</dt><dd><p>return Vector(self.x + other.x, self.y + other.y, self.z + other.z)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>v1 = Vector(2, 1.5, 3.2)
-v2 = Vector(3, 4, 5)
-print(v1)
-print(v1 + v2)</p>
-<p>import math
-from __future__ import division</p>
-<dl class="simple">
-<dt>class Vector(object):</dt><dd><dl class="simple">
-<dt>def __init__(self, x, y, z):</dt><dd><p>self.x = x
-self.y = y
-self.z = z</p>
-</dd>
-<dt>def __repr__(self):</dt><dd><p>return “Vector(%f, %f, %f)” % (self.x, self.y, self.z)</p>
-</dd>
-<dt>def __add__(self, other):</dt><dd><p>return Vector(self.x + other.x, self.y + other.y, self.z + other.z)</p>
-</dd>
-<dt>def __sub__(self, other):</dt><dd><p>return Vector(self.x - other.x, self.y - other.y, self.z - other.z)</p>
-</dd>
-<dt>def __mul__(self, other):</dt><dd><p>return Vector(self.x * other.x, self.y * other.y, self.z * other.z)</p>
-</dd>
-<dt>def __div__(self, other):</dt><dd><p>return Vector(self.x / other.x, self.y / other.y, self.z / other.z)</p>
-</dd>
-<dt>def __getitem__(self, item):</dt><dd><dl class="simple">
-<dt>if item == 0:</dt><dd><p>return self.x</p>
-</dd>
-<dt>elif item == 1:</dt><dd><p>return self.y</p>
-</dd>
-<dt>elif item == 2:</dt><dd><p>return self.z</p>
-</dd>
-<dt>else:</dt><dd><p>raise IndexError(“There is no vector index: %d” % item)</p>
-</dd>
-</dl>
-</dd>
-<dt>def __setitem__(self, key, value):</dt><dd><dl class="simple">
-<dt>if key == 0:</dt><dd><p>self.x = value</p>
-</dd>
-<dt>elif key == 1:</dt><dd><p>self.y = value</p>
-</dd>
-<dt>elif key == 2:</dt><dd><p>self.z = value</p>
-</dd>
-<dt>else:</dt><dd><p>raise IndexError(“There is no vector index: %d” % key)</p>
-</dd>
-</dl>
-</dd>
-<dt>def dot(self, other):</dt><dd><p>return self.x * other.x + self.y * other.y + self.z * other.z</p>
-</dd>
-<dt>def cross(self, other):</dt><dd><p>return Vector(self.x * other.x, self.y * other.y, self.z * other.z)</p>
-</dd>
-<dt>def length(self):</dt><dd><p>return math.sqrt(pow(self.x, 2) + pow(self.y, 2) + pow(self.z, 2))</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>v1 = Vector(2, 1.5, 3.2)
-v2 = Vector(3, 4, 5)
-print(v1)
-print(v1 + v2)
-print(v1.dot(v2))
-print(v1.length())
-print(v1[2])
-v1[2] = 10
-print(v1)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Vector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Vector(</span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+
+<span class="k">class</span> <span class="nc">Vector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Vector(</span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">/</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">/</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">/</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
+        <span class="k">elif</span> <span class="n">item</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">elif</span> <span class="n">item</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;There is no vector index: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;There is no vector index: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">key</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span>
+
+    <span class="k">def</span> <span class="nf">cross</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">z</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span> <span class="o">+</span> <span class="n">v2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="o">.</span><span class="n">length</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">v1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>实例方法&amp;类方法&amp;静态方法
-生成器
-import string</p>
-<dl>
-<dt>def getAllChars():</dt><dd><p>all_letters = string.ascii_lowercase
-result=[]
-for letter in all_letters:</p>
-<blockquote>
-<div><p>result.append([letter, all_letters.find(letter)])</p>
-</div></blockquote>
-<p>return result</p>
-</dd>
-<dt>def generateChars():</dt><dd><p>all_letters = string.ascii_lowercase
-for letter in all_letters:</p>
-<blockquote>
-<div><p>yield letter, all_letters.find(letter)</p>
-</div></blockquote>
-</dd>
-<dt>for i in generateChars():</dt><dd><p>print(“Letter: {0} - Index: {1}”.format(<a href="#id3"><span class="problematic" id="id4">*</span></a>i))</p>
-</dd>
-</dl>
+生成器</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+
+<span class="k">def</span> <span class="nf">getAllChars</span><span class="p">():</span>
+    <span class="n">all_letters</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span>
+    <span class="n">result</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">all_letters</span><span class="p">:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">letter</span><span class="p">,</span> <span class="n">all_letters</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">letter</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span> <span class="nf">generateChars</span><span class="p">():</span>
+    <span class="n">all_letters</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span>
+    <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">all_letters</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">letter</span><span class="p">,</span> <span class="n">all_letters</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">generateChars</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Letter: </span><span class="si">{0}</span><span class="s2"> - Index: </span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>语法糖</p>
 <p>&#64;property
 &#64;classmethod
 &#64;staticmethod</p>
 <p>装饰器</p>
-<dl>
-<dt>def check_args(func):</dt><dd><dl class="simple">
-<dt>def wrap(<a href="#id5"><span class="problematic" id="id6">*</span></a>args):</dt><dd><p>args = filter(bool, args)
-func(<a href="#id7"><span class="problematic" id="id8">*</span></a>args)</p>
-</dd>
-</dl>
-<p>return wrap</p>
-</dd>
-</dl>
-<p>&#64;check_args
-def test(<a href="#id9"><span class="problematic" id="id10">*</span></a>args):</p>
-<blockquote>
-<div><p>print(args)</p>
-</div></blockquote>
-<p>print(test)
-test(1, 0, 2, “”, [], 3)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_args</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wrap</span>
+
+
+<span class="nd">@check_args</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="n">test</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>装饰器不一定非得是个函数返回包装对象，也可以是个类，通过__call__完成目标调用</p>
-<dl class="simple">
-<dt>class CheckArgs(object):</dt><dd><dl class="simple">
-<dt>def __init__(self, func):</dt><dd><p>self._func = func</p>
-</dd>
-<dt>def __call__(self, <a href="#id11"><span class="problematic" id="id12">*</span></a>args):</dt><dd><p>args = filter(bool, args)
-self._func(<a href="#id13"><span class="problematic" id="id14">*</span></a>args)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>&#64;CheckArgs
-def test(<a href="#id15"><span class="problematic" id="id16">*</span></a>args):</p>
-<blockquote>
-<div><p>print(args)</p>
-</div></blockquote>
-<p>print(test)
-test(1, 0, 2, “”, [], 3)</p>
-<p>为class提供装饰器
-def singleton(cls):</p>
-<blockquote>
-<div><dl>
-<dt>def wrap(<a href="#id17"><span class="problematic" id="id18">*</span></a>args, <a href="#id19"><span class="problematic" id="id20">**</span></a>kwargs):</dt><dd><p>o = getattr(cls, “__instance__”, None)</p>
-<dl class="simple">
-<dt>if not o:</dt><dd><p>o = cls(<a href="#id21"><span class="problematic" id="id22">*</span></a>args, <a href="#id23"><span class="problematic" id="id24">**</span></a>kwargs)
-cls.__instance__ = o</p>
-</dd>
-</dl>
-<p>return o</p>
-</dd>
-</dl>
-<p>return wrap</p>
-</div></blockquote>
-<p>&#64;singleton
-class A(object):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>def __init__(self, x):</dt><dd><p>self.x = x</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>print(A)
-a, b = A(1), A(2)
-print(a is b)</p>
-<dl>
-<dt>class Artist(object):</dt><dd><p>_hits = [“John”]</p>
-<dl class="simple">
-<dt>def __init__(self, name):</dt><dd><p>self._name = name</p>
-</dd>
-</dl>
-<p>&#64;property
-def name(self):</p>
-<blockquote>
-<div><p>return self._name</p>
-</div></blockquote>
-<p>&#64;name.setter
-def name(self, name):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>if name not in CUSTOM_ARTIST:</dt><dd><p>raise ValueError(“%s is not a custom artist” % name)</p>
-</dd>
-</dl>
-<p>self._name = name</p>
-</div></blockquote>
-<p>&#64;staticmethod
-def random_artist():</p>
-<blockquote>
-<div><p>return Artist(random.choice(CUSTOM_ARTIST))</p>
-</div></blockquote>
-<p>&#64;classmethod
-def hits(cls):</p>
-<blockquote>
-<div><p>return cls._hits</p>
-</div></blockquote>
-</dd>
-</dl>
-<p># rr = Artist(“Andy Hu”)
-# print(rr.name)
-# print(type(rr.name))
-# rr.name = “Andy”
-# print(rr.name)
-# rr2 = Artist.random_artist()
-# print(rr2.name)
-# print(Artist.hits())
-# print(Artist._hits)
-rr = Artist(“Andy”)
-print(rr.random_artist())
-# print(rr.hits())</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CheckArgs</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func</span> <span class="o">=</span> <span class="n">func</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="nd">@CheckArgs</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="n">test</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>为class提供装饰器</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">singleton</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;__instance__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">o</span><span class="p">:</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">__instance__</span> <span class="o">=</span> <span class="n">o</span>
+
+        <span class="k">return</span> <span class="n">o</span>
+
+    <span class="k">return</span> <span class="n">wrap</span>
+
+
+<span class="nd">@singleton</span>
+<span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Artist</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">_hits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">CUSTOM_ARTIST</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not a custom artist&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">random_artist</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">Artist</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">CUSTOM_ARTIST</span><span class="p">))</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">hits</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_hits</span>
+
+
+<span class="c1"># rr = Artist(&quot;Andy Hu&quot;)</span>
+<span class="c1"># print(rr.name)</span>
+<span class="c1"># print(type(rr.name))</span>
+<span class="c1"># rr.name = &quot;Andy&quot;</span>
+<span class="c1"># print(rr.name)</span>
+<span class="c1"># rr2 = Artist.random_artist()</span>
+<span class="c1"># print(rr2.name)</span>
+<span class="c1"># print(Artist.hits())</span>
+<span class="c1"># print(Artist._hits)</span>
+<span class="n">rr</span> <span class="o">=</span> <span class="n">Artist</span><span class="p">(</span><span class="s2">&quot;Andy&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rr</span><span class="o">.</span><span class="n">random_artist</span><span class="p">())</span>
+<span class="c1"># print(rr.hits())</span>
+</pre></div>
+</div>
 <p># 类属性和类方法可以被实例对象来调用，也可以通过类名直接调用，一般是通过类名调用
 # 静态方法可以被实例对象来调用
 # 实例属性和实例方法只能通过实例对象来调用，不能通过类名直接调用

@@ -6,7 +6,6 @@ os.listdir
 os.walk
 os.path
 
-坐井观天:本节知识点
 模块大概分类
 常用的内置模块
 import os
@@ -26,10 +25,6 @@ import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
 from email.utils import parseaddr, formataddr
-
-
-
-管中窥豹:延伸阅读
 
 内置模块
 DCC软件自带模块
@@ -60,81 +55,86 @@ os.path.splitext(path)
 
 尽可能使用os.path来操作文件路径的问题，最好不要使用字符串来构造自己的代码，主要是为了代码的可移植性，它可以很好的处理linux mac以及windows文件路径的差异
 
-#!/usr/bin/env python3.7
-import os
+.. code-block:: python
 
-def findFile(start, name):
-    for relpath, dirs, files in os.walk(start):
-         if name in files:
-            fullPath = os.path.join(start, relpath, name)
-            print(os.path.normpath(os.path.abspath(fullPath)))
+    #!/usr/bin/env python3.7
+    import os
 
-if __name__ == "__main__":
-    findFile(sys.argv[1], sys.argv[2])
+    def findFile(start, name):
+        for relpath, dirs, files in os.walk(start):
+            if name in files:
+                fullPath = os.path.join(start, relpath, name)
+                print(os.path.normpath(os.path.abspath(fullPath)))
+
+    if __name__ == "__main__":
+        findFile(sys.argv[1], sys.argv[2])
 
 从文件夹中查找文件
 
-with open("somefile", "wt") as f:
-    f.write("Hello\n")
+.. code-block:: python
 
-with open("somefile", "xt") as f:
-    f.write("Hello\n")
-
-import os
-if not os.path.exists("somefile"):
     with open("somefile", "wt") as f:
         f.write("Hello\n")
-else:
-    print("File already exist!")
 
-import os
-houVersion = "17.0"
-version = 2
+    with open("somefile", "xt") as f:
+        f.write("Hello\n")
 
-###### Do not do this !!!!! ######
-# filepath = "C:\Users\huweiguo\Documents\houdini" + houVersion + "\tmp" + "\example_v0" + str(version) + ".py"
-# filepath = os.path.join("C:\Users\huweiguo\Documents\houdini", houVersion, "tmp", "example", str(version), ".py")
-##################################
-# print(filepath)
-#
-# filepath = os.path.expanduser("~/Documents/houdini{0}/tmp/example_v{1:02}.py".format(houVersion, version))
-# filepath = os.path.normpath(filepath)
-# print(filepath)
-# print("This is a file ? :", os.path.isfile(filepath))
-# print("This is a directory ? :", os.path.isdir(r"c:\temp"))
-#
-#
-# tempFolder = 'temp_2'
-# cacheType = 'bgeo'
-# cacheName = 'waterSplash.bgeo.gz'
-# filepath = os.path.join(r"C:\nrojects/bla", tempFolder, cacheType, cacheName)
-# print(filepath)
-# print(os.path.normpath(filepath))
+    import os
+    if not os.path.exists("somefile"):
+        with open("somefile", "wt") as f:
+            f.write("Hello\n")
+    else:
+        print("File already exist!")
 
-# print(os.path.split(filepath))
+.. code-block:: python
 
-# print(os.path.dirname(filepath))
+    import os
+    houVersion = "17.0"
+    version = 2
 
-# print(os.path.basename(filepath))
+    ###### Do not do this !!!!! ######
+    # filepath = "C:\Users\huweiguo\Documents\houdini" + houVersion + "\tmp" + "\example_v0" + str(version) + ".py"
+    # filepath = os.path.join("C:\Users\huweiguo\Documents\houdini", houVersion, "tmp", "example", str(version), ".py")
+    ##################################
+    # print(filepath)
+    #
+    # filepath = os.path.expanduser("~/Documents/houdini{0}/tmp/example_v{1:02}.py".format(houVersion, version))
+    # filepath = os.path.normpath(filepath)
+    # print(filepath)
+    # print("This is a file ? :", os.path.isfile(filepath))
+    # print("This is a directory ? :", os.path.isdir(r"c:\temp"))
+    #
+    #
+    # tempFolder = 'temp_2'
+    # cacheType = 'bgeo'
+    # cacheName = 'waterSplash.bgeo.gz'
+    # filepath = os.path.join(r"C:\nrojects/bla", tempFolder, cacheType, cacheName)
+    # print(filepath)
+    # print(os.path.normpath(filepath))
 
-#### PATH SEPARATOR #####
-HOUDINI_OTLSCAN_PATH = os.pathsep.join([os.path.expanduser('~/houdini12.1/otls'),
-                                       '/houdini_install/houdini/otls',
-                                       '/mnt/repo/houdini/otls',
-                                       '/mnt/projects/xyzproject/otls'])
-print HOUDINI_OTLSCAN_PATH
+    # print(os.path.split(filepath))
 
-# t = "D:/Program"
-# l = []
-# print(os.listdir(t))
+    # print(os.path.dirname(filepath))
 
-# for f in os.listdir(t):
-#     l.append(os.path.normpath(os.path.join(t, f)))
+    # print(os.path.basename(filepath))
 
-# print l
+    #### PATH SEPARATOR #####
+    HOUDINI_OTLSCAN_PATH = os.pathsep.join([os.path.expanduser('~/houdini12.1/otls'),
+                                        '/houdini_install/houdini/otls',
+                                        '/mnt/repo/houdini/otls',
+                                        '/mnt/projects/xyzproject/otls'])
+    print HOUDINI_OTLSCAN_PATH
+
+    # t = "D:/Program"
+    # l = []
+    # print(os.listdir(t))
+
+    # for f in os.listdir(t):
+    #     l.append(os.path.normpath(os.path.join(t, f)))
+
+    # print l
 
 sys
-
 
 shutil
 
@@ -150,28 +150,30 @@ json.dumps 字典转字符串
 json.load 文件转字典
 json.loads 字符串转字典
 
-import json
+.. code-block:: python
 
-data = {
-    "name": "Andy",
-    "age": 29,
-    "weight": 55.5
-}
+    import json
 
-jsonStr = json.dumps(data)
+    data = {
+        "name": "Andy",
+        "age": 29,
+        "weight": 55.5
+    }
 
-jsonData = json.loads(jsonStr)
+    jsonStr = json.dumps(data)
 
-# Writing JSON data
-with open("data.json", "w") as f:
-    json.dump(data, f)
+    jsonData = json.loads(jsonStr)
 
-# indent用法
-with open("data.json", "w") as f:
-    json.dump(data, f, indent=4)
+    # Writing JSON data
+    with open("data.json", "w") as f:
+        json.dump(data, f)
 
-with open("data.json", "r") as f:
-    data = json.load(f)
+    # indent用法
+    with open("data.json", "w") as f:
+        json.dump(data, f, indent=4)
+
+    with open("data.json", "r") as f:
+        data = json.load(f)
 
 True > true
 False > false
@@ -202,66 +204,68 @@ pprint(sys.path)
 
 
 logging
-import logging
 
-def main():
-    logging.basicConfig(
-        filename="app.log",
-        level=logging.ERROR
-    )
-    hostname = "www.python.org"
-    item = "spam"
-    filename = "data.csv"
-    mode = "r"
+.. code-block:: python
 
-    logging.critical("Host %s unknown", hostname)
-    logging.error("Couldn't find %r", item)
-    logging.warning("Feature is deprecated")
-    logging.info("Opening file %r, mode=%r", filename, mode)
-    logging.debug("Got here")
+    import logging
 
-if __name__ == "__main__":
-    main()
+    def main():
+        logging.basicConfig(
+            filename="app.log",
+            level=logging.ERROR
+        )
+        hostname = "www.python.org"
+        item = "spam"
+        filename = "data.csv"
+        mode = "r"
+
+        logging.critical("Host %s unknown", hostname)
+        logging.error("Couldn't find %r", item)
+        logging.warning("Feature is deprecated")
+        logging.info("Opening file %r, mode=%r", filename, mode)
+        logging.debug("Got here")
+
+    if __name__ == "__main__":
+        main()
 
 level是一个过滤器，critical error warning info debug代表不同的严重级别
-logging.basicConfig(
-    filename="app.log",
-    level=logging.WARNING,
-    format="%(levelname)s:%(asctime)s:%(message)s"
-)
 
+.. code-block:: python
 
+    logging.basicConfig(
+        filename="app.log",
+        level=logging.WARNING,
+        format="%(levelname)s:%(asctime)s:%(message)s"
+    )
 
 https://docs.python.org/3/howto/logging-cookbook.html
 
-
-
-
-###############################
 核心问题：import语法
 
-import os
-import sys
-import shutil
-import random
-import datetime
-import module as xxx
-from module import xxx as xx
-os.listdir()
-os.getcwd()
-os.mkdir()
-os.makedirs()
-r"\\\"自然字符串
-os.remove()
-os.rmdir()
-os.path模块功能操作文件夹
-os.path.isdir()
-os.path.isfile()
-os.path.split()
-os.path.splitext()
-os.path.splitdrive()
-os.path.join()
-os.path.normpath()
+.. code-block:: python
+
+    import os
+    import sys
+    import shutil
+    import random
+    import datetime
+    import module as xxx
+    from module import xxx as xx
+    os.listdir()
+    os.getcwd()
+    os.mkdir()
+    os.makedirs()
+    r"\\\"自然字符串
+    os.remove()
+    os.rmdir()
+    os.path模块功能操作文件夹
+    os.path.isdir()
+    os.path.isfile()
+    os.path.split()
+    os.path.splitext()
+    os.path.splitdrive()
+    os.path.join()
+    os.path.normpath()
 
 sys.path
 
@@ -276,63 +280,67 @@ import glob
 
 正则表达式模块re
 
-import re
-from pprint import pprint
+.. code-block:: python
 
-files = ["tank_1_color_v0.rat",
-         "tank_2_color_v5.rat",
-         "tank_1_color_v3.rat",
-         "tank_3_color_v1.rat",
-         "tank_4_color_v2.rat",
-         "tank_4_color_v4.rat",
-         "tank_5_color_v1.rat",
-         "tank_6_color_v6.rat"]
+    import re
+    from pprint import pprint
 
-pat_num = re.compile("\D+_(\d+)_")
-pat_ver = re.compile("(\d+)\D+$")
+    files = ["tank_1_color_v0.rat",
+            "tank_2_color_v5.rat",
+            "tank_1_color_v3.rat",
+            "tank_3_color_v1.rat",
+            "tank_4_color_v2.rat",
+            "tank_4_color_v4.rat",
+            "tank_5_color_v1.rat",
+            "tank_6_color_v6.rat"]
 
-def sorter_num(elem):
-    res = re.search(pat_num, elem)
-    return res.groups()[0]
+    pat_num = re.compile("\D+_(\d+)_")
+    pat_ver = re.compile("(\d+)\D+$")
 
-def sorter_ver(elem):
-    res = re.search(pat_ver, elem)
-    return res.groups()[0]
+    def sorter_num(elem):
+        res = re.search(pat_num, elem)
+        return res.groups()[0]
 
-# pprint(sorted(files, key=sorter_num))
-pprint(sorted(files, key=sorter_ver))
+    def sorter_ver(elem):
+        res = re.search(pat_ver, elem)
+        return res.groups()[0]
+
+    # pprint(sorted(files, key=sorter_num))
+    pprint(sorted(files, key=sorter_ver))
 
 日历模块calendar
 
-import calendar
+.. code-block:: python
 
-for i in range(1, 13):
-    print(calendar.month_name[i])
+    import calendar
 
-import calendar
+    for i in range(1, 13):
+        print(calendar.month_name[i])
 
-d={}
-for i in range(1, 13):
-    d[calendar.month_name[i]] = i
+    import calendar
 
-print(d)
+    d={}
+    for i in range(1, 13):
+        d[calendar.month_name[i]] = i
 
-import calendar
-from pprint import pprint
-s2 = "February January  May October August September April  November July March December"
+    print(d)
 
-d = {}
-for i in range(1, 13):
-    d[calendar.month_name[i]] = i
-    
-def sorter(elem):
-    return d[elem]
+    import calendar
+    from pprint import pprint
+    s2 = "February January  May October August September April  November July March December"
 
-pprint(sorted(s2.split(), key=sorter))
+    d = {}
+    for i in range(1, 13):
+        d[calendar.month_name[i]] = i
+        
+    def sorter(elem):
+        return d[elem]
 
-import calendar
-month_names = [calendar.month_name[i] for i in range(1, 13)]
-print(month_names)
-print(sorted(s2.split(), key=month_names.index))
+    pprint(sorted(s2.split(), key=sorter))
+
+    import calendar
+    month_names = [calendar.month_name[i] for i in range(1, 13)]
+    print(month_names)
+    print(sorted(s2.split(), key=month_names.index))
 
 邮件模块

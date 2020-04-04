@@ -24,7 +24,6 @@ Python自定义函数
 
 * 返回值
 
-
 ------------------
 形参的几种形式
 ------------------
@@ -33,11 +32,11 @@ Python自定义函数
 
 * 可变参数 ``*args`` 
 
-``*args``表示可变参数，就是传入的参数个数是可变的，可以是1个，2个到任意个或者0个。其实就是将传入的一堆参数打包成元组使用。
+``*args`` 表示可变参数，就是传入的参数个数是可变的，可以是1个，2个到任意个或者0个。其实就是将传入的一堆参数打包成元组使用。
 
 * 关键字参数 ``**kwargs``
 
-``**kwargs``将传入的0个或者多个含参数名的参数打包成字典使用。
+``**kwargs`` 将传入的0个或者多个含参数名的参数打包成字典使用。
 
 * 不同形式参数之间组合
 
@@ -274,82 +273,84 @@ Python自定义函数
 默认值（缺省值）对函数重载的作用
 
 len多态函数
-len(“andy”)
+len("andy")
 len(range(10))
 +运算符 多态性
 100 + 200
-“hello ” + “python”
+"hello " + "python"
 
 Python函数没有重载的概念主要是因为动态语言特性以及缺省值
 
-*args 如何打包参数
-**kwargs 如何打包参数
+``*args`` 如何打包参数
+``**kwargs`` 如何打包参数
 
 复用性
 可扩展性
 
-def function(args):
-    code
-    return
+.. code-block:: python
 
-def foo():
-    print(“this is function”)
-
-foo()
-
-# 形式参数
-def sayHello(name):
-    print(“hello, ”, name)
-
-sayHello(“andy”)
-
-# 缺省参数
-
-def sayHello(name=”andy”):
-    print(“hello, ”, name)
-
-sayHello()
-
-# 形式参数>缺省参数>*args>**kwargs
-# 可变参数
-def sayHello(*names):
-    print(names)
-
-sayHello(“andy”, “tommy”)
-
-# 顺序传参，关键字传参
-def foo(a, b, c):
-    print(“a is ”, a)
-    print(“b is ”, b)
-    print(“c is ”, c)
-
-foo(1, 2, 3)
-foo(a=1, b=2, c=3)
-foo(b=2, c=3, a=1)
-foo(1, c=3, b=2)
-
-def sayHello(**names):
-    print(names, type(names))
-
-sayHello(name=”andy”, age=30)
-
-def foo(a, b=1, *args, **kwargs):
-    pass
-
-# 返回值
-def foo():
-    return 5
-
-a = foo()
-print(a)
-
-def foo(a):
-    if a < 0:
+    def function(args):
+        code
         return
-    return 100 + a
 
-foo(9)
-foo(-9)
+    def foo():
+        print("this is function")
+
+    foo()
+
+    # 形式参数
+    def sayHello(name):
+        print("hello, ", name)
+
+    sayHello("andy")
+
+    # 缺省参数
+
+    def sayHello(name="andy"):
+        print("hello, ", name)
+
+    sayHello()
+
+    # 形式参数>缺省参数>*args>**kwargs
+    # 可变参数
+    def sayHello(*names):
+        print(names)
+
+    sayHello("andy", "tommy")
+
+    # 顺序传参，关键字传参
+    def foo(a, b, c):
+        print("a is ", a)
+        print("b is ", b)
+        print("c is ", c)
+
+    foo(1, 2, 3)
+    foo(a=1, b=2, c=3)
+    foo(b=2, c=3, a=1)
+    foo(1, c=3, b=2)
+
+    def sayHello(**names):
+        print(names, type(names))
+
+    sayHello(name="andy", age=30)
+
+    def foo(a, b=1, *args, **kwargs):
+        pass
+
+    # 返回值
+    def foo():
+        return 5
+
+    a = foo()
+    print(a)
+
+    def foo(a):
+        if a < 0:
+            return
+        return 100 + a
+
+    foo(9)
+    foo(-9)
 
 
 作用域
@@ -358,48 +359,11 @@ foo(-9)
 闭包函数外的函数中
 局部作用域
 
-b = 5
+.. code-block:: python
 
-def foo():
-    global b
-    b = 1
-    print(b)
+    b = 5
 
-
-# 递归函数
-
-def factorial(number):
-    if not isinstance(number, int) or number <= 0:
-        return
-    result = 1
-    for n in range(1, number + 1)
-        result *= n
-    return result
-
-factorial(100)
-
-def fact(number):
-    if number == 1:
-        return number
-    return number * fact(number - 1)
-
-
-# os.walk()
-import os
-from pprint import pprint
-
-def walkFolders(folderPath):
-    subFileList = []
-    for subFileName in os.listdir(folderPath):
-        subPath = os.path.join(folderPath, subFileName)
-        if os.path.isfile(subPath):
-            subFile = {“type”: “file”, “name”: subFileName}
-            subFileList.append(subFile)
-        else:
-            subFolder = {“type”: “folder”, “name”: subFileName, “subFiles”: walkFolders(subPath)}
-            subFileList.append(subFolder)
-    return subFileList
-
-
-闭包函数
-闭包函数指的是在函数内定义的内部函数
+    def foo():
+        global b
+        b = 1
+        print(b)

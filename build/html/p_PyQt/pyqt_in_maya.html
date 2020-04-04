@@ -179,147 +179,157 @@
 如何删除已经存在的用户界面？
 如何给button连接函数传参？</p>
 <p>管中窥豹：延伸阅读</p>
-<p>from PySide2 import QtWidgets as QtGui</p>
-<dl class="simple">
-<dt>class MyDialog(QtGui.QDialog):</dt><dd><dl class="simple">
-<dt>def __init__(self, parent=None):</dt><dd><p>super(MyDialog, self).__init__(parent)
-self._initUI()</p>
-</dd>
-<dt>def _initUI(self):</dt><dd><p>pass</p>
-</dd>
-</dl>
-</dd>
-<dt>if __name__ == “__main__”:</dt><dd><p>dialog = MyDialog()
-dialog.show()</p>
-</dd>
-</dl>
-<p>import maya.cmds as cmds
-from PySide2 import QtWidgets as QtGui</p>
-<p>DIALOGNAME = “My Dialog”</p>
-<dl>
-<dt>class MyDialog(QtGui.QDialog):</dt><dd><dl class="simple">
-<dt>def __init__(self, parent=None):</dt><dd><p>super(MyDialog, self).__init__(parent)
-self._initUI()</p>
-</dd>
-<dt>def _initUI(self):</dt><dd><p>self.setObjectName(DIALOGNAME)</p>
-</dd>
-</dl>
-</dd>
-<dt>if __name__ == “__main__”:</dt><dd><dl class="simple">
-<dt>if cmds.window(DIALOGNAME, exists=True, query=True):</dt><dd><p>cmds.deleteUI(DIALOGNAME)</p>
-</dd>
-</dl>
-<p>dialog = MyDialog()
-dialog.show()</p>
-</dd>
-</dl>
-<p>#!/usr/bin/env python
-# -<em>- coding: utf-8 -</em>-</p>
-<dl class="simple">
-<dt>try:</dt><dd><p>from PySide import QtGui
-from PySide import QtCore</p>
-</dd>
-<dt>except ImportError:</dt><dd><p>from PySide2 import QtWidgets as QtGui</p>
-</dd>
-<dt>class Example(QtGui.QDialog):</dt><dd><dl class="simple">
-<dt>def __init__(self, parent=None):</dt><dd><p>super(Example, self).__init__(parent)
-self.initUI()</p>
-</dd>
-<dt>def initUI(self):</dt><dd><p>self.setGeometry(600, 300, 500, 500)
-self.setWindowTitle(“360 Playblast”)
-Browse_Button = QtGui.QPushButton(“Browse”)
-name_label_file = QtGui.QLabel(“Open file”)
-self.name_line_edit_file = QtGui.QLineEdit()
-name_label_Frame = QtGui.QLabel(“From”)
-self.name_line_edit_frame = QtGui.QLineEdit()
-name_label_to = QtGui.QLabel(“To”)
-self.name_line_edit_to = QtGui.QLineEdit()
-name_label_Format = QtGui.QLabel(“Format”)
-self.ComboBox_format = QtGui.QComboBox()
-self.ComboBox_format.addItems([“avi”, “image”, “qt”, “movie”])
-name_label_resolution = QtGui.QLabel(“Resoultion”)
-self.ComboBox_resolution = QtGui.QComboBox()
-self.ComboBox_resolution.addItems([“1920*1080”, “1080*720”, “720*540”])
-Browse_Button_to = QtGui.QPushButton(“Browse”)
-name_label_to1 = QtGui.QLabel(“To”)
-self.name_line_edit_file1 = QtGui.QLineEdit()
-name_button_OK = QtGui.QPushButton(“OK”)
-name_button_Canle = QtGui.QPushButton(“Canle”)
-baseLayout = QtGui.QGridLayout()
-baseLayout.addWidget(Browse_Button, 0, 2)
-baseLayout.addWidget(name_label_file, 0, 0)
-baseLayout.addWidget(self.name_line_edit_file, 0, 1)
-baseLayout.addWidget(name_label_Frame, 1, 0)
-baseLayout.addWidget(self.name_line_edit_frame, 1, 1)
-baseLayout.addWidget(name_label_to, 1, 2)
-baseLayout.addWidget(self.name_line_edit_to, 1, 3)
-baseLayout.addWidget(name_label_Format, 2, 0)
-baseLayout.addWidget(self.ComboBox_format, 2, 1)
-baseLayout.addWidget(name_label_resolution, 3, 0)
-baseLayout.addWidget(self.ComboBox_resolution, 3, 1)
-baseLayout.addWidget(name_label_to1, 4, 0)
-baseLayout.addWidget(self.name_line_edit_file1, 4, 1)
-baseLayout.addWidget(Browse_Button_to, 4, 2)
-baseLayout.addWidget(name_button_OK, 5, 1)
-baseLayout.addWidget(name_button_Canle, 5, 3)
-self.setLayout(baseLayout)</p>
-</dd>
-</dl>
-</dd>
-<dt>if __name__ == “__main__”:</dt><dd><p>ex = Example()
-ex.show()</p>
-</dd>
-</dl>
-<p>from PySide2 import QtGui
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span> <span class="k">as</span> <span class="n">QtGui</span>
+
+<span class="k">class</span> <span class="nc">MyDialog</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initUI</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_initUI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">dialog</span> <span class="o">=</span> <span class="n">MyDialog</span><span class="p">()</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span> <span class="k">as</span> <span class="n">QtGui</span>
+
+<span class="n">DIALOGNAME</span> <span class="o">=</span> <span class="s2">&quot;My Dialog&quot;</span>
+
+<span class="k">class</span> <span class="nc">MyDialog</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initUI</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_initUI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="n">DIALOGNAME</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">cmds</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">DIALOGNAME</span><span class="p">,</span> <span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">cmds</span><span class="o">.</span><span class="n">deleteUI</span><span class="p">(</span><span class="n">DIALOGNAME</span><span class="p">)</span>
+
+    <span class="n">dialog</span> <span class="o">=</span> <span class="n">MyDialog</span><span class="p">()</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">PySide</span> <span class="kn">import</span> <span class="n">QtGui</span>
+    <span class="kn">from</span> <span class="nn">PySide</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span> <span class="k">as</span> <span class="n">QtGui</span>
+
+<span class="k">class</span> <span class="nc">Example</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Example</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initUI</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">initUI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;360 Playblast&quot;</span><span class="p">)</span>
+        <span class="n">Browse_Button</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Browse&quot;</span><span class="p">)</span>
+        <span class="n">name_label_file</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Open file&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name_line_edit_file</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">()</span>
+        <span class="n">name_label_Frame</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;From&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name_line_edit_frame</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">()</span>
+        <span class="n">name_label_to</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;To&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name_line_edit_to</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">()</span>
+        <span class="n">name_label_Format</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Format&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ComboBox_format</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QComboBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ComboBox_format</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span><span class="s2">&quot;avi&quot;</span><span class="p">,</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="s2">&quot;qt&quot;</span><span class="p">,</span> <span class="s2">&quot;movie&quot;</span><span class="p">])</span>
+        <span class="n">name_label_resolution</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Resoultion&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ComboBox_resolution</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QComboBox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ComboBox_resolution</span><span class="o">.</span><span class="n">addItems</span><span class="p">([</span><span class="s2">&quot;1920*1080&quot;</span><span class="p">,</span> <span class="s2">&quot;1080*720&quot;</span><span class="p">,</span> <span class="s2">&quot;720*540&quot;</span><span class="p">])</span>
+        <span class="n">Browse_Button_to</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Browse&quot;</span><span class="p">)</span>
+        <span class="n">name_label_to1</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;To&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name_line_edit_file1</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">()</span>
+        <span class="n">name_button_OK</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+        <span class="n">name_button_Canle</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Canle&quot;</span><span class="p">)</span>
+        <span class="n">baseLayout</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QGridLayout</span><span class="p">()</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">Browse_Button</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">name_label_file</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_line_edit_file</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">name_label_Frame</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_line_edit_frame</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">name_label_to</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_line_edit_to</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">name_label_Format</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ComboBox_format</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">name_label_resolution</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ComboBox_resolution</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">name_label_to1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_line_edit_file1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">Browse_Button_to</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">name_button_OK</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">baseLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">name_button_Canle</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">baseLayout</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">ex</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+    <span class="n">ex</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>from PySide2 import QtGui
 from PySide2 import QtCore
 from PySide2 import QtWidgets
-import maya.cmds as cmds</p>
-<p>from PySide2.QtWidgets import *
-# 命名污染</p>
-<p>from shiboken2 import wrapInstance</p>
-<p>import maya.OpenMayaUI as omui</p>
-<dl class="simple">
-<dt>def getMayaMainWin():</dt><dd><p>pointer = omui.MQtUtil.mainWindow()
-return wrapInstance(long(pointer), QtWidgets.QWidget)</p>
-</dd>
-</dl>
-<p>mayaWindow = getMayaMainWin()
-mayaWindow.setWindowOpacity(1)</p>
-<dl>
-<dt>class MyWindow(QtWidgets.QDialog):</dt><dd><dl>
-<dt>def __init__(self, parent=getMayaMainWin()):</dt><dd><p>super(MyWindow, self).__init__(parent)
-self.initUI()</p>
-</dd>
-<dt>def initUI(self):</dt><dd><p>self.setWindowTitle(“My Custom Window”)
-self.setMinimumSize(QSize(360, 240))
-mainLayout = QtWidgets.QVBoxLayout()
-titleLabel = QLabel(“Control Window”)
-nameText = QLineEdit()
-execButton = QPushButton(“Do It!”)
-mainLayout.addWidget(titleLabel)
-mainLayout.addWidget(nameText)
-mainLayout.addWidget(execButton)
-self.setLayout(mainLayout)</p>
-<p>execButton.clicked.connect(self.createCube)</p>
-</dd>
-<dt>def createCube(self):</dt><dd><p>userInput = nameText.text()
-if not userInput:</p>
-<blockquote>
-<div><p>print(“Please enter cube name!”)
-return 0</p>
-</div></blockquote>
-<p>cubeName = cmds.polyCube?????
-print(“%s has been created” % cubeName)</p>
-</dd>
-</dl>
-</dd>
-<dt>if “myWin” in globals():</dt><dd><p>print(“myWin is exists, close it first!”)
-myWin.deleteLater()
-del mywin</p>
-</dd>
-</dl>
-<p>myWin = MyWindow()
-myWin.show()</p>
+import maya.cmds as cmds
+
+from PySide2.QtWidgets import *
+# 命名污染
+
+from shiboken2 import wrapInstance
+
+import maya.OpenMayaUI as omui
+
+def getMayaMainWin():
+    pointer = omui.MQtUtil.mainWindow()
+    return wrapInstance(long(pointer), QtWidgets.QWidget)
+
+mayaWindow = getMayaMainWin()
+mayaWindow.setWindowOpacity(1)
+
+class MyWindow(QtWidgets.QDialog):
+    def __init__(self, parent=getMayaMainWin()):
+        super(MyWindow, self).__init__(parent)
+        self.initUI()
+
+    def initUI(self):
+        self.setWindowTitle(&quot;My Custom Window&quot;)
+        self.setMinimumSize(QSize(360, 240))
+        mainLayout = QtWidgets.QVBoxLayout()
+        titleLabel = QLabel(&quot;Control Window&quot;)
+        nameText = QLineEdit()
+        execButton = QPushButton(&quot;Do It!&quot;)
+        mainLayout.addWidget(titleLabel)
+        mainLayout.addWidget(nameText)
+        mainLayout.addWidget(execButton)
+        self.setLayout(mainLayout)
+
+        execButton.clicked.connect(self.createCube)
+
+    def createCube(self):
+        userInput = nameText.text()
+        if not userInput:
+            print(&quot;Please enter cube name!&quot;)
+            return 0
+        cubeName = cmds.polyCube?????
+        print(&quot;%s has been created&quot; % cubeName)
+
+if &quot;myWin&quot; in globals():
+    print(&quot;myWin is exists, close it first!&quot;)
+    myWin.deleteLater()
+    del mywin
+
+myWin = MyWindow()
+myWin.show()
+</pre></div>
+</div>
 <p>理解类继承
 查看PyQt文档
 字符串格式化两种方法

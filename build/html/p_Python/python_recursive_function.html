@@ -122,10 +122,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_module_import_principle.html">Python模块导入机制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_name_rules.html">Python命名规则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_pep8.html">Python PEP8</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python递归函数</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">坐井观天: 知识体系</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__repr__</a></li>
@@ -216,8 +213,6 @@
   <div class="section" id="python">
 <h1>Python递归函数<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
 <p>所谓递归就是在函数内部调用自己的函数被称之为递归，一般递归函数都有终止条件，采用的是后入先出的压栈数据结构。</p>
-<div class="section" id="id1">
-<h2>坐井观天: 知识体系<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>阶乘函数 <code class="docutils literal notranslate"><span class="pre">n!</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 
@@ -251,22 +246,53 @@ copy.deepcopy()
 <p>children递归查找filecache</p>
 <p>斐波拉契数列
 1 1 2 3 5 8</p>
-<dl class="simple">
-<dt>def fibonacci(num):</dt><dd><dl class="simple">
-<dt>if isinstance(num, int):</dt><dd><dl class="simple">
-<dt>if num &lt;= 0:</dt><dd><p>return 0</p>
-</dd>
-<dt>elif num == 1:</dt><dd><p>return 1</p>
-</dd>
-<dt>else:</dt><dd><p>return fibonacci(num - 1) + fibonacci(num - 2)</p>
-</dd>
-</dl>
-</dd>
-<dt>else:</dt><dd><p>raise ValueError(“The input number error!”)</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The input number error!&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">*=</span> <span class="n">n</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">factorial</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">number</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># os.walk()</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="k">def</span> <span class="nf">walkFolders</span><span class="p">(</span><span class="n">folderPath</span><span class="p">):</span>
+    <span class="n">subFileList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">subFileName</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folderPath</span><span class="p">):</span>
+        <span class="n">subPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folderPath</span><span class="p">,</span> <span class="n">subFileName</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">subPath</span><span class="p">):</span>
+            <span class="n">subFile</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;file&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">subFileName</span><span class="p">}</span>
+            <span class="n">subFileList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subFile</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">subFolder</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;folder&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">subFileName</span><span class="p">,</span> <span class="s2">&quot;subFiles&quot;</span><span class="p">:</span> <span class="n">walkFolders</span><span class="p">(</span><span class="n">subPath</span><span class="p">)}</span>
+            <span class="n">subFileList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subFolder</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">subFileList</span>
+</pre></div>
 </div>
 </div>
 

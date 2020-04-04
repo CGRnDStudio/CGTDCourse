@@ -218,8 +218,7 @@
 <p>os.listdir
 os.walk
 os.path</p>
-<p>坐井观天:本节知识点
-模块大概分类
+<p>模块大概分类
 常用的内置模块
 import os
 import sys
@@ -238,7 +237,6 @@ import smtplib
 from email.header import Header
 from email.mime.text import MIMEText
 from email.utils import parseaddr, formataddr</p>
-<p>管中窥豹:延伸阅读</p>
 <p>内置模块
 DCC软件自带模块
 第三方模块
@@ -260,79 +258,81 @@ path = “~/maya/2018/maya.env”
 os.path.expanduser(path)
 os.path.splitext(path)</p>
 <p>尽可能使用os.path来操作文件路径的问题，最好不要使用字符串来构造自己的代码，主要是为了代码的可移植性，它可以很好的处理linux mac以及windows文件路径的差异</p>
-<p>#!/usr/bin/env python3.7
-import os</p>
-<dl class="simple">
-<dt>def findFile(start, name):</dt><dd><dl class="simple">
-<dt>for relpath, dirs, files in os.walk(start):</dt><dd><dl class="simple">
-<dt>if name in files:</dt><dd><p>fullPath = os.path.join(start, relpath, name)
-print(os.path.normpath(os.path.abspath(fullPath)))</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-<dt>if __name__ == “__main__”:</dt><dd><p>findFile(sys.argv[1], sys.argv[2])</p>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.7</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">findFile</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">relpath</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">fullPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">relpath</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">fullPath</span><span class="p">)))</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">findFile</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
 <p>从文件夹中查找文件</p>
-<dl class="simple">
-<dt>with open(“somefile”, “wt”) as f:</dt><dd><p>f.write(“Hellon”)</p>
-</dd>
-<dt>with open(“somefile”, “xt”) as f:</dt><dd><p>f.write(“Hellon”)</p>
-</dd>
-</dl>
-<p>import os
-if not os.path.exists(“somefile”):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>with open(“somefile”, “wt”) as f:</dt><dd><p>f.write(“Hellon”)</p>
-</dd>
-</dl>
-</div></blockquote>
-<dl class="simple">
-<dt>else:</dt><dd><p>print(“File already exist!”)</p>
-</dd>
-</dl>
-<p>import os
-houVersion = “17.0”
-version = 2</p>
-<p>###### Do not do this !!!!! ######
-# filepath = “C:UsershuweiguoDocumentshoudini” + houVersion + “tmp” + “example_v0” + str(version) + “.py”
-# filepath = os.path.join(“C:UsershuweiguoDocumentshoudini”, houVersion, “tmp”, “example”, str(version), “.py”)
-##################################
-# print(filepath)
-#
-# filepath = os.path.expanduser(“~/Documents/houdini{0}/tmp/example_v{1:02}.py”.format(houVersion, version))
-# filepath = os.path.normpath(filepath)
-# print(filepath)
-# print(“This is a file ? :”, os.path.isfile(filepath))
-# print(“This is a directory ? :”, os.path.isdir(r”c:temp”))
-#
-#
-# tempFolder = ‘temp_2’
-# cacheType = ‘bgeo’
-# cacheName = ‘waterSplash.bgeo.gz’
-# filepath = os.path.join(r”C:nrojects/bla”, tempFolder, cacheType, cacheName)
-# print(filepath)
-# print(os.path.normpath(filepath))</p>
-<p># print(os.path.split(filepath))</p>
-<p># print(os.path.dirname(filepath))</p>
-<p># print(os.path.basename(filepath))</p>
-<p>#### PATH SEPARATOR #####
-HOUDINI_OTLSCAN_PATH = os.pathsep.join([os.path.expanduser(‘~/houdini12.1/otls’),</p>
-<blockquote>
-<div><p>‘/houdini_install/houdini/otls’,
-‘/mnt/repo/houdini/otls’,
-‘/mnt/projects/xyzproject/otls’])</p>
-</div></blockquote>
-<p>print HOUDINI_OTLSCAN_PATH</p>
-<p># t = “D:/Program”
-# l = []
-# print(os.listdir(t))</p>
-<p># for f in os.listdir(t):
-#     l.append(os.path.normpath(os.path.join(t, f)))</p>
-<p># print l</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;somefile&quot;</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;somefile&quot;</span><span class="p">,</span> <span class="s2">&quot;xt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;somefile&quot;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;somefile&quot;</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File already exist!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">houVersion</span> <span class="o">=</span> <span class="s2">&quot;17.0&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1">###### Do not do this !!!!! ######</span>
+<span class="c1"># filepath = &quot;C:\Users\huweiguo\Documents\houdini&quot; + houVersion + &quot;\tmp&quot; + &quot;\example_v0&quot; + str(version) + &quot;.py&quot;</span>
+<span class="c1"># filepath = os.path.join(&quot;C:\Users\huweiguo\Documents\houdini&quot;, houVersion, &quot;tmp&quot;, &quot;example&quot;, str(version), &quot;.py&quot;)</span>
+<span class="c1">##################################</span>
+<span class="c1"># print(filepath)</span>
+<span class="c1">#</span>
+<span class="c1"># filepath = os.path.expanduser(&quot;~/Documents/houdini{0}/tmp/example_v{1:02}.py&quot;.format(houVersion, version))</span>
+<span class="c1"># filepath = os.path.normpath(filepath)</span>
+<span class="c1"># print(filepath)</span>
+<span class="c1"># print(&quot;This is a file ? :&quot;, os.path.isfile(filepath))</span>
+<span class="c1"># print(&quot;This is a directory ? :&quot;, os.path.isdir(r&quot;c:\temp&quot;))</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># tempFolder = &#39;temp_2&#39;</span>
+<span class="c1"># cacheType = &#39;bgeo&#39;</span>
+<span class="c1"># cacheName = &#39;waterSplash.bgeo.gz&#39;</span>
+<span class="c1"># filepath = os.path.join(r&quot;C:\nrojects/bla&quot;, tempFolder, cacheType, cacheName)</span>
+<span class="c1"># print(filepath)</span>
+<span class="c1"># print(os.path.normpath(filepath))</span>
+
+<span class="c1"># print(os.path.split(filepath))</span>
+
+<span class="c1"># print(os.path.dirname(filepath))</span>
+
+<span class="c1"># print(os.path.basename(filepath))</span>
+
+<span class="c1">#### PATH SEPARATOR #####</span>
+<span class="n">HOUDINI_OTLSCAN_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/houdini12.1/otls&#39;</span><span class="p">),</span>
+                                    <span class="s1">&#39;/houdini_install/houdini/otls&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;/mnt/repo/houdini/otls&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;/mnt/projects/xyzproject/otls&#39;</span><span class="p">])</span>
+<span class="nb">print</span> <span class="n">HOUDINI_OTLSCAN_PATH</span>
+
+<span class="c1"># t = &quot;D:/Program&quot;</span>
+<span class="c1"># l = []</span>
+<span class="c1"># print(os.listdir(t))</span>
+
+<span class="c1"># for f in os.listdir(t):</span>
+<span class="c1">#     l.append(os.path.normpath(os.path.join(t, f)))</span>
+
+<span class="c1"># print l</span>
+</pre></div>
+</div>
 <p>sys</p>
 <p>shutil</p>
 <p>时间模块time&amp;datetime</p>
@@ -344,30 +344,30 @@ dir(json)</p>
 json.dumps 字典转字符串
 json.load 文件转字典
 json.loads 字符串转字典</p>
-<p>import json</p>
-<dl class="simple">
-<dt>data = {</dt><dd><p>“name”: “Andy”,
-“age”: 29,
-“weight”: 55.5</p>
-</dd>
-</dl>
-<p>}</p>
-<p>jsonStr = json.dumps(data)</p>
-<p>jsonData = json.loads(jsonStr)</p>
-<p># Writing JSON data
-with open(“data.json”, “w”) as f:</p>
-<blockquote>
-<div><p>json.dump(data, f)</p>
-</div></blockquote>
-<p># indent用法
-with open(“data.json”, “w”) as f:</p>
-<blockquote>
-<div><p>json.dump(data, f, indent=4)</p>
-</div></blockquote>
-<dl class="simple">
-<dt>with open(“data.json”, “r”) as f:</dt><dd><p>data = json.load(f)</p>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Andy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mf">55.5</span>
+<span class="p">}</span>
+
+<span class="n">jsonStr</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">jsonData</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">jsonStr</span><span class="p">)</span>
+
+<span class="c1"># Writing JSON data</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># indent用法</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>True &gt; true
 False &gt; false
 None &gt; null</p>
@@ -389,59 +389,63 @@ pprint(resp)</p>
 from pprint import pprint
 import sys
 pprint(sys.path)</p>
-<p>logging
-import logging</p>
-<dl>
-<dt>def main():</dt><dd><dl class="simple">
-<dt>logging.basicConfig(</dt><dd><p>filename=”app.log”,
-level=logging.ERROR</p>
-</dd>
-</dl>
-<p>)
-hostname = “www.python.org”
-item = “spam”
-filename = “data.csv”
-mode = “r”</p>
-<p>logging.critical(“Host %s unknown”, hostname)
-logging.error(“Couldn’t find %r”, item)
-logging.warning(“Feature is deprecated”)
-logging.info(“Opening file %r, mode=%r”, filename, mode)
-logging.debug(“Got here”)</p>
-</dd>
-<dt>if __name__ == “__main__”:</dt><dd><p>main()</p>
-</dd>
-</dl>
-<p>level是一个过滤器，critical error warning info debug代表不同的严重级别
-logging.basicConfig(</p>
-<blockquote>
-<div><p>filename=”app.log”,
-level=logging.WARNING,
-format=”%(levelname)s:%(asctime)s:%(message)s”</p>
-</div></blockquote>
-<p>)</p>
+<p>logging</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;app.log&quot;</span><span class="p">,</span>
+        <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span>
+    <span class="p">)</span>
+    <span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;www.python.org&quot;</span>
+    <span class="n">item</span> <span class="o">=</span> <span class="s2">&quot;spam&quot;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;data.csv&quot;</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;Host </span><span class="si">%s</span><span class="s2"> unknown&quot;</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t find </span><span class="si">%r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Feature is deprecated&quot;</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Opening file </span><span class="si">%r</span><span class="s2">, mode=</span><span class="si">%r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Got here&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>level是一个过滤器，critical error warning info debug代表不同的严重级别</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;app.log&quot;</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(levelname)s</span><span class="s2">:</span><span class="si">%(asctime)s</span><span class="s2">:</span><span class="si">%(message)s</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 <p><a class="reference external" href="https://docs.python.org/3/howto/logging-cookbook.html">https://docs.python.org/3/howto/logging-cookbook.html</a></p>
-<p>import os
-import sys
-import shutil
-import random
-import datetime
-import module as xxx
-from module import xxx as xx
-os.listdir()
-os.getcwd()
-os.mkdir()
-os.makedirs()
-r”&quot;自然字符串
-os.remove()
-os.rmdir()
-os.path模块功能操作文件夹
-os.path.isdir()
-os.path.isfile()
-os.path.split()
-os.path.splitext()
-os.path.splitdrive()
-os.path.join()
-os.path.normpath()</p>
+<p>核心问题：import语法</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">module</span> <span class="k">as</span> <span class="nn">xxx</span>
+<span class="kn">from</span> <span class="nn">module</span> <span class="kn">import</span> <span class="n">xxx</span> <span class="k">as</span> <span class="n">xx</span>
+<span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">()</span>
+<span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\\&quot;</span><span class="s2">自然字符串</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path模块功能操作文件夹</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitdrive</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>sys.path</p>
 <p>shutil
 shutil.copy()
@@ -451,60 +455,66 @@ re 正则表达式模块</p>
 <div class="section" id="import-glob">
 <h2>import glob<a class="headerlink" href="#import-glob" title="永久链接至标题">¶</a></h2>
 <p>正则表达式模块re</p>
-<p>import re
-from pprint import pprint</p>
-<dl class="simple">
-<dt>files = [“tank_1_color_v0.rat”,</dt><dd><p>“tank_2_color_v5.rat”,
-“tank_1_color_v3.rat”,
-“tank_3_color_v1.rat”,
-“tank_4_color_v2.rat”,
-“tank_4_color_v4.rat”,
-“tank_5_color_v1.rat”,
-“tank_6_color_v6.rat”]</p>
-</dd>
-</dl>
-<p>pat_num = re.compile(“D+_(d+)_”)
-pat_ver = re.compile(“(d+)D+$”)</p>
-<dl class="simple">
-<dt>def sorter_num(elem):</dt><dd><p>res = re.search(pat_num, elem)
-return res.groups()[0]</p>
-</dd>
-<dt>def sorter_ver(elem):</dt><dd><p>res = re.search(pat_ver, elem)
-return res.groups()[0]</p>
-</dd>
-</dl>
-<p># pprint(sorted(files, key=sorter_num))
-pprint(sorted(files, key=sorter_ver))</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tank_1_color_v0.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_2_color_v5.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_1_color_v3.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_3_color_v1.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_4_color_v2.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_4_color_v4.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_5_color_v1.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_6_color_v6.rat&quot;</span><span class="p">]</span>
+
+<span class="n">pat_num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;\D+_(\d+)_&quot;</span><span class="p">)</span>
+<span class="n">pat_ver</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(\d+)\D+$&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sorter_num</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_num</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">sorter_ver</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_ver</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># pprint(sorted(files, key=sorter_num))</span>
+<span class="n">pprint</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">sorter_ver</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>日历模块calendar</p>
-<p>import calendar</p>
-<dl class="simple">
-<dt>for i in range(1, 13):</dt><dd><p>print(calendar.month_name[i])</p>
-</dd>
-</dl>
-<p>import calendar</p>
-<p>d={}
-for i in range(1, 13):</p>
-<blockquote>
-<div><p>d[calendar.month_name[i]] = i</p>
-</div></blockquote>
-<p>print(d)</p>
-<p>import calendar
-from pprint import pprint
-s2 = “February January  May October August September April  November July March December”</p>
-<p>d = {}
-for i in range(1, 13):</p>
-<blockquote>
-<div><p>d[calendar.month_name[i]] = i</p>
-</div></blockquote>
-<dl class="simple">
-<dt>def sorter(elem):</dt><dd><p>return d[elem]</p>
-</dd>
-</dl>
-<p>pprint(sorted(s2.split(), key=sorter))</p>
-<p>import calendar
-month_names = [calendar.month_name[i] for i in range(1, 13)]
-print(month_names)
-print(sorted(s2.split(), key=month_names.index))</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">calendar</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="kn">import</span> <span class="nn">calendar</span>
+
+<span class="n">d</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">calendar</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;February January  May October August September April  November July March December&quot;</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+
+<span class="k">def</span> <span class="nf">sorter</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">sorter</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">calendar</span>
+<span class="n">month_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">month_names</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">month_names</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>邮件模块</p>
 </div>
 </div>

@@ -105,7 +105,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python自定义函数</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">函数的几个概念</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">形参的几种形式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">作用域</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">作用域</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_module.html">Python自定义模块</a></li>
@@ -241,17 +241,17 @@
 <li><p>缺省参数，又叫默认参数</p></li>
 <li><p>可变参数 <code class="docutils literal notranslate"><span class="pre">*args</span></code></p></li>
 </ul>
-<p><a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">*</span></a>args``表示可变参数，就是传入的参数个数是可变的，可以是1个，2个到任意个或者0个。其实就是将传入的一堆参数打包成元组使用。</p>
+<p><code class="docutils literal notranslate"><span class="pre">*args</span></code> 表示可变参数，就是传入的参数个数是可变的，可以是1个，2个到任意个或者0个。其实就是将传入的一堆参数打包成元组使用。</p>
 <ul class="simple">
 <li><p>关键字参数 <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code></p></li>
 </ul>
-<p><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">**</span></a>kwargs``将传入的0个或者多个含参数名的参数打包成字典使用。</p>
+<p><code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> 将传入的0个或者多个含参数名的参数打包成字典使用。</p>
 <ul class="simple">
 <li><p>不同形式参数之间组合</p></li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h2>作用域<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2>作用域<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>在函数外部，locals()和globals()作用完全相同。而当在函数内部调用时，locals()则是获取当前函数堆栈中的名字空间，其中存储的时函数参数、局部变量等信息。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">locals</span><span class="p">()</span>
 <span class="go">{&#39;__builtins__&#39;: &lt;module &#39;__builtin__&#39; (built-in)&gt;, &#39;__name__&#39;: &#39;__main__&#39;, &#39;__doc__&#39;: None, &#39;__package__&#39;: None}</span>
@@ -474,133 +474,87 @@ len(range(10))
 100 + 200
 “hello ” + “python”</p>
 <p>Python函数没有重载的概念主要是因为动态语言特性以及缺省值</p>
-<p><a href="#id12"><span class="problematic" id="id13">*</span></a>args 如何打包参数
-<a href="#id14"><span class="problematic" id="id15">**</span></a>kwargs 如何打包参数</p>
+<p><code class="docutils literal notranslate"><span class="pre">*args</span></code> 如何打包参数
+<code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> 如何打包参数</p>
 <p>复用性
 可扩展性</p>
-<dl class="simple">
-<dt>def function(args):</dt><dd><p>code
-return</p>
-</dd>
-<dt>def foo():</dt><dd><p>print(“this is function”)</p>
-</dd>
-</dl>
-<p>foo()</p>
-<p># 形式参数
-def sayHello(name):</p>
-<blockquote>
-<div><p>print(“hello, ”, name)</p>
-</div></blockquote>
-<p>sayHello(“andy”)</p>
-<p># 缺省参数</p>
-<dl class="simple">
-<dt>def sayHello(name=”andy”):</dt><dd><p>print(“hello, ”, name)</p>
-</dd>
-</dl>
-<p>sayHello()</p>
-<p># 形式参数&gt;缺省参数&gt;*args&gt;**kwargs
-# 可变参数
-def sayHello(<a href="#id16"><span class="problematic" id="id17">*</span></a>names):</p>
-<blockquote>
-<div><p>print(names)</p>
-</div></blockquote>
-<p>sayHello(“andy”, “tommy”)</p>
-<p># 顺序传参，关键字传参
-def foo(a, b, c):</p>
-<blockquote>
-<div><p>print(“a is ”, a)
-print(“b is ”, b)
-print(“c is ”, c)</p>
-</div></blockquote>
-<p>foo(1, 2, 3)
-foo(a=1, b=2, c=3)
-foo(b=2, c=3, a=1)
-foo(1, c=3, b=2)</p>
-<dl class="simple">
-<dt>def sayHello(<a href="#id18"><span class="problematic" id="id19">**</span></a>names):</dt><dd><p>print(names, type(names))</p>
-</dd>
-</dl>
-<p>sayHello(name=”andy”, age=30)</p>
-<dl class="simple">
-<dt>def foo(a, b=1, <a href="#id20"><span class="problematic" id="id21">*</span></a>args, <a href="#id22"><span class="problematic" id="id23">**</span></a>kwargs):</dt><dd><p>pass</p>
-</dd>
-</dl>
-<p># 返回值
-def foo():</p>
-<blockquote>
-<div><p>return 5</p>
-</div></blockquote>
-<p>a = foo()
-print(a)</p>
-<dl>
-<dt>def foo(a):</dt><dd><dl class="simple">
-<dt>if a &lt; 0:</dt><dd><p>return</p>
-</dd>
-</dl>
-<p>return 100 + a</p>
-</dd>
-</dl>
-<p>foo(9)
-foo(-9)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">code</span>
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is function&quot;</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">()</span>
+
+<span class="c1"># 形式参数</span>
+<span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello, &quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">sayHello</span><span class="p">(</span><span class="s2">&quot;andy&quot;</span><span class="p">)</span>
+
+<span class="c1"># 缺省参数</span>
+
+<span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;andy&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello, &quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">sayHello</span><span class="p">()</span>
+
+<span class="c1"># 形式参数&gt;缺省参数&gt;*args&gt;**kwargs</span>
+<span class="c1"># 可变参数</span>
+<span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="o">*</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+
+<span class="n">sayHello</span><span class="p">(</span><span class="s2">&quot;andy&quot;</span><span class="p">,</span> <span class="s2">&quot;tommy&quot;</span><span class="p">)</span>
+
+<span class="c1"># 顺序传参，关键字传参</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b is &quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c is &quot;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="o">**</span><span class="n">names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
+
+<span class="n">sayHello</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;andy&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="c1"># 返回值</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">5</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">foo</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">a</span>
+
+<span class="n">foo</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>作用域
 内建作用域
 全局作用域
 闭包函数外的函数中
 局部作用域</p>
-<p>b = 5</p>
-<dl class="simple">
-<dt>def foo():</dt><dd><p>global b
-b = 1
-print(b)</p>
-</dd>
-</dl>
-<p># 递归函数</p>
-<dl>
-<dt>def factorial(number):</dt><dd><dl class="simple">
-<dt>if not isinstance(number, int) or number &lt;= 0:</dt><dd><p>return</p>
-</dd>
-</dl>
-<p>result = 1
-for n in range(1, number + 1)</p>
-<blockquote>
-<div><p>result <a href="#id24"><span class="problematic" id="id25">*</span></a>= n</p>
-</div></blockquote>
-<p>return result</p>
-</dd>
-</dl>
-<p>factorial(100)</p>
-<dl>
-<dt>def fact(number):</dt><dd><dl class="simple">
-<dt>if number == 1:</dt><dd><p>return number</p>
-</dd>
-</dl>
-<p>return number * fact(number - 1)</p>
-</dd>
-</dl>
-<p># os.walk()
-import os
-from pprint import pprint</p>
-<dl>
-<dt>def walkFolders(folderPath):</dt><dd><p>subFileList = []
-for subFileName in os.listdir(folderPath):</p>
-<blockquote>
-<div><p>subPath = os.path.join(folderPath, subFileName)
-if os.path.isfile(subPath):</p>
-<blockquote>
-<div><p>subFile = {“type”: “file”, “name”: subFileName}
-subFileList.append(subFile)</p>
-</div></blockquote>
-<dl class="simple">
-<dt>else:</dt><dd><p>subFolder = {“type”: “folder”, “name”: subFileName, “subFiles”: walkFolders(subPath)}
-subFileList.append(subFolder)</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>return subFileList</p>
-</dd>
-</dl>
-<p>闭包函数
-闭包函数指的是在函数内定义的内部函数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">b</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
