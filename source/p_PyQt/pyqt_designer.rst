@@ -53,6 +53,8 @@ loadUi
 参考文档
 ------------------
 
-《`PyQt4 Class Reference <https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html>`_》
+* https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html
 
-《`PyQt5 Class Reference <https://doc.bccnsoft.com/docs/PyQt5/class_reference.html>`_》
+* https://doc.bccnsoft.com/docs/PyQt5/class_reference.html
+
+* https://build-system.fman.io/qt-designer-download

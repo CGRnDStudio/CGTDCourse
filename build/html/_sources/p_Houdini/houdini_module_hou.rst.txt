@@ -2,25 +2,25 @@
 Houdini模块：hou
 ==============================
 
-hou模块按类型可以分为子模块（sub-modules）、类（classes）、函数（functions）。
+Houdini中有多少Python模块可以使用，可以通过下面的代码获取。
+
+.. code-block:: python
+
+    >>> help("modules")
+
+从获取的结果可以看出，Python可用的模块不止一个hou，还有其它模块如hutil、toolutils、husd、kramautils等，这些模块在帮助文档中并没有提到，只能从源代码docstring中查询一些帮助。
+
+hou模块按功能可以分为三大类子模块（sub-modules）、类（classes）、函数（functions）。
 
 * 子模块（sub-modules）：首字母小写，不带括号为module，module里面可能又有classes以及functions。
-* 类（classes）：首字母大写，不带括号为class。class必须实例化使用，class的属性以及方法必须通过实例化对象调用。
+* 类（classes）：首字母大写，不带括号为class。class必须实例化使用，实例的属性以及方法必须通过实例化对象调用。
 * 函数（functions）：首字母小写，带括号为function。
-
-Houdini Python API不止一个hou模块，还有其它模块在安装路径$HFS\houdini\python2.7libs，如hutil、toolutils、husd、kramautils等，这些模块在帮助文档中并没有提到，只能从源代码docstring中查询一些帮助。
-
-抑或通过下面三个内置函数的通用心法来使用：
-
-* type() # 查看对象的类型
-* dir() # 查看对象的属性与方法
-* help() # 查看具体方法的帮助
 
 ----------------------
 子模块（sub-modules）
 ----------------------
 
-# hou.hipFile
+* hou.hipFile
 
 .. code-block:: python
 
@@ -38,19 +38,33 @@ Houdini Python API不止一个hou模块，还有其它模块在安装路径$HFS\
     hou.hipFile.save("D:/scene.hip")
     # 将选择节点保存成文件
 
-# hou.session
+* hou.session
+* hou.ui
 
-# hou.ui
+.. code-block:: python
 
-# hou.qt
+    import hou
+
+    hou.ui.displayMessage("Hello world!!!")
+    hou.ui.selectFile(title="Select Obj Directory", file_type=hou.fileType.Directory)
+
+* hou.qt
+* hou.hotkeys
 
 ----------------------
 类（classes）
 ----------------------
 
 * hou.Node
+
+.. code-block:: python
+
+    import hou
+
+    hou.node("/obj").createNode("geo")
+
+
 * hou.Parm
-* hou.Color
 
 ----------------------
 函数（functions）
@@ -78,14 +92,17 @@ Houdini Python API不止一个hou模块，还有其它模块在安装路径$HFS\
     hou.applicationVersion()
     # 获取软件版本字符串
     hou.applicationVersionString()
+    # 
+    hou.saveIndexDataToFile()
 
 -------------------
-一些案例代码
+案例代码
 -------------------
+
+* 获取当前帧范围
 
 .. code-block:: python
 
-    # 获取当前帧范围
     def getFrameRange(**kwargs):
         """
         getFrameRange will return a tuple of (fin, fout)
@@ -95,9 +112,10 @@ Houdini Python API不止一个hou模块，还有其它模块在安装路径$HFS\
         currentIn, currentOut = hou.playbar.playbackRange()
         return (currentIn, currentOut)
 
+* 设置当前帧范围以及帧速率
+
 .. code-block:: python
 
-    # 设置当前帧范围以及帧速率
     def setFrameRange(fin=None, fout=None, **kwargs):
         """
         setFrameRange will set the frame range using `fin` and `fout`
@@ -110,42 +128,10 @@ Houdini Python API不止一个hou模块，还有其它模块在安装路径$HFS\
         hou.script("tset `((%s-1)/$FPS)` `(%s/$FPS)`" % (fin, fout))
         hou.playbar.setPlaybackRange(fin, fout)
 
-help("modules") 查看所有模块
-hou模块可以分为三大类sub-modules、classes、functions
-Python接口不止一个hou模块，还有其它模块 $HFS\houdini\python2.7libs
-hutil、toolutils、husd、kramautils等
+-------------------
+参考文档
+-------------------
 
 https://www.sidefx.com/docs/houdini/hom/index.html
-https://www.sidefx.com/docs/houdini/hom/hou/index.html
 https://www.sidefx.com/docs/houdini/hom/intro.html
-
-hou
-首字母大写，不带括号为class
-class必须实例化使用，class的属性以及方法必须通过实例化对象调用
-首字母小写，不带括号为module，module可能又有class以及function
-首字母小写，带括号为function
-
-函数
-hou.node()
-hou.selectedNodes()
-hou.fileReferences()
-hou.pwd()
-hou.parm()
-hou.homeHoudiniDirectory()
-hou.applicationVersion()
-hou.applicationVersionString()
-hou.homeHoudiniDirectory()
-模块
-hou.hipFile
-hou.session
-hou.ui
-hou.qt
-类
-hou.Node
-hou.Parm
-hou.Color
-
-https://www.sidefx.com/docs/houdini/hom/hou/Node.html
-https://www.sidefx.com/docs/houdini/hom/hou/Parm.html
-https://www.sidefx.com/docs/houdini/hom/hou/hipFile.html
-https://www.sidefx.com/docs/houdini/hom/hou/ui.html
+https://www.sidefx.com/docs/houdini/hom/hou/index.html

@@ -1,3 +1,3 @@
 ==============================
-Houdini Python Panel创建流程
+Houdini Python Panel
 ==============================
