@@ -187,99 +187,91 @@
   <div class="section" id="maya">
 <h1>Maya重命名工具<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
 <p>ls document讲解</p>
-<p>import maya.cmds as cmds</p>
-<dl>
-<dt>def renameTool(pattern, targets):</dt><dd><dl>
-<dt>if not targets:</dt><dd><p>cmds.warning(“Please select at least one object”)
-return None</p>
-</dd>
-<dt>for target in targets:</dt><dd><dl class="simple">
-<dt>if not cmds.objExists(target):</dt><dd><p>cmds.warning(“%s is not exists” % target)
-continue</p>
-</dd>
-</dl>
-<p>print(target)
-cmds.rename(target, pattern)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>rename(“item”, mc.ls(sl=True))</p>
-<p>import maya.cmds as cmds</p>
-<p>NUM_MATCH_SYMBOL = “#”</p>
-<dl>
-<dt>def renameTool(pattern, targets, start=1):</dt><dd><p>“””
-Naming function</p>
-<blockquote>
-<div><p>Arguments :
-pattern - str The naming pattern
-targets - list The need to renaming objects
-start - int The start number (default is 1)</p>
-</div></blockquote>
-<p>“””
-newNameHead = “”
-newNameTail = “”
-# If start is negative, set it to zero
-if start &lt; 0:</p>
-<blockquote>
-<div><p>start = 0</p>
-</div></blockquote>
-<p># Find first sharp symbol position
-# If not found
-position = pattern.find(NUM_MATCH_SYMBOL)
-numberOfSharp = pattern.count(NUM_MATCH_SYMBOL)
-if position &lt; 0:</p>
-<blockquote>
-<div><p>print(“No “#” found, the number will suffix”)
-newNameHead = pattern
-numberOfSharp = 1</p>
-</div></blockquote>
-<dl class="simple">
-<dt>else:</dt><dd><p>newNameHead = pattern.split(NUM_MATCH_SYMBOL)[0]
-newNameTail = “”.join(pattern.split(NUM_MATCH_SYMBOL)[1:])</p>
-</dd>
-</dl>
-<p>counter = start
-for target in targets:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>if not cmds.objExists(target):</dt><dd><p>continue</p>
-</dd>
-</dl>
-<p>newName = newNameHead
-newName += str(counter).zfill(numberOfSharp)
-newName += newNameTail
-cmds.rename(target, newName)
-counter += 1</p>
-</div></blockquote>
-<p>return True</p>
-</dd>
-</dl>
-<p>renameTool(“item_###_grp”, cmds.ls(sl=True), 10)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="k">def</span> <span class="nf">renameTool</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">targets</span><span class="p">:</span>
+        <span class="n">cmds</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Please select at least one object&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cmds</span><span class="o">.</span><span class="n">objExists</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
+            <span class="n">cmds</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> is not exists&quot;</span> <span class="o">%</span> <span class="n">target</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+        <span class="n">cmds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span>
+
+<span class="n">rename</span><span class="p">(</span><span class="s2">&quot;item&quot;</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">sl</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">NUM_MATCH_SYMBOL</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span>
+
+<span class="k">def</span> <span class="nf">renameTool</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Naming function</span>
+<span class="sd">        Arguments :</span>
+<span class="sd">        pattern - str The naming pattern</span>
+<span class="sd">        targets - list The need to renaming objects</span>
+<span class="sd">        start - int The start number (default is 1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">newNameHead</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">newNameTail</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="c1"># If start is negative, set it to zero</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Find first sharp symbol position</span>
+    <span class="c1"># If not found</span>
+    <span class="n">position</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">NUM_MATCH_SYMBOL</span><span class="p">)</span>
+    <span class="n">numberOfSharp</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">NUM_MATCH_SYMBOL</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">position</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No </span><span class="se">\&quot;</span><span class="s2">#</span><span class="se">\&quot;</span><span class="s2"> found, the number will suffix&quot;</span><span class="p">)</span>
+        <span class="n">newNameHead</span> <span class="o">=</span> <span class="n">pattern</span>
+        <span class="n">numberOfSharp</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">newNameHead</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">NUM_MATCH_SYMBOL</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">newNameTail</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">NUM_MATCH_SYMBOL</span><span class="p">)[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cmds</span><span class="o">.</span><span class="n">objExists</span><span class="p">(</span><span class="n">target</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">newName</span> <span class="o">=</span> <span class="n">newNameHead</span>
+        <span class="n">newName</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">numberOfSharp</span><span class="p">)</span>
+        <span class="n">newName</span> <span class="o">+=</span> <span class="n">newNameTail</span>
+        <span class="n">cmds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">newName</span><span class="p">)</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="n">renameTool</span><span class="p">(</span><span class="s2">&quot;item_###_grp&quot;</span><span class="p">,</span> <span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">sl</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>如何写成package使用</p>
 <p>python中执行mel
 mel中执行python</p>
-<p>#!/usr/bin/python
-# -<em>- coding: utf-8 -</em>-</p>
-<dl class="simple">
-<dt>try:</dt><dd><p>from PySide import QtGui
-from PySide import QtCore</p>
-</dd>
-<dt>except ImportError:</dt><dd><p>from PySide2 import QtWidgets as QtGui</p>
-</dd>
-<dt>class Example(QtGui.QDialog):</dt><dd><dl class="simple">
-<dt>def __init__(self, parent=None):</dt><dd><p>super(Example, self).__init__(parent)
-self.initUI()</p>
-</dd>
-<dt>def initUI(self):</dt><dd><p>self.setGeometry(600, 300, 500, 500)
-self.setWindowTitle(“Example”)</p>
-</dd>
-</dl>
-</dd>
-<dt>if __name__ == “__main__”:</dt><dd><p>ex = Example()
-ex.show()</p>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">PySide</span> <span class="kn">import</span> <span class="n">QtGui</span>
+    <span class="kn">from</span> <span class="nn">PySide</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span> <span class="k">as</span> <span class="n">QtGui</span>
+
+
+<span class="k">class</span> <span class="nc">Example</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Example</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initUI</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">initUI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;Example&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">ex</span> <span class="o">=</span> <span class="n">Example</span><span class="p">()</span>
+    <span class="n">ex</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 
 

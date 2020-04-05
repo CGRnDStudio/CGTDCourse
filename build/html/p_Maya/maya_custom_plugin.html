@@ -196,10 +196,12 @@ docstring和注释需要规范</p>
 <p>如何编写一个简单的.py插件工具
 如何在启动的时候
 Maya扩展开发的层级结构</p>
-<p>插件环境变量部署
-# C:Program FilesAutodeskMaya2017moduleshprender.mod
+<p>插件环境变量部署</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># C:\Program Files\Autodesk\Maya2017\modules\hprender.mod</span>
 + hpRender any C:/Users/huweiguo/Documents/.RENDER_ROOT/MayaPlugin/Setup/2017
-PATH +:= bin</p>
+PATH +:<span class="o">=</span> bin
+</pre></div>
+</div>
 <p>PATH +:= bin意味着将路径C:/Users/huweiguo/Documents/.RENDER_ROOT/MayaPlugin/Setup/2017/bin路径添加到PATH环境变量中，这里的加bin文件夹并没有任何作用，可以删除</p>
 <p>扩展开发层级结构</p>
 <p>plug-ins中添加需要加载的插件
@@ -209,81 +211,86 @@ MAYA_PLUG_IN_PATH 插件文件位置
 MAYA_MODULE_PATH mod文件位置
 MAYA_SCRIPT_PATH 脚本文件位置
 XBMLANGPATH 图标文件位置</p>
-<p>Maya.env配置的案例
-MTOAROOT = \servermanagerthirdPartymayamtoa3.1.2.12018</p>
-<p>REDSHIFT_COREDATAPATH = \servermanagerthirdPartymayaRedshift2.5.48</p>
-<p>QAULOTH_PATH = \servermanagerthirdPartymayaQualoth</p>
-<p>REDSHIFT_PLUG_IN_PATH = %REDSHIFT_COREDATAPATH%PluginsMaya2018nt-x86-64
-REDSHIFT_SCRIPT_PATH = %REDSHIFT_COREDATAPATH%PluginsMayaCommonscripts
-REDSHIFT_XBMLANGPATH = %REDSHIFT_COREDATAPATH%PluginsMayaCommonicons
-REDSHIFT_RENDER_DESC_PATH = %REDSHIFT_COREDATAPATH%PluginsMayaCommonrendererDesc
-REDSHIFT_CUSTOM_TEMPLATE_PATH = %REDSHIFT_COREDATAPATH%PluginsMayaCommonscriptsNETemplates
-REDSHIFT_MAYAEXTENSIONSPATH = %REDSHIFT_PLUG_IN_PATH%extensions
-REDSHIFT_PROCEDURALSPATH = %REDSHIFT_COREDATAPATH%Procedurals</p>
-<p>MAYA_MODULE_PATH = %MAYA_MODULE_PATH%;%MTOAROOT%
-PATH = %PATH%;%MTOAROOT%bin;%REDSHIFT_COREDATAPATH%bin
-MAYA_RENDER_DESC_PATH = %MAYA_RENDER_DESC_PATH%;%MTOAROOT%;%REDSHIFT_RENDER_DESC_PATH%
-PYTHONPATH = %PYTHONPATH%;%MTOAROOT%scripts;%REDSHIFT_SCRIPT_PATH%
-solidangle_LICENSE = <a class="reference external" href="mailto:5053&#37;&#52;&#48;farm&#46;do-vfx&#46;com">5053<span>&#64;</span>farm<span>&#46;</span>do-vfx<span>&#46;</span>com</a>
-MAYA_PLUG_IN_PATH = %REDSHIFT_PLUG_IN_PATH%;%QAULOTH_PATH%bin
-MAYA_SCRIPT_PATH = %REDSHIFT_SCRIPT_PATH%;%QAULOTH_PATH%script
-XBMLANGPATH = %REDSHIFT_XBMLANGPATH%
-MAYA_CUSTOM_TEMPLATE_PATH = %REDSHIFT_CUSTOM_TEMPLATE_PATH%</p>
-<p>MAYA_DISABLE_CLIC_IPM = 1</p>
+<p>Maya.env配置的案例</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MTOAROOT</span> <span class="o">=</span> <span class="se">\\</span>server<span class="se">\m</span>anager<span class="se">\t</span>hirdParty<span class="se">\m</span>aya<span class="se">\m</span>toa<span class="se">\3</span>.1.2.1<span class="se">\2</span><span class="m">018</span>
+
+<span class="nv">REDSHIFT_COREDATAPATH</span> <span class="o">=</span> <span class="se">\\</span>server<span class="se">\m</span>anager<span class="se">\t</span>hirdParty<span class="se">\m</span>aya<span class="se">\R</span>edshift<span class="se">\2</span>.5.48
+
+<span class="nv">QAULOTH_PATH</span> <span class="o">=</span> <span class="se">\\</span>server<span class="se">\m</span>anager<span class="se">\t</span>hirdParty<span class="se">\m</span>aya<span class="se">\Q</span>ualoth
+
+<span class="nv">REDSHIFT_PLUG_IN_PATH</span> <span class="o">=</span> %REDSHIFT_COREDATAPATH%<span class="se">\P</span>lugins<span class="se">\M</span>aya<span class="se">\2</span><span class="m">018</span><span class="se">\n</span>t-x86-64
+<span class="nv">REDSHIFT_SCRIPT_PATH</span> <span class="o">=</span> %REDSHIFT_COREDATAPATH%<span class="se">\P</span>lugins<span class="se">\M</span>aya<span class="se">\C</span>ommon<span class="se">\s</span>cripts
+<span class="nv">REDSHIFT_XBMLANGPATH</span> <span class="o">=</span> %REDSHIFT_COREDATAPATH%<span class="se">\P</span>lugins<span class="se">\M</span>aya<span class="se">\C</span>ommon<span class="se">\i</span>cons
+<span class="nv">REDSHIFT_RENDER_DESC_PATH</span> <span class="o">=</span> %REDSHIFT_COREDATAPATH%<span class="se">\P</span>lugins<span class="se">\M</span>aya<span class="se">\C</span>ommon<span class="se">\r</span>endererDesc
+<span class="nv">REDSHIFT_CUSTOM_TEMPLATE_PATH</span> <span class="o">=</span> %REDSHIFT_COREDATAPATH%<span class="se">\P</span>lugins<span class="se">\M</span>aya<span class="se">\C</span>ommon<span class="se">\s</span>cripts<span class="se">\N</span>ETemplates
+<span class="nv">REDSHIFT_MAYAEXTENSIONSPATH</span> <span class="o">=</span> %REDSHIFT_PLUG_IN_PATH%<span class="se">\e</span>xtensions
+<span class="nv">REDSHIFT_PROCEDURALSPATH</span> <span class="o">=</span> %REDSHIFT_COREDATAPATH%<span class="se">\P</span>rocedurals
+
+<span class="nv">MAYA_MODULE_PATH</span> <span class="o">=</span> %MAYA_MODULE_PATH%<span class="p">;</span>%MTOAROOT%
+<span class="nv">PATH</span> <span class="o">=</span> %PATH%<span class="p">;</span>%MTOAROOT%<span class="se">\b</span>in<span class="p">;</span>%REDSHIFT_COREDATAPATH%<span class="se">\b</span>in
+<span class="nv">MAYA_RENDER_DESC_PATH</span> <span class="o">=</span> %MAYA_RENDER_DESC_PATH%<span class="p">;</span>%MTOAROOT%<span class="p">;</span>%REDSHIFT_RENDER_DESC_PATH%
+<span class="nv">PYTHONPATH</span> <span class="o">=</span> %PYTHONPATH%<span class="p">;</span>%MTOAROOT%<span class="se">\s</span>cripts<span class="p">;</span>%REDSHIFT_SCRIPT_PATH%
+<span class="nv">solidangle_LICENSE</span> <span class="o">=</span> <span class="m">5053</span>@farm.do-vfx.com
+<span class="nv">MAYA_PLUG_IN_PATH</span> <span class="o">=</span> %REDSHIFT_PLUG_IN_PATH%<span class="p">;</span>%QAULOTH_PATH%<span class="se">\b</span>in
+<span class="nv">MAYA_SCRIPT_PATH</span> <span class="o">=</span> %REDSHIFT_SCRIPT_PATH%<span class="p">;</span>%QAULOTH_PATH%<span class="se">\s</span>cript
+<span class="nv">XBMLANGPATH</span> <span class="o">=</span> %REDSHIFT_XBMLANGPATH%
+<span class="nv">MAYA_CUSTOM_TEMPLATE_PATH</span> <span class="o">=</span> %REDSHIFT_CUSTOM_TEMPLATE_PATH%
+
+<span class="nv">MAYA_DISABLE_CLIC_IPM</span> <span class="o">=</span> <span class="m">1</span>
+</pre></div>
+</div>
 <p>来看下如何写个py的插件到插件管理器吧，分两步
 注册插件
 C:UsershuweiguoDocuments.RENDER_ROOTMayaPluginSetup2017plug-ins
 hpRender.py</p>
 <p>如何创建自定义菜单</p>
-<p>#!/usr/bin/python
-# -<em>- coding: utf-8 -</em>-</p>
-<p>“””
-Custom menu plug-in
-“””</p>
-<p>import os
-import sys</p>
-<p>import maya.cmds as cmds
-import maya.mel as mel
-import maya.OpenMayaMPx as omm</p>
-<dl>
-<dt>def initializePlugin(mobject):</dt><dd><p>“””
-Initialize the script plug-in
-“””
-mPlugin = omm.MFnPlugin(mobject, “tdUtils”, “1.0”, “any”)</p>
-<dl class="simple">
-<dt>if cmds.menu(“menuTD”, exists=1):</dt><dd><p>cmds.deleteUI(“menuTD”, menu=1)</p>
-</dd>
-</dl>
-<p>gMainWindow = mel.eval(“global string $gMainWindow;$temp = $gMainWindow”)
-cmds.menu(“menuTD”, label=”TD Tools”, parent=gMainWindow,</p>
-<blockquote>
-<div><p>tearOff=1, allowOptionBoxes=1)</p>
-</div></blockquote>
-<p>cmds.menuItem(dividerLabel=”General”, divider=True)
-cmds.menuItem(label=”Submit To Deadline”, parent=”menuTD”,</p>
-<blockquote>
-<div><p>command=”print(100)”)</p>
-</div></blockquote>
-<p>cmds.menuItem(dividerLabel=”Step”, divider=True)
-cmds.menuItem(“menuRIG”, label=”RIG”, parent=”menuTD”,</p>
-<blockquote>
-<div><p>subMenu=True, tearOff=True)</p>
-</div></blockquote>
-<dl class="simple">
-<dt>cmds.menuItem(label=”Select Skin Joint”, parent=”menuRIG”,</dt><dd><p>command=”print(100)”)</p>
-</dd>
-</dl>
-</dd>
-<dt>def uninitializePlugin(mobject):</dt><dd><p>“””
-Uninitialize the script plug-in
-“””
-mPlugin = omm.MFnPlugin(mobject)</p>
-<dl class="simple">
-<dt>if cmds.menu(“menuTD”, exists=1):</dt><dd><p>cmds.deleteUI(“menuTD”, menu=1)</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Custom menu plug-in</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="kn">import</span> <span class="nn">maya.mel</span> <span class="k">as</span> <span class="nn">mel</span>
+<span class="kn">import</span> <span class="nn">maya.OpenMayaMPx</span> <span class="k">as</span> <span class="nn">omm</span>
+
+
+<span class="k">def</span> <span class="nf">initializePlugin</span><span class="p">(</span><span class="n">mobject</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Initialize the script plug-in</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">mPlugin</span> <span class="o">=</span> <span class="n">omm</span><span class="o">.</span><span class="n">MFnPlugin</span><span class="p">(</span><span class="n">mobject</span><span class="p">,</span> <span class="s2">&quot;tdUtils&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="s2">&quot;any&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">cmds</span><span class="o">.</span><span class="n">menu</span><span class="p">(</span><span class="s2">&quot;menuTD&quot;</span><span class="p">,</span> <span class="n">exists</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">cmds</span><span class="o">.</span><span class="n">deleteUI</span><span class="p">(</span><span class="s2">&quot;menuTD&quot;</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">gMainWindow</span> <span class="o">=</span> <span class="n">mel</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;global string $gMainWindow;$temp = $gMainWindow&quot;</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">menu</span><span class="p">(</span><span class="s2">&quot;menuTD&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;TD Tools&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">gMainWindow</span><span class="p">,</span>
+            <span class="n">tearOff</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">allowOptionBoxes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">menuItem</span><span class="p">(</span><span class="n">dividerLabel</span><span class="o">=</span><span class="s2">&quot;General&quot;</span><span class="p">,</span> <span class="n">divider</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">menuItem</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Submit To Deadline&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="s2">&quot;menuTD&quot;</span><span class="p">,</span>
+                <span class="n">command</span><span class="o">=</span><span class="s2">&quot;print(100)&quot;</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">menuItem</span><span class="p">(</span><span class="n">dividerLabel</span><span class="o">=</span><span class="s2">&quot;Step&quot;</span><span class="p">,</span> <span class="n">divider</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">menuItem</span><span class="p">(</span><span class="s2">&quot;menuRIG&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;RIG&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="s2">&quot;menuTD&quot;</span><span class="p">,</span>
+                <span class="n">subMenu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">tearOff</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">menuItem</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Select Skin Joint&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="s2">&quot;menuRIG&quot;</span><span class="p">,</span>
+                <span class="n">command</span><span class="o">=</span><span class="s2">&quot;print(100)&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">uninitializePlugin</span><span class="p">(</span><span class="n">mobject</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Uninitialize the script plug-in</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">mPlugin</span> <span class="o">=</span> <span class="n">omm</span><span class="o">.</span><span class="n">MFnPlugin</span><span class="p">(</span><span class="n">mobject</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">cmds</span><span class="o">.</span><span class="n">menu</span><span class="p">(</span><span class="s2">&quot;menuTD&quot;</span><span class="p">,</span> <span class="n">exists</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">cmds</span><span class="o">.</span><span class="n">deleteUI</span><span class="p">(</span><span class="s2">&quot;menuTD&quot;</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>sys.path模块导入机制
 import hpMayaClient
 reload(hpMayaClient)
@@ -312,58 +319,73 @@ PySide &amp; PyQt4
 PySide2 &amp; PyQt5
 PyQt4和PyQt5 uic
 pyside-uic</p>
-<p># Maya Dialog
-import sys
-import maya.OpenMayaUI as omui
-from PySide2 import QtCore
-from PySide2 import QtWidgets
-from shiboken2 import wrapInstance</p>
-<p>path = “D:/2019/centralizeTools/houdini/scripts/python”</p>
-<p>path in sys.path or sys.path.insert(0, path)
-from houQt import mainDialog</p>
-<dl class="simple">
-<dt>def _get_maya_main_window():</dt><dd><p>pointer = omui.MQtUtil.mainWindow()
-return wrapInstance(long(pointer), QtWidgets.QWidget)</p>
-</dd>
-<dt>class WindowA(QtWidgets.QDialog, mainDialog.Ui_Dialog):</dt><dd><dl class="simple">
-<dt>def __init__(self, parent=None):</dt><dd><p>super(WindowA, self).__init__(parent)
-self.setupUi(self)</p>
-</dd>
-</dl>
-</dd>
-<dt>def show():</dt><dd><p>dialog = WindowA(_get_maya_main_window())
-dialog.show()</p>
-</dd>
-<dt>if __name__ == “__main__”:</dt><dd><p>show()</p>
-</dd>
-</dl>
-<p># Maya Main Window
-import sys
-import maya.OpenMayaUI as omui
-from PySide2 import QtCore
-from PySide2 import QtWidgets
-from shiboken2 import wrapInstance</p>
-<p>path = “D:/2019/centralizeTools/houdini/scripts/python”</p>
-<p>path in sys.path or sys.path.insert(0, path)
-from houQt import mainWin</p>
-<dl class="simple">
-<dt>def _get_maya_main_window():</dt><dd><p>pointer = omui.MQtUtil.mainWindow()
-return wrapInstance(long(pointer), QtWidgets.QWidget)</p>
-</dd>
-<dt>class WindowB(QtWidgets.QMainWindow, mainWin.Ui_MainWindow):</dt><dd><dl class="simple">
-<dt>def __init__(self, parent=None):</dt><dd><p>super(WindowB, self).__init__(parent)
-self.setupUi(self)</p>
-</dd>
-</dl>
-</dd>
-<dt>def show():</dt><dd><p>dialog = WindowB(_get_maya_main_window())
-dialog.show()</p>
-</dd>
-<dt>if __name__ == “__main__”:</dt><dd><p>show()</p>
-</dd>
-<dt>if cmds.window(WINDOW_NAME, exists=True, q=True):</dt><dd><p>cmds.deleteUI(WINDOW_NAME)</p>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Maya Dialog</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">maya.OpenMayaUI</span> <span class="k">as</span> <span class="nn">omui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+<span class="kn">from</span> <span class="nn">shiboken2</span> <span class="kn">import</span> <span class="n">wrapInstance</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;D:/2019/centralizeTools/houdini/scripts/python&quot;</span>
+
+<span class="n">path</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">houQt</span> <span class="kn">import</span> <span class="n">mainDialog</span>
+
+
+<span class="k">def</span> <span class="nf">_get_maya_main_window</span><span class="p">():</span>
+    <span class="n">pointer</span> <span class="o">=</span> <span class="n">omui</span><span class="o">.</span><span class="n">MQtUtil</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">wrapInstance</span><span class="p">(</span><span class="n">long</span><span class="p">(</span><span class="n">pointer</span><span class="p">),</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QWidget</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">WindowA</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">,</span> <span class="n">mainDialog</span><span class="o">.</span><span class="n">Ui_Dialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">WindowA</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+    <span class="n">dialog</span> <span class="o">=</span> <span class="n">WindowA</span><span class="p">(</span><span class="n">_get_maya_main_window</span><span class="p">())</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Maya Main Window</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">maya.OpenMayaUI</span> <span class="k">as</span> <span class="nn">omui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+<span class="kn">from</span> <span class="nn">shiboken2</span> <span class="kn">import</span> <span class="n">wrapInstance</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;D:/2019/centralizeTools/houdini/scripts/python&quot;</span>
+
+<span class="n">path</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">houQt</span> <span class="kn">import</span> <span class="n">mainWin</span>
+
+
+<span class="k">def</span> <span class="nf">_get_maya_main_window</span><span class="p">():</span>
+    <span class="n">pointer</span> <span class="o">=</span> <span class="n">omui</span><span class="o">.</span><span class="n">MQtUtil</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">wrapInstance</span><span class="p">(</span><span class="n">long</span><span class="p">(</span><span class="n">pointer</span><span class="p">),</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QWidget</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">WindowB</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">,</span> <span class="n">mainWin</span><span class="o">.</span><span class="n">Ui_MainWindow</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">WindowB</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+    <span class="n">dialog</span> <span class="o">=</span> <span class="n">WindowB</span><span class="p">(</span><span class="n">_get_maya_main_window</span><span class="p">())</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">cmds</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">WINDOW_NAME</span><span class="p">,</span> <span class="n">exists</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">cmds</span><span class="o">.</span><span class="n">deleteUI</span><span class="p">(</span><span class="n">WINDOW_NAME</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 

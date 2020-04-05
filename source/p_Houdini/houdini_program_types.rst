@@ -27,23 +27,26 @@ C++
 
 
 切换场景自动与手动更新工具架工具
-def autoUpdate():
-    """ Switch current auto update status
-    """
-    VIEW_UPDATE = "viewupdate %s %s.%s.world"
-    currentDesktop = hou.ui.curDesktop()
-    desktopName = currentDesktop.name()
-    paneType = hou.paneTabType.SceneViewer
-    paneTabName = currentDesktop.paneTabOfType(paneType).name()
-    currentStatus = hou.hscript(VIEW_UPDATE % ("-c", desktopName, paneTabName))
-    currentStatus = str(currentStatus)
-    currentStatus = currentStatus[:-8]
-    currentStatus = currentStatus[+16:]
 
-    if currentStatus == "always":
-        hou.hscript(VIEW_UPDATE % ("-u never", desktopName, paneTabName))
-    else:
-        hou.hscript(VIEW_UPDATE % ("-u always", desktopName, paneTabName))
+.. code-block:: python
+
+    def autoUpdate():
+        """ Switch current auto update status
+        """
+        VIEW_UPDATE = "viewupdate %s %s.%s.world"
+        currentDesktop = hou.ui.curDesktop()
+        desktopName = currentDesktop.name()
+        paneType = hou.paneTabType.SceneViewer
+        paneTabName = currentDesktop.paneTabOfType(paneType).name()
+        currentStatus = hou.hscript(VIEW_UPDATE % ("-c", desktopName, paneTabName))
+        currentStatus = str(currentStatus)
+        currentStatus = currentStatus[:-8]
+        currentStatus = currentStatus[+16:]
+
+        if currentStatus == "always":
+            hou.hscript(VIEW_UPDATE % ("-u never", desktopName, paneTabName))
+        else:
+            hou.hscript(VIEW_UPDATE % ("-u always", desktopName, paneTabName))
 
 
 Houdini Desktop设置 存储 默认启动 环境变量配置
@@ -53,24 +56,24 @@ Houdini Desktop设置 存储 默认启动 环境变量配置
 
 For-Each Point
 
+.. code-block:: python
 
+    import os
 
-import os
+    objectsPath = hou.node(".").parm("import").eval()
 
-objectsPath = hou.node(“.”).parm(“import”).eval()
+    folder = os.listdir(objectsPath)
 
-folder = os.listdir(objectsPath)
+    print(folder)
 
-print(folder)
+    rootNode = hou.node("../python_test")
+    grid = rootNode.createNode("grid")
+    wrangler = rootNode.createNode("attrbwrangle")
+    wrangler.setInput(0, grid)
 
-rootNode = hou.node(“../python_test”)
-grid = rootNode.createNode(“grid”)
-wrangler = rootNode.createNode(“attrbwrangle”)
-wrangler.setInput(0, grid)
+    switch = rootNode.create("switch")
+    copy = rootNode.createNode("copytopoints")
+    blockBegin = rootNode.createNode("block_begin", "begin")
+    blockBegin
 
-switch = rootNode.create(“switch”)
-copy = rootNode.createNode(“copytopoints”)
-blockBegin = rootNode.createNode(“block_begin”, “begin”)
-blockBegin
-
-blockEnd = rootNode.createNode(“block_end”, “end”)
+    blockEnd = rootNode.createNode("block_end", "end")

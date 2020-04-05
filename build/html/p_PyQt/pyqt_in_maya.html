@@ -275,59 +275,59 @@
     <span class="n">ex</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>from PySide2 import QtGui
-from PySide2 import QtCore
-from PySide2 import QtWidgets
-import maya.cmds as cmds
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
 
-from PySide2.QtWidgets import *
-# 命名污染
+<span class="kn">from</span> <span class="nn">PySide2.QtWidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1"># 命名污染</span>
 
-from shiboken2 import wrapInstance
+<span class="kn">from</span> <span class="nn">shiboken2</span> <span class="kn">import</span> <span class="n">wrapInstance</span>
 
-import maya.OpenMayaUI as omui
+<span class="kn">import</span> <span class="nn">maya.OpenMayaUI</span> <span class="k">as</span> <span class="nn">omui</span>
 
-def getMayaMainWin():
-    pointer = omui.MQtUtil.mainWindow()
-    return wrapInstance(long(pointer), QtWidgets.QWidget)
+<span class="k">def</span> <span class="nf">getMayaMainWin</span><span class="p">():</span>
+    <span class="n">pointer</span> <span class="o">=</span> <span class="n">omui</span><span class="o">.</span><span class="n">MQtUtil</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">wrapInstance</span><span class="p">(</span><span class="n">long</span><span class="p">(</span><span class="n">pointer</span><span class="p">),</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QWidget</span><span class="p">)</span>
 
-mayaWindow = getMayaMainWin()
-mayaWindow.setWindowOpacity(1)
+<span class="n">mayaWindow</span> <span class="o">=</span> <span class="n">getMayaMainWin</span><span class="p">()</span>
+<span class="n">mayaWindow</span><span class="o">.</span><span class="n">setWindowOpacity</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-class MyWindow(QtWidgets.QDialog):
-    def __init__(self, parent=getMayaMainWin()):
-        super(MyWindow, self).__init__(parent)
-        self.initUI()
+<span class="k">class</span> <span class="nc">MyWindow</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">getMayaMainWin</span><span class="p">()):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyWindow</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initUI</span><span class="p">()</span>
 
-    def initUI(self):
-        self.setWindowTitle(&quot;My Custom Window&quot;)
-        self.setMinimumSize(QSize(360, 240))
-        mainLayout = QtWidgets.QVBoxLayout()
-        titleLabel = QLabel(&quot;Control Window&quot;)
-        nameText = QLineEdit()
-        execButton = QPushButton(&quot;Do It!&quot;)
-        mainLayout.addWidget(titleLabel)
-        mainLayout.addWidget(nameText)
-        mainLayout.addWidget(execButton)
-        self.setLayout(mainLayout)
+    <span class="k">def</span> <span class="nf">initUI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;My Custom Window&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumSize</span><span class="p">(</span><span class="n">QSize</span><span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="mi">240</span><span class="p">))</span>
+        <span class="n">mainLayout</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="n">titleLabel</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Control Window&quot;</span><span class="p">)</span>
+        <span class="n">nameText</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">()</span>
+        <span class="n">execButton</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Do It!&quot;</span><span class="p">)</span>
+        <span class="n">mainLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">titleLabel</span><span class="p">)</span>
+        <span class="n">mainLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">nameText</span><span class="p">)</span>
+        <span class="n">mainLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">execButton</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">mainLayout</span><span class="p">)</span>
 
-        execButton.clicked.connect(self.createCube)
+        <span class="n">execButton</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">createCube</span><span class="p">)</span>
 
-    def createCube(self):
-        userInput = nameText.text()
-        if not userInput:
-            print(&quot;Please enter cube name!&quot;)
-            return 0
-        cubeName = cmds.polyCube?????
-        print(&quot;%s has been created&quot; % cubeName)
+    <span class="k">def</span> <span class="nf">createCube</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">userInput</span> <span class="o">=</span> <span class="n">nameText</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">userInput</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please enter cube name!&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">cubeName</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">polyCube</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> has been created&quot;</span> <span class="o">%</span> <span class="n">cubeName</span><span class="p">)</span>
 
-if &quot;myWin&quot; in globals():
-    print(&quot;myWin is exists, close it first!&quot;)
-    myWin.deleteLater()
-    del mywin
+<span class="k">if</span> <span class="s2">&quot;myWin&quot;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;myWin is exists, close it first!&quot;</span><span class="p">)</span>
+    <span class="n">myWin</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span>
+    <span class="k">del</span> <span class="n">mywin</span>
 
-myWin = MyWindow()
-myWin.show()
+<span class="n">myWin</span> <span class="o">=</span> <span class="n">MyWindow</span><span class="p">()</span>
+<span class="n">myWin</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>理解类继承

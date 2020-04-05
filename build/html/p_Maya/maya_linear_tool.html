@@ -186,7 +186,6 @@
             
   <div class="section" id="maya">
 <h1>Maya线性工作流工具<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>坐井观天：本节知识点</p>
 <p>核心思想
 数据类型，对应的特性，属性与方法
 listAttr getAttr setAttr
@@ -207,59 +206,74 @@ import pymel.core as pm
 Python API 1.0
 Python API 2.0
 C++ API</p>
-<p>检测插件&amp;加载插件
-import pymel.core as pm</p>
-<dl>
-<dt>if “mtoa” not in pm.pluginInfo(query=True, listPlugins=True):</dt><dd><dl class="simple">
-<dt>try:</dt><dd><p>pm.loadPlugin(“mtoa”)</p>
-</dd>
-<dt>except:</dt><dd><p>pm.error(“Fail to Load Arnold Render!!”)</p>
-</dd>
-</dl>
-<p>pm.PyNode(“defaultRenderGlobals”).currentRender.set(“arnold”)</p>
-</dd>
-</dl>
+<p>检测插件&amp;加载插件</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+
+<span class="k">if</span> <span class="s2">&quot;mtoa&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pm</span><span class="o">.</span><span class="n">pluginInfo</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">listPlugins</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pm</span><span class="o">.</span><span class="n">loadPlugin</span><span class="p">(</span><span class="s2">&quot;mtoa&quot;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">pm</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Fail to Load Arnold Render!!&quot;</span><span class="p">)</span>
+    <span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="s2">&quot;defaultRenderGlobals&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">currentRender</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;arnold&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p><a class="reference external" href="https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html">https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html</a></p>
-<p>from pprint import pprint
-import pymel.core as pm</p>
-<p># 返回所有节点
-pprint(pm.ls())
-# 实例化节点
-renderGlobals = pm.PyNode(“defaultRenderGlobals”)
-attrs = renderGlobals.listAttr()
-pprint(attrs)</p>
-<p>print(type(renderGlobals.currnetRenderer))
-print(dir(renderGlobals.currnetRenderer))
-renderGlobals.setAttr(“currentRendererer”, “arnold”)
-renderGlobals.currentRenderer.set(“arnold”)
-pm.setAttr(“defaultRenderGlobals.currentRenderer”, “arnold”)
-pm.PyNode(“defaultRenderGlobals.currentRenderer”).set(“arnold”)</p>
-<p>aiOptions = pm.PyNode(“defaultArnoldRenderOptions”)</p>
-<p># defaultRenderGlobals
-# defaultArnoldRenderOptions
-# defaultArnoldFilter
-# defaultArnoldDriver</p>
-<p>pm.PyNode(“defaultRenderGlobals.animation”).set(True)</p>
-<p>import maya.cmds as cmds
-# cmEnabled
-# renderingSpaceName
-# viewTransformName
-# defaultInputSpaceName
-# colorManagePots
-cmds.colorManagementPrefs(e=True, parm=value)</p>
-<p># 软件版本的兼容性
-import pymel.core as pm</p>
-<p>print(pm.about(version=True))</p>
-<p>import sys
-path = “D:/”
-path in sys.path or sys.path.insert(0, path)
-print(sys.path)</p>
-<p>from renderTools import linearWorkflowCheck
-reload(linearWorkflowCheck)
-linearWorkflowCheck.maya_ui()</p>
-<p>from pprint import pprint
-import maya.cmds as cmds</p>
-<p>pprint(cmds.file(query = True, list = True, withoutCopyNumber = True))</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+
+<span class="c1"># 返回所有节点</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">pm</span><span class="o">.</span><span class="n">ls</span><span class="p">())</span>
+<span class="c1"># 实例化节点</span>
+<span class="n">renderGlobals</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="s2">&quot;defaultRenderGlobals&quot;</span><span class="p">)</span>
+<span class="n">attrs</span> <span class="o">=</span> <span class="n">renderGlobals</span><span class="o">.</span><span class="n">listAttr</span><span class="p">()</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">renderGlobals</span><span class="o">.</span><span class="n">currnetRenderer</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">renderGlobals</span><span class="o">.</span><span class="n">currnetRenderer</span><span class="p">))</span>
+<span class="n">renderGlobals</span><span class="o">.</span><span class="n">setAttr</span><span class="p">(</span><span class="s2">&quot;currentRendererer&quot;</span><span class="p">,</span> <span class="s2">&quot;arnold&quot;</span><span class="p">)</span>
+<span class="n">renderGlobals</span><span class="o">.</span><span class="n">currentRenderer</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;arnold&quot;</span><span class="p">)</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">setAttr</span><span class="p">(</span><span class="s2">&quot;defaultRenderGlobals.currentRenderer&quot;</span><span class="p">,</span> <span class="s2">&quot;arnold&quot;</span><span class="p">)</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="s2">&quot;defaultRenderGlobals.currentRenderer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;arnold&quot;</span><span class="p">)</span>
+
+<span class="n">aiOptions</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="s2">&quot;defaultArnoldRenderOptions&quot;</span><span class="p">)</span>
+
+<span class="c1"># defaultRenderGlobals</span>
+<span class="c1"># defaultArnoldRenderOptions</span>
+<span class="c1"># defaultArnoldFilter</span>
+<span class="c1"># defaultArnoldDriver</span>
+
+<span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="s2">&quot;defaultRenderGlobals.animation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="c1"># cmEnabled</span>
+<span class="c1"># renderingSpaceName</span>
+<span class="c1"># viewTransformName</span>
+<span class="c1"># defaultInputSpaceName</span>
+<span class="c1"># colorManagePots</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">colorManagementPrefs</span><span class="p">(</span><span class="n">e</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parm</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+
+
+<span class="c1"># 软件版本的兼容性</span>
+<span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pm</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;D:/&quot;</span>
+<span class="n">path</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">renderTools</span> <span class="kn">import</span> <span class="n">linearWorkflowCheck</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">linearWorkflowCheck</span><span class="p">)</span>
+<span class="n">linearWorkflowCheck</span><span class="o">.</span><span class="n">maya_ui</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">cmds</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">query</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">withoutCopyNumber</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
 </div>
 
 

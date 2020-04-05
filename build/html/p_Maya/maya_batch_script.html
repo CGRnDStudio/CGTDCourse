@@ -186,14 +186,12 @@
             
   <div class="section" id="maya">
 <h1>Maya命令行脚本<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>坐井观天：本节知识点</p>
 <p>mayapy
 mayabatch
 maya
 render
 arnold kick</p>
-<p>管中窥豹：延伸阅读
-<a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2017/ENU/">http://help.autodesk.com/view/MAYAUL/2017/ENU/</a></p>
+<p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2017/ENU/">http://help.autodesk.com/view/MAYAUL/2017/ENU/</a></p>
 <p>在命令行窗口检测Maya文件贴图数据是否丢失工具</p>
 <p>工作原理</p>
 <p>“C:Program FilesAutodeskMaya2016binmayapy.exe” -h</p>
@@ -204,75 +202,79 @@ print(sys.argv)</p>
 <p>模块文件后面跟的额外参数会以字符串的形式通过sys.argv打包成列表，这样我们可以传入一个Maya文件来分析贴图数据，效果是这样的</p>
 <p>命令行命令
 “C:Program FilesAutodeskMaya2016binmayapy.exe” D:centralizeToolsmayaenv2018scriptscheckToolsrelationship_check.py Z:YYDTENNProductionDepartmentLGTEP01sc006YY_CG_sc006_lgt_color_v001_01.ma</p>
-<p>#!/usr/bin/python
-# -<em>- coding: utf-8 -</em>-</p>
-<p>“””
-This standalone maya script can be check out reference &amp; texture relationship
-“””</p>
-<p>import os
-import sys
-import logging
-import maya.standalone
-import maya.cmds as cmds
-maya.standalone.initialize()</p>
-<p># logging.basicConfig(level=logging.WARNING, format=”nandy%(asctime)s - %(levelname)s - %(message)sn”)
-logging.basicConfig(format=”%(asctime)s %(levelname)-8s %(message)s”,</p>
-<blockquote>
-<div><p>level=logging.WARNING, datefmt=”%Y-%m-%d %H:%M:%S”)</p>
-</div></blockquote>
-<dl>
-<dt>def main(check_maya_file):</dt><dd><dl class="simple">
-<dt>if not os.path.isfile(check_maya_file):</dt><dd><p>logging.warning(“Failed because Maya file was not found! - %s” % check_maya_file)</p>
-</dd>
-</dl>
-<p>logging.info(“START CHECK - %s” % check_maya_file)
-cmds.file(check_maya_file, open=True, pmt=False)
-logging.info(“# Maya Version : %s” % cmds.about(v=True))
-# logging.info(“# Arnold Version : %s” % cmds.pluginInfo(“mtoa”, q=True, v=True))</p>
-<p># Check reference relationship
-for ref in cmds.file(q=True, r=True):</p>
-<blockquote>
-<div><p>refNode = cmds.referenceQuery(ref, referenceNode=True)
-logging.info(“Check reference : %s” % refNode)
-# referenced_file = cmds.referenceQuery(reference, f=True, wcn=True)
-logging.info(“Check reference path - %s” % ref)</p>
-<dl class="simple">
-<dt>if not os.path.isfile(ref):</dt><dd><p>logging.error(“[!] The reference was not exists! : %s” % ref)</p>
-</dd>
-<dt>if not cmds.referenceQuery(refNode, isLoaded=True):</dt><dd><p>logging.error(“[!] The reference was not loaded! : %s” % refNode)</p>
-</dd>
-</dl>
-<p>logging.info(“&gt; Check OK .”)</p>
-</div></blockquote>
-<p># Try to get “PROJECTWORKS” environment variable
-projectworks = os.environ.get(“PROJECTWORKS”, 0)</p>
-<dl class="simple">
-<dt>if not projectworks:</dt><dd><p>logging.error(“The environment variable - “PROJECTWORKS” is undefined! Please to check out Maya.env file.”)</p>
-</dd>
-</dl>
-<p># Check texture file
-for texture in cmds.ls(type=”file”):</p>
-<blockquote>
-<div><p>logging.info(“Check Textures - %s” % texture)
-tex_name = cmds.getAttr(texture + “.fileTextureName”)</p>
-<dl class="simple">
-<dt>if not tex_name:</dt><dd><p>logging.warning(“The %s is no texture.” % texture)
-continue</p>
-</dd>
-</dl>
-<p>logging.info(“Check Texture Path - %s” % tex_name)</p>
-<dl class="simple">
-<dt>if tex_name.startswith(“$”):</dt><dd><p>replace_name = tex_name.replace(“$PROJECTWORKS”, projectworks)
-tex_name = replace_name</p>
-</dd>
-<dt>if not os.path.isfile(tex_name):</dt><dd><p>logging.warning(“The texture was not found! - %s” % tex_name)</p>
-</dd>
-</dl>
-</div></blockquote>
-</dd>
-<dt>if __name__ == “__main__”:</dt><dd><p>main(sys.argv[1])</p>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This standalone maya script can be check out reference &amp; texture relationship</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">maya.standalone</span>
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="n">maya</span><span class="o">.</span><span class="n">standalone</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<span class="c1"># logging.basicConfig(level=logging.WARNING, format=&quot;\nandy%(asctime)s - %(levelname)s - %(message)s\n&quot;)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> </span><span class="si">%(levelname)-8s</span><span class="s2"> </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span> <span class="n">datefmt</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">check_maya_file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">check_maya_file</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed because Maya file was not found! - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">check_maya_file</span><span class="p">)</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;START CHECK - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">check_maya_file</span><span class="p">)</span>
+    <span class="n">cmds</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">check_maya_file</span><span class="p">,</span> <span class="nb">open</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pmt</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;# Maya Version : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">cmds</span><span class="o">.</span><span class="n">about</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="c1"># logging.info(&quot;# Arnold Version : %s&quot; % cmds.pluginInfo(&quot;mtoa&quot;, q=True, v=True))</span>
+
+    <span class="c1"># Check reference relationship</span>
+    <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">cmds</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">refNode</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">referenceQuery</span><span class="p">(</span><span class="n">ref</span><span class="p">,</span> <span class="n">referenceNode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Check reference : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">refNode</span><span class="p">)</span>
+        <span class="c1"># referenced_file = cmds.referenceQuery(reference, f=True, wcn=True)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Check reference path - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ref</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">ref</span><span class="p">):</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;[!] The reference was not exists! : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ref</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cmds</span><span class="o">.</span><span class="n">referenceQuery</span><span class="p">(</span><span class="n">refNode</span><span class="p">,</span> <span class="n">isLoaded</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;[!] The reference was not loaded! : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">refNode</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&gt; Check OK .&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Try to get &quot;PROJECTWORKS&quot; environment variable</span>
+    <span class="n">projectworks</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PROJECTWORKS&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">projectworks</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;The environment variable - </span><span class="se">\&quot;</span><span class="s2">PROJECTWORKS</span><span class="se">\&quot;</span><span class="s2"> is undefined! Please to check out Maya.env file.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check texture file</span>
+    <span class="k">for</span> <span class="n">texture</span> <span class="ow">in</span> <span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">):</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Check Textures - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">texture</span><span class="p">)</span>
+        <span class="n">tex_name</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">getAttr</span><span class="p">(</span><span class="n">texture</span> <span class="o">+</span> <span class="s2">&quot;.fileTextureName&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tex_name</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;The </span><span class="si">%s</span><span class="s2"> is no texture.&quot;</span> <span class="o">%</span> <span class="n">texture</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Check Texture Path - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tex_name</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">tex_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">):</span>
+            <span class="n">replace_name</span> <span class="o">=</span> <span class="n">tex_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;$PROJECTWORKS&quot;</span><span class="p">,</span> <span class="n">projectworks</span><span class="p">)</span>
+            <span class="n">tex_name</span> <span class="o">=</span> <span class="n">replace_name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">tex_name</span><span class="p">):</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;The texture was not found! - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tex_name</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
 <p>各参数的用法</p>
 <p>“C:Program FilesAutodeskMaya2018binmaya.exe” -h</p>
 <p>“C:Program FilesAutodeskMaya2018binmayabatch.exe” -h</p>

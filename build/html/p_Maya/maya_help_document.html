@@ -228,77 +228,81 @@ Maya Python 2.0
 import maya.api.OpenMaya as om</p>
 <p>pymel</p>
 <p>打印选择的物体</p>
-<p>MEL强类型语言
-string $sels[] = <cite>ls -sl</cite>;
-print($sels);</p>
-<p>string $sels[] = <cite>ls -sl -l</cite>;
-int $count = 1;</p>
-<dl class="simple">
-<dt>for ($sel in $sels) {</dt><dd><p>print((string)$count + ” : ” + $sel + “n”);
-$count++;</p>
-</dd>
-</dl>
-<p>}</p>
-<p>import maya.cmds as cmds</p>
-<p>sels = cmds.ls(sl=True, l=True)</p>
-<dl class="simple">
-<dt>for i, sel in enumerate(sels):</dt><dd><p>print(str(i) + ” : ” + sel + “n”)</p>
-</dd>
-</dl>
-<p>import maya.OpenMaya as om</p>
-<p>selslist = om.MSelectionList()
-om.MGlobal.getActiveSelection(selsList)</p>
-<dl class="simple">
-<dt>for idx in range(0,  selsList.length()):</dt><dd><p>dagPath = om.MDagPath()
-sels.getDagPath(idx, dagPath)
-print(dagPath.fullPathName())
-print(dagPath.partialPathName())
-print(“%d : long-name : %s” % (idx, dagPath.fullPathName()))</p>
-</dd>
-</dl>
+<p>MEL强类型语言</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>string <span class="nv">$sels</span><span class="o">[]</span> <span class="o">=</span> <span class="sb">`</span>ls -sl<span class="sb">`</span><span class="p">;</span>
+print<span class="o">(</span><span class="nv">$sels</span><span class="o">)</span><span class="p">;</span>
+
+string <span class="nv">$sels</span><span class="o">[]</span> <span class="o">=</span> <span class="sb">`</span>ls -sl -l<span class="sb">`</span><span class="p">;</span>
+int <span class="nv">$count</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="nv">$sel</span> in <span class="nv">$sels</span><span class="o">)</span> <span class="o">{</span>
+    print<span class="o">((</span>string<span class="o">)</span><span class="nv">$count</span> + <span class="s2">&quot; : &quot;</span> + <span class="nv">$sel</span> + <span class="s2">&quot;\n&quot;</span><span class="o">)</span><span class="p">;</span>
+    <span class="nv">$count</span>++<span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">sels</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">sl</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sel</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sels</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="n">sel</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">maya.OpenMaya</span> <span class="k">as</span> <span class="nn">om</span>
+
+<span class="n">selslist</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">MSelectionList</span><span class="p">()</span>
+<span class="n">om</span><span class="o">.</span><span class="n">MGlobal</span><span class="o">.</span><span class="n">getActiveSelection</span><span class="p">(</span><span class="n">selsList</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="n">selsList</span><span class="o">.</span><span class="n">length</span><span class="p">()):</span>
+    <span class="n">dagPath</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">MDagPath</span><span class="p">()</span>
+    <span class="n">sels</span><span class="o">.</span><span class="n">getDagPath</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">dagPath</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dagPath</span><span class="o">.</span><span class="n">fullPathName</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dagPath</span><span class="o">.</span><span class="n">partialPathName</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> : long-name : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">dagPath</span><span class="o">.</span><span class="n">fullPathName</span><span class="p">()))</span>
+</pre></div>
+</div>
 <p>pymel</p>
 <p>第三方包装MEL Command的pythonic的包</p>
 <p><a class="reference external" href="https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html">https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html</a></p>
-<p>import pymel.core as pm</p>
-<p>sels = pm.ls()
-for sel in sels:</p>
-<blockquote>
-<div><p>print(sel.longName())
-print(sel.shortName())
-print(“—————–”)
-print(sel.tx.get())
-print(sel.ty.get())
-print(sel.tz.get())
-sel.tx.set(0)
-sel.ty.set(0)
-sel.tz.set(0)</p>
-</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+
+<span class="n">sels</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">sel</span> <span class="ow">in</span> <span class="n">sels</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">longName</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">shortName</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">tx</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">ty</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">tz</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="n">sel</span><span class="o">.</span><span class="n">tx</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">sel</span><span class="o">.</span><span class="n">ty</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">sel</span><span class="o">.</span><span class="n">tz</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>setAttr
 listAttr
 getAttr</p>
 <p>MAttribute
 MFn</p>
-<p>import maya.OpenMaya as om</p>
-<p>selsList = om.MSelectionList()
-om.MGlobal.getActiveSelectionList(selsList)</p>
-<dl>
-<dt>for idx in range(0, selsList.length()):</dt><dd><p>mobject = om.MObject()
-selsList.getDependnode(idx, mobject)
-print(mobject.apiTypeStr())
-if mobject.apiType() == om.MFn.kTransform:</p>
-<blockquote>
-<div><p>print(“This is a transform!”)</p>
-</div></blockquote>
-<dl class="simple">
-<dt>elif mobject.apiType() == om.MFn.kMesh:</dt><dd><p>print(“This is a mesh!”)</p>
-</dd>
-<dt>else:</dt><dd><p>pass</p>
-</dd>
-</dl>
-<p>fnDependNode = om.MFnDependencyNode(mobject)
-print(fnDependnode.name())</p>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.OpenMaya</span> <span class="k">as</span> <span class="nn">om</span>
+
+<span class="n">selsList</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">MSelectionList</span><span class="p">()</span>
+<span class="n">om</span><span class="o">.</span><span class="n">MGlobal</span><span class="o">.</span><span class="n">getActiveSelectionList</span><span class="p">(</span><span class="n">selsList</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">selsList</span><span class="o">.</span><span class="n">length</span><span class="p">()):</span>
+    <span class="n">mobject</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">MObject</span><span class="p">()</span>
+    <span class="n">selsList</span><span class="o">.</span><span class="n">getDependnode</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">mobject</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mobject</span><span class="o">.</span><span class="n">apiTypeStr</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">mobject</span><span class="o">.</span><span class="n">apiType</span><span class="p">()</span> <span class="o">==</span> <span class="n">om</span><span class="o">.</span><span class="n">MFn</span><span class="o">.</span><span class="n">kTransform</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is a transform!&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">mobject</span><span class="o">.</span><span class="n">apiType</span><span class="p">()</span> <span class="o">==</span> <span class="n">om</span><span class="o">.</span><span class="n">MFn</span><span class="o">.</span><span class="n">kMesh</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is a mesh!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="n">fnDependNode</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">MFnDependencyNode</span><span class="p">(</span><span class="n">mobject</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fnDependnode</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+</pre></div>
+</div>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s">https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s</a></p>
 </div>
 

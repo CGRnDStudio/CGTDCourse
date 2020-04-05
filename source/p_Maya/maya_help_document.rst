@@ -72,35 +72,40 @@ pymel
 打印选择的物体
 
 MEL强类型语言
-string $sels[] = `ls -sl`;
-print($sels);
 
-string $sels[] = `ls -sl -l`;
-int $count = 1;
+.. code-block:: bash
 
-for ($sel in $sels) {
-    print((string)$count + " : " + $sel + "\n");
-    $count++;
-}
+    string $sels[] = `ls -sl`;
+    print($sels);
 
-import maya.cmds as cmds
+    string $sels[] = `ls -sl -l`;
+    int $count = 1;
 
-sels = cmds.ls(sl=True, l=True)
+    for ($sel in $sels) {
+        print((string)$count + " : " + $sel + "\n");
+        $count++;
+    }
 
-for i, sel in enumerate(sels):
-    print(str(i) + " : " + sel + "\n")
+.. code-block:: python
 
-import maya.OpenMaya as om
+    import maya.cmds as cmds
 
-selslist = om.MSelectionList()
-om.MGlobal.getActiveSelection(selsList)
+    sels = cmds.ls(sl=True, l=True)
 
-for idx in range(0,  selsList.length()):
-    dagPath = om.MDagPath()
-    sels.getDagPath(idx, dagPath)
-    print(dagPath.fullPathName())
-    print(dagPath.partialPathName())
-    print("%d : long-name : %s" % (idx, dagPath.fullPathName()))
+    for i, sel in enumerate(sels):
+        print(str(i) + " : " + sel + "\n")
+
+    import maya.OpenMaya as om
+
+    selslist = om.MSelectionList()
+    om.MGlobal.getActiveSelection(selsList)
+
+    for idx in range(0,  selsList.length()):
+        dagPath = om.MDagPath()
+        sels.getDagPath(idx, dagPath)
+        print(dagPath.fullPathName())
+        print(dagPath.partialPathName())
+        print("%d : long-name : %s" % (idx, dagPath.fullPathName()))
     
 pymel
 
@@ -108,19 +113,21 @@ pymel
 
 https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html
 
-import pymel.core as pm
+.. code-block:: python
 
-sels = pm.ls()
-for sel in sels:
-    print(sel.longName())
-    print(sel.shortName())
-    print("-----------------")
-    print(sel.tx.get())
-    print(sel.ty.get())
-    print(sel.tz.get())
-    sel.tx.set(0)
-    sel.ty.set(0)
-    sel.tz.set(0)
+    import pymel.core as pm
+
+    sels = pm.ls()
+    for sel in sels:
+        print(sel.longName())
+        print(sel.shortName())
+        print("-----------------")
+        print(sel.tx.get())
+        print(sel.ty.get())
+        print(sel.tz.get())
+        sel.tx.set(0)
+        sel.ty.set(0)
+        sel.tz.set(0)
 
 setAttr
 listAttr
@@ -129,23 +136,25 @@ getAttr
 MAttribute
 MFn
 
-import maya.OpenMaya as om
+.. code-block:: python
 
-selsList = om.MSelectionList()
-om.MGlobal.getActiveSelectionList(selsList)
+    import maya.OpenMaya as om
 
-for idx in range(0, selsList.length()):
-    mobject = om.MObject()
-    selsList.getDependnode(idx, mobject)
-    print(mobject.apiTypeStr())
-    if mobject.apiType() == om.MFn.kTransform:
-        print("This is a transform!")
-    elif mobject.apiType() == om.MFn.kMesh:
-        print("This is a mesh!")
-    else:
-        pass
-    fnDependNode = om.MFnDependencyNode(mobject)
-    print(fnDependnode.name())
+    selsList = om.MSelectionList()
+    om.MGlobal.getActiveSelectionList(selsList)
+
+    for idx in range(0, selsList.length()):
+        mobject = om.MObject()
+        selsList.getDependnode(idx, mobject)
+        print(mobject.apiTypeStr())
+        if mobject.apiType() == om.MFn.kTransform:
+            print("This is a transform!")
+        elif mobject.apiType() == om.MFn.kMesh:
+            print("This is a mesh!")
+        else:
+            pass
+        fnDependNode = om.MFnDependencyNode(mobject)
+        print(fnDependnode.name())
 
 
 https://www.youtube.com/watch?v=GiWkXufclTY&t=13s

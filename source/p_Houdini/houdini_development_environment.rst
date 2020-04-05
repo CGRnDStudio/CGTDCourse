@@ -33,8 +33,6 @@ Houdini搭建VS Code开发环境
 
     Ctrl+Shift+Alt+LM
 
-
-坐井观天：本节知识点
 Python Shell
 Python Source Editor & hou.session
 CG Toolbox扩展编辑器配置
@@ -51,7 +49,6 @@ jump.pref结合环境变量使用
 配置radialmenu文件自定义热盒
 配置ExampleMenu.xml自定义主菜单 & MainMenuCommon.xml
 
-管中窥豹：延伸阅读
 http://cgtoolbox.com/
 
 
@@ -64,20 +61,3 @@ Python Source Editor
 from HoudiniExprEditor import ParmWatcher
 reload(ParmWatcher)
 ParmWatcher.set_external_editor()
-
-
-
-
-{
-    "python.linting.pylintEnabled": false,
-    "python.linting.pep8Enabled": true,
-    "editor.renderWhitespace": "all",
-    "editor.mouseWheelZoom": true,
-    "editor.rulers": [79, 120, 150],
-    "editor.tabSize": 4,
-    "window.title": "${activeEditorLong}",
-    "python.pythonPath": "C:/Python27/python.exe"
-}
-
-
-

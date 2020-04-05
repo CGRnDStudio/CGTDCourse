@@ -202,44 +202,51 @@ Expression functions,
 openCL,
 HDK,
 C++</p>
-<p>切换场景自动与手动更新工具架工具
-def autoUpdate():</p>
-<blockquote>
-<div><p>“”” Switch current auto update status
-“””
-VIEW_UPDATE = “viewupdate %s %s.%s.world”
-currentDesktop = hou.ui.curDesktop()
-desktopName = currentDesktop.name()
-paneType = hou.paneTabType.SceneViewer
-paneTabName = currentDesktop.paneTabOfType(paneType).name()
-currentStatus = hou.hscript(VIEW_UPDATE % (“-c”, desktopName, paneTabName))
-currentStatus = str(currentStatus)
-currentStatus = currentStatus[:-8]
-currentStatus = currentStatus[+16:]</p>
-<dl class="simple">
-<dt>if currentStatus == “always”:</dt><dd><p>hou.hscript(VIEW_UPDATE % (“-u never”, desktopName, paneTabName))</p>
-</dd>
-<dt>else:</dt><dd><p>hou.hscript(VIEW_UPDATE % (“-u always”, desktopName, paneTabName))</p>
-</dd>
-</dl>
-</div></blockquote>
+<p>切换场景自动与手动更新工具架工具</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">autoUpdate</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot; Switch current auto update status</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">VIEW_UPDATE</span> <span class="o">=</span> <span class="s2">&quot;viewupdate </span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">.world&quot;</span>
+    <span class="n">currentDesktop</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">curDesktop</span><span class="p">()</span>
+    <span class="n">desktopName</span> <span class="o">=</span> <span class="n">currentDesktop</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+    <span class="n">paneType</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">paneTabType</span><span class="o">.</span><span class="n">SceneViewer</span>
+    <span class="n">paneTabName</span> <span class="o">=</span> <span class="n">currentDesktop</span><span class="o">.</span><span class="n">paneTabOfType</span><span class="p">(</span><span class="n">paneType</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
+    <span class="n">currentStatus</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">hscript</span><span class="p">(</span><span class="n">VIEW_UPDATE</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">desktopName</span><span class="p">,</span> <span class="n">paneTabName</span><span class="p">))</span>
+    <span class="n">currentStatus</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">currentStatus</span><span class="p">)</span>
+    <span class="n">currentStatus</span> <span class="o">=</span> <span class="n">currentStatus</span><span class="p">[:</span><span class="o">-</span><span class="mi">8</span><span class="p">]</span>
+    <span class="n">currentStatus</span> <span class="o">=</span> <span class="n">currentStatus</span><span class="p">[</span><span class="o">+</span><span class="mi">16</span><span class="p">:]</span>
+
+    <span class="k">if</span> <span class="n">currentStatus</span> <span class="o">==</span> <span class="s2">&quot;always&quot;</span><span class="p">:</span>
+        <span class="n">hou</span><span class="o">.</span><span class="n">hscript</span><span class="p">(</span><span class="n">VIEW_UPDATE</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;-u never&quot;</span><span class="p">,</span> <span class="n">desktopName</span><span class="p">,</span> <span class="n">paneTabName</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hou</span><span class="o">.</span><span class="n">hscript</span><span class="p">(</span><span class="n">VIEW_UPDATE</span> <span class="o">%</span> <span class="p">(</span><span class="s2">&quot;-u always&quot;</span><span class="p">,</span> <span class="n">desktopName</span><span class="p">,</span> <span class="n">paneTabName</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>Houdini Desktop设置 存储 默认启动 环境变量配置</p>
 <p>&#64;pscale = .5;
 &#64;N = rand(&#64;ptnum);</p>
 <p>For-Each Point</p>
-<p>import os</p>
-<p>objectsPath = hou.node(“.”).parm(“import”).eval()</p>
-<p>folder = os.listdir(objectsPath)</p>
-<p>print(folder)</p>
-<p>rootNode = hou.node(“../python_test”)
-grid = rootNode.createNode(“grid”)
-wrangler = rootNode.createNode(“attrbwrangle”)
-wrangler.setInput(0, grid)</p>
-<p>switch = rootNode.create(“switch”)
-copy = rootNode.createNode(“copytopoints”)
-blockBegin = rootNode.createNode(“block_begin”, “begin”)
-blockBegin</p>
-<p>blockEnd = rootNode.createNode(“block_end”, “end”)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">objectsPath</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">parm</span><span class="p">(</span><span class="s2">&quot;import&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">objectsPath</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+
+<span class="n">rootNode</span> <span class="o">=</span> <span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;../python_test&quot;</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">rootNode</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;grid&quot;</span><span class="p">)</span>
+<span class="n">wrangler</span> <span class="o">=</span> <span class="n">rootNode</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;attrbwrangle&quot;</span><span class="p">)</span>
+<span class="n">wrangler</span><span class="o">.</span><span class="n">setInput</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
+
+<span class="n">switch</span> <span class="o">=</span> <span class="n">rootNode</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;switch&quot;</span><span class="p">)</span>
+<span class="n">copy</span> <span class="o">=</span> <span class="n">rootNode</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;copytopoints&quot;</span><span class="p">)</span>
+<span class="n">blockBegin</span> <span class="o">=</span> <span class="n">rootNode</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;block_begin&quot;</span><span class="p">,</span> <span class="s2">&quot;begin&quot;</span><span class="p">)</span>
+<span class="n">blockBegin</span>
+
+<span class="n">blockEnd</span> <span class="o">=</span> <span class="n">rootNode</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;block_end&quot;</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 

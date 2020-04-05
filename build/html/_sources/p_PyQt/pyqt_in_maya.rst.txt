@@ -154,7 +154,7 @@ PyQt在Maya中执行的模板代码
             if not userInput:
                 print("Please enter cube name!")
                 return 0
-            cubeName = cmds.polyCube?????
+            cubeName = cmds.polyCube()
             print("%s has been created" % cubeName)
 
     if "myWin" in globals():

@@ -1,15 +1,13 @@
 ==============================
 Maya开发环境
 ==============================
-坐井观天：本节知识点
+
 .mod
 bat & vbs
 模块导入流程
 自定义菜单导入
 自定义工具架导入
 
-
-管中窥豹：延伸阅读
 
 https://www.youtube.com/watch?v=18bMHq43K3U&t=2489s
 
@@ -26,7 +24,9 @@ https://www.youtube.com/watch?v=18bMHq43K3U&t=2489s
 
 DO-VFX.mod
 
-+ DO-VFX any \\server\manager\centralizeTools\maya\env\2018
+.. code-block:: python
+
+    + DO-VFX any \\server\manager\centralizeTools\maya\env\2018
 
 icons
 modules
@@ -37,13 +37,13 @@ Maya.env
 
 .bat批处理
 
-from pprint import pprint
-import pymel.core as pm
+.. code-block:: python
 
-pprint(dir(pm))
-pprint(pm.language.Env.envVars.items())
+    from pprint import pprint
+    import pymel.core as pm
 
-坐井观天：本节知识点
+    pprint(dir(pm))
+    pprint(pm.language.Env.envVars.items())
 
 分析资产
 XGen
@@ -74,69 +74,66 @@ json
 
 如何来调试局部代码？
 
-管中窥豹：延伸阅读
+.. code-block:: python
 
+    # optionVar设置首选项变量
+    import maya.cmds as cmds
+    cmds.optionVar(intValue=("defaultTriangles", 100))
+    cmds.optionVar(query="defaultTriangles")
 
-# optionVar设置首选项变量
-import maya.cmds as cmds
-cmds.optionVar(intValue=("defaultTriangles", 100))
-cmds.optionVar(query="defaultTriangles")
+    # file文件操作
+    cmds.file(query=True, sceneName=True, shortName=True)
 
-# file文件操作
-cmds.file(query=True, sceneName=True, shortName=True)
+    # getAttr & setAttr 属性读写操作
+    cmds.getAttr("defaultRenderGlobals.modifyExtension")
 
-# getAttr & setAttr 属性读写操作
-cmds.getAttr("defaultRenderGlobals.modifyExtension")
+    # listConnections & listRelatives 节点关联操作
+    cmds.listConnections("renderLayerManager.renderLayerId")
 
-# listConnections & listRelatives 节点关联操作
-cmds.listConnections("renderLayerManager.renderLayerId")
+    # 渲染层分析
+    def nzList(buf):
+        if buf == None:
+            return []
+        return buf
 
-# 渲染层分析
-def nzList(buf):
-    if buf == None:
-        return []
-    return buf
+    def nzAnalyzeMayaGetAttr(layer, attr):
+        attr = nzGetOverrideAttr(layer, attr)
+        print(attr)
+        return cmds.getAttr(attr, expandEnvironmentVariables = True)
 
-def nzAnalyzeMayaGetAttr(layer, attr):
-    attr = nzGetOverrideAttr(layer, attr)
-    print(attr)
-    return cmds.getAttr(attr, expandEnvironmentVariables = True)
-
-def nzGetOverrideAttr(layer, attr):
-    if layer == cmds.editRenderLayerGlobals(query = True, currentRenderLayer = True):
+    def nzGetOverrideAttr(layer, attr):
+        if layer == cmds.editRenderLayerGlobals(query = True, currentRenderLayer = True):
+            return attr
+        layers = cmds.listConnections('renderLayerManager.renderLayerId[0]')
+        layers.insert(0, layer)
+        buf = cmds.listConnections(attr, source = False, plugs = True, connections = True)
+        for layer in layers:
+            print(layer)
+            print(buf)
+            for i in range(1, len(nzList(buf)), 2):
+                if re.search('^' + layer + r'\.adjustments\[\d+]\.plug$', buf[i]) != None:
+                    # print ('w:' + str(buf[i]) + re.sub(r'\.plug$', '.value', buf[i]))
+                    return re.sub(r'\.plug$', '.value', buf[i])
         return attr
-    layers = cmds.listConnections('renderLayerManager.renderLayerId[0]')
-    layers.insert(0, layer)
-    buf = cmds.listConnections(attr, source = False, plugs = True, connections = True)
-    for layer in layers:
-        print(layer)
-        print(buf)
-        for i in range(1, len(nzList(buf)), 2):
-            if re.search('^' + layer + r'\.adjustments\[\d+]\.plug$', buf[i]) != None:
-                # print ('w:' + str(buf[i]) + re.sub(r'\.plug$', '.value', buf[i]))
-                return re.sub(r'\.plug$', '.value', buf[i])
-    return attr
-    
-renderLayers = cmds.listConnections('renderLayerManager.renderLayerId')
+        
+    renderLayers = cmds.listConnections('renderLayerManager.renderLayerId')
 
-print(renderLayers)
+    print(renderLayers)
 
-for layer in renderLayers:
-    renderer = nzAnalyzeMayaGetAttr(layer, 'defaultRenderGlobals.currentRenderer')
-    print(renderer)
+    for layer in renderLayers:
+        renderer = nzAnalyzeMayaGetAttr(layer, 'defaultRenderGlobals.currentRenderer')
+        print(renderer)
 
 
-# error日志提醒
-mom.MGlobal.displayError("File not existed!")
-cmds.error("File not existed!")
+    # error日志提醒
+    mom.MGlobal.displayError("File not existed!")
+    cmds.error("File not existed!")
 
+.. code-block:: python
 
-
-
-# codecs
-import codecs
-def readFileContent(filePath):
-    with codecs.open(filePath, "r", "utf-8") as f:
-        lines = [line.strip() for line in f if line]
-    return lines
-
+    # codecs
+    import codecs
+    def readFileContent(filePath):
+        with codecs.open(filePath, "r", "utf-8") as f:
+            lines = [line.strip() for line in f if line]
+        return lines

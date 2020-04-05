@@ -282,14 +282,11 @@
     <span class="n">hou</span><span class="o">.</span><span class="n">playbar</span><span class="o">.</span><span class="n">setPlaybackRange</span><span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="n">fout</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>坐井观天：本节知识点
-help(“modules”) 查看所有模块
+<p>help(“modules”) 查看所有模块
 hou模块可以分为三大类sub-modules、classes、functions
 Python接口不止一个hou模块，还有其它模块 $HFShoudinipython2.7libs
-hutil、toolutils、husd、kramautils等
-type()、dir()、help()</p>
-<p>管中窥豹：延伸阅读
-<a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/index.html">https://www.sidefx.com/docs/houdini/hom/index.html</a>
+hutil、toolutils、husd、kramautils等</p>
+<p><a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/index.html">https://www.sidefx.com/docs/houdini/hom/index.html</a>
 <a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/index.html">https://www.sidefx.com/docs/houdini/hom/hou/index.html</a>
 <a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/intro.html">https://www.sidefx.com/docs/houdini/hom/intro.html</a></p>
 <p>hou
@@ -316,44 +313,10 @@ hou.qt
 hou.Node
 hou.Parm
 hou.Color</p>
-<p># 获取当前帧范围
-def getFrameRange(<a href="#id2"><span class="problematic" id="id3">**</span></a>kwargs):</p>
-<blockquote>
-<div><p>“””
-getFrameRange will return a tuple of (fin, fout)
-:returns: Returns the frame range in the form (fin, fout)
-:rtype: tuple[int, int]
-“””
-currentIn, currentOut = hou.playbar.playbackRange()
-return (currentIn, currentOut)</p>
-</div></blockquote>
-<p># 设置当前帧范围以及帧速率
-def setFrameRange(fin=None, fout=None, <a href="#id4"><span class="problematic" id="id5">**</span></a>kwargs):</p>
-<blockquote>
-<div><p>“””
-setFrameRange will set the frame range using <cite>fin</cite> and <cite>fout</cite></p>
-<dl class="field-list simple">
-<dt class="field-odd">param int fin</dt>
-<dd class="field-odd"><p>fin for the current context
-(e.g. the current shot, current asset etc)</p>
-</dd>
-<dt class="field-even">param int fout</dt>
-<dd class="field-even"><p>fout for the current context
-(e.g. the current shot, current asset etc)</p>
-</dd>
-</dl>
-<p>“””
-hou.script(“tset <cite>((%s-1)/$FPS)</cite> <cite>(%s/$FPS)</cite>” % (fin, fout))
-hou.playbar.setPlaybackRange(fin, fout)</p>
-</div></blockquote>
 <p><a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/Node.html">https://www.sidefx.com/docs/houdini/hom/hou/Node.html</a>
 <a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/Parm.html">https://www.sidefx.com/docs/houdini/hom/hou/Parm.html</a>
 <a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/hipFile.html">https://www.sidefx.com/docs/houdini/hom/hou/hipFile.html</a>
 <a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/ui.html">https://www.sidefx.com/docs/houdini/hom/hou/ui.html</a></p>
-<p>import toolutils</p>
-<p>scene_viewer = toolutils.sceneViewer()
-selected_objects = scene_viewer.selectObjects(“Select a camera and press Enter”, allowed_types = [“cam”])
-print(selected_objects)</p>
 </div>
 </div>
 

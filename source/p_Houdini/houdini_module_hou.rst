@@ -110,15 +110,11 @@ Houdini Python API不止一个hou模块，还有其它模块在安装路径$HFS\
         hou.script("tset `((%s-1)/$FPS)` `(%s/$FPS)`" % (fin, fout))
         hou.playbar.setPlaybackRange(fin, fout)
 
-
-坐井观天：本节知识点
-help(“modules”) 查看所有模块
+help("modules") 查看所有模块
 hou模块可以分为三大类sub-modules、classes、functions
 Python接口不止一个hou模块，还有其它模块 $HFS\houdini\python2.7libs
 hutil、toolutils、husd、kramautils等
-type()、dir()、help()
 
-管中窥豹：延伸阅读
 https://www.sidefx.com/docs/houdini/hom/index.html
 https://www.sidefx.com/docs/houdini/hom/hou/index.html
 https://www.sidefx.com/docs/houdini/hom/intro.html
@@ -149,39 +145,7 @@ hou.Node
 hou.Parm
 hou.Color
 
-# 获取当前帧范围
-def getFrameRange(**kwargs):
-    """
-    getFrameRange will return a tuple of (fin, fout)
-    :returns: Returns the frame range in the form (fin, fout)
-    :rtype: tuple[int, int]
-    """
-    currentIn, currentOut = hou.playbar.playbackRange()
-    return (currentIn, currentOut)
-
-# 设置当前帧范围以及帧速率
-def setFrameRange(fin=None, fout=None, **kwargs):
-    """
-    setFrameRange will set the frame range using `fin` and `fout`
-    
-    :param int fin: fin for the current context
-        (e.g. the current shot, current asset etc)
-    :param int fout: fout for the current context
-        (e.g. the current shot, current asset etc)
-    """
-    hou.script("tset `((%s-1)/$FPS)` `(%s/$FPS)`" % (fin, fout))
-    hou.playbar.setPlaybackRange(fin, fout)
-
 https://www.sidefx.com/docs/houdini/hom/hou/Node.html
 https://www.sidefx.com/docs/houdini/hom/hou/Parm.html
 https://www.sidefx.com/docs/houdini/hom/hou/hipFile.html
 https://www.sidefx.com/docs/houdini/hom/hou/ui.html
-
-
-import toolutils
-
-scene_viewer = toolutils.sceneViewer()
-selected_objects = scene_viewer.selectObjects("Select a camera and press Enter", allowed_types = ["cam"])
-print(selected_objects)
-
-

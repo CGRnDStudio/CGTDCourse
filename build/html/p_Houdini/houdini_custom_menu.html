@@ -187,56 +187,40 @@
 <li><p>OPmenu.xml 自定义节点菜单</p></li>
 <li><p>PARMmenu.xml 自定义参数菜单</p></li>
 </ul>
-<p>ExampleMenu.xml
-MainMenuCommon.xml
-OPmenu.xml
-PARMmenu.xml</p>
 <p>scriptArgs怎么用</p>
 <p>自定义主菜单</p>
-<dl>
-<dt>&lt;MainMenu&gt;</dt><dd><dl>
-<dt>&lt;menuBar&gt;</dt><dd><dl>
-<dt>&lt;subMenu&gt;</dt><dd><p>&lt;label&gt;&lt;/label&gt;
-&lt;scriptItem id=&gt;</p>
-<blockquote>
-<div><p>&lt;label&gt;&lt;/label&gt;
-&lt;scriptPath&gt;&lt;/scriptPath&gt;
-&lt;scriptArgs&gt;&lt;/scriptArgs&gt;</p>
-</div></blockquote>
-<p>&lt;/scriptItem&gt;
-&lt;scriptItem id=&gt;</p>
-<blockquote>
-<div><p>&lt;label&gt;&lt;/label&gt;
-&lt;scriptCode&gt;&lt;/scriptCode&gt;
-&lt;scriptArgs&gt;&lt;/scriptArgs&gt;</p>
-</div></blockquote>
-<p>&lt;/scriptItem&gt;</p>
-</dd>
-</dl>
-<p>&lt;/subMenu&gt;</p>
-</dd>
-</dl>
-<p>&lt;/menuBar&gt;</p>
-</dd>
-</dl>
-<p>&lt;/MainMenu&gt;</p>
-<p>在Windows主菜单中添加子菜单
-&lt;subMenu id=”windows_menu”&gt;</p>
-<blockquote>
-<div><dl>
-<dt>&lt;subMenu id=&gt;</dt><dd><p>&lt;label&gt;&lt;/label&gt;
-&lt;insertBefore/&gt;
-&lt;titleItem&gt;</p>
-<blockquote>
-<div><p>&lt;label&gt;&lt;/label&gt;</p>
-</div></blockquote>
-<p>&lt;/titleItem&gt;
-&lt;&gt;</p>
-</dd>
-</dl>
-<p>&lt;/subMenu&gt;</p>
-</div></blockquote>
-<p>&lt;/subMenu&gt;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;MainMenu&gt;
+    &lt;menuBar&gt;
+        &lt;subMenu&gt;
+            &lt;label&gt;&lt;/label&gt;
+            &lt;scriptItem <span class="nv">id</span><span class="o">=</span>&gt;
+                &lt;label&gt;&lt;/label&gt;
+                &lt;scriptPath&gt;&lt;/scriptPath&gt;
+                &lt;scriptArgs&gt;&lt;/scriptArgs&gt;
+            &lt;/scriptItem&gt;
+            &lt;scriptItem <span class="nv">id</span><span class="o">=</span>&gt;
+                &lt;label&gt;&lt;/label&gt;
+                &lt;scriptCode&gt;&lt;/scriptCode&gt;
+                &lt;scriptArgs&gt;&lt;/scriptArgs&gt;
+            &lt;/scriptItem&gt;
+        &lt;/subMenu&gt;
+    &lt;/menuBar&gt;
+&lt;/MainMenu&gt;
+</pre></div>
+</div>
+<p>在Windows主菜单中添加子菜单</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;subMenu <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;windows_menu&quot;</span>&gt;
+    &lt;subMenu <span class="nv">id</span><span class="o">=</span>&gt;
+        &lt;label&gt;&lt;/label&gt;
+        &lt;insertBefore/&gt;
+        &lt;titleItem&gt;
+            &lt;label&gt;&lt;/label&gt;
+        &lt;/titleItem&gt;
+        &lt;&gt;
+    &lt;/subMenu&gt;
+&lt;/subMenu&gt;
+</pre></div>
+</div>
 </div>
 
 

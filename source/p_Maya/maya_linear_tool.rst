@@ -2,8 +2,6 @@
 Maya线性工作流工具
 ==============================
 
-坐井观天：本节知识点
-
 核心思想 
 数据类型，对应的特性，属性与方法
 listAttr getAttr setAttr
@@ -27,71 +25,75 @@ Python API 2.0
 C++ API 
 
 检测插件&加载插件
-import pymel.core as pm
 
-if "mtoa" not in pm.pluginInfo(query=True, listPlugins=True):
-    try:
-        pm.loadPlugin("mtoa")
-    except:
-        pm.error("Fail to Load Arnold Render!!")
-    pm.PyNode("defaultRenderGlobals").currentRender.set("arnold")
+.. code-block:: python
+
+    import pymel.core as pm
+
+    if "mtoa" not in pm.pluginInfo(query=True, listPlugins=True):
+        try:
+            pm.loadPlugin("mtoa")
+        except:
+            pm.error("Fail to Load Arnold Render!!")
+        pm.PyNode("defaultRenderGlobals").currentRender.set("arnold")
 
 
 https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html
 
-from pprint import pprint
-import pymel.core as pm
+.. code-block:: python
 
-# 返回所有节点
-pprint(pm.ls())
-# 实例化节点
-renderGlobals = pm.PyNode("defaultRenderGlobals")
-attrs = renderGlobals.listAttr()
-pprint(attrs)
+    from pprint import pprint
+    import pymel.core as pm
 
-print(type(renderGlobals.currnetRenderer))
-print(dir(renderGlobals.currnetRenderer))
-renderGlobals.setAttr("currentRendererer", "arnold")
-renderGlobals.currentRenderer.set("arnold")
-pm.setAttr("defaultRenderGlobals.currentRenderer", "arnold")
-pm.PyNode("defaultRenderGlobals.currentRenderer").set("arnold")
+    # 返回所有节点
+    pprint(pm.ls())
+    # 实例化节点
+    renderGlobals = pm.PyNode("defaultRenderGlobals")
+    attrs = renderGlobals.listAttr()
+    pprint(attrs)
 
-aiOptions = pm.PyNode("defaultArnoldRenderOptions")
+    print(type(renderGlobals.currnetRenderer))
+    print(dir(renderGlobals.currnetRenderer))
+    renderGlobals.setAttr("currentRendererer", "arnold")
+    renderGlobals.currentRenderer.set("arnold")
+    pm.setAttr("defaultRenderGlobals.currentRenderer", "arnold")
+    pm.PyNode("defaultRenderGlobals.currentRenderer").set("arnold")
 
-# defaultRenderGlobals
-# defaultArnoldRenderOptions
-# defaultArnoldFilter
-# defaultArnoldDriver
+    aiOptions = pm.PyNode("defaultArnoldRenderOptions")
 
-pm.PyNode("defaultRenderGlobals.animation").set(True)
+    # defaultRenderGlobals
+    # defaultArnoldRenderOptions
+    # defaultArnoldFilter
+    # defaultArnoldDriver
 
-import maya.cmds as cmds
-# cmEnabled
-# renderingSpaceName
-# viewTransformName
-# defaultInputSpaceName
-# colorManagePots
-cmds.colorManagementPrefs(e=True, parm=value)
+    pm.PyNode("defaultRenderGlobals.animation").set(True)
 
-
-# 软件版本的兼容性
-import pymel.core as pm
-
-print(pm.about(version=True))
-
-import sys
-path = "D:/"
-path in sys.path or sys.path.insert(0, path)
-print(sys.path)
-
-from renderTools import linearWorkflowCheck
-reload(linearWorkflowCheck)
-linearWorkflowCheck.maya_ui()
+    import maya.cmds as cmds
+    # cmEnabled
+    # renderingSpaceName
+    # viewTransformName
+    # defaultInputSpaceName
+    # colorManagePots
+    cmds.colorManagementPrefs(e=True, parm=value)
 
 
+    # 软件版本的兼容性
+    import pymel.core as pm
 
-from pprint import pprint
-import maya.cmds as cmds
+    print(pm.about(version=True))
 
-pprint(cmds.file(query = True, list = True, withoutCopyNumber = True))
+    import sys
+    path = "D:/"
+    path in sys.path or sys.path.insert(0, path)
+    print(sys.path)
 
+    from renderTools import linearWorkflowCheck
+    reload(linearWorkflowCheck)
+    linearWorkflowCheck.maya_ui()
+
+.. code-block:: python
+
+    from pprint import pprint
+    import maya.cmds as cmds
+
+    pprint(cmds.file(query = True, list = True, withoutCopyNumber = True))

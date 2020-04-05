@@ -186,13 +186,11 @@
             
   <div class="section" id="maya">
 <h1>Maya开发环境<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>坐井观天：本节知识点
-.mod
+<p>.mod
 bat &amp; vbs
 模块导入流程
 自定义菜单导入
 自定义工具架导入</p>
-<p>管中窥豹：延伸阅读</p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=18bMHq43K3U&amp;t=2489s">https://www.youtube.com/watch?v=18bMHq43K3U&amp;t=2489s</a></p>
 <p>如何制定一个module</p>
 <p>环境变量管理</p>
@@ -202,9 +200,9 @@ bat &amp; vbs
 我的文档/scripts
 我的文档/plug-ins</p>
 <p>DO-VFX.mod</p>
-<ul class="simple">
-<li><p>DO-VFX any \servermanagercentralizeToolsmayaenv2018</p></li>
-</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">DO</span><span class="o">-</span><span class="n">VFX</span> <span class="nb">any</span> \\<span class="n">server</span>\<span class="n">manager</span>\<span class="n">centralizeTools</span>\<span class="n">maya</span>\<span class="n">env</span>\<span class="mi">2018</span>
+</pre></div>
+</div>
 <p>icons
 modules
 plug-ins
@@ -212,11 +210,13 @@ scripts
 shelves
 Maya.env</p>
 <p>.bat批处理</p>
-<p>from pprint import pprint
-import pymel.core as pm</p>
-<p>pprint(dir(pm))
-pprint(pm.language.Env.envVars.items())</p>
-<p>坐井观天：本节知识点</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">pm</span><span class="p">))</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">pm</span><span class="o">.</span><span class="n">language</span><span class="o">.</span><span class="n">Env</span><span class="o">.</span><span class="n">envVars</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</pre></div>
+</div>
 <p>分析资产
 XGen
 Reference
@@ -243,74 +243,68 @@ Redshift
 XMLGenerator
 json</p>
 <p>如何来调试局部代码？</p>
-<p>管中窥豹：延伸阅读</p>
-<p># optionVar设置首选项变量
-import maya.cmds as cmds
-cmds.optionVar(intValue=(“defaultTriangles”, 100))
-cmds.optionVar(query=”defaultTriangles”)</p>
-<p># file文件操作
-cmds.file(query=True, sceneName=True, shortName=True)</p>
-<p># getAttr &amp; setAttr 属性读写操作
-cmds.getAttr(“defaultRenderGlobals.modifyExtension”)</p>
-<p># listConnections &amp; listRelatives 节点关联操作
-cmds.listConnections(“renderLayerManager.renderLayerId”)</p>
-<p># 渲染层分析
-def nzList(buf):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>if buf == None:</dt><dd><p>return []</p>
-</dd>
-</dl>
-<p>return buf</p>
-</div></blockquote>
-<dl>
-<dt>def nzAnalyzeMayaGetAttr(layer, attr):</dt><dd><p>attr = nzGetOverrideAttr(layer, attr)
-print(attr)
-return cmds.getAttr(attr, expandEnvironmentVariables = True)</p>
-</dd>
-<dt>def nzGetOverrideAttr(layer, attr):</dt><dd><dl class="simple">
-<dt>if layer == cmds.editRenderLayerGlobals(query = True, currentRenderLayer = True):</dt><dd><p>return attr</p>
-</dd>
-</dl>
-<p>layers = cmds.listConnections(‘renderLayerManager.renderLayerId[0]’)
-layers.insert(0, layer)
-buf = cmds.listConnections(attr, source = False, plugs = True, connections = True)
-for layer in layers:</p>
-<blockquote>
-<div><p>print(layer)
-print(buf)
-for i in range(1, len(nzList(buf)), 2):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>if re.search(‘^’ + layer + r’.adjustments[d+].plug$’, buf[i]) != None:</dt><dd><p># print (‘w:’ + str(buf[i]) + re.sub(r’.plug$’, ‘.value’, buf[i]))
-return re.sub(r’.plug$’, ‘.value’, buf[i])</p>
-</dd>
-</dl>
-</div></blockquote>
-</div></blockquote>
-<p>return attr</p>
-</dd>
-</dl>
-<p>renderLayers = cmds.listConnections(‘renderLayerManager.renderLayerId’)</p>
-<p>print(renderLayers)</p>
-<dl class="simple">
-<dt>for layer in renderLayers:</dt><dd><p>renderer = nzAnalyzeMayaGetAttr(layer, ‘defaultRenderGlobals.currentRenderer’)
-print(renderer)</p>
-</dd>
-</dl>
-<p># error日志提醒
-mom.MGlobal.displayError(“File not existed!”)
-cmds.error(“File not existed!”)</p>
-<p># codecs
-import codecs
-def readFileContent(filePath):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>with codecs.open(filePath, “r”, “utf-8”) as f:</dt><dd><p>lines = [line.strip() for line in f if line]</p>
-</dd>
-</dl>
-<p>return lines</p>
-</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># optionVar设置首选项变量</span>
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">optionVar</span><span class="p">(</span><span class="n">intValue</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;defaultTriangles&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">optionVar</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;defaultTriangles&quot;</span><span class="p">)</span>
+
+<span class="c1"># file文件操作</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sceneName</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shortName</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># getAttr &amp; setAttr 属性读写操作</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">getAttr</span><span class="p">(</span><span class="s2">&quot;defaultRenderGlobals.modifyExtension&quot;</span><span class="p">)</span>
+
+<span class="c1"># listConnections &amp; listRelatives 节点关联操作</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="s2">&quot;renderLayerManager.renderLayerId&quot;</span><span class="p">)</span>
+
+<span class="c1"># 渲染层分析</span>
+<span class="k">def</span> <span class="nf">nzList</span><span class="p">(</span><span class="n">buf</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">buf</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">buf</span>
+
+<span class="k">def</span> <span class="nf">nzAnalyzeMayaGetAttr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="n">nzGetOverrideAttr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cmds</span><span class="o">.</span><span class="n">getAttr</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">expandEnvironmentVariables</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">nzGetOverrideAttr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">layer</span> <span class="o">==</span> <span class="n">cmds</span><span class="o">.</span><span class="n">editRenderLayerGlobals</span><span class="p">(</span><span class="n">query</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">currentRenderLayer</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">attr</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="s1">&#39;renderLayerManager.renderLayerId[0]&#39;</span><span class="p">)</span>
+    <span class="n">layers</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">layer</span><span class="p">)</span>
+    <span class="n">buf</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">plugs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">connections</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nzList</span><span class="p">(</span><span class="n">buf</span><span class="p">)),</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;^&#39;</span> <span class="o">+</span> <span class="n">layer</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\.adjustments\[\d+]\.plug$&#39;</span><span class="p">,</span> <span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># print (&#39;w:&#39; + str(buf[i]) + re.sub(r&#39;\.plug$&#39;, &#39;.value&#39;, buf[i]))</span>
+                <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\.plug$&#39;</span><span class="p">,</span> <span class="s1">&#39;.value&#39;</span><span class="p">,</span> <span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">attr</span>
+
+<span class="n">renderLayers</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="s1">&#39;renderLayerManager.renderLayerId&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">renderLayers</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">renderLayers</span><span class="p">:</span>
+    <span class="n">renderer</span> <span class="o">=</span> <span class="n">nzAnalyzeMayaGetAttr</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;defaultRenderGlobals.currentRenderer&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+
+
+<span class="c1"># error日志提醒</span>
+<span class="n">mom</span><span class="o">.</span><span class="n">MGlobal</span><span class="o">.</span><span class="n">displayError</span><span class="p">(</span><span class="s2">&quot;File not existed!&quot;</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;File not existed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># codecs</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+<span class="k">def</span> <span class="nf">readFileContent</span><span class="p">(</span><span class="n">filePath</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span> <span class="k">if</span> <span class="n">line</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">lines</span>
+</pre></div>
+</div>
 </div>
 
 

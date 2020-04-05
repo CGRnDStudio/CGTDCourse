@@ -17,9 +17,12 @@ docstring和注释需要规范
 Maya扩展开发的层级结构
 
 插件环境变量部署
-# C:\Program Files\Autodesk\Maya2017\modules\hprender.mod
-+ hpRender any C:/Users/huweiguo/Documents/.RENDER_ROOT/MayaPlugin/Setup/2017
-PATH +:= bin
+
+.. code-block:: bash
+
+    # C:\Program Files\Autodesk\Maya2017\modules\hprender.mod
+    + hpRender any C:/Users/huweiguo/Documents/.RENDER_ROOT/MayaPlugin/Setup/2017
+    PATH +:= bin
 
 PATH +:= bin意味着将路径C:/Users/huweiguo/Documents/.RENDER_ROOT/MayaPlugin/Setup/2017/bin路径添加到PATH环境变量中，这里的加bin文件夹并没有任何作用，可以删除
 
@@ -35,95 +38,94 @@ MAYA_SCRIPT_PATH 脚本文件位置
 XBMLANGPATH 图标文件位置
 
 Maya.env配置的案例
-MTOAROOT = \\server\manager\thirdParty\maya\mtoa\3.1.2.1\2018
 
-REDSHIFT_COREDATAPATH = \\server\manager\thirdParty\maya\Redshift\2.5.48
+.. code-block:: bash
 
-QAULOTH_PATH = \\server\manager\thirdParty\maya\Qualoth
+    MTOAROOT = \\server\manager\thirdParty\maya\mtoa\3.1.2.1\2018
 
-REDSHIFT_PLUG_IN_PATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\2018\nt-x86-64
-REDSHIFT_SCRIPT_PATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\Common\scripts
-REDSHIFT_XBMLANGPATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\Common\icons
-REDSHIFT_RENDER_DESC_PATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\Common\rendererDesc
-REDSHIFT_CUSTOM_TEMPLATE_PATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\Common\scripts\NETemplates
-REDSHIFT_MAYAEXTENSIONSPATH = %REDSHIFT_PLUG_IN_PATH%\extensions
-REDSHIFT_PROCEDURALSPATH = %REDSHIFT_COREDATAPATH%\Procedurals
+    REDSHIFT_COREDATAPATH = \\server\manager\thirdParty\maya\Redshift\2.5.48
 
-MAYA_MODULE_PATH = %MAYA_MODULE_PATH%;%MTOAROOT%
-PATH = %PATH%;%MTOAROOT%\bin;%REDSHIFT_COREDATAPATH%\bin
-MAYA_RENDER_DESC_PATH = %MAYA_RENDER_DESC_PATH%;%MTOAROOT%;%REDSHIFT_RENDER_DESC_PATH%
-PYTHONPATH = %PYTHONPATH%;%MTOAROOT%\scripts;%REDSHIFT_SCRIPT_PATH%
-solidangle_LICENSE = 5053@farm.do-vfx.com
-MAYA_PLUG_IN_PATH = %REDSHIFT_PLUG_IN_PATH%;%QAULOTH_PATH%\bin
-MAYA_SCRIPT_PATH = %REDSHIFT_SCRIPT_PATH%;%QAULOTH_PATH%\script
-XBMLANGPATH = %REDSHIFT_XBMLANGPATH%
-MAYA_CUSTOM_TEMPLATE_PATH = %REDSHIFT_CUSTOM_TEMPLATE_PATH%
+    QAULOTH_PATH = \\server\manager\thirdParty\maya\Qualoth
 
-MAYA_DISABLE_CLIC_IPM = 1
+    REDSHIFT_PLUG_IN_PATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\2018\nt-x86-64
+    REDSHIFT_SCRIPT_PATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\Common\scripts
+    REDSHIFT_XBMLANGPATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\Common\icons
+    REDSHIFT_RENDER_DESC_PATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\Common\rendererDesc
+    REDSHIFT_CUSTOM_TEMPLATE_PATH = %REDSHIFT_COREDATAPATH%\Plugins\Maya\Common\scripts\NETemplates
+    REDSHIFT_MAYAEXTENSIONSPATH = %REDSHIFT_PLUG_IN_PATH%\extensions
+    REDSHIFT_PROCEDURALSPATH = %REDSHIFT_COREDATAPATH%\Procedurals
+
+    MAYA_MODULE_PATH = %MAYA_MODULE_PATH%;%MTOAROOT%
+    PATH = %PATH%;%MTOAROOT%\bin;%REDSHIFT_COREDATAPATH%\bin
+    MAYA_RENDER_DESC_PATH = %MAYA_RENDER_DESC_PATH%;%MTOAROOT%;%REDSHIFT_RENDER_DESC_PATH%
+    PYTHONPATH = %PYTHONPATH%;%MTOAROOT%\scripts;%REDSHIFT_SCRIPT_PATH%
+    solidangle_LICENSE = 5053@farm.do-vfx.com
+    MAYA_PLUG_IN_PATH = %REDSHIFT_PLUG_IN_PATH%;%QAULOTH_PATH%\bin
+    MAYA_SCRIPT_PATH = %REDSHIFT_SCRIPT_PATH%;%QAULOTH_PATH%\script
+    XBMLANGPATH = %REDSHIFT_XBMLANGPATH%
+    MAYA_CUSTOM_TEMPLATE_PATH = %REDSHIFT_CUSTOM_TEMPLATE_PATH%
+
+    MAYA_DISABLE_CLIC_IPM = 1
 
 来看下如何写个py的插件到插件管理器吧，分两步
 注册插件
 C:\Users\huweiguo\Documents\.RENDER_ROOT\MayaPlugin\Setup\2017\plug-ins
 hpRender.py
 
-
-
 如何创建自定义菜单
 
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
- 
-"""
-Custom menu plug-in
-"""
- 
-import os
-import sys
- 
-import maya.cmds as cmds
-import maya.mel as mel
-import maya.OpenMayaMPx as omm
- 
- 
-def initializePlugin(mobject):
-   """
-   Initialize the script plug-in
-   """
-   mPlugin = omm.MFnPlugin(mobject, "tdUtils", "1.0", "any")
- 
-   if cmds.menu("menuTD", exists=1):
-       cmds.deleteUI("menuTD", menu=1)
- 
-   gMainWindow = mel.eval("global string $gMainWindow;$temp = $gMainWindow")
-   cmds.menu("menuTD", label="TD Tools", parent=gMainWindow,
-             tearOff=1, allowOptionBoxes=1)
-   cmds.menuItem(dividerLabel="General", divider=True)
-   cmds.menuItem(label="Submit To Deadline", parent="menuTD",
-                 command="print(100)")
-   cmds.menuItem(dividerLabel="Step", divider=True)
-   cmds.menuItem("menuRIG", label="RIG", parent="menuTD",
-                 subMenu=True, tearOff=True)
-   cmds.menuItem(label="Select Skin Joint", parent="menuRIG",
-                 command="print(100)")
- 
- 
-def uninitializePlugin(mobject):
-   """
-   Uninitialize the script plug-in
-   """
-   mPlugin = omm.MFnPlugin(mobject)
- 
-   if cmds.menu("menuTD", exists=1):
-       cmds.deleteUI("menuTD", menu=1)
- 
+.. code-block:: python
+
+    #!/usr/bin/python
+    # -*- coding: utf-8 -*-
+    
+    """
+    Custom menu plug-in
+    """
+    
+    import os
+    import sys
+    
+    import maya.cmds as cmds
+    import maya.mel as mel
+    import maya.OpenMayaMPx as omm
+    
+    
+    def initializePlugin(mobject):
+    """
+    Initialize the script plug-in
+    """
+    mPlugin = omm.MFnPlugin(mobject, "tdUtils", "1.0", "any")
+    
+    if cmds.menu("menuTD", exists=1):
+        cmds.deleteUI("menuTD", menu=1)
+    
+    gMainWindow = mel.eval("global string $gMainWindow;$temp = $gMainWindow")
+    cmds.menu("menuTD", label="TD Tools", parent=gMainWindow,
+                tearOff=1, allowOptionBoxes=1)
+    cmds.menuItem(dividerLabel="General", divider=True)
+    cmds.menuItem(label="Submit To Deadline", parent="menuTD",
+                    command="print(100)")
+    cmds.menuItem(dividerLabel="Step", divider=True)
+    cmds.menuItem("menuRIG", label="RIG", parent="menuTD",
+                    subMenu=True, tearOff=True)
+    cmds.menuItem(label="Select Skin Joint", parent="menuRIG",
+                    command="print(100)")
+    
+    
+    def uninitializePlugin(mobject):
+    """
+    Uninitialize the script plug-in
+    """
+    mPlugin = omm.MFnPlugin(mobject)
+    
+    if cmds.menu("menuTD", exists=1):
+        cmds.deleteUI("menuTD", menu=1)
 
 sys.path模块导入机制
 import hpMayaClient
 reload(hpMayaClient)
 hpMayaClient.client().main()
-
-
-
 
 main函数的核心
 checkList
@@ -151,70 +153,71 @@ PySide2 & PyQt5
 PyQt4和PyQt5 uic
 pyside-uic
 
-# Maya Dialog
-import sys
-import maya.OpenMayaUI as omui
-from PySide2 import QtCore
-from PySide2 import QtWidgets
-from shiboken2 import wrapInstance
+.. code-block:: python
 
-path = "D:/2019/centralizeTools/houdini/scripts/python"
+    # Maya Dialog
+    import sys
+    import maya.OpenMayaUI as omui
+    from PySide2 import QtCore
+    from PySide2 import QtWidgets
+    from shiboken2 import wrapInstance
 
-path in sys.path or sys.path.insert(0, path)
-from houQt import mainDialog
+    path = "D:/2019/centralizeTools/houdini/scripts/python"
 
-
-def _get_maya_main_window():
-    pointer = omui.MQtUtil.mainWindow()
-    return wrapInstance(long(pointer), QtWidgets.QWidget)
+    path in sys.path or sys.path.insert(0, path)
+    from houQt import mainDialog
 
 
-class WindowA(QtWidgets.QDialog, mainDialog.Ui_Dialog):
-    def __init__(self, parent=None):
-        super(WindowA, self).__init__(parent)
-        self.setupUi(self)
+    def _get_maya_main_window():
+        pointer = omui.MQtUtil.mainWindow()
+        return wrapInstance(long(pointer), QtWidgets.QWidget)
 
 
-def show():
-    dialog = WindowA(_get_maya_main_window())
-    dialog.show()
-
-if __name__ == "__main__":
-    show()
+    class WindowA(QtWidgets.QDialog, mainDialog.Ui_Dialog):
+        def __init__(self, parent=None):
+            super(WindowA, self).__init__(parent)
+            self.setupUi(self)
 
 
-# Maya Main Window
-import sys
-import maya.OpenMayaUI as omui
-from PySide2 import QtCore
-from PySide2 import QtWidgets
-from shiboken2 import wrapInstance
+    def show():
+        dialog = WindowA(_get_maya_main_window())
+        dialog.show()
 
-path = "D:/2019/centralizeTools/houdini/scripts/python"
+    if __name__ == "__main__":
+        show()
 
-path in sys.path or sys.path.insert(0, path)
-from houQt import mainWin
+.. code-block:: python
 
+    # Maya Main Window
+    import sys
+    import maya.OpenMayaUI as omui
+    from PySide2 import QtCore
+    from PySide2 import QtWidgets
+    from shiboken2 import wrapInstance
 
-def _get_maya_main_window():
-    pointer = omui.MQtUtil.mainWindow()
-    return wrapInstance(long(pointer), QtWidgets.QWidget)
+    path = "D:/2019/centralizeTools/houdini/scripts/python"
 
-
-class WindowB(QtWidgets.QMainWindow, mainWin.Ui_MainWindow):
-    def __init__(self, parent=None):
-        super(WindowB, self).__init__(parent)
-        self.setupUi(self)
+    path in sys.path or sys.path.insert(0, path)
+    from houQt import mainWin
 
 
-def show():
-    dialog = WindowB(_get_maya_main_window())
-    dialog.show()
-
-if __name__ == "__main__":
-    show()
-
-if cmds.window(WINDOW_NAME, exists=True, q=True):
-    cmds.deleteUI(WINDOW_NAME)
+    def _get_maya_main_window():
+        pointer = omui.MQtUtil.mainWindow()
+        return wrapInstance(long(pointer), QtWidgets.QWidget)
 
 
+    class WindowB(QtWidgets.QMainWindow, mainWin.Ui_MainWindow):
+        def __init__(self, parent=None):
+            super(WindowB, self).__init__(parent)
+            self.setupUi(self)
+
+
+    def show():
+        dialog = WindowB(_get_maya_main_window())
+        dialog.show()
+
+    if __name__ == "__main__":
+        show()
+
+    if cmds.window(WINDOW_NAME, exists=True, q=True):
+        cmds.deleteUI(WINDOW_NAME)
