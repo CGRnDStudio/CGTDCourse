@@ -1,19 +1,49 @@
-========================================
-Houdini otl：自定义参数Folder的几种模式
-========================================
+================================
+Houdini otls：创建以及更新的流程
+================================
 
-Houdini创建otl的时候，想要将节点的参数面板做些布局，学会使用参数Folder的用法是比较有意思的。
+otls如何开发？
 
-Folder参数有以下几种类型模式：
+Subnet自定义HDA方法
+HOUDINI_PATH & HOUDINI_OTLSCAN_PATH
+Operator Name & Operator Label
+自定义参数齿轮菜单
 
-* Collapsible # 加减号收缩与伸展
-* Simple # 简单的框框
-* Tabs # 选项卡式
-* Radio Buttons # 和Tabs类似，多了一个Radio按钮显示
-* Import Block 
-* Multiparm Block (list) # 可以加减控件数量以列表的形式
-* Multiparm Block (scrolling) # 可以加减控件数量以下拉滑条的形式
-* Multiparm Block (tabs) # 可以加减控件数量以选项卡的形式
+正常流程
+Match Current Definition
+
+Allow Editing of Contents
+
+otls如何更新？
+
+otls如何升级？
+
+案例
+
+创建一个pack cache的otl
+
+要求能打包当前文件中所有filecache节点缓存，并生成新的hip文件
+
+知识点
+
+* 获取所有filecache节点
+* 获取所有filecache节点上缓存路径
+* 拷贝文件操作
+* 修改所有filecache节点上缓存路径
+* 保存成新的hip文件
+
+.. code-block:: python
+
+    # 获取某节点下的所有filecache节点
+    import toolutils
+
+    rootNode = hou.node("/")
+
+    nodes = toolutils.findAllChildNodesOfType(rootNode, "filecache", dorecurse=True)
+
+    # 获取所有filecache节点上缓存路径
+    node.parm("file").eval()
+    node.parm("file").unexpandedString()
 
 --------------------------------------
 Houdini升级otl的两种方案
@@ -40,6 +70,21 @@ Asset Manager 对话框中在当前选择的节点上右键选择 Duplicate... �
 
 第二种方案是在 Save to Library 的时候将版本号添加到otl文件名上，保持 Operator Name 和 Operator Label 不变。这样做会另外存一个otl文件出来，相当于重新做了一个otl的方案。因为 Operator Name 是相同的，所以节点也只有一个，可以通过otl参数面板上的 Asset Path 来切换版本，默认优先使用的都是最新版本。
 
+
+
+
+
+
+Subnet自定义HDA方法
+HOUDINI_PATH & HOUDINI_OTLSCAN_PATH
+Operator Name & Operator Label
+自定义参数齿轮菜单
+
+
+正常流程
+Match Current Definition
+
+Allow Editing of Contents
 
 
 -------------------

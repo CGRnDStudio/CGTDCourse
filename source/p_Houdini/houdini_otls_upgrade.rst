@@ -1,5 +1,5 @@
 =============================
-Houdini otl：升级的两种方案
+Houdini otls：升级的两种方案
 =============================
 
 Houdini中otl的版本切换可以通过主菜单 Asset>Asset Manager>Configuration 设置 Asset Bar 为 Display Menu of All Definitions ，在每个otl参数面板即可看到 Asset Name and Path 的切换信息。

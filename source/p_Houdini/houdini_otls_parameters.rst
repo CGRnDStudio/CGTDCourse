@@ -1,49 +1,33 @@
-================================
-Houdini otl：创建以及更新的流程
-================================
+========================================
+Houdini otls：自定义参数
+========================================
 
-otls如何开发？
+otls上参数创建有三种方案：
 
-Subnet自定义HDA方法
-HOUDINI_PATH & HOUDINI_OTLSCAN_PATH
-Operator Name & Operator Label
-自定义参数齿轮菜单
+* By Type
+* From Nodes
+* 拖拽参数
 
-正常流程
-Match Current Definition
+Name
+Label
+Type
+Callback Script
+Invisible
+File Pattern
+Horizontally Join to Next Parameter
 
-Allow Editing of Contents
+Houdini创建otl的时候，想要将节点的参数面板做些布局，学会使用参数Folder的用法是比较有意思的。
 
-otls如何更新？
+Folder参数有以下几种类型模式：
 
-otls如何升级？
-
-案例
-
-创建一个pack cache的otl
-
-要求能打包当前文件中所有filecache节点缓存，并生成新的hip文件
-
-知识点
-
-* 获取所有filecache节点
-* 获取所有filecache节点上缓存路径
-* 拷贝文件操作
-* 修改所有filecache节点上缓存路径
-* 保存成新的hip文件
-
-.. code-block:: python
-
-    # 获取某节点下的所有filecache节点
-    import toolutils
-
-    rootNode = hou.node("/")
-
-    nodes = toolutils.findAllChildNodesOfType(rootNode, "filecache", dorecurse=True)
-
-    # 获取所有filecache节点上缓存路径
-    node.parm("file").eval()
-    node.parm("file").unexpandedString()
+* Collapsible # 加减号收缩与伸展
+* Simple # 简单的框框
+* Tabs # 选项卡式
+* Radio Buttons # 和Tabs类似，多了一个Radio按钮显示
+* Import Block 
+* Multiparm Block (list) # 可以加减控件数量以列表的形式
+* Multiparm Block (scrolling) # 可以加减控件数量以下拉滑条的形式
+* Multiparm Block (tabs) # 可以加减控件数量以选项卡的形式
 
 --------------------------------------
 Houdini升级otl的两种方案
@@ -77,36 +61,3 @@ Asset Manager 对话框中在当前选择的节点上右键选择 Duplicate... �
 -------------------
 
 https://www.sidefx.com/docs/houdini/assets/index.html
-
-
-坐井观天：本节知识点
-
-
-Subnet自定义HDA方法
-HOUDINI_PATH & HOUDINI_OTLSCAN_PATH
-Operator Name & Operator Label
-自定义参数齿轮菜单
-
-
-
-
-管中窥豹：延伸阅读
-https://www.sidefx.com/docs/houdini/assets/index.html
-
-
-
-
-
-
-正常流程
-Match Current Definition
-
-Allow Editing of Contents
-
-
-
-HDA版本升级
-
-
-
-

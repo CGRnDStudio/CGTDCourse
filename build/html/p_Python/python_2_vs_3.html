@@ -89,6 +89,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_copy.html">Python内置模块：copy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_csv.html">Python内置模块：csv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_itertools.html">Python内置模块：itertools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
@@ -213,19 +214,49 @@
             
   <div class="section" id="python-2-x-vs-3-x">
 <h1>Python 2.x VS 3.x<a class="headerlink" href="#python-2-x-vs-3-x" title="永久链接至标题">¶</a></h1>
-<p>Python 2.x not work!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<span class="go">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
-<span class="go">[1, 2, 3]</span>
-<span class="go">&gt;&gt;&gt;</span>
+<ul class="simple">
+<li><p>3.x版本中取消print空格打印的写法，只能用print()内置函数</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2.x</span>
+&gt;&gt;&gt; print <span class="m">100</span>
+<span class="m">100</span>
+&gt;&gt;&gt;
 </pre></div>
 </div>
-<p>Python 3.x not work!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="mi">100</span>
-<span class="go">100</span>
-<span class="go">&gt;&gt;&gt;</span>
+<ul class="simple">
+<li><p>3.x版本中新的解包写法，2.x中会语法异常</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3.x</span>
+&gt;&gt;&gt; a, *b <span class="o">=</span> <span class="o">[</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span><span class="o">]</span>
+&gt;&gt;&gt; a
+<span class="m">1</span>
+&gt;&gt;&gt; b
+<span class="o">[</span><span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span><span class="o">]</span>
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>3.x版本中取消xrange()写法，range()返回生成器</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2.x</span>
+&gt;&gt;&gt; range<span class="o">(</span><span class="m">10</span><span class="o">)</span>
+<span class="o">[</span><span class="m">0</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span>, <span class="m">7</span>, <span class="m">8</span>, <span class="m">9</span><span class="o">]</span>
+&gt;&gt;&gt; xrange<span class="o">(</span><span class="m">10</span><span class="o">)</span>
+xrange<span class="o">(</span><span class="m">10</span><span class="o">)</span>
+&gt;&gt;&gt; type<span class="o">(</span>xrange<span class="o">(</span><span class="m">10</span><span class="o">))</span>
+&lt;<span class="nb">type</span> <span class="s1">&#39;xrange&#39;</span>&gt;
+&gt;&gt;&gt;
+
+<span class="c1"># 3.x</span>
+&gt;&gt;&gt; range<span class="o">(</span><span class="m">10</span><span class="o">)</span>
+range<span class="o">(</span><span class="m">0</span>, <span class="m">10</span><span class="o">)</span>
+&gt;&gt;&gt; xrange<span class="o">(</span><span class="m">10</span><span class="o">)</span>
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+File <span class="s2">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in &lt;module&gt;
+NameError: name <span class="s1">&#39;xrange&#39;</span> is not defined
+&gt;&gt;&gt; type<span class="o">(</span>range<span class="o">(</span><span class="m">10</span><span class="o">))</span>
+&lt;class <span class="s1">&#39;range&#39;</span>&gt;
+&gt;&gt;&gt;
 </pre></div>
 </div>
 </div>

@@ -46,3 +46,29 @@ scriptArgs怎么用
             <>
         </subMenu>
     </subMenu>
+
+可执行代码标签<scriptPath>或<scriptCode>
+
+.. code-block:: bash
+
+    <scriptCode><![CDATA[
+    hou.ui.displayMessage("Hello World")
+    ]]>
+    </scriptCode>
+
+.. code-block:: bash
+
+    <scriptCode><![CDATA[
+    def runLater():
+        hou.ui.displayMessage("Hello World")
+
+    import hdefereval
+    hdefereval.executeDeferred(runLater)
+    ]]>
+    </scriptCode>
+
+------------------
+参考文档
+------------------
+
+* https://www.sidefx.com/docs/houdini/basics/config_menus
