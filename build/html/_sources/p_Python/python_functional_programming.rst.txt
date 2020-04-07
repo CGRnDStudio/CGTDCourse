@@ -14,3 +14,7 @@ map
 filter
 reduce
 sorted
+
+匿名函数
+
+装饰器

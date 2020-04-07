@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python自定义模块 &mdash; CG TD Course 1.0.1 文档</title>
+  <title>Python相关书籍推荐以及阅读感想 &mdash; CG TD Course 1.0.1 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Python自定义包" href="python_custom_package.html" />
-    <link rel="prev" title="Python自定义函数" href="python_custom_function.html" /> 
+    <link rel="next" title="Python内置函数" href="python_built_in_function.html" />
+    <link rel="prev" title="Python API" href="python_api.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,7 +87,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_2_vs_3.html">Python 2.x VS 3.x</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_anonymous_function.html">Python匿名函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_api.html">Python API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_books.html">Python相关书籍推荐以及阅读感想</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python相关书籍推荐以及阅读感想</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_copy.html">Python内置模块：copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_csv.html">Python内置模块：csv</a></li>
@@ -107,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_container_tuple.html">Python容器：元组 ()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_function.html">Python自定义函数</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python自定义模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_custom_module.html">Python自定义模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_package.html">Python自定义包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
@@ -196,13 +196,13 @@
         
           <li><a href="../parts/Python.html">Python</a> &raquo;</li>
         
-      <li>Python自定义模块</li>
+      <li>Python相关书籍推荐以及阅读感想</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Python/python_custom_module.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Python/python_books.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -216,73 +216,27 @@
            <div itemprop="articleBody">
             
   <div class="section" id="python">
-<h1>Python自定义模块<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<p>坐井观天：本节知识点
-❏几种常见的模块导入方式
-❏模块导入的搜索机制sys.path
-❏缓存区sys.modules、pyc以及reload
-❏查询模块路径__file__
-❏模块中__name__的作用
-❏模块帮助文档docstring（__doc__）</p>
-<p>管中窥豹：延伸阅读</p>
-<p>几种常见的模块导入方式
-Python允许开发者通过导入外部程序块的方式来扩展自己的程序，这些可以被导入（import）并使用的程序块就是模块（module）
-模块的基本单元是一个.py文件，Python的包在广义上也被称为模块（module）
-以内置模块datetime为例
-import datetime
-import datetime as dt
-print(dt.datetime.now())
-from datetime import datetime
-print(datetime.now())
-from datetime import *
-from datetime import datetime as ddt
-print(ddt.now())</p>
-<p>模块导入的搜索机制sys.path
-模块导入搜索路径是由多个目录路径组成的列表，第一个路径默认是当前模块所在的路径
-模块搜索路径 = 当前工作路径 + sys.path列表内的所有路径
-何为环境变量PYTHONPATH?
-sys.path在环境变量中起什么作用?
-sys.path添加路径的两种方案以及区别?
-path in sys.path or sys.path.insert(0, path)
-DCC软件如何管理sys.path?</p>
-<p>缓存区sys.modules、pyc以及reload
-import可以是属性方法类型，reload只能是模块
-查询模块路径__file__
-__file__属性是一个Python模块隐藏的默认属性，它描述了一个模块的完整路径。
-模块中__name__的作用
-__name__属性是所有Python模块自带的一个隐藏属性，用于标注模块在不同执行环境下的名称。
-当一个模块作为主模块运行（被Python解释器直接运行）时，__name__的值是”__main__”，否则，该模块的__name__属性值为此模块的名称。</p>
-<p>模块帮助文档docstring（__doc__）</p>
-<p>双三引号
-docstring写在什么位置?
-help()内置函数与docstring的关系?</p>
-<p>myFirstModule.py</p>
-<p># -<em>- coding: utf-8 -</em>-
-#!/usr/bin/python</p>
-<p>“””
-this is a doc string
-“””</p>
-<p>a = 5</p>
-<dl class="simple">
-<dt>def foo():</dt><dd><p>print(“this is foo function”)</p>
-</dd>
-</dl>
-<p>print(“hello, this is my first module”)</p>
-<dl class="simple">
-<dt>if __name__ == “__main__”:</dt><dd><p>print(“this string is under main”)</p>
-</dd>
-</dl>
-<p>main.py
-# -<em>- coding: utf-8 -</em>-
-#!/usr/bin/python</p>
-<p>print(“before import”)
-import myFirstModule as mfm</p>
-<p>print(“after import”)
-print(“my first module attr a is: “, mfm.a)
-print(“my first module method foo is: “,  mfm.foo)
-print(mfm.__name__)
-print(mfm.__file__)
-print(mfm.__doc__)</p>
+<h1>Python相关书籍推荐以及阅读感想<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
+<p>这里将自己阅读过的一些书和读后感推荐给大家。</p>
+<ul class="simple">
+<li><p>《流畅的Python》 极好的一本进阶书，建议基础好的同学多看几遍。</p></li>
+<li><p>《Python学习笔记雨痕版》 作者的笔记，很多心得写的不错，建议一看。</p></li>
+<li><p>《Python Cookbook》 进阶的书，需要一定基础，给了现实问题的很多解决方案，值得没事的时候翻阅看看。</p></li>
+<li><p>《廖雪峰Python教程》 适合入门，给了很多案例都是极好的，基础不好可以多看看。</p></li>
+<li><p>《编写高质量代码 改善Python程序的91个建议》 进阶的书，如果你觉得你写的代码不够高档可以茶余饭后阅读，尝试用另一种解决方案。</p></li>
+<li><p>《像计算机科学家一样思考Python》 基础的书，内容比较繁琐，当字典看看。</p></li>
+<li><p>《Python源码剖析》 比较深奥的一本书，涉及到Python底层原理，适合喜欢追根究底的你，要对Python有足够深的理解才能看懂。</p></li>
+<li><p>《Python学习手册》：长达800页的一本书，内容很详细，详细到很啰嗦，知识体系比较杂乱，可以当Python字典在用到的时候查阅相关知识点，不建议从头看到尾。</p></li>
+<li><p>《Python技术手册》：</p></li>
+<li><p>《Python参考手册》：</p></li>
+<li><p>《Python 3程序开发指南》：</p></li>
+<li><p>《Python编程从入门到实践》：</p></li>
+<li><p>《Python核心编程》：长达900页的一本教科书，内容详细允长，可以当Python字典在用到的时候查阅相关知识点，后面有讲到多线程编程，网络编程，以及数据库编程等等。</p></li>
+<li><p>《Python高级编程》：</p></li>
+<li><p>《Effective Python 编写高质量Python代码的59个有效方法》：一本进阶的书，提升代码质量的59条建议，可以茶余饭后阅读，尝试用更高端的解决方案。</p></li>
+<li><p>《可爱的Python》：前面故事篇可能跟我自己实际工作关联不大，没多大意思，但从环境篇，语法篇，模块篇，框架篇，友邻篇倒是讲解了很多有用的知识点，估计很多人放弃在故事篇了，没有看完可以回头再翻翻。</p></li>
+<li><p>《简明Python教程》：内容教科书式的编排，比较入门，没多大意思。</p></li>
+</ul>
 </div>
 
 
@@ -293,10 +247,10 @@ print(mfm.__doc__)</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="python_custom_package.html" class="btn btn-neutral float-right" title="Python自定义包" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_built_in_function.html" class="btn btn-neutral float-right" title="Python内置函数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_custom_function.html" class="btn btn-neutral float-left" title="Python自定义函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_api.html" class="btn btn-neutral float-left" title="Python API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
