@@ -2,7 +2,7 @@
 Python内置函数
 =============================
 
-Python内置函数也叫Python内建函数（built-in function），内置函数大约有60来个，都非常有用。
+Python内置函数也叫Python内建函数（built-in function），Python中大约有60来个内置函数，版本不同个数有所差异变化。
 
 * print() # 打印任何对象
 * len() # 求容器元素个数
@@ -26,6 +26,8 @@ Python内置函数也叫Python内建函数（built-in function），内置函数
 * max() & min() & sum()
 
 * abs()
+
+ - 
 
 * hex() & oct() & bin()
 

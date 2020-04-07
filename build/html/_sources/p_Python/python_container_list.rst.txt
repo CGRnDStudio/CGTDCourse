@@ -8,7 +8,9 @@ Python容器：列表 []
 
 * 有序的
 
-* 索引取值改值
+* 索引取值
+
+* 索引改值
 
 * 切片
 
@@ -30,16 +32,16 @@ Python容器：列表 []
 
 .. code-block:: python
 
-    >>> a, *rest = range(4)
+    >>> a, *b = range(4)
     >>> a
     0
-    >>> rest
+    >>> b
     [1, 2, 3]
     >>>
-    >>> a, *middle, c = range(4)
+    >>> a, *b, c = range(4)
     >>> a
     0
-    >>> middle
+    >>> b
     [1, 2]
     >>> c
     3
@@ -340,7 +342,6 @@ Python容器：列表 []
         memory=64,
         releaseDate=2020
     )
-
 
     ############# Old style format ############
     # print "Padding %5d" % 15

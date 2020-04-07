@@ -121,6 +121,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_ide.html">Python IDE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_indentation_principle.html">Python缩进原则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_iterator.html">Python迭代器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_mind_map.html">Python知识体系思维导图</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_module_import_principle.html">Python模块导入机制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_name_rules.html">Python命名规则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_pep8.html">Python PEP8</a></li>
@@ -218,7 +219,8 @@
 <ul class="simple">
 <li><p>列表 list []</p></li>
 <li><p>有序的</p></li>
-<li><p>索引取值改值</p></li>
+<li><p>索引取值</p></li>
+<li><p>索引改值</p></li>
 <li><p>切片</p></li>
 <li><p>可变的</p></li>
 <li><p>可迭代的</p></li>
@@ -234,16 +236,16 @@
 <ul class="simple">
 <li><p>列表解包</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rest</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
 <span class="go">[1, 2, 3]</span>
 <span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">middle</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">middle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
 <span class="go">[1, 2]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
 <span class="go">3</span>
