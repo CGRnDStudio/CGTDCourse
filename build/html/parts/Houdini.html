@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Houdini &mdash; CG TD Course 1.0.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Houdini流程介绍及渲染代码分析" href="../p_Houdini/houdini_batch_render_script.html" />
+    <link rel="prev" title="Git基本工作流程" href="../p_Git/git_simple_workflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Course
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Git.html">Git</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Houdini</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_batch_render_script.html">Houdini流程介绍及渲染代码分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_centralized_arnold.html">Houdini中心化部署：Arnold渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_centralized_qlib.html">Houdini中心化部署：qLib插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_centralized_redshift.html">Houdini中心化部署：Redshift渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_custom_menu.html">Houdini自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_development_environment.html">Houdini搭建VS Code开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_environment_variables.html">Houdini中心化理念：环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_fbx_material_converter.html">Houdini FBX材质自动赋予工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_hscript_command.html">Houdini HScript命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_module_hou.html">Houdini模块：hou</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_module_stateutils.html">Houdini模块：stateutils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_multi_loader.html">Houdini批量导入工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_otls_create_update.html">Houdini otls：创建以及更新的流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_otls_parameters.html">Houdini otls：自定义参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_otls_scripts.html">Houdini otls：可执行代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_otls_upgrade.html">Houdini otls：升级的两种方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_program_types.html">Houdini编程语言种类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_progress_bar.html">Houdini进度条</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_python_executable_environment.html">Houdini中可执行Python代码的环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_python_geometry.html">Houdini Python控制几何体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_python_gui.html">Houdini用户界面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_python_panel.html">Houdini Python Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_shelf_tools.html">Houdini工具架工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Devops.html">Devops</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Course</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Houdini</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/parts/Houdini.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="houdini">
+<h1>Houdini<a class="headerlink" href="#houdini" title="永久链接至标题">¶</a></h1>
+<p>Houdini是一款三维计算机图形软件，由加拿大Side Effects Software Inc.（简称SESI）公司开发，SESI公司由Kim Davidson和Greg Hermanovic创建于1987年。Houdini是在Prisms基础上重新开发而来，可运行于Linux, Windows, Mac OS等操作系统，是完全基于节点模式设计的产物，其结构、操作方式等和其它的三维软件有很大的差异。Houdini自带的渲染器是Mantra，基于Reyes渲染架构，因此也能够快速的渲染运动模糊、景深和置换效果。Mantra是经过产品验证的成熟渲染器，可以满足电影级别的渲染要求。当然，Houdini也有第三方渲染器的接口，比如：RenderMan、Mental ray、V-Ray和Torque等，可以把场景导出到这些渲染引擎进行渲染。此部分文档主要用来探讨在Houdini中所有可行的编程方案以及更好的Pipeline解决方案。</p>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_batch_render_script.html">Houdini流程介绍及渲染代码分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_centralized_arnold.html">Houdini中心化部署：Arnold渲染器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_centralized_qlib.html">Houdini中心化部署：qLib插件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_centralized_redshift.html">Houdini中心化部署：Redshift渲染器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_custom_menu.html">Houdini自定义菜单</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_development_environment.html">Houdini搭建VS Code开发环境</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_environment_variables.html">Houdini中心化理念：环境变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_fbx_material_converter.html">Houdini FBX材质自动赋予工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_hscript_command.html">Houdini HScript命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_module_hou.html">Houdini模块：hou</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_module_stateutils.html">Houdini模块：stateutils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_multi_loader.html">Houdini批量导入工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_otls_create_update.html">Houdini otls：创建以及更新的流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_otls_parameters.html">Houdini otls：自定义参数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_otls_scripts.html">Houdini otls：可执行代码</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_otls_upgrade.html">Houdini otls：升级的两种方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_program_types.html">Houdini编程语言种类</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_progress_bar.html">Houdini进度条</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_python_executable_environment.html">Houdini中可执行Python代码的环境</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_python_geometry.html">Houdini Python控制几何体</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_python_gui.html">Houdini用户界面</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_python_panel.html">Houdini Python Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_shelf_tools.html">Houdini工具架工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../p_Houdini/houdini_batch_render_script.html" class="btn btn-neutral float-right" title="Houdini流程介绍及渲染代码分析" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../p_Git/git_simple_workflow.html" class="btn btn-neutral float-left" title="Git基本工作流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
