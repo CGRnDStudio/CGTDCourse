@@ -210,8 +210,15 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li></li>
+<li><p>设置当前视图相机</p></li>
 </ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">toolutils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scene_view</span> <span class="o">=</span> <span class="n">toolutils</span><span class="o">.</span><span class="n">sceneViewer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">viewport</span> <span class="o">=</span> <span class="n">scene_view</span><span class="o">.</span><span class="n">curViewport</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">viewport</span><span class="o">.</span><span class="n">setCamera</span><span class="p">(</span><span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;/obj/cam1/&quot;</span><span class="p">))</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">toolutils</span>
 
 <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;pane&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>

@@ -23,7 +23,15 @@ Houdini模块：toolutils
     selected_objects = scene_viewer.selectObjects("Select a camera and press Enter", allowed_types = ["cam"])
     print(selected_objects)
 
-* 
+* 设置当前视图相机
+
+.. code-block:: python
+
+    >>> import toolutils
+    >>> scene_view = toolutils.sceneViewer()
+    >>> viewport = scene_view.curViewport()
+    >>> viewport.setCamera(hou.node("/obj/cam1/"))
+    >>> 
 
 .. code-block:: python
 
