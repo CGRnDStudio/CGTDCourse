@@ -37,7 +37,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Houdini中心化理念：环境变量" href="houdini_environment_variables.html" />
-    <link rel="prev" title="Houdini自定义菜单" href="houdini_custom_menu.html" /> 
+    <link rel="prev" title="Houdini自定义布局" href="houdini_desktop.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,15 +87,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Houdini.html">Houdini</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="houdini_batch_render_script.html">Houdini流程介绍及渲染代码分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_batch_render.html">Houdini后台输出那些事儿</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_centralized_arnold.html">Houdini中心化部署：Arnold渲染器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_centralized_qlib.html">Houdini中心化部署：qLib插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_centralized_redshift.html">Houdini中心化部署：Redshift渲染器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_custom_menu.html">Houdini自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_custom_resolution.html">Houdini自定义分辨率预设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_desktop.html">Houdini自定义布局</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini搭建VS Code开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_environment_variables.html">Houdini中心化理念：环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_expression_functions.html">Houdini表达式函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_fbx_material_converter.html">Houdini FBX材质自动赋予工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_hotkeys.html">Houdini自定义快捷键</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_hscript_command.html">Houdini HScript命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_jump_path.html">Houdini添加侧边栏快捷路径</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_hou.html">Houdini模块：hou</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_stateutils.html">Houdini模块：stateutils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
@@ -104,12 +109,14 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_parameters.html">Houdini otls：自定义参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_scripts.html">Houdini otls：可执行代码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_upgrade.html">Houdini otls：升级的两种方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_presets_gallery.html">Houdini自定义预设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_program_types.html">Houdini编程语言种类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_progress_bar.html">Houdini进度条</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_python_executable_environment.html">Houdini中可执行Python代码的环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_python_geometry.html">Houdini Python控制几何体</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_python_gui.html">Houdini用户界面</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_python_panel.html">Houdini Python Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_radial_menu.html">Houdini自定义热盒菜单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_shelf_tools.html">Houdini工具架工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
 </ul>
@@ -195,14 +202,14 @@
 <li><p>配置VS Code</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;python.linting.pylintEnabled&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-<span class="s2">&quot;python.linting.pep8Enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-<span class="s2">&quot;editor.renderWhitespace&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-<span class="s2">&quot;editor.mouseWheelZoom&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-<span class="s2">&quot;editor.rulers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">79</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>
-<span class="s2">&quot;editor.tabSize&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-<span class="s2">&quot;window.title&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{activeEditorLong}</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="s2">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;C:/Python27/python.exe&quot;</span>
+    <span class="s2">&quot;python.linting.pylintEnabled&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;python.linting.pep8Enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;editor.renderWhitespace&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;editor.mouseWheelZoom&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;editor.rulers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">79</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>
+    <span class="s2">&quot;editor.tabSize&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&quot;window.title&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{activeEditorLong}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;python.pythonPath&quot;</span><span class="p">:</span> <span class="s2">&quot;C:/Python27/python.exe&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -219,28 +226,13 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Ctrl</span><span class="o">+</span><span class="n">Shift</span><span class="o">+</span><span class="n">Alt</span><span class="o">+</span><span class="n">LM</span>
 </pre></div>
 </div>
-<p>Python Shell
-Python Source Editor &amp; hou.session
-CG Toolbox扩展编辑器配置
-VS Code开发环境配置
-Python &amp; VEX插件安装
-认识Houdini扩展开发层级结构
-HOUDINI_PATH &amp; sys.path
-创建工具架工具导入模块打印Hello World
-创建自定义Desktop
-Presets &amp; Gallery
-FBres 自定义分辨率配置
-jump.pref结合环境变量使用
-配置HotkeyOverrides文件自定义快捷键 Ctrl+Shift+Alt+左键
-配置radialmenu文件自定义热盒
-配置ExampleMenu.xml自定义主菜单 &amp; MainMenuCommon.xml</p>
-<p><a class="reference external" href="http://cgtoolbox.com/">http://cgtoolbox.com/</a></p>
-<p>Python Shell</p>
-<p>Python Source Editor</p>
-<p>将HoudiniExprEditor插件配置到HOUDINI_PATH中
-from HoudiniExprEditor import ParmWatcher
-reload(ParmWatcher)
-ParmWatcher.set_external_editor()</p>
+<p>CG Toolbox扩展编辑器配置</p>
+<p>将HoudiniExprEditor插件配置到HOUDINI_PATH中</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">HoudiniExprEditor</span> <span class="kn">import</span> <span class="n">ParmWatcher</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">ParmWatcher</span><span class="p">)</span>
+<span class="n">ParmWatcher</span><span class="o">.</span><span class="n">set_external_editor</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -254,7 +246,7 @@ ParmWatcher.set_external_editor()</p>
         <a href="houdini_environment_variables.html" class="btn btn-neutral float-right" title="Houdini中心化理念：环境变量" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_custom_menu.html" class="btn btn-neutral float-left" title="Houdini自定义菜单" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_desktop.html" class="btn btn-neutral float-left" title="Houdini自定义布局" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

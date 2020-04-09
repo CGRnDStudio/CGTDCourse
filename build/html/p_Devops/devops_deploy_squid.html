@@ -107,9 +107,11 @@
 <li class="toctree-l2"><a class="reference internal" href="devops_install_system.html">U盘重装Win10操作系统</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_intranet_penetration.html">花生壳内网穿透技术解析</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_mklink.html">mklink符号链接技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_onedrive.html">OneDrive协同办公流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_pip_manual.html">pip命令使用手册</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_raid.html">NAS RAID技术</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_readthedocs_sphinx_github.html">ReadTheDocs+Sphinx+Github搭建托管文档环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_renderbus_proxy.html">RenderBus客户端配置Sock5代理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_rst_syntax.html">reStructuredText(rst)语法说明文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_traceroute.html">路由跟踪指令traceroute</a></li>
 </ul>
@@ -182,6 +184,24 @@
             
   <div class="section" id="squid">
 <h1>Squid代理服务器搭建<a class="headerlink" href="#squid" title="永久链接至标题">¶</a></h1>
+<p>VMware部署一台CentOS7 Linux虚拟机。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 安装</span>
+yum install squid -y
+yum install httpd-tools -y
+<span class="c1"># 服务启动</span>
+systemctl start squid.service
+<span class="c1"># 服务停止</span>
+systemctl stop squid.service
+<span class="c1"># 配置开机自启动</span>
+systemctl <span class="nb">enable</span> squid.service
+<span class="c1"># 服务重启</span>
+systemctl restart squid.service
+<span class="c1"># 关闭防火墙</span>
+systemctl stop firewalld.service
+<span class="c1"># 禁用防火墙</span>
+systemctl disable firewalld.service
+</pre></div>
+</div>
 </div>
 
 

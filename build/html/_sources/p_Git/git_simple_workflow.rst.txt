@@ -8,6 +8,6 @@ Git基本工作流程
 * git status
 * gitk
 * git pull origin master
-* git push origin master
 * git add .
 * git commit -m "comment" -a
+* git push origin master
