@@ -92,8 +92,10 @@
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_copy.html">Python内置模块：copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_csv.html">Python内置模块：csv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_functools.html">Python内置模块：functools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_inspect.html">Python内置模块：inspect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_itertools.html">Python内置模块：itertools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_operator.html">Python内置模块：operator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
@@ -118,10 +120,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_flow_control.html">Python流控制语句</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python函数式编程</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">高阶函数</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python函数式编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_generator.html">Python生成器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_ide.html">Python IDE</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_indentation_principle.html">Python缩进原则</a></li>
@@ -220,19 +219,155 @@
             
   <div class="section" id="python">
 <h1>Python函数式编程<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<ul class="simple">
-<li><p>函数式编程，也可以归到面向过程的程序设计，但思想更接近于数学计算。</p></li>
-<li><p>函数式编程是一种抽象程度很高的编程范式，纯粹的函数式编程语言编写的函数没有变量，因此任意一个函数，只要输入时确定的，输出就是确定的，这种纯函数我们称之为没有副作用。</p></li>
-<li><p>函数式编程的一个特点是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数。</p></li>
-</ul>
-<div class="section" id="id1">
-<h2>高阶函数<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>map
-filter
-reduce
-sorted</p>
-<p>匿名函数</p>
-<p>装饰器</p>
+<p>函数式编程（Functional Programming，简称FP）理论依据是在Python中一切皆对象</p>
+<p>Python函数是一等对象意味着在Python中可以赋值给变量引用。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">funObject</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">arg</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">funObject</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">funTest</span> <span class="o">=</span> <span class="n">funObject</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">funTest</span>
+<span class="go">&lt;function funObject at 0x03239BF0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">funObject</span>
+<span class="go">&lt;function funObject at 0x03239BF0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">funTest</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+<span class="go">99</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Python支持高阶函数意味着函数可以接受其它函数作为参数或者返回值。下面有几个经典的案例。</p>
+<p>内置函数map()、filter()、reduce()以及sorted()都是高阶函数的经典案例。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+<span class="go">Help on built-in function map in module __builtin__:</span>
+
+<span class="go">map(...)</span>
+<span class="go">    map(function, sequence[, sequence, ...]) -&gt; list</span>
+
+<span class="go">    Return a list of the results of applying the function to the items of</span>
+<span class="go">    the argument sequence(s).  If more than one sequence is given, the</span>
+<span class="go">    function is called with an argument list consisting of the corresponding</span>
+<span class="go">    item of each sequence, substituting None for missing values when not all</span>
+<span class="go">    sequences have the same length.  If the function is None, return a list of</span>
+<span class="go">    the items of the sequence (or a list of tuples if more than one sequence).</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="nb">filter</span><span class="p">)</span>
+<span class="go">Help on built-in function filter in module __builtin__:</span>
+
+<span class="go">filter(...)</span>
+<span class="go">    filter(function or None, sequence) -&gt; list, tuple, or string</span>
+
+<span class="go">    Return those items of sequence for which function(item) is true.  If</span>
+<span class="go">    function is None, return the items that are true.  If sequence is a tuple</span>
+<span class="go">    or string, return the same type, else return a list.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">reduce</span><span class="p">)</span>
+<span class="go">Help on built-in function reduce in module __builtin__:</span>
+
+<span class="go">reduce(...)</span>
+<span class="go">    reduce(function, sequence[, initial]) -&gt; value</span>
+
+<span class="go">    Apply a function of two arguments cumulatively to the items of a sequence,</span>
+<span class="go">    from left to right, so as to reduce the sequence to a single value.</span>
+<span class="go">    For example, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) calculates</span>
+<span class="go">    ((((1+2)+3)+4)+5).  If initial is present, it is placed before the items</span>
+<span class="go">    of the sequence in the calculation, and serves as a default when the</span>
+<span class="go">    sequence is empty.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="nb">sorted</span><span class="p">)</span>
+<span class="go">Help on built-in function sorted in module __builtin__:</span>
+
+<span class="go">sorted(...)</span>
+<span class="go">    sorted(iterable, cmp=None, key=None, reverse=False) --&gt; new sorted list</span>
+</pre></div>
+</div>
+<p>不管是内置函数sorted还是列表方法sort()，都可以传递key参数接受函数来自定义排序方式（通常默认排序方式不满足需求）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tank_1_color_v0.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_2_color_v5.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_1_color_v3.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_3_color_v1.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_4_color_v2.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_4_color_v4.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_5_color_v1.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_6_color_v6.rat&quot;</span><span class="p">]</span>
+
+<span class="n">pat_num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;\D+_(\d+)_&quot;</span><span class="p">)</span>
+<span class="n">pat_ver</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(\d+)\D+$&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">sorter_num</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_num</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">sorter_ver</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_ver</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">sorter_num</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">sorter_ver</span><span class="p">))</span>
+
+<span class="c1"># [&#39;tank_1_color_v0.rat&#39;, &#39;tank_1_color_v3.rat&#39;, &#39;tank_2_color_v5.rat&#39;, &#39;tank_3_color_v1.rat&#39;, &#39;tank_4_color_v2.rat&#39;, &#39;tank_4_color_v4.rat&#39;, &#39;tank_5_color_v1.rat&#39;, &#39;tank_6_color_v6.rat&#39;]</span>
+<span class="c1"># [&#39;tank_1_color_v0.rat&#39;, &#39;tank_3_color_v1.rat&#39;, &#39;tank_5_color_v1.rat&#39;, &#39;tank_4_color_v2.rat&#39;, &#39;tank_1_color_v3.rat&#39;, &#39;tank_4_color_v4.rat&#39;, &#39;tank_2_color_v5.rat&#39;, &#39;tank_6_color_v6.rat&#39;]</span>
+</pre></div>
+</div>
+<p>因为函数可以作为参数传递，匿名函数应用而生，对于简单的函数可以使用lambda函数一句话来表达。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tank_1_color_v0.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_2_color_v5.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_1_color_v3.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_3_color_v1.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_4_color_v2.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_4_color_v4.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_5_color_v1.rat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tank_6_color_v6.rat&quot;</span><span class="p">]</span>
+
+<span class="n">pat_num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;\D+_(\d+)_&quot;</span><span class="p">)</span>
+<span class="n">pat_ver</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(\d+)\D+$&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">elem</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\D+_(\d+)_&quot;</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">elem</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)\D+$&quot;</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="c1"># [&#39;tank_1_color_v0.rat&#39;, &#39;tank_1_color_v3.rat&#39;, &#39;tank_2_color_v5.rat&#39;, &#39;tank_3_color_v1.rat&#39;, &#39;tank_4_color_v2.rat&#39;, &#39;tank_4_color_v4.rat&#39;, &#39;tank_5_color_v1.rat&#39;, &#39;tank_6_color_v6.rat&#39;]</span>
+<span class="c1"># [&#39;tank_1_color_v0.rat&#39;, &#39;tank_3_color_v1.rat&#39;, &#39;tank_5_color_v1.rat&#39;, &#39;tank_4_color_v2.rat&#39;, &#39;tank_1_color_v3.rat&#39;, &#39;tank_4_color_v4.rat&#39;, &#39;tank_2_color_v5.rat&#39;, &#39;tank_6_color_v6.rat&#39;]</span>
+</pre></div>
+</div>
+<p>Python闭包函数是一种在函数中定义函数的行为，如果将函数以返回值的形式return，是高阶函数的另一种形式。</p>
+<p>Python装饰器是闭包函数与高阶函数的一种应用案例。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="k">def</span> <span class="nf">measure_time</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">runtime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+            <span class="nb">print</span> <span class="s2">&quot;Execution time: </span><span class="si">%.6f</span><span class="s2"> seconds&quot;</span> <span class="o">%</span> <span class="n">runtime</span>
+
+    <span class="k">return</span> <span class="n">wrapped</span>
+
+
+<span class="nd">@measure_time</span>
+<span class="k">def</span> <span class="nf">testFunc</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+
+<span class="n">testFunc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">testFunc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">testFunc</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+
+<span class="c1"># Execution time: 1.000000 seconds</span>
+<span class="c1"># Execution time: 3.000000 seconds</span>
+<span class="c1"># Execution time: 5.001000 seconds</span>
+</pre></div>
 </div>
 </div>
 

@@ -2,21 +2,19 @@
 Houdini otls：创建以及更新的流程
 ================================
 
-otls如何开发？
+otl是一种老的数字资产的扩展名，现在扩展名是hda（Houdini Digital Assets），因为习惯就沿用了otl的名称。
 
 Subnet自定义HDA方法
 HOUDINI_PATH & HOUDINI_OTLSCAN_PATH
 Operator Name & Operator Label
 自定义参数齿轮菜单
 
+内嵌资产是指将otl保存到Embedded，这样otl只会和场景文件一起存储，不会生成otl文件，一般是用于在正式创建资产之前测试数字资产，便于迭代和共享资产。
+
 正常流程
 Match Current Definition
 
 Allow Editing of Contents
-
-otls如何更新？
-
-otls如何升级？
 
 案例
 
@@ -45,47 +43,10 @@ otls如何升级？
     node.parm("file").eval()
     node.parm("file").unexpandedString()
 
---------------------------------------
-Houdini升级otl的两种方案
---------------------------------------
-
-Houdini中otl的版本切换可以通过主菜单 Asset>Asset Manager>Configuration 设置 Asset Bar 为 Display Menu of All Definitions ，在每个otl参数面板即可看到 Asset Name and Path 的切换信息。
-
-Houdini中想升级otl，在已经创建好的otl节点上右键选择 Show in Asset Manager... 菜单打开 Asset Manager 。
-
-Asset Manager 对话框中在当前选择的节点上右键选择 Duplicate... 菜单，可以打开 Copy Asset 对话框。
-
-这里升级otl有两种方案，推荐使用第一种。
-
-第一种方案是在 Operator Name 上添加版本号， Operator Label 以及 Save to Library 保持不变。
-
-比如：
-
-.. code-block:: python
-
-    do::pack_cache::1.0
-    do::pack_cache::2.0
-
-使用这种方案的好处是otl文件只有一个，两个版本都存储在此文件中，可以通过otl参数面板上的 Asset Name 来切换版本，默认优先使用的都是最新版本。
-
-第二种方案是在 Save to Library 的时候将版本号添加到otl文件名上，保持 Operator Name 和 Operator Label 不变。这样做会另外存一个otl文件出来，相当于重新做了一个otl的方案。因为 Operator Name 是相同的，所以节点也只有一个，可以通过otl参数面板上的 Asset Path 来切换版本，默认优先使用的都是最新版本。
-
-
-
-
-
-
 Subnet自定义HDA方法
 HOUDINI_PATH & HOUDINI_OTLSCAN_PATH
 Operator Name & Operator Label
 自定义参数齿轮菜单
-
-
-正常流程
-Match Current Definition
-
-Allow Editing of Contents
-
 
 -------------------
 参考文档
