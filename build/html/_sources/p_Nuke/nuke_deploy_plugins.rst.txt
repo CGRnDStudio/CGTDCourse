@@ -109,7 +109,7 @@ Nuke依据版本来加载不同插件
     # ('WRITE_NON_DEFAULT_ONLY', 16)
     # ('WRITE_USER_KNOB_DEFS', 4)
 
-从代码获得的结果可以使用NUKE_VERSION_相关属性来获取当前NUKE版本
+从代码获得的结果可以使用NUKE_VERSION_相关属性来获取当前NUKE版本。
 
 .. code-block:: python
 

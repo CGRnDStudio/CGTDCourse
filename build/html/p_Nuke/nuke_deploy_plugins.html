@@ -37,7 +37,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Nuke扩展开发插件的层级结构" href="nuke_develop_plugins.html" />
-    <link rel="prev" title="Nuke自定义菜单" href="nuke_custom_menu.html" /> 
+    <link rel="prev" title="Nuke守护线程自动保存文件" href="nuke_daemon_thread.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,12 +90,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Nuke.html">Nuke</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nuke_batch_script.html">Nuke执行后台命令脚本方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_callback_scripts.html">Nuke Python Callback机制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_centralized_tools.html">Nuke中心化配置插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_gizmo.html">Nuke创建Gizmo流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_read.html">Nuke Python创建Read节点小技巧</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_custom_menu.html">Nuke自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_custom_toolset.html">Nuke自定义工具集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_daemon_thread.html">Nuke守护线程自动保存文件</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke依据版本来加载不同插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_plugins.html">Nuke扩展开发插件的层级结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_python_panel.html">Nuke Python Panel</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
@@ -271,7 +275,7 @@
 <span class="c1"># (&#39;WRITE_USER_KNOB_DEFS&#39;, 4)</span>
 </pre></div>
 </div>
-<p>从代码获得的结果可以使用NUKE_VERSION_相关属性来获取当前NUKE版本</p>
+<p>从代码获得的结果可以使用NUKE_VERSION_相关属性来获取当前NUKE版本。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># (&#39;NUKE_VERSION_DATE&#39;, &#39;Dec  6 2016&#39;)</span>
 <span class="c1"># (&#39;NUKE_VERSION_MAJOR&#39;, 10)</span>
 <span class="c1"># (&#39;NUKE_VERSION_MINOR&#39;, 5)</span>
@@ -323,7 +327,7 @@
         <a href="nuke_develop_plugins.html" class="btn btn-neutral float-right" title="Nuke扩展开发插件的层级结构" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nuke_custom_menu.html" class="btn btn-neutral float-left" title="Nuke自定义菜单" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nuke_daemon_thread.html" class="btn btn-neutral float-left" title="Nuke守护线程自动保存文件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
