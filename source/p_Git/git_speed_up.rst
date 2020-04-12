@@ -29,11 +29,21 @@ Git国外服务器加速方案
 
     git clone https://gitee.com/CGRnDStudio/qLib.git
 
-但现在还有一件事情待解决，如果是自建的代码仓库，推送代码到仓库的时候是否会自动同步到Github或者Gitlab呢？
+此时的码云仓库和国外平台仓库一毛钱关系没有，如果国外平台仓库更新了，需要手动同步才能将更新的部分同步到码云。
 
-测试一下，
+那么如何将自建的代码仓库用码云管理的同时，推送代码的时候能自动同步到Github或者Gitlab呢？
 
+如果你选择码云管理代码仓库，而不需要国外平台，就不没有同步一说。我个人喜欢用Gitlab，所以想通过Gitee来中转。
 
+这里给一个解决方案，git remote多配置一个远程仓库，在push的时候可以同时推送代码到码云和Gitlab上，而拉取代码依然是码云仓库。
+
+.. code-block:: bash
+
+    git remote set-url --add --push origin https://github.com/CGRnDStudio/blablabla.git
+
+完事之后可以看到.git/config文件中已添加了Github地址。
+
+但我相信应该有更好的解决方案，比如配置webhook技术，还没有去测试，。
 
 当然想解决自己公司的仓库推送和拉取速度缓慢的问题，可以自己搭建Gitlab本地服务器，云时代我还是比较喜欢用云端产品。
 
