@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Git代码仓库托管平台有哪些？ &mdash; CG TD Course 1.0.1 文档</title>
+  <title>Git国外服务器加速方案 &mdash; CG TD Course 1.0.1 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Git基本工作流程" href="git_simple_workflow.html" />
-    <link rel="prev" title="Git以及TortoiseGit安装以及使用" href="git_install_tortoisegit.html" /> 
+    <link rel="next" title="Houdini" href="../parts/Houdini.html" />
+    <link rel="prev" title="Git基本工作流程" href="git_simple_workflow.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,14 +89,9 @@
 <li class="toctree-l2"><a class="reference internal" href="git_config_proxy.html">Git配置代理网络访问</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_ignore.html">Git使用.gitignore过滤上传文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_install_tortoisegit.html">Git以及TortoiseGit安装以及使用</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Git代码仓库托管平台有哪些？</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">国外平台</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">国内平台</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">参考文档</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="git_repo_hosts.html">Git代码仓库托管平台有哪些？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_simple_workflow.html">Git基本工作流程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_speed_up.html">Git国外服务器加速方案</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Git国外服务器加速方案</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
@@ -153,13 +148,13 @@
         
           <li><a href="../parts/Git.html">Git</a> &raquo;</li>
         
-      <li>Git代码仓库托管平台有哪些？</li>
+      <li>Git国外服务器加速方案</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Git/git_repo_hosts.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Git/git_speed_up.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -173,38 +168,26 @@
            <div itemprop="articleBody">
             
   <div class="section" id="git">
-<h1>Git代码仓库托管平台有哪些？<a class="headerlink" href="#git" title="永久链接至标题">¶</a></h1>
-<p>Git托管平台推荐使用Github、Gitlab，国外服务器访问上可能有些丢包延时的问题，也可以使用本地服务器安装虚拟机搭建本地Gitlab以满足大型团队协作。</p>
-<div class="section" id="id1">
-<h2>国外平台<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<ul class="simple">
-<li><p>Github</p></li>
-</ul>
-<p>网址：<a class="reference external" href="https://github.com/">https://github.com/</a></p>
-<ul class="simple">
-<li><p>Gitlab</p></li>
-</ul>
-<p>网址：<a class="reference external" href="https://gitlab.com">https://gitlab.com</a></p>
-<ul class="simple">
-<li><p>BitBucket</p></li>
-</ul>
-<p>网址：<a class="reference external" href="https://bitbucket.org/">https://bitbucket.org/</a></p>
-<ul class="simple">
-<li><p>SourceForge</p></li>
-</ul>
-<p>网址：<a class="reference external" href="https://sourceforge.net/">https://sourceforge.net/</a></p>
+<h1>Git国外服务器加速方案<a class="headerlink" href="#git" title="永久链接至标题">¶</a></h1>
+<p>不管是Github还是Gitlab都是国外服务器托管代码的平台，这就导致了代码推送或者拉取的时候速度受到限制。</p>
+<p>那么如何曲线救国呢？</p>
+<p>咱以一个开源仓库qLib下载作为测试案例。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">qLab</span><span class="o">/</span><span class="n">qLib</span>
+</pre></div>
 </div>
-<div class="section" id="id2">
-<h2>国内平台<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<ul class="simple">
-<li><p>码云</p></li>
-</ul>
-<p>网址：<a class="reference external" href="https://gitee.com/">https://gitee.com/</a></p>
+<p>500M移动网络拉取代码速度只有30~50kb左右，代码仓库小还没什么影响，一旦文件过多基本以失败告终。</p>
+<p>上国内代码托管平台码云注册账号，创建仓库的时候选择从Gitlab/Github导入仓库。</p>
+<p>选择从URL导入，填写代码仓库网址。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">qLab</span><span class="o">/</span><span class="n">qLib</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
 </div>
-<div class="section" id="id3">
-<h2>参考文档<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>《<a class="reference external" href="https://www.jianshu.com/p/bd24f3202011">收藏 | 国内外代码托管平台汇总</a>》</p>
+<p>再次尝试拉取仓库，此次使用码云仓库链接，速度变成10M/s，100M的仓库10s就下载完成啦，牛逼！</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gitee</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">CGRnDStudio</span><span class="o">/</span><span class="n">qLib</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
 </div>
+<p>但现在还有一件事情待解决，如果是自建的代码仓库，推送代码到仓库的时候是否会自动同步到Github或者Gitlab呢？</p>
+<p>测试一下，</p>
+<p>当然想解决自己公司的仓库推送和拉取速度缓慢的问题，可以自己搭建Gitlab本地服务器，云时代我还是比较喜欢用云端产品。</p>
 </div>
 
 
@@ -215,10 +198,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="git_simple_workflow.html" class="btn btn-neutral float-right" title="Git基本工作流程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../parts/Houdini.html" class="btn btn-neutral float-right" title="Houdini" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="git_install_tortoisegit.html" class="btn btn-neutral float-left" title="Git以及TortoiseGit安装以及使用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="git_simple_workflow.html" class="btn btn-neutral float-left" title="Git基本工作流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
