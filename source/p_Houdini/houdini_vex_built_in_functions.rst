@@ -79,6 +79,7 @@ VEX内置函数有七八百之多，掌握如何查询与使用的通用心法�
         @Cd.r = 1;
     }
 
+
 VEX代码可视化，创建一个line节点，将点数增加到1000。
 
 .. code-block:: python
@@ -113,6 +114,45 @@ VEX代码可视化，创建一个line节点，将点数增加到1000。
     matrix  set(float v1, float v2, float v3, float v4, float v5, float v6, float v7, float v8, float v9, float v10, float v11, float v12, float v13, float v14, float v15, float v16)
 
 然而set()有其更复杂的类型转换机制，可以参考文档 http://www.sidefx.com/docs/houdini/vex/functions/set
+
+VEX内置函数的分类:
+
+- ARRAYS
+- ATTRIBUTES AND INTRINSICS
+- BSDFS
+- CHOP
+- COLOR
+- CONVERSION
+- CROWDS
+- DISPLACE
+- FILE I/O
+- FUZZY LOGIC
+- GEOMETRY
+- GROUPS
+- HALF-EDGES
+- IMAGE PROCESSING
+- INTERPOLATION
+- LIGHT
+- MATH
+- MEASURE
+- METABALL
+- NODES
+- NOISE AND RANDOMNESS
+- NORMALS
+- OPEN COLOR IO
+- PARTICLES
+- POINT CLOUDS AND 3D IMAGES
+- SAMPLING
+- SENSOR INPUT
+- SHADING AND RENDERING
+- STRINGS
+- SUBDIVISION SURFACES
+- TETRAHEDRONS
+- TEXTURING
+- TRANSFORMS AND SPACE
+- USD
+- UTILITY
+- VOLUME
 
 ---------------
 参考文档
