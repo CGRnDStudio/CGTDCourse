@@ -185,8 +185,16 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gitee</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">CGRnDStudio</span><span class="o">/</span><span class="n">qLib</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p>但现在还有一件事情待解决，如果是自建的代码仓库，推送代码到仓库的时候是否会自动同步到Github或者Gitlab呢？</p>
-<p>测试一下，</p>
+<p>此时的码云仓库和国外平台仓库一毛钱关系没有，如果国外平台仓库更新了，需要手动同步才能将更新的部分同步到码云。</p>
+<p>那么如何将自建的代码仓库用码云管理的同时，推送代码的时候能自动同步到Github或者Gitlab呢？</p>
+<p>如果你选择码云管理代码仓库，而不需要国外平台，就不没有同步一说。我个人喜欢用Gitlab，所以想通过Gitee来中转。</p>
+<p>这里给一个解决方案，git remote多配置一个远程仓库，在push的时候可以同时推送代码到码云和Gitlab上，而拉取代码依然是码云仓库。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git remote set-url --add --push origin https://gitee.com/CGRnDStudio/blablabla.git
+git remote set-url --add --push origin https://github.com/CGRnDStudio/blablabla.git
+</pre></div>
+</div>
+<p>完事之后可以看到.git/config文件中已添加了Github地址。</p>
+<p>但我相信应该有更好的解决方案，比如配置webhook技术，还没有去测试。</p>
 <p>当然想解决自己公司的仓库推送和拉取速度缓慢的问题，可以自己搭建Gitlab本地服务器，云时代我还是比较喜欢用云端产品。</p>
 </div>
 

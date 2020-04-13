@@ -39,13 +39,11 @@ Git国外服务器加速方案
 
 .. code-block:: bash
 
+    git remote set-url --add --push origin https://gitee.com/CGRnDStudio/blablabla.git
     git remote set-url --add --push origin https://github.com/CGRnDStudio/blablabla.git
 
 完事之后可以看到.git/config文件中已添加了Github地址。
 
-但我相信应该有更好的解决方案，比如配置webhook技术，还没有去测试，。
+但我相信应该有更好的解决方案，比如配置webhook技术，还没有去测试。
 
 当然想解决自己公司的仓库推送和拉取速度缓慢的问题，可以自己搭建Gitlab本地服务器，云时代我还是比较喜欢用云端产品。
-
-
-
