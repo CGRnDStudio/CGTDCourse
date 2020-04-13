@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini otls：可执行代码 &mdash; CG TD Course 1.0.1 文档</title>
+  <title>Houdini VEX：编译器pragmas &mdash; CG TD Course 1.0.1 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini otls：升级的两种方案" href="houdini_otls_upgrade.html" />
-    <link rel="prev" title="Houdini otls：自定义参数" href="houdini_otls_parameters.html" /> 
+    <link rel="next" title="Houdini VEX：自定义函数" href="houdini_vex_custom_functions.html" />
+    <link rel="prev" title="Houdini VEX：通道参数" href="houdini_vex_channel_parameter.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -107,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_multi_loader.html">Houdini批量导入工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_create_update.html">Houdini otls：创建以及更新的流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_parameters.html">Houdini otls：自定义参数</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini otls：可执行代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_scripts.html">Houdini otls：可执行代码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_upgrade.html">Houdini otls：升级的两种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_pdg.html">Houdini PDG相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_presets_gallery.html">Houdini自定义预设</a></li>
@@ -123,7 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_usd.html">Houdini USD相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_built_in_functions.html">Houdini VEX：内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_channel_parameter.html">Houdini VEX：通道参数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_vex_compiler.html">Houdini VEX：编译器pragmas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：编译器pragmas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_custom_functions.html">Houdini VEX：自定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_flow_control.html">Houdini VEX：流控制语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_include.html">Houdini VEX：头文件</a></li>
@@ -184,13 +184,13 @@
         
           <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
         
-      <li>Houdini otls：可执行代码</li>
+      <li>Houdini VEX：编译器pragmas</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Houdini/houdini_otls_scripts.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Houdini/houdini_vex_compiler.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -203,24 +203,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="houdini-otls">
-<h1>Houdini otls：可执行代码<a class="headerlink" href="#houdini-otls" title="永久链接至标题">¶</a></h1>
-<p>hou.pwd().hdaModule()</p>
-<p>hou.pwd() &amp; kwargs</p>
-<p>Custom Script</p>
-<p>Expressions</p>
-<p>Python Module</p>
-<p>Before First Create</p>
-<p>On Created</p>
-<p>On Loaded</p>
-<p>On Updated</p>
-<p>On Deleted</p>
-<p>After Last Delete</p>
-<p>On Input Changed</p>
-<p>On Name Changed</p>
-<p>On Install</p>
-<p>On Uninstall</p>
-<p>Sync Node Version</p>
+  <div class="section" id="houdini-vex-pragmas">
+<h1>Houdini VEX：编译器pragmas<a class="headerlink" href="#houdini-vex-pragmas" title="永久链接至标题">¶</a></h1>
 </div>
 
 
@@ -231,10 +215,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="houdini_otls_upgrade.html" class="btn btn-neutral float-right" title="Houdini otls：升级的两种方案" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="houdini_vex_custom_functions.html" class="btn btn-neutral float-right" title="Houdini VEX：自定义函数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_otls_parameters.html" class="btn btn-neutral float-left" title="Houdini otls：自定义参数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_vex_channel_parameter.html" class="btn btn-neutral float-left" title="Houdini VEX：通道参数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

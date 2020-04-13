@@ -31,7 +31,7 @@ VEX内置函数有七八百之多，掌握如何查询与使用的通用心法�
     vector position = {0, 0, 0};
     addpoint(0, position);
 
-代码创建一个几何体。
+代码创建一个三角形。
 
 .. code-block:: python
 
@@ -43,6 +43,58 @@ VEX内置函数有七八百之多，掌握如何查询与使用的通用心法�
     addvertex(geoself(), prim, p1);
     addvertex(geoself(), prim, p2);
     addvertex(geoself(), prim, p3);
+
+代码创建一个圆环。
+
+.. code-block:: python
+
+    float angle = 0;
+    int num = chi("num");
+    float segmentAngle = 2 * PI / num;
+    int prim = addprim(geoself(), "poly");
+
+    for (int n = 0; n < num; n++) {
+        int p = addpoint(geoself(), set(cos(angle), 0, sin(angle)));
+        addvertex(geoself(), prim, p);
+        angle += segmentAngle;
+    }
+
+代码实现正弦波。
+
+.. code-block:: python
+
+    @P.y = sin(@P.x + @Time);
+
+代码实现噪波。
+
+.. code-block:: python
+
+    // size = 5
+    // offset = 0
+    // threshold = 0.5
+    @Cd = {0, 0, 0};
+    float noseValues = noise(@P*chf("size") + chf("offset"));
+
+    if(noseValues > chf("threshold")){
+        @Cd.r = 1;
+    }
+
+VEX代码可视化，创建一个line节点，将点数增加到1000。
+
+.. code-block:: python
+
+    @P.y = @P.x;
+    @P.y = pow(@P.x, 2);
+    @P.y = sin(@P.x);
+    @P.y = floor(@P.x);
+    @P.y = frac(@P.x);
+    @P.y = absolute(@P.x);
+    @P.y = absolute(sin(@P.x));
+    @P.y = floor(sin(@P.x));
+    @P.y = clamp(sin(@P.x));
+    @P.y = pow(frac(@P.x), 2);
+    @P.y = noise(frac(@P.x));
+
 
 内置函数set()可以用来做类型的强制转换，这非常有用，很多时候定义向量，四元素的时候以花括号初始化固定值，不能是动态的值，我们可以依赖set()函数来处理。
 

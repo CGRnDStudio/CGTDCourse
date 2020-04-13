@@ -37,7 +37,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Maya" href="../parts/Maya.html" />
-    <link rel="prev" title="Houdini VEX：流控制语句" href="houdini_vex_flow_control.html" /> 
+    <link rel="prev" title="Houdini VEX：代码片段" href="houdini_vex_snippets.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -123,8 +123,11 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_usd.html">Houdini USD相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_built_in_functions.html">Houdini VEX：内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_channel_parameter.html">Houdini VEX：通道参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_compiler.html">Houdini VEX：编译器pragmas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_custom_functions.html">Houdini VEX：自定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_flow_control.html">Houdini VEX：流控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_include.html">Houdini VEX：头文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：基础语法</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
 </ul>
@@ -266,7 +269,7 @@
 <td><p>&#64;id, &#64;ptnum, &#64;primnum, &#64;vtxnum, &#64;numpt, &#64;numprim, &#64;numvtx, &#64;group_*, &#64;resx, &#64;resy, &#64;resz</p></td>
 </tr>
 <tr class="row-odd"><td><p>float</p></td>
-<td><p>&#64;pscale</p></td>
+<td><p>&#64;pscale, &#64;Time, &#64;frame</p></td>
 </tr>
 <tr class="row-even"><td><p>string</p></td>
 <td><p>&#64;name</p></td>
@@ -283,7 +286,7 @@
 <ul class="simple">
 <li><p>自定义属性</p></li>
 </ul>
-<p>自定义属性在声明的时候&#64;符号前加属性的数据类型，比如v&#64;表示向量，f&#64;表示浮点数，i&#64;表示整数等，后面引用属性的时候就可以像内置属性一样不用加具体的数据类型。</p>
+<p>自定义属性在声明的时候&#64;符号前加属性的数据类型，比如v&#64;表示向量，f&#64;表示浮点数，i&#64;表示整数等，后面引用属性的时候就可以像内置属性一样不用加具体的数据类型，如果没有声明变量的类型，则默认以浮点型作为类型，自定义属性最好是声明具体的类型。</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference external" href="mailto:v&#37;&#52;&#48;vectorAttributeName">v<span>&#64;</span>vectorAttributeName</a>;</p></li>
@@ -361,9 +364,13 @@
 </table>
 <ul class="simple">
 <li><p>数组</p></li>
-<li><p>结构体</p></li>
 </ul>
 <p>数组在VEX中是一种极其重要的容器，不管是向量还是四元素都离不开数组的组织数据。</p>
+<ul class="simple">
+<li><p>字符串</p></li>
+<li><p>切片</p></li>
+<li><p>结构体</p></li>
+</ul>
 <div class="section" id="id1">
 <h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
@@ -385,7 +392,7 @@
         <a href="../parts/Maya.html" class="btn btn-neutral float-right" title="Maya" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_vex_flow_control.html" class="btn btn-neutral float-left" title="Houdini VEX：流控制语句" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_vex_snippets.html" class="btn btn-neutral float-left" title="Houdini VEX：代码片段" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

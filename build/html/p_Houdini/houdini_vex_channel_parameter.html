@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini VEX：自定义函数" href="houdini_vex_custom_functions.html" />
+    <link rel="next" title="Houdini VEX：编译器pragmas" href="houdini_vex_compiler.html" />
     <link rel="prev" title="Houdini VEX：内置函数" href="houdini_vex_built_in_functions.html" /> 
 </head>
 
@@ -123,8 +123,11 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_usd.html">Houdini USD相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_built_in_functions.html">Houdini VEX：内置函数</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：通道参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_compiler.html">Houdini VEX：编译器pragmas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_custom_functions.html">Houdini VEX：自定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_flow_control.html">Houdini VEX：流控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_include.html">Houdini VEX：头文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
 </ul>
 </li>
@@ -203,13 +206,23 @@
   <div class="section" id="houdini-vex">
 <h1>Houdini VEX：通道参数<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">chf</span><span class="p">(</span><span class="s2">&quot;dist&quot;</span><span class="p">);</span>
+<span class="nb">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">chi</span><span class="p">(</span><span class="s2">&quot;num&quot;</span><span class="p">);</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">addpoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">set</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">dist</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>通道参数是Houdini本身就存在的一种自定义参数的方案，只不过这里用到了VEX代码中而已。</p>
+<p>这里总结一些VEX关于通道的内置函数。</p>
+<ul class="simple">
+<li><p>ch()</p></li>
+<li><p>chi()</p></li>
+<li><p>chf()</p></li>
+<li><p>chs()</p></li>
+<li><p>chv()</p></li>
+<li><p>chramp()</p></li>
+</ul>
 </div>
 
 
@@ -220,7 +233,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="houdini_vex_custom_functions.html" class="btn btn-neutral float-right" title="Houdini VEX：自定义函数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="houdini_vex_compiler.html" class="btn btn-neutral float-right" title="Houdini VEX：编译器pragmas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="houdini_vex_built_in_functions.html" class="btn btn-neutral float-left" title="Houdini VEX：内置函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

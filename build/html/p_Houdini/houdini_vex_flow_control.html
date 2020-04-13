@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini VEX：基础语法" href="houdini_vex_syntax.html" />
+    <link rel="next" title="Houdini VEX：头文件" href="houdini_vex_include.html" />
     <link rel="prev" title="Houdini VEX：自定义函数" href="houdini_vex_custom_functions.html" /> 
 </head>
 
@@ -123,8 +123,11 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_usd.html">Houdini USD相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_built_in_functions.html">Houdini VEX：内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_channel_parameter.html">Houdini VEX：通道参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_compiler.html">Houdini VEX：编译器pragmas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_custom_functions.html">Houdini VEX：自定义函数</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：流控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_include.html">Houdini VEX：头文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
 </ul>
 </li>
@@ -202,8 +205,57 @@
             
   <div class="section" id="houdini-vex">
 <h1>Houdini VEX：流控制语句<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">n</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<ul class="simple">
+<li><p>循环语句</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">do</span> <span class="n">statement</span> <span class="p">[</span><span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">)]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">init</span><span class="p">;</span> <span class="n">condition</span><span class="p">;</span> <span class="n">change</span><span class="p">)</span> <span class="n">statement</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">n</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">addpoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">set</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foreach</span> <span class="p">(</span><span class="n">value</span><span class="p">;</span> <span class="n">array</span><span class="p">)</span> <span class="n">statement</span>
+<span class="n">foreach</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">;</span> <span class="n">array</span><span class="p">)</span> <span class="n">statement</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="n">statement</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>条件语句</p></li>
+</ul>
+<p>if (condition) statement_if_true [else statement_if_false]</p>
+<ul class="simple">
+<li><p>return &amp; break &amp; continue</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">sizes</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">mixamount</span> <span class="o">+=</span> <span class="n">getAmount</span><span class="p">(</span><span class="n">roughness</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">mixamount</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">foreach</span> <span class="p">(</span><span class="n">x</span><span class="p">;</span> <span class="n">myarray</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+    <span class="o">...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -217,7 +269,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="houdini_vex_syntax.html" class="btn btn-neutral float-right" title="Houdini VEX：基础语法" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="houdini_vex_include.html" class="btn btn-neutral float-right" title="Houdini VEX：头文件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="houdini_vex_custom_functions.html" class="btn btn-neutral float-left" title="Houdini VEX：自定义函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
