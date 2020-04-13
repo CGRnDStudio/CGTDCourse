@@ -261,4 +261,4 @@ hou模块可以分为三大类sub-modules、classes、functions。
 参考文档
 ------------------------
 
-* 《`Rendering as part of a workflow <https://www.sidefx.com/docs/houdini/render/batch.html#hython-and-hbatch>`_》
+* https://www.sidefx.com/docs/houdini/render/batch.html#hython-and-hbatch

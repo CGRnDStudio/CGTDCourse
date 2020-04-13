@@ -117,6 +117,6 @@ string         s@           "hello world"
 参考文档
 --------------------
 
-http://www.sidefx.com/docs/houdini/vex/index.html
-http://www.sidefx.com/docs/houdini/vex/lang.html
-http://www.sidefx.com/docs/houdini/vex/snippets.html
+- http://www.sidefx.com/docs/houdini/vex/index.html
+- http://www.sidefx.com/docs/houdini/vex/lang.html
+- http://www.sidefx.com/docs/houdini/vex/snippets.html
