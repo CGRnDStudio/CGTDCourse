@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Git &mdash; CG TD Course 1.0.1 文档</title>
+  <title>Git指令大全 &mdash; CG TD Course 1.0.1 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Git指令大全" href="../p_Git/git_all_commands.html" />
-    <link rel="prev" title="PyQt Designer安装与使用" href="../p_PyQt/pyqt_uic.html" /> 
+    <link rel="next" title="Git配置代理网络访问" href="git_config_proxy.html" />
+    <link rel="prev" title="Git" href="../parts/Git.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,25 +83,25 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PyQt.html">PyQt</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Git</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../p_Git/git_all_commands.html">Git指令大全</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Git/git_config_proxy.html">Git配置代理网络访问</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Git/git_ignore.html">Git使用.gitignore过滤上传文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Git/git_install_tortoisegit.html">Git以及TortoiseGit安装以及使用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Git/git_repo_hosts.html">Git代码仓库托管平台有哪些？</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Git/git_simple_workflow.html">Git基本工作流程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Git/git_speed_up.html">Git国外服务器加速方案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Git.html">Git</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Git指令大全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_config_proxy.html">Git配置代理网络访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_ignore.html">Git使用.gitignore过滤上传文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_install_tortoisegit.html">Git以及TortoiseGit安装以及使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_repo_hosts.html">Git代码仓库托管平台有哪些？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_simple_workflow.html">Git基本工作流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_speed_up.html">Git国外服务器加速方案</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Houdini.html">Houdini</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Maya.html">Maya</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nuke.html">Nuke</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Shotgun.html">Shotgun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deadline.html">Deadline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Linux.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
 </ul>
 
             
@@ -147,13 +147,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Git</li>
+          <li><a href="../parts/Git.html">Git</a> &raquo;</li>
+        
+      <li>Git指令大全</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/parts/Git.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Git/git_all_commands.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,20 +169,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="git">
-<h1>Git<a class="headerlink" href="#git" title="永久链接至标题">¶</a></h1>
-<p>Git是一个分布式版本控制软件，最初目的是为更好地管理Linux内核开发而设计，后来Git内核已经成熟到可以独立地用作版本控制。</p>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../p_Git/git_all_commands.html">Git指令大全</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Git/git_config_proxy.html">Git配置代理网络访问</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Git/git_ignore.html">Git使用.gitignore过滤上传文件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Git/git_install_tortoisegit.html">Git以及TortoiseGit安装以及使用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Git/git_repo_hosts.html">Git代码仓库托管平台有哪些？</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Git/git_simple_workflow.html">Git基本工作流程</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Git/git_speed_up.html">Git国外服务器加速方案</a></li>
-</ul>
-</div>
+<h1>Git指令大全<a class="headerlink" href="#git" title="永久链接至标题">¶</a></h1>
+<p>友情提示：图片可以另存为或者新标签放大查看。</p>
+<img alt="../_images/git_cmd.png" src="../_images/git_cmd.png" />
 </div>
 
 
@@ -191,10 +182,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../p_Git/git_all_commands.html" class="btn btn-neutral float-right" title="Git指令大全" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="git_config_proxy.html" class="btn btn-neutral float-right" title="Git配置代理网络访问" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../p_PyQt/pyqt_uic.html" class="btn btn-neutral float-left" title="PyQt Designer安装与使用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../parts/Git.html" class="btn btn-neutral float-left" title="Git" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
