@@ -15,9 +15,17 @@ Houdini VEX：通道参数
 
 这里总结一些VEX关于通道的内置函数。
 
-- ch()
-- chi()
-- chf()
-- chs()
-- chv()
-- chramp()
+============== ====================== ====================
+类型            HScript                VEX
+int             ch                     chi()
+float           ch                     chf()
+string          ch                     chs()
+vector                                 chv()
+ramp            chramp                 chramp()
+============== ====================== ====================
+
+---------------
+参考文档
+---------------
+
+- http://www.sidefx.com/docs/houdini/ref/expression_cookbook

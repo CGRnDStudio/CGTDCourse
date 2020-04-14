@@ -58,7 +58,7 @@ Houdini中有很多内置属性，也就是几何体有一些约定俗成的属�
 ============= =====================================================================================================================
 内置类型       内置属性
 int           @id, @ptnum, @primnum, @vtxnum, @numpt, @numprim, @numvtx, @group_*, @resx, @resy, @resz
-float         @pscale, @Time, @frame
+float         @pscale, @Time, @Frame
 string        @name
 vector        @P, @Cd, @N, @force, @rest, @up, @uv, @v
 vector4       @orient
@@ -115,7 +115,24 @@ string         s@           "hello world"
 
 * 切片
 
+切片很容易理解，和Python中列表切片概念是一样的，通过元素的index来获取区间。
+
 * 结构体
+
+* 点操作符
+
+- .x 或 .u 指向vector2变量或属性的第一个元素。
+- .x 或 .r 指向vector和vector4变量或属性的第一个元素。
+- .y 或 .v 指向vector2变量或属性的第二个元素。
+- .y 或 .g 指向vector和vector4变量或属性的第二个元素。
+- .z 或 .b 指向vector和vector4变量或属性的第三个元素。
+- .w 或 .a 指向vector4变量或属性的第四个元素.
+
+如果是矩阵，则
+
+- .xx 指向[0][0]元素。
+- .zz 指向[2][2]元素。
+- .ax 指向[3][0]元素。
 
 --------------------
 参考文档

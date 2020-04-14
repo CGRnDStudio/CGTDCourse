@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini模块：toolutils &mdash; CG TD Pipeline 1.0.2 文档</title>
+  <title>Houdini VEX：数组 &mdash; CG TD Pipeline 1.0.2 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini批量导入工具" href="houdini_multi_loader.html" />
-    <link rel="prev" title="Houdini模块：stateutils" href="houdini_module_stateutils.html" /> 
+    <link rel="next" title="Houdini VEX：内置函数" href="houdini_vex_built_in_functions.html" />
+    <link rel="prev" title="Houdini USD相关" href="houdini_usd.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -105,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_miss_icons.html">Houdini图标丢失解决方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_hou.html">Houdini模块：hou</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_stateutils.html">Houdini模块：stateutils</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini模块：toolutils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_multi_loader.html">Houdini批量导入工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_create_update.html">Houdini otls：创建以及更新的流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_parameters.html">Houdini otls：自定义参数</a></li>
@@ -123,7 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_shelf_tools.html">Houdini工具架工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_shell.html">Houdini Shell相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_usd.html">Houdini USD相关</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_vex_array.html">Houdini VEX：数组</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：数组</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_built_in_functions.html">Houdini VEX：内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_channel_parameter.html">Houdini VEX：通道参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_compiler.html">Houdini VEX：编译器pragmas</a></li>
@@ -188,13 +188,13 @@
         
           <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
         
-      <li>Houdini模块：toolutils</li>
+      <li>Houdini VEX：数组</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Houdini/houdini_module_toolutils.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Houdini/houdini_vex_array.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -207,46 +207,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="houdini-toolutils">
-<h1>Houdini模块：toolutils<a class="headerlink" href="#houdini-toolutils" title="永久链接至标题">¶</a></h1>
-<ul class="simple">
-<li><p>查询某一类型所有节点，比如查询所有的File Cache节点</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">toolutils</span>
-
-<span class="n">nodes</span> <span class="o">=</span> <span class="n">toolutils</span><span class="o">.</span><span class="n">findAllChildNodesOfType</span><span class="p">(</span><span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;/obj&quot;</span><span class="p">),</span> <span class="s2">&quot;filecache&quot;</span><span class="p">,</span> <span class="n">dorecurse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">path</span><span class="p">())</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>与Scene View窗口交互，比如只能选择相机得到结果。</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">toolutils</span>
-
-<span class="n">scene_viewer</span> <span class="o">=</span> <span class="n">toolutils</span><span class="o">.</span><span class="n">sceneViewer</span><span class="p">()</span>
-<span class="n">selected_objects</span> <span class="o">=</span> <span class="n">scene_viewer</span><span class="o">.</span><span class="n">selectObjects</span><span class="p">(</span><span class="s2">&quot;Select a camera and press Enter&quot;</span><span class="p">,</span> <span class="n">allowed_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;cam&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">selected_objects</span><span class="p">)</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>设置当前视图相机</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">toolutils</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">scene_view</span> <span class="o">=</span> <span class="n">toolutils</span><span class="o">.</span><span class="n">sceneViewer</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">viewport</span> <span class="o">=</span> <span class="n">scene_view</span><span class="o">.</span><span class="n">curViewport</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">viewport</span><span class="o">.</span><span class="n">setCamera</span><span class="p">(</span><span class="n">hou</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s2">&quot;/obj/cam1/&quot;</span><span class="p">))</span>
-<span class="go">&gt;&gt;&gt;</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">toolutils</span>
-
-<span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;pane&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="n">toolutils</span><span class="o">.</span><span class="n">createOrShowPythonPanel</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="s2">&quot;attribmanager&quot;</span><span class="p">,</span> <span class="s2">&quot;Attribute Manager&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
+  <div class="section" id="houdini-vex">
+<h1>Houdini VEX：数组<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
 </div>
 
 
@@ -257,10 +219,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="houdini_multi_loader.html" class="btn btn-neutral float-right" title="Houdini批量导入工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="houdini_vex_built_in_functions.html" class="btn btn-neutral float-right" title="Houdini VEX：内置函数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_module_stateutils.html" class="btn btn-neutral float-left" title="Houdini模块：stateutils" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_usd.html" class="btn btn-neutral float-left" title="Houdini USD相关" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

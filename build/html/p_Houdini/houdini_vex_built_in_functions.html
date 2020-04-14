@@ -37,7 +37,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Houdini VEX：通道参数" href="houdini_vex_channel_parameter.html" />
-    <link rel="prev" title="Houdini USD相关" href="houdini_usd.html" /> 
+    <link rel="prev" title="Houdini VEX：数组" href="houdini_vex_array.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -101,6 +101,8 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_hotkeys.html">Houdini自定义快捷键</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_hscript_command.html">Houdini HScript命令</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_jump_path.html">Houdini添加侧边栏快捷路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_miss_dialog.html">Houdini输出进度条不在显示器内的解决方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_miss_icons.html">Houdini图标丢失解决方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_hou.html">Houdini模块：hou</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_stateutils.html">Houdini模块：stateutils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
@@ -121,6 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_shelf_tools.html">Houdini工具架工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_shell.html">Houdini Shell相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_usd.html">Houdini USD相关</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_array.html">Houdini VEX：数组</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：内置函数</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
 </ul>
@@ -130,6 +133,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_custom_functions.html">Houdini VEX：自定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_flow_control.html">Houdini VEX：流控制语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_include.html">Houdini VEX：头文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_noise.html">Houdini VEX：噪波</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
 </ul>
@@ -220,7 +224,7 @@
 </pre></div>
 </div>
 <p>写过函数的我们都知道函数最关键的就是传参以及返回值，我们分析一下addpoint()这个函数的形式参数和返回值。</p>
-<p>首先addpoint()这个函数有两种写法，这是一种函数重载的写法，意味着你传入不同的实参的时候VEX会自我选择对应函数执行，如果实参类型和所有函数的形参类型都对不上，则会报错。函数重载是VEX内置函数的一种常见形态。</p>
+<p>首先addpoint,这个函数有两种写法，这是一种函数重载的写法，意味着你传入不同的实参的时候VEX会自我选择对应函数执行，如果实参类型和所有函数的形参类型都对不上，则会报错。函数重载是VEX内置函数的一种常见形态。</p>
 <ul class="simple">
 <li><p>int geohandle也是VEX内置函数常见的一个形参，这个和Python类中的self很像，指的是当前几何体自身，一般传入0或者geoself()。</p></li>
 <li><p>int point_number表示添加几个点。</p></li>
@@ -265,7 +269,7 @@
 <span class="nd">@Cd</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
 <span class="nb">float</span> <span class="n">noseValues</span> <span class="o">=</span> <span class="n">noise</span><span class="p">(</span><span class="nd">@P</span><span class="o">*</span><span class="n">chf</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">chf</span><span class="p">(</span><span class="s2">&quot;offset&quot;</span><span class="p">));</span>
 
-<span class="k">if</span><span class="p">(</span><span class="n">noseValues</span> <span class="o">&gt;</span> <span class="n">chf</span><span class="p">(</span><span class="s2">&quot;threshold&quot;</span><span class="p">)){</span>
+<span class="k">if</span><span class="p">(</span><span class="n">noseValues</span> <span class="o">&gt;</span> <span class="n">chf</span><span class="p">(</span><span class="s2">&quot;threshold&quot;</span><span class="p">))</span> <span class="p">{</span>
     <span class="nd">@Cd</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -276,15 +280,15 @@
 <span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
 <span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
 <span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">frac</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
-<span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">absolute</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
-<span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">absolute</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">));</span>
+<span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
+<span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">));</span>
 <span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">));</span>
 <span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">clamp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">));</span>
 <span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">frac</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
 <span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">noise</span><span class="p">(</span><span class="n">frac</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>内置函数set()可以用来做类型的强制转换，这非常有用，很多时候定义向量，四元素的时候以花括号初始化固定值，不能是动态的值，我们可以依赖set()函数来处理。</p>
+<p>内置函数set,可以用来做类型的强制转换，这非常有用，很多时候定义向量，四元素的时候以花括号初始化固定值，不能是动态的值，我们可以依赖set,函数来处理。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vector2</span>  <span class="nb">set</span><span class="p">(</span><span class="nb">float</span> <span class="n">v1</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v2</span><span class="p">)</span>
 
 <span class="n">vector</span>  <span class="nb">set</span><span class="p">(</span><span class="nb">float</span> <span class="n">v1</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v2</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v3</span><span class="p">)</span>
@@ -298,46 +302,161 @@
 <span class="n">matrix</span>  <span class="nb">set</span><span class="p">(</span><span class="nb">float</span> <span class="n">v1</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v2</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v3</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v4</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v5</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v6</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v7</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v8</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v9</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v10</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v11</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v12</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v13</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v14</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v15</span><span class="p">,</span> <span class="nb">float</span> <span class="n">v16</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>然而set()有其更复杂的类型转换机制，可以参考文档 <a class="reference external" href="http://www.sidefx.com/docs/houdini/vex/functions/set">http://www.sidefx.com/docs/houdini/vex/functions/set</a></p>
+<p>然而set,有其更复杂的类型转换机制，可以参考文档 <a class="reference external" href="http://www.sidefx.com/docs/houdini/vex/functions/set">http://www.sidefx.com/docs/houdini/vex/functions/set</a></p>
 <p>VEX内置函数的分类:</p>
-<ul class="simple">
-<li><p>ARRAYS</p></li>
-<li><p>ATTRIBUTES AND INTRINSICS</p></li>
-<li><p>BSDFS</p></li>
-<li><p>CHOP</p></li>
-<li><p>COLOR</p></li>
-<li><p>CONVERSION</p></li>
-<li><p>CROWDS</p></li>
-<li><p>DISPLACE</p></li>
-<li><p>FILE I/O</p></li>
-<li><p>FUZZY LOGIC</p></li>
-<li><p>GEOMETRY</p></li>
-<li><p>GROUPS</p></li>
-<li><p>HALF-EDGES</p></li>
-<li><p>IMAGE PROCESSING</p></li>
-<li><p>INTERPOLATION</p></li>
-<li><p>LIGHT</p></li>
-<li><p>MATH</p></li>
-<li><p>MEASURE</p></li>
-<li><p>METABALL</p></li>
-<li><p>NODES</p></li>
-<li><p>NOISE AND RANDOMNESS</p></li>
-<li><p>NORMALS</p></li>
-<li><p>OPEN COLOR IO</p></li>
-<li><p>PARTICLES</p></li>
-<li><p>POINT CLOUDS AND 3D IMAGES</p></li>
-<li><p>SAMPLING</p></li>
-<li><p>SENSOR INPUT</p></li>
-<li><p>SHADING AND RENDERING</p></li>
-<li><p>STRINGS</p></li>
-<li><p>SUBDIVISION SURFACES</p></li>
-<li><p>TETRAHEDRONS</p></li>
-<li><p>TEXTURING</p></li>
-<li><p>TRANSFORMS AND SPACE</p></li>
-<li><p>USD</p></li>
-<li><p>UTILITY</p></li>
-<li><p>VOLUME</p></li>
-</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 8%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>ARRAYS</p></td>
+<td><p>数组</p></td>
+<td><p>append,</p></td>
+</tr>
+<tr class="row-even"><td><p>ATTRIBUTES AND INTRINSICS</p></td>
+<td><p>属性</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>BSDFS</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CHOP</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>COLOR</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>CONVERSION</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>CROWDS</p></td>
+<td><p>群组</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>DISPLACE</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>FILE I/O</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>FUZZY LOGIC</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>GEOMETRY</p></td>
+<td><p>几何体</p></td>
+<td><p>addpoint, addprim, addvertex, geoself, nearpoint, nearpoints</p></td>
+</tr>
+<tr class="row-even"><td><p>GROUPS</p></td>
+<td><p>组</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>HALF-EDGES</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>IMAGE PROCESSING</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>INTERPOLATION</p></td>
+<td><p>插值</p></td>
+<td><p>clamp, fit, fit01, fit10, fit11, lerp</p></td>
+</tr>
+<tr class="row-even"><td><p>LIGHT</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>MATH</p></td>
+<td><p>数学</p></td>
+<td><p>abs, cos, sin, cross, dot, floor, frac, pow, sin, squrt sum</p></td>
+</tr>
+<tr class="row-even"><td><p>MEASURE</p></td>
+<td><p>测量</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>METABALL</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>NODES</p></td>
+<td><p>节点</p></td>
+<td><p>chf, chi, chramp, chs, chv</p></td>
+</tr>
+<tr class="row-odd"><td><p>NOISE AND RANDOMNESS</p></td>
+<td><p>噪波</p></td>
+<td><p>anoise, noise, rand, random</p></td>
+</tr>
+<tr class="row-even"><td><p>NORMALS</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>OPEN COLOR IO</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>PARTICLES</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>POINT CLOUDS AND 3D IMAGES</p></td>
+<td><p>点云</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SAMPLING</p></td>
+<td><p>采样</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>SENSOR INPUT</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SHADING AND RENDERING</p></td>
+<td><p>材质渲染</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>STRINGS</p></td>
+<td><p>字符串</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>SUBDIVISION SURFACES</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>TETRAHEDRONS</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>TEXTURING</p></td>
+<td><p>贴图</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>TRANSFORMS AND SPACE</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>USD</p></td>
+<td><p>USD</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>UTILITY</p></td>
+<td><p>实用</p></td>
+<td><p>printf, set</p></td>
+</tr>
+<tr class="row-even"><td><p>VOLUME</p></td>
+<td><p>体积</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="id1">
 <h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
@@ -357,7 +476,7 @@
         <a href="houdini_vex_channel_parameter.html" class="btn btn-neutral float-right" title="Houdini VEX：通道参数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_usd.html" class="btn btn-neutral float-left" title="Houdini USD相关" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_vex_array.html" class="btn btn-neutral float-left" title="Houdini VEX：数组" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -18,7 +18,7 @@ VEX内置函数有七八百之多，掌握如何查询与使用的通用心法�
 
 写过函数的我们都知道函数最关键的就是传参以及返回值，我们分析一下addpoint()这个函数的形式参数和返回值。
 
-首先addpoint()这个函数有两种写法，这是一种函数重载的写法，意味着你传入不同的实参的时候VEX会自我选择对应函数执行，如果实参类型和所有函数的形参类型都对不上，则会报错。函数重载是VEX内置函数的一种常见形态。
+首先addpoint,这个函数有两种写法，这是一种函数重载的写法，意味着你传入不同的实参的时候VEX会自我选择对应函数执行，如果实参类型和所有函数的形参类型都对不上，则会报错。函数重载是VEX内置函数的一种常见形态。
 
 - int geohandle也是VEX内置函数常见的一个形参，这个和Python类中的self很像，指的是当前几何体自身，一般传入0或者geoself()。
 
@@ -75,7 +75,7 @@ VEX内置函数有七八百之多，掌握如何查询与使用的通用心法�
     @Cd = {0, 0, 0};
     float noseValues = noise(@P*chf("size") + chf("offset"));
 
-    if(noseValues > chf("threshold")){
+    if(noseValues > chf("threshold")) {
         @Cd.r = 1;
     }
 
@@ -89,15 +89,15 @@ VEX代码可视化，创建一个line节点，将点数增加到1000。
     @P.y = sin(@P.x);
     @P.y = floor(@P.x);
     @P.y = frac(@P.x);
-    @P.y = absolute(@P.x);
-    @P.y = absolute(sin(@P.x));
+    @P.y = abs(@P.x);
+    @P.y = abs(sin(@P.x));
     @P.y = floor(sin(@P.x));
     @P.y = clamp(sin(@P.x));
     @P.y = pow(frac(@P.x), 2);
     @P.y = noise(frac(@P.x));
 
 
-内置函数set()可以用来做类型的强制转换，这非常有用，很多时候定义向量，四元素的时候以花括号初始化固定值，不能是动态的值，我们可以依赖set()函数来处理。
+内置函数set,可以用来做类型的强制转换，这非常有用，很多时候定义向量，四元素的时候以花括号初始化固定值，不能是动态的值，我们可以依赖set,函数来处理。
 
 .. code-block:: python
 
@@ -113,46 +113,48 @@ VEX代码可视化，创建一个line节点，将点数增加到1000。
 
     matrix  set(float v1, float v2, float v3, float v4, float v5, float v6, float v7, float v8, float v9, float v10, float v11, float v12, float v13, float v14, float v15, float v16)
 
-然而set()有其更复杂的类型转换机制，可以参考文档 http://www.sidefx.com/docs/houdini/vex/functions/set
+然而set,有其更复杂的类型转换机制，可以参考文档 http://www.sidefx.com/docs/houdini/vex/functions/set
 
 VEX内置函数的分类:
 
-- ARRAYS
-- ATTRIBUTES AND INTRINSICS
-- BSDFS
-- CHOP
-- COLOR
-- CONVERSION
-- CROWDS
-- DISPLACE
-- FILE I/O
-- FUZZY LOGIC
-- GEOMETRY
-- GROUPS
-- HALF-EDGES
-- IMAGE PROCESSING
-- INTERPOLATION
-- LIGHT
-- MATH
-- MEASURE
-- METABALL
-- NODES
-- NOISE AND RANDOMNESS
-- NORMALS
-- OPEN COLOR IO
-- PARTICLES
-- POINT CLOUDS AND 3D IMAGES
-- SAMPLING
-- SENSOR INPUT
-- SHADING AND RENDERING
-- STRINGS
-- SUBDIVISION SURFACES
-- TETRAHEDRONS
-- TEXTURING
-- TRANSFORMS AND SPACE
-- USD
-- UTILITY
-- VOLUME
+============================== ========== ===============================================================================
+ARRAYS                          数组       append, 
+ATTRIBUTES AND INTRINSICS       属性          
+BSDFS                                     
+CHOP                                      
+COLOR                                     
+CONVERSION                                
+CROWDS                          群组       
+DISPLACE                                  
+FILE I/O                                  
+FUZZY LOGIC                               
+GEOMETRY                        几何体     addpoint, addprim, addvertex, geoself, nearpoint, nearpoints
+GROUPS                          组         
+HALF-EDGES                                 
+IMAGE PROCESSING                           
+INTERPOLATION                   插值       clamp, fit, fit01, fit10, fit11, lerp
+LIGHT                                      
+MATH                            数学       abs, cos, sin, cross, dot, floor, frac, pow, sin, squrt sum
+MEASURE                         测量       
+METABALL                        
+NODES                           节点       chf, chi, chramp, chs, chv
+NOISE AND RANDOMNESS            噪波       anoise, noise, rand, random
+NORMALS                         
+OPEN COLOR IO                   
+PARTICLES                       
+POINT CLOUDS AND 3D IMAGES      点云
+SAMPLING                        采样
+SENSOR INPUT                    
+SHADING AND RENDERING           材质渲染
+STRINGS                         字符串
+SUBDIVISION SURFACES            
+TETRAHEDRONS                    
+TEXTURING                       贴图
+TRANSFORMS AND SPACE            
+USD                             USD
+UTILITY                         实用       printf, set
+VOLUME                          体积       
+============================== ========== ===============================================================================
 
 ---------------
 参考文档
