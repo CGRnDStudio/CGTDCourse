@@ -119,9 +119,9 @@ VEX内置函数的分类:
 
 ============================== ========== ===============================================================================
 ARRAYS                          数组       append, 
-ATTRIBUTES AND INTRINSICS       属性          
-BSDFS                                     
-CHOP                                      
+ATTRIBUTES AND INTRINSICS       属性       
+BSDFS                                      
+CHOP                                       
 COLOR                                     
 CONVERSION                                
 CROWDS                          群组       
@@ -138,7 +138,7 @@ MATH                            数学       abs, cos, sin, cross, dot, floor, f
 MEASURE                         测量       
 METABALL                        
 NODES                           节点       chf, chi, chramp, chs, chv
-NOISE AND RANDOMNESS            噪波       anoise, noise, rand, random
+NOISE AND RANDOMNESS            噪波       anoise, noise, rand, random, snoise
 NORMALS                         
 OPEN COLOR IO                   
 PARTICLES                       

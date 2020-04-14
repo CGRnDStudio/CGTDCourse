@@ -30,6 +30,7 @@ Houdini VEX：流控制语句
 * 条件语句
 
 if (condition) statement_if_true [else statement_if_false]
+if (condition) statement_if_true [else if (condition) statement_if_true] else statement_if_false
 
 * return & break & continue
 
