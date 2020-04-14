@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'CG TD Course'
+project = 'CG TD Pipeline'
 copyright = '2020, Andy Hu'
 author = 'Andy Hu'
 
