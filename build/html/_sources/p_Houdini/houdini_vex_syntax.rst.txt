@@ -2,6 +2,12 @@
 Houdini VEX：基础语法
 ==============================
 
+VEX脚本是VOP系统的编程语言的表达方式，而VOP系统是VEX脚本的可视化操作方式。
+
+Point Wrangle、Primitive Wrangle、Vertex Wrangle都是Attribute Wrangle节点。
+
+Point VOP、Primitive VOP、Vertex VOP都是Attribute VOP节点。
+
 VEX语法规则和C语言接近，和Python有很大区别，下面列出一些和Python语法上的不同点，以便区分是VEX脚本还是Python脚本。
 
 - VEX行结尾使用分号;

@@ -97,7 +97,7 @@ VEX代码可视化，创建一个line节点，将点数增加到1000。
     @P.y = noise(frac(@P.x));
 
 
-内置函数set,可以用来做类型的强制转换，这非常有用，很多时候定义向量，四元素的时候以花括号初始化固定值，不能是动态的值，我们可以依赖set,函数来处理。
+内置函数set()可以用来做类型的强制转换，这非常有用，很多时候定义向量，四元素的时候以花括号初始化固定值，不能是动态的值，我们可以依赖set()函数来处理。
 
 .. code-block:: python
 
@@ -113,13 +113,14 @@ VEX代码可视化，创建一个line节点，将点数增加到1000。
 
     matrix  set(float v1, float v2, float v3, float v4, float v5, float v6, float v7, float v8, float v9, float v10, float v11, float v12, float v13, float v14, float v15, float v16)
 
-然而set,有其更复杂的类型转换机制，可以参考文档 http://www.sidefx.com/docs/houdini/vex/functions/set
+然而set()有其更复杂的类型转换机制，可以参考文档 http://www.sidefx.com/docs/houdini/vex/functions/set
 
 VEX内置函数的分类:
 
-============================== ========== ===============================================================================
+============================== ========== ==============================================================================
 ARRAYS                          数组       append
-ATTRIBUTES AND INTRINSICS       属性       
+ATTRIBUTES AND INTRINSICS       属性       - addattrib, adddetailattrib, addpointattrib, addprimattrib, addvertexattrib
+                                           - attrib, detail, point, prim, vertex
 BSDFS                                      
 CHOP                                       
 COLOR                                     
@@ -128,17 +129,18 @@ CROWDS                          群组
 DISPLACE                                  
 FILE I/O                                  
 FUZZY LOGIC                               
-GEOMETRY                        几何体     addpoint, addprim, addvertex, geoself, nearpoint, nearpoints
+GEOMETRY                        几何体     - addpoint, addprim, addvertex, geoself, nearpoint, nearpoints, removepoint,
+                                           - removeprim, removevertex
 GROUPS                          组         
 HALF-EDGES                                 
 IMAGE PROCESSING                           
-INTERPOLATION                   插值       clamp, fit, fit01, fit10, fit11, lerp
+INTERPOLATION                   插值       - clamp, fit, fit01, fit10, fit11, lerp
 LIGHT                                      
-MATH                            数学       abs, cos, sin, cross, dot, floor, frac, pow, sin, squrt sum
-MEASURE                         测量       
+MATH                            数学       - abs, cos, sin, cross, dot, floor, frac, pow, sin, squrt, sum
+MEASURE                         测量       - distance, getbbox, getbbox_size, relbbox
 METABALL                        
-NODES                           节点       chf, chi, chramp, chs, chv
-NOISE AND RANDOMNESS            噪波       anoise, noise, rand, random, snoise
+NODES                           节点       - chf, chi, chramp, chs, chv
+NOISE AND RANDOMNESS            噪波       - anoise, noise, rand, random, snoise
 NORMALS                         
 OPEN COLOR IO                   
 PARTICLES                       
@@ -146,15 +148,23 @@ POINT CLOUDS AND 3D IMAGES      点云
 SAMPLING                        采样
 SENSOR INPUT                    
 SHADING AND RENDERING           材质渲染
-STRINGS                         字符串
+STRINGS                         字符串      - re_find, re_findall, re_match, re_replace, re_split, split, sprintf
 SUBDIVISION SURFACES            
 TETRAHEDRONS                    
 TEXTURING                       贴图
 TRANSFORMS AND SPACE            
 USD                             USD
-UTILITY                         实用       printf, set
+UTILITY                         实用       - printf, set
 VOLUME                          体积       
-============================== ========== ===============================================================================
+============================== ========== ==============================================================================
+
+.. code-block:: bash
+
+    vector npos = point(1, "P", @ptnum);
+
+    int np = addpoint(0, npos);
+
+    addprim(0, "polyline", @ptnum, np);
 
 ---------------
 参考文档

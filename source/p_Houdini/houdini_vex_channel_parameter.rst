@@ -24,6 +24,20 @@ vector                                 chv()
 ramp            chramp                 chramp()
 ============== ====================== ====================
 
+ch()通道函数默认类型是float，一般建议在VEX脚本中标明通道参数的具体类型。
+
+.. code-block:: python
+
+    float  chramp(string channel, float ramppos)
+
+    float  chramp(string channel, float ramppos, float time)
+
+    vector  chramp(string channel, float ramppos)
+
+    vector  chramp(string channel, float ramppos, float time)
+
+ramppos值域[0, 1]，任何可以区别开来的属性都可以借这个值域去映射，比如@ptnum / (@numpt - 1.0), sin(@ptnum), rand(@ptnum)。
+
 ---------------
 参考文档
 ---------------

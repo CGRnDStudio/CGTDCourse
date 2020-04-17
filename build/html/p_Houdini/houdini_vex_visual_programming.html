@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini otls：自定义参数 &mdash; CG TD Pipeline 1.0.2 文档</title>
+  <title>Houdini VEX：可视化编程 &mdash; CG TD Pipeline 1.0.2 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini otls：可执行代码" href="houdini_otls_scripts.html" />
-    <link rel="prev" title="Houdini otls：创建以及更新的流程" href="houdini_otls_create_update.html" /> 
+    <link rel="next" title="Maya" href="../parts/Maya.html" />
+    <link rel="prev" title="Houdini VEX：基础语法" href="houdini_vex_syntax.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -108,11 +108,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_multi_loader.html">Houdini批量导入工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_create_update.html">Houdini otls：创建以及更新的流程</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini otls：自定义参数</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#houdiniotl">Houdini升级otl的两种方案</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_parameters.html">Houdini otls：自定义参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_scripts.html">Houdini otls：可执行代码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_upgrade.html">Houdini otls：升级的两种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_pdg.html">Houdini PDG相关</a></li>
@@ -139,7 +135,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_noise.html">Houdini VEX：噪波函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_vex_visual_programming.html">Houdini VEX：可视化编程</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：可视化编程</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
@@ -195,13 +191,13 @@
         
           <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
         
-      <li>Houdini otls：自定义参数</li>
+      <li>Houdini VEX：可视化编程</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Houdini/houdini_otls_parameters.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Houdini/houdini_vex_visual_programming.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -214,51 +210,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="houdini-otls">
-<h1>Houdini otls：自定义参数<a class="headerlink" href="#houdini-otls" title="永久链接至标题">¶</a></h1>
-<p>otls上参数创建有三种方案：</p>
+  <div class="section" id="houdini-vex">
+<h1>Houdini VEX：可视化编程<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
+<p>方案一：通过PolyExtrude节点可视化数据。</p>
 <ul class="simple">
-<li><p>By Type</p></li>
-<li><p>From Nodes</p></li>
-<li><p>拖拽参数</p></li>
+<li><p>创建一个Geometry。</p></li>
+<li><p>创建一个Grid，Rows-&gt;100，Columns-&gt;100。</p></li>
+<li><p>创建一个Attribute Wrangle。</p></li>
+<li><p>创建一个Attribute Promote，Original Name-&gt;zscale，New Class-&gt;Primitive，Promotion Method-&gt;Maximum。</p></li>
+<li><p>创建一个PolyExtrude，Divide Into-&gt;Individual Elements，Distance-&gt;1，Extrusion-&gt;Output Back，Local Control-&gt;Distance Scale。</p></li>
+<li><p>Attribute Wrangle节点中写入如下的代码可得到可视化结果。</p></li>
 </ul>
-<p>Name
-Label
-Type
-Callback Script
-Invisible
-File Pattern
-Horizontally Join to Next Parameter</p>
-<p>Houdini创建otl的时候，想要将节点的参数面板做些布局，学会使用参数Folder的用法是比较有意思的。</p>
-<p>Folder参数有以下几种类型模式：</p>
-<ul class="simple">
-<li><p>Collapsible # 加减号收缩与伸展</p></li>
-<li><p>Simple # 简单的框框</p></li>
-<li><p>Tabs # 选项卡式</p></li>
-<li><p>Radio Buttons # 和Tabs类似，多了一个Radio按钮显示</p></li>
-<li><p>Import Block</p></li>
-<li><p>Multiparm Block (list) # 可以加减控件数量以列表的形式</p></li>
-<li><p>Multiparm Block (scrolling) # 可以加减控件数量以下拉滑条的形式</p></li>
-<li><p>Multiparm Block (tabs) # 可以加减控件数量以选项卡的形式</p></li>
-</ul>
-<div class="section" id="houdiniotl">
-<h2>Houdini升级otl的两种方案<a class="headerlink" href="#houdiniotl" title="永久链接至标题">¶</a></h2>
-<p>Houdini中otl的版本切换可以通过主菜单 Asset&gt;Asset Manager&gt;Configuration 设置 Asset Bar 为 Display Menu of All Definitions ，在每个otl参数面板即可看到 Asset Name and Path 的切换信息。</p>
-<p>Houdini中想升级otl，在已经创建好的otl节点上右键选择 Show in Asset Manager… 菜单打开 Asset Manager 。</p>
-<p>Asset Manager 对话框中在当前选择的节点上右键选择 Duplicate… 菜单，可以打开 Copy Asset 对话框。</p>
-<p>这里升级otl有两种方案，推荐使用第一种。</p>
-<p>第一种方案是在 Operator Name 上添加版本号， Operator Label 以及 Save to Library 保持不变。</p>
-<p>比如：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">do</span><span class="p">::</span><span class="n">pack_cache</span><span class="p">::</span><span class="mf">1.0</span>
-<span class="n">do</span><span class="p">::</span><span class="n">pack_cache</span><span class="p">::</span><span class="mf">2.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">;</span>
+<span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
+<span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
+<span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="n">frac</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
+<span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
+<span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">));</span>
+<span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="n">floor</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">));</span>
+<span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">frac</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="mi">2</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>使用这种方案的好处是otl文件只有一个，两个版本都存储在此文件中，可以通过otl参数面板上的 Asset Name 来切换版本，默认优先使用的都是最新版本。</p>
-<p>第二种方案是在 Save to Library 的时候将版本号添加到otl文件名上，保持 Operator Name 和 Operator Label 不变。这样做会另外存一个otl文件出来，相当于重新做了一个otl的方案。因为 Operator Name 是相同的，所以节点也只有一个，可以通过otl参数面板上的 Asset Path 来切换版本，默认优先使用的都是最新版本。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">noise</span><span class="p">(</span><span class="nd">@P</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">f</span><span class="nd">@zscale</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="section" id="id1">
-<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p><a class="reference external" href="https://www.sidefx.com/docs/houdini/assets/index.html">https://www.sidefx.com/docs/houdini/assets/index.html</a></p>
+<p>方案二：通过点颜色可视化数据。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>创建一个Geometry。</p></li>
+<li><p>创建一个Grid，Rows-&gt;100，Columns-&gt;100。</p></li>
+<li><p>创建一个Attribute Wrangle。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@Cd</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+<span class="nb">float</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">noise</span><span class="p">(</span><span class="nd">@P</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">temp</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nd">@Cd</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>方案三：通过点位置可视化数据。</p>
+<ul class="simple">
+<li><p>创建一个Geometry。</p></li>
+<li><p>创建一个Line，Origin-&gt;-2.5, 0, 0，Direction-&gt;1, 0, 0，Length-&gt;5，Points-&gt;1000。</p></li>
+<li><p>创建一个Attribute Wrangle。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span><span class="p">);</span>
+</pre></div>
 </div>
 </div>
 
@@ -270,10 +275,10 @@ Horizontally Join to Next Parameter</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="houdini_otls_scripts.html" class="btn btn-neutral float-right" title="Houdini otls：可执行代码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../parts/Maya.html" class="btn btn-neutral float-right" title="Maya" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_otls_create_update.html" class="btn btn-neutral float-left" title="Houdini otls：创建以及更新的流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_vex_syntax.html" class="btn btn-neutral float-left" title="Houdini VEX：基础语法" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
