@@ -216,6 +216,49 @@
             
   <div class="section" id="houdini-vex">
 <h1>Houdini VEX：数组函数<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
+<p>数组特点是有序的，存储相同类型的数据集合。</p>
+<p>索引与切片。</p>
+<p>数组赋值</p>
+<p>int a[];
+i[]&#64;a;
+{}
+array()</p>
+<p>数组函数</p>
+<ul class="simple">
+<li><p>void append(&lt;type&gt;&amp;array[], &lt;type&gt;value)</p></li>
+<li><p>int [] argsort(&lt;type&gt;value[])</p></li>
+<li><p>&lt;type&gt;[] array(…)</p></li>
+<li><p>void insert(string &amp;str, int index, string value)</p></li>
+<li><p>int isvalidindex(&lt;type&gt;&amp;array[], int index)</p></li>
+<li><p>int len(&lt;type&gt;array[])</p></li>
+<li><p>&lt;type&gt; pop(&lt;type&gt;&amp;array[])</p></li>
+<li><p>void push(&lt;type&gt;&amp;array[], &lt;type&gt;value)</p></li>
+<li><p>&lt;type&gt; removeindex(&lt;type&gt;&amp;array[], int index)</p></li>
+<li><p>int removevalue(&lt;type&gt;&amp;array[], &lt;type&gt;value)</p></li>
+<li><p>&lt;type&gt;[] reorder(&lt;type&gt;values[], int indices[])</p></li>
+<li><p>void resize(&lt;type&gt;&amp;array[], int size)</p></li>
+<li><p>&lt;type&gt;[] reverse(&lt;type&gt;values[])</p></li>
+<li><p>&lt;type&gt;[] slice(&lt;type&gt;s[], int start, int end)</p></li>
+<li><p>&lt;type&gt;[] slice(&lt;type&gt;s[], int start, int end, int step)</p></li>
+<li><p>int [] sort(int values[])</p></li>
+</ul>
+<p>数组循环</p>
+<ul class="simple">
+<li><p>foreach (index, value; array) statement;</p></li>
+<li><p>foreach (int index; element_type value; array) statement;</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">an_array</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
+
+<span class="n">foreach</span> <span class="p">(</span><span class="nb">int</span> <span class="n">num</span><span class="p">;</span> <span class="n">an_array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">string</span> <span class="n">days</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;Mon&quot;</span><span class="p">,</span> <span class="s2">&quot;Tue&quot;</span><span class="p">,</span> <span class="s2">&quot;Wed&quot;</span><span class="p">,</span> <span class="s2">&quot;Thu&quot;</span><span class="p">,</span> <span class="s2">&quot;Fri&quot;</span> <span class="p">}</span>
+<span class="n">foreach</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="p">;</span> <span class="n">string</span> <span class="n">name</span><span class="p">;</span> <span class="n">days</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Day number </span><span class="si">%d</span><span class="s2"> is </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 
 

@@ -66,7 +66,7 @@ Houdini中有很多内置属性，也就是几何体有一些约定俗成的属�
 ============= =====================================================================================================================
 内置类型       内置属性
 int           @id, @ptnum, @primnum, @vtxnum, @numpt, @numprim, @numvtx, @group_*, @resx, @resy, @resz
-float         @pscale, @Time, @Frame, @density
+float         @pscale, @Time, @Frame, @density, @age, @life, @opacity
 string        @name
 vector        @P, @Cd, @N, @force, @rest, @up, @uv, @v
 vector4       @orient

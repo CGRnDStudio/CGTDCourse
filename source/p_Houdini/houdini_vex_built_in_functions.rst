@@ -154,7 +154,7 @@ TETRAHEDRONS
 TEXTURING                       贴图
 TRANSFORMS AND SPACE            
 USD                             USD
-UTILITY                         实用       - printf, set
+UTILITY                         实用       - getcomp, printf, set, setcomp
 VOLUME                          体积       
 ============================== ========== ==============================================================================
 
