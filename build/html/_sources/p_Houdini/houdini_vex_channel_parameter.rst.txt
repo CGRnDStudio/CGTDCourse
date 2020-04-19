@@ -38,6 +38,17 @@ ch()通道函数默认类型是float，一般建议在VEX脚本中标明通道�
 
 ramppos值域[0, 1]，任何可以区别开来的属性都可以借这个值域去映射，比如@ptnum / (@numpt - 1.0), sin(@ptnum), rand(@ptnum)。
 
+- 创建个Geometry。
+- 创建个Grid，Rows>100，Columns>100。
+- 创建个Mountain。
+- 创建个Attribute Wrangle。
+
+.. code-block:: python
+
+    @P.y = fit(@P.y, -0.5, 0.5, 0, chf("heights"));
+    float ramp = chramp("ramp", fit(@P.x, -5, 5, 0, 1));
+    @P.y = @P.y * ramp;
+
 ---------------
 参考文档
 ---------------

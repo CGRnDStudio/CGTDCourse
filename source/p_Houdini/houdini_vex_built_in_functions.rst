@@ -118,13 +118,13 @@ VEX代码可视化，创建一个line节点，将点数增加到1000。
 VEX内置函数的分类:
 
 ============================== ========== ==============================================================================
-ARRAYS                          数组       append
+ARRAYS                          数组       - append
 ATTRIBUTES AND INTRINSICS       属性       - addattrib, adddetailattrib, addpointattrib, addprimattrib, addvertexattrib
                                            - attrib, detail, point, prim, vertex
 BSDFS                                      
 CHOP                                       
 COLOR                                     
-CONVERSION                                
+CONVERSION                      转换函数   - atof, atoi, degrees, radians
 CROWDS                          群组       
 DISPLACE                                  
 FILE I/O                                  

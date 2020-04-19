@@ -62,8 +62,3 @@ if (condition) statement_if_true [else if (condition) statement_if_true] else st
         if (x < 10) continue;
         ...
     }
-
-将下面两个VEX案例转换VOP节点。
-
-.. code-block:: python
-

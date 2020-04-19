@@ -48,6 +48,11 @@ Houdini VEX：可视化编程
         @Cd.r = 1;
     }
 
+- 创建一个Geometry。
+- 创建一个Box。
+- 创建一个。
+- 创建一个Attribute Wrangle。
+
 方案三：通过点位置可视化数据。
 
 - 创建一个Geometry。

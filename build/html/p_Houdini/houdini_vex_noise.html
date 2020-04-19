@@ -37,7 +37,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Houdini VEX：代码片段" href="houdini_vex_snippets.html" />
-    <link rel="prev" title="Houdini VEX：插值函数" href="houdini_vex_interpolation.html" /> 
+    <link rel="prev" title="Houdini VEX：测量函数" href="houdini_vex_measure.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -127,15 +127,19 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_built_in_functions.html">Houdini VEX：内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_channel_parameter.html">Houdini VEX：通道参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_compiler.html">Houdini VEX：编译器pragmas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_conversion.html">Houdini VEX：转换函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_custom_functions.html">Houdini VEX：自定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_flow_control.html">Houdini VEX：流控制语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_geometry.html">Houdini VEX：几何体函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_include.html">Houdini VEX：头文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_interpolation.html">Houdini VEX：插值函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_math.html">Houdini VEX：数学函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_measure.html">Houdini VEX：测量函数</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：噪波函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_visual_programming.html">Houdini VEX：可视化编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_volume.html">Houdini VEX：体积函数</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
@@ -212,6 +216,17 @@
             
   <div class="section" id="houdini-vex">
 <h1>Houdini VEX：噪波函数<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>float  rand(float seed)</p></li>
+<li><p>vector2  rand(float seed)</p></li>
+<li><p>vector  rand(float seed)</p></li>
+<li><p>vector4  rand(float seed)</p></li>
+<li><p>…</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@Cd</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="nd">@ptnum</span><span class="p">);</span>
+<span class="nd">@Cd</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="nd">@primnum</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -225,7 +240,7 @@
         <a href="houdini_vex_snippets.html" class="btn btn-neutral float-right" title="Houdini VEX：代码片段" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_vex_interpolation.html" class="btn btn-neutral float-left" title="Houdini VEX：插值函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_vex_measure.html" class="btn btn-neutral float-left" title="Houdini VEX：测量函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
