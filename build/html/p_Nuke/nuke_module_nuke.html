@@ -1,0 +1,246 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Nuke模块：nuke &mdash; CG TD Pipeline 1.0.2 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Nuke模块：nukescripts" href="nuke_module_nukescripts.html" />
+    <link rel="prev" title="Nuke扩展开发插件的层级结构" href="nuke_develop_plugins.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Nuke.html">Nuke</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nuke_batch_script.html">Nuke执行后台命令脚本方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_callback_scripts.html">Nuke Python Callback机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_centralized_tools.html">Nuke中心化配置插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_create_gizmo.html">Nuke创建Gizmo流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_create_read.html">Nuke Python创建Read节点小技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_custom_menu.html">Nuke自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_custom_toolset.html">Nuke自定义工具集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_daemon_thread.html">Nuke守护线程自动保存文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_deploy_plugins.html">Nuke依据版本来加载不同插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_develop_plugins.html">Nuke扩展开发插件的层级结构</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke模块：nuke</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_module_nukescripts.html">Nuke模块：nukescripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_python_panel.html">Nuke Python Panel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Nuke.html">Nuke</a> &raquo;</li>
+        
+      <li>Nuke模块：nuke</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Nuke/nuke_module_nuke.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nuke-nuke">
+<h1>Nuke模块：nuke<a class="headerlink" href="#nuke-nuke" title="永久链接至标题">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">nuke</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">nuke</span><span class="p">))</span>
+<span class="c1"># Result: &lt;module &#39;nuke&#39; from &#39;C:/Program Files/Nuke10.5v1/plugins\nuke\__init__.pyc&#39;&gt;</span>
+<span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;module&#39;</span><span class="o">&gt;</span>
+<span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">Program</span> <span class="n">Files</span><span class="o">/</span><span class="n">Nuke10</span><span class="o">.</span><span class="mi">5</span><span class="n">v1</span><span class="o">/</span><span class="n">plugins</span>\<span class="n">nuke</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">pyc</span>
+<span class="p">[</span><span class="s1">&#39;AColor_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;ADD_VIEWS&#39;</span><span class="p">,</span> <span class="s1">&#39;AFTER_CONST&#39;</span><span class="p">,</span> <span class="s1">&#39;AFTER_LINEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;ALWAYS_SAVE&#39;</span><span class="p">,</span> <span class="s1">&#39;AnimationCurve&#39;</span><span class="p">,</span> <span class="s1">&#39;AnimationKey&#39;</span><span class="p">,</span> <span class="s1">&#39;Array_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Axis_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;BBox_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;BEFORE_CONST&#39;</span><span class="p">,</span> <span class="s1">&#39;BEFORE_LINEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;BREAK&#39;</span><span class="p">,</span> <span class="s1">&#39;BackdropNode&#39;</span><span class="p">,</span> <span class="s1">&#39;BeginTabGroup_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Bitmask_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Boolean_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Box&#39;</span><span class="p">,</span> <span class="s1">&#39;Box3_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;CATMULL_ROM&#39;</span><span class="p">,</span> <span class="s1">&#39;CONSTANT&#39;</span><span class="p">,</span> <span class="s1">&#39;CUBIC&#39;</span><span class="p">,</span> <span class="s1">&#39;CancelledError&#39;</span><span class="p">,</span> <span class="s1">&#39;CascadingEnumeration_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;ChannelMask_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;ColorChip_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Color_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;ColorspaceLookupError&#39;</span><span class="p">,</span> <span class="s1">&#39;DISABLED&#39;</span><span class="p">,</span> <span class="s1">&#39;DONT_CREATE_VIEWS&#39;</span><span class="p">,</span> <span class="s1">&#39;DONT_SAVE_TO_NODEPRESET&#39;</span><span class="p">,</span> <span class="s1">&#39;DO_NOT_WRITE&#39;</span><span class="p">,</span> <span class="s1">&#39;Disable_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Double_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;ENDLINE&#39;</span><span class="p">,</span> <span class="s1">&#39;EXE_PATH&#39;</span><span class="p">,</span> <span class="s1">&#39;EXPAND_TO_WIDTH&#39;</span><span class="p">,</span> <span class="s1">&#39;EXPRESSIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;EditableEnumeration_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;EndTabGroup_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Enumeration_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;EvalString_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Eyedropper_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOAT&#39;</span><span class="p">,</span> <span class="s1">&#39;FONT&#39;</span><span class="p">,</span> <span class="s1">&#39;File_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;FnPySingleton&#39;</span><span class="p">,</span> <span class="s1">&#39;Font_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Format&#39;</span><span class="p">,</span> <span class="s1">&#39;Format_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;FrameRange&#39;</span><span class="p">,</span> <span class="s1">&#39;FrameRanges&#39;</span><span class="p">,</span> <span class="s1">&#39;FreeType_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;GEO&#39;</span><span class="p">,</span> <span class="s1">&#39;GUI&#39;</span><span class="p">,</span> <span class="s1">&#39;GeoSelect_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Gizmo&#39;</span><span class="p">,</span> <span class="s1">&#39;GlobalsEnvironment&#39;</span><span class="p">,</span> <span class="s1">&#39;Group&#39;</span><span class="p">,</span> <span class="s1">&#39;HIDDEN_INPUTS&#39;</span><span class="p">,</span> <span class="s1">&#39;HORIZONTAL&#39;</span><span class="p">,</span> <span class="s1">&#39;Hash&#39;</span><span class="p">,</span> <span class="s1">&#39;Help_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Histogram_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;IArray_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;IMAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;INPUTS&#39;</span><span class="p">,</span> <span class="s1">&#39;INT16&#39;</span><span class="p">,</span> <span class="s1">&#39;INT8&#39;</span><span class="p">,</span> <span class="s1">&#39;INTERACTIVE&#39;</span><span class="p">,</span> <span class="s1">&#39;INVALIDHINT&#39;</span><span class="p">,</span> <span class="s1">&#39;INVISIBLE&#39;</span><span class="p">,</span> <span class="s1">&#39;Info&#39;</span><span class="p">,</span> <span class="s1">&#39;Int_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;KNOB_CHANGED_RECURSIVE&#39;</span><span class="p">,</span> <span class="s1">&#39;Keyer_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;KnobType&#39;</span><span class="p">,</span> <span class="s1">&#39;LINEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;LOG&#39;</span><span class="p">,</span> <span class="s1">&#39;Layer&#39;</span><span class="p">,</span> <span class="s1">&#39;Link_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;LinkableKnobInfo&#39;</span><span class="p">,</span> <span class="s1">&#39;LookupCurves_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Lut&#39;</span><span class="p">,</span> <span class="s1">&#39;MATCH_CLASS&#39;</span><span class="p">,</span> <span class="s1">&#39;MATCH_COLOR&#39;</span><span class="p">,</span> <span class="s1">&#39;MATCH_LABEL&#39;</span><span class="p">,</span> <span class="s1">&#39;MONITOR&#39;</span><span class="p">,</span> <span class="s1">&#39;Menu&#39;</span><span class="p">,</span> <span class="s1">&#39;MenuBar&#39;</span><span class="p">,</span> <span class="s1">&#39;MenuItem&#39;</span><span class="p">,</span> <span class="s1">&#39;MultiView_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Multiline_Eval_String_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;NODIR&#39;</span><span class="p">,</span> <span class="s1">&#39;NO_ANIMATION&#39;</span><span class="p">,</span> <span class="s1">&#39;NO_CHECKMARKS&#39;</span><span class="p">,</span> <span class="s1">&#39;NO_MULTIVIEW&#39;</span><span class="p">,</span> <span class="s1">&#39;NO_POSTAGESTAMPS&#39;</span><span class="p">,</span> <span class="s1">&#39;NO_UNDO&#39;</span><span class="p">,</span> <span class="s1">&#39;NUKE_VERSION_DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;NUKE_VERSION_MAJOR&#39;</span><span class="p">,</span> <span class="s1">&#39;NUKE_VERSION_MINOR&#39;</span><span class="p">,</span> <span class="s1">&#39;NUKE_VERSION_PHASE&#39;</span><span class="p">,</span> <span class="s1">&#39;NUKE_VERSION_PHASENUMBER&#39;</span><span class="p">,</span> <span class="s1">&#39;NUKE_VERSION_RELEASE&#39;</span><span class="p">,</span> <span class="s1">&#39;NUKE_VERSION_STRING&#39;</span><span class="p">,</span> <span class="s1">&#39;NUM_CPUS&#39;</span><span class="p">,</span> <span class="s1">&#39;NUM_INTERPOLATIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;Node&#39;</span><span class="p">,</span> <span class="s1">&#39;NodeConstructor&#39;</span><span class="p">,</span> <span class="s1">&#39;Nodes&#39;</span><span class="p">,</span> <span class="s1">&#39;Obsolete_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;OneView_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;OutputContext&#39;</span><span class="p">,</span> <span class="s1">&#39;PLUGIN_EXT&#39;</span><span class="p">,</span> <span class="s1">&#39;PREPEND&#39;</span><span class="p">,</span> <span class="s1">&#39;PROFILE_ENGINE&#39;</span><span class="p">,</span> <span class="s1">&#39;PROFILE_REQUEST&#39;</span><span class="p">,</span> <span class="s1">&#39;PROFILE_STORE&#39;</span><span class="p">,</span> <span class="s1">&#39;PROFILE_VALIDATE&#39;</span><span class="p">,</span> <span class="s1">&#39;PYTHON&#39;</span><span class="p">,</span> <span class="s1">&#39;Panel&#39;</span><span class="p">,</span> <span class="s1">&#39;PanelNode&#39;</span><span class="p">,</span> <span class="s1">&#39;Password_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Precomp&#39;</span><span class="p">,</span> <span class="s1">&#39;ProgressTask&#39;</span><span class="p">,</span> <span class="s1">&#39;Pulldown_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;PyCustom_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;PyScript_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;PythonCustomKnob&#39;</span><span class="p">,</span> <span class="s1">&#39;PythonKnob&#39;</span><span class="p">,</span> <span class="s1">&#39;READ_ONLY&#39;</span><span class="p">,</span> <span class="s1">&#39;REPLACE&#39;</span><span class="p">,</span> <span class="s1">&#39;REPLACE_VIEWS&#39;</span><span class="p">,</span> <span class="s1">&#39;Radio_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Range_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Root&#39;</span><span class="p">,</span> <span class="s1">&#39;RunInMainThread&#39;</span><span class="p">,</span> <span class="s1">&#39;SAVE_MENU&#39;</span><span class="p">,</span> <span class="s1">&#39;SCRIPT&#39;</span><span class="p">,</span> <span class="s1">&#39;SMOOTH&#39;</span><span class="p">,</span> <span class="s1">&#39;STARTLINE&#39;</span><span class="p">,</span> <span class="s1">&#39;STRIP_CASCADE_PREFIX&#39;</span><span class="p">,</span> <span class="s1">&#39;Scale_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;SceneView_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Script_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;String_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;TABBEGINCLOSEDGROUP&#39;</span><span class="p">,</span> <span class="s1">&#39;TABBEGINGROUP&#39;</span><span class="p">,</span> <span class="s1">&#39;TABENDGROUP&#39;</span><span class="p">,</span> <span class="s1">&#39;TABKNOB&#39;</span><span class="p">,</span> <span class="s1">&#39;THREADS&#39;</span><span class="p">,</span> <span class="s1">&#39;TO_SCRIPT&#39;</span><span class="p">,</span> <span class="s1">&#39;TO_VALUE&#39;</span><span class="p">,</span> <span class="s1">&#39;Tab_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Text_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;ToolBar&#39;</span><span class="p">,</span> <span class="s1">&#39;Transform2d_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;USER_SET_SLOPE&#39;</span><span class="p">,</span> <span class="s1">&#39;UV_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Undo&#39;</span><span class="p">,</span> <span class="s1">&#39;Unsigned_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;VIEWER&#39;</span><span class="p">,</span> <span class="s1">&#39;VIEW_NAMES&#39;</span><span class="p">,</span> <span class="s1">&#39;View&#39;</span><span class="p">,</span> <span class="s1">&#39;ViewView_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;Viewer&#39;</span><span class="p">,</span> <span class="s1">&#39;ViewerProcess&#39;</span><span class="p">,</span> <span class="s1">&#39;ViewerWindow&#39;</span><span class="p">,</span> <span class="s1">&#39;WH_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;WRITE_ALL&#39;</span><span class="p">,</span> <span class="s1">&#39;WRITE_NON_DEFAULT_ONLY&#39;</span><span class="p">,</span> <span class="s1">&#39;WRITE_USER_KNOB_DEFS&#39;</span><span class="p">,</span> <span class="s1">&#39;XYZ_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;XY_Knob&#39;</span><span class="p">,</span> <span class="s1">&#39;__all__&#39;</span><span class="p">,</span> <span class="s1">&#39;__builtins__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="s1">&#39;__filterNames&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;__package__&#39;</span><span class="p">,</span> <span class="s1">&#39;__path__&#39;</span><span class="p">,</span> <span class="s1">&#39;activeViewer&#39;</span><span class="p">,</span> <span class="s1">&#39;addAfterBackgroundFrameRender&#39;</span><span class="p">,</span> <span class="s1">&#39;addAfterBackgroundRender&#39;</span><span class="p">,</span> <span class="s1">&#39;addAfterFrameRender&#39;</span><span class="p">,</span> <span class="s1">&#39;addAfterRecording&#39;</span><span class="p">,</span> <span class="s1">&#39;addAfterRender&#39;</span><span class="p">,</span> <span class="s1">&#39;addAfterReplay&#39;</span><span class="p">,</span> <span class="s1">&#39;addAutoSaveDeleteFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;addAutoSaveFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;addAutoSaveRestoreFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;addAutolabel&#39;</span><span class="p">,</span> <span class="s1">&#39;addBeforeBackgroundRender&#39;</span><span class="p">,</span> <span class="s1">&#39;addBeforeFrameRender&#39;</span><span class="p">,</span> <span class="s1">&#39;addBeforeRecording&#39;</span><span class="p">,</span> <span class="s1">&#39;addBeforeRender&#39;</span><span class="p">,</span> <span class="s1">&#39;addBeforeReplay&#39;</span><span class="p">,</span> <span class="s1">&#39;addDefaultColorspaceMapper&#39;</span><span class="p">,</span> <span class="s1">&#39;addFavoriteDir&#39;</span><span class="p">,</span> <span class="s1">&#39;addFilenameFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;addFormat&#39;</span><span class="p">,</span> <span class="s1">&#39;addKnobChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;addNodePresetExcludePaths&#39;</span><span class="p">,</span> <span class="s1">&#39;addOnCreate&#39;</span><span class="p">,</span> <span class="s1">&#39;addOnDestroy&#39;</span><span class="p">,</span> <span class="s1">&#39;addOnScriptClose&#39;</span><span class="p">,</span> <span class="s1">&#39;addOnScriptLoad&#39;</span><span class="p">,</span> <span class="s1">&#39;addOnScriptSave&#39;</span><span class="p">,</span> <span class="s1">&#39;addOnUserCreate&#39;</span><span class="p">,</span> <span class="s1">&#39;addRenderProgress&#39;</span><span class="p">,</span> <span class="s1">&#39;addSequenceFileExtension&#39;</span><span class="p">,</span> <span class="s1">&#39;addToolsetExcludePaths&#39;</span><span class="p">,</span> <span class="s1">&#39;addUpdateUI&#39;</span><span class="p">,</span> <span class="s1">&#39;addValidateFilename&#39;</span><span class="p">,</span> <span class="s1">&#39;addView&#39;</span><span class="p">,</span> <span class="s1">&#39;afterBackgroundFrameRender&#39;</span><span class="p">,</span> <span class="s1">&#39;afterBackgroundFrameRenders&#39;</span><span class="p">,</span> <span class="s1">&#39;afterBackgroundRender&#39;</span><span class="p">,</span> <span class="s1">&#39;afterBackgroundRenders&#39;</span><span class="p">,</span> <span class="s1">&#39;afterFrameRender&#39;</span><span class="p">,</span> <span class="s1">&#39;afterFrameRenders&#39;</span><span class="p">,</span> <span class="s1">&#39;afterRecording&#39;</span><span class="p">,</span> <span class="s1">&#39;afterRender&#39;</span><span class="p">,</span> <span class="s1">&#39;afterRenders&#39;</span><span class="p">,</span> <span class="s1">&#39;afterReplay&#39;</span><span class="p">,</span> <span class="s1">&#39;allNodes&#39;</span><span class="p">,</span> <span class="s1">&#39;animation&#39;</span><span class="p">,</span> <span class="s1">&#39;animationEnd&#39;</span><span class="p">,</span> <span class="s1">&#39;animationIncrement&#39;</span><span class="p">,</span> <span class="s1">&#39;animationStart&#39;</span><span class="p">,</span> <span class="s1">&#39;animations&#39;</span><span class="p">,</span> <span class="s1">&#39;applyPreset&#39;</span><span class="p">,</span> <span class="s1">&#39;applyUserPreset&#39;</span><span class="p">,</span> <span class="s1">&#39;ask&#39;</span><span class="p">,</span> <span class="s1">&#39;askWithCancel&#39;</span><span class="p">,</span> <span class="s1">&#39;autoSaveDeleteFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;autoSaveDeleteFilters&#39;</span><span class="p">,</span> <span class="s1">&#39;autoSaveFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;autoSaveFilters&#39;</span><span class="p">,</span> <span class="s1">&#39;autoSaveRestoreFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;autoSaveRestoreFilters&#39;</span><span class="p">,</span> <span class="s1">&#39;autolabel&#39;</span><span class="p">,</span> <span class="s1">&#39;autolabels&#39;</span><span class="p">,</span> <span class="s1">&#39;autoplace&#39;</span><span class="p">,</span> <span class="s1">&#39;autoplaceSnap&#39;</span><span class="p">,</span> <span class="s1">&#39;beforeBackgroundRender&#39;</span><span class="p">,</span> <span class="s1">&#39;beforeBackgroundRenders&#39;</span><span class="p">,</span> <span class="s1">&#39;beforeFrameRender&#39;</span><span class="p">,</span> <span class="s1">&#39;beforeFrameRenders&#39;</span><span class="p">,</span> <span class="s1">&#39;beforeRecording&#39;</span><span class="p">,</span> <span class="s1">&#39;beforeRender&#39;</span><span class="p">,</span> <span class="s1">&#39;beforeRenders&#39;</span><span class="p">,</span> <span class="s1">&#39;beforeReplay&#39;</span><span class="p">,</span> <span class="s1">&#39;cacheUsage&#39;</span><span class="p">,</span> <span class="s1">&#39;callbacks&#39;</span><span class="p">,</span> <span class="s1">&#39;canCreateNode&#39;</span><span class="p">,</span> <span class="s1">&#39;cancel&#39;</span><span class="p">,</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;channels&#39;</span><span class="p">,</span> <span class="s1">&#39;choice&#39;</span><span class="p">,</span> <span class="s1">&#39;clearDiskCache&#39;</span><span class="p">,</span> <span class="s1">&#39;clearRAMCache&#39;</span><span class="p">,</span> <span class="s1">&#39;clone&#39;</span><span class="p">,</span> <span class="s1">&#39;cloneSelected&#39;</span><span class="p">,</span> <span class="s1">&#39;collapseToGroup&#39;</span><span class="p">,</span> <span class="s1">&#39;colorspaces&#39;</span><span class="p">,</span> <span class="s1">&#39;connectNodes&#39;</span><span class="p">,</span> <span class="s1">&#39;connectViewer&#39;</span><span class="p">,</span> <span class="s1">&#39;createNode&#39;</span><span class="p">,</span> <span class="s1">&#39;createScenefileBrowser&#39;</span><span class="p">,</span> <span class="s1">&#39;createToolset&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">,</span> <span class="s1">&#39;curveknob&#39;</span><span class="p">,</span> <span class="s1">&#39;curvelib&#39;</span><span class="p">,</span> <span class="s1">&#39;debug&#39;</span><span class="p">,</span> <span class="s1">&#39;defaultColorspaceMapper&#39;</span><span class="p">,</span> <span class="s1">&#39;defaultFontPathname&#39;</span><span class="p">,</span> <span class="s1">&#39;defaultLUTMappers&#39;</span><span class="p">,</span> <span class="s1">&#39;defaultNodeColor&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="s1">&#39;deletePreset&#39;</span><span class="p">,</span> <span class="s1">&#39;deleteUserPreset&#39;</span><span class="p">,</span> <span class="s1">&#39;deleteView&#39;</span><span class="p">,</span> <span class="s1">&#39;dependencies&#39;</span><span class="p">,</span> <span class="s1">&#39;dependentNodes&#39;</span><span class="p">,</span> <span class="s1">&#39;display&#39;</span><span class="p">,</span> <span class="s1">&#39;endGroup&#39;</span><span class="p">,</span> <span class="s1">&#39;env&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="s1">&#39;execute&#39;</span><span class="p">,</span> <span class="s1">&#39;executeBackgroundNuke&#39;</span><span class="p">,</span> <span class="s1">&#39;executeInMain&#39;</span><span class="p">,</span> <span class="s1">&#39;executeInMainThread&#39;</span><span class="p">,</span> <span class="s1">&#39;executeInMainThreadWithResult&#39;</span><span class="p">,</span> <span class="s1">&#39;executeMultiple&#39;</span><span class="p">,</span> <span class="s1">&#39;executing&#39;</span><span class="p">,</span> <span class="s1">&#39;exists&#39;</span><span class="p">,</span> <span class="s1">&#39;expandSelectedGroup&#39;</span><span class="p">,</span> <span class="s1">&#39;expr&#39;</span><span class="p">,</span> <span class="s1">&#39;expression&#39;</span><span class="p">,</span> <span class="s1">&#39;extractSelected&#39;</span><span class="p">,</span> <span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;filenameFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;filenameFilters&#39;</span><span class="p">,</span> <span class="s1">&#39;forceClone&#39;</span><span class="p">,</span> <span class="s1">&#39;forceLoad&#39;</span><span class="p">,</span> <span class="s1">&#39;fork&#39;</span><span class="p">,</span> <span class="s1">&#39;formats&#39;</span><span class="p">,</span> <span class="s1">&#39;frame&#39;</span><span class="p">,</span> <span class="s1">&#39;fromNode&#39;</span><span class="p">,</span> <span class="s1">&#39;geo&#39;</span><span class="p">,</span> <span class="s1">&#39;getAllUserPresets&#39;</span><span class="p">,</span> <span class="s1">&#39;getClipname&#39;</span><span class="p">,</span> <span class="s1">&#39;getColor&#39;</span><span class="p">,</span> <span class="s1">&#39;getColorspaceList&#39;</span><span class="p">,</span> <span class="s1">&#39;getDeletedPresets&#39;</span><span class="p">,</span> <span class="s1">&#39;getFileNameList&#39;</span><span class="p">,</span> <span class="s1">&#39;getFilename&#39;</span><span class="p">,</span> <span class="s1">&#39;getFonts&#39;</span><span class="p">,</span> <span class="s1">&#39;getFramesAndViews&#39;</span><span class="p">,</span> <span class="s1">&#39;getInput&#39;</span><span class="p">,</span> <span class="s1">&#39;getNodeClassName&#39;</span><span class="p">,</span> <span class="s1">&#39;getNodePresetExcludePaths&#39;</span><span class="p">,</span> <span class="s1">&#39;getNodePresetID&#39;</span><span class="p">,</span> <span class="s1">&#39;getOcioColorSpaces&#39;</span><span class="p">,</span> <span class="s1">&#39;getPaneFor&#39;</span><span class="p">,</span> <span class="s1">&#39;getPresetKnobValues&#39;</span><span class="p">,</span> <span class="s1">&#39;getPresets&#39;</span><span class="p">,</span> <span class="s1">&#39;getPresetsMenu&#39;</span><span class="p">,</span> <span class="s1">&#39;getReadFileKnob&#39;</span><span class="p">,</span> <span class="s1">&#39;getRenderProgress&#39;</span><span class="p">,</span> <span class="s1">&#39;getToolsetExcludePaths&#39;</span><span class="p">,</span> <span class="s1">&#39;getUserPresetKnobValues&#39;</span><span class="p">,</span> <span class="s1">&#39;getUserPresets&#39;</span><span class="p">,</span> <span class="s1">&#39;hotkeys&#39;</span><span class="p">,</span> <span class="s1">&#39;import_module&#39;</span><span class="p">,</span> <span class="s1">&#39;inputs&#39;</span><span class="p">,</span> <span class="s1">&#39;invertSelection&#39;</span><span class="p">,</span> <span class="s1">&#39;knob&#39;</span><span class="p">,</span> <span class="s1">&#39;knobChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;knobChangeds&#39;</span><span class="p">,</span> <span class="s1">&#39;knobDefault&#39;</span><span class="p">,</span> <span class="s1">&#39;knobTooltip&#39;</span><span class="p">,</span> <span class="s1">&#39;layers&#39;</span><span class="p">,</span> <span class="s1">&#39;licenseInfo&#39;</span><span class="p">,</span> <span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="s1">&#39;loadToolset&#39;</span><span class="p">,</span> <span class="s1">&#39;localisationEnabled&#39;</span><span class="p">,</span> <span class="s1">&#39;localiseFiles&#39;</span><span class="p">,</span> <span class="s1">&#39;localization&#39;</span><span class="p">,</span> <span class="s1">&#39;makeGroup&#39;</span><span class="p">,</span> <span class="s1">&#39;math&#39;</span><span class="p">,</span> <span class="s1">&#39;maxPerformanceInfo&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">,</span> <span class="s1">&#39;menu&#39;</span><span class="p">,</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="s1">&#39;modified&#39;</span><span class="p">,</span> <span class="s1">&#39;nodeCopy&#39;</span><span class="p">,</span> <span class="s1">&#39;nodeDelete&#39;</span><span class="p">,</span> <span class="s1">&#39;nodePaste&#39;</span><span class="p">,</span> <span class="s1">&#39;nodes&#39;</span><span class="p">,</span> <span class="s1">&#39;nodesSelected&#39;</span><span class="p">,</span> <span class="s1">&#39;nuke&#39;</span><span class="p">,</span> <span class="s1">&#39;numvalue&#39;</span><span class="p">,</span> <span class="s1">&#39;oculaPresent&#39;</span><span class="p">,</span> <span class="s1">&#39;ofxAddPluginAliasExclusion&#39;</span><span class="p">,</span> <span class="s1">&#39;ofxMenu&#39;</span><span class="p">,</span> <span class="s1">&#39;ofxPluginPath&#39;</span><span class="p">,</span> <span class="s1">&#39;ofxRemovePluginAliasExclusion&#39;</span><span class="p">,</span> <span class="s1">&#39;onCreate&#39;</span><span class="p">,</span> <span class="s1">&#39;onCreates&#39;</span><span class="p">,</span> <span class="s1">&#39;onDestroy&#39;</span><span class="p">,</span> <span class="s1">&#39;onDestroys&#39;</span><span class="p">,</span> <span class="s1">&#39;onScriptClose&#39;</span><span class="p">,</span> <span class="s1">&#39;onScriptCloses&#39;</span><span class="p">,</span> <span class="s1">&#39;onScriptLoad&#39;</span><span class="p">,</span> <span class="s1">&#39;onScriptLoads&#39;</span><span class="p">,</span> <span class="s1">&#39;onScriptSave&#39;</span><span class="p">,</span> <span class="s1">&#39;onScriptSaves&#39;</span><span class="p">,</span> <span class="s1">&#39;onUserCreate&#39;</span><span class="p">,</span> <span class="s1">&#39;onUserCreates&#39;</span><span class="p">,</span> <span class="s1">&#39;openPanels&#39;</span><span class="p">,</span> <span class="s1">&#39;os&#39;</span><span class="p">,</span> <span class="s1">&#39;overrides&#39;</span><span class="p">,</span> <span class="s1">&#39;pan&#39;</span><span class="p">,</span> <span class="s1">&#39;performanceProfileFilename&#39;</span><span class="p">,</span> <span class="s1">&#39;pluginAddPath&#39;</span><span class="p">,</span> <span class="s1">&#39;pluginAppendPath&#39;</span><span class="p">,</span> <span class="s1">&#39;pluginExists&#39;</span><span class="p">,</span> <span class="s1">&#39;pluginInstallLocation&#39;</span><span class="p">,</span> <span class="s1">&#39;pluginPath&#39;</span><span class="p">,</span> <span class="s1">&#39;plugins&#39;</span><span class="p">,</span> <span class="s1">&#39;rawArgs&#39;</span><span class="p">,</span> <span class="s1">&#39;re&#39;</span><span class="p">,</span> <span class="s1">&#39;recentFile&#39;</span><span class="p">,</span> <span class="s1">&#39;redo&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAfterBackgroundFrameRender&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAfterBackgroundRender&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAfterFrameRender&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAfterRecording&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAfterRender&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAfterReplay&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAutoSaveDeleteFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAutoSaveFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAutoSaveRestoreFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;removeAutolabel&#39;</span><span class="p">,</span> <span class="s1">&#39;removeBeforeBackgroundRender&#39;</span><span class="p">,</span> <span class="s1">&#39;removeBeforeFrameRender&#39;</span><span class="p">,</span> <span class="s1">&#39;removeBeforeRecording&#39;</span><span class="p">,</span> <span class="s1">&#39;removeBeforeRender&#39;</span><span class="p">,</span> <span class="s1">&#39;removeBeforeReplay&#39;</span><span class="p">,</span> <span class="s1">&#39;removeDefaultColorspaceMapper&#39;</span><span class="p">,</span> <span class="s1">&#39;removeFavoriteDir&#39;</span><span class="p">,</span> <span class="s1">&#39;removeFilenameFilter&#39;</span><span class="p">,</span> <span class="s1">&#39;removeFilenameValidate&#39;</span><span class="p">,</span> <span class="s1">&#39;removeKnobChanged&#39;</span><span class="p">,</span> <span class="s1">&#39;removeOnCreate&#39;</span><span class="p">,</span> <span class="s1">&#39;removeOnDestroy&#39;</span><span class="p">,</span> <span class="s1">&#39;removeOnScriptClose&#39;</span><span class="p">,</span> <span class="s1">&#39;removeOnScriptLoad&#39;</span><span class="p">,</span> <span class="s1">&#39;removeOnScriptSave&#39;</span><span class="p">,</span> <span class="s1">&#39;removeOnUserCreate&#39;</span><span class="p">,</span> <span class="s1">&#39;removeRenderProgress&#39;</span><span class="p">,</span> <span class="s1">&#39;removeUpdateUI&#39;</span><span class="p">,</span> <span class="s1">&#39;render&#39;</span><span class="p">,</span> <span class="s1">&#39;renderProgress&#39;</span><span class="p">,</span> <span class="s1">&#39;renderProgresses&#39;</span><span class="p">,</span> <span class="s1">&#39;rescanFontFolders&#39;</span><span class="p">,</span> <span class="s1">&#39;resetPerformanceTimers&#39;</span><span class="p">,</span> <span class="s1">&#39;restoreWindowLayout&#39;</span><span class="p">,</span> <span class="s1">&#39;resumePathProcessing&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="s1">&#39;rotopaint&#39;</span><span class="p">,</span> <span class="s1">&#39;runIn&#39;</span><span class="p">,</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="s1">&#39;saveEventGraphTimers&#39;</span><span class="p">,</span> <span class="s1">&#39;saveToScript&#39;</span><span class="p">,</span> <span class="s1">&#39;saveUserPreset&#39;</span><span class="p">,</span> <span class="s1">&#39;saveWindowLayout&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptClear&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptClose&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptExit&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptName&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptNew&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptOpen&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptReadFile&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptReadText&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptSave&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptSaveAndClear&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptSaveAs&#39;</span><span class="p">,</span> <span class="s1">&#39;scriptSource&#39;</span><span class="p">,</span> <span class="s1">&#39;script_directory&#39;</span><span class="p">,</span> <span class="s1">&#39;scripts&#39;</span><span class="p">,</span> <span class="s1">&#39;selectAll&#39;</span><span class="p">,</span> <span class="s1">&#39;selectConnectedNodes&#39;</span><span class="p">,</span> <span class="s1">&#39;selectPattern&#39;</span><span class="p">,</span> <span class="s1">&#39;selectSimilar&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedNode&#39;</span><span class="p">,</span> <span class="s1">&#39;selectedNodes&#39;</span><span class="p">,</span> <span class="s1">&#39;setPreset&#39;</span><span class="p">,</span> <span class="s1">&#39;setReadOnlyPresets&#39;</span><span class="p">,</span> <span class="s1">&#39;setUserPreset&#39;</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">,</span> <span class="s1">&#39;showBookmarkChooser&#39;</span><span class="p">,</span> <span class="s1">&#39;showCreateViewsDialog&#39;</span><span class="p">,</span> <span class="s1">&#39;showDag&#39;</span><span class="p">,</span> <span class="s1">&#39;showInfo&#39;</span><span class="p">,</span> <span class="s1">&#39;showSettings&#39;</span><span class="p">,</span> <span class="s1">&#39;splayNodes&#39;</span><span class="p">,</span> <span class="s1">&#39;startEventGraphTimers&#39;</span><span class="p">,</span> <span class="s1">&#39;startPerformanceTimers&#39;</span><span class="p">,</span> <span class="s1">&#39;stopEventGraphTimers&#39;</span><span class="p">,</span> <span class="s1">&#39;stopPerformanceTimers&#39;</span><span class="p">,</span> <span class="s1">&#39;stripFrameRange&#39;</span><span class="p">,</span> <span class="s1">&#39;suspendPathProcessing&#39;</span><span class="p">,</span> <span class="s1">&#39;sys&#39;</span><span class="p">,</span> <span class="s1">&#39;tabClose&#39;</span><span class="p">,</span> <span class="s1">&#39;tabNext&#39;</span><span class="p">,</span> <span class="s1">&#39;tcl&#39;</span><span class="p">,</span> <span class="s1">&#39;thisClass&#39;</span><span class="p">,</span> <span class="s1">&#39;thisGroup&#39;</span><span class="p">,</span> <span class="s1">&#39;thisKnob&#39;</span><span class="p">,</span> <span class="s1">&#39;thisNode&#39;</span><span class="p">,</span> <span class="s1">&#39;thisPane&#39;</span><span class="p">,</span> <span class="s1">&#39;thisParent&#39;</span><span class="p">,</span> <span class="s1">&#39;thisView&#39;</span><span class="p">,</span> <span class="s1">&#39;threading&#39;</span><span class="p">,</span> <span class="s1">&#39;toNode&#39;</span><span class="p">,</span> <span class="s1">&#39;toggleFullscreen&#39;</span><span class="p">,</span> <span class="s1">&#39;toggleViewers&#39;</span><span class="p">,</span> <span class="s1">&#39;toolbar&#39;</span><span class="p">,</span> <span class="s1">&#39;tprint&#39;</span><span class="p">,</span> <span class="s1">&#39;traceback&#39;</span><span class="p">,</span> <span class="s1">&#39;types&#39;</span><span class="p">,</span> <span class="s1">&#39;undo&#39;</span><span class="p">,</span> <span class="s1">&#39;untitled&#39;</span><span class="p">,</span> <span class="s1">&#39;updateUI&#39;</span><span class="p">,</span> <span class="s1">&#39;updateUIs&#39;</span><span class="p">,</span> <span class="s1">&#39;usingOcio&#39;</span><span class="p">,</span> <span class="s1">&#39;usingPerformanceTimers&#39;</span><span class="p">,</span> <span class="s1">&#39;utils&#39;</span><span class="p">,</span> <span class="s1">&#39;validateFilename&#39;</span><span class="p">,</span> <span class="s1">&#39;validateFilenames&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;views&#39;</span><span class="p">,</span> <span class="s1">&#39;waitForThreadsToFinish&#39;</span><span class="p">,</span> <span class="s1">&#39;warning&#39;</span><span class="p">,</span> <span class="s1">&#39;zoom&#39;</span><span class="p">,</span> <span class="s1">&#39;zoomToFitSelected&#39;</span><span class="p">]</span>
+
+<span class="n">nuke</span><span class="o">.</span><span class="n">scriptOpen</span><span class="p">()</span>
+<span class="n">nuke</span><span class="o">.</span><span class="n">scriptReadFile</span><span class="p">()</span>
+<span class="n">nuke</span><span class="o">.</span><span class="n">scriptReadText</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nuke_module_nukescripts.html" class="btn btn-neutral float-right" title="Nuke模块：nukescripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="nuke_develop_plugins.html" class="btn btn-neutral float-left" title="Nuke扩展开发插件的层级结构" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -92,8 +92,8 @@ hou模块按功能可以分为三大类子模块（sub-modules）、类（classe
     hou.applicationVersion()
     # 获取软件版本字符串
     hou.applicationVersionString()
-    # 
-    hou.saveIndexDataToFile()
+    >>> hou.setSimulationEnabled(0)
+    >>> hou.setSimulationEnabled(1)
 
 -------------------
 案例代码

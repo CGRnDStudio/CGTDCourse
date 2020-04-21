@@ -40,6 +40,7 @@ Houdini中心化理念又称集成式环境部署，中心化最重要的知识�
 - radialmenu # 自定义热盒菜单
 - scripts/python # 自定义Python代码可以放这
 - toolbar # 自定义工具架工具
+- display.pref # 视图窗口显示配置
 - FBres # 自定义分辨率预设
 - MainMenuCommon.xml # 自定义主菜单
 - OPmenu.xml # 自定义节点右键菜单
@@ -48,8 +49,6 @@ Houdini中心化理念又称集成式环境部署，中心化最重要的知识�
 
 还有很多其它可以自定义的配置文件，可以详细研究一下。
 
-
-坐井观天：本节知识点
 认识环境变量HOUDINI_PATH
 如何部署qLib
 Shell & hconfig
@@ -59,23 +58,12 @@ houdini.env
 集中式管理插件的好处，方便维护，方便版本切换
 几种常用的环境变量
 
-
-
-管中窥豹：延伸阅读
-http://127.0.0.1:48626/basics/config_env
-http://127.0.0.1:48626/ref/env.html
-https://github.com/qLab/qLib
-https://docs.chaosgroup.com/display/VRAYHOUDINI/QuickStart+Guides
-
-
-
 Shell
 
 hconfig
 hconfig -a
 hconfig -ap
 set 某个环境变量
-
 
 几种常用的环境变量
 HOUDINI_BUFFEREDSAVE 加速Houdini网盘文件存储
@@ -128,3 +116,9 @@ PATH="$VFH_PATH;$PATH"
  
 # HOUDINI_PATH
 HOUDINI_PATH = $VFH_HOME;&
+
+
+http://127.0.0.1:48626/basics/config_env
+http://127.0.0.1:48626/ref/env.html
+https://github.com/qLab/qLib
+https://docs.chaosgroup.com/display/VRAYHOUDINI/QuickStart+Guides
