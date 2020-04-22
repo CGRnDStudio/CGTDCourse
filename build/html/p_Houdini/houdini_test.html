@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Houdini后台输出那些事儿 &mdash; CG TD Pipeline 1.0.2 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Houdini USD相关" href="houdini_usd.html" />
+    <link rel="prev" title="Houdini Shell相关" href="houdini_shell.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Houdini.html">Houdini</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="houdini_batch_render.html">Houdini后台输出那些事儿</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_arnold.html">Houdini中心化部署：Arnold渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_qlib.html">Houdini中心化部署：qLib插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_redshift.html">Houdini中心化部署：Redshift渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_custom_menu.html">Houdini自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_custom_resolution.html">Houdini自定义分辨率预设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_desktop.html">Houdini自定义布局</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_development_environment.html">Houdini搭建VS Code开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_environment_variables.html">Houdini中心化理念：环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_expression_functions.html">Houdini表达式函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_fbx_material_converter.html">Houdini FBX材质自动赋予工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_hotkeys.html">Houdini自定义快捷键</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_hscript_command.html">Houdini HScript命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_jump_path.html">Houdini添加侧边栏快捷路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_miss_dialog.html">Houdini输出进度条不在显示器内的解决方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_miss_icons.html">Houdini图标丢失解决方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_module_hou.html">Houdini模块：hou</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_module_stateutils.html">Houdini模块：stateutils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_multi_loader.html">Houdini批量导入工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_create_update.html">Houdini otls：创建以及更新的流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_parameters.html">Houdini otls：自定义参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_scripts.html">Houdini otls：可执行代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_otls_upgrade.html">Houdini otls：升级的两种方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_pdg.html">Houdini PDG相关</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_presets_gallery.html">Houdini自定义预设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_program_types.html">Houdini编程语言种类</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_progress_bar.html">Houdini进度条</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_python_executable_environment.html">Houdini中可执行Python代码的环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_python_geometry.html">Houdini Python控制几何体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_python_gui.html">Houdini用户界面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_python_panel.html">Houdini Python Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_radial_menu.html">Houdini自定义热盒菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_shelf_tools.html">Houdini工具架工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_shell.html">Houdini Shell相关</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini后台输出那些事儿</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">几种渲染器介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#houdini-path">认识环境变量HOUDINI_PATH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">渲染的模式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">后台渲染的三种方案</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hou">认识hou模块</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_usd.html">Houdini USD相关</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_array.html">Houdini VEX：数组函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_built_in_functions.html">Houdini VEX：内置函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_channel_parameter.html">Houdini VEX：通道参数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_compiler.html">Houdini VEX：编译器pragmas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_conversion.html">Houdini VEX：转换函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_custom_functions.html">Houdini VEX：自定义函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_flow_control.html">Houdini VEX：流控制语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_geometry.html">Houdini VEX：几何体函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_include.html">Houdini VEX：头文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_interpolation.html">Houdini VEX：插值函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_math.html">Houdini VEX：数学函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_measure.html">Houdini VEX：测量函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_noise.html">Houdini VEX：噪波函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_viewport.html">Houdini VEX：视图属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_visual_programming.html">Houdini VEX：可视化编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_volume.html">Houdini VEX：体积函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
+        
+      <li>Houdini后台输出那些事儿</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Houdini/houdini_test.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="houdini">
+<h1>Houdini后台输出那些事儿<a class="headerlink" href="#houdini" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2>几种渲染器介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>Mantra
+Karma</p>
+<p>Arnold
+Redshift</p>
+<p>V-Ray
+RenderMan</p>
+</div>
+<div class="section" id="houdini-path">
+<h2>认识环境变量HOUDINI_PATH<a class="headerlink" href="#houdini-path" title="永久链接至标题">¶</a></h2>
+<p>环境变量可以让所有扩展插件共存，HOUDINI_PATH。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Redshift env</span>
+<span class="nv">RS_PATH</span> <span class="o">=</span> C:/ProgramData/Redshift
+<span class="nv">PATH</span> <span class="o">=</span> <span class="nv">$PATH</span><span class="p">;</span><span class="nv">$RS_PATH</span>/bin
+
+<span class="nv">HOUDINI_PATH</span> <span class="o">=</span> <span class="nv">$RS_PATH</span>/Plugins/Houdini/18.0.348<span class="p">;&amp;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># htoa env</span>
+<span class="nv">HTOA</span> <span class="o">=</span> M:/thirdParty/htoa/htoa-5.1.0_r9289183_houdini-18.0.348/htoa-5.1.0_r9289183_houdini-18.0.348
+<span class="nv">PATH</span> <span class="o">=</span> <span class="nv">$PATH</span><span class="p">;</span><span class="nv">$HTOA</span>/scripts/bin
+<span class="nv">solidangle_LICENSE</span> <span class="o">=</span> <span class="m">5053</span>@localhost
+
+<span class="c1"># HOUDINI_PATH</span>
+<span class="nv">HOUDINI_PATH</span> <span class="o">=</span> <span class="nv">$HTOA</span><span class="p">;&amp;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>渲染的模式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>串联与并联的区别</p>
+<p>prepost与merge的区别</p>
+<p>FrameByFrame与RopByRop区别</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Help</span> <span class="n">on</span> <span class="n">method</span> <span class="n">render</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">houpythonportion</span><span class="p">:</span>
+
+<span class="n">render</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="n">method</span> <span class="n">of</span> <span class="n">hou</span><span class="o">.</span><span class="n">RopNode</span> <span class="n">instance</span>
+    <span class="n">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame_range</span><span class="o">=</span><span class="p">(),</span> <span class="n">res</span><span class="o">=</span><span class="p">(),</span> <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">output_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to_flipbook</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ignore_inputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="n">RopByRop</span><span class="p">,</span> <span class="n">ignore_bypass_flags</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ignore_lock_flags</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">output_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>后台渲染的三种方案<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>Houdini后台输出一般支持所有的ROP节点，比如：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ROP Output Driver(rop_geometry)</p></li>
+<li><p>ROP Alembic Output(rop_alembic)</p></li>
+<li><p>File Cache(filecache)</p></li>
+<li><p>RF Mesh Export(rf_mesh_export)</p></li>
+<li><p>RF Particle Export(rf_particle_export)</p></li>
+<li><p>Mantra(ifd)</p></li>
+<li><p>Arnold(arnold)</p></li>
+<li><p>OpenGL(opengl)</p></li>
+<li><p>Fetch(fetch)</p></li>
+<li><p>Geometry(geometry)</p></li>
+<li><p>Prepost(prepost)</p></li>
+<li><p>Merge(merge)</p></li>
+<li><p>Redshift(Redshift_ROP)</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>hbatch | hscript</p></li>
+</ul>
+<p>安装路径bin文件夹下的hscript.exe和hbatch是一样的东西，没有任何区别，正常我们会使用hbatch.exe。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">hbatch</span> <span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">][</span><span class="o">-</span><span class="n">e</span> <span class="n">name</span><span class="o">=</span><span class="n">value</span><span class="p">][</span><span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="n">command</span><span class="o">&gt;</span><span class="p">][</span><span class="o">-</span><span class="n">j</span> <span class="n">nproc</span><span class="p">][</span><span class="o">-</span><span class="n">h</span><span class="p">][</span><span class="o">-</span><span class="n">i</span><span class="p">][</span><span class="o">-</span><span class="n">q</span><span class="p">][</span><span class="o">-</span><span class="n">v</span><span class="p">][</span><span class="n">file</span><span class="o">.</span><span class="n">hip</span> <span class="o">...</span><span class="p">]</span>
+
+<span class="n">hbatch</span> <span class="n">shell</span><span class="o">.</span>  <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">non</span><span class="o">-</span><span class="n">graphical</span> <span class="n">interface</span> <span class="n">to</span> <span class="n">a</span> <span class="n">hip</span>
+<span class="n">file</span><span class="o">.</span>  <span class="n">Type</span> <span class="s2">&quot;help&quot;</span> <span class="k">for</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">commands</span><span class="o">.</span>
+
+<span class="n">Any</span> <span class="n">number</span> <span class="n">of</span> <span class="o">.</span><span class="n">hip</span><span class="p">,</span> <span class="o">.</span><span class="n">cmd</span><span class="p">,</span> <span class="ow">or</span> <span class="o">.</span><span class="n">otl</span> <span class="n">files</span> <span class="n">may</span> <span class="n">be</span> <span class="n">specified</span> <span class="n">on</span> <span class="n">the</span>
+<span class="n">command</span> <span class="n">line</span><span class="o">.</span>  <span class="n">Multiple</span> <span class="o">.</span><span class="n">hip</span> <span class="n">files</span> <span class="n">are</span> <span class="n">merged</span> <span class="n">together</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="o">-</span><span class="n">e</span> <span class="n">option</span> <span class="n">sets</span> <span class="n">the</span> <span class="n">named</span> <span class="n">enviroment</span> <span class="n">variable</span> <span class="n">to</span> <span class="n">the</span> <span class="n">given</span>
+        <span class="n">value</span><span class="o">.</span>  <span class="n">There</span> <span class="n">should</span> <span class="n">be</span> <span class="n">no</span> <span class="n">spaces</span> <span class="n">around</span> <span class="n">the</span> <span class="s1">&#39;=&#39;</span> <span class="n">separator</span> <span class="n">between</span>
+        <span class="n">the</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">value</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="o">-</span><span class="n">e</span> <span class="n">foo</span><span class="o">=</span><span class="n">bar</span><span class="p">)</span>
+
+<span class="n">The</span> <span class="o">-</span><span class="n">c</span> <span class="n">option</span> <span class="n">will</span> <span class="n">run</span> <span class="n">the</span> <span class="n">option</span> <span class="n">argument</span> <span class="k">as</span> <span class="n">an</span> <span class="n">hscript</span> <span class="n">command</span><span class="p">,</span> <span class="n">after</span>
+        <span class="n">the</span> <span class="n">specified</span> <span class="n">files</span> <span class="n">have</span> <span class="n">been</span> <span class="n">loaded</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="o">-</span><span class="n">f</span> <span class="n">option</span> <span class="n">forces</span> <span class="n">the</span> <span class="n">use</span> <span class="n">of</span> <span class="n">asset</span> <span class="n">definitions</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">OTL</span>
+        <span class="n">files</span> <span class="n">specified</span> <span class="n">on</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="o">-</span><span class="n">j</span> <span class="n">option</span> <span class="n">sets</span> <span class="n">the</span> <span class="n">HOUDINI_MAXTHREADS</span> <span class="n">to</span> <span class="n">the</span> <span class="n">given</span> <span class="n">value</span><span class="o">.</span>
+<span class="n">The</span> <span class="o">-</span><span class="n">h</span> <span class="n">option</span> <span class="n">shows</span> <span class="n">this</span> <span class="n">message</span>
+<span class="n">The</span> <span class="o">-</span><span class="n">q</span> <span class="n">option</span> <span class="n">prevents</span> <span class="n">the</span> <span class="n">version</span> <span class="n">information</span> <span class="kn">from</span> <span class="nn">being</span> <span class="n">printed</span>
+<span class="n">The</span> <span class="o">-</span><span class="n">w</span> <span class="n">option</span> <span class="n">suppresses</span> <span class="n">load</span> <span class="n">warnings</span> <span class="ow">and</span> <span class="n">errors</span> <span class="kn">from</span> <span class="nn">being</span> <span class="n">printed</span>
+<span class="n">The</span> <span class="o">-</span><span class="n">v</span> <span class="n">option</span> <span class="n">specifies</span> <span class="n">verbose</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">renders</span>
+<span class="n">The</span> <span class="o">-</span><span class="n">i</span> <span class="n">option</span> <span class="n">uses</span> <span class="n">a</span> <span class="n">simpler</span> <span class="n">interface</span> <span class="k">for</span> <span class="n">reading</span> <span class="nb">input</span>
+        <span class="n">when</span> <span class="n">running</span> <span class="n">hbatch</span> <span class="kn">from</span> <span class="nn">other</span> <span class="n">applications</span> <span class="p">(</span><span class="n">like</span> <span class="n">Pixar</span><span class="s1">&#39;s</span>
+        <span class="n">Alfred</span><span class="p">),</span> <span class="n">it</span> <span class="n">may</span> <span class="n">be</span> <span class="n">necessary</span> <span class="n">to</span> <span class="n">use</span> <span class="n">this</span> <span class="n">option</span><span class="o">.</span>  <span class="n">Use</span> <span class="n">of</span> <span class="n">this</span>
+        <span class="n">option</span> <span class="n">will</span> <span class="n">disable</span> <span class="n">several</span> <span class="n">commands</span> <span class="p">(</span><span class="n">openport</span> <span class="ow">and</span> <span class="n">atjob</span><span class="p">)</span>
+<span class="n">The</span> <span class="o">-</span><span class="n">R</span> <span class="n">option</span> <span class="n">will</span> <span class="n">request</span> <span class="n">a</span> <span class="n">non</span><span class="o">-</span><span class="n">graphics</span> <span class="n">token</span> <span class="n">instead</span>
+        <span class="n">of</span> <span class="n">a</span> <span class="n">graphical</span> <span class="n">on</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hbatch myscene.hip
+Director -&gt; <span class="nb">help</span> render
+Director -&gt; render mantra1
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hbatch
+Director -&gt; mread myscene.hip
+Director -&gt; <span class="nb">help</span> render
+Director -&gt; render mantra1
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>hrender</p></li>
+</ul>
+<p>hrender是通过csh.exe来调用的，所以得编写csh脚本。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Usage:
+
+Single frame:   hrender    <span class="o">[</span>options<span class="o">]</span> driver<span class="p">|</span>cop file.hip <span class="o">[</span>imagefile<span class="o">]</span>
+Frame range:    hrender -e <span class="o">[</span>options<span class="o">]</span> driver<span class="p">|</span>cop file.hip
+
+driver<span class="p">|</span>cop:     -c /img/imgnet
+                -c /img/imgnet/cop_name
+                -d output_driver
+
+options:        -w pixels       Output width
+                -h pixels       Output height
+                -F frame        Single frame
+                -b fraction     Image processing fraction <span class="o">(</span><span class="m">0</span>.01 to <span class="m">1</span>.0<span class="o">)</span>
+                -t take         Render a specified take
+                -o output       Output name specification
+                -v              Run in verbose mode
+                -I              Interleaved, hscript render -I
+
+with <span class="s2">&quot;-e&quot;</span>:      -f start end    Frame range start and end
+                -i increment    Frame increment
+
+Notes:  <span class="m">1</span><span class="o">)</span>  For output name use <span class="nv">$F</span> to specify frame number <span class="o">(</span>e.g. -o <span class="nv">$F</span>.pic<span class="o">)</span>.
+        <span class="m">2</span><span class="o">)</span>  If only one of width <span class="o">(</span>-w<span class="o">)</span> or height <span class="o">(</span>-h<span class="o">)</span> is specified, aspect ratio
+            will be maintained based upon aspect ratio of output driver.
+</pre></div>
+</div>
+<p>批量渲染多个hip文件，将下面文件保存成.csh文件</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!C:/PROGRA~1/SIDEEF~1/HOUDIN~1.378/bin/csh.exe -f</span>
+hrender -e -f <span class="m">1</span> <span class="m">5</span> -v -d /obj/ropnet1/mantra1 D:/test/test1.hip
+hrender -e -f <span class="m">1</span> <span class="m">10</span> -v -d /obj/ropnet1/mantra1 D:/test/test2.hip
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>hython</p></li>
+</ul>
+<p>自从Houdini引入Python接口之后，逐渐Python成为了HScript的替代品。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">hython</span> <span class="p">[</span><span class="n">hip_files</span><span class="p">]</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">cmd</span> <span class="o">|</span> <span class="o">-</span><span class="n">m</span> <span class="n">mod</span> <span class="o">|</span> <span class="n">file</span> <span class="o">|</span> <span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="n">arg</span><span class="p">]</span> <span class="o">...</span>
+<span class="n">Extra</span> <span class="n">options</span> <span class="n">supported</span> <span class="n">by</span> <span class="n">hython</span><span class="p">:</span>
+<span class="o">-</span><span class="n">b</span>     <span class="p">:</span> <span class="n">enable</span> <span class="n">background</span> <span class="n">openport</span> <span class="n">command</span> <span class="n">processing</span>
+<span class="o">-</span><span class="n">j</span> <span class="n">arg</span> <span class="p">:</span> <span class="n">sets</span> <span class="n">HOUDINI_MAXTHREADS</span> <span class="n">to</span> <span class="n">the</span> <span class="n">given</span> <span class="n">value</span><span class="p">;</span>
+        <span class="n">arg</span> <span class="ow">is</span> <span class="n">the</span> <span class="nb">max</span> <span class="n">number</span> <span class="n">of</span> <span class="n">threads</span>
+
+<span class="n">Regular</span> <span class="n">Python</span> <span class="n">options</span><span class="p">:</span>
+<span class="n">usage</span><span class="p">:</span> <span class="n">hython</span> <span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">...</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">cmd</span> <span class="o">|</span> <span class="o">-</span><span class="n">m</span> <span class="n">mod</span> <span class="o">|</span> <span class="n">file</span> <span class="o">|</span> <span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="n">arg</span><span class="p">]</span> <span class="o">...</span>
+<span class="n">Options</span> <span class="ow">and</span> <span class="n">arguments</span> <span class="p">(</span><span class="ow">and</span> <span class="n">corresponding</span> <span class="n">environment</span> <span class="n">variables</span><span class="p">):</span>
+<span class="o">-</span><span class="n">B</span>     <span class="p">:</span> <span class="n">don</span><span class="s1">&#39;t write .py[co] files on import; also PYTHONDONTWRITEBYTECODE=x</span>
+<span class="o">-</span><span class="n">c</span> <span class="n">cmd</span> <span class="p">:</span> <span class="n">program</span> <span class="n">passed</span> <span class="ow">in</span> <span class="k">as</span> <span class="n">string</span> <span class="p">(</span><span class="n">terminates</span> <span class="n">option</span> <span class="nb">list</span><span class="p">)</span>
+<span class="o">-</span><span class="n">d</span>     <span class="p">:</span> <span class="n">debug</span> <span class="n">output</span> <span class="kn">from</span> <span class="nn">parser</span><span class="p">;</span> <span class="n">also</span> <span class="n">PYTHONDEBUG</span><span class="o">=</span><span class="n">x</span>
+<span class="o">-</span><span class="n">E</span>     <span class="p">:</span> <span class="n">ignore</span> <span class="n">PYTHON</span><span class="o">*</span> <span class="n">environment</span> <span class="n">variables</span> <span class="p">(</span><span class="n">such</span> <span class="k">as</span> <span class="n">PYTHONPATH</span><span class="p">)</span>
+<span class="o">-</span><span class="n">h</span>     <span class="p">:</span> <span class="nb">print</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span> <span class="p">(</span><span class="n">also</span> <span class="o">--</span><span class="n">help</span><span class="p">)</span>
+<span class="o">-</span><span class="n">i</span>     <span class="p">:</span> <span class="n">inspect</span> <span class="n">interactively</span> <span class="n">after</span> <span class="n">running</span> <span class="n">script</span><span class="p">;</span> <span class="n">forces</span> <span class="n">a</span> <span class="n">prompt</span> <span class="n">even</span>
+        <span class="k">if</span> <span class="n">stdin</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">appear</span> <span class="n">to</span> <span class="n">be</span> <span class="n">a</span> <span class="n">terminal</span><span class="p">;</span> <span class="n">also</span> <span class="n">PYTHONINSPECT</span><span class="o">=</span><span class="n">x</span>
+<span class="o">-</span><span class="n">m</span> <span class="n">mod</span> <span class="p">:</span> <span class="n">run</span> <span class="n">library</span> <span class="n">module</span> <span class="k">as</span> <span class="n">a</span> <span class="n">script</span> <span class="p">(</span><span class="n">terminates</span> <span class="n">option</span> <span class="nb">list</span><span class="p">)</span>
+<span class="o">-</span><span class="n">O</span>     <span class="p">:</span> <span class="n">optimize</span> <span class="n">generated</span> <span class="n">bytecode</span> <span class="n">slightly</span><span class="p">;</span> <span class="n">also</span> <span class="n">PYTHONOPTIMIZE</span><span class="o">=</span><span class="n">x</span>
+<span class="o">-</span><span class="n">OO</span>    <span class="p">:</span> <span class="n">remove</span> <span class="n">doc</span><span class="o">-</span><span class="n">strings</span> <span class="ow">in</span> <span class="n">addition</span> <span class="n">to</span> <span class="n">the</span> <span class="o">-</span><span class="n">O</span> <span class="n">optimizations</span>
+<span class="o">-</span><span class="n">R</span>     <span class="p">:</span> <span class="n">use</span> <span class="n">a</span> <span class="n">pseudo</span><span class="o">-</span><span class="n">random</span> <span class="n">salt</span> <span class="n">to</span> <span class="n">make</span> <span class="nb">hash</span><span class="p">()</span> <span class="n">values</span> <span class="n">of</span> <span class="n">various</span> <span class="n">types</span> <span class="n">be</span>
+        <span class="n">unpredictable</span> <span class="n">between</span> <span class="n">separate</span> <span class="n">invocations</span> <span class="n">of</span> <span class="n">the</span> <span class="n">interpreter</span><span class="p">,</span> <span class="k">as</span>
+        <span class="n">a</span> <span class="n">defense</span> <span class="n">against</span> <span class="n">denial</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">service</span> <span class="n">attacks</span>
+<span class="o">-</span><span class="n">Q</span> <span class="n">arg</span> <span class="p">:</span> <span class="n">division</span> <span class="n">options</span><span class="p">:</span> <span class="o">-</span><span class="n">Qold</span> <span class="p">(</span><span class="n">default</span><span class="p">),</span> <span class="o">-</span><span class="n">Qwarn</span><span class="p">,</span> <span class="o">-</span><span class="n">Qwarnall</span><span class="p">,</span> <span class="o">-</span><span class="n">Qnew</span>
+<span class="o">-</span><span class="n">s</span>     <span class="p">:</span> <span class="n">don</span><span class="s1">&#39;t add user site directory to sys.path; also PYTHONNOUSERSITE</span>
+<span class="o">-</span><span class="n">S</span>     <span class="p">:</span> <span class="n">don</span><span class="s1">&#39;t imply &#39;</span><span class="kn">import</span> <span class="nn">site</span><span class="s1">&#39; on initialization</span>
+<span class="o">-</span><span class="n">t</span>     <span class="p">:</span> <span class="n">issue</span> <span class="n">warnings</span> <span class="n">about</span> <span class="n">inconsistent</span> <span class="n">tab</span> <span class="n">usage</span> <span class="p">(</span><span class="o">-</span><span class="n">tt</span><span class="p">:</span> <span class="n">issue</span> <span class="n">errors</span><span class="p">)</span>
+<span class="o">-</span><span class="n">u</span>     <span class="p">:</span> <span class="n">unbuffered</span> <span class="n">binary</span> <span class="n">stdout</span> <span class="ow">and</span> <span class="n">stderr</span><span class="p">;</span> <span class="n">also</span> <span class="n">PYTHONUNBUFFERED</span><span class="o">=</span><span class="n">x</span>
+        <span class="n">see</span> <span class="n">man</span> <span class="n">page</span> <span class="k">for</span> <span class="n">details</span> <span class="n">on</span> <span class="n">internal</span> <span class="n">buffering</span> <span class="n">relating</span> <span class="n">to</span> <span class="s1">&#39;-u&#39;</span>
+<span class="o">-</span><span class="n">v</span>     <span class="p">:</span> <span class="n">verbose</span> <span class="p">(</span><span class="n">trace</span> <span class="kn">import</span> <span class="nn">statements</span><span class="p">);</span> <span class="n">also</span> <span class="n">PYTHONVERBOSE</span><span class="o">=</span><span class="n">x</span>
+        <span class="n">can</span> <span class="n">be</span> <span class="n">supplied</span> <span class="n">multiple</span> <span class="n">times</span> <span class="n">to</span> <span class="n">increase</span> <span class="n">verbosity</span>
+<span class="o">-</span><span class="n">V</span>     <span class="p">:</span> <span class="nb">print</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">version</span> <span class="n">number</span> <span class="ow">and</span> <span class="n">exit</span> <span class="p">(</span><span class="n">also</span> <span class="o">--</span><span class="n">version</span><span class="p">)</span>
+<span class="o">-</span><span class="n">W</span> <span class="n">arg</span> <span class="p">:</span> <span class="n">warning</span> <span class="n">control</span><span class="p">;</span> <span class="n">arg</span> <span class="ow">is</span> <span class="n">action</span><span class="p">:</span><span class="n">message</span><span class="p">:</span><span class="n">category</span><span class="p">:</span><span class="n">module</span><span class="p">:</span><span class="n">lineno</span>
+        <span class="n">also</span> <span class="n">PYTHONWARNINGS</span><span class="o">=</span><span class="n">arg</span>
+<span class="o">-</span><span class="n">x</span>     <span class="p">:</span> <span class="n">skip</span> <span class="n">first</span> <span class="n">line</span> <span class="n">of</span> <span class="n">source</span><span class="p">,</span> <span class="n">allowing</span> <span class="n">use</span> <span class="n">of</span> <span class="n">non</span><span class="o">-</span><span class="n">Unix</span> <span class="n">forms</span> <span class="n">of</span> <span class="c1">#!cmd</span>
+<span class="o">-</span><span class="mi">3</span>     <span class="p">:</span> <span class="n">warn</span> <span class="n">about</span> <span class="n">Python</span> <span class="mf">3.</span><span class="n">x</span> <span class="n">incompatibilities</span> <span class="n">that</span> <span class="mi">2</span><span class="n">to3</span> <span class="n">cannot</span> <span class="n">trivially</span> <span class="n">fix</span>
+<span class="n">file</span>   <span class="p">:</span> <span class="n">program</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">script</span> <span class="n">file</span>
+<span class="o">-</span>      <span class="p">:</span> <span class="n">program</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">stdin</span> <span class="p">(</span><span class="n">default</span><span class="p">;</span> <span class="n">interactive</span> <span class="n">mode</span> <span class="k">if</span> <span class="n">a</span> <span class="n">tty</span><span class="p">)</span>
+<span class="n">arg</span> <span class="o">...</span><span class="p">:</span> <span class="n">arguments</span> <span class="n">passed</span> <span class="n">to</span> <span class="n">program</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">Other</span> <span class="n">environment</span> <span class="n">variables</span><span class="p">:</span>
+<span class="n">PYTHONSTARTUP</span><span class="p">:</span> <span class="n">file</span> <span class="n">executed</span> <span class="n">on</span> <span class="n">interactive</span> <span class="n">startup</span> <span class="p">(</span><span class="n">no</span> <span class="n">default</span><span class="p">)</span>
+<span class="n">PYTHONPATH</span>   <span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">-</span><span class="n">separated</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">directories</span> <span class="n">prefixed</span> <span class="n">to</span> <span class="n">the</span>
+            <span class="n">default</span> <span class="n">module</span> <span class="n">search</span> <span class="n">path</span><span class="o">.</span>  <span class="n">The</span> <span class="n">result</span> <span class="ow">is</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span>
+<span class="n">PYTHONHOME</span>   <span class="p">:</span> <span class="n">alternate</span> <span class="o">&lt;</span><span class="n">prefix</span><span class="o">&gt;</span> <span class="n">directory</span> <span class="p">(</span><span class="ow">or</span> <span class="o">&lt;</span><span class="n">prefix</span><span class="o">&gt;</span><span class="p">;</span><span class="o">&lt;</span><span class="n">exec_prefix</span><span class="o">&gt;</span><span class="p">)</span><span class="o">.</span>
+            <span class="n">The</span> <span class="n">default</span> <span class="n">module</span> <span class="n">search</span> <span class="n">path</span> <span class="n">uses</span> <span class="o">&lt;</span><span class="n">prefix</span><span class="o">&gt;</span>\<span class="n">lib</span><span class="o">.</span>
+<span class="n">PYTHONCASEOK</span> <span class="p">:</span> <span class="n">ignore</span> <span class="n">case</span> <span class="ow">in</span> <span class="s1">&#39;import&#39;</span> <span class="n">statements</span> <span class="p">(</span><span class="n">Windows</span><span class="p">)</span><span class="o">.</span>
+<span class="n">PYTHONIOENCODING</span><span class="p">:</span> <span class="n">Encoding</span><span class="p">[:</span><span class="n">errors</span><span class="p">]</span> <span class="n">used</span> <span class="k">for</span> <span class="n">stdin</span><span class="o">/</span><span class="n">stdout</span><span class="o">/</span><span class="n">stderr</span><span class="o">.</span>
+<span class="n">PYTHONHASHSEED</span><span class="p">:</span> <span class="k">if</span> <span class="n">this</span> <span class="n">variable</span> <span class="ow">is</span> <span class="nb">set</span> <span class="n">to</span> <span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="n">the</span> <span class="n">effect</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">same</span>
+<span class="k">as</span> <span class="n">specifying</span> <span class="n">the</span> <span class="o">-</span><span class="n">R</span> <span class="n">option</span><span class="p">:</span> <span class="n">a</span> <span class="n">random</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">used</span> <span class="n">to</span> <span class="n">seed</span> <span class="n">the</span> <span class="n">hashes</span> <span class="n">of</span>
+<span class="nb">str</span><span class="p">,</span> <span class="nb">bytes</span> <span class="ow">and</span> <span class="n">datetime</span> <span class="n">objects</span><span class="o">.</span>  <span class="n">It</span> <span class="n">can</span> <span class="n">also</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">an</span> <span class="n">integer</span>
+<span class="ow">in</span> <span class="n">the</span> <span class="nb">range</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4294967295</span><span class="p">]</span> <span class="n">to</span> <span class="n">get</span> <span class="nb">hash</span> <span class="n">values</span> <span class="k">with</span> <span class="n">a</span> <span class="n">predictable</span> <span class="n">seed</span><span class="o">.</span>
+<span class="p">[</span><span class="n">Redshift</span><span class="p">]</span><span class="n">Closing</span> <span class="n">the</span> <span class="n">RS</span> <span class="n">instance</span><span class="o">.</span> <span class="n">End</span> <span class="n">of</span> <span class="n">the</span> <span class="n">plugin</span> <span class="n">log</span> <span class="n">system</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hython myscene.hip
+<span class="nv">rnode</span> <span class="o">=</span> hou.node<span class="o">(</span><span class="s2">&quot;/out/mantra1&quot;</span><span class="o">)</span>
+help<span class="o">(</span>rnode<span class="o">)</span>
+rnode.render<span class="o">()</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hython
+import hou
+hou.hipFile.load<span class="o">(</span>myscene.hip<span class="o">)</span>
+<span class="nv">rnode</span> <span class="o">=</span> hou.node<span class="o">(</span><span class="s2">&quot;/out/mantra1&quot;</span><span class="o">)</span>
+help<span class="o">(</span>rnode<span class="o">)</span>
+rnode.render<span class="o">()</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hython -c <span class="s2">&quot;hou.hipFile.load(&#39;hip文件路径&#39;); ropNode = hou.node(&#39;输出节点路径&#39;); ropNode.render(frame_range=(1, 10), verbose=True)&quot;</span>
+hython rRop.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="hou">
+<h2>认识hou模块<a class="headerlink" href="#hou" title="永久链接至标题">¶</a></h2>
+<p>hou模块可以分为三大类sub-modules、classes、functions。</p>
+<ul class="simple">
+<li><p>sub-modules：首字母小写，不带括号为module，module可能又有classes以及functions。</p></li>
+<li><p>classes：首字母大写，不带括号为class。class必须实例化使用，class的属性以及方法必须通过实例化对象调用。</p></li>
+<li><p>functions：首字母小写，带括号为function。</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>参考文档<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.sidefx.com/docs/houdini/render/batch.html#hython-and-hbatch">https://www.sidefx.com/docs/houdini/render/batch.html#hython-and-hbatch</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="houdini_usd.html" class="btn btn-neutral float-right" title="Houdini USD相关" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="houdini_shell.html" class="btn btn-neutral float-left" title="Houdini Shell相关" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
