@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PyQt重写QLineEdit支持拖拽功能 &mdash; CG TD Pipeline 1.0.2 文档</title>
+  <title>PyQt MVC设计模式 &mdash; CG TD Pipeline 1.0.2 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="PyQt MVC设计模式" href="pyqt_model.html" />
-    <link rel="prev" title="PyQt在Nuke中执行的模板代码" href="pyqt_in_nuke.html" /> 
+    <link rel="next" title="PyQt美化界面皮肤qss" href="pyqt_qss.html" />
+    <link rel="prev" title="PyQt重写QLineEdit支持拖拽功能" href="pyqt_line_edit.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,8 +90,8 @@
 <li class="toctree-l2"><a class="reference internal" href="pyqt_in_houdini.html">PyQt在Houdini中执行的模板代码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_in_maya.html">PyQt在Maya中执行的模板代码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_in_nuke.html">PyQt在Nuke中执行的模板代码</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PyQt重写QLineEdit支持拖拽功能</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyqt_model.html">PyQt MVC设计模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_line_edit.html">PyQt重写QLineEdit支持拖拽功能</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyQt MVC设计模式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_qss.html">PyQt美化界面皮肤qss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_rcc.html">PyQt Designer安装与使用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_resources.html">PyQt设置图标的相对路径</a></li>
@@ -154,13 +154,13 @@
         
           <li><a href="../parts/PyQt.html">PyQt</a> &raquo;</li>
         
-      <li>PyQt重写QLineEdit支持拖拽功能</li>
+      <li>PyQt MVC设计模式</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_PyQt/pyqt_line_edit.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_PyQt/pyqt_model.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -173,27 +173,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="pyqtqlineedit">
-<h1>PyQt重写QLineEdit支持拖拽功能<a class="headerlink" href="#pyqtqlineedit" title="永久链接至标题">¶</a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QLineEditPath</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">QLineEditPath</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-
-        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">hasUrls</span><span class="p">():</span>
-            <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">event</span><span class="o">.</span><span class="n">ignore</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-
-        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">hasUrls</span><span class="p">():</span>
-            <span class="n">url</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">urls</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">toLocalFile</span><span class="p">())</span>
-</pre></div>
-</div>
+  <div class="section" id="pyqt-mvc">
+<h1>PyQt MVC设计模式<a class="headerlink" href="#pyqt-mvc" title="永久链接至标题">¶</a></h1>
 </div>
 
 
@@ -204,10 +185,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pyqt_model.html" class="btn btn-neutral float-right" title="PyQt MVC设计模式" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pyqt_qss.html" class="btn btn-neutral float-right" title="PyQt美化界面皮肤qss" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pyqt_in_nuke.html" class="btn btn-neutral float-left" title="PyQt在Nuke中执行的模板代码" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pyqt_line_edit.html" class="btn btn-neutral float-left" title="PyQt重写QLineEdit支持拖拽功能" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
