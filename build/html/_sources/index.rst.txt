@@ -22,3 +22,5 @@ CG TD Pipeline's documentation
    parts/Deadline
    parts/Linux
    parts/Devops
+   parts/Book
+   parts/Website

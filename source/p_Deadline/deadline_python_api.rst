@@ -10,8 +10,6 @@ Deadline渲染农场提交农场接口
 * 客户端：Window 10 企业版
 * Deadline版本：Thinkbox Deadline v10.0.20.2 Win
 
-
-
 - DeadlineRepository10\plugins\Houdini\Houdini.param
 - Configure Plugins
 - deadlinewebservice.exe http://localhost:8082/
