@@ -140,40 +140,7 @@ shutil
 
 时间模块time&datetime
 
-json
-(JavaScript Object Notation)
-import json
-dir(json)
 
-json.dump 字典转文件
-json.dumps 字典转字符串
-json.load 文件转字典
-json.loads 字符串转字典
-
-.. code-block:: python
-
-    import json
-
-    data = {
-        "name": "Andy",
-        "age": 29,
-        "weight": 55.5
-    }
-
-    jsonStr = json.dumps(data)
-
-    jsonData = json.loads(jsonStr)
-
-    # Writing JSON data
-    with open("data.json", "w") as f:
-        json.dump(data, f)
-
-    # indent用法
-    with open("data.json", "w") as f:
-        json.dump(data, f, indent=4)
-
-    with open("data.json", "r") as f:
-        data = json.load(f)
 
 True > true
 False > false
