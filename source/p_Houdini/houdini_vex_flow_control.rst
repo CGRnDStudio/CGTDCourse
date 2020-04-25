@@ -2,15 +2,13 @@
 Houdini VEX：流控制语句
 ==============================
 
-* 循环语句
+- 循环语句
 
-.. code-block:: python
-
-    do statement [while (condition)]
-
-.. code-block:: python
-
-    for (init; condition; change) statement
+    - do statement [while (condition)]
+    - for (init; condition; change) statement
+    - foreach (type value; array) statement
+    - foreach (int index, type value; array) statement
+    - while (condition) statement
 
 .. code-block:: python
 
@@ -20,19 +18,36 @@ Houdini VEX：流控制语句
 
 .. code-block:: python
 
-    foreach (value; array) statement
-    foreach (index, value; array) statement
+    s@a = "andyvfx";
+
+    foreach (string s; @a) {
+        printf("%g\n", s);
+    }
 
 .. code-block:: python
 
-    while (condition) statement
+    i[]@a = {10, 20, 30, 40, 50, 60};
 
-* 条件语句
+    foreach (int i; @a) {
+        printf(itoa(i) + "\n");
+    }
 
-if (condition) statement_if_true [else statement_if_false]
-if (condition) statement_if_true [else if (condition) statement_if_true] else statement_if_false
+.. code-block:: python
 
-* return & break & continue
+    i[]@a = {10, 20, 30, 40, 50, 60};
+
+    foreach (int i; int v; @a) {
+        printf(itoa(i) + "\n");
+        printf(itoa(v) + "\n");
+    }
+
+
+- 条件语句
+
+    - if (condition) statement_if_true [else statement_if_false]
+    - if (condition) statement_if_true [else if (condition) statement_if_true] else statement_if_false
+
+- break & continue & return
 
 .. code-block:: python
 
@@ -62,3 +77,5 @@ if (condition) statement_if_true [else if (condition) statement_if_true] else st
         if (x < 10) continue;
         ...
     }
+
+- 与或非 && || !

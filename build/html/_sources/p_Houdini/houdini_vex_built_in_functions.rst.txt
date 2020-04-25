@@ -148,7 +148,7 @@ POINT CLOUDS AND 3D IMAGES      点云
 SAMPLING                        采样
 SENSOR INPUT                    
 SHADING AND RENDERING           材质渲染
-STRINGS                         字符串      - re_find, re_findall, re_match, re_replace, re_split, split, sprintf
+STRINGS                         字符串      - endswith, find, isalpha, isdigit, itoa, join, lstrip, match, re_find, re_findall, re_match, re_replace, re_split, split, sprintf
 SUBDIVISION SURFACES            
 TETRAHEDRONS                    
 TEXTURING                       贴图
