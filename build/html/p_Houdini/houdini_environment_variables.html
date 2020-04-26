@@ -88,9 +88,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Houdini.html">Houdini</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="houdini_batch_render.html">Houdini后台输出那些事儿</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_arnold.html">Houdini中心化部署：Arnold渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_arnold.html">Houdini中心化部署：Arnold插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_centralized_qlib.html">Houdini中心化部署：qLib插件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_redshift.html">Houdini中心化部署：Redshift渲染器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_redshift.html">Houdini中心化部署：Redshift插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_custom_menu.html">Houdini自定义菜单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_custom_resolution.html">Houdini自定义分辨率预设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_desktop.html">Houdini自定义布局</a></li>
@@ -239,27 +239,93 @@ HOUDINI_PATH :<span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="m">4</span><span class="o">)</span> <span class="s2">&quot;</span><span class="nv">$HFS</span><span class="s2">/bin&quot;</span>
 </pre></div>
 </div>
-<p>在Houdini中想扩展开发插件，插件的层级结构可参考”$HFS/houdini”，$HFS是Houdini安装所在的路径。</p>
-<ul class="simple">
-<li><p>config/Icons # 自定义图标</p></li>
-<li><p>desktop # 自定义布局</p></li>
-<li><p>dso # 自定义HDK C++编译的插件</p></li>
-<li><p>gallery # 自定义节点预设</p></li>
-<li><p>geo # 自定义一些bgeo缓存</p></li>
-<li><p>ocio # 自定义色彩空间</p></li>
-<li><p>otls # 自定义otl文件</p></li>
-<li><p>presets # 自定义节点参数预设</p></li>
-<li><p>python_panels # 自定义Python面板</p></li>
-<li><p>radialmenu # 自定义热盒菜单</p></li>
-<li><p>scripts/python # 自定义Python代码可以放这</p></li>
-<li><p>toolbar # 自定义工具架工具</p></li>
-<li><p>display.pref # 视图窗口显示配置</p></li>
-<li><p>FBres # 自定义分辨率预设</p></li>
-<li><p>MainMenuCommon.xml # 自定义主菜单</p></li>
-<li><p>OPmenu.xml # 自定义节点右键菜单</p></li>
-<li><p>PARMmenu.xml # 自定义节点参数右键菜单</p></li>
-<li><p>VEXpressions.txt # 自定义VEX代码片段</p></li>
-</ul>
+<p>在Houdini中想扩展开发插件，插件的层级结构可参考 <code class="docutils literal notranslate"><span class="pre">$HFS/houdini</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">$HH</span></code> ，<code class="docutils literal notranslate"><span class="pre">$HFS</span></code> 是Houdini安装所在的路径。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>config/Icons</p></td>
+<td><p>自定义图标</p></td>
+</tr>
+<tr class="row-even"><td><p>config/NodeShapes</p></td>
+<td><p>自定义节点形状</p></td>
+</tr>
+<tr class="row-odd"><td><p>config/.hcs</p></td>
+<td><p>自定义窗口风格</p></td>
+</tr>
+<tr class="row-even"><td><p>desktop</p></td>
+<td><p>自定义窗口布局</p></td>
+</tr>
+<tr class="row-odd"><td><p>dso</p></td>
+<td><p>自定义HDK编译插件</p></td>
+</tr>
+<tr class="row-even"><td><p>gallery</p></td>
+<td><p>自定义节点预设</p></td>
+</tr>
+<tr class="row-odd"><td><p>geo</p></td>
+<td><p>自定义缓存文件</p></td>
+</tr>
+<tr class="row-even"><td><p>ocio</p></td>
+<td><p>自定义色彩空间</p></td>
+</tr>
+<tr class="row-odd"><td><p>otls</p></td>
+<td><p>自定义otl文件</p></td>
+</tr>
+<tr class="row-even"><td><p>presets</p></td>
+<td><p>自定义节点参数预设</p></td>
+</tr>
+<tr class="row-odd"><td><p>python_panels</p></td>
+<td><p>自定义Python面板</p></td>
+</tr>
+<tr class="row-even"><td><p>radialmenu</p></td>
+<td><p>自定义热盒菜单</p></td>
+</tr>
+<tr class="row-odd"><td><p>scripts/123.py</p></td>
+<td><p>自定义123.py</p></td>
+</tr>
+<tr class="row-even"><td><p>scripts/456.py</p></td>
+<td><p>自定义456.py</p></td>
+</tr>
+<tr class="row-odd"><td><p>scripts/python</p></td>
+<td><p>自定义Python代码</p></td>
+</tr>
+<tr class="row-even"><td><p>toolbar</p></td>
+<td><p>自定义工具架工具</p></td>
+</tr>
+<tr class="row-odd"><td><p>vex/include</p></td>
+<td><p>自定义VEX头文件</p></td>
+</tr>
+<tr class="row-even"><td><p>display.pref</p></td>
+<td><p>视图窗口显示配置</p></td>
+</tr>
+<tr class="row-odd"><td><p>ExampleMenu.xml</p></td>
+<td><p>自定义案例菜单</p></td>
+</tr>
+<tr class="row-even"><td><p>FBres</p></td>
+<td><p>自定义分辨率预设</p></td>
+</tr>
+<tr class="row-odd"><td><p>HotkeyOverrides</p></td>
+<td><p>自定义快捷键</p></td>
+</tr>
+<tr class="row-even"><td><p>jump.pref</p></td>
+<td><p>自定义左侧快捷路径</p></td>
+</tr>
+<tr class="row-odd"><td><p>MainMenuCommon.xml</p></td>
+<td><p>自定义主菜单</p></td>
+</tr>
+<tr class="row-even"><td><p>OPmenu.xml</p></td>
+<td><p>自定义节点右键菜单</p></td>
+</tr>
+<tr class="row-odd"><td><p>PARMmenu.xml</p></td>
+<td><p>自定义节点参数右键菜单</p></td>
+</tr>
+<tr class="row-even"><td><p>VEXpressions.txt</p></td>
+<td><p>自定义VEX代码片段</p></td>
+</tr>
+</tbody>
+</table>
 <p>还有很多其它可以自定义的配置文件，可以详细研究一下。</p>
 <p>认识环境变量HOUDINI_PATH
 如何部署qLib

@@ -26,26 +26,36 @@ Houdini中心化理念又称集成式环境部署，中心化最重要的知识�
             3) "$HFS/houdini"
             4) "$HFS/bin"
 
-在Houdini中想扩展开发插件，插件的层级结构可参考"$HFS/houdini"，$HFS是Houdini安装所在的路径。
+在Houdini中想扩展开发插件，插件的层级结构可参考 ``$HFS/houdini`` 或者 ``$HH`` ，``$HFS`` 是Houdini安装所在的路径。
 
-- config/Icons # 自定义图标
-- desktop # 自定义布局
-- dso # 自定义HDK C++编译的插件
-- gallery # 自定义节点预设
-- geo # 自定义一些bgeo缓存
-- ocio # 自定义色彩空间
-- otls # 自定义otl文件
-- presets # 自定义节点参数预设
-- python_panels # 自定义Python面板
-- radialmenu # 自定义热盒菜单
-- scripts/python # 自定义Python代码可以放这
-- toolbar # 自定义工具架工具
-- display.pref # 视图窗口显示配置
-- FBres # 自定义分辨率预设
-- MainMenuCommon.xml # 自定义主菜单
-- OPmenu.xml # 自定义节点右键菜单
-- PARMmenu.xml # 自定义节点参数右键菜单
-- VEXpressions.txt # 自定义VEX代码片段
+============================= =================================================
+config/Icons                   自定义图标
+config/NodeShapes              自定义节点形状
+config/.hcs                   自定义窗口风格
+desktop                        自定义窗口布局
+dso                            自定义HDK编译插件
+gallery                        自定义节点预设
+geo                            自定义缓存文件
+ocio                           自定义色彩空间
+otls                           自定义otl文件
+presets                        自定义节点参数预设
+python_panels                  自定义Python面板
+radialmenu                     自定义热盒菜单
+scripts/123.py                 自定义123.py
+scripts/456.py                 自定义456.py
+scripts/python                 自定义Python代码
+toolbar                        自定义工具架工具
+vex/include                    自定义VEX头文件
+display.pref                   视图窗口显示配置
+ExampleMenu.xml                自定义案例菜单
+FBres                          自定义分辨率预设
+HotkeyOverrides                自定义快捷键
+jump.pref                      自定义左侧快捷路径
+MainMenuCommon.xml             自定义主菜单
+OPmenu.xml                     自定义节点右键菜单
+PARMmenu.xml                   自定义节点参数右键菜单
+VEXpressions.txt               自定义VEX代码片段
+============================= =================================================
 
 还有很多其它可以自定义的配置文件，可以详细研究一下。
 

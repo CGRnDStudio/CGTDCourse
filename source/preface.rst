@@ -26,17 +26,24 @@ https://github.com/CGRnDStudio/CGTDCourse
 作者
 -----------
 
-* 姓名：胡安迪
-* 微信：13851709904
-* Email：huweiguo@do-vfx.com
-* 微信公众号：CGRnDStudio
-* GitHub：https://github.com/CGRnDStudio
+- 姓名：胡安迪
+- 微信：13851709904
+- Email：huweiguo@do-vfx.com
+- 微信公众号：CGRnDStudio
+- GitHub：https://github.com/CGRnDStudio
 
 .. image:: qcode.jpg
-
 
 -----------
 致谢
 -----------
 
 劲爆羊、薛定谔是铲屎官、A·Better
+
+-----------
+赞赏
+-----------
+
+文字如果对你有所启发，就赞赏一下up主加个鸡腿补补身子吧，后面会有更多更好的内容更新~(3)~
+
+.. image:: code.jpg
