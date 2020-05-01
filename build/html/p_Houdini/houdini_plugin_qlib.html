@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini中心化部署：Redshift插件 &mdash; CG TD Pipeline 1.0.2 文档</title>
+  <title>Houdini中心化部署：qLib插件 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini自定义菜单" href="houdini_custom_menu.html" />
-    <link rel="prev" title="Houdini中心化部署：qLib插件" href="houdini_centralized_qlib.html" /> 
+    <link rel="next" title="Houdini中心化部署：Redshift插件" href="houdini_plugin_redshift.html" />
+    <link rel="prev" title="Houdini中心化部署：Arnold插件" href="houdini_plugin_arnold.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,10 +87,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Houdini.html">Houdini</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="houdini_ascode.html">Houdini通过Python代码自定义节点参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_batch_render.html">Houdini后台输出那些事儿</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_arnold.html">Houdini中心化部署：Arnold插件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_centralized_qlib.html">Houdini中心化部署：qLib插件</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini中心化部署：Redshift插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_custom_menu.html">Houdini自定义菜单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_custom_resolution.html">Houdini自定义分辨率预设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_desktop.html">Houdini自定义布局</a></li>
@@ -112,6 +110,9 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_scripts.html">Houdini otls：可执行代码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_otls_upgrade.html">Houdini otls：升级的两种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_pdg.html">Houdini PDG相关</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_plugin_arnold.html">Houdini中心化部署：Arnold插件</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini中心化部署：qLib插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_plugin_redshift.html">Houdini中心化部署：Redshift插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_presets_gallery.html">Houdini自定义预设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_program_types.html">Houdini编程语言种类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_progress_bar.html">Houdini进度条</a></li>
@@ -197,13 +198,13 @@
         
           <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
         
-      <li>Houdini中心化部署：Redshift插件</li>
+      <li>Houdini中心化部署：qLib插件</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Houdini/houdini_centralized_redshift.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Houdini/houdini_plugin_qlib.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -216,28 +217,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="houdini-redshift">
-<h1>Houdini中心化部署：Redshift插件<a class="headerlink" href="#houdini-redshift" title="永久链接至标题">¶</a></h1>
-<p>中心化部署也称集中式部署环境，集中式部署对于多台电脑的局域网环境是非常有利的，只要将Redshift渲染器部署到共享位置，通过环境变量来控制插件加载路径即可。</p>
-<p>这意味着你可以将Redshift渲染器部署到任何位置，比如D盘。</p>
-<p>Redshift渲染器默认安装路径 <code class="docutils literal notranslate"><span class="pre">C:\ProgramData\Redshift</span></code> ，安装完可以将Redshift文件夹拷贝到D盘或者共享位置，如果不想改，默认用C盘安装路径也无不可。</p>
-<p>在我的文档中找到需要安装Redshift渲染器的Houdini文件夹，比如houdini18.0，打开houdini.env文件，写入如下三句环境变量配置脚本即可。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Redshift env</span>
-<span class="nv">RS_PATH</span> <span class="o">=</span> C:/ProgramData/Redshift
-<span class="nv">PATH</span> <span class="o">=</span> <span class="nv">$PATH</span><span class="p">;</span><span class="nv">$RS_PATH</span>/bin
-
-<span class="nv">HOUDINI_PATH</span> <span class="o">=</span> <span class="nv">$RS_PATH</span>/Plugins/Houdini/18.0.348<span class="p">;&amp;</span>
-</pre></div>
-</div>
-<p>如果你想用共享位置的Redshift，假如现在有个M盘，我将Redshfit文件夹拷贝到M:thirdPartyRedshift位置，就可以这样配置houdini.env。</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Redshift env</span>
-<span class="nv">RS_PATH</span> <span class="o">=</span> M:/thirdParty/Redshift
-<span class="nv">PATH</span> <span class="o">=</span> <span class="nv">$PATH</span><span class="p">;</span><span class="nv">$RS_PATH</span>/bin
-
-<span class="nv">HOUDINI_PATH</span> <span class="o">=</span> <span class="nv">$RS_PATH</span>/Plugins/Houdini/18.0.348<span class="p">;&amp;</span>
-</pre></div>
-</div>
-<p>如果houdini.env中配置了别的环境变量，注意将环境变量合并处理。</p>
+  <div class="section" id="houdini-qlib">
+<h1>Houdini中心化部署：qLib插件<a class="headerlink" href="#houdini-qlib" title="永久链接至标题">¶</a></h1>
 </div>
 
 
@@ -248,10 +229,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="houdini_custom_menu.html" class="btn btn-neutral float-right" title="Houdini自定义菜单" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="houdini_plugin_redshift.html" class="btn btn-neutral float-right" title="Houdini中心化部署：Redshift插件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_centralized_qlib.html" class="btn btn-neutral float-left" title="Houdini中心化部署：qLib插件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_plugin_arnold.html" class="btn btn-neutral float-left" title="Houdini中心化部署：Arnold插件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

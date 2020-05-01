@@ -2,7 +2,7 @@
 Python 2.x VS 3.x
 =============================
 
-* 3.x版本中取消print空格打印的写法，只能用print()内置函数
+* 3.x版本中取消print空格打印的写法，只能用内置函数print()
 
 .. code-block:: bash
 

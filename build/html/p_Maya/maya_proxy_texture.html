@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Maya代理贴图获取方案 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Maya PyMEL" href="maya_pymel.html" />
+    <link rel="prev" title="Maya插件：Yeti" href="maya_plugin_yeti.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Maya.html">Maya</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="maya_aov_tool.html">Maya AOV分层工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_batch_script.html">Maya命令行脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_menu.html">Maya自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_plugin.html">Maya自定义插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_development_environment.html">Maya开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_environment_variables.html">Maya环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_front_render.html">Maya前台渲染脚本解决方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_globals.html">Maya插件：Yeti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_help_document.html">Maya帮助文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya打包工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_playblast_settings.html">Maya如何获取拍屏面板参数？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_arnold.html">Maya插件：Arnold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_p+.html">Maya插件：p+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_qualoth.html">Maya插件：Qualoth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_redshift.html">Maya插件：Redshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_shave.html">Maya插件：Shave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_yeti.html">Maya插件：Yeti</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya代理贴图获取方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pymel.html">Maya PyMEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_redshift_cache.html">Maya Redshift修改缓存路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_redshift_rstexbin.html">Maya Redshift批量转贴图rstexbin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_rename_tool.html">Maya重命名工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_shelf_tools.html">Maya工具架工具</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
+        
+      <li>Maya代理贴图获取方案</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Maya/maya_proxy_texture.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="maya">
+<h1>Maya代理贴图获取方案<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
+<p>这里以Arnold ass代理和Redshift rs代理为例，我们如何获取它们的贴图路径。</p>
+<p>我们知道代理的材质在导出之前就已经存在于代理文件中，不能通过节点参数获取。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+
+
+<span class="k">def</span> <span class="nf">readFileCode_bag2</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+
+    <span class="n">con</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">Arg</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="n">Arg</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">Arg</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">con</span>
+
+<span class="n">getAllPath</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">getAllRs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">getAllNodes</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;RedshiftProxyMesh&quot;</span><span class="p">)</span>
+
+<span class="n">tm</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(</span><span class="se">\\</span><span class="s2">x00</span><span class="se">\\</span><span class="s2">x00</span><span class="se">\\</span><span class="s2">x00[A-Za-z]:/.*?</span><span class="se">\\</span><span class="s2">x00)+&quot;</span><span class="p">)</span>
+<span class="n">tm2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(</span><span class="se">\\</span><span class="s2">x00</span><span class="se">\\</span><span class="s2">x00</span><span class="se">\\</span><span class="s2">x00//[0-9].*?</span><span class="se">\\</span><span class="s2">x00)+&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">getAllNodes</span><span class="p">:</span>
+    <span class="n">getPath</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">getAttr</span><span class="p">(</span><span class="n">node</span> <span class="o">+</span> <span class="s2">&quot;.fileName&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">getPath</span> <span class="ow">and</span> <span class="n">getPath</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAllRs</span><span class="p">:</span>
+        <span class="n">getAllRs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getPath</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">oneProxy</span> <span class="ow">in</span> <span class="n">getAllRs</span><span class="p">:</span>
+    <span class="n">getCon</span> <span class="o">=</span> <span class="n">readFileCode_bag2</span><span class="p">(</span><span class="n">oneProxy</span><span class="p">)</span>
+    <span class="n">getResult</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">getCon</span><span class="p">)</span>
+    <span class="n">getResult2</span> <span class="o">=</span> <span class="n">tm2</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">getCon</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">oneString</span> <span class="ow">in</span> <span class="n">getResult</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">oneString</span> <span class="ow">and</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">oneString</span> <span class="ow">and</span> <span class="s2">&quot;_map_auto&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">oneString</span> <span class="ow">and</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="n">oneString</span><span class="p">:</span>
+            <span class="n">getPathMap</span> <span class="o">=</span> <span class="n">oneString</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x00\x00\x00</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">getPathMap</span> <span class="ow">and</span> <span class="n">getPathMap</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAllPath</span><span class="p">:</span>
+                <span class="n">getAllPath</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getPathMap</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">oneString</span> <span class="ow">in</span> <span class="n">getResult2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">oneString</span> <span class="ow">and</span> <span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">oneString</span> <span class="ow">and</span> <span class="s2">&quot;_map_auto&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">oneString</span> <span class="ow">and</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="n">oneString</span><span class="p">:</span>
+            <span class="n">getPathMap</span> <span class="o">=</span> <span class="n">oneString</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x00\x00\x00</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">getPathMap</span> <span class="ow">and</span> <span class="n">getPathMap</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAllPath</span><span class="p">:</span>
+                <span class="n">getAllPath</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getPathMap</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">getAllPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="maya_pymel.html" class="btn btn-neutral float-right" title="Maya PyMEL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="maya_plugin_yeti.html" class="btn btn-neutral float-left" title="Maya插件：Yeti" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

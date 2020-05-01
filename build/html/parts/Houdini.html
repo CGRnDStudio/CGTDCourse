@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini &mdash; CG TD Pipeline 1.0.2 文档</title>
+  <title>Houdini &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini后台输出那些事儿" href="../p_Houdini/houdini_batch_render.html" />
+    <link rel="next" title="Houdini通过Python代码自定义节点参数" href="../p_Houdini/houdini_ascode.html" />
     <link rel="prev" title="Git国外服务器加速方案" href="../p_Git/git_speed_up.html" /> 
 </head>
 
@@ -87,10 +87,8 @@
 <li class="toctree-l1"><a class="reference internal" href="PyQt.html">PyQt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Git.html">Git</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Houdini</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_ascode.html">Houdini通过Python代码自定义节点参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_batch_render.html">Houdini后台输出那些事儿</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_centralized_arnold.html">Houdini中心化部署：Arnold插件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_centralized_qlib.html">Houdini中心化部署：qLib插件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_centralized_redshift.html">Houdini中心化部署：Redshift插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_custom_menu.html">Houdini自定义菜单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_custom_resolution.html">Houdini自定义分辨率预设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_desktop.html">Houdini自定义布局</a></li>
@@ -112,6 +110,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_otls_scripts.html">Houdini otls：可执行代码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_otls_upgrade.html">Houdini otls：升级的两种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_pdg.html">Houdini PDG相关</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_plugin_arnold.html">Houdini中心化部署：Arnold插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_plugin_qlib.html">Houdini中心化部署：qLib插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_plugin_redshift.html">Houdini中心化部署：Redshift插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_presets_gallery.html">Houdini自定义预设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_program_types.html">Houdini编程语言种类</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../p_Houdini/houdini_progress_bar.html">Houdini进度条</a></li>
@@ -220,10 +221,8 @@
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_ascode.html">Houdini通过Python代码自定义节点参数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_batch_render.html">Houdini后台输出那些事儿</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_centralized_arnold.html">Houdini中心化部署：Arnold插件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_centralized_qlib.html">Houdini中心化部署：qLib插件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_centralized_redshift.html">Houdini中心化部署：Redshift插件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_custom_menu.html">Houdini自定义菜单</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_custom_resolution.html">Houdini自定义分辨率预设</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_desktop.html">Houdini自定义布局</a></li>
@@ -245,6 +244,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_otls_scripts.html">Houdini otls：可执行代码</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_otls_upgrade.html">Houdini otls：升级的两种方案</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_pdg.html">Houdini PDG相关</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_plugin_arnold.html">Houdini中心化部署：Arnold插件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_plugin_qlib.html">Houdini中心化部署：qLib插件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_plugin_redshift.html">Houdini中心化部署：Redshift插件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_presets_gallery.html">Houdini自定义预设</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_program_types.html">Houdini编程语言种类</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../p_Houdini/houdini_progress_bar.html">Houdini进度条</a></li>
@@ -286,7 +288,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../p_Houdini/houdini_batch_render.html" class="btn btn-neutral float-right" title="Houdini后台输出那些事儿" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../p_Houdini/houdini_ascode.html" class="btn btn-neutral float-right" title="Houdini通过Python代码自定义节点参数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../p_Git/git_speed_up.html" class="btn btn-neutral float-left" title="Git国外服务器加速方案" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
