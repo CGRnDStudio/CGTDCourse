@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Maya代理贴图获取方案 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Maya代理文件贴图获取方案 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -107,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_redshift.html">Maya插件：Redshift</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_shave.html">Maya插件：Shave</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_yeti.html">Maya插件：Yeti</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya代理贴图获取方案</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya代理文件贴图获取方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_pymel.html">Maya PyMEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_redshift_cache.html">Maya Redshift修改缓存路径</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_redshift_rstexbin.html">Maya Redshift批量转贴图rstexbin</a></li>
@@ -168,7 +168,7 @@
         
           <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
         
-      <li>Maya代理贴图获取方案</li>
+      <li>Maya代理文件贴图获取方案</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -188,12 +188,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="maya">
-<h1>Maya代理贴图获取方案<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>这里以Arnold ass代理和Redshift rs代理为例，我们如何获取它们的贴图路径。</p>
-<p>我们知道代理的材质在导出之前就已经存在于代理文件中，不能通过节点参数获取。</p>
+<h1>Maya代理文件贴图获取方案<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
+<p>获取Redshift渲染器rs代理文件所有贴图路径代码:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
 
 <span class="k">def</span> <span class="nf">readFileCode_bag2</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
 
@@ -205,8 +206,6 @@
         <span class="n">Arg</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">con</span>
-
-<span class="n">getAllPath</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="n">getAllRs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">getAllNodes</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;RedshiftProxyMesh&quot;</span><span class="p">)</span>
@@ -221,6 +220,8 @@
         <span class="n">getAllRs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getPath</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">oneProxy</span> <span class="ow">in</span> <span class="n">getAllRs</span><span class="p">:</span>
+    <span class="n">getAllPath</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">oneProxy</span><span class="p">)</span>
     <span class="n">getCon</span> <span class="o">=</span> <span class="n">readFileCode_bag2</span><span class="p">(</span><span class="n">oneProxy</span><span class="p">)</span>
     <span class="n">getResult</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">getCon</span><span class="p">)</span>
     <span class="n">getResult2</span> <span class="o">=</span> <span class="n">tm2</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">getCon</span><span class="p">)</span>
@@ -237,7 +238,46 @@
             <span class="k">if</span> <span class="n">getPathMap</span> <span class="ow">and</span> <span class="n">getPathMap</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAllPath</span><span class="p">:</span>
                 <span class="n">getAllPath</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getPathMap</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">getAllPath</span><span class="p">)</span>
+    <span class="n">pprint</span><span class="p">(</span><span class="n">getAllPath</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>获取Arnold渲染器ass代理文件所有贴图路径代码:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="kn">import</span> <span class="nn">arnold</span> <span class="k">as</span> <span class="nn">ar</span>
+
+
+<span class="c1"># 分析ass代理文件贴图路径</span>
+<span class="n">getAllAss</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">getAllNodes</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;aiStandIn&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">getAllNodes</span><span class="p">:</span>
+    <span class="n">getPath</span> <span class="o">=</span> <span class="n">cmds</span><span class="o">.</span><span class="n">getAttr</span><span class="p">(</span><span class="n">node</span> <span class="o">+</span> <span class="s2">&quot;.dso&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">getPath</span> <span class="ow">and</span> <span class="n">getPath</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAllAss</span><span class="p">:</span>
+        <span class="n">getAllAss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getPath</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ass</span> <span class="ow">in</span> <span class="n">getAllAss</span><span class="p">:</span>
+    <span class="n">getAllPath</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ass</span><span class="p">)</span>
+    <span class="n">ar</span><span class="o">.</span><span class="n">AiBegin</span><span class="p">()</span>
+    <span class="n">ar</span><span class="o">.</span><span class="n">AiMsgSetConsoleFlags</span><span class="p">(</span><span class="n">ar</span><span class="o">.</span><span class="n">AI_LOG_ALL</span><span class="p">)</span>
+    <span class="n">ar</span><span class="o">.</span><span class="n">AiASSLoad</span><span class="p">(</span><span class="n">ass</span><span class="p">,</span> <span class="n">ar</span><span class="o">.</span><span class="n">AI_NODE_ALL</span><span class="p">)</span>
+    <span class="n">iterator</span> <span class="o">=</span> <span class="n">ar</span><span class="o">.</span><span class="n">AiUniverseGetNodeIterator</span><span class="p">(</span><span class="n">ar</span><span class="o">.</span><span class="n">AI_NODE_ALL</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">ar</span><span class="o">.</span><span class="n">AiNodeIteratorFinished</span><span class="p">(</span><span class="n">iterator</span><span class="p">):</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">ar</span><span class="o">.</span><span class="n">AiNodeIteratorGetNext</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ar</span><span class="o">.</span><span class="n">AiNodeIs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;MayaFile&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ar</span><span class="o">.</span><span class="n">AiNodeIs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;image&quot;</span><span class="p">):</span>
+            <span class="n">getPath</span> <span class="o">=</span> <span class="n">ar</span><span class="o">.</span><span class="n">AiNodeGetStr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;filename&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">getPath</span> <span class="ow">and</span> <span class="n">getPath</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">getAllPath</span><span class="p">:</span>
+                <span class="n">getAllPath</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getPath</span><span class="p">)</span>
+
+    <span class="n">ar</span><span class="o">.</span><span class="n">AiNodeIteratorDestroy</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+    <span class="n">ar</span><span class="o">.</span><span class="n">AiEnd</span><span class="p">()</span>
+    <span class="n">pprint</span><span class="p">(</span><span class="n">getAllPath</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
