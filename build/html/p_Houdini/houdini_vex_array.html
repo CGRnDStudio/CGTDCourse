@@ -124,7 +124,10 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_shelf_tools.html">Houdini工具架工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_shell.html">Houdini Shell相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_usd.html">Houdini USD相关</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：数组函数</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：数组函数</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_attributes.html">Houdini VEX：属性</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_built_in_functions.html">Houdini VEX：内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_channel_parameter.html">Houdini VEX：通道参数</a></li>
@@ -141,6 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_noise.html">Houdini VEX：噪波函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_point_cloud.html">Houdini VEX：点云</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_string.html">Houdini VEX：字符串函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_variables.html">Houdini VEX：变量</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_viewport.html">Houdini VEX：视图属性</a></li>
@@ -223,17 +227,43 @@
             
   <div class="section" id="houdini-vex">
 <h1>Houdini VEX：数组函数<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
-<p>数组特点是有序的，存储相同类型的数据集合。</p>
-<p>索引与切片。</p>
-<p>数组赋值</p>
-<p>int a[];
-i[]&#64;a;
-{}
-array()</p>
-<p>len()
-find()</p>
-<p>数组函数</p>
+<p>数组是存储相同类型数据的容器，数组的特点是有序的，有序性决定了数组具有索引与切片的功能。</p>
 <ul class="simple">
+<li><p>初始化</p></li>
+</ul>
+<p>数组在变量或属性初始化的时候如果没有给初始值，也不会警告或报错，默认初始值是空数组，数组初始化一般是通过花括号{}或者数组函数array()。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>int a<span class="o">[]</span><span class="p">;</span>
+i<span class="o">[]</span>@b<span class="p">;</span>
+int c<span class="o">[]</span> <span class="o">=</span> <span class="o">{</span><span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span><span class="o">}</span><span class="p">;</span>
+i<span class="o">[]</span>@d <span class="o">=</span> <span class="o">{</span><span class="m">100</span>, <span class="m">200</span>, <span class="m">300</span><span class="o">}</span><span class="p">;</span>
+int e<span class="o">[]</span> <span class="o">=</span> array<span class="o">(</span><span class="m">0</span>, <span class="nv">$PI</span>, <span class="m">0</span><span class="o">)</span><span class="p">;</span>
+
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, a<span class="o">)</span><span class="p">;</span>
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, @b<span class="o">)</span><span class="p">;</span>
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, c<span class="o">)</span><span class="p">;</span>
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, @d<span class="o">)</span><span class="p">;</span>
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, e<span class="o">)</span><span class="p">;</span>
+
+vector color<span class="o">[]</span> <span class="o">=</span> <span class="o">{{</span><span class="m">1</span>, <span class="m">0</span>, <span class="m">0</span><span class="o">}</span>, <span class="o">{</span><span class="m">0</span>, <span class="m">1</span>, <span class="m">0</span><span class="o">}</span>, <span class="o">{</span><span class="m">0</span>, <span class="m">0</span>, <span class="m">1</span><span class="o">}}</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>索引与切片</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>int array1<span class="o">[]</span> <span class="o">=</span> <span class="o">{</span><span class="m">100</span>, <span class="m">200</span>, <span class="m">300</span>, <span class="m">400</span>, <span class="m">500</span><span class="o">}</span><span class="p">;</span>
+
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, array1<span class="o">[</span>:2<span class="o">])</span><span class="p">;</span>
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, array1<span class="o">[</span>-2:<span class="o">])</span><span class="p">;</span>
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, array1<span class="o">[</span>::-1<span class="o">])</span><span class="p">;</span>
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, array1<span class="o">[</span>-1:-3:-1<span class="o">])</span><span class="p">;</span>
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, array1<span class="o">[</span><span class="m">1</span>::2<span class="o">])</span><span class="p">;</span>
+printf<span class="o">(</span><span class="s2">&quot;%g\n&quot;</span>, array1<span class="o">[</span><span class="m">1</span>:len<span class="o">(</span>array1<span class="o">)</span>:2<span class="o">])</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul>
+<li><p>数组函数</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>void append(&lt;type&gt;&amp;array[], &lt;type&gt;value)</p></li>
 <li><p>int [] argsort(&lt;type&gt;value[])</p></li>
 <li><p>&lt;type&gt;[] array(…)</p></li>
@@ -251,10 +281,16 @@ find()</p>
 <li><p>&lt;type&gt;[] slice(&lt;type&gt;s[], int start, int end, int step)</p></li>
 <li><p>int [] sort(int values[])</p></li>
 </ul>
-<p>数组循环</p>
-<ul class="simple">
+</div></blockquote>
+</li>
+<li><p>循环迭代</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>foreach (index, value; array) statement;</p></li>
 <li><p>foreach (int index; element_type value; array) statement;</p></li>
+</ul>
+</div></blockquote>
+</li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">an_array</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
 
@@ -267,6 +303,20 @@ find()</p>
     <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;Day number </span><span class="si">%d</span><span class="s2"> is </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<ul class="simple">
+<li><p>类型转换</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vector <span class="nv">pos</span> <span class="o">=</span> <span class="o">{</span><span class="m">1</span>.0, <span class="m">2</span>.0, <span class="m">3</span>.0<span class="o">}</span><span class="p">;</span>
+float a<span class="o">[]</span> <span class="o">=</span> set<span class="o">(</span>pos<span class="o">)</span><span class="p">;</span>
+vector <span class="nv">color</span> <span class="o">=</span> set<span class="o">(</span>a<span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.sidefx.com/docs/houdini/vex/arrays.html">http://www.sidefx.com/docs/houdini/vex/arrays.html</a></p></li>
+</ul>
 </div>
 </div>
 

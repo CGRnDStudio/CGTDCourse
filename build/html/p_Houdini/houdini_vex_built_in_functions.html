@@ -144,6 +144,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_noise.html">Houdini VEX：噪波函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_point_cloud.html">Houdini VEX：点云</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_string.html">Houdini VEX：字符串函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_variables.html">Houdini VEX：变量</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_viewport.html">Houdini VEX：视图属性</a></li>
@@ -320,24 +321,25 @@
 <p>VEX内置函数的分类:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 17%" />
-<col style="width: 6%" />
-<col style="width: 77%" />
+<col style="width: 32%" />
+<col style="width: 12%" />
+<col style="width: 56%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>ARRAYS</p></td>
 <td><p>数组</p></td>
-<td><ul class="simple">
-<li><p>append</p></li>
-</ul>
+<td><p>append, argsort, array, insert, isvalidindex,</p>
+<p>len, pop, push, removeindex, removevalue,</p>
+<p>reorder, resize, reverse, slice, sort</p>
 </td>
 </tr>
 <tr class="row-even"><td><p>ATTRIBUTES AND INTRINSICS</p></td>
 <td><p>属性</p></td>
-<td><ul class="simple">
-<li><p>addattrib, adddetailattrib, addpointattrib, addprimattrib, addvertexattrib</p></li>
-<li><p>attrib, detail, point, prim, vertex</p></li>
-</ul>
+<td><p>addattrib, adddetailattrib, addpointattrib,</p>
+<p>addprimattrib, addvertexattrib, attrib,</p>
+<p>detail, point, prim, primintrinsic, primuv,</p>
+<p>setpointattrib, setprimattrib, setprimintrinsic,</p>
+<p>setvertexattrib, vertex</p>
 </td>
 </tr>
 <tr class="row-odd"><td><p>BSDFS</p></td>
@@ -354,10 +356,7 @@
 </tr>
 <tr class="row-even"><td><p>CONVERSION</p></td>
 <td><p>转换函数</p></td>
-<td><ul class="simple">
-<li><p>atof, atoi, degrees, radians</p></li>
-</ul>
-</td>
+<td><p>atof, atoi, degrees, radians</p></td>
 </tr>
 <tr class="row-odd"><td><p>CROWDS</p></td>
 <td><p>群组</p></td>
@@ -377,10 +376,9 @@
 </tr>
 <tr class="row-odd"><td><p>GEOMETRY</p></td>
 <td><p>几何体</p></td>
-<td><ul class="simple">
-<li><p>addpoint, addprim, addvertex, geoself, nearpoint, nearpoints, removepoint,</p></li>
-<li><p>removeprim, removevertex</p></li>
-</ul>
+<td><p>addpoint, addprim, addvertex, geoself,</p>
+<p>nearpoint, nearpoints, removepoint,</p>
+<p>removeprim, removevertex</p>
 </td>
 </tr>
 <tr class="row-even"><td><p>GROUPS</p></td>
@@ -397,10 +395,7 @@
 </tr>
 <tr class="row-odd"><td><p>INTERPOLATION</p></td>
 <td><p>插值</p></td>
-<td><ul class="simple">
-<li><p>clamp, fit, fit01, fit10, fit11, lerp</p></li>
-</ul>
-</td>
+<td><p>clamp, fit, fit01, fit10, fit11, lerp</p></td>
 </tr>
 <tr class="row-even"><td><p>LIGHT</p></td>
 <td></td>
@@ -408,17 +403,13 @@
 </tr>
 <tr class="row-odd"><td><p>MATH</p></td>
 <td><p>数学</p></td>
-<td><ul class="simple">
-<li><p>abs, cos, sin, cross, dot, floor, frac, pow, sin, squrt, sum</p></li>
-</ul>
+<td><p>abs, cos, sin, cross, dot, floor, frac,</p>
+<p>pow, sin, squrt, sum</p>
 </td>
 </tr>
 <tr class="row-even"><td><p>MEASURE</p></td>
 <td><p>测量</p></td>
-<td><ul class="simple">
-<li><p>distance, getbbox, getbbox_size, relbbox</p></li>
-</ul>
-</td>
+<td><p>distance, getbbox, getbbox_size, relbbox</p></td>
 </tr>
 <tr class="row-odd"><td><p>METABALL</p></td>
 <td></td>
@@ -426,17 +417,11 @@
 </tr>
 <tr class="row-even"><td><p>NODES</p></td>
 <td><p>节点</p></td>
-<td><ul class="simple">
-<li><p>chf, chi, chramp, chs, chv</p></li>
-</ul>
-</td>
+<td><p>chf, chi, chramp, chs, chv</p></td>
 </tr>
 <tr class="row-odd"><td><p>NOISE AND RANDOMNESS</p></td>
 <td><p>噪波</p></td>
-<td><ul class="simple">
-<li><p>anoise, noise, rand, random, snoise</p></li>
-</ul>
-</td>
+<td><p>anoise, noise, rand, random, snoise</p></td>
 </tr>
 <tr class="row-even"><td><p>NORMALS</p></td>
 <td></td>
@@ -468,9 +453,10 @@
 </tr>
 <tr class="row-odd"><td><p>STRINGS</p></td>
 <td><p>字符串</p></td>
-<td><ul class="simple">
-<li><p>endswith, find, isalpha, isdigit, itoa, join, lstrip, match, re_find, re_findall, re_match, re_replace, re_split, split, sprintf</p></li>
-</ul>
+<td><p>endswith, find, isalpha, isdigit, itoa,</p>
+<p>join, lstrip, match, re_find, re_findall,</p>
+<p>re_match, re_replace, re_split, split,</p>
+<p>sprintf</p>
 </td>
 </tr>
 <tr class="row-even"><td><p>SUBDIVISION SURFACES</p></td>
@@ -495,10 +481,7 @@
 </tr>
 <tr class="row-odd"><td><p>UTILITY</p></td>
 <td><p>实用</p></td>
-<td><ul class="simple">
-<li><p>getcomp, printf, set, setcomp</p></li>
-</ul>
-</td>
+<td><p>getcomp, printf, set, setcomp</p></td>
 </tr>
 <tr class="row-even"><td><p>VOLUME</p></td>
 <td><p>体积</p></td>

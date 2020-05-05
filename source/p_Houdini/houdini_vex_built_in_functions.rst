@@ -117,46 +117,68 @@ VEX代码可视化，创建一个line节点，将点数增加到1000。
 
 VEX内置函数的分类:
 
-============================== ========== ==============================================================================
-ARRAYS                          数组       - append
-ATTRIBUTES AND INTRINSICS       属性       - addattrib, adddetailattrib, addpointattrib, addprimattrib, addvertexattrib
-                                           - attrib, detail, point, prim, vertex
+=========================== ========== ===============================================
+ARRAYS                      数组       append, argsort, array, insert, isvalidindex,
+
+                                       len, pop, push, removeindex, removevalue,
+
+                                       reorder, resize, reverse, slice, sort
+ATTRIBUTES AND INTRINSICS   属性       addattrib, adddetailattrib, addpointattrib,
+
+                                       addprimattrib, addvertexattrib, attrib,
+
+                                       detail, point, prim, primintrinsic, primuv,
+
+                                       setpointattrib, setprimattrib, setprimintrinsic,
+
+                                       setvertexattrib, vertex
 BSDFS                                      
 CHOP                                       
 COLOR                                     
-CONVERSION                      转换函数   - atof, atoi, degrees, radians
-CROWDS                          群组       
+CONVERSION                  转换函数   atof, atoi, degrees, radians
+CROWDS                      群组
 DISPLACE                                  
 FILE I/O                                  
 FUZZY LOGIC                               
-GEOMETRY                        几何体     - addpoint, addprim, addvertex, geoself, nearpoint, nearpoints, removepoint,
-                                           - removeprim, removevertex
-GROUPS                          组         
+GEOMETRY                    几何体     addpoint, addprim, addvertex, geoself,
+
+                                       nearpoint, nearpoints, removepoint,
+
+                                       removeprim, removevertex
+GROUPS                      组
 HALF-EDGES                                 
 IMAGE PROCESSING                           
-INTERPOLATION                   插值       - clamp, fit, fit01, fit10, fit11, lerp
+INTERPOLATION               插值         clamp, fit, fit01, fit10, fit11, lerp
 LIGHT                                      
-MATH                            数学       - abs, cos, sin, cross, dot, floor, frac, pow, sin, squrt, sum
-MEASURE                         测量       - distance, getbbox, getbbox_size, relbbox
-METABALL                        
-NODES                           节点       - chf, chi, chramp, chs, chv
-NOISE AND RANDOMNESS            噪波       - anoise, noise, rand, random, snoise
-NORMALS                         
-OPEN COLOR IO                   
-PARTICLES                       
-POINT CLOUDS AND 3D IMAGES      点云
-SAMPLING                        采样
-SENSOR INPUT                    
-SHADING AND RENDERING           材质渲染
-STRINGS                         字符串      - endswith, find, isalpha, isdigit, itoa, join, lstrip, match, re_find, re_findall, re_match, re_replace, re_split, split, sprintf
-SUBDIVISION SURFACES            
-TETRAHEDRONS                    
-TEXTURING                       贴图
-TRANSFORMS AND SPACE            
-USD                             USD
-UTILITY                         实用       - getcomp, printf, set, setcomp
-VOLUME                          体积       
-============================== ========== ==============================================================================
+MATH                        数学        abs, cos, sin, cross, dot, floor, frac,
+
+                                        pow, sin, squrt, sum
+MEASURE                     测量        distance, getbbox, getbbox_size, relbbox
+METABALL                    
+NODES                       节点         chf, chi, chramp, chs, chv
+NOISE AND RANDOMNESS        噪波         anoise, noise, rand, random, snoise
+NORMALS                     
+OPEN COLOR IO               
+PARTICLES                   
+POINT CLOUDS AND 3D IMAGES  点云
+SAMPLING                    采样
+SENSOR INPUT                
+SHADING AND RENDERING       材质渲染
+STRINGS                     字符串        endswith, find, isalpha, isdigit, itoa,
+
+                                          join, lstrip, match, re_find, re_findall,
+
+                                          re_match, re_replace, re_split, split,
+
+                                          sprintf
+SUBDIVISION SURFACES        
+TETRAHEDRONS                
+TEXTURING                   贴图
+TRANSFORMS AND SPACE        
+USD                         USD
+UTILITY                     实用        getcomp, printf, set, setcomp
+VOLUME                      体积       
+=========================== ========== ===============================================
 
 .. code-block:: bash
 
