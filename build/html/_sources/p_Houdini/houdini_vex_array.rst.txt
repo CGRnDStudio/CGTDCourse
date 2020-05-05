@@ -13,6 +13,11 @@ i[]@a;
 {}
 array()
 
+
+len()
+find()
+
+
 数组函数
 
 - void append(<type>&array[], <type>value)

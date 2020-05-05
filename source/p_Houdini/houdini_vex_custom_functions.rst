@@ -11,3 +11,12 @@ Houdini VEX：自定义函数
             printf(c);
         }
     }
+
+
+    function int[] nb(int ptnum) {
+        pass
+    }
+
+    int[] nb(int ptnum) {
+        pass
+    }

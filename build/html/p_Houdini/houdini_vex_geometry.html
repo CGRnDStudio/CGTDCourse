@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini VEX：头文件" href="houdini_vex_include.html" />
+    <link rel="next" title="Houdini VEX：组" href="houdini_vex_groups.html" />
     <link rel="prev" title="Houdini VEX：流控制语句" href="houdini_vex_flow_control.html" /> 
 </head>
 
@@ -125,6 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_shell.html">Houdini Shell相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_usd.html">Houdini USD相关</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_array.html">Houdini VEX：数组函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_attributes.html">Houdini VEX：属性</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_built_in_functions.html">Houdini VEX：内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_channel_parameter.html">Houdini VEX：通道参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_compiler.html">Houdini VEX：编译器pragmas</a></li>
@@ -132,13 +133,16 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_custom_functions.html">Houdini VEX：自定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_flow_control.html">Houdini VEX：流控制语句</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：几何体函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_groups.html">Houdini VEX：组</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_include.html">Houdini VEX：头文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_interpolation.html">Houdini VEX：插值函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_math.html">Houdini VEX：数学函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_measure.html">Houdini VEX：测量函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_noise.html">Houdini VEX：噪波函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_point_cloud.html">Houdini VEX：点云</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_vex_variables.html">Houdini VEX：变量</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_viewport.html">Houdini VEX：视图属性</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_visual_programming.html">Houdini VEX：可视化编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_volume.html">Houdini VEX：体积函数</a></li>
@@ -234,6 +238,42 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>几何体数据创建修改删除</p>
+<p>创建
+addpoint()</p>
+<p>addvertex()</p>
+<p>addprim()</p>
+<p>修改
+setprimintrinsic()
+setvertexpoint(0, 2, 0, 0);</p>
+<p>删除</p>
+<p>removepoint()
+removeprim()</p>
+<p>primvertices()
+primvertex()
+primvertexcount()
+primpoints()
+primpoint()</p>
+<p>pointprims()
+pointvetices()
+pointvertex()
+vertexpoint()
+vertexprev()
+vertexnext()
+vertexindex()
+vertexprim()
+vertexprimindex()</p>
+<p>顶点序号</p>
+<p>线性顶点序号</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">lvt0</span> <span class="o">=</span> <span class="n">pointvertex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+<span class="nb">int</span> <span class="n">lvt1</span> <span class="o">=</span> <span class="n">pointvertex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lvt0</span><span class="p">);</span>
+<span class="nb">int</span> <span class="n">lvt2</span> <span class="o">=</span> <span class="n">pointvertex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lvt1</span><span class="p">);</span>
+
+<span class="n">setvertexattrib</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Cd&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lvt0</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">});</span>
+<span class="n">setvertexattrib</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Cd&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lvt1</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">});</span>
+<span class="n">setvertexattrib</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Cd&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lvt2</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">});</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -244,7 +284,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="houdini_vex_include.html" class="btn btn-neutral float-right" title="Houdini VEX：头文件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="houdini_vex_groups.html" class="btn btn-neutral float-right" title="Houdini VEX：组" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="houdini_vex_flow_control.html" class="btn btn-neutral float-left" title="Houdini VEX：流控制语句" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

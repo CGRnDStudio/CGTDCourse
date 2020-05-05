@@ -79,3 +79,38 @@ Houdini VEX：流控制语句
     }
 
 - 与或非 && || !
+
+.. code-block:: python
+
+    if (@ptnum % 2 == 0) {
+        print("%g\n", @ptnum);
+    }
+
+
+    if (@ptnum % 2) {
+        print("%g\n", @ptnum);
+    }
+
+条件表达式
+
+@Cd = @ptnum ? 1 : 0
+
+while & do while的区别
+
+While Loop
+
+Do While Loop
+
+Foreach Loop
+
+For Loop
+
+.. code-block:: python
+
+    int i = 0;
+
+    for (float foo = 1; foo <= 128; foo *= 2, i++) {
+        vector pos = point(0, "P", i);
+        --pos.y;
+        setpointattrib(0, "P", i, pos);
+    }

@@ -26,6 +26,38 @@ ramp            chramp                 chramp()
 
 ch()通道函数默认类型是float，一般建议在VEX脚本中标明通道参数的具体类型。
 
+创建通道参数
+
+chi()
+chf()
+chu()
+chv()
+chp()
+ch2()
+ch3()
+ch4()
+chs()
+
+chramp()
+
+.. code-block:: python
+
+    // 0-1循环
+    @P.y = chramp("ramp", @P.x);
+
+    float px = fit(@P.x, chf("min"), chf("max"), 0, 1);
+    @P.y = chramp("ramp", px);
+
+    vector(chramp("color", fit(@P.x, -5, 5, 0, 1)));
+
+读取通道参数
+
+chf(, 时间)
+
+# 不谈
+chsraw()
+chexpr()
+
 .. code-block:: python
 
     float  chramp(string channel, float ramppos)

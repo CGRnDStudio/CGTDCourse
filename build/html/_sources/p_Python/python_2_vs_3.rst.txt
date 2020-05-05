@@ -2,7 +2,7 @@
 Python 2.x VS 3.x
 =============================
 
-* 3.x版本中取消print空格打印的写法，只能用内置函数print()
+- 3.x版本中取消print空格打印的写法，只能用内置函数print()
 
 .. code-block:: bash
 
@@ -11,7 +11,7 @@ Python 2.x VS 3.x
     100
     >>>
 
-* 3.x版本中新的解包写法，2.x中会语法异常
+- 3.x版本中新的解包写法，2.x中会语法异常
 
 .. code-block:: bash
 
@@ -23,7 +23,7 @@ Python 2.x VS 3.x
     [2, 3, 4]
     >>>
 
-* 3.x版本中取消xrange()写法，range()返回生成器
+- 3.x版本中取消xrange()写法，range()返回生成器
 
 .. code-block:: bash
 
@@ -47,3 +47,11 @@ Python 2.x VS 3.x
     <class 'range'>
     >>>
 
+- 3.x版本中除法的精度变浮点数
+
+.. code-block:: bash
+
+    # 3.x
+    >>> 1 / 2
+    0.5
+    >>>
