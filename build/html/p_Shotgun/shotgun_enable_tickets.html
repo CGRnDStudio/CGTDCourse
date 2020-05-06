@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Shotgun Events开发流程 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Shotgun Tickets &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Shotgun RV审片室工作流程" href="shotgun_rv_screening_room.html" />
-    <link rel="prev" title="Shotgun Tickets" href="shotgun_enable_tickets.html" /> 
+    <link rel="next" title="Shotgun Events开发流程" href="shotgun_events_develop.html" />
+    <link rel="prev" title="Shotgun API访问的两种方式" href="shotgun_access_method.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,8 +91,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="shotgun_access_method.html">Shotgun API访问的两种方式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shotgun_enable_tickets.html">Shotgun Tickets</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Shotgun Events开发流程</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Shotgun Tickets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shotgun_events_develop.html">Shotgun Events开发流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="shotgun_rv_screening_room.html">Shotgun RV审片室工作流程</a></li>
 </ul>
 </li>
@@ -147,13 +147,13 @@
         
           <li><a href="../parts/Shotgun.html">Shotgun</a> &raquo;</li>
         
-      <li>Shotgun Events开发流程</li>
+      <li>Shotgun Tickets</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Shotgun/shotgun_events_develop.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Shotgun/shotgun_enable_tickets.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,8 +166,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="shotgun-events">
-<h1>Shotgun Events开发流程<a class="headerlink" href="#shotgun-events" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="shotgun-tickets">
+<h1>Shotgun Tickets<a class="headerlink" href="#shotgun-tickets" title="永久链接至标题">¶</a></h1>
+<p>Shotgun Tickets是为了项目辅助任务提供填写timelog的表格，以便更准确地统计项目所花费的人力成本，比如制片的项目管理，TD的流程搭建等等，它不涉及具体镜头和资产的制作时间。</p>
+<p>Shotgun创建的项目默认状态是禁用Tickets的，直接创建Ticket会遇到下面的错误信息。</p>
+<p><strong>Sorry, you cannot create Tickets in XYJ, because they are not available in the project. To make them available, please configure the project’s tracking settings and try this again. To learn more about project tracking settings, visit our help center.</strong></p>
+<p>启用具体项目的Tickets页面很简单，打开需要启用的项目的任何页面，比如Shots，找到右上角Project Actions&gt;Tracking Settings，在HIDDEN菜单中找到Ticket，找到右上角Hide Ticket将其显示，然后点击DONE即可。</p>
 </div>
 
 
@@ -178,10 +182,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="shotgun_rv_screening_room.html" class="btn btn-neutral float-right" title="Shotgun RV审片室工作流程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="shotgun_events_develop.html" class="btn btn-neutral float-right" title="Shotgun Events开发流程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="shotgun_enable_tickets.html" class="btn btn-neutral float-left" title="Shotgun Tickets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="shotgun_access_method.html" class="btn btn-neutral float-left" title="Shotgun API访问的两种方式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
