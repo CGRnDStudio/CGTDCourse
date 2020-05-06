@@ -132,37 +132,57 @@ ATTRIBUTES AND INTRINSICS   属性       addattrib, adddetailattrib, addpointatt
                                        setpointattrib, setprimattrib, setprimintrinsic,
 
                                        setvertexattrib, vertex
-BSDFS                                      
-CHOP                                       
-COLOR                                     
-CONVERSION                  转换函数   atof, atoi, degrees, radians
+BSDFS
+CHOP                        通道
+COLOR                       颜色
+CONVERSION                  转换       atof, atoi, degrees, radians
 CROWDS                      群组
-DISPLACE                                  
-FILE I/O                                  
-FUZZY LOGIC                               
+DISPLACE                    置换
+FILE I/O                    IO
+FUZZY LOGIC
 GEOMETRY                    几何体     addpoint, addprim, addvertex, geoself,
 
-                                       nearpoint, nearpoints, removepoint,
+                                       intersect, intersect_all, nearpoint,
 
-                                       removeprim, removevertex
-GROUPS                      组
-HALF-EDGES                                 
-IMAGE PROCESSING                           
+                                       nearpoints, npoints, nprimitives, nvertices,
+                                       
+                                       pointprims, pointvertex, pointvertices, 
+                                       
+                                       primpoint, primpoints, primvertex, primvertexcount,
+                                       
+                                       removepoint, removeprim, removevertex
+GROUPS                      组         expandpointgroup, expandprimgroup, expandvertexgroup,
+
+                                       inpointgroup, inprimgroup, invertexgroup,
+                                       
+                                       npointsgroup, nprimitivesgroup, setpointgroup,
+
+                                       setprimgroup, setvertexgroup
+HALF-EDGES
+IMAGE PROCESSING
 INTERPOLATION               插值         clamp, fit, fit01, fit10, fit11, lerp
 LIGHT                                      
-MATH                        数学        abs, cos, sin, cross, dot, floor, frac,
+MATH                        数学        abs, acos, asin, atan, atan2, ceil, cos,
+
+                                        cross, dot, floor, frac, length, length2,
+                                        
+                                        log, log10, max, min, normalize, pow, sin,
+
+                                        sqrt, sum, tan
 
                                         pow, sin, squrt, sum
 MEASURE                     测量        distance, getbbox, getbbox_size, relbbox
 METABALL                    
-NODES                       节点         chf, chi, chramp, chs, chv
-NOISE AND RANDOMNESS        噪波         anoise, noise, rand, random, snoise
-NORMALS                     
-OPEN COLOR IO               
-PARTICLES                   
-POINT CLOUDS AND 3D IMAGES  点云
+NODES                       节点         ch, ch2, ch3, ch4, chf, chi, chramp, chs,
+
+                                         chu, chv, opfullpath
+NOISE AND RANDOMNESS        噪波         anoise, noise, rand, random, snoise, xnoise
+NORMALS                     法线
+OPEN COLOR IO               色彩空间
+PARTICLES                   粒子
+POINT CLOUDS AND 3D IMAGES  点云          pcfilter, pcfind, pcimport, pcopen
 SAMPLING                    采样
-SENSOR INPUT                
+SENSOR INPUT                传感器
 SHADING AND RENDERING       材质渲染
 STRINGS                     字符串        endswith, find, isalpha, isdigit, itoa,
 
@@ -170,7 +190,7 @@ STRINGS                     字符串        endswith, find, isalpha, isdigit, i
 
                                           re_match, re_replace, re_split, split,
 
-                                          sprintf
+                                          sprintf, toupper
 SUBDIVISION SURFACES        
 TETRAHEDRONS                
 TEXTURING                   贴图

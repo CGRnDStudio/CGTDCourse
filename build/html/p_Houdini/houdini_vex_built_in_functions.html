@@ -321,9 +321,9 @@
 <p>VEX内置函数的分类:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 32%" />
-<col style="width: 12%" />
-<col style="width: 56%" />
+<col style="width: 30%" />
+<col style="width: 11%" />
+<col style="width: 59%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>ARRAYS</p></td>
@@ -347,15 +347,15 @@
 <td></td>
 </tr>
 <tr class="row-even"><td><p>CHOP</p></td>
-<td></td>
+<td><p>通道</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>COLOR</p></td>
-<td></td>
+<td><p>颜色</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>CONVERSION</p></td>
-<td><p>转换函数</p></td>
+<td><p>转换</p></td>
 <td><p>atof, atoi, degrees, radians</p></td>
 </tr>
 <tr class="row-odd"><td><p>CROWDS</p></td>
@@ -363,11 +363,11 @@
 <td></td>
 </tr>
 <tr class="row-even"><td><p>DISPLACE</p></td>
-<td></td>
+<td><p>置换</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>FILE I/O</p></td>
-<td></td>
+<td><p>IO</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>FUZZY LOGIC</p></td>
@@ -377,13 +377,20 @@
 <tr class="row-odd"><td><p>GEOMETRY</p></td>
 <td><p>几何体</p></td>
 <td><p>addpoint, addprim, addvertex, geoself,</p>
-<p>nearpoint, nearpoints, removepoint,</p>
-<p>removeprim, removevertex</p>
+<p>intersect, intersect_all, nearpoint,</p>
+<p>nearpoints, npoints, nprimitives, nvertices,</p>
+<p>pointprims, pointvertex, pointvertices,</p>
+<p>primpoint, primpoints, primvertex, primvertexcount,</p>
+<p>removepoint, removeprim, removevertex</p>
 </td>
 </tr>
 <tr class="row-even"><td><p>GROUPS</p></td>
 <td><p>组</p></td>
-<td></td>
+<td><p>expandpointgroup, expandprimgroup, expandvertexgroup,</p>
+<p>inpointgroup, inprimgroup, invertexgroup,</p>
+<p>npointsgroup, nprimitivesgroup, setpointgroup,</p>
+<p>setprimgroup, setvertexgroup</p>
+</td>
 </tr>
 <tr class="row-odd"><td><p>HALF-EDGES</p></td>
 <td></td>
@@ -403,7 +410,10 @@
 </tr>
 <tr class="row-odd"><td><p>MATH</p></td>
 <td><p>数学</p></td>
-<td><p>abs, cos, sin, cross, dot, floor, frac,</p>
+<td><p>abs, acos, asin, atan, atan2, ceil, cos,</p>
+<p>cross, dot, floor, frac, length, length2,</p>
+<p>log, log10, max, min, normalize, pow, sin,</p>
+<p>sqrt, sum, tan</p>
 <p>pow, sin, squrt, sum</p>
 </td>
 </tr>
@@ -417,34 +427,36 @@
 </tr>
 <tr class="row-even"><td><p>NODES</p></td>
 <td><p>节点</p></td>
-<td><p>chf, chi, chramp, chs, chv</p></td>
+<td><p>ch, ch2, ch3, ch4, chf, chi, chramp, chs,</p>
+<p>chu, chv, opfullpath</p>
+</td>
 </tr>
 <tr class="row-odd"><td><p>NOISE AND RANDOMNESS</p></td>
 <td><p>噪波</p></td>
-<td><p>anoise, noise, rand, random, snoise</p></td>
+<td><p>anoise, noise, rand, random, snoise, xnoise</p></td>
 </tr>
 <tr class="row-even"><td><p>NORMALS</p></td>
-<td></td>
+<td><p>法线</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>OPEN COLOR IO</p></td>
-<td></td>
+<td><p>色彩空间</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>PARTICLES</p></td>
-<td></td>
+<td><p>粒子</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>POINT CLOUDS AND 3D IMAGES</p></td>
 <td><p>点云</p></td>
-<td></td>
+<td><p>pcfilter, pcfind, pcimport, pcopen</p></td>
 </tr>
 <tr class="row-even"><td><p>SAMPLING</p></td>
 <td><p>采样</p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>SENSOR INPUT</p></td>
-<td></td>
+<td><p>传感器</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>SHADING AND RENDERING</p></td>
@@ -456,7 +468,7 @@
 <td><p>endswith, find, isalpha, isdigit, itoa,</p>
 <p>join, lstrip, match, re_find, re_findall,</p>
 <p>re_match, re_replace, re_split, split,</p>
-<p>sprintf</p>
+<p>sprintf, toupper</p>
 </td>
 </tr>
 <tr class="row-even"><td><p>SUBDIVISION SURFACES</p></td>
