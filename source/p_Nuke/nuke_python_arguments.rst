@@ -2,14 +2,15 @@
 Nuke Python命令行传参的两种方案
 ================================
 
-后台调用Nuke的Python执行环境有两种方案，打开命令行窗口，下面的两句脚本都是可以打开Nuke的Python执行环境。
+后台调用Nuke的Python执行环境有三种方案，打开命令行窗口，下面的三句脚本都是可以打开Nuke的Python执行环境。
 
 .. code-block:: python
 
     "C:\Program Files\Nuke10.5v1\python.exe" blablabla.py arg1 arg2 arg3
     "C:\Program Files\Nuke10.5v1\Nuke10.5.exe" -t blablabla.py arg1 arg2 arg3
+    "C:\Program Files\Nuke10.5v1\Nuke10.5.exe" -x blablabla.py arg1 arg2 arg3
 
-命令行窗口给py文件传参也有两种方案，一种最普通的方式通过sys.argv来获取参数，但是在两种执行环境中都有一些问题，第一种执行环境下blablabla.py文件中import nuke和sys.argv得有先后顺序。
+命令行窗口给py文件传参有两种方案，一种最普通的方式是通过sys.argv来获取参数，但是在三种执行环境中都有一些问题，第一种执行环境下blablabla.py文件中import nuke和sys.argv得有先后顺序。
 
 .. code-block:: python
 
@@ -29,7 +30,7 @@ Nuke Python命令行传参的两种方案
     print(sys.argv)
     print(nuke.__file__)
 
-第二种执行环境下不存在这样的问题，但是对于数字型的参数，它会遇到警告，这种参数通过sys.argv存储不了。比如：
+第二种和第三种执行环境下不存在这样的问题，但是对于数字的参数，它会遇到警告，这种参数通过sys.argv存储不了。比如：
 
 .. code-block:: python
 
