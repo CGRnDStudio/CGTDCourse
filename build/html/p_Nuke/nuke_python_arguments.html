@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Nuke Python Callback机制 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Nuke Python命令行传参的两种方案 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Nuke中心化配置插件" href="nuke_centralized_tools.html" />
-    <link rel="prev" title="Nuke执行后台命令脚本方案" href="nuke_batch_script.html" /> 
+    <link rel="next" title="Nuke Python Panel" href="nuke_python_panel.html" />
+    <link rel="prev" title="Nuke插件：FilmConvert" href="nuke_plugin_film_convert.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,7 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Nuke.html">Nuke</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nuke_batch_script.html">Nuke执行后台命令脚本方案</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke Python Callback机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_callback_scripts.html">Nuke Python Callback机制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_centralized_tools.html">Nuke中心化配置插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_gizmo.html">Nuke创建Gizmo流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_read.html">Nuke Python创建Read节点小技巧</a></li>
@@ -104,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_cryptomatte.html">Nuke插件：Crytomatte</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_dft.html">Nuke插件：DFT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_film_convert.html">Nuke插件：FilmConvert</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nuke_python_arguments.html">Nuke Python命令行传参的两种方案</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke Python命令行传参的两种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_panel.html">Nuke Python Panel</a></li>
 </ul>
 </li>
@@ -160,13 +160,13 @@
         
           <li><a href="../parts/Nuke.html">Nuke</a> &raquo;</li>
         
-      <li>Nuke Python Callback机制</li>
+      <li>Nuke Python命令行传参的两种方案</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Nuke/nuke_callback_scripts.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Nuke/nuke_python_arguments.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -179,14 +179,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nuke-python-callback">
-<h1>Nuke Python Callback机制<a class="headerlink" href="#nuke-python-callback" title="永久链接至标题">¶</a></h1>
-<p>修改创建节点的默认参数。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
-
-<span class="n">nuke</span><span class="o">.</span><span class="n">knobDefault</span><span class="p">(</span><span class="s2">&quot;Blur.size&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">)</span>
+  <div class="section" id="nuke-python">
+<h1>Nuke Python命令行传参的两种方案<a class="headerlink" href="#nuke-python" title="永久链接至标题">¶</a></h1>
+<p>后台调用Nuke的Python执行环境有两种方案，打开命令行窗口，下面的两句脚本都是可以打开Nuke的Python执行环境。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Nuke10.5v1\python.exe&quot;</span> <span class="n">blablabla</span><span class="o">.</span><span class="n">py</span> <span class="n">arg1</span> <span class="n">arg2</span> <span class="n">arg3</span>
+<span class="s2">&quot;C:\Program Files\Nuke10.5v1\Nuke10.5.exe&quot;</span> <span class="o">-</span><span class="n">t</span> <span class="n">blablabla</span><span class="o">.</span><span class="n">py</span> <span class="n">arg1</span> <span class="n">arg2</span> <span class="n">arg3</span>
 </pre></div>
 </div>
+<p>命令行窗口给py文件传参也有两种方案，一种最普通的方式通过sys.argv来获取参数，但是在两种执行环境中都有一些问题，第一种执行环境下blablabla.py文件中import nuke和sys.argv得有先后顺序。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">nuke</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上面的代码是可以正常传递命令行参数的，但下面这种情况就不行，你会得到空列表。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">nuke</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>第二种执行环境下不存在这样的问题，但是对于数字型的参数，它会遇到警告，这种参数通过sys.argv存储不了。比如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Nuke10.5v1\Nuke10.5.exe&quot;</span> <span class="o">-</span><span class="n">t</span> <span class="n">blablabla</span><span class="o">.</span><span class="n">py</span> <span class="mi">101</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p><strong>WARNING: The command line argument ‘ 101 200’ will be used as a Frame Range argument and will not be forward to the python sys.argv.
+To define a frame range argument use the -F option.</strong></p>
+<p>此时可以通过nuke.rawArgs来获取就是OK的。</p>
 </div>
 
 
@@ -197,10 +219,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="nuke_centralized_tools.html" class="btn btn-neutral float-right" title="Nuke中心化配置插件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nuke_python_panel.html" class="btn btn-neutral float-right" title="Nuke Python Panel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nuke_batch_script.html" class="btn btn-neutral float-left" title="Nuke执行后台命令脚本方案" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nuke_plugin_film_convert.html" class="btn btn-neutral float-left" title="Nuke插件：FilmConvert" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
