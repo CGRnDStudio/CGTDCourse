@@ -20,10 +20,14 @@ Nuke模块：nuke
     print(nuke.selectedNodes())
     # 返回名字为Write1的节点实例
     print(nuke.toNode("Write1"))
-
+    # 返回当前节点实例
+    print(nuke.thisNode())
+    # 创建节点实例两种方案，NodeClass是节点类型，可以通过在具体节点上按i键查看节点类型
+    print(nuke.createNode("NodeClass"))
+    print(nuke.nodes.NodeClass())
 
 ----------------------
 参考文档
 ----------------------
 
-https://www.foundry.com/products/nuke/developers
+- https://www.foundry.com/products/nuke/developers

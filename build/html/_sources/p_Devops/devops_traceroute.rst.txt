@@ -2,7 +2,7 @@
 路由跟踪指令traceroute
 =========================================
 
-* Linux
+- Linux
 
 .. code-block:: bash
 
@@ -11,7 +11,7 @@
     nslookup sg-media-tokyo.s3-accelerate.amazonaws.com
     traceroute sg-media-tokyo.s3-accelerate.amazonaws.com
 
-* Windows
+- Windows
 
 .. code-block:: bash
 
