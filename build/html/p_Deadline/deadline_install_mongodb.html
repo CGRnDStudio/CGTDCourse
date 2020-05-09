@@ -96,7 +96,10 @@
 <li class="toctree-l2"><a class="reference internal" href="deadline_event_plugin.html">Deadline渲染农场事件插件开发</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_houdini_plugin.html">Deadline渲染农场Houdini提交工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_install_error.html">Deadline渲染农场安装服务启动错误</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Deadline渲染农场MongoDB离线安装</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deadline渲染农场MongoDB离线安装</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_maya_plugin.html">Deadline渲染农场Maya提交工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_nuke_plugin.html">Deadline渲染农场Nuke提交工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_python_api.html">Deadline渲染农场提交农场接口</a></li>
@@ -175,6 +178,22 @@
             
   <div class="section" id="deadlinemongodb">
 <h1>Deadline渲染农场MongoDB离线安装<a class="headerlink" href="#deadlinemongodb" title="永久链接至标题">¶</a></h1>
+<p>在安装DeadlineRepository的时候，会遇到在线安装MongoDB数据库服务器的需求，如果在线下载安装往往非常非常慢，无法忍受。</p>
+<p>在Deadline官方安装文档中有提到可以先下载MongoDB数据库服务器离线安装包，再来安装，这样速度是极快的。</p>
+<p>Deadline 10.1版本所要求的MongoDB版本在3.2.12~3.6.16之间。</p>
+<p>上MongoDB官网 <a class="reference external" href="https://www.mongodb.com/download-center">https://www.mongodb.com/download-center</a> 下载，找到Server选项，选择配置，我这里拿Windows 10操作系统做的测试，稳定性考虑建议使用服务器操作系统，将Deadline搭建在服务器上，比如Windows Server 2012 R2 Standard，下面的配置是测试配置按实际环境修改。</p>
+<ul class="simple">
+<li><p>Version: 3.4.24(previous release)</p></li>
+<li><p>OS: Windows x64</p></li>
+<li><p>Package: ZIP</p></li>
+</ul>
+<p>我这里下下来是这样一个安装包mongodb-win32-x86_64-2008plus-ssl-3.4.24.zip，在安装DeadlineRepository选择这个离线安装包安装就可以了。</p>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/install-db-repo.html">https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/install-db-repo.html</a></p></li>
+</ul>
+</div>
 </div>
 
 
