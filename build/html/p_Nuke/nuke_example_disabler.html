@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Nuke创建Gizmo流程 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Nuke开发案例：Disabler &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Nuke Python创建Read节点小技巧" href="nuke_create_read.html" />
-    <link rel="prev" title="Nuke中心化配置插件" href="nuke_centralized_tools.html" /> 
+    <link rel="next" title="Nuke模块：nuke" href="nuke_module_nuke.html" />
+    <link rel="prev" title="Nuke扩展开发插件的层级结构" href="nuke_develop_plugins.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,7 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_batch_script.html">Nuke执行后台命令脚本方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_callback_scripts.html">Nuke Python Callback机制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_centralized_tools.html">Nuke中心化配置插件</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke创建Gizmo流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_create_gizmo.html">Nuke创建Gizmo流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_read.html">Nuke Python创建Read节点小技巧</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_custom_menu.html">Nuke自定义菜单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_custom_toolset.html">Nuke自定义工具集</a></li>
@@ -100,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_deploy_plugins.html">Nuke依据版本来加载不同插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_environment.html">Nuke开发环境搭建</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_plugins.html">Nuke扩展开发插件的层级结构</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nuke_example_disabler.html">Nuke开发案例：Disabler</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke开发案例：Disabler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_module_nuke.html">Nuke模块：nuke</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_module_nukescripts.html">Nuke模块：nukescripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_cryptomatte.html">Nuke插件：Crytomatte</a></li>
@@ -164,13 +164,13 @@
         
           <li><a href="../parts/Nuke.html">Nuke</a> &raquo;</li>
         
-      <li>Nuke创建Gizmo流程</li>
+      <li>Nuke开发案例：Disabler</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Nuke/nuke_create_gizmo.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Nuke/nuke_example_disabler.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -183,13 +183,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nukegizmo">
-<h1>Nuke创建Gizmo流程<a class="headerlink" href="#nukegizmo" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="nuke-disabler">
+<h1>Nuke开发案例：Disabler<a class="headerlink" href="#nuke-disabler" title="永久链接至标题">¶</a></h1>
+<p>创建一个NoOp， 右键参数菜单Manage User Knobs…&gt;Add&gt;Python Script Button…</p>
+<p>Nuke官方给了一些参数控件，可以通过简单添加来自定义丰富节点。</p>
 <ul class="simple">
-<li><p>Ctrl + G # 打组</p></li>
-<li><p>Ctrl + Alt + G # 解组</p></li>
+<li><p>Floating Point Slider</p></li>
+<li><p>2d Position Knob</p></li>
+<li><p>3d Position Knob</p></li>
+<li><p>Width/Height Knob</p></li>
+<li><p>Bounding Box Knob</p></li>
+<li><p>Size Knob</p></li>
+<li><p>UV Coordinate Knob</p></li>
+<li><p>Integer Knob</p></li>
+<li><p>RGB Color Knob</p></li>
+<li><p>RGBA Color Knob</p></li>
+<li><p>Check Box</p></li>
+<li><p>TCL Script Button</p></li>
+<li><p>Python Script Button</p></li>
+<li><p>Pulldown Choice</p></li>
+<li><p>Cascading Pulldown Choice</p></li>
+<li><p>Command Menu</p></li>
+<li><p>Text input Knob</p></li>
+<li><p>Filename</p></li>
+<li><p>Tab</p></li>
+<li><p>Group</p></li>
+<li><p>Text</p></li>
+<li><p>Divider Line</p></li>
+<li><p>Obsolete Knob</p></li>
 </ul>
-<p>.gizmo文件想在Nuke中可以使用，需要创建菜单来创建gizmo，这样才可以按tab键找到节点。</p>
 </div>
 
 
@@ -200,10 +222,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="nuke_create_read.html" class="btn btn-neutral float-right" title="Nuke Python创建Read节点小技巧" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nuke_module_nuke.html" class="btn btn-neutral float-right" title="Nuke模块：nuke" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nuke_centralized_tools.html" class="btn btn-neutral float-left" title="Nuke中心化配置插件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nuke_develop_plugins.html" class="btn btn-neutral float-left" title="Nuke扩展开发插件的层级结构" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
