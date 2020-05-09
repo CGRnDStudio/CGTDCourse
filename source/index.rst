@@ -21,5 +21,6 @@ CG TD Pipeline's documentation
    parts/Shotgun
    parts/Deadline
    parts/Linux
+   parts/SQL
    parts/Devops
    reference
