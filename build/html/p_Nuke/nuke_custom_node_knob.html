@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Nuke开发案例：Disabler &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Nuke自定义节点参数 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Nuke模块：nuke" href="nuke_module_nuke.html" />
-    <link rel="prev" title="Nuke扩展开发插件的层级结构" href="nuke_develop_plugins.html" /> 
+    <link rel="next" title="Nuke自定义工具集" href="nuke_custom_toolset.html" />
+    <link rel="prev" title="Nuke自定义菜单" href="nuke_custom_menu.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,12 +95,12 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_gizmo.html">Nuke创建Gizmo流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_read.html">Nuke Python创建Read节点小技巧</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_custom_menu.html">Nuke自定义菜单</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke自定义节点参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_custom_toolset.html">Nuke自定义工具集</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_daemon_thread.html">Nuke守护线程自动保存文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_deploy_plugins.html">Nuke依据版本来加载不同插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_environment.html">Nuke开发环境搭建</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_plugins.html">Nuke扩展开发插件的层级结构</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke开发案例：Disabler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_module_nuke.html">Nuke模块：nuke</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_module_nukescripts.html">Nuke模块：nukescripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_cryptomatte.html">Nuke插件：Crytomatte</a></li>
@@ -165,13 +165,13 @@
         
           <li><a href="../parts/Nuke.html">Nuke</a> &raquo;</li>
         
-      <li>Nuke开发案例：Disabler</li>
+      <li>Nuke自定义节点参数</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Nuke/nuke_example_disabler.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Nuke/nuke_custom_node_knob.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -184,9 +184,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nuke-disabler">
-<h1>Nuke开发案例：Disabler<a class="headerlink" href="#nuke-disabler" title="永久链接至标题">¶</a></h1>
-<p>Nuke官方给了一些参数控件，可以通过简单添加来自定义丰富节点。</p>
+  <div class="section" id="nuke">
+<h1>Nuke自定义节点参数<a class="headerlink" href="#nuke" title="永久链接至标题">¶</a></h1>
+<p>Nuke官方给了一些节点参数控件，可以通过简单添加来自定义节点参数。</p>
 <ul class="simple">
 <li><p>Floating Point Slider</p></li>
 <li><p>2d Position Knob</p></li>
@@ -201,6 +201,7 @@
 <li><p>Check Box</p></li>
 <li><p>TCL Script Button</p></li>
 <li><p>Python Script Button</p></li>
+<li><p>Python Custom</p></li>
 <li><p>Pulldown Choice</p></li>
 <li><p>Cascading Pulldown Choice</p></li>
 <li><p>Command Menu</p></li>
@@ -212,8 +213,16 @@
 <li><p>Divider Line</p></li>
 <li><p>Obsolete Knob</p></li>
 </ul>
+<p>这些参数控件都非常简单，使用起来也很简单，只要创建过一次应该都可以上手掌握，但有几个细节值得注意:</p>
+<ul class="simple">
+<li><p>我们往往会先创建一个Tab，将自定义创建的参数归类放在一起，默认直接创建knob会在User选项中，也可以后期修改User的命名。</p></li>
+<li><p>Hide可以隐藏参数控件。</p></li>
+<li><p>Python Custom会在显示节点参数的时候初始化代码，用于事件触发。</p></li>
+<li><p>Start new line可以让控件在不换行，比如并行两个Button。</p></li>
+<li><p>参数关联。</p></li>
+</ul>
 <p>创建一个NoOp， 右键参数菜单Manage User Knobs…&gt;Add&gt;Python Script Button…</p>
-<p>Python Script Button中添加可执行代码，</p>
+<p>Python Script Button中添加可执行代码。</p>
 </div>
 
 
@@ -224,10 +233,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="nuke_module_nuke.html" class="btn btn-neutral float-right" title="Nuke模块：nuke" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nuke_custom_toolset.html" class="btn btn-neutral float-right" title="Nuke自定义工具集" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nuke_develop_plugins.html" class="btn btn-neutral float-left" title="Nuke扩展开发插件的层级结构" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nuke_custom_menu.html" class="btn btn-neutral float-left" title="Nuke自定义菜单" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -22,9 +22,12 @@ Nuke模块：nuke
     print(nuke.toNode("Write1"))
     # 返回当前节点实例
     print(nuke.thisNode())
-    # 创建节点实例两种方案，NodeClass是节点类型，可以通过在具体节点上按i键查看节点类型
+    # 创建节点实例两种方案，NodeClass是节点类型，可以通过在具体节点上按i键或者通过Class()方法查看节点类型
     print(nuke.createNode("NodeClass"))
     print(nuke.nodes.NodeClass())
+    # 返回某一类型所有节点实例列表
+    print(nuke.allNodes("NodeClass"))
+    # 
 
 ----------------------
 参考文档

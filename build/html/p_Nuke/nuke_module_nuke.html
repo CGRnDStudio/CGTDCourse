@@ -37,7 +37,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Nuke模块：nukescripts" href="nuke_module_nukescripts.html" />
-    <link rel="prev" title="Nuke开发案例：Disabler" href="nuke_example_disabler.html" /> 
+    <link rel="prev" title="Nuke扩展开发插件的层级结构" href="nuke_develop_plugins.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,12 +95,12 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_gizmo.html">Nuke创建Gizmo流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_create_read.html">Nuke Python创建Read节点小技巧</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_custom_menu.html">Nuke自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_custom_node_knob.html">Nuke自定义节点参数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_custom_toolset.html">Nuke自定义工具集</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_daemon_thread.html">Nuke守护线程自动保存文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_deploy_plugins.html">Nuke依据版本来加载不同插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_environment.html">Nuke开发环境搭建</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_plugins.html">Nuke扩展开发插件的层级结构</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nuke_example_disabler.html">Nuke开发案例：Disabler</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke模块：nuke</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
 </ul>
@@ -207,9 +207,12 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="n">toNode</span><span class="p">(</span><span class="s2">&quot;Write1&quot;</span><span class="p">))</span>
 <span class="c1"># 返回当前节点实例</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="n">thisNode</span><span class="p">())</span>
-<span class="c1"># 创建节点实例两种方案，NodeClass是节点类型，可以通过在具体节点上按i键查看节点类型</span>
+<span class="c1"># 创建节点实例两种方案，NodeClass是节点类型，可以通过在具体节点上按i键或者通过Class()方法查看节点类型</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;NodeClass&quot;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">NodeClass</span><span class="p">())</span>
+<span class="c1"># 返回某一类型所有节点实例列表</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="n">allNodes</span><span class="p">(</span><span class="s2">&quot;NodeClass&quot;</span><span class="p">))</span>
+<span class="c1">#</span>
 </pre></div>
 </div>
 <div class="section" id="id1">
@@ -231,7 +234,7 @@
         <a href="nuke_module_nukescripts.html" class="btn btn-neutral float-right" title="Nuke模块：nukescripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nuke_example_disabler.html" class="btn btn-neutral float-left" title="Nuke开发案例：Disabler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nuke_develop_plugins.html" class="btn btn-neutral float-left" title="Nuke扩展开发插件的层级结构" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
