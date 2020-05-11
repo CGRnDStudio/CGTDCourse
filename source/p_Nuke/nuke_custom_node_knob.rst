@@ -41,3 +41,16 @@ Nuke官方给了一些节点参数控件，可以通过简单添加来自定义�
 
 Python Script Button中添加可执行代码。
 
+通过Python脚本添加节点参数
+
+.. code-block:: python
+
+    import nuke
+
+    tkTest = nuke.Text_Knob("test", "Text", "This is Text Knob Test")
+    node = nuke.createNode("Write")
+    node.addKnob(tkTest)
+
+节点实例对象
+
+参数实例对象

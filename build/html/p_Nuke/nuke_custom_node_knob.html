@@ -223,6 +223,16 @@
 </ul>
 <p>创建一个NoOp， 右键参数菜单Manage User Knobs…&gt;Add&gt;Python Script Button…</p>
 <p>Python Script Button中添加可执行代码。</p>
+<p>通过Python脚本添加节点参数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
+
+<span class="n">tkTest</span> <span class="o">=</span> <span class="n">nuke</span><span class="o">.</span><span class="n">Text_Knob</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span> <span class="s2">&quot;This is Text Knob Test&quot;</span><span class="p">)</span>
+<span class="n">node</span> <span class="o">=</span> <span class="n">nuke</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;Write&quot;</span><span class="p">)</span>
+<span class="n">node</span><span class="o">.</span><span class="n">addKnob</span><span class="p">(</span><span class="n">tkTest</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>节点实例对象</p>
+<p>参数实例对象</p>
 </div>
 
 

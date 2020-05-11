@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PyQt设置图标的相对路径 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>PyQt富文本 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="PyQt富文本" href="pyqt_rich_text.html" />
-    <link rel="prev" title="PyQt Designer安装与使用" href="pyqt_rcc.html" /> 
+    <link rel="next" title="PyQt定义应用程序任务栏图标" href="pyqt_tray_icon.html" />
+    <link rel="prev" title="PyQt设置图标的相对路径" href="pyqt_resources.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,8 +94,11 @@
 <li class="toctree-l2"><a class="reference internal" href="pyqt_model.html">PyQt MVC设计模式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_qss.html">PyQt美化界面皮肤qss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_rcc.html">PyQt Designer安装与使用</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PyQt设置图标的相对路径</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyqt_rich_text.html">PyQt富文本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_resources.html">PyQt设置图标的相对路径</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyQt富文本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_tray_icon.html">PyQt定义应用程序任务栏图标</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_uic.html">PyQt Designer安装与使用</a></li>
 </ul>
@@ -157,13 +160,13 @@
         
           <li><a href="../parts/PyQt.html">PyQt</a> &raquo;</li>
         
-      <li>PyQt设置图标的相对路径</li>
+      <li>PyQt富文本</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_PyQt/pyqt_resources.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_PyQt/pyqt_rich_text.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -177,7 +180,74 @@
            <div itemprop="articleBody">
             
   <div class="section" id="pyqt">
-<h1>PyQt设置图标的相对路径<a class="headerlink" href="#pyqt" title="永久链接至标题">¶</a></h1>
+<h1>PyQt富文本<a class="headerlink" href="#pyqt" title="永久链接至标题">¶</a></h1>
+<p>创建QLabel控件，如何让文本丰富起来，比如将其中一部分字体设置为红色该如何操作？</p>
+<p>打开Nuke Script Editor或者Maya Script Editor验证下面的代码。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+
+
+<span class="n">widget</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;&lt;span style=&#39;color: red;&#39;&gt;Hello&lt;/span&gt; World&quot;</span><span class="p">)</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+
+
+<span class="n">widget</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;&lt;span style=&#39;color: red;&#39;&gt;Hello&lt;/span&gt;&lt;br&gt; World&quot;</span><span class="p">)</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>红色</p></td>
+<td><p>&lt;span style=’color: red;’&gt;text&lt;/span&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>绿色</p></td>
+<td><p>&lt;span style=’color: green;’&gt;text&lt;/span&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>蓝色</p></td>
+<td><p>&lt;span style=’color: blue;’&gt;text&lt;/span&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>颜色</p></td>
+<td><p>&lt;span style=’color: #2e93e2;’&gt;text&lt;/span&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>加粗</p></td>
+<td><p>&lt;span style=’font-weight: bold;’&gt;text&lt;/span&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>字体大小</p></td>
+<td><p>&lt;span style=’font-size: 10px;’&gt;text&lt;/span&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>换行</p></td>
+<td><p>&lt;br&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>下划线</p></td>
+<td><p>&lt;u&gt;text&lt;/u&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>斜体</p></td>
+<td><p>&lt;i&gt;text&lt;/i&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>加粗</p></td>
+<td><p>&lt;b&gt;text&lt;/b&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p>删除线</p></td>
+<td><p>&lt;s&gt;text&lt;/s&gt;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doc.qt.io/qtforpython/overviews/examples-richtext.html">https://doc.qt.io/qtforpython/overviews/examples-richtext.html</a></p></li>
+</ul>
+</div>
 </div>
 
 
@@ -188,10 +258,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pyqt_rich_text.html" class="btn btn-neutral float-right" title="PyQt富文本" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pyqt_tray_icon.html" class="btn btn-neutral float-right" title="PyQt定义应用程序任务栏图标" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pyqt_rcc.html" class="btn btn-neutral float-left" title="PyQt Designer安装与使用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pyqt_resources.html" class="btn btn-neutral float-left" title="PyQt设置图标的相对路径" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
