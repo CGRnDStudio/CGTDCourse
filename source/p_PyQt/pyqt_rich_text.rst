@@ -45,3 +45,4 @@ PyQt富文本
 --------------------
 
 - https://doc.qt.io/qtforpython/overviews/examples-richtext.html
+- https://blog.csdn.net/humanking7/article/details/80685893
