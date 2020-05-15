@@ -51,10 +51,6 @@ Python Script Button中添加可执行代码。
     node = nuke.createNode("Write")
     node.addKnob(tkTest)
 
-节点实例对象
-
-参数实例对象
-
 ---------------------------
 参考文档
 ---------------------------

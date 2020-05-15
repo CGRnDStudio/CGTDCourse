@@ -37,7 +37,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Nuke模块：nukescripts" href="nuke_module_nukescripts.html" />
-    <link rel="prev" title="Nuke开发者文档" href="nuke_developer_document.html" /> 
+    <link rel="prev" title="Nuke主目录" href="nuke_home_directory.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -102,6 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_environment.html">Nuke开发环境搭建</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_plugins.html">Nuke扩展开发插件的层级结构</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_developer_document.html">Nuke开发者文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_home_directory.html">Nuke主目录</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke模块：nuke</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
 </ul>
@@ -114,6 +115,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_arguments.html">Nuke Python命令行传参的两种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_import.html">Nuke Python导入nk文件的几种方式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_panel.html">Nuke Python Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_tcl.html">Nuke TCL</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
@@ -190,6 +192,9 @@
             
   <div class="section" id="nuke-nuke">
 <h1>Nuke模块：nuke<a class="headerlink" href="#nuke-nuke" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>一般方法</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="p">)</span>
@@ -213,7 +218,45 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">NodeClass</span><span class="p">())</span>
 <span class="c1"># 返回某一类型所有节点实例列表</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="n">allNodes</span><span class="p">(</span><span class="s2">&quot;NodeClass&quot;</span><span class="p">))</span>
-<span class="c1">#</span>
+<span class="c1"># 返回所有插件路径</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nuke</span><span class="o">.</span><span class="n">pluginPath</span><span class="p">())</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Callback函数</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nuke</span><span class="o">.</span><span class="n">addAfterRender</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>节点实例对象属性与方法</p></li>
+</ul>
+<p>nuke模块中有很多函数可以返回节点实例对象，下面是一些常用的函数。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nuke</span><span class="o">.</span><span class="n">selectedNodes</span><span class="p">()</span>
+<span class="n">nuke</span><span class="o">.</span><span class="n">toNode</span><span class="p">()</span>
+<span class="n">nuke</span><span class="o">.</span><span class="n">thisNode</span><span class="p">()</span>
+<span class="n">nuke</span><span class="o">.</span><span class="n">createNode</span><span class="p">()</span>
+<span class="n">nuke</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">Read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>有了节点实例对象就可以获取关于节点数据类型属性以及方法。</p>
+<p>[‘Class’, ‘__class__’, ‘__delattr__’, ‘__doc__’, ‘__format__’, ‘__getattribute__’, ‘__getitem__’, ‘__hash__’, ‘__init__’, ‘__len__’, ‘__new__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__setattr__’, ‘__sizeof__’, ‘__str__’, ‘__subclasshook__’, ‘addKnob’, ‘allKnobs’, ‘autoplace’, ‘bbox’, ‘canSetInput’, ‘channels’, ‘clones’, ‘connectInput’, ‘deepSample’, ‘deepSampleCount’, ‘dependencies’, ‘dependent’, ‘error’, ‘fileDependencies’, ‘firstFrame’, ‘forceUpdateLocalization’, ‘forceValidate’, ‘format’, ‘frameRange’, ‘fullName’, ‘getNumKnobs’, ‘hasError’, ‘height’, ‘help’, ‘hideControlPanel’, ‘input’, ‘inputs’, ‘isLocalizationOutdated’, ‘isLocalized’, ‘isSelected’, ‘knob’, ‘knobs’, ‘lastFrame’, ‘linkableKnobs’, ‘localizationProgress’, ‘maxInputs’, ‘maxOutputs’, ‘maximumInputs’, ‘maximumOutputs’, ‘metadata’, ‘minInputs’, ‘minimumInputs’, ‘name’, ‘numKnobs’, ‘opHashes’, ‘optionalInput’, ‘performanceInfo’, ‘pixelAspect’, ‘proxy’, ‘readKnobs’, ‘redraw’, ‘removeKnob’, ‘resetKnobsToDefault’, ‘rootNode’, ‘running’, ‘sample’, ‘screenHeight’, ‘screenWidth’, ‘selectOnly’, ‘setInput’, ‘setName’, ‘setSelected’, ‘setTab’, ‘setXYpos’, ‘setXpos’, ‘setYpos’, ‘showControlPanel’, ‘showInfo’, ‘shown’, ‘treeHasError’, ‘upstreamFrameRange’, ‘width’, ‘writeKnobs’, ‘xpos’, ‘ypos’]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 返回节点类型</span>
+<span class="n">node</span><span class="o">.</span><span class="n">Class</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>参数实例对象属性与方法</p></li>
+</ul>
+<p>获取节点参数实例对象有下面两种常用的方法。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">node</span><span class="p">[</span><span class="s2">&quot;&lt;parm_name&gt;&quot;</span><span class="p">]</span>
+<span class="n">node</span><span class="o">.</span><span class="n">knob</span><span class="p">(</span><span class="s2">&quot;&lt;parm_name&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>有了节点参数实例对象就可以获取关于参数数据类型属性以及方法。</p>
+<p>[‘Class’, ‘__class__’, ‘__delattr__’, ‘__doc__’, ‘__format__’, ‘__getattribute__’, ‘__hash__’, ‘__init__’, ‘__new__’, ‘__reduce__’, ‘__reduce_ex__’, ‘__repr__’, ‘__setattr__’, ‘__sizeof__’, ‘__str__’, ‘__subclasshook__’, ‘clearAnimated’, ‘clearFlag’, ‘critical’, ‘debug’, ‘enabled’, ‘error’, ‘evaluate’, ‘fromScript’, ‘fromUserText’, ‘fullyQualifiedName’, ‘getDerivative’, ‘getEvaluatedValue’, ‘getFlag’, ‘getIntegral’, ‘getKeyIndex’, ‘getKeyList’, ‘getKeyTime’, ‘getNthDerivative’, ‘getNumKeys’, ‘getText’, ‘getValue’, ‘getValueAt’, ‘hasExpression’, ‘isAnimated’, ‘isKey’, ‘isKeyAt’, ‘label’, ‘name’, ‘node’, ‘removeKey’, ‘removeKeyAt’, ‘setAnimated’, ‘setEnabled’, ‘setExpression’, ‘setFlag’, ‘setLabel’, ‘setName’, ‘setText’, ‘setTooltip’, ‘setValue’, ‘setValueAt’, ‘setVisible’, ‘splitView’, ‘toScript’, ‘tooltip’, ‘unsplitView’, ‘value’, ‘visible’, ‘warning’]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 返回参数类型</span>
+<span class="n">parm</span><span class="o">.</span><span class="n">Class</span><span class="p">()</span>
 </pre></div>
 </div>
 <div class="section" id="id1">
@@ -235,7 +278,7 @@
         <a href="nuke_module_nukescripts.html" class="btn btn-neutral float-right" title="Nuke模块：nukescripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nuke_developer_document.html" class="btn btn-neutral float-left" title="Nuke开发者文档" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nuke_home_directory.html" class="btn btn-neutral float-left" title="Nuke主目录" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

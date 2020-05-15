@@ -2,6 +2,8 @@
 Nuke模块：nuke
 ==============================
 
+- 一般方法
+
 .. code-block:: python
 
     import nuke
@@ -27,7 +29,54 @@ Nuke模块：nuke
     print(nuke.nodes.NodeClass())
     # 返回某一类型所有节点实例列表
     print(nuke.allNodes("NodeClass"))
-    # 
+    # 返回所有插件路径
+    print(nuke.pluginPath())
+
+- Callback函数
+
+.. code-block:: python
+
+    nuke.addAfterRender()
+
+
+- 节点实例对象属性与方法
+
+nuke模块中有很多函数可以返回节点实例对象，下面是一些常用的函数。
+
+.. code-block:: python
+
+    nuke.selectedNodes()
+    nuke.toNode()
+    nuke.thisNode()
+    nuke.createNode()
+    nuke.nodes.Read()
+
+有了节点实例对象就可以获取关于节点数据类型属性以及方法。
+
+['Class', '__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__getitem__', '__hash__', '__init__', '__len__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'addKnob', 'allKnobs', 'autoplace', 'bbox', 'canSetInput', 'channels', 'clones', 'connectInput', 'deepSample', 'deepSampleCount', 'dependencies', 'dependent', 'error', 'fileDependencies', 'firstFrame', 'forceUpdateLocalization', 'forceValidate', 'format', 'frameRange', 'fullName', 'getNumKnobs', 'hasError', 'height', 'help', 'hideControlPanel', 'input', 'inputs', 'isLocalizationOutdated', 'isLocalized', 'isSelected', 'knob', 'knobs', 'lastFrame', 'linkableKnobs', 'localizationProgress', 'maxInputs', 'maxOutputs', 'maximumInputs', 'maximumOutputs', 'metadata', 'minInputs', 'minimumInputs', 'name', 'numKnobs', 'opHashes', 'optionalInput', 'performanceInfo', 'pixelAspect', 'proxy', 'readKnobs', 'redraw', 'removeKnob', 'resetKnobsToDefault', 'rootNode', 'running', 'sample', 'screenHeight', 'screenWidth', 'selectOnly', 'setInput', 'setName', 'setSelected', 'setTab', 'setXYpos', 'setXpos', 'setYpos', 'showControlPanel', 'showInfo', 'shown', 'treeHasError', 'upstreamFrameRange', 'width', 'writeKnobs', 'xpos', 'ypos']
+
+.. code-block:: python
+
+    # 返回节点类型
+    node.Class()
+
+- 参数实例对象属性与方法
+
+获取节点参数实例对象有下面两种常用的方法。
+
+.. code-block:: python
+
+    node["<parm_name>"]
+    node.knob("<parm_name>")
+
+有了节点参数实例对象就可以获取关于参数数据类型属性以及方法。
+
+['Class', '__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'clearAnimated', 'clearFlag', 'critical', 'debug', 'enabled', 'error', 'evaluate', 'fromScript', 'fromUserText', 'fullyQualifiedName', 'getDerivative', 'getEvaluatedValue', 'getFlag', 'getIntegral', 'getKeyIndex', 'getKeyList', 'getKeyTime', 'getNthDerivative', 'getNumKeys', 'getText', 'getValue', 'getValueAt', 'hasExpression', 'isAnimated', 'isKey', 'isKeyAt', 'label', 'name', 'node', 'removeKey', 'removeKeyAt', 'setAnimated', 'setEnabled', 'setExpression', 'setFlag', 'setLabel', 'setName', 'setText', 'setTooltip', 'setValue', 'setValueAt', 'setVisible', 'splitView', 'toScript', 'tooltip', 'unsplitView', 'value', 'visible', 'warning']
+
+.. code-block:: python
+
+    # 返回参数类型
+    parm.Class()
 
 ----------------------
 参考文档

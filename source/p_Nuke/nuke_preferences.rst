@@ -14,7 +14,7 @@ Nuke偏好配置
 
 - 脚本编辑器
 
-去勾选Edit>Preferences>Panels>clear input window on successful script execution选项，在执行完代码，代码就不会丢失。
+Edit>Preferences>Panels>clear input window on successful script execution选项去勾，在执行完代码，代码就不会丢失。
 
 - 临时文件
 
