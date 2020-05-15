@@ -54,3 +54,9 @@ Python Script Button中添加可执行代码。
 节点实例对象
 
 参数实例对象
+
+---------------------------
+参考文档
+---------------------------
+
+- https://www.foundry.com/products/nuke/developers
