@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Nuke扩展开发层级结构.nuke &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Nuke偏好配置 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -107,7 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_cryptomatte.html">Nuke插件：Crytomatte</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_dft.html">Nuke插件：DFT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_film_convert.html">Nuke插件：FilmConvert</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke扩展开发层级结构.nuke</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke偏好配置</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_arguments.html">Nuke Python命令行传参的两种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_import.html">Nuke Python导入nk文件的几种方式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_panel.html">Nuke Python Panel</a></li>
@@ -166,13 +166,13 @@
         
           <li><a href="../parts/Nuke.html">Nuke</a> &raquo;</li>
         
-      <li>Nuke扩展开发层级结构.nuke</li>
+      <li>Nuke偏好配置</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Nuke/nuke_point_nuke.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Nuke/nuke_preferences.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -185,8 +185,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nuke-nuke">
-<h1>Nuke扩展开发层级结构.nuke<a class="headerlink" href="#nuke-nuke" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="nuke">
+<h1>Nuke偏好配置<a class="headerlink" href="#nuke" title="永久链接至标题">¶</a></h1>
 <ul class="simple">
 <li><p>自定义布局</p></li>
 </ul>
@@ -195,6 +195,18 @@
 </pre></div>
 </div>
 <p>保存完成之后点击菜单Edit&gt;Preferences&gt;Behaviors&gt;Startup&gt;startup workspace&gt;blablabla。</p>
+<ul class="simple">
+<li><p>脚本编辑器</p></li>
+</ul>
+<p>去勾选Edit&gt;Preferences&gt;Panels&gt;clear input window on successful script execution选项，在执行完代码，代码就不会丢失。</p>
+<ul class="simple">
+<li><p>临时文件</p></li>
+</ul>
+<p>Edit&gt;Preferences&gt;Performance&gt;Caching&gt;temp directory修改临时文件路径</p>
+<ul class="simple">
+<li><p>兼容路径</p></li>
+</ul>
+<p>Edit&gt;Preferences&gt;General&gt;Path Substitutions，支持OSX、Windows、Linux，这里配置了路径之后，节点上文件路径可以简写自动匹配。</p>
 </div>
 
 
