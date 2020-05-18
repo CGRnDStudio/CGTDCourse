@@ -32,14 +32,14 @@ Nuke自定义菜单
 
     None
 
-* "Nuke" 获取主菜单的实例对象
-* "Pane" 获取面板菜单的实例对象
-* "Nodes" 获取工具栏菜单的实例对象
-* "Properties" 获取参数菜单的实例对象
-* "Animation" 获取动画曲线参数菜单的实例对象
-* "Viewer" 获取视图菜单的实例对象
-* "Node Graph" 获取节点网络菜单的实例对象
-* "Axis" 获取Axis节点上File或Snap菜单的实例对象
+- "Nuke" 获取主菜单的实例对象
+- "Pane" 获取面板菜单的实例对象
+- "Nodes" 获取工具栏菜单的实例对象
+- "Properties" 获取参数菜单的实例对象
+- "Animation" 获取动画曲线参数菜单的实例对象
+- "Viewer" 获取视图菜单的实例对象
+- "Node Graph" 获取节点网络菜单的实例对象
+- "Axis" 获取Axis节点上File或Snap菜单的实例对象
 
 可以通过nuke.menu("Nuke")来获取菜单实例，再次查看实例对象的属性与方法。
 
@@ -54,8 +54,8 @@ Nuke自定义菜单
 
 其中addMenu方法可以在此菜单对象上添加一个菜单，返回此菜单的实例对象，addCommand可以添加一个执行命令的菜单。
 
-* Menu class
-* MenuItem class
+- Menu class
+- MenuItem class
 
 .. code-block:: python
 
