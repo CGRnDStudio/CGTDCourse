@@ -19,6 +19,7 @@ Nuke模块：nuke
 
     # 获取全局属性
     print(nuke.root())
+    nuke.zoom()
     # 返回所有选中节点实例的列表
     print(nuke.selectedNodes())
     # 返回名字为Write1的节点实例
