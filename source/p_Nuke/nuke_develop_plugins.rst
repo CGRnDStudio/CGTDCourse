@@ -6,7 +6,6 @@ Nuke扩展开发插件的层级结构
 
 .. code-block:: python
 
-
     package1
         __init__.py
         module1.py
@@ -35,6 +34,7 @@ Nuke扩展开发插件的层级结构
     nuke.pluginAddPath("插件路径")
 
 menu.py文件中一般写自定义菜单的代码，这样在Nuke启动的时候会自动加载菜单，而菜单中的执行的代码一般都是此文件夹下的模块或包的文件以及图标或Gizmo文件。
+
 init.py文件主要用来处理路径问题，如果不想gizmo和icons中文件通过gizmo/xxx1.gizmo来处理的话，可以在init.py写入如下脚本。
 
 .. code-block:: python

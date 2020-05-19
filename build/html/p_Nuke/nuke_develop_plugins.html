@@ -216,8 +216,8 @@
 <span class="n">nuke</span><span class="o">.</span><span class="n">pluginAddPath</span><span class="p">(</span><span class="s2">&quot;插件路径&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>menu.py文件中一般写自定义菜单的代码，这样在Nuke启动的时候会自动加载菜单，而菜单中的执行的代码一般都是此文件夹下的模块或包的文件以及图标或Gizmo文件。
-init.py文件主要用来处理路径问题，如果不想gizmo和icons中文件通过gizmo/xxx1.gizmo来处理的话，可以在init.py写入如下脚本。</p>
+<p>menu.py文件中一般写自定义菜单的代码，这样在Nuke启动的时候会自动加载菜单，而菜单中的执行的代码一般都是此文件夹下的模块或包的文件以及图标或Gizmo文件。</p>
+<p>init.py文件主要用来处理路径问题，如果不想gizmo和icons中文件通过gizmo/xxx1.gizmo来处理的话，可以在init.py写入如下脚本。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
 
 <span class="n">nuke</span><span class="o">.</span><span class="n">pluginAddPath</span><span class="p">(</span><span class="s2">&quot;gizmo&quot;</span><span class="p">)</span>
