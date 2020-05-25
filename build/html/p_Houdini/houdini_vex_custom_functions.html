@@ -225,21 +225,39 @@
             
   <div class="section" id="houdini-vex">
 <h1>Houdini VEX：自定义函数<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
-<p>函数是编程语言中一种简单封装。</p>
+<p>函数是编程语言中最简单的一种封装，函数最重要的是参数和返回值，参数又有形式参数（简称形参）与实际参数（简称实参）之分。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">test</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="n">string</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">printf</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-
-
-<span class="n">function</span> <span class="nb">int</span><span class="p">[]</span> <span class="n">nb</span><span class="p">(</span><span class="nb">int</span> <span class="n">ptnum</span><span class="p">)</span> <span class="p">{</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="nb">int</span><span class="p">[]</span> <span class="n">nb</span><span class="p">(</span><span class="nb">int</span> <span class="n">ptnum</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">pass</span>
 <span class="p">}</span>
-
-<span class="nb">int</span><span class="p">[]</span> <span class="n">nb</span><span class="p">(</span><span class="nb">int</span> <span class="n">ptnum</span><span class="p">)</span> <span class="p">{</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">[]</span> <span class="n">nb</span><span class="p">(</span><span class="nb">int</span> <span class="n">ptnum</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">pass</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">createGeo</span><span class="p">(</span><span class="n">vector</span> <span class="n">pos</span><span class="p">){</span>
+    <span class="nb">int</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="n">pos</span> <span class="o">+</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">});</span>
+    <span class="nb">int</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="n">pos</span> <span class="o">+</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">});</span>
+    <span class="nb">int</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="n">pos</span> <span class="o">+</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">});</span>
+    <span class="nb">int</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="n">pos</span> <span class="o">+</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">});</span>
+    <span class="nb">int</span> <span class="n">p4</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="n">pos</span> <span class="o">+</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">});</span>
+
+    <span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p2</span><span class="p">);</span>
+    <span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p0</span><span class="p">);</span>
+    <span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p1</span><span class="p">);</span>
+    <span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p3</span><span class="p">);</span>
+    <span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">createGeo</span><span class="p">(</span><span class="n">chv</span><span class="p">(</span><span class="s2">&quot;pos&quot;</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>

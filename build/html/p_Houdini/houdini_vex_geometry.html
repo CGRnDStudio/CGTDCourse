@@ -226,11 +226,26 @@
   <div class="section" id="houdini-vex">
 <h1>Houdini VEX：几何体函数<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
 <ul class="simple">
-<li><p>int  addpoint(int geohandle, int point_number)</p></li>
-<li><p>int  addpoint(int geohandle, vector pos)</p></li>
-<li><p>int  removepoint(int geohandle, int point_number)</p></li>
-<li><p>int  removepoint(int geohandle, int point_number, int and_prims)</p></li>
+<li><p>addpoint()</p></li>
+<li><p>addvertex()</p></li>
+<li><p>addprim()</p></li>
+<li><p>removepoint()</p></li>
+<li><p>removeprim()</p></li>
 </ul>
+<p>使用add创建一个四角锥，AW创建一个四角锥，注意面法线方向。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">});</span>
+<span class="nb">int</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">});</span>
+<span class="nb">int</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">});</span>
+<span class="nb">int</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">});</span>
+<span class="nb">int</span> <span class="n">p4</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">});</span>
+
+<span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p2</span><span class="p">);</span>
+<span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p0</span><span class="p">);</span>
+<span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p1</span><span class="p">);</span>
+<span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p3</span><span class="p">);</span>
+<span class="n">addprim</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="s2">&quot;poly&quot;</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">p2</span><span class="p">);</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">removepoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="nd">@ptnum</span><span class="p">);</span>
 <span class="p">}</span>
@@ -241,16 +256,9 @@
 </pre></div>
 </div>
 <p>几何体数据创建修改删除</p>
-<p>创建
-addpoint()</p>
-<p>addvertex()</p>
-<p>addprim()</p>
 <p>修改
 setprimintrinsic()
 setvertexpoint(0, 2, 0, 0);</p>
-<p>删除</p>
-<p>removepoint()
-removeprim()</p>
 <p>primvertices()
 primvertex()
 primvertexcount()

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python数据类型：字符串 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Python文件后缀 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Python数据库操作" href="python_database_connect.html" />
-    <link rel="prev" title="Python数据类型：整型 &amp; 浮点型" href="python_data_types_int_float.html" /> 
+    <link rel="next" title="Python递归函数" href="python_recursive_function.html" />
+    <link rel="prev" title="Python PEP8" href="python_pep8.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -114,7 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_custom_package.html">Python自定义包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_bool_none.html">Python数据类型：布尔值 &amp; 空值</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python数据类型：字符串</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
@@ -131,7 +131,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_name_rules.html">Python命名规则</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_operator.html">Python运算符</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_pep8.html">Python PEP8</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_pyc.html">Python文件后缀</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python文件后缀</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_recursive_function.html">Python递归函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
@@ -203,13 +203,13 @@
         
           <li><a href="../parts/Python.html">Python</a> &raquo;</li>
         
-      <li>Python数据类型：字符串</li>
+      <li>Python文件后缀</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Python/python_data_types_string.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Python/python_pyc.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -223,49 +223,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="python">
-<h1>Python数据类型：字符串<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<p>字符串（str）是编程语言中最基本也是最重要的一种数据类型，在Python中可以说无时无刻不会跟字符串打交道。</p>
-<ul>
-<li><p>字符串格式化</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>%</p></li>
-<li><p>.format()</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>字符串方法</p></li>
-</ul>
-<p>掌握字符串方法是非常重要的一项技能，特别是常用的format、join、split和replace四个方法。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
-<span class="go">&lt;type &#39;str&#39;&gt;</span>
-<span class="go">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
-<span class="go">[&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__getnewargs__&#39;, &#39;__getslice__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mod__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__rmod__&#39;, &#39;__rmul__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;_formatter_field_name_split&#39;, &#39;_formatter_parser&#39;, &#39;capitalize&#39;, &#39;center&#39;, &#39;count&#39;, &#39;decode&#39;, &#39;encode&#39;, &#39;endswith&#39;, &#39;expandtabs&#39;, &#39;find&#39;, &#39;format&#39;, &#39;index&#39;, &#39;isalnum&#39;, &#39;isalpha&#39;, &#39;isdigit&#39;, &#39;islower&#39;, &#39;isspace&#39;, &#39;istitle&#39;, &#39;isupper&#39;, &#39;join&#39;, &#39;ljust&#39;, &#39;lower&#39;, &#39;lstrip&#39;, &#39;partition&#39;, &#39;replace&#39;, &#39;rfind&#39;, &#39;rindex&#39;, &#39;rjust&#39;, &#39;rpartition&#39;, &#39;rsplit&#39;, &#39;rstrip&#39;, &#39;split&#39;, &#39;splitlines&#39;, &#39;startswith&#39;, &#39;strip&#39;, &#39;swapcase&#39;, &#39;title&#39;, &#39;translate&#39;, &#39;upper&#39;, &#39;zfill&#39;]</span>
-<span class="go">&gt;&gt;&gt;</span>
-</pre></div>
-</div>
-<ul>
-<li><p>转义字符</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>n</p></li>
-<li><p>%%</p></li>
-<li><p>\</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>字符编码</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>ASCII</p></li>
-<li><p>GB2312</p></li>
-<li><p>GBK</p></li>
-<li><p>Unicode</p></li>
-<li><p>UTF-8</p></li>
-</ul>
-</div></blockquote>
-</li>
+<h1>Python文件后缀<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>.py</p></li>
+<li><p>.pyc</p></li>
+<li><p>.pyo</p></li>
+<li><p>.pyd</p></li>
+<li><p>.pyz(w)</p></li>
+<li><p>.exe</p></li>
 </ul>
 </div>
 
@@ -277,10 +242,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="python_database_connect.html" class="btn btn-neutral float-right" title="Python数据库操作" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_recursive_function.html" class="btn btn-neutral float-right" title="Python递归函数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_data_types_int_float.html" class="btn btn-neutral float-left" title="Python数据类型：整型 &amp; 浮点型" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_pep8.html" class="btn btn-neutral float-left" title="Python PEP8" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
