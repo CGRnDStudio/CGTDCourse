@@ -2,14 +2,17 @@
 Houdini VEX：几何体函数
 ==============================
 
-- addpoint()
-- addvertex()
-- addprim()
+=============== ====================================================
+addpoint()       添加点到几何体
+addvertex()      添加顶点到几何体上的面
+addprim()        添加面到几何体
 
-- removepoint()
-- removeprim()
+removepoint()    删除点
+removeprim()     删除面
+removevertex()   删除顶点
+=============== ====================================================
 
-使用add创建一个四角锥，AW创建一个四角锥，注意面法线方向。
+使用add创建一个四角锥或者Attribute Wrangle创建一个四角锥，注意面法线方向。
 
 .. code-block:: python
 
@@ -31,16 +34,14 @@ Houdini VEX：几何体函数
         removepoint(geoself(), @ptnum);
     }
 
+.. code-block:: python
+
     for (int i = 0; i < chi("num"); i++) {
         addpoint(geoself(), set(0, 0, i * chf("size")));
     }
 
-几何体数据创建修改删除
-
-修改
 setprimintrinsic()
 setvertexpoint(0, 2, 0, 0);
-
 
 primvertices()
 primvertex()

@@ -225,14 +225,33 @@
             
   <div class="section" id="houdini-vex">
 <h1>Houdini VEX：几何体函数<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
-<ul class="simple">
-<li><p>addpoint()</p></li>
-<li><p>addvertex()</p></li>
-<li><p>addprim()</p></li>
-<li><p>removepoint()</p></li>
-<li><p>removeprim()</p></li>
-</ul>
-<p>使用add创建一个四角锥，AW创建一个四角锥，注意面法线方向。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>addpoint()</p></td>
+<td><p>添加点到几何体</p></td>
+</tr>
+<tr class="row-even"><td><p>addvertex()</p></td>
+<td><p>添加顶点到几何体上的面</p></td>
+</tr>
+<tr class="row-odd"><td><p>addprim()</p></td>
+<td><p>添加面到几何体</p></td>
+</tr>
+<tr class="row-even"><td><p>removepoint()</p></td>
+<td><p>删除点</p></td>
+</tr>
+<tr class="row-odd"><td><p>removeprim()</p></td>
+<td><p>删除面</p></td>
+</tr>
+<tr class="row-even"><td><p>removevertex()</p></td>
+<td><p>删除顶点</p></td>
+</tr>
+</tbody>
+</table>
+<p>使用add创建一个四角锥或者Attribute Wrangle创建一个四角锥，注意面法线方向。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">});</span>
 <span class="nb">int</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">});</span>
 <span class="nb">int</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">});</span>
@@ -249,15 +268,14 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="nd">@P</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">removepoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="nd">@ptnum</span><span class="p">);</span>
 <span class="p">}</span>
-
-<span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">chi</span><span class="p">(</span><span class="s2">&quot;num&quot;</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">chi</span><span class="p">(</span><span class="s2">&quot;num&quot;</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">addpoint</span><span class="p">(</span><span class="n">geoself</span><span class="p">(),</span> <span class="nb">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="n">chf</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">)));</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>几何体数据创建修改删除</p>
-<p>修改
-setprimintrinsic()
+<p>setprimintrinsic()
 setvertexpoint(0, 2, 0, 0);</p>
 <p>primvertices()
 primvertex()
