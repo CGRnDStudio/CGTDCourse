@@ -246,6 +246,16 @@
 </pre></div>
 </div>
 <ul class="simple">
+<li><p>3.x版本中默认使用utf-8编码，下面的写法在3.x中是合法的，但禁止使用</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3.x</span>
+&gt;&gt;&gt; <span class="nv">变量</span> <span class="o">=</span> <span class="m">100</span>
+&gt;&gt;&gt; 变量
+<span class="m">100</span>
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<ul class="simple">
 <li><p>3.x版本中取消xrange()写法，range()返回生成器</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2.x</span>
@@ -275,6 +285,63 @@ NameError: name <span class="s1">&#39;xrange&#39;</span> is not defined
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3.x</span>
 &gt;&gt;&gt; <span class="m">1</span> / <span class="m">2</span>
 <span class="m">0</span>.5
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>3.x版本中map，filter从内置函数变成了类，得到的结果是迭代对象</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3.x</span>
+&gt;&gt;&gt; map
+&lt;class <span class="s1">&#39;map&#39;</span>&gt;
+&gt;&gt;&gt; filter
+&lt;class <span class="s1">&#39;filter&#39;</span>&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>3.x版本中reduce从内置函数挪到functools模块中</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3.x</span>
+&gt;&gt;&gt; from functools import reduce
+&gt;&gt;&gt; reduce
+&lt;built-in <span class="k">function</span> reduce&gt;
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>3.x版本中没有保留raw_input()，使用input()，在2.x版本中raw_input()将所有输入作为字符串看待，返回字符串类型，input()接收实例对象的输入，在3.x中input()接收任意输入，将所有输入默认当字符串处理，并返回字符串类型。</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3.x</span>
+&gt;&gt;&gt; <span class="nv">var</span> <span class="o">=</span> input<span class="o">(</span><span class="s2">&quot;Enter something:&quot;</span><span class="o">)</span>
+Enter something:10
+&gt;&gt;&gt; type<span class="o">(</span>var<span class="o">)</span>
+&lt;class <span class="s1">&#39;str&#39;</span>&gt;
+&gt;&gt;&gt; <span class="nv">var</span> <span class="o">=</span> input<span class="o">(</span><span class="s2">&quot;Enter something:&quot;</span><span class="o">)</span>
+Enter something:andy
+&gt;&gt;&gt; type<span class="o">(</span>var<span class="o">)</span>
+&lt;class <span class="s1">&#39;str&#39;</span>&gt;
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>3.x版本中字典方法去掉了has_key()、iteritems()、iterkeys()、itervalues()、viewitems()、viewkeys()和viewvalues()，其中items()、keys()、values()返回迭代器</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3.x</span>
+&gt;&gt;&gt; dir<span class="o">(</span>dict<span class="o">())</span>
+<span class="o">[</span><span class="s1">&#39;__class__&#39;</span>, <span class="s1">&#39;__contains__&#39;</span>, <span class="s1">&#39;__delattr__&#39;</span>, <span class="s1">&#39;__delitem__&#39;</span>, <span class="s1">&#39;__dir__&#39;</span>, <span class="s1">&#39;__doc__&#39;</span>, <span class="s1">&#39;__eq__&#39;</span>, <span class="s1">&#39;__format__&#39;</span>, <span class="s1">&#39;__ge__&#39;</span>, <span class="s1">&#39;__getattribute__&#39;</span>, <span class="s1">&#39;__getitem__&#39;</span>, <span class="s1">&#39;__gt__&#39;</span>, <span class="s1">&#39;__hash__&#39;</span>, <span class="s1">&#39;__init__&#39;</span>, <span class="s1">&#39;__init_subclass__&#39;</span>, <span class="s1">&#39;__iter__&#39;</span>, <span class="s1">&#39;__le__&#39;</span>, <span class="s1">&#39;__len__&#39;</span>, <span class="s1">&#39;__lt__&#39;</span>, <span class="s1">&#39;__ne__&#39;</span>, <span class="s1">&#39;__new__&#39;</span>, <span class="s1">&#39;__reduce__&#39;</span>, <span class="s1">&#39;__reduce_ex__&#39;</span>, <span class="s1">&#39;__repr__&#39;</span>, <span class="s1">&#39;__setattr__&#39;</span>, <span class="s1">&#39;__setitem__&#39;</span>, <span class="s1">&#39;__sizeof__&#39;</span>, <span class="s1">&#39;__str__&#39;</span>, <span class="s1">&#39;__subclasshook__&#39;</span>, <span class="s1">&#39;clear&#39;</span>, <span class="s1">&#39;copy&#39;</span>, <span class="s1">&#39;fromkeys&#39;</span>, <span class="s1">&#39;get&#39;</span>, <span class="s1">&#39;items&#39;</span>, <span class="s1">&#39;keys&#39;</span>, <span class="s1">&#39;pop&#39;</span>, <span class="s1">&#39;popitem&#39;</span>, <span class="s1">&#39;setdefault&#39;</span>, <span class="s1">&#39;update&#39;</span>, <span class="s1">&#39;values&#39;</span><span class="o">]</span>
+&gt;&gt;&gt;
+<span class="c1"># 2.x</span>
+&gt;&gt;&gt; dir<span class="o">(</span>dict<span class="o">())</span>
+<span class="o">[</span><span class="s1">&#39;__class__&#39;</span>, <span class="s1">&#39;__cmp__&#39;</span>, <span class="s1">&#39;__contains__&#39;</span>, <span class="s1">&#39;__delattr__&#39;</span>, <span class="s1">&#39;__delitem__&#39;</span>, <span class="s1">&#39;__doc__&#39;</span>, <span class="s1">&#39;__eq__&#39;</span>, <span class="s1">&#39;__format__&#39;</span>, <span class="s1">&#39;__ge__&#39;</span>, <span class="s1">&#39;__getattribute__&#39;</span>, <span class="s1">&#39;__getitem__&#39;</span>, <span class="s1">&#39;__gt__&#39;</span>, <span class="s1">&#39;__hash__&#39;</span>, <span class="s1">&#39;__init__&#39;</span>, <span class="s1">&#39;__iter__&#39;</span>, <span class="s1">&#39;__le__&#39;</span>, <span class="s1">&#39;__len__&#39;</span>, <span class="s1">&#39;__lt__&#39;</span>, <span class="s1">&#39;__ne__&#39;</span>, <span class="s1">&#39;__new__&#39;</span>, <span class="s1">&#39;__reduce__&#39;</span>, <span class="s1">&#39;__reduce_ex__&#39;</span>, <span class="s1">&#39;__repr__&#39;</span>, <span class="s1">&#39;__setattr__&#39;</span>, <span class="s1">&#39;__setitem__&#39;</span>, <span class="s1">&#39;__sizeof__&#39;</span>, <span class="s1">&#39;__str__&#39;</span>, <span class="s1">&#39;__subclasshook__&#39;</span>, <span class="s1">&#39;clear&#39;</span>, <span class="s1">&#39;copy&#39;</span>, <span class="s1">&#39;fromkeys&#39;</span>, <span class="s1">&#39;get&#39;</span>, <span class="s1">&#39;has_key&#39;</span>, <span class="s1">&#39;items&#39;</span>, <span class="s1">&#39;iteritems&#39;</span>, <span class="s1">&#39;iterkeys&#39;</span>, <span class="s1">&#39;itervalues&#39;</span>, <span class="s1">&#39;keys&#39;</span>, <span class="s1">&#39;pop&#39;</span>, <span class="s1">&#39;popitem&#39;</span>, <span class="s1">&#39;setdefault&#39;</span>, <span class="s1">&#39;update&#39;</span>, <span class="s1">&#39;values&#39;</span>, <span class="s1">&#39;viewitems&#39;</span>, <span class="s1">&#39;viewkeys&#39;</span>, <span class="s1">&#39;viewvalues&#39;</span><span class="o">]</span>
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>3.x中去掉了&lt;&gt;不等于的写法，统一用!=</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2.x</span>
+&gt;&gt;&gt; <span class="m">100</span> &lt;&gt; <span class="m">200</span>
+True
 &gt;&gt;&gt;
 </pre></div>
 </div>
