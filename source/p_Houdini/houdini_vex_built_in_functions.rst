@@ -193,7 +193,7 @@ STRINGS                     字符串        endswith, find, isalpha, isdigit, i
                                           sprintf, toupper
 SUBDIVISION SURFACES        
 TETRAHEDRONS                
-TEXTURING                   贴图
+TEXTURING                   贴图         colormap
 TRANSFORMS AND SPACE        
 USD                         USD
 UTILITY                     实用        getcomp, printf, set, setcomp

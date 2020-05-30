@@ -12,6 +12,16 @@ Houdini VEX：流控制语句
 
 .. code-block:: python
 
+    int i = 0;
+ 
+    for (float foo = 1; foo <= 128; foo *= 2, i++) {
+        vector pos = point(0, "P", i);
+        --pos.y;
+        setpointattrib(0, "P", i, pos);
+    }
+
+.. code-block:: python
+
     for (int n = 0; n < 10; n++) {
         addpoint(0, set(n, 0, 0));
     }
@@ -40,7 +50,6 @@ Houdini VEX：流控制语句
         printf(itoa(i) + "\n");
         printf(itoa(v) + "\n");
     }
-
 
 - 条件语句
 
@@ -91,26 +100,8 @@ Houdini VEX：流控制语句
         print("%g\n", @ptnum);
     }
 
-条件表达式
+- 条件表达式
 
-@Cd = @ptnum ? 1 : 0
+.. code-block:: bash
 
-while & do while的区别
-
-While Loop
-
-Do While Loop
-
-Foreach Loop
-
-For Loop
-
-.. code-block:: python
-
-    int i = 0;
-
-    for (float foo = 1; foo <= 128; foo *= 2, i++) {
-        vector pos = point(0, "P", i);
-        --pos.y;
-        setpointattrib(0, "P", i, pos);
-    }
+    @Cd = @ptnum ? 1 : 0;
