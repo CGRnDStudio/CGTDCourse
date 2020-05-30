@@ -55,17 +55,15 @@ chramp()
 chf(, 时间)
 
 # 不谈
-chsraw()
-chexpr()
+
+- chsraw()
+- chexpr()
 
 .. code-block:: python
 
     float  chramp(string channel, float ramppos)
-
     float  chramp(string channel, float ramppos, float time)
-
     vector  chramp(string channel, float ramppos)
-
     vector  chramp(string channel, float ramppos, float time)
 
 ramppos值域[0, 1]，任何可以区别开来的属性都可以借这个值域去映射，比如@ptnum / (@numpt - 1.0), sin(@ptnum), rand(@ptnum)。
@@ -80,6 +78,12 @@ ramppos值域[0, 1]，任何可以区别开来的属性都可以借这个值域�
     @P.y = fit(@P.y, -0.5, 0.5, 0, chf("heights"));
     float ramp = chramp("ramp", fit(@P.x, -5, 5, 0, 1));
     @P.y = @P.y * ramp;
+
+通道参数不光光可以自定义，还可以直接引用别的节点的参数过来，通过具体的参数路径或者相对路径。
+
+. 当前层级
+
+.. 上一层级
 
 ---------------
 参考文档

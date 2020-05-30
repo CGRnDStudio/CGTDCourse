@@ -295,15 +295,14 @@ chs()</p>
 </div>
 <p>读取通道参数</p>
 <p>chf(, 时间)</p>
-<p># 不谈
-chsraw()
-chexpr()</p>
+<p># 不谈</p>
+<ul class="simple">
+<li><p>chsraw()</p></li>
+<li><p>chexpr()</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span>  <span class="n">chramp</span><span class="p">(</span><span class="n">string</span> <span class="n">channel</span><span class="p">,</span> <span class="nb">float</span> <span class="n">ramppos</span><span class="p">)</span>
-
 <span class="nb">float</span>  <span class="n">chramp</span><span class="p">(</span><span class="n">string</span> <span class="n">channel</span><span class="p">,</span> <span class="nb">float</span> <span class="n">ramppos</span><span class="p">,</span> <span class="nb">float</span> <span class="n">time</span><span class="p">)</span>
-
 <span class="n">vector</span>  <span class="n">chramp</span><span class="p">(</span><span class="n">string</span> <span class="n">channel</span><span class="p">,</span> <span class="nb">float</span> <span class="n">ramppos</span><span class="p">)</span>
-
 <span class="n">vector</span>  <span class="n">chramp</span><span class="p">(</span><span class="n">string</span> <span class="n">channel</span><span class="p">,</span> <span class="nb">float</span> <span class="n">ramppos</span><span class="p">,</span> <span class="nb">float</span> <span class="n">time</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -319,6 +318,8 @@ chexpr()</p>
 <span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="nd">@P</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">ramp</span><span class="p">;</span>
 </pre></div>
 </div>
+<p>通道参数不光光可以自定义，还可以直接引用别的节点的参数过来，通过具体的参数路径或者相对路径。</p>
+<p>. 当前层级</p>
 <div class="section" id="id1">
 <h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">

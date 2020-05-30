@@ -41,6 +41,16 @@ neighbours()
         }
     }
 
+最简单的颜色通过小球来控制颜色传递。
+
+.. code-block:: python
+
+    int nearpt = nearpoint(1, @P, 0.5);
+
+    if(nearpt != -1) {
+        @Cd = {1, 0, 0};
+    }
+
 .. code-block:: python
 
     i[]nb = neighbours(0, @ptnum);
