@@ -96,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_inspect.html">Python内置模块：inspect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_itertools.html">Python内置模块：itertools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_math.html">Python内置模块：math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_operator.html">Python内置模块：operator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
@@ -230,11 +231,11 @@
 <p>比较运算符</p>
 <p>==, &lt;, &gt;, !=, &lt;=, &gt;=, in, not in, is, is not</p>
 <p>逻辑运算符</p>
-<ul class="simple">
-<li><p>and</p></li>
-<li><p>or</p></li>
-<li><p>not</p></li>
-</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ow">and</span>
+<span class="ow">or</span>
+<span class="ow">not</span>
+</pre></div>
+</div>
 <p>Python逻辑运算符的短路规则</p>
 <p>如果你了解二进制以及逻辑电路的知识，对逻辑运算符应该不会陌生。十进制数有加减乘除等算术运算，二进制作为另一种进制规则，自然也会有自己的运算方法，这种运算方法叫做逻辑运算。在Python中逻辑运算符有三个and、or和not，对应逻辑电路里的与、或、非门。</p>
 <p>短路规则，又称最小化求值。是一种逻辑运算符的求值策略。只有当第一个运算数的值无法确定逻辑运算的结果时，才对第二个运算数进行求值。例如，当and的第一个运算数的值为False时，其结果必定为False；当or的第一个运算数为True时，最后结果必定为True，在这种情况下，就不需要知道第二个运算数的具体值。</p>
