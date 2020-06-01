@@ -113,11 +113,11 @@ while循环需要注意避免死循环，语句块中需要有自增或自检以
 
     if not a:
 
+- 三元赋值法
+
 .. code-block:: python
 
     userSays = raw_input("请输入:") or "nothing"
 
-    # 三元赋值法
     "hello" if True else "world"
     "hello" if 1 > 2 else "world"
-
