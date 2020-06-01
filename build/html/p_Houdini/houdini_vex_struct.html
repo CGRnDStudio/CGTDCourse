@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Houdini添加侧边栏快捷路径 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Houdini VEX：结构体 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Houdini输出进度条不在显示器内的解决方案" href="houdini_miss_dialog.html" />
-    <link rel="prev" title="Houdini HScript命令" href="houdini_hscript_command.html" /> 
+    <link rel="next" title="Houdini VEX：基础语法" href="houdini_vex_syntax.html" />
+    <link rel="prev" title="Houdini VEX：字符串函数" href="houdini_vex_string.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_fbx_material_converter.html">Houdini FBX材质自动赋予工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_hotkeys.html">Houdini自定义快捷键</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_hscript_command.html">Houdini HScript命令</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini添加侧边栏快捷路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="houdini_jump_path.html">Houdini添加侧边栏快捷路径</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_miss_dialog.html">Houdini输出进度条不在显示器内的解决方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_miss_icons.html">Houdini图标丢失解决方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_hou.html">Houdini模块：hou</a></li>
@@ -142,7 +142,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_point_cloud.html">Houdini VEX：点云函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_snippets.html">Houdini VEX：代码片段</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_string.html">Houdini VEX：字符串函数</a></li>
-<li class="toctree-l2"><a class="reference internal" href="houdini_vex_struct.html">Houdini VEX：结构体</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini VEX：结构体</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_syntax.html">Houdini VEX：基础语法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_texture.html">Houdini VEX：贴图函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_vex_variables.html">Houdini VEX：变量</a></li>
@@ -206,13 +206,13 @@
         
           <li><a href="../parts/Houdini.html">Houdini</a> &raquo;</li>
         
-      <li>Houdini添加侧边栏快捷路径</li>
+      <li>Houdini VEX：结构体</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Houdini/houdini_jump_path.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Houdini/houdini_vex_struct.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -225,9 +225,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="houdini">
-<h1>Houdini添加侧边栏快捷路径<a class="headerlink" href="#houdini" title="永久链接至标题">¶</a></h1>
-<p>jump.pref</p>
+  <div class="section" id="houdini-vex">
+<h1>Houdini VEX：结构体<a class="headerlink" href="#houdini-vex" title="永久链接至标题">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">box</span> <span class="p">{</span>
+    <span class="n">vector</span> <span class="n">size</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
+    <span class="n">vector</span> <span class="n">center</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+    <span class="nb">float</span> <span class="n">uscale</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">void</span> <span class="n">create</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">vector</span> <span class="n">pos</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">},</span>
+            <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">},</span>
+            <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">},</span>
+            <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">},</span>
+            <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">},</span>
+            <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">},</span>
+            <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">},</span>
+            <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">}</span>
+        <span class="p">};</span>
+        <span class="n">foreach</span><span class="p">(</span><span class="n">vector</span> <span class="n">pt</span><span class="p">;</span> <span class="n">pos</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">addpoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pt</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;box.h&gt;</span>
+<span class="n">box</span> <span class="n">mybox</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%g</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">mybox</span><span class="o">.</span><span class="n">size</span><span class="p">);</span>
+<span class="n">mybox</span><span class="o">-&gt;</span><span class="n">create</span><span class="p">();</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -238,10 +266,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="houdini_miss_dialog.html" class="btn btn-neutral float-right" title="Houdini输出进度条不在显示器内的解决方案" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="houdini_vex_syntax.html" class="btn btn-neutral float-right" title="Houdini VEX：基础语法" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="houdini_hscript_command.html" class="btn btn-neutral float-left" title="Houdini HScript命令" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="houdini_vex_string.html" class="btn btn-neutral float-left" title="Houdini VEX：字符串函数" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

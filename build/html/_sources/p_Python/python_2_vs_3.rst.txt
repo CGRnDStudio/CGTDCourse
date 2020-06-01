@@ -114,7 +114,7 @@ Python 2.x VS 3.x
     ['__class__', '__cmp__', '__contains__', '__delattr__', '__delitem__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__gt__', '__hash__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 'clear', 'copy', 'fromkeys', 'get', 'has_key', 'items', 'iteritems', 'iterkeys', 'itervalues', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values', 'viewitems', 'viewkeys', 'viewvalues']
     >>>
 
-- 3.x中去掉了<>不等于的写法，统一用!=
+- 3.x版本中去掉了<>不等于的写法，统一用!=
 
 .. code-block:: bash
 
@@ -122,3 +122,7 @@ Python 2.x VS 3.x
     >>> 100 <> 200
     True
     >>>
+
+- 3.x版本中添加海象运算符
+
+- 3.x版本中添加F-Strings格式化字符串方法
