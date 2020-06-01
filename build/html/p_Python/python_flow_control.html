@@ -120,13 +120,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python流控制语句</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#if">if条件判断语句</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#for">for循环语句</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#while">while循环语句</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#try">try异常中断语句</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python流控制语句</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_functional_programming.html">Python函数式编程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_generator.html">Python生成器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_ide.html">Python IDE</a></li>
@@ -231,8 +225,9 @@
   <div class="section" id="python">
 <h1>Python流控制语句<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
 <p>Python流控制语句包括if条件判断语句、for循环语句、while循环语句以及try异常中断语句。</p>
-<div class="section" id="if">
-<h2>if条件判断语句<a class="headerlink" href="#if" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>if条件语句</p></li>
+</ul>
 <p>if语句如果条件太多，可以使用字典替代方案。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># if语句的几种常见写法</span>
 <span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
@@ -252,9 +247,9 @@
     <span class="n">statement</span> <span class="n">block</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="for">
-<h2>for循环语句<a class="headerlink" href="#for" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>for循环语句</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># for语句的写法</span>
 <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
     <span class="n">statement</span> <span class="n">block</span>
@@ -265,23 +260,19 @@
     <span class="n">statement</span> <span class="n">block</span>
 </pre></div>
 </div>
-<p>break与continue的区别</p>
+<p>break与continue的区别：break中断整个循环语句，continue中断本次循环，继续下一次循环。</p>
 <ul class="simple">
-<li><p>break中断整个循环语句</p></li>
-<li><p>continue中断本次循环，继续下一次循环</p></li>
+<li><p>while循环语句</p></li>
 </ul>
-</div>
-<div class="section" id="while">
-<h2>while循环语句<a class="headerlink" href="#while" title="永久链接至标题">¶</a></h2>
 <p>while循环需要注意避免死循环，语句块中需要有自增或自检以结束循环条件。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># while语句的写法</span>
 <span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
     <span class="n">statement</span> <span class="n">block</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="try">
-<h2>try异常中断语句<a class="headerlink" href="#try" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>try异常中断</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># try语句的写法</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -309,8 +300,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>异常捕获对于调试代码并不是一件友好的事情，经常在调试代码过程中我们会避免使用try语句以获得代码异常的详细信息。
-异常也可以自定义，可以通过关键字raise来抛出异常。</p>
+<p>异常捕获对于调试代码并不是一件友好的事情，经常在调试代码过程中我们会避免使用try语句以获得代码异常的详细信息。异常也可以自定义，可以通过关键字raise来抛出异常。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">checkAbs</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
@@ -322,18 +312,24 @@
         <span class="k">return</span> <span class="o">-</span><span class="n">x</span>
 </pre></div>
 </div>
-<p>不要这样写
-if a == False:
-if a == 0:
-if a == None:
-if a == []:
-if a == “”:
-建议写成
-if not a:</p>
-<p>userSays = raw_input(“请输入:”) or “nothing”</p>
-<p># 三元赋值法
-“hello” if True else “world”
-“hello” if 1 &gt; 2 else “world”</p>
+<p>不要这样写</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="p">[]:</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>建议写成</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">a</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">userSays</span> <span class="o">=</span> <span class="n">raw_input</span><span class="p">(</span><span class="s2">&quot;请输入:&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;nothing&quot;</span>
+
+<span class="c1"># 三元赋值法</span>
+<span class="s2">&quot;hello&quot;</span> <span class="k">if</span> <span class="kc">True</span> <span class="k">else</span> <span class="s2">&quot;world&quot;</span>
+<span class="s2">&quot;hello&quot;</span> <span class="k">if</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="s2">&quot;world&quot;</span>
+</pre></div>
 </div>
 </div>
 

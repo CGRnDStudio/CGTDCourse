@@ -4,9 +4,7 @@ Python流控制语句
 
 Python流控制语句包括if条件判断语句、for循环语句、while循环语句以及try异常中断语句。
 
---------------
-if条件判断语句
---------------
+- if条件语句
 
 if语句如果条件太多，可以使用字典替代方案。
 
@@ -29,9 +27,7 @@ if语句如果条件太多，可以使用字典替代方案。
     else:
         statement block
 
---------------
-for循环语句
---------------
+- for循环语句
 
 .. code-block:: python
 
@@ -44,14 +40,9 @@ for循环语句
     else:
         statement block
 
-break与continue的区别
+break与continue的区别：break中断整个循环语句，continue中断本次循环，继续下一次循环。
 
-* break中断整个循环语句
-* continue中断本次循环，继续下一次循环
-
---------------
-while循环语句
---------------
+- while循环语句
 
 while循环需要注意避免死循环，语句块中需要有自增或自检以结束循环条件。
 
@@ -61,9 +52,7 @@ while循环需要注意避免死循环，语句块中需要有自增或自检以
     while condition:
         statement block
 
----------------
-try异常中断语句
----------------
+- try异常中断
 
 .. code-block:: python
 
@@ -94,8 +83,7 @@ try异常中断语句
     except ZeroDivisionError as e:
         print(e)
 
-异常捕获对于调试代码并不是一件友好的事情，经常在调试代码过程中我们会避免使用try语句以获得代码异常的详细信息。
-异常也可以自定义，可以通过关键字raise来抛出异常。
+异常捕获对于调试代码并不是一件友好的事情，经常在调试代码过程中我们会避免使用try语句以获得代码异常的详细信息。异常也可以自定义，可以通过关键字raise来抛出异常。
 
 .. code-block:: python
 
@@ -110,17 +98,26 @@ try异常中断语句
             return -x
 
 不要这样写
-if a == False:
-if a == 0:
-if a == None:
-if a == []:
-if a == “”:
+
+.. code-block:: python
+
+    if a == False:
+    if a == 0:
+    if a == None:
+    if a == []:
+    if a == "":
+
 建议写成
-if not a:
 
-userSays = raw_input("请输入:") or "nothing"
+.. code-block:: python
 
-# 三元赋值法
-"hello" if True else "world"
-"hello" if 1 > 2 else "world"
+    if not a:
+
+.. code-block:: python
+
+    userSays = raw_input("请输入:") or "nothing"
+
+    # 三元赋值法
+    "hello" if True else "world"
+    "hello" if 1 > 2 else "world"
 
