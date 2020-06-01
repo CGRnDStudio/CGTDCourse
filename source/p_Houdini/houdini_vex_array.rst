@@ -82,7 +82,7 @@ Houdini VEX：数组函数
     float a[] = set(pos);
     vector color = set(a);
 
----------------
+--------------- 
 参考文档
 ---------------
 

@@ -6,6 +6,8 @@ Houdini VEX：测量函数
 - vector  relbbox(<geometry>geometry, string primgroup, vector position)
 - vector  relbbox(vector position)
 
+distance()
+
 .. code-block:: python
 
     @Cd = relbbox(geoself(), @P);

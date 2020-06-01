@@ -6,7 +6,8 @@ Houdini VEX：点云函数
 ============== ================================================================
 nearpoint()      # 查找离我最近的点，如果自己也在几何体中，则返回自己
 nearpoints()     # 按范围查找最近的点，如果自己也在几何体中，数组中第一个元素是自己
-neighbours()
+neighbour()      # 查找
+neighbours()     # 查找某一个点临近点 
 ============== ================================================================
 
 新建Atttribute Wrangle创建随机点。
@@ -51,6 +52,33 @@ neighbours()
         @Cd = {1, 0, 0};
     }
 
+查找临近点。
+
 .. code-block:: python
 
-    i[]nb = neighbours(0, @ptnum);
+    int nbs[] = neighbours(0, @ptnum);
+
+    foreach (int nb; nbs) {
+        @Cd = v@Cd2;
+        i@infected = 1;
+    }
+
+
+For Loop与Solver区别，For Loop循环不会继承前一帧的效果，Solver会继承上一帧的效果。
+
+============== ================================================================
+pcopen()
+pcnumfound()
+pciterate()
+pcimport()
+pcclose()
+============== ================================================================
+
+.. code-block:: python
+
+    int handle = pcopen(0, "P", @P, 0.05, 10);
+    i@num = pcnumfound(handle);
+
+
+
+

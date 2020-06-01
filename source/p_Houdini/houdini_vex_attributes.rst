@@ -93,3 +93,5 @@ Intrinsic内在属性只有prim和detail上才会存在
 prim() 读取属性
 primintrinsic() 读取属性
 setprimintrinsic() 设置属性
+
+属性相关函数
