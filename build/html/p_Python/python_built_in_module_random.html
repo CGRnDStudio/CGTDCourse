@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python特殊属性：__dict__ &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Python内置模块：random &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Python特殊属性：__doc__" href="python_special_property_doc.html" />
-    <link rel="prev" title="Python特殊方法：__repr__" href="python_special_method_repr.html" /> 
+    <link rel="next" title="Python内置模块：re" href="python_built_in_module_re.html" />
+    <link rel="prev" title="Python内置模块：os" href="python_built_in_module_os.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_math.html">Python内置模块：math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_operator.html">Python内置模块：operator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_random.html">Python内置模块：random</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python内置模块：random</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_subprocess.html">Python内置模块：subprocess</a></li>
@@ -138,7 +138,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_regular_expression.html">Python正则表达式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_getitem_setitem.html">Python特殊方法：__getitem__ &amp; __setitem__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__repr__</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python特殊属性：__dict__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_file_path.html">Python特殊属性：__file__ &amp; __path__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_name.html">Python特殊属性：__name__</a></li>
@@ -205,13 +205,13 @@
         
           <li><a href="../parts/Python.html">Python</a> &raquo;</li>
         
-      <li>Python特殊属性：__dict__</li>
+      <li>Python内置模块：random</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Python/python_special_property_dict.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Python/python_built_in_module_random.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -224,9 +224,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="python-dict">
-<h1>Python特殊属性：__dict__<a class="headerlink" href="#python-dict" title="永久链接至标题">¶</a></h1>
-<p>__dict__是模块对象的globals名称空间。</p>
+  <div class="section" id="python-random">
+<h1>Python内置模块：random<a class="headerlink" href="#python-random" title="永久链接至标题">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">random</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">random</span><span class="p">)</span>
+<span class="go">&lt;class &#39;module&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="o">.</span><span class="vm">__file__</span>
+<span class="go">&#39;C:\\Python38\\lib\\random.py&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">random</span><span class="p">)</span>
+<span class="go">[&#39;BPF&#39;, &#39;LOG4&#39;, &#39;NV_MAGICCONST&#39;, &#39;RECIP_BPF&#39;, &#39;Random&#39;, &#39;SG_MAGICCONST&#39;, &#39;SystemRandom&#39;, &#39;TWOPI&#39;, &#39;_Sequence&#39;, &#39;_Set&#39;, &#39;__all__&#39;, &#39;__builtins__&#39;, &#39;__cached__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__loader__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__spec__&#39;, &#39;_accumulate&#39;, &#39;_acos&#39;, &#39;_bisect&#39;, &#39;_ceil&#39;, &#39;_cos&#39;, &#39;_e&#39;, &#39;_exp&#39;, &#39;_inst&#39;, &#39;_log&#39;, &#39;_os&#39;, &#39;_pi&#39;, &#39;_random&#39;, &#39;_repeat&#39;, &#39;_sha512&#39;, &#39;_sin&#39;, &#39;_sqrt&#39;, &#39;_test&#39;, &#39;_test_generator&#39;, &#39;_urandom&#39;, &#39;_warn&#39;, &#39;betavariate&#39;, &#39;choice&#39;, &#39;choices&#39;, &#39;expovariate&#39;, &#39;gammavariate&#39;, &#39;gauss&#39;, &#39;getrandbits&#39;, &#39;getstate&#39;, &#39;lognormvariate&#39;, &#39;normalvariate&#39;, &#39;paretovariate&#39;, &#39;randint&#39;, &#39;random&#39;, &#39;randrange&#39;, &#39;sample&#39;, &#39;seed&#39;, &#39;setstate&#39;, &#39;shuffle&#39;, &#39;triangular&#39;, &#39;uniform&#39;, &#39;vonmisesvariate&#39;, &#39;weibullvariate&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>random.choice()</p></td>
+<td><p># 从序列中随机挑选一个元素</p></td>
+</tr>
+<tr class="row-even"><td><p>random.randint()</p></td>
+<td><p># 给定范围随机整数</p></td>
+</tr>
+<tr class="row-odd"><td><p>random.random()</p></td>
+<td><p># 随机0~1之间小数</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -237,10 +263,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="python_special_property_doc.html" class="btn btn-neutral float-right" title="Python特殊属性：__doc__" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_built_in_module_re.html" class="btn btn-neutral float-right" title="Python内置模块：re" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_special_method_repr.html" class="btn btn-neutral float-left" title="Python特殊方法：__repr__" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_built_in_module_os.html" class="btn btn-neutral float-left" title="Python内置模块：os" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
