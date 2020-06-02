@@ -89,21 +89,26 @@
 <li class="toctree-l2"><a class="reference internal" href="python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_abc.html">Python内置模块：abc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_calendar.html">Python内置模块：calendar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_copy.html">Python内置模块：copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_csv.html">Python内置模块：csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_datetime.html">Python内置模块：datetime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_functools.html">Python内置模块：functools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_getpass.html">Python内置模块：getpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_inspect.html">Python内置模块：inspect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_itertools.html">Python内置模块：itertools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_logging.html">Python内置模块：logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_math.html">Python内置模块：math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_operator.html">Python内置模块：operator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_pprint.html">Python内置模块：pprint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_random.html">Python内置模块：random</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Python内置模块：re</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_subprocess.html">Python内置模块：subprocess</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_sys.html">Python内置模块：sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_time.html">Python内置模块：math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_closure_function.html">Python闭包函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_dict.html">Python容器：字典 {key: value}</a></li>
@@ -226,6 +231,34 @@
             
   <div class="section" id="python-re">
 <h1>Python内置模块：re<a class="headerlink" href="#python-re" title="永久链接至标题">¶</a></h1>
+<p>正则表达式模块re</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tank_1_color_v0.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_2_color_v5.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_1_color_v3.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_3_color_v1.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_4_color_v2.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_4_color_v4.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_5_color_v1.rat&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;tank_6_color_v6.rat&quot;</span><span class="p">]</span>
+
+<span class="n">pat_num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;\D+_(\d+)_&quot;</span><span class="p">)</span>
+<span class="n">pat_ver</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(\d+)\D+$&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sorter_num</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_num</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">sorter_ver</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_ver</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># pprint(sorted(files, key=sorter_num))</span>
+<span class="n">pprint</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">sorter_ver</span><span class="p">))</span>
+</pre></div>
+</div>
 </div>
 
 

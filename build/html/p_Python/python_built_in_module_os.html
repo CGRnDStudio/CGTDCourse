@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Python内置模块：random" href="python_built_in_module_random.html" />
+    <link rel="next" title="Python内置模块：pprint" href="python_built_in_module_pprint.html" />
     <link rel="prev" title="Python内置模块：operator" href="python_built_in_module_operator.html" /> 
 </head>
 
@@ -89,24 +89,26 @@
 <li class="toctree-l2"><a class="reference internal" href="python_api.html">Python API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_function.html">Python内置函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_abc.html">Python内置模块：abc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_calendar.html">Python内置模块：calendar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_copy.html">Python内置模块：copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_csv.html">Python内置模块：csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_datetime.html">Python内置模块：datetime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_functools.html">Python内置模块：functools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_getpass.html">Python内置模块：getpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_inspect.html">Python内置模块：inspect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_itertools.html">Python内置模块：itertools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_logging.html">Python内置模块：logging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_math.html">Python内置模块：math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_operator.html">Python内置模块：operator</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python内置模块：os</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#import-glob">import glob</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python内置模块：os</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_pprint.html">Python内置模块：pprint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_random.html">Python内置模块：random</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_subprocess.html">Python内置模块：subprocess</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_sys.html">Python内置模块：sys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_time.html">Python内置模块：math</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_closure_function.html">Python闭包函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_comprehensions.html">Python推导</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_dict.html">Python容器：字典 {key: value}</a></li>
@@ -347,15 +349,6 @@ os.path.splitext(path)</p>
 <span class="c1"># print l</span>
 </pre></div>
 </div>
-<p>sys</p>
-<p>shutil</p>
-<p>时间模块time&amp;datetime</p>
-<p>True &gt; true
-False &gt; false
-None &gt; null</p>
-<p>字符串方法
-decode
-encode</p>
 <p>python中默认编码是unicode
 s1.decode(“gb2312”) 将gb2312编码的字符串转换成unicode
 s2.encode(“gb2312”) 将unicode编码的字符串转换成gp2312</p>
@@ -366,43 +359,6 @@ u = urlopen(网址)
 resp = json.loads(u.read().decode(“utf-8”))
 from pprint import pprint
 pprint(resp)</p>
-<p><a class="reference external" href="https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html">https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html</a></p>
-<p>pprint
-from pprint import pprint
-import sys
-pprint(sys.path)</p>
-<p>logging</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
-        <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;app.log&quot;</span><span class="p">,</span>
-        <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span>
-    <span class="p">)</span>
-    <span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;www.python.org&quot;</span>
-    <span class="n">item</span> <span class="o">=</span> <span class="s2">&quot;spam&quot;</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;data.csv&quot;</span>
-    <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;r&quot;</span>
-
-    <span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;Host </span><span class="si">%s</span><span class="s2"> unknown&quot;</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t find </span><span class="si">%r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Feature is deprecated&quot;</span><span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Opening file </span><span class="si">%r</span><span class="s2">, mode=</span><span class="si">%r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Got here&quot;</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>level是一个过滤器，critical error warning info debug代表不同的严重级别</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
-    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;app.log&quot;</span><span class="p">,</span>
-    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(levelname)s</span><span class="s2">:</span><span class="si">%(asctime)s</span><span class="s2">:</span><span class="si">%(message)s</span><span class="s2">&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p><a class="reference external" href="https://docs.python.org/3/howto/logging-cookbook.html">https://docs.python.org/3/howto/logging-cookbook.html</a></p>
 <p>核心问题：import语法</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -428,77 +384,10 @@ pprint(sys.path)</p>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>sys.path</p>
 <p>shutil
 shutil.copy()
 shutil.copy2()
-shutil.rmtree()
-re 正则表达式模块</p>
-<div class="section" id="import-glob">
-<h2>import glob<a class="headerlink" href="#import-glob" title="永久链接至标题">¶</a></h2>
-<p>正则表达式模块re</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
-
-<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tank_1_color_v0.rat&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tank_2_color_v5.rat&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tank_1_color_v3.rat&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tank_3_color_v1.rat&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tank_4_color_v2.rat&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tank_4_color_v4.rat&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tank_5_color_v1.rat&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tank_6_color_v6.rat&quot;</span><span class="p">]</span>
-
-<span class="n">pat_num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;\D+_(\d+)_&quot;</span><span class="p">)</span>
-<span class="n">pat_ver</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(\d+)\D+$&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">sorter_num</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_num</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">sorter_ver</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_ver</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># pprint(sorted(files, key=sorter_num))</span>
-<span class="n">pprint</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">sorter_ver</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>日历模块calendar</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">calendar</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-
-<span class="kn">import</span> <span class="nn">calendar</span>
-
-<span class="n">d</span><span class="o">=</span><span class="p">{}</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
-    <span class="n">d</span><span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">calendar</span>
-<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;February January  May October August September April  November July March December&quot;</span>
-
-<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
-    <span class="n">d</span><span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
-
-<span class="k">def</span> <span class="nf">sorter</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span>
-
-<span class="n">pprint</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">sorter</span><span class="p">))</span>
-
-<span class="kn">import</span> <span class="nn">calendar</span>
-<span class="n">month_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">month_names</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">month_names</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>邮件模块</p>
-</div>
+shutil.rmtree()</p>
 </div>
 
 
@@ -509,7 +398,7 @@ re 正则表达式模块</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="python_built_in_module_random.html" class="btn btn-neutral float-right" title="Python内置模块：random" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_built_in_module_pprint.html" class="btn btn-neutral float-right" title="Python内置模块：pprint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="python_built_in_module_operator.html" class="btn btn-neutral float-left" title="Python内置模块：operator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

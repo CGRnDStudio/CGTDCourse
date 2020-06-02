@@ -4,21 +4,21 @@ Python容器：列表 []
 
 容器是对专门用来装其它对象的数据类型的统称。在Python中，有四种最常见的内建容器类型：列表（list）、元组（tuple）、字典（dict）和集合（set）。Python语言内部实现细节也与这些容器息息相关。比如Python的类实例属性、全局变量globals()等都是通过字典类型来存储的。
 
-* 列表 list []
+- 列表 list []
 
-* 有序的
+- 有序的
 
-* 索引取值
+- 索引取值
 
-* 索引改值
+- 索引改值
 
-* 切片
+- 切片
 
-* 可变的
+- 可变的
 
-* 可迭代的
+- 可迭代的
 
-* 列表的方法
+- 列表的方法
 
 .. code-block:: python
 
@@ -28,7 +28,7 @@ Python容器：列表 []
     ['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__delslice__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__setslice__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
     >>>
 
-* 列表解包
+- 列表解包
 
 .. code-block:: python
 
@@ -174,7 +174,7 @@ Python容器：列表 []
     1000
     >>>
 
-* 列表推导
+- 列表推导
 
 .. code-block:: python
 

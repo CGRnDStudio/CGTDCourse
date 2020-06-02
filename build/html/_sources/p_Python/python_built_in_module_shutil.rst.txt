@@ -2,7 +2,8 @@
 Python内置模块：shutil
 =============================
 
-模块属性和方法
+.. code-block:: python
 
-shutil.copy()
-shutil.copy2()
+    shutil.copy()
+    shutil.copy2()
+    shutil.rmtree()

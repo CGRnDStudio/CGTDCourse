@@ -134,21 +134,6 @@ os.path.splitext(path)
 
     # print l
 
-sys
-
-shutil
-
-时间模块time&datetime
-
-
-
-True > true
-False > false
-None > null
-
-字符串方法
-decode
-encode
 
 python中默认编码是unicode
 s1.decode(“gb2312”) 将gb2312编码的字符串转换成unicode
@@ -161,51 +146,6 @@ u = urlopen(网址)
 resp = json.loads(u.read().decode("utf-8"))
 from pprint import pprint
 pprint(resp)
-
-https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html
-
-pprint
-from pprint import pprint
-import sys
-pprint(sys.path)
-
-
-logging
-
-.. code-block:: python
-
-    import logging
-
-    def main():
-        logging.basicConfig(
-            filename="app.log",
-            level=logging.ERROR
-        )
-        hostname = "www.python.org"
-        item = "spam"
-        filename = "data.csv"
-        mode = "r"
-
-        logging.critical("Host %s unknown", hostname)
-        logging.error("Couldn't find %r", item)
-        logging.warning("Feature is deprecated")
-        logging.info("Opening file %r, mode=%r", filename, mode)
-        logging.debug("Got here")
-
-    if __name__ == "__main__":
-        main()
-
-level是一个过滤器，critical error warning info debug代表不同的严重级别
-
-.. code-block:: python
-
-    logging.basicConfig(
-        filename="app.log",
-        level=logging.WARNING,
-        format="%(levelname)s:%(asctime)s:%(message)s"
-    )
-
-https://docs.python.org/3/howto/logging-cookbook.html
 
 核心问题：import语法
 
@@ -234,80 +174,8 @@ https://docs.python.org/3/howto/logging-cookbook.html
     os.path.join()
     os.path.normpath()
 
-sys.path
 
 shutil
 shutil.copy()
 shutil.copy2()
 shutil.rmtree()
-re 正则表达式模块
-
-import glob
-#############################
-
-正则表达式模块re
-
-.. code-block:: python
-
-    import re
-    from pprint import pprint
-
-    files = ["tank_1_color_v0.rat",
-            "tank_2_color_v5.rat",
-            "tank_1_color_v3.rat",
-            "tank_3_color_v1.rat",
-            "tank_4_color_v2.rat",
-            "tank_4_color_v4.rat",
-            "tank_5_color_v1.rat",
-            "tank_6_color_v6.rat"]
-
-    pat_num = re.compile("\D+_(\d+)_")
-    pat_ver = re.compile("(\d+)\D+$")
-
-    def sorter_num(elem):
-        res = re.search(pat_num, elem)
-        return res.groups()[0]
-
-    def sorter_ver(elem):
-        res = re.search(pat_ver, elem)
-        return res.groups()[0]
-
-    # pprint(sorted(files, key=sorter_num))
-    pprint(sorted(files, key=sorter_ver))
-
-日历模块calendar
-
-.. code-block:: python
-
-    import calendar
-
-    for i in range(1, 13):
-        print(calendar.month_name[i])
-
-    import calendar
-
-    d={}
-    for i in range(1, 13):
-        d[calendar.month_name[i]] = i
-
-    print(d)
-
-    import calendar
-    from pprint import pprint
-    s2 = "February January  May October August September April  November July March December"
-
-    d = {}
-    for i in range(1, 13):
-        d[calendar.month_name[i]] = i
-        
-    def sorter(elem):
-        return d[elem]
-
-    pprint(sorted(s2.split(), key=sorter))
-
-    import calendar
-    month_names = [calendar.month_name[i] for i in range(1, 13)]
-    print(month_names)
-    print(sorted(s2.split(), key=month_names.index))
-
-邮件模块
