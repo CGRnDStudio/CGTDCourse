@@ -7,7 +7,6 @@ CG软件中在哪里可以执行代码?
 学习print()函数
 独立环境如何执行代码?
 
-坐井观天：本节知识点
 ❏独立执行环境
 ❏DCC软件中的执行环境
 ❏IDE中的执行环境
@@ -16,7 +15,6 @@ CG软件中在哪里可以执行代码?
 ❏转义字符
 ❏注释
 
-管中窥豹：延伸阅读
 ❏VS Code安装、配置以及使用 下载地址： https://code.visualstudio.com/
 ❏Python 2.7.15安装 下载地址： https://www.python.org/downloads/
 ❏Git管理代码库 Git下载地址： https://git-scm.com/downloads
@@ -124,15 +122,18 @@ Notepad++
 - Gitlab创建私有代码仓库
 - Gitlab Release版本
 - Git最常用的操作指令
-git clone URL
-git config --global user.name "Your Name"
-git config --global user.email "Your Email"
-git status
-gitk
-git add .
-git commit -m "Your Comment" -a
-git push origin master
-git pull origin master
+
+.. code-block:: python
+
+    git clone URL
+    git config --global user.name "Your Name"
+    git config --global user.email "Your Email"
+    git status
+    gitk
+    git add .
+    git commit -m "Your Comment" -a
+    git push origin master
+    git pull origin master
 
 
 - TortoiseGit界面化提交代码
@@ -171,8 +172,6 @@ jupyter notebook
 IPython
 help()
 cls
-import sys
-help(sys)
 
 .. code-block:: python
 
@@ -388,30 +387,3 @@ Tab 代码缩进
 多行注释
 """
 """
-
-In [10]: import os
-
-In [11]: print(os.__file__)
-c:\python27\lib\os.pyc
-
-In [12]: print(os.__doc__)
-
-In [13]: print(help(os))
-
-docstring规范
-都是以三引号的字符串
-自定义模块在开始
-自定义函数def之后
-自定义class之后
-
-.. code-block:: python
-
-    def sceneViewer():
-        """ Returns an existing open Scene Viewer pane if there is one. A
-            Context viewer is also acceptable is no dedicated scene viewer
-            is found.
-        """
-
-如何将docstring转成html文档？
-os中为什么有些方法找不见？
-sys是一个built-in module，何为内置模块？

@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Clarisse Python开发环境 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Katana" href="../parts/Katana.html" />
+    <link rel="prev" title="Clarisse Python开发界面" href="clarisse_gui.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="clarisse_gui.html">Clarisse Python开发界面</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Clarisse Python开发环境</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE.html">UE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Clarisse.html">Clarisse</a> &raquo;</li>
+        
+      <li>Clarisse Python开发环境</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Clarisse/clarisse_python.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clarisse-python">
+<h1>Clarisse Python开发环境<a class="headerlink" href="#clarisse-python" title="永久链接至标题">¶</a></h1>
+<p>在Clarisse测试Python代码需要打开Script Editor和Log两个面板，Log面板中将会获取一些反馈结果。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ix</span><span class="p">))</span>
+<span class="c1"># &lt;type &#39;module&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">ix</span><span class="p">))</span>
+<span class="c1"># [&#39;ApplicationSelection&#39;, &#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;_get_of_object&#39;, &#39;add_attribute&#39;, &#39;api&#39;, &#39;application&#39;, &#39;begin_command_batch&#39;, &#39;check_need_save&#39;, &#39;cmds&#39;, &#39;create_context&#39;, &#39;create_generic_object&#39;, &#39;create_object&#39;, &#39;delete_item&#39;, &#39;disable_command_history&#39;, &#39;disable_echo_command&#39;, &#39;enable_command_history&#39;, &#39;enable_echo_command&#39;, &#39;end_command_batch&#39;, &#39;export_context_as_project&#39;, &#39;export_geometries&#39;, &#39;export_geometry&#39;, &#39;export_render_archive&#39;, &#39;get_current_context&#39;, &#39;get_current_frame&#39;, &#39;get_item&#39;, &#39;import_geometries&#39;, &#39;import_geometry&#39;, &#39;import_image&#39;, &#39;import_images&#39;, &#39;import_map_file&#39;, &#39;import_map_files&#39;, &#39;import_project&#39;, &#39;import_scene&#39;, &#39;import_volume&#39;, &#39;import_volumes&#39;, &#39;inspect&#39;, &#39;is_context_exists&#39;, &#39;is_gui_application&#39;, &#39;is_interactive_application&#39;, &#39;is_process_application&#39;, &#39;item_exists&#39;, &#39;ix&#39;, &#39;load_project&#39;, &#39;log_error&#39;, &#39;log_info&#39;, &#39;log_warning&#39;, &#39;make_absolute_of_path&#39;, &#39;os&#39;, &#39;reference_export_context&#39;, &#39;reference_file&#39;, &#39;reference_make_local&#39;, &#39;render_image&#39;, &#39;save_bmp&#39;, &#39;save_exr16&#39;, &#39;save_exr32&#39;, &#39;save_image&#39;, &#39;save_jpg&#39;, &#39;save_png16&#39;, &#39;save_png8&#39;, &#39;save_project&#39;, &#39;save_tga&#39;, &#39;save_tif16&#39;, &#39;save_tif32&#39;, &#39;save_tif8&#39;, &#39;selection&#39;, &#39;set_current_context&#39;, &#39;set_current_frame&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">ix</span><span class="o">.</span><span class="n">selection</span><span class="p">))</span>
+<span class="c1"># [&#39;__doc__&#39;, &#39;__getitem__&#39;, &#39;__module__&#39;, &#39;add&#39;, &#39;deselect_all&#39;, &#39;get&#39;, &#39;get_contexts&#39;, &#39;get_count&#39;, &#39;get_objects&#39;, &#39;is_empty&#39;, &#39;select&#39;, &#39;select_all&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ix</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">get_count</span><span class="p">())</span>
+<span class="c1"># 获取当前选择物体的个数</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ix</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">get_count</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ix</span><span class="o">.</span><span class="n">selection</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Clarisse API文档在help&gt;Contents&gt;Reference&gt;Scripting/API中，因为是从C++ API封装而来，大部分还是要看C++文档来写对应的Python代码。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ix</span><span class="o">.</span><span class="n">selection</span><span class="o">.</span><span class="n">get_count</span><span class="p">()):</span>
+    <span class="n">sel</span> <span class="o">=</span> <span class="n">ix</span><span class="o">.</span><span class="n">selection</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">sel</span><span class="o">.</span><span class="n">is_kindof</span><span class="p">(</span><span class="s2">&quot;GeometryBox&quot;</span><span class="p">):</span>
+        <span class="n">sel</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">sel</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">sel</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">scale</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ix</span><span class="o">.</span><span class="n">selection</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ix</span><span class="o">.</span><span class="n">cmds</span><span class="o">.</span><span class="n">CreateObject</span><span class="p">(</span><span class="s2">&quot;box&quot;</span><span class="p">,</span> <span class="s2">&quot;GeometryBox&quot;</span><span class="p">,</span> <span class="s2">&quot;Global&quot;</span><span class="p">,</span> <span class="s2">&quot;project://scene&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../parts/Katana.html" class="btn btn-neutral float-right" title="Katana" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="clarisse_gui.html" class="btn btn-neutral float-left" title="Clarisse Python开发界面" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

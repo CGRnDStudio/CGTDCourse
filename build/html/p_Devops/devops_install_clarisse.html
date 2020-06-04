@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>软件安装：Clarisse &mdash; CG TD Pipeline 1.0.3 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="软件安装：Katana" href="devops_install_katana.html" />
+    <link rel="prev" title="FFmpeg批量转码工具" href="devops_ffmpeg_codec.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Devops.html">Devops</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="devops_ad_domain.html">Windows AD域组策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_c_drive_space.html">C盘空间清理几个方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_chrome_switchomega.html">谷歌浏览器代理插件SwithyOmega</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_confluence.html">Confluence文档服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_gitlab.html">Gitlab代码仓库服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_jira.html">Jira项目跟踪服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_jupyterlab.html">JupyterLab在线代码开发环境搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_kms.html">KMS服务器搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_rocket_chat.html">Rocket.Chat免费聊天工具部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_seafile.html">Seafile文件同步服务器部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_squid.html">Squid代理服务器搭建</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_deploy_system.html">U盘重装Win10操作系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_ffmpeg_codec.html">FFmpeg批量转码工具</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">软件安装：Clarisse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_install_katana.html">软件安装：Katana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_install_marvelous_designer.html">软件安装：Marvelous Designer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_install_unreal_engine.html">软件安装：Unreal Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_install_zbrush.html">软件安装：ZBrush</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_intranet_penetration.html">花生壳内网穿透技术解析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_mklink.html">mklink符号链接技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_office_mail.html">WPS Office、Foxmail办公软件推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_onedrive.html">OneDrive协同办公流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_pip_manual.html">pip命令使用手册</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_raid.html">NAS RAID技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_readthedocs_sphinx_github.html">ReadTheDocs+Sphinx+Github搭建托管文档环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_remote_oracle.html">Win10远程桌面出现身份验证错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_remove_cd_driver.html">移除CD驱动器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_renderbus_proxy.html">RenderBus客户端配置Sock5代理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_rst_syntax.html">reStructuredText(rst)语法说明文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_shell.html">Shell技术</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_software.html">中小型企业好用的软件推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_traceroute.html">路由跟踪指令traceroute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_wiki.html">维基百科镜像</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE.html">UE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Devops.html">Devops</a> &raquo;</li>
+        
+      <li>软件安装：Clarisse</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Devops/devops_install_clarisse.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="clarisse">
+<h1>软件安装：Clarisse<a class="headerlink" href="#clarisse" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>选择isotropix_clarisse_ifx_3.0_win64.exe，右键以管理员身份运行。</p></li>
+<li><p>一直Next傻瓜式安装，遇到python安装可以先不安装（如果安装过python27的话）。</p></li>
+<li><p>修改配置文件C:Program FilesIsotropixClarisse iFX 3.0Clarisseclarisse.env</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PYTHONHOME</span><span class="o">=</span><span class="n">C</span><span class="p">:</span>\<span class="n">Python27</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="devops_install_katana.html" class="btn btn-neutral float-right" title="软件安装：Katana" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="devops_ffmpeg_codec.html" class="btn btn-neutral float-left" title="FFmpeg批量转码工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

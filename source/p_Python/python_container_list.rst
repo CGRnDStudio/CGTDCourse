@@ -290,7 +290,7 @@ Python容器：列表 []
     #
     new_env = {'HOUDINI_PATH': '/mnt/share/repos/hou', 'EDITOR': 'vim', 'TEMP': 'C:/TMP'}
     # for k,v in os.environ.items():
-    # 	print k,v
+    #     print k,v
 
 
     # os.environ.update(new_env)

@@ -53,7 +53,7 @@ path = "~/maya/2018/maya.env"
 os.path.expanduser(path)
 os.path.splitext(path)
 
-尽可能使用os.path来操作文件路径的问题，最好不要使用字符串来构造自己的代码，主要是为了代码的可移植性，它可以很好的处理linux mac以及windows文件路径的差异
+尽可能使用os.path来操作文件路径的问题，最好不要使用字符串来构造自己的代码，主要是为了代码的可移植性，它可以很好的处理linux、mac以及windows文件路径的差异
 
 .. code-block:: python
 
@@ -147,8 +147,6 @@ resp = json.loads(u.read().decode("utf-8"))
 from pprint import pprint
 pprint(resp)
 
-核心问题：import语法
-
 .. code-block:: python
 
     import os
@@ -173,9 +171,3 @@ pprint(resp)
     os.path.splitdrive()
     os.path.join()
     os.path.normpath()
-
-
-shutil
-shutil.copy()
-shutil.copy2()
-shutil.rmtree()

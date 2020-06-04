@@ -162,6 +162,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE.html">UE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
 </ul>
 
@@ -273,7 +276,7 @@ os.path.join(“tmp”, “data”, os.path.basename(path))
 path = “~/maya/2018/maya.env”
 os.path.expanduser(path)
 os.path.splitext(path)</p>
-<p>尽可能使用os.path来操作文件路径的问题，最好不要使用字符串来构造自己的代码，主要是为了代码的可移植性，它可以很好的处理linux mac以及windows文件路径的差异</p>
+<p>尽可能使用os.path来操作文件路径的问题，最好不要使用字符串来构造自己的代码，主要是为了代码的可移植性，它可以很好的处理linux、mac以及windows文件路径的差异</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.7</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
@@ -359,7 +362,6 @@ u = urlopen(网址)
 resp = json.loads(u.read().decode(“utf-8”))
 from pprint import pprint
 pprint(resp)</p>
-<p>核心问题：import语法</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
@@ -384,10 +386,6 @@ pprint(resp)</p>
 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>shutil
-shutil.copy()
-shutil.copy2()
-shutil.rmtree()</p>
 </div>
 
 

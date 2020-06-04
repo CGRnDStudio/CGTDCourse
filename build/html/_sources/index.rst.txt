@@ -23,4 +23,7 @@ CG TD Pipeline's documentation
    parts/Linux
    parts/SQL
    parts/Devops
+   parts/Clarisse
+   parts/Katana
+   parts/UE
    reference

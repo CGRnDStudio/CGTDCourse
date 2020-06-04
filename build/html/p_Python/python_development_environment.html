@@ -162,6 +162,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE.html">UE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
 </ul>
 
@@ -235,16 +238,14 @@
 CG软件中在哪里可以执行代码?
 学习print()函数
 独立环境如何执行代码?</p>
-<p>坐井观天：本节知识点
-❏独立执行环境
+<p>❏独立执行环境
 ❏DCC软件中的执行环境
 ❏IDE中的执行环境
 ❏print函数
 ❏关键字
 ❏转义字符
 ❏注释</p>
-<p>管中窥豹：延伸阅读
-❏VS Code安装、配置以及使用 下载地址： <a class="reference external" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>
+<p>❏VS Code安装、配置以及使用 下载地址： <a class="reference external" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>
 ❏Python 2.7.15安装 下载地址： <a class="reference external" href="https://www.python.org/downloads/">https://www.python.org/downloads/</a>
 ❏Git管理代码库 Git下载地址： <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>
 ❏TortoiseGit 下载地址： <a class="reference external" href="https://tortoisegit.org/">https://tortoisegit.org/</a>
@@ -337,16 +338,18 @@ Notepad++
 - Github &amp; Gitlab
 - Gitlab创建私有代码仓库
 - Gitlab Release版本
-- Git最常用的操作指令
-git clone URL
-git config –global user.name “Your Name”
-git config –global user.email “Your Email”
-git status
-gitk
-git add .
-git commit -m “Your Comment” -a
-git push origin master
-git pull origin master</p>
+- Git最常用的操作指令</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">URL</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;Your Name&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="s2">&quot;Your Email&quot;</span>
+<span class="n">git</span> <span class="n">status</span>
+<span class="n">gitk</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Your Comment&quot;</span> <span class="o">-</span><span class="n">a</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p>TortoiseGit界面化提交代码</p></li>
 <li><p>Github拉取代码并使用</p></li>
@@ -377,9 +380,7 @@ Path环境变量</p>
 jupyter notebook
 IPython
 help()
-cls
-import sys
-help(sys)</p>
+cls</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a is int&quot;</span><span class="p">)</span>
@@ -549,26 +550,6 @@ Tab 代码缩进
 多行注释
 “””
 “””</p>
-<p>In [10]: import os</p>
-<p>In [11]: print(os.__file__)
-c:python27libos.pyc</p>
-<p>In [12]: print(os.__doc__)</p>
-<p>In [13]: print(help(os))</p>
-<p>docstring规范
-都是以三引号的字符串
-自定义模块在开始
-自定义函数def之后
-自定义class之后</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sceneViewer</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot; Returns an existing open Scene Viewer pane if there is one. A</span>
-<span class="sd">        Context viewer is also acceptable is no dedicated scene viewer</span>
-<span class="sd">        is found.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-</pre></div>
-</div>
-<p>如何将docstring转成html文档？
-os中为什么有些方法找不见？
-sys是一个built-in module，何为内置模块？</p>
 </div>
 
 
