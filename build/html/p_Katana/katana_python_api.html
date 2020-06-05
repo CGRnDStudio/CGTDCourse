@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Katana Python开发文档 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Katana Python开发环境" href="katana_python_env.html" />
+    <link rel="prev" title="Katana自定义工具架工具" href="katana_custom_shelf.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Katana.html">Katana</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="katana_custom_shelf.html">Katana自定义工具架工具</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Katana Python开发文档</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="katana_python_env.html">Katana Python开发环境</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE.html">UE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Katana.html">Katana</a> &raquo;</li>
+        
+      <li>Katana Python开发文档</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Katana/katana_python_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="katana-python">
+<h1>Katana Python开发文档<a class="headerlink" href="#katana-python" title="永久链接至标题">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Katana</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">Katana</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">Katana</span><span class="p">))</span>
+<span class="c1"># &lt;type &#39;module&#39;&gt;</span>
+<span class="c1"># [&#39;AssetAPI&#39;, &#39;AssetBrowser&#39;, &#39;AttrDump&#39;, &#39;BezierModule&#39;, &#39;CEL&#39;, &#39;CacheManager&#39;, &#39;Callbacks&#39;, &#39;CatalogAPI&#39;, &#39;CatalogManager&#39;, &#39;ChildProcess&#39;, &#39;ColorPaletteManager&#39;, &#39;ColorUtils&#39;, &#39;Configuration&#39;, &#39;Decorators&#39;, &#39;Documentation&#39;, &#39;DrawingModule&#39;, &#39;EnvUtils&#39;, &#39;ExpressionMath&#39;, &#39;FaceSelectionManager&#39;, &#39;FarmAPI&#39;, &#39;FarmManager&#39;, &#39;FileUtils&#39;, &#39;FnAttribute&#39;, &#39;FnGeolib&#39;, &#39;FnGeolibServices&#39;, &#39;FnKatImport&#39;, &#39;FormMaster&#39;, &#39;GeoAPI&#39;, &#39;Hints&#39;, &#39;Imath&#39;, &#39;Initialize&#39;, &#39;KatanaFeatures&#39;, &#39;KatanaFile&#39;, &#39;KatanaPrefs&#39;, &#39;KatanaResources&#39;, &#39;LayeredMenuAPI&#39;, &#39;LensDistortUtils&#39;, &#39;LiveRenderAPI&#39;, &#39;LogGLHandlers&#39;, &#39;LogGLHandlersOldLevel&#39;, &#39;LookFileBakeAPI&#39;, &#39;MachineInfo&#39;, &#39;Manifest&#39;, &#39;MediaCache&#39;, &#39;MediaCacheHandler&#39;, &#39;Naming&#39;, &#39;NodeDebugOutput&#39;, &#39;NodeGraphView&#39;, &#39;NodeMaster&#39;, &#39;NodegraphAPI&#39;, &#39;Nodes2DAPI&#39;, &#39;Nodes3DAPI&#39;, &#39;NonUIPluginManager&#39;, &#39;OCIO&#39;, &#39;OpenEXR&#39;, &#39;OpenGL&#39;, &#39;PluginSystemAPI&#39;, &#39;Plugins&#39;, &#39;PrefNames&#39;, &#39;PyFCurve&#39;, &#39;PyRerenderEventMapper&#39;, &#39;PyScenegraphAttr&#39;, &#39;PyXmlIO&#39;, &#39;QT4Browser&#39;, &#39;QT4Color&#39;, &#39;QT4FormWidgets&#39;, &#39;QT4GLLayerStack&#39;, &#39;QT4Panels&#39;, &#39;QT4Widgets&#39;, &#39;QTFCurve&#39;, &#39;Qt&#39;, &#39;QtCore&#39;, &#39;QtDesigner&#39;, &#39;QtGui&#39;, &#39;QtMultimedia&#39;, &#39;QtNetwork&#39;, &#39;QtOpenGL&#39;, &#39;QtSql&#39;, &#39;QtSvg&#39;, &#39;QtTest&#39;, &#39;QtWidgets&#39;, &#39;QtXml&#39;, &#39;QtXmlPatterns&#39;, &#39;RegisterToCamera&#39;, &#39;RenderManager&#39;, &#39;RenderingAPI&#39;, &#39;RerenderEventMapper&#39;, &#39;ResolutionTable&#39;, &#39;ResourceFiles&#39;, &#39;ScenegraphAttr&#39;, &#39;ScenegraphBookmarkManager&#39;, &#39;ScenegraphManager&#39;, &#39;Shelves&#39;, &#39;StartupScripts&#39;, &#39;SuperToolPlugins&#39;, &#39;UI4&#39;, &#39;UndoEntries&#39;, &#39;UniqueName&#39;, &#39;UserNodes&#39;, &#39;Utils&#39;, &#39;Vecmath&#39;, &#39;ViewerAPI&#39;, &#39;VirtualKatana&#39;, &#39;Widgets&#39;, &#39;WorkQueue&#39;, &#39;WorkingSet&#39;, &#39;WorkingSetClient&#39;, &#39;WorkingSetManager&#39;, &#39;__builtins__&#39;, &#39;__path__&#39;, &#39;binascii&#39;, &#39;cStringIO&#39;, &#39;copy&#39;, &#39;ctypes&#39;, &#39;datetime&#39;, &#39;enum&#39;, &#39;fnmatch&#39;, &#39;gc&#39;, &#39;glob&#39;, &#39;hotshot&#39;, &#39;itertools&#39;, &#39;logging&#39;, &#39;math&#39;, &#39;multiprocessing&#39;, &#39;operator&#39;, &#39;os&#39;, &#39;pprint&#39;, &#39;re&#39;, &#39;select&#39;, &#39;shutil&#39;, &#39;signal&#39;, &#39;socket&#39;, &#39;stat&#39;, &#39;string&#39;, &#39;struct&#39;, &#39;subprocess&#39;, &#39;sys&#39;, &#39;tempfile&#39;, &#39;thread&#39;, &#39;time&#39;, &#39;traceback&#39;, &#39;update&#39;, &#39;urllib&#39;, &#39;version&#39;, &#39;weakref&#39;, &#39;xml&#39;]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>KatanaFile：文件操作模块</p></li>
+<li><p>RenderManager：渲染输出模块</p></li>
+</ul>
+<p>源代码：C:Program FilesKatana3.5v2binpython</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">KatanaFile</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">NodegraphAPI</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">RenderManager</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+
+<span class="c1"># C:\Program Files\Katana3.5v2/bin/python\PyUtilModule\KatanaFile.pyc</span>
+<span class="c1"># C:\Program Files\Katana3.5v2/bin/python\NodegraphAPI\__init__.pyc</span>
+<span class="c1"># C:\Program Files\Katana3.5v2/bin/python\PyUtilModule\RenderManager\__init__.pyc</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">renderNode</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">GetNode</span><span class="p">(</span><span class="s2">&quot;Render&quot;</span><span class="p">)</span>
+<span class="n">renderSettings</span> <span class="o">=</span> <span class="n">RenderManager</span><span class="o">.</span><span class="n">RenderingSettings</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+    <span class="n">renderSettings</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span>
+    <span class="n">RenderManager</span><span class="o">.</span><span class="n">StartRender</span><span class="p">(</span><span class="s2">&quot;diskRender&quot;</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="n">renderNode</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">renderSettings</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://learn.foundry.com/katana/3.2/dev-guide/py-modindex.html">https://learn.foundry.com/katana/3.2/dev-guide/py-modindex.html</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="katana_python_env.html" class="btn btn-neutral float-right" title="Katana Python开发环境" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="katana_custom_shelf.html" class="btn btn-neutral float-left" title="Katana自定义工具架工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

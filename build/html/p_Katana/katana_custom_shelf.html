@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>UE &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Katana自定义工具架工具 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="SQL查询按字段打组" href="../p_UE/sql_group_by.html" />
-    <link rel="prev" title="Katana Python开发环境" href="../p_Katana/katana_python_env.html" /> 
+    <link rel="next" title="Katana Python开发文档" href="katana_python_api.html" />
+    <link rel="prev" title="Katana" href="../parts/Katana.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,24 +83,25 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Python.html">Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PyQt.html">PyQt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Git.html">Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Houdini.html">Houdini</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Maya.html">Maya</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nuke.html">Nuke</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Shotgun.html">Shotgun</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Deadline.html">Deadline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Linux.html">Linux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SQL.html">SQL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Devops.html">Devops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Clarisse.html">Clarisse</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Katana.html">Katana</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">UE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../p_UE/sql_group_by.html">SQL查询按字段打组</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../p_UE/sql_order_by.html">SQL查询按数字排序</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Katana.html">Katana</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Katana自定义工具架工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_python_api.html">Katana Python开发文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_python_env.html">Katana Python开发环境</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE.html">UE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
 </ul>
 
@@ -147,13 +148,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>UE</li>
+          <li><a href="../parts/Katana.html">Katana</a> &raquo;</li>
+        
+      <li>Katana自定义工具架工具</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/parts/UE.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Katana/katana_custom_shelf.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,16 +169,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ue">
-<h1>UE<a class="headerlink" href="#ue" title="永久链接至标题">¶</a></h1>
-<p>Unreal Engine(简称UE)。</p>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../p_UE/sql_group_by.html">SQL查询按字段打组</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../p_UE/sql_order_by.html">SQL查询按数字排序</a></li>
-</ul>
-</div>
+  <div class="section" id="katana">
+<h1>Katana自定义工具架工具<a class="headerlink" href="#katana" title="永久链接至标题">¶</a></h1>
+<p>点击齿轮菜单&gt;Add&gt;New Shelf&gt;New Item，工具架工具会存储在下面路径。</p>
+<p>C:Users&lt;USERNAME&gt;.katanaShelves</p>
 </div>
 
 
@@ -186,10 +183,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../p_UE/sql_group_by.html" class="btn btn-neutral float-right" title="SQL查询按字段打组" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="katana_python_api.html" class="btn btn-neutral float-right" title="Katana Python开发文档" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../p_Katana/katana_python_env.html" class="btn btn-neutral float-left" title="Katana Python开发环境" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../parts/Katana.html" class="btn btn-neutral float-left" title="Katana" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
