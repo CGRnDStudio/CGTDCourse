@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SQL查询按数字排序 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Katana Python开发环境 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="UE" href="../parts/UE.html" />
-    <link rel="prev" title="SQL查询按字段打组" href="sql_group_by.html" /> 
+    <link rel="prev" title="Katana" href="../parts/Katana.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,8 +96,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Katana.html">Katana</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sql_group_by.html">SQL查询按字段打组</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">SQL查询按数字排序</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Katana Python开发环境</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/UE.html">UE</a></li>
@@ -149,13 +151,13 @@
         
           <li><a href="../parts/Katana.html">Katana</a> &raquo;</li>
         
-      <li>SQL查询按数字排序</li>
+      <li>Katana Python开发环境</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Katana/sql_order_by.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Katana/katana_python.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,11 +170,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sql">
-<h1>SQL查询按数字排序<a class="headerlink" href="#sql" title="永久链接至标题">¶</a></h1>
-<p>这里要特别注意如果字段是字符串类型的数字，需要转换int类型再做排序，不然会出问题。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">version_number</span> <span class="n">FROM</span> <span class="n">publishedfile</span> <span class="n">WHERE</span> <span class="n">task__id</span> <span class="o">=</span> <span class="mi">11086</span> <span class="ow">and</span> <span class="n">_active</span> <span class="o">=</span> <span class="s1">&#39;t&#39;</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">CAST</span><span class="p">(</span><span class="n">version_number</span> <span class="n">AS</span> <span class="nb">int</span><span class="p">)</span>
+  <div class="section" id="katana-python">
+<h1>Katana Python开发环境<a class="headerlink" href="#katana-python" title="永久链接至标题">¶</a></h1>
+<p>Katana中支持三种语言编程：Python，Lua和C++。Python应用于工作流非常方便，Lua用于OpScript节点。</p>
+<p>Katana中选择菜单Tabs&gt;Python即可打开Katana脚本编辑器。</p>
+<p>API文档在Help&gt;API Reference&gt;Python APIs。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">KatanaFile</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">KatanaFile</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">KatanaFile</span><span class="p">))</span>
+<span class="c1"># C:\Program Files\Katana3.5v2/bin/python\PyUtilModule\KatanaFile.pyc</span>
+<span class="c1"># &lt;type &#39;module&#39;&gt;</span>
+<span class="c1"># [&#39;AllowFileOverwrite&#39;, &#39;AssetAPI&#39;, &#39;Callbacks&#39;, &#39;Configuration&#39;, &#39;CrashSave&#39;, &#39;CrashSaveDisable&#39;, &#39;CrashSaveEnable&#39;, &#39;CreateSceneAsset&#39;, &#39;Export&#39;, &#39;FileUtils&#39;, &#39;GetCrashActions&#39;, &#39;GetCrashTime&#39;, &#39;GetKatanaXMLElement&#39;, &#39;GetNextCrashFileName&#39;, &#39;GetViableCrashFiles&#39;, &#39;Import&#39;, &#39;IsFileDirty&#39;, &#39;IsFileSavedAsAsset&#39;, &#39;Load&#39;, &#39;MAX_CRASH_FILES&#39;, &#39;New&#39;, &#39;NodegraphAPI&#39;, &#39;Nodes2DAPI&#39;, &#39;Nodes3DAPI&#39;, &#39;Paste&#39;, &#39;PopFileDirtyState&#39;, &#39;PostCreateSceneAsset&#39;, &#39;PushFileDirtyState&#39;, &#39;RegisterPasteHandler&#39;, &#39;Revert&#39;, &#39;Save&#39;, &#39;ScenegraphBookmarkManager&#39;, &#39;SetFileDirty&#39;, &#39;UndoEntries&#39;, &#39;Utils&#39;, &#39;WasFileLoadedFromCrashFile&#39;, &#39;WasFileVersionedOnLoad&#39;, &#39;_CleanupRenderNodes&#39;, &#39;_ContainsModifiedLiveGroupNodes&#39;, &#39;_CrashActions&#39;, &#39;_CrashDisable&#39;, &#39;_CrashFilePreviouslySaved&#39;, &#39;_CrashHandlerUndoCB&#39;, &#39;_CrashIndex&#39;, &#39;_CrashSaveImpl&#39;, &#39;_EvaluateFilename&#39;, &#39;_ExportNodesToFile&#39;, &#39;_FileDirty&#39;, &#39;_FileDirtyStates&#39;, &#39;_FileLoadedFromCrashFile&#39;, &#39;_FileVersionedOnLoad&#39;, &#39;_FindRenderNodes&#39;, &#39;_LastCrashSave&#39;, &#39;_RestoreFileDirty&#39;, &#39;_SaveAndPublish&#39;, &#39;_SaveFile&#39;, &#39;_SaveFileDirty&#39;, &#39;_SetKatanaSceneNameAndSourceFile&#39;, &#39;__PasteHandlers&#39;, &#39;__all__&#39;, &#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;log&#39;, &#39;logging&#39;, &#39;operator&#39;, &#39;os&#39;, &#39;stat&#39;, &#39;time&#39;, &#39;xml&#39;]</span>
 </pre></div>
+</div>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://learn.foundry.com/katana/3.5/dev-guide/index.html">https://learn.foundry.com/katana/3.5/dev-guide/index.html</a></p></li>
+<li><p><a class="reference external" href="https://support.foundry.com/hc/zh-cn/articles/360001288699-Q100443-Katana%E4%B8%AD%E7%9A%84%E8%84%9A%E6%9C%AC%E5%92%8C%E7%BC%96%E7%A8%8B">https://support.foundry.com/hc/zh-cn/articles/360001288699-Q100443-Katana%E4%B8%AD%E7%9A%84%E8%84%9A%E6%9C%AC%E5%92%8C%E7%BC%96%E7%A8%8B</a></p></li>
+</ul>
 </div>
 </div>
 
@@ -187,7 +203,7 @@
         <a href="../parts/UE.html" class="btn btn-neutral float-right" title="UE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sql_group_by.html" class="btn btn-neutral float-left" title="SQL查询按字段打组" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../parts/Katana.html" class="btn btn-neutral float-left" title="Katana" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

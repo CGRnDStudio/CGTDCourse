@@ -4,6 +4,8 @@ Clarisse Python开发环境
 
 在Clarisse测试Python代码需要打开Script Editor和Log两个面板，Log面板中将会获取一些反馈结果。
 
+或者选择菜单Layout>Presets>Scripting Workshop即可。
+
 .. code-block:: python
 
     print(type(ix))
