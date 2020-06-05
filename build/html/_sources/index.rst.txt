@@ -25,5 +25,5 @@ CG TD Pipeline's documentation
    parts/Devops
    parts/Clarisse
    parts/Katana
-   parts/UE
+   parts/UE4
    reference

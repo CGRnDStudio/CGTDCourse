@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SQL查询按数字排序 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>UE4与C++ &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -37,7 +37,7 @@
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="后记" href="../reference.html" />
-    <link rel="prev" title="SQL查询按字段打组" href="sql_group_by.html" /> 
+    <link rel="prev" title="UE4" href="../parts/UE4.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,9 +96,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../parts/UE.html">UE</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sql_group_by.html">SQL查询按字段打组</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">SQL查询按数字排序</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/UE4.html">UE4</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UE4与C++</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
@@ -147,15 +146,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../parts/UE.html">UE</a> &raquo;</li>
+          <li><a href="../parts/UE4.html">UE4</a> &raquo;</li>
         
-      <li>SQL查询按数字排序</li>
+      <li>UE4与C++</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_UE/sql_order_by.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_UE4/ue4_c++.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,12 +167,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sql">
-<h1>SQL查询按数字排序<a class="headerlink" href="#sql" title="永久链接至标题">¶</a></h1>
-<p>这里要特别注意如果字段是字符串类型的数字，需要转换int类型再做排序，不然会出问题。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">version_number</span> <span class="n">FROM</span> <span class="n">publishedfile</span> <span class="n">WHERE</span> <span class="n">task__id</span> <span class="o">=</span> <span class="mi">11086</span> <span class="ow">and</span> <span class="n">_active</span> <span class="o">=</span> <span class="s1">&#39;t&#39;</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">CAST</span><span class="p">(</span><span class="n">version_number</span> <span class="n">AS</span> <span class="nb">int</span><span class="p">)</span>
-</pre></div>
-</div>
+  <div class="section" id="ue4c">
+<h1>UE4与C++<a class="headerlink" href="#ue4c" title="永久链接至标题">¶</a></h1>
 </div>
 
 
@@ -187,7 +182,7 @@
         <a href="../reference.html" class="btn btn-neutral float-right" title="后记" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sql_group_by.html" class="btn btn-neutral float-left" title="SQL查询按字段打组" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../parts/UE4.html" class="btn btn-neutral float-left" title="UE4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
