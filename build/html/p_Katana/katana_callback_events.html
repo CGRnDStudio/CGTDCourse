@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Katana自定义工具架工具 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Katana回调事件处理机制 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Katana Python开发文档" href="katana_python_api.html" />
-    <link rel="prev" title="Katana回调事件处理机制" href="katana_callback_events.html" /> 
+    <link rel="next" title="Katana自定义工具架工具" href="katana_custom_shelf.html" />
+    <link rel="prev" title="Katana" href="../parts/Katana.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,8 +96,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Katana.html">Katana</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="katana_callback_events.html">Katana回调事件处理机制</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Katana自定义工具架工具</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Katana回调事件处理机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_custom_shelf.html">Katana自定义工具架工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_python_api.html">Katana Python开发文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_python_env.html">Katana Python开发环境</a></li>
 </ul>
@@ -151,13 +151,13 @@
         
           <li><a href="../parts/Katana.html">Katana</a> &raquo;</li>
         
-      <li>Katana自定义工具架工具</li>
+      <li>Katana回调事件处理机制</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Katana/katana_custom_shelf.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Katana/katana_callback_events.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,9 +171,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="katana">
-<h1>Katana自定义工具架工具<a class="headerlink" href="#katana" title="永久链接至标题">¶</a></h1>
-<p>点击齿轮菜单&gt;Add&gt;New Shelf&gt;New Item，工具架工具会存储在下面路径。</p>
-<p>C:Users&lt;USERNAME&gt;.katanaShelves</p>
+<h1>Katana回调事件处理机制<a class="headerlink" href="#katana" title="永久链接至标题">¶</a></h1>
+<p>回调和事件在很多软件都是存在一种处理机制，回调是添加到Katana环境中的一段Python代码，当Katana中发生各种事件（例如创建节点或加载脚本）时，它会自动运行。事件是由于用户操作或其他来源（例如单击鼠标或按下键）而发生的操作。事件处理程序是用于处理事件的例程，允许程序员编写将在事件发生时执行的代码。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">Callbacks</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">Callbacks</span><span class="o">.</span><span class="n">Type</span><span class="p">))</span>
+<span class="c1"># [&#39;Type&#39;, &#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__doc__&#39;, &#39;__format__&#39;, &#39;__getattribute__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__module__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;addCallback&#39;, &#39;delCallback&#39;]</span>
+<span class="c1"># [&#39;__doc__&#39;, &#39;__module__&#39;, &#39;exportAsset&#39;, &#39;finalize3DNodeChanges&#39;, &#39;onGafferLightCreated&#39;, &#39;onGafferMasterMaterialCreated&#39;, &#39;onGafferRigCreated&#39;, &#39;onGafferShaderSelected&#39;, &#39;onLiveRenderCommand&#39;, &#39;onLiveRenderUpdate&#39;, &#39;onLookFileMaterialActiveSet&#39;, &#39;onLookFileMaterialSet&#39;, &#39;onMasterMaterialAssigned&#39;, &#39;onNewScene&#39;, &#39;onNodeCreate&#39;, &#39;onNodeDelete&#39;, &#39;onRenderSetup&#39;, &#39;onSceneAboutToLoad&#39;, &#39;onSceneLoad&#39;, &#39;onSceneSave&#39;, &#39;onShutdown&#39;, &#39;onStartup&#39;, &#39;onStartupComplete&#39;, &#39;onTabCreated&#39;, &#39;postLiveGroupPublish&#39;, &#39;postLookFileBake&#39;, &#39;preLiveGroupPublish&#39;, &#39;preLookFileBake&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sayHello</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">Callbacks</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">Callbacks</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">onSceneLoad</span><span class="p">,</span> <span class="n">sayHello</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -184,10 +196,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="katana_python_api.html" class="btn btn-neutral float-right" title="Katana Python开发文档" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="katana_custom_shelf.html" class="btn btn-neutral float-right" title="Katana自定义工具架工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="katana_callback_events.html" class="btn btn-neutral float-left" title="Katana回调事件处理机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../parts/Katana.html" class="btn btn-neutral float-left" title="Katana" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
