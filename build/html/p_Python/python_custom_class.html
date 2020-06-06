@@ -234,20 +234,27 @@
             
   <div class="section" id="python">
 <h1>Python自定义类<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
+<p>自定义类的一些标识符</p>
 <ul class="simple">
+<li><p>class</p></li>
+<li><p>类命名首字母大写</p></li>
 <li><p>self</p></li>
+<li><p>__init__</p></li>
 </ul>
+<p>自定义类的语法</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-
     <span class="k">pass</span>
 </pre></div>
 </div>
-<p>类封装
-类继承
-类多态</p>
-<p>实例属性和实例方法
-类属性和类方法
-静态方法</p>
+<p>理解类的一些概念</p>
+<ul class="simple">
+<li><p>类封装</p></li>
+<li><p>类继承</p></li>
+<li><p>类多态</p></li>
+<li><p>实例属性和实例方法</p></li>
+<li><p>类属性和类方法</p></li>
+<li><p>静态方法</p></li>
+</ul>
 <p>自定义数据类型</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
@@ -383,8 +390,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>实例方法&amp;类方法&amp;静态方法
-生成器</p>
+<p>实例方法&amp;类方法&amp;静态方法</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
 
 <span class="k">def</span> <span class="nf">getAllChars</span><span class="p">():</span>
@@ -509,10 +515,12 @@
 <span class="c1"># print(rr.hits())</span>
 </pre></div>
 </div>
-<p># 类属性和类方法可以被实例对象来调用，也可以通过类名直接调用，一般是通过类名调用
-# 静态方法可以被实例对象来调用
-# 实例属性和实例方法只能通过实例对象来调用，不能通过类名直接调用
-# 静态方法和类方法的区别是类方法可能需要访问类属性，和类还有那么点关系，静态方法是访问不了任何类属性或者实例属性的</p>
+<ul class="simple">
+<li><p>类属性和类方法可以被实例对象来调用，也可以通过类名直接调用，一般是通过类名调用</p></li>
+<li><p>静态方法可以被实例对象来调用</p></li>
+<li><p>实例属性和实例方法只能通过实例对象来调用，不能通过类名直接调用</p></li>
+<li><p>静态方法和类方法的区别是类方法可能需要访问类属性，和类还有那么点关系，静态方法是访问不了任何类属性或者实例属性的</p></li>
+</ul>
 </div>
 
 
