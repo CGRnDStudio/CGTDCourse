@@ -2,7 +2,7 @@
 Maya AOV分层工具
 ==============================
 
-Arnold Python API，添加AOV
+AOV（Arbitrary Output Variables），可以通过Arnold Python API添加修改删除AOV。
 
 .. code-block:: python
 

@@ -2,25 +2,23 @@
 Maya帮助文档
 ==============================
 
-- MEL Command & Function
+Maya中编程语言分类大概有如下几种：
 
-.. code-block:: python
+- MEL类：命令、函数、表达式
+- Python类：cmds、pymel、Maya Python API 1.0、Maya Python API 2.0
+- C++类：C++ API（不阐述）
 
-    import maya.cmds as cmds
-    import maya.mel as mel
-    import pymel.core as pm
+- Script Editor
 
-- Maya Python API 1.0
-- Maya Python API 2.0
-- C++ API
+脚本编辑器可以通过菜单Windows>General Editors>Script Editor来打开，或者右下角脚本编辑器快捷按钮打开。
 
-Script Editor脚本编辑器面板用法
+脚本编辑器中可以编写MEL和Python两种脚本语言，可以通过鼠标右键热盒菜单创建与删除面板。
 
-MEL Command VS Function
+- MEL Command
 
-MEL命令基本语法 命令 参数 参数 参数 操作对象
+MEL命令基本语法：命令 -标签 -标签 -标签 操作对象;
 
-从历史记录中提取MEL命令
+从脚本编辑器的历史记录中提取MEL命令方法。
 
 help/whatIs方法
 
@@ -47,25 +45,29 @@ MEL命令的CQEM模式
     getAttr
     setAttr
 
-很多MEL函数是不在帮助文档中的
+- MEL Function
 
-global proc
+很多MEL函数是不在帮助文档中的，存在两种MEL函数，一种是global function，另一种是helper function，helper函数大多是mel文件中调用，与global函数作用域不同。
 
-两种函数 一种global function 一种helper function
+- Python
 
-Python分四种
+    - 封装MEL的伪Python代码maya.cmds
+    - 第三方更Pythonic的封装PyMEL
+    - Maya Python 1.0（封装C++ API，只有C++文档）
+    - Maya Python 2.0（封装C++ API，只有C++文档）
 
-包装MEL的maya.cmds
-包装C++ API的maya.OpenMaya 只有C++的doc
-Maya Python 1.0
-Maya Python 2.0
-import maya.api.OpenMaya as om
+cmds是官方出的一种简单封装MEL指令伪Python代码，没有按Python数据类型统一性来封装，MEL与cmds切换起来相对简单，写cmds实际就是在写MEL指令，文档中右上角可以通过MEL version或者Python version随意切换，MEL中的flag在Python中就是args。
 
-pymel
+pymel是第三方按Python统一性来封装的Python API，但是导入模块相对需要花一部分时间。
 
-打印选择的物体
+.. code-block:: python
 
-MEL强类型语言
+    import maya.cmds as cmds
+    import maya.mel as mel
+    import pymel.core as pm
+    import maya.api.OpenMaya as om
+
+MEL是一种强类型语言
 
 .. code-block:: bash
 
@@ -89,6 +91,8 @@ MEL强类型语言
     for i, sel in enumerate(sels):
         print(str(i) + " : " + sel + "\n")
 
+.. code-block:: python
+
     import maya.OpenMaya as om
 
     selslist = om.MSelectionList()
@@ -100,18 +104,15 @@ MEL强类型语言
         print(dagPath.fullPathName())
         print(dagPath.partialPathName())
         print("%d : long-name : %s" % (idx, dagPath.fullPathName()))
-    
-pymel
 
-第三方包装MEL Command的pythonic的包
-
-https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html
+第三方包装MEL的pythonic的包
 
 .. code-block:: python
 
     import pymel.core as pm
 
     sels = pm.ls()
+
     for sel in sels:
         print(sel.longName())
         print(sel.shortName())
@@ -122,9 +123,6 @@ https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html
         sel.tx.set(0)
         sel.ty.set(0)
         sel.tz.set(0)
-
-MAttribute
-MFn
 
 .. code-block:: python
 
@@ -137,12 +135,14 @@ MFn
         mobject = om.MObject()
         selsList.getDependnode(idx, mobject)
         print(mobject.apiTypeStr())
+
         if mobject.apiType() == om.MFn.kTransform:
             print("This is a transform!")
         elif mobject.apiType() == om.MFn.kMesh:
             print("This is a mesh!")
         else:
             pass
+
         fnDependNode = om.MFnDependencyNode(mobject)
         print(fnDependnode.name())
 
@@ -151,7 +151,8 @@ MFn
 ----------------------
 
 - https://vfxplatform.com/
-- https://www.youtube.com/watch?v=GiWkXufclTY&t=13s
+- https://www.youtube.com/watch?v=GiWkXufclTY
 - https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html
-- http://help.autodesk.com/view/MAYAUL/2018/CHS/
-
+- http://help.autodesk.com/view/MAYAUL/2020/CHS/
+- http://help.autodesk.com/view/MAYAUL/2020/CHS/?guid=__PyMel_index_html
+- http://help.autodesk.com/view/MAYAUL/2020/CHS/?guid=Maya_SDK_MERGED_cpp_ref_index_html
