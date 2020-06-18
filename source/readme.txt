@@ -2,3 +2,13 @@
 - [ ] docker
 - [ ] webhook
 - [ ] RestAPI
+
+- [ ] Katana Python开发
+- [ ] UE4蓝图开发
+- [ ] Houdini VEX开发
+- [ ] C4D开发
+- [ ] Nuke Studio
+- [ ] Hiero
+- [ ] Substance Painter
+- [ ] Substance Designer
+- [ ] Marvelous Designer

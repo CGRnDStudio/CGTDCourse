@@ -26,4 +26,5 @@ CG TD Pipeline's documentation
    parts/Clarisse
    parts/Katana
    parts/UE4
+   parts/C4D
    reference

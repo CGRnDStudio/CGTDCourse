@@ -124,6 +124,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/UE4.html">UE4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/C4D.html">C4D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
 </ul>
 
@@ -193,12 +194,46 @@
             
   <div class="section" id="maya-aov">
 <h1>Maya AOV分层工具<a class="headerlink" href="#maya-aov" title="永久链接至标题">¶</a></h1>
-<p>from mtoa import core, aovs</p>
-<p>aov_name = “ID”
-data_type = “int”
-new_aov = aovs.AOVInterface()
-new_aov.addAOV(aov_name, data_type)</p>
-<p>Arnold编程</p>
+<p>Arnold Python API，添加AOV</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mtoa</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mtoa</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">mtoa</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">mtoa</span><span class="p">))</span>
+
+<span class="c1"># [&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__path__&#39;, &#39;aovs&#39;, &#39;api&#39;, &#39;callbacks&#39;, &#39;cmds&#39;, &#39;convertShaders&#39;, &#39;core&#39;, &#39;denoise&#39;, &#39;hooks&#39;, &#39;licensing&#39;, &#39;lightFilters&#39;, &#39;lightManager&#39;, &#39;makeTx&#39;, &#39;melUtils&#39;, &#39;renderToTexture&#39;, &#39;txManager&#39;, &#39;ui&#39;, &#39;utils&#39;]</span>
+
+<span class="kn">from</span> <span class="nn">mtoa</span> <span class="kn">import</span> <span class="n">aovs</span>
+
+<span class="n">aovName</span> <span class="o">=</span> <span class="s2">&quot;beauty&quot;</span>
+<span class="n">newAov</span> <span class="o">=</span> <span class="n">aovs</span><span class="o">.</span><span class="n">AOVInterface</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">newAov</span><span class="p">))</span>
+
+<span class="c1"># [&#39;__class__&#39;, &#39;__delattr__&#39;, &#39;__dict__&#39;, &#39;__doc__&#39;, &#39;__format__&#39;, &#39;__getattribute__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__module__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;__weakref__&#39;, &#39;_aovAttr&#39;, &#39;_node&#39;, &#39;_removeAOVNode&#39;, &#39;addAOV&#39;, &#39;getAOVNode&#39;, &#39;getAOVNodes&#39;, &#39;getAOVs&#39;, &#39;nextAvailableAttr&#39;, &#39;node&#39;, &#39;removeAOV&#39;, &#39;removeAOVs&#39;, &#39;renameAOVs&#39;]</span>
+
+<span class="n">newAov</span><span class="o">.</span><span class="n">addAOV</span><span class="p">(</span><span class="n">aovName</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">newAov</span><span class="o">.</span><span class="n">addAOV</span><span class="p">))</span>
+
+<span class="n">Help</span> <span class="n">on</span> <span class="n">method</span> <span class="n">addAOV</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">mtoa</span><span class="o">.</span><span class="n">aovs</span><span class="p">:</span>
+
+<span class="n">addAOV</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aovName</span><span class="p">,</span> <span class="n">aovType</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aovShader</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="n">method</span> <span class="n">of</span> <span class="n">mtoa</span><span class="o">.</span><span class="n">aovs</span><span class="o">.</span><span class="n">AOVInterface</span> <span class="n">instance</span>
+    <span class="n">add</span> <span class="n">an</span> <span class="n">AOV</span> <span class="n">to</span> <span class="n">the</span> <span class="n">active</span> <span class="nb">list</span> <span class="k">for</span> <span class="n">this</span> <span class="n">AOV</span> <span class="n">node</span>
+
+    <span class="n">returns</span> <span class="n">the</span> <span class="n">created</span> <span class="n">AOV</span> <span class="n">node</span>
+
+<span class="kc">None</span>
+</pre></div>
+</div>
+<p>addAOV方法有三个形参，两个缺省参数，所以至少传入aovName，aovType和aovShader可以缺省。</p>
+<p>获取与移除AOV</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mtoa</span> <span class="kn">import</span> <span class="n">aovs</span>
+
+<span class="n">newAov</span> <span class="o">=</span> <span class="n">aovs</span><span class="o">.</span><span class="n">AOVInterface</span><span class="p">()</span>
+<span class="n">allAovs</span> <span class="o">=</span> <span class="n">newAov</span><span class="o">.</span><span class="n">getAOVs</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">allAovs</span><span class="p">)</span>
+<span class="n">newAov</span><span class="o">.</span><span class="n">removeAOVs</span><span class="p">(</span><span class="n">allAovs</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 
 

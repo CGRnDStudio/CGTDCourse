@@ -96,7 +96,10 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_environment_variables.html">Maya环境变量</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_front_render.html">Maya前台渲染脚本解决方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_globals.html">Maya插件：Yeti</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya帮助文档</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya帮助文档</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya打包工具</a></li>
@@ -124,6 +127,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/UE4.html">UE4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/C4D.html">C4D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
 </ul>
 
@@ -193,40 +197,48 @@
             
   <div class="section" id="maya">
 <h1>Maya帮助文档<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>MEL Command &amp; Function
-import maya.cmds as cmds
-import maya.mel as mel
-import pymel.core as pm
-Maya Python API 1.0
-Maya Python API 2.0
-C++ API</p>
-<p><a class="reference external" href="https://vfxplatform.com/">https://vfxplatform.com/</a></p>
-<p>打开Script Editor</p>
-<p><a class="reference external" href="https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html">https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html</a></p>
-<p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2018/CHS/">http://help.autodesk.com/view/MAYAUL/2018/CHS/</a></p>
-<p>Script Editor</p>
-<p>MEL</p>
-<p>Command VS Function</p>
+<ul class="simple">
+<li><p>MEL Command &amp; Function</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="kn">import</span> <span class="nn">maya.mel</span> <span class="k">as</span> <span class="nn">mel</span>
+<span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Maya Python API 1.0</p></li>
+<li><p>Maya Python API 2.0</p></li>
+<li><p>C++ API</p></li>
+</ul>
+<p>Script Editor脚本编辑器面板用法</p>
+<p>MEL Command VS Function</p>
 <p>MEL命令基本语法 命令 参数 参数 参数 操作对象</p>
 <p>从历史记录中提取MEL命令</p>
 <p>help/whatIs方法</p>
-<p>whatIs scale;
-whatIs polyCube;
-whatIs polySmooth;
-whatIs polyCleanupArgList;</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">whatIs</span> <span class="n">scale</span><span class="p">;</span>
+<span class="n">whatIs</span> <span class="n">polyCube</span><span class="p">;</span>
+<span class="n">whatIs</span> <span class="n">polySmooth</span><span class="p">;</span>
+<span class="n">whatIs</span> <span class="n">polyCleanupArgList</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>MEL命令的CQEM模式</p>
-<p>C 新设置某个参数数值 直接使用 move -x -y -z
-Q 获取某个参数当前数值 前面加q, 后面不加值 xform -q -bb
-E 编辑已经存在的参数 前面加e, 后面加新值 joint -e -p 0 0 0
-M 多次调用当前参数 直接重复调用参数 curve -p 0 0 0 -p 0 1 0 -p…</p>
-<p>ls
-listRelatives
-getAttr
-setAttr</p>
-<p>Command VS Function</p>
+<ul class="simple">
+<li><p>C 新设置某个参数数值 直接使用 move -x -y -z</p></li>
+<li><p>Q 获取某个参数当前数值 前面加q, 后面不加值 xform -q -bb</p></li>
+<li><p>E 编辑已经存在的参数 前面加e, 后面加新值 joint -e -p 0 0 0</p></li>
+<li><p>M 多次调用当前参数 直接重复调用参数 curve -p 0 0 0 -p 0 1 0 -p…</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">listRelatives</span>
+<span class="n">listConnections</span>
+<span class="n">listAttr</span>
+<span class="n">getAttr</span>
+<span class="n">setAttr</span>
+</pre></div>
+</div>
 <p>很多MEL函数是不在帮助文档中的</p>
 <p>global proc</p>
-<p>两种函数  一种global function 一种helper function</p>
+<p>两种函数 一种global function 一种helper function</p>
 <p>Python分四种</p>
 <p>包装MEL的maya.cmds
 包装C++ API的maya.OpenMaya 只有C++的doc
@@ -286,9 +298,6 @@ int <span class="nv">$count</span> <span class="o">=</span> <span class="m">1</s
     <span class="n">sel</span><span class="o">.</span><span class="n">tz</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>setAttr
-listAttr
-getAttr</p>
 <p>MAttribute
 MFn</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.OpenMaya</span> <span class="k">as</span> <span class="nn">om</span>
@@ -310,7 +319,15 @@ MFn</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">fnDependnode</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s">https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s</a></p>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://vfxplatform.com/">https://vfxplatform.com/</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s">https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s</a></p></li>
+<li><p><a class="reference external" href="https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html">https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html</a></p></li>
+<li><p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2018/CHS/">http://help.autodesk.com/view/MAYAUL/2018/CHS/</a></p></li>
+</ul>
+</div>
 </div>
 
 

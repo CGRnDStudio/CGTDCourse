@@ -2,10 +2,6 @@
 PyQt Designer安装与使用
 =============================
 
-------------------
-基本概况
-------------------
-
 Houdini、Maya与Nuke中内置PySide2
 
 了解PyQt的历史以及协议
@@ -53,6 +49,5 @@ loadUi
 参考文档
 ------------------
 
-《`PyQt4 Class Reference <https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html>`_》
-
-《`PyQt5 Class Reference <https://doc.bccnsoft.com/docs/PyQt5/class_reference.html>`_》
+- https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html
+- https://doc.bccnsoft.com/docs/PyQt5/class_reference.html

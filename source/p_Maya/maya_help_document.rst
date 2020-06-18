@@ -2,31 +2,21 @@
 Maya帮助文档
 ==============================
 
+- MEL Command & Function
 
-MEL Command & Function
-import maya.cmds as cmds
-import maya.mel as mel
-import pymel.core as pm
-Maya Python API 1.0
-Maya Python API 2.0
-C++ API
+.. code-block:: python
 
+    import maya.cmds as cmds
+    import maya.mel as mel
+    import pymel.core as pm
 
-https://vfxplatform.com/
+- Maya Python API 1.0
+- Maya Python API 2.0
+- C++ API
 
+Script Editor脚本编辑器面板用法
 
-打开Script Editor
-
-
-https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html
-
-http://help.autodesk.com/view/MAYAUL/2018/CHS/
-
-Script Editor
-
-MEL
-
-Command VS Function
+MEL Command VS Function
 
 MEL命令基本语法 命令 参数 参数 参数 操作对象
 
@@ -34,30 +24,34 @@ MEL命令基本语法 命令 参数 参数 参数 操作对象
 
 help/whatIs方法
 
-whatIs scale;
-whatIs polyCube;
-whatIs polySmooth;
-whatIs polyCleanupArgList;
+.. code-block:: python
+
+    whatIs scale;
+    whatIs polyCube;
+    whatIs polySmooth;
+    whatIs polyCleanupArgList;
 
 MEL命令的CQEM模式
 
-C 新设置某个参数数值 直接使用 move -x -y -z
-Q 获取某个参数当前数值 前面加q, 后面不加值 xform -q -bb
-E 编辑已经存在的参数 前面加e, 后面加新值 joint -e -p 0 0 0
-M 多次调用当前参数 直接重复调用参数 curve -p 0 0 0 -p 0 1 0 -p…
+- C 新设置某个参数数值 直接使用 move -x -y -z
+- Q 获取某个参数当前数值 前面加q, 后面不加值 xform -q -bb
+- E 编辑已经存在的参数 前面加e, 后面加新值 joint -e -p 0 0 0
+- M 多次调用当前参数 直接重复调用参数 curve -p 0 0 0 -p 0 1 0 -p…
 
-ls
-listRelatives
-getAttr
-setAttr
+.. code-block:: python
 
-Command VS Function
+    ls
+    listRelatives
+    listConnections
+    listAttr
+    getAttr
+    setAttr
 
 很多MEL函数是不在帮助文档中的
 
 global proc
 
-两种函数  一种global function 一种helper function
+两种函数 一种global function 一种helper function
 
 Python分四种
 
@@ -129,10 +123,6 @@ https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html
         sel.ty.set(0)
         sel.tz.set(0)
 
-setAttr
-listAttr
-getAttr
-
 MAttribute
 MFn
 
@@ -156,6 +146,12 @@ MFn
         fnDependNode = om.MFnDependencyNode(mobject)
         print(fnDependnode.name())
 
+----------------------
+参考文档
+----------------------
 
-https://www.youtube.com/watch?v=GiWkXufclTY&t=13s
+- https://vfxplatform.com/
+- https://www.youtube.com/watch?v=GiWkXufclTY&t=13s
+- https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html
+- http://help.autodesk.com/view/MAYAUL/2018/CHS/
 
