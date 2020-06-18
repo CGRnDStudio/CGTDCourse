@@ -2,32 +2,36 @@
 Maya命令行脚本
 ==============================
 
-mayapy
-mayabatch
-maya
-render
-arnold kick
+作为TD掌握命令行后台处理问题是及其重要的一项技能，大部分可执行程序都提供命令行执行参数，以便让计算机完成一些自动化工作。
 
-http://help.autodesk.com/view/MAYAUL/2017/ENU/
+- mayapy
+- mayabatch
+- maya
+- render
+- kick（arnold）
 
-在命令行窗口检测Maya文件贴图数据是否丢失工具
+通过-h标签查看命令行各参数作用以及后台命令工作原理。
+
+.. code-block:: python
+
+    "C:\Program Files\Autodesk\Maya2016\bin\mayapy.exe" -h
+    "C:\Program Files\Autodesk\Maya2018\bin\maya.exe" -h
+    "C:\Program Files\Autodesk\Maya2018\bin\mayabatch.exe" -h
+    "C:\Program Files\Autodesk\Maya2018\bin\Render.exe" -h
+
+mayapy后面可以接.py文件运行，然后通过sys.argv来获取额外参数，比如写一个testMayapy.py，内容如下
+
+.. code-block:: python
+
+    import sys
+    print(sys.argv)
 
 
-工作原理
+模块文件后面跟的额外参数会以字符串的形式通过sys.argv打包成列表，这样我们可以传入一个Maya文件来分析贴图数据，效果是这样的，在命令行窗口检测Maya文件贴图数据是否丢失工具，打开命令行命令，输入
 
-"C:\Program Files\Autodesk\Maya2016\bin\mayapy.exe" -h
+.. code-block:: python
 
-mayapy后面可以接.py文件运行，然后通过sys.argv来获取额外参数
-比如写一个testMayapy.py，内容如下
-import sys
-print(sys.argv)
-
-
-模块文件后面跟的额外参数会以字符串的形式通过sys.argv打包成列表，这样我们可以传入一个Maya文件来分析贴图数据，效果是这样的
-
-
-命令行命令
-"C:\Program Files\Autodesk\Maya2016\bin\mayapy.exe" D:\centralizeTools\maya\env\2018\scripts\checkTools\relationship_check.py Z:\YYDTENN\Production\Department\LGT\EP01\sc006\YY_CG_sc006_lgt_color_v001_01.ma
+    "C:\Program Files\Autodesk\Maya2016\bin\mayapy.exe" D:\centralizeTools\maya\env\2018\scripts\checkTools\relationship_check.py Z:\YYDTENN\Production\Department\LGT\EP01\sc006\YY_CG_sc006_lgt_color_v001_01.ma
 
 .. code-block:: python
 
@@ -103,10 +107,8 @@ print(sys.argv)
     if __name__ == "__main__":
         main(sys.argv[1])
 
-各参数的用法
+-------------------------------
+参考文档
+-------------------------------
 
-"C:\Program Files\Autodesk\Maya2018\bin\maya.exe" -h
-
-"C:\Program Files\Autodesk\Maya2018\bin\mayabatch.exe" -h
-
-"C:\Program Files\Autodesk\Maya2018\bin\Render.exe" -h
+- http://help.autodesk.com/view/MAYAUL/2020/ENU/

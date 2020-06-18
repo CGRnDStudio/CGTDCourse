@@ -89,7 +89,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Maya.html">Maya</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="maya_aov_tool.html">Maya AOV分层工具</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya命令行脚本</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya命令行脚本</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_menu.html">Maya自定义菜单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_plugin.html">Maya自定义插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_shelf.html">Maya自定义工具架</a></li>
@@ -196,22 +199,30 @@
             
   <div class="section" id="maya">
 <h1>Maya命令行脚本<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>mayapy
-mayabatch
-maya
-render
-arnold kick</p>
-<p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2017/ENU/">http://help.autodesk.com/view/MAYAUL/2017/ENU/</a></p>
-<p>在命令行窗口检测Maya文件贴图数据是否丢失工具</p>
-<p>工作原理</p>
-<p>“C:Program FilesAutodeskMaya2016binmayapy.exe” -h</p>
-<p>mayapy后面可以接.py文件运行，然后通过sys.argv来获取额外参数
-比如写一个testMayapy.py，内容如下
-import sys
-print(sys.argv)</p>
-<p>模块文件后面跟的额外参数会以字符串的形式通过sys.argv打包成列表，这样我们可以传入一个Maya文件来分析贴图数据，效果是这样的</p>
-<p>命令行命令
-“C:Program FilesAutodeskMaya2016binmayapy.exe” D:centralizeToolsmayaenv2018scriptscheckToolsrelationship_check.py Z:YYDTENNProductionDepartmentLGTEP01sc006YY_CG_sc006_lgt_color_v001_01.ma</p>
+<p>作为TD掌握命令行后台处理问题是及其重要的一项技能，大部分可执行程序都提供命令行执行参数，以便让计算机完成一些自动化工作。</p>
+<ul class="simple">
+<li><p>mayapy</p></li>
+<li><p>mayabatch</p></li>
+<li><p>maya</p></li>
+<li><p>render</p></li>
+<li><p>kick（arnold）</p></li>
+</ul>
+<p>通过-h标签查看命令行各参数作用以及后台命令工作原理。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Autodesk\Maya2016</span><span class="se">\b</span><span class="s2">in\mayapy.exe&quot;</span> <span class="o">-</span><span class="n">h</span>
+<span class="s2">&quot;C:\Program Files\Autodesk\Maya2018</span><span class="se">\b</span><span class="s2">in\maya.exe&quot;</span> <span class="o">-</span><span class="n">h</span>
+<span class="s2">&quot;C:\Program Files\Autodesk\Maya2018</span><span class="se">\b</span><span class="s2">in\mayabatch.exe&quot;</span> <span class="o">-</span><span class="n">h</span>
+<span class="s2">&quot;C:\Program Files\Autodesk\Maya2018</span><span class="se">\b</span><span class="s2">in\Render.exe&quot;</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>mayapy后面可以接.py文件运行，然后通过sys.argv来获取额外参数，比如写一个testMayapy.py，内容如下</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>模块文件后面跟的额外参数会以字符串的形式通过sys.argv打包成列表，这样我们可以传入一个Maya文件来分析贴图数据，效果是这样的，在命令行窗口检测Maya文件贴图数据是否丢失工具，打开命令行命令，输入</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Autodesk\Maya2016</span><span class="se">\b</span><span class="s2">in\mayapy.exe&quot;</span> <span class="n">D</span><span class="p">:</span>\<span class="n">centralizeTools</span>\<span class="n">maya</span>\<span class="n">env</span>\<span class="mi">2018</span>\<span class="n">scripts</span>\<span class="n">checkTools</span>\<span class="n">relationship_check</span><span class="o">.</span><span class="n">py</span> <span class="n">Z</span><span class="p">:</span>\<span class="n">YYDTENN</span>\<span class="n">Production</span>\<span class="n">Department</span>\<span class="n">LGT</span>\<span class="n">EP01</span>\<span class="n">sc006</span>\<span class="n">YY_CG_sc006_lgt_color_v001_01</span><span class="o">.</span><span class="n">ma</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
@@ -285,10 +296,12 @@ print(sys.argv)</p>
     <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>各参数的用法</p>
-<p>“C:Program FilesAutodeskMaya2018binmaya.exe” -h</p>
-<p>“C:Program FilesAutodeskMaya2018binmayabatch.exe” -h</p>
-<p>“C:Program FilesAutodeskMaya2018binRender.exe” -h</p>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2020/ENU/">http://help.autodesk.com/view/MAYAUL/2020/ENU/</a></p></li>
+</ul>
+</div>
 </div>
 
 
