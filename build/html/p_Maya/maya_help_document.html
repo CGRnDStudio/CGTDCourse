@@ -197,23 +197,20 @@
             
   <div class="section" id="maya">
 <h1>Maya帮助文档<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
+<p>Maya中编程语言分类大概有如下几种：</p>
 <ul class="simple">
-<li><p>MEL Command &amp; Function</p></li>
+<li><p>MEL类：命令、函数、表达式</p></li>
+<li><p>Python类：cmds、pymel、Maya Python API 1.0、Maya Python API 2.0</p></li>
+<li><p>C++类：C++ API（不阐述）</p></li>
+<li><p>Script Editor</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
-<span class="kn">import</span> <span class="nn">maya.mel</span> <span class="k">as</span> <span class="nn">mel</span>
-<span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
-</pre></div>
-</div>
+<p>脚本编辑器可以通过菜单Windows&gt;General Editors&gt;Script Editor来打开，或者右下角脚本编辑器快捷按钮打开。</p>
+<p>脚本编辑器中可以编写MEL和Python两种脚本语言，可以通过鼠标右键热盒菜单创建与删除面板。</p>
 <ul class="simple">
-<li><p>Maya Python API 1.0</p></li>
-<li><p>Maya Python API 2.0</p></li>
-<li><p>C++ API</p></li>
+<li><p>MEL Command</p></li>
 </ul>
-<p>Script Editor脚本编辑器面板用法</p>
-<p>MEL Command VS Function</p>
-<p>MEL命令基本语法 命令 参数 参数 参数 操作对象</p>
-<p>从历史记录中提取MEL命令</p>
+<p>MEL命令基本语法：命令 -标签 -标签 -标签 操作对象;</p>
+<p>从脚本编辑器的历史记录中提取MEL命令方法。</p>
 <p>help/whatIs方法</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">whatIs</span> <span class="n">scale</span><span class="p">;</span>
 <span class="n">whatIs</span> <span class="n">polyCube</span><span class="p">;</span>
@@ -236,18 +233,31 @@
 <span class="n">setAttr</span>
 </pre></div>
 </div>
-<p>很多MEL函数是不在帮助文档中的</p>
-<p>global proc</p>
-<p>两种函数 一种global function 一种helper function</p>
-<p>Python分四种</p>
-<p>包装MEL的maya.cmds
-包装C++ API的maya.OpenMaya 只有C++的doc
-Maya Python 1.0
-Maya Python 2.0
-import maya.api.OpenMaya as om</p>
-<p>pymel</p>
-<p>打印选择的物体</p>
-<p>MEL强类型语言</p>
+<ul class="simple">
+<li><p>MEL Function</p></li>
+</ul>
+<p>很多MEL函数是不在帮助文档中的，存在两种MEL函数，一种是global function，另一种是helper function，helper函数大多是mel文件中调用，与global函数作用域不同。</p>
+<ul>
+<li><p>Python</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>封装MEL的伪Python代码maya.cmds</p></li>
+<li><p>第三方更Pythonic的封装PyMEL</p></li>
+<li><p>Maya Python 1.0（封装C++ API，只有C++文档）</p></li>
+<li><p>Maya Python 2.0（封装C++ API，只有C++文档）</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>cmds是官方出的一种简单封装MEL指令伪Python代码，没有按Python数据类型统一性来封装，MEL与cmds切换起来相对简单，写cmds实际就是在写MEL指令，文档中右上角可以通过MEL version或者Python version随意切换，MEL中的flag在Python中就是args。</p>
+<p>pymel是第三方按Python统一性来封装的Python API，但是导入模块相对需要花一部分时间。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+<span class="kn">import</span> <span class="nn">maya.mel</span> <span class="k">as</span> <span class="nn">mel</span>
+<span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+<span class="kn">import</span> <span class="nn">maya.api.OpenMaya</span> <span class="k">as</span> <span class="nn">om</span>
+</pre></div>
+</div>
+<p>MEL是一种强类型语言</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>string <span class="nv">$sels</span><span class="o">[]</span> <span class="o">=</span> <span class="sb">`</span>ls -sl<span class="sb">`</span><span class="p">;</span>
 print<span class="o">(</span><span class="nv">$sels</span><span class="o">)</span><span class="p">;</span>
 
@@ -266,8 +276,9 @@ int <span class="nv">$count</span> <span class="o">=</span> <span class="m">1</s
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sel</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sels</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="n">sel</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">maya.OpenMaya</span> <span class="k">as</span> <span class="nn">om</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.OpenMaya</span> <span class="k">as</span> <span class="nn">om</span>
 
 <span class="n">selslist</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">MSelectionList</span><span class="p">()</span>
 <span class="n">om</span><span class="o">.</span><span class="n">MGlobal</span><span class="o">.</span><span class="n">getActiveSelection</span><span class="p">(</span><span class="n">selsList</span><span class="p">)</span>
@@ -280,12 +291,11 @@ int <span class="nv">$count</span> <span class="o">=</span> <span class="m">1</s
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> : long-name : </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">dagPath</span><span class="o">.</span><span class="n">fullPathName</span><span class="p">()))</span>
 </pre></div>
 </div>
-<p>pymel</p>
-<p>第三方包装MEL Command的pythonic的包</p>
-<p><a class="reference external" href="https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html">https://help.autodesk.com/cloudhelp/2018/JPN/Maya-Tech-Docs/PyMel/index.html</a></p>
+<p>第三方包装MEL的pythonic的包</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
 
 <span class="n">sels</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+
 <span class="k">for</span> <span class="n">sel</span> <span class="ow">in</span> <span class="n">sels</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">longName</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">shortName</span><span class="p">())</span>
@@ -298,8 +308,6 @@ int <span class="nv">$count</span> <span class="o">=</span> <span class="m">1</s
     <span class="n">sel</span><span class="o">.</span><span class="n">tz</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>MAttribute
-MFn</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.OpenMaya</span> <span class="k">as</span> <span class="nn">om</span>
 
 <span class="n">selsList</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">MSelectionList</span><span class="p">()</span>
@@ -309,12 +317,14 @@ MFn</p>
     <span class="n">mobject</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">MObject</span><span class="p">()</span>
     <span class="n">selsList</span><span class="o">.</span><span class="n">getDependnode</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">mobject</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">mobject</span><span class="o">.</span><span class="n">apiTypeStr</span><span class="p">())</span>
+
     <span class="k">if</span> <span class="n">mobject</span><span class="o">.</span><span class="n">apiType</span><span class="p">()</span> <span class="o">==</span> <span class="n">om</span><span class="o">.</span><span class="n">MFn</span><span class="o">.</span><span class="n">kTransform</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is a transform!&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">mobject</span><span class="o">.</span><span class="n">apiType</span><span class="p">()</span> <span class="o">==</span> <span class="n">om</span><span class="o">.</span><span class="n">MFn</span><span class="o">.</span><span class="n">kMesh</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is a mesh!&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">pass</span>
+
     <span class="n">fnDependNode</span> <span class="o">=</span> <span class="n">om</span><span class="o">.</span><span class="n">MFnDependencyNode</span><span class="p">(</span><span class="n">mobject</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">fnDependnode</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
 </pre></div>
@@ -323,9 +333,11 @@ MFn</p>
 <h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://vfxplatform.com/">https://vfxplatform.com/</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s">https://www.youtube.com/watch?v=GiWkXufclTY&amp;t=13s</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=GiWkXufclTY">https://www.youtube.com/watch?v=GiWkXufclTY</a></p></li>
 <li><p><a class="reference external" href="https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html">https://knowledge.autodesk.com/support/maya/getting-started/caas/simplecontent/content/maya-documentation.html</a></p></li>
-<li><p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2018/CHS/">http://help.autodesk.com/view/MAYAUL/2018/CHS/</a></p></li>
+<li><p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2020/CHS/">http://help.autodesk.com/view/MAYAUL/2020/CHS/</a></p></li>
+<li><p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2020/CHS/?guid=__PyMel_index_html">http://help.autodesk.com/view/MAYAUL/2020/CHS/?guid=__PyMel_index_html</a></p></li>
+<li><p><a class="reference external" href="http://help.autodesk.com/view/MAYAUL/2020/CHS/?guid=Maya_SDK_MERGED_cpp_ref_index_html">http://help.autodesk.com/view/MAYAUL/2020/CHS/?guid=Maya_SDK_MERGED_cpp_ref_index_html</a></p></li>
 </ul>
 </div>
 </div>
