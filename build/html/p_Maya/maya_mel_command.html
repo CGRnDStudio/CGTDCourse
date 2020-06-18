@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Maya打包工具 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Maya MEL命令 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Maya如何获取拍屏面板参数？" href="maya_playblast_settings.html" />
-    <link rel="prev" title="Maya MEL命令" href="maya_mel_command.html" /> 
+    <link rel="next" title="Maya打包工具" href="maya_pack_tool.html" />
+    <link rel="prev" title="Maya材质导入导出工具" href="maya_material_io_tool.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,8 +100,8 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_help_document.html">Maya帮助文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="maya_mel_command.html">Maya MEL命令</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya打包工具</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya MEL命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya打包工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_playblast_settings.html">Maya如何获取拍屏面板参数？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_arnold.html">Maya插件：Arnold</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_p+.html">Maya插件：p+</a></li>
@@ -175,13 +175,13 @@
         
           <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
         
-      <li>Maya打包工具</li>
+      <li>Maya MEL命令</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Maya/maya_pack_tool.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Maya/maya_mel_command.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -194,25 +194,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="maya">
-<h1>Maya打包工具<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>外链文件、缓存以及代理
-nParticle缓存(不包括已经过时的经典粒子)
-nHair缓存
-nCloth缓存
-Fluid缓存
-Geo缓存
-MASH缓存
-Texture贴图(包括UDIM-Mari)
-Alembic缓存
-XGEN描述及贴图
-Reference Ma及Mb文件
-Arnold_Proxy代理(以及代理内的贴图)
-Vray_Proxy代理
-Redshift_Proxy代理
-Bifrost缓存
-Audio声音文件</p>
-<p>通过插件加载情况来针对性检测外链文件</p>
+  <div class="section" id="maya-mel">
+<h1>Maya MEL命令<a class="headerlink" href="#maya-mel" title="永久链接至标题">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>group</p></td>
+<td><p>打组</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>listConnections</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>listRelatives</p></td>
+<td><p>获取子节点，父节点，Shape节点</p></td>
+</tr>
+<tr class="row-odd"><td><p>ls</p></td>
+<td><p>获取场景中的节点</p></td>
+</tr>
+</tbody>
+</table>
+<p>move</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>parent</p></td>
+<td><p>将节点添加到组中</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>rename</p></td>
+<td><p>重命名节点</p></td>
+</tr>
+<tr class="row-even"><td><p>rotate</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>scale</p>
+<p>xform</p>
 </div>
 
 
@@ -223,10 +262,10 @@ Audio声音文件</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="maya_playblast_settings.html" class="btn btn-neutral float-right" title="Maya如何获取拍屏面板参数？" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="maya_pack_tool.html" class="btn btn-neutral float-right" title="Maya打包工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="maya_mel_command.html" class="btn btn-neutral float-left" title="Maya MEL命令" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="maya_material_io_tool.html" class="btn btn-neutral float-left" title="Maya材质导入导出工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

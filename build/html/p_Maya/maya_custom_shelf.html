@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Maya打包工具 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Maya自定义工具架 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Maya如何获取拍屏面板参数？" href="maya_playblast_settings.html" />
-    <link rel="prev" title="Maya MEL命令" href="maya_mel_command.html" /> 
+    <link rel="next" title="Maya开发环境" href="maya_development_environment.html" />
+    <link rel="prev" title="Maya自定义插件" href="maya_custom_plugin.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,7 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_batch_script.html">Maya命令行脚本</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_menu.html">Maya自定义菜单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_plugin.html">Maya自定义插件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="maya_custom_shelf.html">Maya自定义工具架</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya自定义工具架</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_development_environment.html">Maya开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_environment_variables.html">Maya环境变量</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_front_render.html">Maya前台渲染脚本解决方案</a></li>
@@ -101,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_mel_command.html">Maya MEL命令</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya打包工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya打包工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_playblast_settings.html">Maya如何获取拍屏面板参数？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_arnold.html">Maya插件：Arnold</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_p+.html">Maya插件：p+</a></li>
@@ -175,13 +175,13 @@
         
           <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
         
-      <li>Maya打包工具</li>
+      <li>Maya自定义工具架</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Maya/maya_pack_tool.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Maya/maya_custom_shelf.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -195,24 +195,31 @@
            <div itemprop="articleBody">
             
   <div class="section" id="maya">
-<h1>Maya打包工具<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>外链文件、缓存以及代理
-nParticle缓存(不包括已经过时的经典粒子)
-nHair缓存
-nCloth缓存
-Fluid缓存
-Geo缓存
-MASH缓存
-Texture贴图(包括UDIM-Mari)
-Alembic缓存
-XGEN描述及贴图
-Reference Ma及Mb文件
-Arnold_Proxy代理(以及代理内的贴图)
-Vray_Proxy代理
-Redshift_Proxy代理
-Bifrost缓存
-Audio声音文件</p>
-<p>通过插件加载情况来针对性检测外链文件</p>
+<h1>Maya自定义工具架<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
+<p>Maya中自定义工具架工具还是挺有意思的，这篇文字介绍自定义工具架工具的方方面面。</p>
+<p>首先有几种已知的方案可以添加工具架工具，首先我们应该要创建一个新的工具架，Maya预留了一个空的Custom工具架给我们使用。</p>
+<p>为了可以存储我们自己的工具建议还是自己创建一个工具架，点击工具架一栏左边的齿轮菜单，点击New Shelf，输入shelf name点击OK，这样我们就创建了一个新的工具架。</p>
+<p>这个工具架的文件会存储在我的文档下面的位置。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="p">{</span><span class="n">USERNAME</span><span class="p">}</span>\<span class="n">Documents</span>\<span class="n">maya</span>\<span class="p">{</span><span class="n">VERSION</span><span class="p">}</span>\<span class="n">prefs</span>\<span class="n">shelves</span>
+</pre></div>
+</div>
+<p>Maya工具架有个毛病是不能通过环境变量中心化管理，Maya启动的时候只认我的文档这个位置的shelf文件加载。</p>
+<p>在工具架上添加工具有下面几种已知的方法：</p>
+<ul class="simple">
+<li><p>可以通过鼠标中键将已经存在的工具架工具拖拽到当前的工具架。</p></li>
+<li><p>可以通过鼠标中键将左侧ToolBox中的工具拖拽到当前的工具架。</p></li>
+<li><p>可以将任何一个主菜单中的工具通过CTRL+SHIFT+单击的方式添加到当前的工具架。</p></li>
+<li><p>可以选择脚本编辑器中的代码，通过鼠标中键拖拽到当前工具架。</p></li>
+<li><p>可以通过Shelf Editor面板自定义添加工具到我们的当前工具架。</p></li>
+</ul>
+<p>正常来说Shelf Editor是万能的自定义工具架工具的方法，不管上面是以哪种方式添加的工具，实际都可以通过Shelf Editor来添加与修改。</p>
+<p>关于Shelf Editor面板有几点需要说明：</p>
+<ul class="simple">
+<li><p>Shelves: 添加或者删除某个工具架某个工具，设置工具图标，工具提示等等。</p></li>
+<li><p>Command: 单击工具执行的脚本，可以是MEL，也可以是Python。</p></li>
+<li><p>Double Click Command: 双击工具执行的脚本，可以是MEL，也可以是Python。</p></li>
+<li><p>Popup Menu Items: 可以给工具添加一些右键菜单，执行不同的脚本。</p></li>
+</ul>
 </div>
 
 
@@ -223,10 +230,10 @@ Audio声音文件</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="maya_playblast_settings.html" class="btn btn-neutral float-right" title="Maya如何获取拍屏面板参数？" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="maya_development_environment.html" class="btn btn-neutral float-right" title="Maya开发环境" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="maya_mel_command.html" class="btn btn-neutral float-left" title="Maya MEL命令" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="maya_custom_plugin.html" class="btn btn-neutral float-left" title="Maya自定义插件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
