@@ -2,16 +2,15 @@
 Maya自定义菜单
 ==============================
 
-
 maya mod环境变量管理
 MAYA_MODULE_PATH  扩展开发层级结构
 Python模块加载的机制
 PYTHONPATH在mod中的配置
 
+.. code-block:: python
 
-
-DO-VFX.mod
-+ DO-VFX any \\server\manager\centralizeTools\maya\env\2018
+    DO-VFX.mod
+    + DO-VFX any \\server\manager\centralizeTools\maya\env\2018
 
 扩展开发层级结构
 .\scripts 存放代码的地方，mel文件（userSetup.mel），py文件以包的形式管理

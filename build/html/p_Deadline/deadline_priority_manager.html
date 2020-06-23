@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Deadline渲染农场服务器安装部署 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Deadline渲染农场权限管理 &mdash; CG TD Pipeline 1.0.3 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Linux" href="../parts/Linux.html" />
-    <link rel="prev" title="Deadline渲染农场提交农场接口" href="deadline_python_api.html" /> 
+    <link rel="next" title="Deadline渲染农场提交农场接口" href="deadline_python_api.html" />
+    <link rel="prev" title="Deadline渲染农场Nuke提交工具" href="deadline_nuke_plugin.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,9 +99,9 @@
 <li class="toctree-l2"><a class="reference internal" href="deadline_install_mongodb.html">Deadline渲染农场MongoDB离线安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_maya_plugin.html">Deadline渲染农场Maya提交工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_nuke_plugin.html">Deadline渲染农场Nuke提交工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deadline_priority_manager.html">Deadline渲染农场权限管理</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Deadline渲染农场权限管理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_python_api.html">Deadline渲染农场提交农场接口</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Deadline渲染农场服务器安装部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadline_server_install_deploy.html">Deadline渲染农场服务器安装部署</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
@@ -159,13 +159,13 @@
         
           <li><a href="../parts/Deadline.html">Deadline</a> &raquo;</li>
         
-      <li>Deadline渲染农场服务器安装部署</li>
+      <li>Deadline渲染农场权限管理</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Deadline/deadline_server_install_deploy.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Deadline/deadline_priority_manager.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -179,14 +179,17 @@
            <div itemprop="articleBody">
             
   <div class="section" id="deadline">
-<h1>Deadline渲染农场服务器安装部署<a class="headerlink" href="#deadline" title="永久链接至标题">¶</a></h1>
-<p>文档采用服务器集中式部署方案，将DeadlineRepository与DeadlineClient全部部署在服务器，从而客户端无需安装任何东西即可使用的方案。</p>
-<p>部署环境如下:</p>
-<ul class="simple">
-<li><p>服务器：Windows Server 2012 R2 Standard</p></li>
-<li><p>客户端：Window 10 企业版</p></li>
-<li><p>Deadline版本：Thinkbox Deadline v10.0.20.2 Win</p></li>
-</ul>
+<h1>Deadline渲染农场权限管理<a class="headerlink" href="#deadline" title="永久链接至标题">¶</a></h1>
+<p>咱们来解决一个农场的一个问题，如何有效防止制作上传任务修改自己任务优先级？</p>
+<p>想从根本上解决这个问题，我们得规范提交流程，各大DCC软件中提交工具是必须写的，因为从Deadline Monitor面板或者DCC软件中集成的菜单提交是没法禁用这个优先级的修改的（我是没找到，只找到个优先级最大值的设置，这个没啥用），任何人提交的时候都可以将任务优先级修改为100（默认最高优先级是100）。</p>
+<p>不光光提交任务的时候可以事先修改这个优先级，在提交完成之后Deadline默认配置是个人可以修改自己的任务优先级，那如何杜绝这个问题。</p>
+<p>首先我们得配置一个Super User的密码，Tools&gt;Configure Repository Options&gt;User Security。</p>
+<p>配置完我们配置用户组，分管理员Administrator和普通用户Custom。需要授予管理员权限的用户添加到Administrator，一般用户权限添加到Custom。</p>
+<p>这样处理之后管理员用户不用每次都要输入密码切换Super User Mode，普通用户可以随时通过管理员密码切换到Super User。</p>
+<p>我们这里将禁止修改任务优先级权限，要做三件事，第一件事禁用提交按钮，比如去掉Maya提交。</p>
+<p>通过菜单Tools&gt;Configure Script Menus&gt;Edit Selection，将Maya提交菜单Disabled掉，自然我们软件里的Deadline提供的提交任务插件也是不能部署的。</p>
+<p>第二件事禁用修改已经提交的任务的优先级，这个在我们的Tools&gt;Manage User Group…进入Custom&gt;Job Properties将Job Priority选项Disabled。</p>
+<p>第三件事自己通过Deadline Python API写提交工具，提升百倍提交任务效率，避免手动提交的错误以及文件规范性，数海提交农场任务都是秒传没毛病，从创业两年以来提交总任务数59021个，如果以手动提交一个任务30秒的速度（往往是不止的）话，需要花费一个人491.8小时的工作量，这里不包括手动提交的设置问题，所以非常建议大家自己写自己的提交工具，不超过百行的Python代码。</p>
 </div>
 
 
@@ -197,10 +200,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../parts/Linux.html" class="btn btn-neutral float-right" title="Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="deadline_python_api.html" class="btn btn-neutral float-right" title="Deadline渲染农场提交农场接口" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="deadline_python_api.html" class="btn btn-neutral float-left" title="Deadline渲染农场提交农场接口" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="deadline_nuke_plugin.html" class="btn btn-neutral float-left" title="Deadline渲染农场Nuke提交工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
