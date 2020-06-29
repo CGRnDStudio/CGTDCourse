@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Maya帮助文档 &mdash; CG TD Pipeline 1.0.3 文档</title>
+  <title>Maya帮助文档 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -103,7 +103,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="maya_mel_command.html">Maya MEL命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_mel_basics.html">Maya MEL基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_mel_command.html">Maya MEL常用命令</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya打包工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_playblast_settings.html">Maya如何获取拍屏面板参数？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_arnold.html">Maya插件：Arnold</a></li>
@@ -199,6 +200,7 @@
             
   <div class="section" id="maya">
 <h1>Maya帮助文档<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
+<p>Maya帮助文档中开发的部分需要理解的是MEL Command以及Python Command文档部分的用法，包括案例，包括两种命令的切换。</p>
 <p>Maya中编程语言分类大概有如下几种：</p>
 <ul class="simple">
 <li><p>MEL类：命令、函数、表达式</p></li>
@@ -222,10 +224,10 @@
 </div>
 <p>MEL命令的CQEM模式</p>
 <ul class="simple">
-<li><p>C 新设置某个参数数值 直接使用 move -x -y -z</p></li>
-<li><p>Q 获取某个参数当前数值 前面加q, 后面不加值 xform -q -bb</p></li>
-<li><p>E 编辑已经存在的参数 前面加e, 后面加新值 joint -e -p 0 0 0</p></li>
-<li><p>M 多次调用当前参数 直接重复调用参数 curve -p 0 0 0 -p 0 1 0 -p…</p></li>
+<li><p>C 直接使用 新设置某个参数数值 move -x 1;</p></li>
+<li><p>Q 可以获取对象的当前参数 前面加q, 后面不加值 xform -q -bb;</p></li>
+<li><p>E 可以编辑对象的现有参数 前面加e, 后面加新值 joint -e -p 0 0 0;</p></li>
+<li><p>M 可以在一次命令下使用多次 直接重复调用参数 curve -p 0 0 0 -p 0 1 0 -p…;</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 <span class="n">listRelatives</span>
