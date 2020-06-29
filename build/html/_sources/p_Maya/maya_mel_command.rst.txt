@@ -2,24 +2,58 @@
 Maya MEL常用命令
 ==============================
 
-================== ============================================================
-group              打组
-================== ============================================================
+ls命令
 
-================== ============================================================
-listConnections    
-listRelatives      获取子节点，父节点，Shape节点
-ls                 获取场景中的节点
-================== ============================================================
+.. code-block:: python
 
-================== ============================================================
-parent             将节点添加到组中
-================== ============================================================
+    import maya.cmds as cmds
 
-================== ============================================================
-rename             重命名节点
-rotate
-================== ============================================================
+    cmds.ls()
+
+    cmds.ls(sl=1)
+
+    cmds.ls(typ=["mesh", "lambert"], l=1)
+
+    cmds.ls(et="transform")
+
+    cmds.ls(et="lambert")
+
+    cmds.ls(ext="transform")
+
+    cmds.ls("blendShape*")
+
+    cmds.ls("blendShape?Set")
+
+    cmds.ls("UUID")
+
+rename命令
+
+.. code-block:: python
+
+    import maya.cmds as cmds
+
+    cmds.rename(oldName, newName)
+
+节点的层级关系
+
+listConnections & listRelatives
+
+.. code-block:: python
+
+    import maya.cmds as cmds
+
+    cmds.listRelatives(object, p=1)
+    cmds.listRelatives(object, c=1)
+    cmds.listRelatives(object, ad=1)
+    cmds.listRelatives(object, ad=1, typ="joint", f=1)
+
+parent & group
+
+.. code-block:: python
+
+    import maya.cmds as cmds
+
+    cmds.parent(childObject, parentObject)
 
 -------------------
 案例&练习

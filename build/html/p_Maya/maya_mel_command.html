@@ -200,59 +200,50 @@
             
   <div class="section" id="maya-mel">
 <h1>Maya MEL常用命令<a class="headerlink" href="#maya-mel" title="永久链接至标题">¶</a></h1>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 77%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>group</p></td>
-<td><p>打组</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 77%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>listConnections</p></td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>listRelatives</p></td>
-<td><p>获取子节点，父节点，Shape节点</p></td>
-</tr>
-<tr class="row-odd"><td><p>ls</p></td>
-<td><p>获取场景中的节点</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 77%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>parent</p></td>
-<td><p>将节点添加到组中</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 77%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>rename</p></td>
-<td><p>重命名节点</p></td>
-</tr>
-<tr class="row-even"><td><p>rotate</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>ls命令</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">()</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">sl</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">typ</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mesh&quot;</span><span class="p">,</span> <span class="s2">&quot;lambert&quot;</span><span class="p">],</span> <span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">et</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">et</span><span class="o">=</span><span class="s2">&quot;lambert&quot;</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">ext</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="s2">&quot;blendShape*&quot;</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="s2">&quot;blendShape?Set&quot;</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="s2">&quot;UUID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>rename命令</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">oldName</span><span class="p">,</span> <span class="n">newName</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>节点的层级关系</p>
+<p>listConnections &amp; listRelatives</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">listRelatives</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listRelatives</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listRelatives</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">ad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listRelatives</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">ad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="s2">&quot;joint&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>parent &amp; group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="n">childObject</span><span class="p">,</span> <span class="n">parentObject</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="section" id="id1">
 <h2>案例&amp;练习<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">

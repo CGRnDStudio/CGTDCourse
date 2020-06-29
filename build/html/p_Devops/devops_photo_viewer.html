@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RenderBus客户端配置Sock5代理 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>Win10调出照片查看器 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="reStructuredText(rst)语法说明文档" href="devops_rst_syntax.html" />
-    <link rel="prev" title="移除CD驱动器" href="devops_remove_cd_driver.html" /> 
+    <link rel="next" title="pip命令使用手册" href="devops_pip_manual.html" />
+    <link rel="prev" title="OneDrive协同办公流程" href="devops_onedrive.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -121,13 +121,13 @@
 <li class="toctree-l2"><a class="reference internal" href="devops_mklink.html">mklink符号链接技术</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_office_mail.html">WPS Office、Foxmail办公软件推荐</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_onedrive.html">OneDrive协同办公流程</a></li>
-<li class="toctree-l2"><a class="reference internal" href="devops_photo_viewer.html">Win10调出照片查看器</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Win10调出照片查看器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_pip_manual.html">pip命令使用手册</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_readthedocs_sphinx_github.html">ReadTheDocs+Sphinx+Github搭建托管文档环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_redshift_crash_houdini.html">Redshift导致Houdini渲崩的可能原因</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_remote_oracle.html">Win10远程桌面出现身份验证错误</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_remove_cd_driver.html">移除CD驱动器</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">RenderBus客户端配置Sock5代理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_renderbus_proxy.html">RenderBus客户端配置Sock5代理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_rst_syntax.html">reStructuredText(rst)语法说明文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_shell.html">Shell技术</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_software.html">中小型企业好用的软件推荐</a></li>
@@ -188,13 +188,13 @@
         
           <li><a href="../parts/Devops.html">Devops</a> &raquo;</li>
         
-      <li>RenderBus客户端配置Sock5代理</li>
+      <li>Win10调出照片查看器</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Devops/devops_renderbus_proxy.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Devops/devops_photo_viewer.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -207,11 +207,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="renderbussock5">
-<h1>RenderBus客户端配置Sock5代理<a class="headerlink" href="#renderbussock5" title="永久链接至标题">¶</a></h1>
-<p>参考下面两篇文章，配置Sock5代理即可解析文件提交任务。</p>
-<p><a class="reference external" href="https://www.renderbus.com/support-new/inssub">https://www.renderbus.com/support-new/inssub</a>
-<a class="reference external" href="https://www.renderbus.com/support-new/network-requirements">https://www.renderbus.com/support-new/network-requirements</a></p>
+  <div class="section" id="win10">
+<h1>Win10调出照片查看器<a class="headerlink" href="#win10" title="永久链接至标题">¶</a></h1>
+<p>写一个注册表文件.reg，将下面的文本拷贝到其中保存之后运行合并即可。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Windows</span> <span class="n">Registry</span> <span class="n">Editor</span> <span class="n">Version</span> <span class="mf">5.00</span>
+
+ <span class="p">;</span> <span class="n">Change</span> <span class="n">Extension</span><span class="s1">&#39;s File Type</span>
+
+ <span class="p">[</span><span class="n">HKEY_CURRENT_USER</span>\<span class="n">Software</span>\<span class="n">Classes</span>\<span class="o">.</span><span class="n">jpg</span><span class="p">]</span>
+
+ <span class="o">@=</span><span class="s2">&quot;PhotoViewer.FileAssoc.Tiff&quot;</span>
+
+ <span class="p">;</span> <span class="n">Change</span> <span class="n">Extension</span><span class="s1">&#39;s File Type</span>
+
+ <span class="p">[</span><span class="n">HKEY_CURRENT_USER</span>\<span class="n">Software</span>\<span class="n">Classes</span>\<span class="o">.</span><span class="n">jpeg</span><span class="p">]</span>
+
+ <span class="o">@=</span><span class="s2">&quot;PhotoViewer.FileAssoc.Tiff&quot;</span>
+
+ <span class="p">;</span> <span class="n">Change</span> <span class="n">Extension</span><span class="s1">&#39;s File Type</span>
+
+ <span class="p">[</span><span class="n">HKEY_CURRENT_USER</span>\<span class="n">Software</span>\<span class="n">Classes</span>\<span class="o">.</span><span class="n">gif</span><span class="p">]</span>
+
+ <span class="o">@=</span><span class="s2">&quot;PhotoViewer.FileAssoc.Tiff&quot;</span>
+
+ <span class="p">;</span> <span class="n">Change</span> <span class="n">Extension</span><span class="s1">&#39;s File Type</span>
+
+ <span class="p">[</span><span class="n">HKEY_CURRENT_USER</span>\<span class="n">Software</span>\<span class="n">Classes</span>\<span class="o">.</span><span class="n">png</span><span class="p">]</span>
+
+ <span class="o">@=</span><span class="s2">&quot;PhotoViewer.FileAssoc.Tiff&quot;</span>
+
+ <span class="p">;</span> <span class="n">Change</span> <span class="n">Extension</span><span class="s1">&#39;s File Type</span>
+
+ <span class="p">[</span><span class="n">HKEY_CURRENT_USER</span>\<span class="n">Software</span>\<span class="n">Classes</span>\<span class="o">.</span><span class="n">bmp</span><span class="p">]</span>
+
+ <span class="o">@=</span><span class="s2">&quot;PhotoViewer.FileAssoc.Tiff&quot;</span>
+
+ <span class="p">;</span> <span class="n">Change</span> <span class="n">Extension</span><span class="s1">&#39;s File Type</span>
+
+ <span class="p">[</span><span class="n">HKEY_CURRENT_USER</span>\<span class="n">Software</span>\<span class="n">Classes</span>\<span class="o">.</span><span class="n">tiff</span><span class="p">]</span>
+
+ <span class="o">@=</span><span class="s2">&quot;PhotoViewer.FileAssoc.Tiff&quot;</span>
+
+ <span class="p">;</span> <span class="n">Change</span> <span class="n">Extension</span><span class="s1">&#39;s File Type</span>
+
+ <span class="p">[</span><span class="n">HKEY_CURRENT_USER</span>\<span class="n">Software</span>\<span class="n">Classes</span>\<span class="o">.</span><span class="n">ico</span><span class="p">]</span>
+
+ <span class="o">@=</span><span class="s2">&quot;PhotoViewer.FileAssoc.Tiff&quot;</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -222,10 +265,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="devops_rst_syntax.html" class="btn btn-neutral float-right" title="reStructuredText(rst)语法说明文档" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="devops_pip_manual.html" class="btn btn-neutral float-right" title="pip命令使用手册" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="devops_remove_cd_driver.html" class="btn btn-neutral float-left" title="移除CD驱动器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="devops_onedrive.html" class="btn btn-neutral float-left" title="OneDrive协同办公流程" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
