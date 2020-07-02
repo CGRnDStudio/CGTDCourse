@@ -242,6 +242,82 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
 
 <span class="n">cmds</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="n">childObject</span><span class="p">,</span> <span class="n">parentObject</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="n">childObject</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">sl</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">n</span><span class="o">=</span><span class="s2">&quot;newGrp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>世界坐标 &amp; 物体坐标 (相对与绝对)</p>
+<p>move &amp; rotate &amp; scale &amp; xform</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ro</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">ro</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ws</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ws</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ro</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ws</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">xform</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">ro</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ws</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>创建节点</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">polySphere</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">circle</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">curve</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">joint</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">createNode</span><span class="p">(</span><span class="s2">&quot;joint&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>获取节点类型与属性</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">nodeType</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listAttr</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listAttr</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listAttr</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">ud</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">getAttr</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setAttr</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setAttr</span><span class="p">(</span><span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>属性连接与断开</p>
+<p>Windows&gt;General Editors&gt;Connection Editor</p>
+<p>Windows&gt;Node Editor</p>
+<p>Windows&gt;General Editors&gt;Hypergraph: Hierarchy</p>
+<p>Windows&gt;General Editors&gt;Hypergraph: Connections</p>
+<p>查看节点技术文档</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">connnectAttr</span><span class="p">(</span><span class="n">attr1</span><span class="p">,</span> <span class="n">attr2</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">disconnectAttr</span><span class="p">(</span><span class="n">attr1</span><span class="p">,</span> <span class="n">attr2</span><span class="p">)</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">connnectAttr</span><span class="p">(</span><span class="n">attr1</span><span class="p">,</span> <span class="n">attr2</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">connnectAttr</span><span class="p">(</span><span class="s2">&quot;pCubeShape1.outMesh&quot;</span><span class="p">,</span> <span class="s2">&quot;pSphereShape1.inMesh&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>获取节点的连接</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="c1"># 上游节点</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># 下游节点</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 节点属性</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="id1">
