@@ -37,4 +37,30 @@ Merge                   合并节点
 Dot                     点节点
 HierarchyCopy           复制节点
 Transform3D             移动节点
+CameraCreate            相机节点
+Material                材质节点
+MaterialAssign          材质赋予节点
+GafferThree             灯光组节点
+RenderSettings          渲染设置节点
+DISettings              采样设置节点
+Render                  渲染节点
 ====================== ========================================================
+
+XGen毛发进Katana步骤
+
+- [ ] 如何导入显示？
+- [ ] 默认渲染器如何渲染？
+- [ ] Katana中心化部署流程？
+- [ ] Arnold如何渲染，配置与渲染？
+
+文字Katana部署Arnold
+文字Katana导入XGen流程
+文字Katana中心化部署
+
+-----------------------------
+参考文档
+-----------------------------
+
+
+- https://rmanwiki.pixar.com/display/RFK/XGen+in+Katana
+- https://docs.arnoldrenderer.com/display/A5KTN/Installation

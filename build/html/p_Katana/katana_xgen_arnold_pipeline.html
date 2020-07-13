@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Katana XGen毛发渲染流程 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="UE4" href="../parts/UE4.html" />
+    <link rel="prev" title="Katana开发环境" href="katana_python_env.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Katana.html">Katana</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="katana_basic_operator.html">Katana基础操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_callback_events.html">Katana回调事件处理机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_custom_shelf.html">Katana自定义工具架工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_python_api.html">Katana开发文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_python_env.html">Katana开发环境</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Katana XGen毛发渲染流程</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE4.html">UE4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/C4D.html">C4D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Katana.html">Katana</a> &raquo;</li>
+        
+      <li>Katana XGen毛发渲染流程</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Katana/katana_xgen_arnold_pipeline.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="katana-xgen">
+<h1>Katana XGen毛发渲染流程<a class="headerlink" href="#katana-xgen" title="永久链接至标题">¶</a></h1>
+<p>解决三个问题。</p>
+<p>XGen毛发nHair驱动解算流程？</p>
+<p>在制作毛发资产的时候需要通过Guides To Curves转引导曲线，以引导曲线转nHair动力学做毛发解算。</p>
+<p>Katana渲染XGen毛发的流程？</p>
+<p>这里涉及到环境部署，首先Katana的安装，比较傻瓜式，这里不细说，然后是KTOA（Arnold for Katana）的安装，KTOA可以部署到服务器（也就是共享文件夹中），也是傻瓜式部署，部署完安装路径下有一个launchKtoA.bat的启动项，我们需要稍加修改，才能渲染XGen毛发。内容中MTOA_PATH和MAYA_PATH需要配置，特别是MTOA和KTOA的版本搭配有一定的要求。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="s2">&quot;KATANA_HOME=C:\Program Files\Katana3.5v2&quot;</span>
+<span class="nb">set</span> <span class="s2">&quot;KTOA_HOME=</span><span class="si">%c</span><span class="s2">d%&quot;</span>
+<span class="nb">set</span> <span class="s2">&quot;MTOA_PATH=</span><span class="se">\\</span><span class="s2">server\manager</span><span class="se">\t</span><span class="s2">hirdParty\maya\mtoa</span><span class="se">\3</span><span class="s2">.3.0.1</span><span class="se">\201</span><span class="s2">7&quot;</span>
+<span class="nb">set</span> <span class="s2">&quot;MAYA_PATH=C:\Program Files\Autodesk\Maya2017&quot;</span>
+<span class="nb">set</span> <span class="n">DEFAULT_RENDERER</span><span class="o">=</span><span class="n">arnold</span>
+<span class="nb">set</span> <span class="s2">&quot;KATANA_TAGLINE=With KtoA 2.4.0.5 and Arnold 5.4.0.3&quot;</span>
+
+<span class="nb">set</span> <span class="s2">&quot;path=%KTOA_HOME%</span><span class="se">\b</span><span class="s2">in;%path%&quot;</span>
+<span class="nb">set</span> <span class="s2">&quot;KATANA_RESOURCES=%KTOA_HOME%&quot;</span>
+<span class="s2">&quot;%KATANA_HOME%</span><span class="se">\b</span><span class="s2">in\katanaBin.exe&quot;</span>
+</pre></div>
+</div>
+<p>修改完之后双击bat启动Katana，创建ArnoldXGen节点导入.xgen文件，创建Material（给ambient_occlusion材质），创建MaterialAssign赋予材质，创建相机，RenderSettings以及Render节点就可以渲染出XGen毛发啦。注意的是，XGen毛发在Katana中是无法显示的，只能渲染。</p>
+<p>毛发解算完迭代渲染流程？</p>
+<p>解算环节输出引导曲线的abc缓存，在Maya中替换驱动毛发，然后通过Export Patches for Batch Render导出.xgen文件即可。</p>
+<p>关闭nucleus&gt;Enable，关闭hairSystem&gt;Use Nucleus Solver，改static</p>
+<p>Katana本地批量渲染</p>
+<p><a class="reference external" href="https://www.aducg.com/2015/07/22/katana-local-batch-rendering-command/">https://www.aducg.com/2015/07/22/katana-local-batch-rendering-command/</a></p>
+<p>/usr/local/Katana1.5v1/katana –batch –katana-file=/path/to/file/scene.katana –render-node=Render_Node_Name -t 1-20</p>
+<p>如何渲染多帧</p>
+<p>如何导入相机</p>
+<p>如何设置参数</p>
+<p>如何随机颜色</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">NodegraphAPI</span>
+<span class="kn">from</span> <span class="nn">Katana</span> <span class="kn">import</span> <span class="n">KatanaFile</span>
+<span class="kn">from</span> <span class="nn">Katana</span> <span class="kn">import</span> <span class="n">RenderManager</span>
+<span class="k">def</span> <span class="nf">messageHandler</span><span class="p">(</span> <span class="n">sequenceID</span><span class="p">,</span> <span class="n">message</span> <span class="p">):</span>
+    <span class="nb">print</span> <span class="n">message</span>
+
+<span class="n">RenderNode</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">GetNode</span><span class="p">(</span><span class="s1">&#39;Render&#39;</span><span class="p">)</span> <span class="c1"># Getting Render node</span>
+<span class="n">renderSettings</span> <span class="o">=</span> <span class="n">RenderManager</span><span class="o">.</span><span class="n">RenderingSettings</span><span class="p">()</span>
+<span class="n">renderSettings</span><span class="o">.</span><span class="n">mode</span><span class="o">=</span><span class="n">RenderManager</span><span class="o">.</span><span class="n">RenderModes</span><span class="o">.</span><span class="n">DISK_RENDER</span>
+<span class="n">renderSettings</span><span class="o">.</span><span class="n">asynchRenderMessageCB</span><span class="o">=</span><span class="n">messageHandler</span>
+<span class="n">renderSettings</span><span class="o">.</span><span class="n">asynch</span><span class="o">=</span><span class="kc">False</span>
+<span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">80</span>
+    <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Rendering Node &quot;</span><span class="si">%s</span><span class="s1">&quot; frame </span><span class="si">%s</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">RenderNode</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">frame</span><span class="p">)</span>
+    <span class="n">renderSettings</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span>
+    <span class="n">RenderManager</span><span class="o">.</span><span class="n">StartRender</span><span class="p">(</span><span class="s1">&#39;diskRender&#39;</span><span class="p">,</span> <span class="n">node</span><span class="o">=</span><span class="n">RenderNode</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">renderSettings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../parts/UE4.html" class="btn btn-neutral float-right" title="UE4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="katana_python_env.html" class="btn btn-neutral float-left" title="Katana开发环境" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

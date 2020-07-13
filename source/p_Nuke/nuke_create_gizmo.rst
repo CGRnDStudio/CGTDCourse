@@ -2,7 +2,7 @@
 Nuke创建Gizmo流程
 ==============================
 
-* Ctrl + G # 打组
-* Ctrl + Alt + G # 解组
+- Ctrl + G # 打组
+- Ctrl + Alt + G # 解组
 
 .gizmo文件想在Nuke中可以使用，需要创建菜单来创建gizmo，这样才可以按tab键找到节点。

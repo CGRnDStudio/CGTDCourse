@@ -4,7 +4,7 @@ Nuke主目录
 
 .. code-block:: python
 
-    C:\Users\huweiguo\.nuke
+    C:\Users\{USERNAME}\.nuke
 
-init.py
-menu.py
+- init.py
+- menu.py
