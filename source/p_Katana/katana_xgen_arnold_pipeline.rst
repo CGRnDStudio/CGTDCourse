@@ -66,3 +66,12 @@ https://www.aducg.com/2015/07/22/katana-local-batch-rendering-command/
         print '\nRendering Node "%s" frame %s...' % (RenderNode.getName(), frame)
         renderSettings.frame = frame
         RenderManager.StartRender('diskRender', node=RenderNode, settings=renderSettings)
+
+
+遇到的坑
+
+- [×] XGen渲染运动模糊需要单独设置
+- [×] XGen解算的时候引导曲线（所有的）需要单独导出小数帧给会XGen（-0.1， 0.1），在Katana中只导入.xgen文件，.xgen文件记录了所有缓存路径信息。
+- [×] XGen生长面小数帧也不能有任何问题。
+- [×] XGen需要单独输出生长面的abc缓存（小数帧）
+- [×] XGen生长面和引导曲线的缓存不能脱离，小数帧也不能脱离，不然就会ci掉

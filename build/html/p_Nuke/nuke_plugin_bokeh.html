@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Nuke扩展开发插件的层级结构 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>Nuke插件：Peregrine Labs Bokeh &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Nuke开发者文档" href="nuke_developer_document.html" />
-    <link rel="prev" title="Nuke开发环境搭建" href="nuke_develop_environment.html" /> 
+    <link rel="next" title="Nuke插件：Crytomatte" href="nuke_plugin_cryptomatte.html" />
+    <link rel="prev" title="Nuke模块：nukescripts" href="nuke_module_nukescripts.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,12 +100,12 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_daemon_thread.html">Nuke守护线程自动保存文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_deploy_plugins.html">Nuke依据版本来加载不同插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_develop_environment.html">Nuke开发环境搭建</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke扩展开发插件的层级结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nuke_develop_plugins.html">Nuke扩展开发插件的层级结构</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_developer_document.html">Nuke开发者文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_home_directory.html">Nuke主目录</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_module_nuke.html">Nuke模块：nuke</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_module_nukescripts.html">Nuke模块：nukescripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nuke_plugin_bokeh.html">Nuke插件：Peregrine Labs Bokeh</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke插件：Peregrine Labs Bokeh</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_cryptomatte.html">Nuke插件：Crytomatte</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_dft.html">Nuke插件：DFT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_plugin_film_convert.html">Nuke插件：FilmConvert</a></li>
@@ -173,13 +173,13 @@
         
           <li><a href="../parts/Nuke.html">Nuke</a> &raquo;</li>
         
-      <li>Nuke扩展开发插件的层级结构</li>
+      <li>Nuke插件：Peregrine Labs Bokeh</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Nuke/nuke_develop_plugins.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Nuke/nuke_plugin_bokeh.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,43 +192,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nuke">
-<h1>Nuke扩展开发插件的层级结构<a class="headerlink" href="#nuke" title="永久链接至标题">¶</a></h1>
-<p>扩展开发的层级结构大概如下：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">package1</span>
-    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-    <span class="n">module1</span><span class="o">.</span><span class="n">py</span>
-<span class="n">package2</span>
-    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-    <span class="n">module2</span><span class="o">.</span><span class="n">py</span>
-<span class="n">gizmo</span>
-    <span class="n">xxx1</span><span class="o">.</span><span class="n">gizmo</span>
-    <span class="n">xxx2</span><span class="o">.</span><span class="n">gizmo</span>
-<span class="n">icons</span>
-    <span class="n">xxx1</span><span class="o">.</span><span class="n">png</span>
-    <span class="n">xxx2</span><span class="o">.</span><span class="n">svg</span>
-<span class="n">xxx1</span><span class="o">.</span><span class="n">gizmo</span>
-<span class="n">xxx1</span><span class="o">.</span><span class="n">png</span>
-<span class="n">module1</span><span class="o">.</span><span class="n">py</span>
-<span class="n">module2</span><span class="o">.</span><span class="n">py</span>
-<span class="n">init</span><span class="o">.</span><span class="n">py</span>
-<span class="n">menu</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>他们围绕着一个方法来控制路径查询机制，可以修改 <code class="docutils literal notranslate"><span class="pre">C:\Users\{用户名}\.nuke\init.py</span></code> 文件。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
-
-<span class="n">nuke</span><span class="o">.</span><span class="n">pluginAddPath</span><span class="p">(</span><span class="s2">&quot;插件路径&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>menu.py文件中一般写自定义菜单的代码，这样在Nuke启动的时候会自动加载菜单，而菜单中的执行的代码一般都是此文件夹下的模块或包的文件以及图标或Gizmo文件。</p>
-<p>init.py文件主要用来处理路径问题，如果不想gizmo和icons中文件通过gizmo/xxx1.gizmo来处理的话，可以在init.py写入如下脚本。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nuke</span>
-
-<span class="n">nuke</span><span class="o">.</span><span class="n">pluginAddPath</span><span class="p">(</span><span class="s2">&quot;gizmo&quot;</span><span class="p">)</span>
-<span class="n">nuke</span><span class="o">.</span><span class="n">pluginAddPath</span><span class="p">(</span><span class="s2">&quot;icons&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
+  <div class="section" id="nuke-peregrine-labs-bokeh">
+<h1>Nuke插件：Peregrine Labs Bokeh<a class="headerlink" href="#nuke-peregrine-labs-bokeh" title="永久链接至标题">¶</a></h1>
+<p>和Yeti同一家出品的Nuke景深插件</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://documentation.peregrinelabs.com/bokeh/">http://documentation.peregrinelabs.com/bokeh/</a></p></li>
+</ul>
 </div>
 
 
@@ -239,10 +208,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="nuke_developer_document.html" class="btn btn-neutral float-right" title="Nuke开发者文档" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nuke_plugin_cryptomatte.html" class="btn btn-neutral float-right" title="Nuke插件：Crytomatte" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nuke_develop_environment.html" class="btn btn-neutral float-left" title="Nuke开发环境搭建" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nuke_module_nukescripts.html" class="btn btn-neutral float-left" title="Nuke模块：nukescripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
