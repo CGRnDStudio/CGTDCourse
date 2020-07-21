@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="deadline_install_mongodb.html">Deadline渲染农场MongoDB离线安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_maya_plugin.html">Deadline渲染农场Maya提交工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_nuke_plugin.html">Deadline渲染农场Nuke提交工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deadline_pool_group.html">Deadline渲染池和组的概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadline_pool_group.html">Deadline渲染农场池和组的概念</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_priority_manager.html">Deadline渲染农场权限管理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_python_api.html">Deadline渲染农场提交农场接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_server_install_deploy.html">Deadline渲染农场服务器安装部署</a></li>
@@ -181,6 +181,14 @@
             
   <div class="section" id="deadline">
 <h1>Deadline渲染农场配置软件版本<a class="headerlink" href="#deadline" title="永久链接至标题">¶</a></h1>
+<p>配置软件版本需要配置两个地方，首先如果你是使用默认菜单提交方式，想添加软件版本可以通过修改下面的模块文件</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DeadlineRepository10</span>\<span class="n">scripts</span>\<span class="n">Submission</span>\<span class="n">HoudiniSubmission</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>此时我们只是能提交我们配置的软件版本，但任务肯定会报错，因为我们还需要配置插件，也就是后台会去调用什么软件版本去跑任务。这里需要去明确配置。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DeadlineRepository10</span>\<span class="n">plugins</span>\<span class="n">Houdini</span>\<span class="n">Houdini</span><span class="o">.</span><span class="n">param</span>
+</pre></div>
+</div>
 </div>
 
 

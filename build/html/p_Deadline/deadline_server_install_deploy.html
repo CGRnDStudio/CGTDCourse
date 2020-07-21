@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="deadline_install_mongodb.html">Deadline渲染农场MongoDB离线安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_maya_plugin.html">Deadline渲染农场Maya提交工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_nuke_plugin.html">Deadline渲染农场Nuke提交工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deadline_pool_group.html">Deadline渲染池和组的概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadline_pool_group.html">Deadline渲染农场池和组的概念</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_priority_manager.html">Deadline渲染农场权限管理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_python_api.html">Deadline渲染农场提交农场接口</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Deadline渲染农场服务器安装部署</a></li>
@@ -188,6 +188,11 @@
 <li><p>客户端：Window 10 企业版</p></li>
 <li><p>Deadline版本：Thinkbox Deadline v10.0.20.2 Win</p></li>
 </ul>
+<p>远程控制，需要开启deadlinepulse.exe</p>
+<p>Deadline如果使用服务器部署存在三个问题需要解决，一个是安装的路径得是共享路径，在D盘你是没法在另一台电脑上开启客户端软件连接数据库的。客户端电脑有时候打不开Deadline的原因可能是需要安装.net的库，一般安装完Maya就可以解决这个问题。还有会遇到deadline.ini文件找不到的问题，可以直接拷贝ThinkboxDeadline10binThinkboxDeadline10deadline.ini文件到下面的路径中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">ProgramData</span>\<span class="n">Thinkbox</span>\<span class="n">Deadline10</span>
+</pre></div>
+</div>
 </div>
 
 

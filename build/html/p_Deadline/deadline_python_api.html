@@ -99,7 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="deadline_install_mongodb.html">Deadline渲染农场MongoDB离线安装</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_maya_plugin.html">Deadline渲染农场Maya提交工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_nuke_plugin.html">Deadline渲染农场Nuke提交工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deadline_pool_group.html">Deadline渲染池和组的概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadline_pool_group.html">Deadline渲染农场池和组的概念</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_priority_manager.html">Deadline渲染农场权限管理</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Deadline渲染农场提交农场接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deadline_server_install_deploy.html">Deadline渲染农场服务器安装部署</a></li>
@@ -181,18 +181,7 @@
             
   <div class="section" id="deadline">
 <h1>Deadline渲染农场提交农场接口<a class="headerlink" href="#deadline" title="永久链接至标题">¶</a></h1>
-<p>文档采用服务器集中式部署方案，将DeadlineRepository与DeadlineClient全部部署在服务器，从而客户端无需安装任何东西即可使用的方案。</p>
-<p>部署环境如下:</p>
-<ul class="simple">
-<li><p>服务器：Windows Server 2012 R2 Standard</p></li>
-<li><p>客户端：Window 10 企业版</p></li>
-<li><p>Deadline版本：Thinkbox Deadline v10.0.20.2 Win</p></li>
-</ul>
-<ul class="simple">
-<li><p>DeadlineRepository10pluginsHoudiniHoudini.param</p></li>
-<li><p>Configure Plugins</p></li>
-<li><p>deadlinewebservice.exe <a class="reference external" href="http://localhost:8082/">http://localhost:8082/</a></p></li>
-</ul>
+<p>使用Deadline Python API提交任务需要开启deadlinewebservice.exe服务。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;Y:\Program\DeadlineRepository10\api\python&quot;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">Deadline.DeadlineConnect</span> <span class="kn">import</span> <span class="n">DeadlineCon</span> <span class="k">as</span> <span class="n">Connect</span>
@@ -203,15 +192,6 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>远程控制 开启deadlinepulse.exe</p>
-<p>## Deadline客户端电脑配置
-- C:ProgramDataThinkboxDeadline10 deadline.ini</p>
-<p>## Deadline使用与配置
-- Deadline软件界面
-- Deadline使用方法
-- Deadline简单配置</p>
-<p># 坐井观天：本节知识点
-- 案例：编写Houdini、Nuke提交工具</p>
 </div>
 
 
