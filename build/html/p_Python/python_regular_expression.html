@@ -236,36 +236,66 @@
   <div class="section" id="python">
 <h1>Python正则表达式<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
 <p>正则表达式（Regular Expression）使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些符合某个模式的文本。</p>
-<p>Python中提供内置模块re处理正则表达式</p>
-<p>正则表达式中特殊符号的作用
-.^$*+?{}[]|()</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-<span class="nb">dir</span><span class="p">(</span><span class="n">re</span><span class="p">)</span>
+<p>正则表达式规则中特殊符号的作用.^$*+?{}[]|()。</p>
+<ul class="simple">
+<li><p>\d 数字 [0-9]</p></li>
+<li><p>\w 字母或数字 a-z A-Z 0-9 _</p></li>
+<li><p>\s 空白字符 space</p></li>
+<li><p>\D \W \S 与小写相反</p></li>
+<li><p>. 任意字符</p></li>
+<li><p>| 或</p></li>
+<li><p>^ 非，或者开始位置标记</p></li>
+<li><p>$ 结束位置标记</p></li>
+<li><p>\b 单词边界</p></li>
+<li><p>\B 非单词边界</p></li>
+</ul>
+<p>匹配变长的字符，贪婪匹配。</p>
+<ul class="simple">
+<li><p>? 表示 0 - 1次 ab?c匹配abc或者ac</p></li>
+<li><p>+ 表示1 - 无数次 ab+c匹配abc abbc abbbbbbc</p></li>
+<li><p>* 表示0 - 无数次 ab*c匹配ac abc abbbbbbc</p></li>
+<li><p>{m, n} 表示匹配m到n次 ab{2, 5}c匹配abbbc abbbbbbbc</p></li>
+<li><p>{m} 表示只匹配m次</p></li>
+<li><p>{m,} 表示匹配最少m次</p></li>
+<li><p>{, n} 表示匹配最多n次</p></li>
+</ul>
+<p>Python中提供内置模块re处理正则表达式。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">re</span><span class="p">)</span>
+<span class="go">&lt;type &#39;module&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span>
+<span class="go">&lt;module &#39;re&#39; from &#39;C:\Python27\lib\re.pyc&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">re</span><span class="p">)</span>
+<span class="go">[&#39;DEBUG&#39;, &#39;DOTALL&#39;, &#39;I&#39;, &#39;IGNORECASE&#39;, &#39;L&#39;, &#39;LOCALE&#39;, &#39;M&#39;, &#39;MULTILINE&#39;, &#39;S&#39;, &#39;Scanner&#39;, &#39;T&#39;, &#39;TEMPLATE&#39;, &#39;U&#39;, &#39;UNICODE&#39;, &#39;VERBOSE&#39;, &#39;X&#39;, &#39;_MAXCACHE&#39;, &#39;__all__&#39;, &#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__version__&#39;, &#39;_alphanum&#39;, &#39;_cache&#39;, &#39;_cache_repl&#39;, &#39;_compile&#39;, &#39;_compile_repl&#39;, &#39;_expand&#39;, &#39;_locale&#39;, &#39;_pattern_type&#39;, &#39;_pickle&#39;, &#39;_subx&#39;, &#39;compile&#39;, &#39;copy_reg&#39;, &#39;error&#39;, &#39;escape&#39;, &#39;findall&#39;, &#39;finditer&#39;, &#39;match&#39;, &#39;purge&#39;, &#39;search&#39;, &#39;split&#39;, &#39;sre_compile&#39;, &#39;sre_parse&#39;, &#39;sub&#39;, &#39;subn&#39;, &#39;sys&#39;, &#39;template&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
-<p>re模块中的函数
-re.compile # 生成一个匹配器实例，用来匹配，不用重复编译，优化代码执行时间
-re.findall # 找到全部匹配字符串，以列表返回
-re.finditer # 找到全部匹配实例对象，以迭代器返回
-re.match # 匹配字符串开始位置
-re.search # 扫描字符串，找到第一个位置
-re.split # 根据规则切分字符串
-re.sub # 查询替换字符串，返回替换结果
-re.subn # 查询替换字符串，返回替换结果和替换次数</p>
-<p>re.match、re.search、re.finditer返回匹配结果的实例对象，实例对象有如下方法
-instance.group() # 返回匹配的完整字符串
-instance.start() # 匹配的开始位置
-instance.end() # 匹配的结束位置
-instance.span() # 包含起始、结束位置的元组
-instance.groups() # 返回分组信息
-instance.groupdict() # 返回命名分组信息</p>
+<ul class="simple">
+<li><p>re.compile # 生成一个匹配器实例，用来匹配，不用重复编译，优化代码执行时间</p></li>
+<li><p>re.findall # 找到全部匹配字符串，以列表返回</p></li>
+<li><p>re.finditer # 找到全部匹配实例对象，以迭代器返回</p></li>
+<li><p>re.match # 匹配字符串开始位置</p></li>
+<li><p>re.search # 扫描字符串，找到第一个位置</p></li>
+<li><p>re.split # 根据规则切分字符串</p></li>
+<li><p>re.sub # 查询替换字符串，返回替换结果</p></li>
+<li><p>re.subn # 查询替换字符串，返回替换结果和替换次数</p></li>
+</ul>
+<p>re.match、re.search、re.finditer返回匹配结果的实例对象，实例对象有如下方法</p>
+<ul class="simple">
+<li><p>instance.group() # 返回匹配的完整字符串</p></li>
+<li><p>instance.start() # 匹配的开始位置</p></li>
+<li><p>instance.end() # 匹配的结束位置</p></li>
+<li><p>instance.span() # 包含起始、结束位置的元组</p></li>
+<li><p>instance.groups() # 返回分组信息</p></li>
+<li><p>instance.groupdict() # 返回命名分组信息</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;12abc345ab&quot;</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">())</span> <span class="c1"># 返回index</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d{3,}&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
@@ -312,30 +342,13 @@ instance.groupdict() # 返回命名分组信息</p>
 <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;ch_&quot;</span><span class="p">,</span> <span class="s2">&quot;proj_ch_dog&quot;</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;d[aoes]g&quot;</span><span class="p">,</span> <span class="s2">&quot;dog dag deg dsg&quot;</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;d[a-zA-Z0-9]g&quot;</span><span class="p">,</span> <span class="s2">&quot;dog dag deg dsg&quot;</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;a\wt&quot;</span><span class="p">,</span> <span class="s2">&quot;adfaa_tfagdga&quot;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;1[357]\d</span><span class="si">{9}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;phone number: 13851709904&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p># d 数字 [0-9]
-# w 字母或数字 a-z A-Z 0-9 _
-# s 空白字符 space
-# D W S 与小写相反
-# . 任意字符
-# | 或
-# ^ 非，或者开始位置标记
-# $ 结束位置标记
-# b 单词边界
-# B 非单词边界
-匹配变长的字符
-# ? 表示 0 - 1次 ab?c匹配abc或者ac
-# + 表示1 - 无数次 ab+c匹配abc abbc abbbbbbc
-# * 表示0 - 无数次 ab*c匹配ac abc abbbbbbc
-# {m, n} 表示匹配m到n次 ab{2, 5}c匹配abbbc abbbbbbbc
-# {m} 表示只匹配m次
-# {m,} 表示匹配最少m次
-# {, n} 表示匹配最多n次
-res = re.search(r”awt”, “adfaa_tfagdga”)
-res = re.search(“1[357]d{9}”, “phone number: 13851709904”)</p>
-<p># ()表达式编组，括号里面的表达式作为一个整体逻辑</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;SSNI-\d</span><span class="si">{3}</span><span class="s2">\.avi&quot;</span><span class="p">,</span> <span class="s2">&quot;this is budsfaf SSNI-518.avi dfaganiojfoas&quot;</span><span class="p">)</span>
+
 <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">group</span><span class="p">(),</span> <span class="n">res</span><span class="o">.</span><span class="n">start</span><span class="p">(),</span> <span class="n">res</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
 <span class="k">else</span><span class="p">:</span>
@@ -344,99 +357,181 @@ res = re.search(“1[357]d{9}”, “phone number: 13851709904”)</p>
 <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;[a-zA-Z]+\.html&quot;</span><span class="p">,</span> <span class="n">sss</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(?P&lt;name&gt;)
-(?=name)
-(mov|exr)</p>
-<p>match = re.search(“(?P&lt;id&gt;d+), Date: (?P&lt;date&gt;.+)”, “ID: 021523, Date: Feb/12/2017”)
-print(match.group(“id”))
-print(match.group(“date”))</p>
-<p>res = re.search(“w+(?=.jpg)”, “image.jpg”)</p>
-<p>(?=abc) 判断字符后面包含abc
-(?!abc) 判断字符后面不包含abc
-(?&lt;=abc) 判断字符前面包含abc
-(?&lt;!abc) 判断字符前面不包含abc
-(?#…) 注释</p>
-<p>re.split(r”W”, “abc,123,x”)
-re.split(r”(W)”, “abc,123,x”)
-re.sub(r”[a-z]+”, “abc,123,x”)
-re.sub(r”[a-z]+”, “abc,123,x”, 1)
-re.subn(r”[a-z]+”, “*”, “abc,123,x”)</p>
-<p>编译标志(?iLmsux)
-可以用re.I、re.M等参数，也可以直接在表达式中添加(?)</p>
-<p>s       单行
-i       忽略大小写
-L       让w匹配本地字符，对中文支持不好
-m       多行
-x       忽略多余的空白字符
-u       unicode</p>
-<p>(?i)忽略大小写</p>
-<p>组操作，小括号即组，分组的概念
-import re</p>
-<p>s1 = “%123Abc%45xyz&amp;”
-re.findall(r”(d+)(w+)”, s1)
-re.findall(r”(d+(w+))”, s1)</p>
-<p>命名组 (?P&lt;name&gt;…)</p>
-<dl class="simple">
-<dt>for m in re.finditer(r”(?P&lt;number&gt;d+)(?P&lt;letter&gt;[a-z]+)”, “%123Abc%45xyz&amp;”, re.I):</dt><dd><p>print(m.group())
-print(m.groupdict())</p>
-</dd>
-</dl>
-<p>无捕获组(?:…)，作为匹配条件，匹配的对象在无名的组中，无需关心
-import re</p>
-<p>s1 = “%123Abc%45xyz&amp;”
-print(re.findall(r”(?:d+)([a-z]+)”, s1))
-print(re.findall(r”(?:d+)([a-z]+)”, s1, re.I))</p>
-<p>反向引用
-&lt;number&gt;或(?P=name)，引用前面的组</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;a&gt;\w+&lt;/a&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<p>()表达式编组，括号里面的表达式作为一个整体逻辑</p>
+<ul class="simple">
+<li><p>(?P&lt;name&gt;)</p></li>
+<li><p>(?=name)</p></li>
+<li><p>(mov|exr)</p></li>
+<li><p>(?=abc) 判断字符后面包含abc</p></li>
+<li><p>(?!abc) 判断字符后面不包含abc</p></li>
+<li><p>(?&lt;=abc) 判断字符前面包含abc</p></li>
+<li><p>(?&lt;!abc) 判断字符前面不包含abc</p></li>
+<li><p>(?#…) 注释</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;(?P&lt;id&gt;\d+), Date: (?P&lt;date&gt;.+)&quot;</span><span class="p">,</span> <span class="s2">&quot;ID: 021523, Date: Feb/12/2017&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">))</span>
 
-<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;\w&gt;\w+&lt;/(\1)&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;\w+(?=.jpg)&quot;</span><span class="p">,</span> <span class="s2">&quot;image.jpg&quot;</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;(?P&lt;tag&gt;\w)&gt;\w+&lt;/(?P=tag)&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\W&quot;</span><span class="p">,</span> <span class="s2">&quot;abc,123,x&quot;</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\W)&quot;</span><span class="p">,</span> <span class="s2">&quot;abc,123,x&quot;</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;abc,123,x&quot;</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;abc,123,x&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;abc,123,x&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>(?=…) # 组内容必须出现在右侧
-(?!…) # 组内容不能出现在右侧
-(?&lt;=…) # 组内容必须出现在左侧
-(?&lt;!…) # 组内容不能出现在左侧</p>
-<p>re.split用pattern做分隔符切割字符串，如果用(pattern)，分隔符也会返回
-import re</p>
-<p>s1 = “abc,123,x”
-print(re.split(r”W”, s1))
-print(re.split(r”(W)”, s1))</p>
-<p>re.sub 替换查找到的字符串，返回新的字符串，可指定替换次数
-import re</p>
-<p>s1 = “abc,123,x”
-print(re.sub(r”[a-z]+”, “*”, s1))
-print(re.sub(r”[a-z]+”, “*”, s1, 1))</p>
-<p>re.subn和re.sub用法一样，只是返回值不同，返回(新的字符串，被替换的次数)
-import re</p>
-<p>s1 = “abc,123,x”
-print(re.subn(r”[a-z]+”, “*”, “abc,123,x”))
-print(re.subn(r”[a-z]+”, “*”, “abc,123,x”, 1))</p>
-<p>用来替换的参数repl可以接受自定义函数
-import re</p>
-<dl class="simple">
-<dt>def repl(m):</dt><dd><p>print(m.group())
-return “*” * len(m.group())</p>
-</dd>
-</dl>
-<p>s1 = “abc,123,x”
-print(re.sub(r”[a-z]+”, repl, s1))
-print(re.sub(r”[a-z]+”, repl, s1, 1))
-print(re.subn(r”[a-z]+”, repl, s1))
-print(re.subn(r”[a-z]+”, repl, s1, 1))</p>
-<p>结合匿名函数lambda可以更简洁
-import re
-s1 = “abc,123,x”
-print(re.sub(r”[a-z]+”, lambda x: “*” * len(x.group()), s1))</p>
-<p>import re
-s1 = “magicFireNezhaSpirit”
-re.sub(r”[A-Z]+”, lambda x: “_” + x.group().lower(), s1)</p>
-<p>辅助组</p>
+<p>编译标志(?iLmsux), 可以用re.I、re.M等参数，也可以直接在表达式中添加(?)</p>
+<ul class="simple">
+<li><p>s 单行</p></li>
+<li><p>i 忽略大小写</p></li>
+<li><p>L 让w匹配本地字符，对中文支持不好</p></li>
+<li><p>m 多行</p></li>
+<li><p>x 忽略多余的空白字符</p></li>
+<li><p>u unicode</p></li>
+</ul>
+<p>(?i)忽略大小写</p>
+<p>组操作，小括号即组，分组的概念</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;%123Abc</span><span class="si">%45x</span><span class="s2">yz&amp;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">&#39;%123Abc%45xyz&amp;&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+)(\w+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="go">[(&#39;123&#39;, &#39;Abc&#39;), (&#39;45&#39;, &#39;xyz&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\d+(\w+))&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="go">[(&#39;123Abc&#39;, &#39;Abc&#39;), (&#39;45xyz&#39;, &#39;xyz&#39;)]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>命名组 (?P&lt;name&gt;…)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?P&lt;number&gt;\d+)(?P&lt;letter&gt;[a-z]+)&quot;</span><span class="p">,</span> <span class="s2">&quot;%123Abc</span><span class="si">%45x</span><span class="s2">yz&amp;&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">groupdict</span><span class="p">())</span>
+<span class="gp">...</span>
+<span class="go">123Abc</span>
+<span class="go">{&#39;number&#39;: &#39;123&#39;, &#39;letter&#39;: &#39;Abc&#39;}</span>
+<span class="go">45xyz</span>
+<span class="go">{&#39;number&#39;: &#39;45&#39;, &#39;letter&#39;: &#39;xyz&#39;}</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>无捕获组(?:…)，作为匹配条件，匹配的对象在无名的组中，无需关心</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;%123Abc</span><span class="si">%45x</span><span class="s2">yz&amp;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">&#39;%123Abc%45xyz&amp;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?:\d+)([a-z]+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="go">[&#39;xyz&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(?:\d+)([a-z]+)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">))</span>
+<span class="go">[&#39;Abc&#39;, &#39;xyz&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>反向引用，通过&lt;number&gt;或(?P=name)，引用前面的组</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;a&gt;\w+&lt;/a&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="gp">...</span>
+<span class="go">&lt;a&gt;123Abc&lt;/a&gt;</span>
+
+<span class="go">for m in re.finditer(r&quot;&lt;\w&gt;\w+&lt;/(\1)&gt;&quot;, &quot;%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;&quot;):</span>
+<span class="go">    print(m.group())</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;(?P&lt;tag&gt;\w)&gt;\w+&lt;/(?P=tag)&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;%&lt;a&gt;123Abc&lt;/a&gt;%&lt;b&gt;45xyz&lt;/b&gt;&amp;&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="gp">...</span>
+<span class="go">&lt;a&gt;123Abc&lt;/a&gt;</span>
+<span class="go">&lt;b&gt;45xyz&lt;/b&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>(?=…) # 组内容必须出现在右侧</p></li>
+<li><p>(?!…) # 组内容不能出现在右侧</p></li>
+<li><p>(?&lt;=…) # 组内容必须出现在左侧</p></li>
+<li><p>(?&lt;!…) # 组内容不能出现在左侧</p></li>
+</ul>
+<p>re.split用pattern做分隔符切割字符串，如果用(pattern)，分隔符也会返回</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;abc,123,x&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\W&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="go">[&#39;abc&#39;, &#39;123&#39;, &#39;x&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\W)&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="go">[&#39;abc&#39;, &#39;,&#39;, &#39;123&#39;, &#39;,&#39;, &#39;x&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>re.sub替换查找到的字符串，返回新的字符串，可指定替换次数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;abc,123,x&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="go">*,123,*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">*,123,x</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>re.subn和re.sub用法一样，只是返回值不同，返回(新的字符串，被替换的次数)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;abc,123,x&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">&#39;abc,123,x&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="go">(&#39;*,123,*&#39;, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">(&#39;*,123,x&#39;, 1)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>用来替换的参数repl可以接受自定义函数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">repl</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="s2">&quot;*&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;abc,123,x&quot;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="n">repl</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="go">abc</span>
+<span class="go">x</span>
+<span class="go">***,123,*</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="n">repl</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">abc</span>
+<span class="go">***,123,x</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="n">repl</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="go">abc</span>
+<span class="go">x</span>
+<span class="go">(&#39;***,123,*&#39;, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="n">repl</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">abc</span>
+<span class="go">(&#39;***,123,x&#39;, 1)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>结合匿名函数lambda可以更简洁</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;abc,123,x&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[a-z]+&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;*&quot;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">()),</span> <span class="n">s</span><span class="p">))</span>
+<span class="go">***,123,*</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;magicFireNezhaSpirit&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-Z]+&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">group</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">s</span><span class="p">))</span>
+<span class="go">magic_fire_nezha_spirit</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
 </div>
 
 
