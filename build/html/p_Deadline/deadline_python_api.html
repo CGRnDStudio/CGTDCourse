@@ -182,14 +182,42 @@
   <div class="section" id="deadline">
 <h1>Deadline渲染农场提交农场接口<a class="headerlink" href="#deadline" title="永久链接至标题">¶</a></h1>
 <p>使用Deadline Python API提交任务需要开启deadlinewebservice.exe服务。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;Y:\Program\DeadlineRepository10\api\python&quot;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">Deadline.DeadlineConnect</span> <span class="kn">import</span> <span class="n">DeadlineCon</span> <span class="k">as</span> <span class="n">Connect</span>
-<span class="n">con</span> <span class="o">=</span> <span class="n">Connect</span><span class="p">(</span><span class="s2">&quot;farm.do-vfx.com&quot;</span><span class="p">,</span> <span class="mi">8082</span><span class="p">)</span>
-
-<span class="n">job</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">Jobs</span><span class="o">.</span><span class="n">GetJob</span><span class="p">(</span><span class="s2">&quot;5bfce04f4096fe78c0f6d640&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;Y:\Program\DeadlineRepository10\api\python&quot;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">Deadline.DeadlineConnect</span> <span class="k">as</span> <span class="nn">Connect</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span> <span class="o">=</span> <span class="n">Connect</span><span class="o">.</span><span class="n">DeadlineCon</span><span class="p">(</span><span class="s2">&quot;192.168.0.111&quot;</span><span class="p">,</span> <span class="mi">8082</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span>
+<span class="go">&lt;Deadline.DeadlineConnect.DeadlineCon instance at 0x00E90B48&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">con</span><span class="p">)</span>
+<span class="go">&lt;type &#39;instance&#39;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">con</span><span class="p">)</span>
+<span class="go">[&#39;AuthenticationModeEnabled&#39;, &#39;Balancer&#39;, &#39;EnableAuthentication&#39;, &#39;Groups&#39;, &#39;JobReports&#39;, &#39;Jobs&#39;, &#39;LimitGroups&#39;, &#39;MappedPaths&#39;, &#39;MaximumPriority&#39;, &#39;Plugins&#39;, &#39;Pools&#39;, &#39;Pulse&#39;, &#39;Repository&#39;, &#39;SetAuthenticationCredentials&#39;, &#39;Slaves&#39;, &#39;SlavesRenderingJob&#39;, &#39;TaskReports&#39;, &#39;Tasks&#39;, &#39;Users&#39;, &#39;__doc__&#39;, &#39;__init__&#39;, &#39;__module__&#39;, &#39;connectionProperties&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">Groups</span>
+<span class="go">&lt;Deadline.Groups.Groups instance at 0x00E90DA0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">con</span><span class="o">.</span><span class="n">Groups</span><span class="p">)</span>
+<span class="go">[&#39;AddGroup&#39;, &#39;AddGroups&#39;, &#39;DeleteGroup&#39;, &#39;DeleteGroups&#39;, &#39;GetGroupNames&#39;, &#39;PurgeGroups&#39;, &#39;__doc__&#39;, &#39;__init__&#39;, &#39;__module__&#39;, &#39;connectionProperties&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">Groups</span><span class="o">.</span><span class="n">GetGroupNames</span><span class="p">()</span>
+<span class="go">[u&#39;none&#39;, u&#39;nuke&#39;, u&#39;arnold&#39;, u&#39;cache&#39;, u&#39;gpu&#39;, u&#39;maya2016&#39;, u&#39;largem&#39;, u&#39;core48&#39;, u&#39;pdg&#39;, u&#39;maya2017&#39;, u&#39;rs3&#39;, u&#39;maya2018&#39;]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">Jobs</span><span class="o">.</span><span class="n">GetJob</span><span class="p">(</span><span class="s2">&quot;5f16b24ab3a4a507c0359b71&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+<span class="go">&lt;type &#39;dict&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="p">[</span><span class="s2">&quot;Props&quot;</span><span class="p">][</span><span class="s2">&quot;Pri&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">97</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">con</span><span class="o">.</span><span class="n">Jobs</span><span class="o">.</span><span class="n">SaveJob</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+<span class="go">&#39;Success&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 </div>

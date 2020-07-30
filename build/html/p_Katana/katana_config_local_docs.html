@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Katana配置本地离线帮助文档 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Katana自定义工具架工具" href="katana_custom_shelf.html" />
+    <link rel="prev" title="Katana回调事件处理机制" href="katana_callback_events.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Katana.html">Katana</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="katana_basic_operator.html">Katana基础操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_callback_events.html">Katana回调事件处理机制</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Katana配置本地离线帮助文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_custom_shelf.html">Katana自定义工具架工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_python_api.html">Katana开发文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_python_env.html">Katana开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_xgen_arnold_pipeline.html">Katana XGen毛发渲染流程</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE4.html">UE4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/C4D.html">C4D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Katana.html">Katana</a> &raquo;</li>
+        
+      <li>Katana配置本地离线帮助文档</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Katana/katana_config_local_docs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="katana">
+<h1>Katana配置本地离线帮助文档<a class="headerlink" href="#katana" title="永久链接至标题">¶</a></h1>
+<p>非常有用的小功能，默认Katana菜单Help中的帮助文档都是链接到在线文档，虽然在线文档可能是访问最新版本文档，但很多时候限于网速原因以及大多时候不能上网的局限，需要配置本地离线帮助文档，查看当前版本的帮助文档。</p>
+<p>找到主菜单Edit&gt;Perferences&gt;documentation将source从Remote(via learn.foundry.com)配置成Local即可，此时查看Online Help、Developer Guide以及API Reference都是本地离线帮助文档了，玩API特别方便吧。</p>
+<p>NukeX本地离线帮助文档会遇到一点问题，虽然NukeX菜单Edit&gt;Preferences…&gt;Behaviors&gt;Documentation中也有设置documentation source为local的选项，但是设置和不设置好像是一样的，我们只能魔改本地index.html文件了。以Nuke 12.1v2为例，找到C:Program FilesNuke12.1v2Documentationindex.html文件，用记事本打开。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&lt;!doctype html public &quot;-//w3c//dtd html 4.0 transitional//en&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;
+    Nuke 12.1.2
+&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot;&gt;
+&lt;link href=&quot;img/visionmongers.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;
+    &lt;img src=&quot;img/nuke.png&quot; alt=&quot;[Nuke Logo]&quot;&gt;
+&lt;/h1&gt;
+&lt;blockquote&gt;
+    &lt;p&gt;
+    Nuke is an Academy Award winning compositor.
+    It has been used to create extraordinary images on scores of
+    feature films including &lt;em&gt;Avatar&lt;/em&gt;, &lt;em&gt;Harry Potter And The Deathly Hallows&lt;/em&gt;,
+    &lt;em&gt;Tron: Legacy&lt;/em&gt;, &lt;em&gt;Super 8&lt;/em&gt; and &lt;em&gt;The Curious Case Of Benjamin Button&lt;/em&gt;
+    as well as countless commercials and music videos.
+    The following
+    links take you to Nuke user documentation in various forms,
+    here you&#39;ll find answers to your questions, whether you&#39;re
+    a beginner, an experienced Nuke user or a Nuke developer.
+    &lt;/p&gt;
+
+    &lt;h3&gt;Links&lt;/h3&gt;
+
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;https://www.foundry.com/products/nuke/online-help&quot;&gt;Nuke User Guide Tutorial Resources&lt;/a&gt;
+    &lt;/b&gt; - A link to the Tutorial resources used in the Nuke User Guide.
+    (These can be located on our website on the Support &gt; User guides page.).
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;http://learn.foundry.com/nuke/12.1/&quot;&gt;Foundry Online Help&lt;/a&gt;
+    &lt;/b&gt; - The Foundry online help for Nuke.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;http://docs.thefoundry.co.uk/nuke/12.1/pythondevguide/&quot;&gt;Nuke Python Developers Guide&lt;/a&gt;
+    &lt;/b&gt; - HTML documentation for Nuke Python developers.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;http://docs.thefoundry.co.uk/hiero/12.1/hieropythondevguide/&quot;&gt;Hiero Python Developers Guide&lt;/a&gt;
+    &lt;/b&gt; - HTML documentation for Hiero Python developers.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;http://docs.thefoundry.co.uk/nuke/12.1/pythonreference/&quot;&gt;Python Scripting Reference&lt;/a&gt;
+    &lt;/b&gt; - An HTML reference for all of Nuke&#39;s Python methods and types.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;&lt;a href=&quot;Tcl/index.html&quot;&gt;TCL Scripting&lt;/a&gt;&lt;/b&gt; - An HTML resource for TCL scripting.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;Tcl/group__tcl__expressions.html&quot;&gt;Knob Math Expressions&lt;/a&gt;
+    &lt;/b&gt; - An HTML list of functions you can use in Nuke expressions.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;NDKExamples/index.html&quot;&gt;C++ Plug-in Development&lt;/a&gt;
+    &lt;/b&gt; - A link to Nuke Developer Kit (NDK) resources.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;http://docs.thefoundry.co.uk/nuke/12.1/BlinkKernels/&quot;&gt;Guide to Writing Blink Kernels&lt;/a&gt;
+    &lt;/b&gt; - An HTML guide for users of the BlinkScript node in Nuke.
+    &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br&gt;
+&lt;hr&gt;
+    &lt;table width=&quot;100%&quot;  border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+        &lt;span class=&quot;legal&quot;&gt;
+            &amp;copy;2020 The Foundry Visionmongers, Ltd.  All Rights Reserved.
+        &lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;
+        &lt;div align=&quot;right&quot;&gt;
+            &lt;span class=&quot;legal&quot;&gt;
+            &lt;a href=&quot;http://www.foundry.com&quot; target=&quot;_blank&quot;&gt;www.foundry.com&lt;/a&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>直接修改链接的网址路径，像下面这样。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&lt;!doctype html public &quot;-//w3c//dtd html 4.0 transitional//en&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;
+    Nuke 12.1.2
+&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot;&gt;
+&lt;link href=&quot;img/visionmongers.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;
+    &lt;img src=&quot;img/nuke.png&quot; alt=&quot;[Nuke Logo]&quot;&gt;
+&lt;/h1&gt;
+&lt;blockquote&gt;
+    &lt;p&gt;
+    Nuke is an Academy Award winning compositor.
+    It has been used to create extraordinary images on scores of
+    feature films including &lt;em&gt;Avatar&lt;/em&gt;, &lt;em&gt;Harry Potter And The Deathly Hallows&lt;/em&gt;,
+    &lt;em&gt;Tron: Legacy&lt;/em&gt;, &lt;em&gt;Super 8&lt;/em&gt; and &lt;em&gt;The Curious Case Of Benjamin Button&lt;/em&gt;
+    as well as countless commercials and music videos.
+    The following
+    links take you to Nuke user documentation in various forms,
+    here you&#39;ll find answers to your questions, whether you&#39;re
+    a beginner, an experienced Nuke user or a Nuke developer.
+    &lt;/p&gt;
+
+    &lt;h3&gt;Links&lt;/h3&gt;
+
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;https://www.foundry.com/products/nuke/online-help&quot;&gt;Nuke User Guide Tutorial Resources&lt;/a&gt;
+    &lt;/b&gt; - A link to the Tutorial resources used in the Nuke User Guide.
+    (These can be located on our website on the Support &gt; User guides page.).
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;html/content/learn_nuke.html&quot;&gt;Foundry Online Help&lt;/a&gt;
+    &lt;/b&gt; - The Foundry online help for Nuke.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;PythonDevGuide/Nuke/index.html&quot;&gt;Nuke Python Developers Guide&lt;/a&gt;
+    &lt;/b&gt; - HTML documentation for Nuke Python developers.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;PythonDevGuide/Hiero/index.html&quot;&gt;Hiero Python Developers Guide&lt;/a&gt;
+    &lt;/b&gt; - HTML documentation for Hiero Python developers.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;PythonReference/index.html&quot;&gt;Python Scripting Reference&lt;/a&gt;
+    &lt;/b&gt; - An HTML reference for all of Nuke&#39;s Python methods and types.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;&lt;a href=&quot;Tcl/index.html&quot;&gt;TCL Scripting&lt;/a&gt;&lt;/b&gt; - An HTML resource for TCL scripting.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;Tcl/group__tcl__expressions.html&quot;&gt;Knob Math Expressions&lt;/a&gt;
+    &lt;/b&gt; - An HTML list of functions you can use in Nuke expressions.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;NDKExamples/index.html&quot;&gt;C++ Plug-in Development&lt;/a&gt;
+    &lt;/b&gt; - A link to Nuke Developer Kit (NDK) resources.
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;b&gt;
+        &lt;a href=&quot;Blink/index.html&quot;&gt;Guide to Writing Blink Kernels&lt;/a&gt;
+    &lt;/b&gt; - An HTML guide for users of the BlinkScript node in Nuke.
+    &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;br&gt;
+&lt;hr&gt;
+    &lt;table width=&quot;100%&quot;  border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+        &lt;span class=&quot;legal&quot;&gt;
+            &amp;copy;2020 The Foundry Visionmongers, Ltd.  All Rights Reserved.
+        &lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;
+        &lt;div align=&quot;right&quot;&gt;
+            &lt;span class=&quot;legal&quot;&gt;
+            &lt;a href=&quot;http://www.foundry.com&quot; target=&quot;_blank&quot;&gt;www.foundry.com&lt;/a&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>重启NukeX，选择菜单Help&gt;Documentation，就可以直接查看本地的离线帮助文档了，美滋滋，美中不足的是还有一部分链接是在线链接，但大部分都是OK的，也无关紧要。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="katana_custom_shelf.html" class="btn btn-neutral float-right" title="Katana自定义工具架工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="katana_callback_events.html" class="btn btn-neutral float-left" title="Katana回调事件处理机制" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -35,9 +35,27 @@ Katana开发文档
         renderSettings.frame = frame
         RenderManager.StartRender("diskRender", node=renderNode, settings=renderSettings)
 
+批量修改某一类型节点参数
+
+.. code-block:: python
+
+    import NodegraphAPI
+
+    print(dir(NodegraphAPI))
+
+    nodes = NodegraphAPI.GetAllNodesByType("Alembic_In")
+
+    for node in nodes:
+        print(node)
+        parm = node.getParameter("abcAsset")
+        oldPath = parm.getValue(0)
+        newPath = oldPath.replace("D:/cache/", "Z:/cache/")
+        parm.setValue(newPath, 0)
+
 
 -----------------------
 参考文档
 -----------------------
 
 - https://learn.foundry.com/katana/3.2/dev-guide/py-modindex.html
+- https://learn.foundry.com/katana/dev-guide/index.html

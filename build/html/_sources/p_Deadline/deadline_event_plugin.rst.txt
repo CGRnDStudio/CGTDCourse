@@ -18,6 +18,8 @@ Deadline自定义Event插件
 - RepositoryUtils
 - OnJobStarted
 
+View Job Reports
+
 OnJobStarted.param
 
 .. code-block:: python

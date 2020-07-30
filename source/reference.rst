@@ -83,6 +83,5 @@ Qt相关书籍和资料网络上以C++居多，对PyQt的学习有很大的借�
 网站
 -----------
 
-- PyQt相关
-
-    - https://github.com/PyQt5/PyQt
+- https://github.com/dabeaz-course/practical-python
+- https://github.com/PyQt5/PyQt
