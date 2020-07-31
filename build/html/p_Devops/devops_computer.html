@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>软件安装：Clarisse &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>电脑配置一些坑 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="软件安装：Katana" href="devops_install_katana.html" />
-    <link rel="prev" title="FreeNAS文件系统" href="devops_freenas.html" /> 
+    <link rel="next" title="Windows自定义快捷方式" href="devops_custom_shortcut.html" />
+    <link rel="prev" title="谷歌浏览器代理插件SwithyOmega" href="devops_chrome_switchomega.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="devops_ad_domain.html">Windows AD域组策略</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_c_drive_space.html">C盘空间清理几个方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_chrome_switchomega.html">谷歌浏览器代理插件SwithyOmega</a></li>
-<li class="toctree-l2"><a class="reference internal" href="devops_computer.html">电脑配置一些坑</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">电脑配置一些坑</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_custom_shortcut.html">Windows自定义快捷方式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_davinci.html">Davinci专业剪辑调色软件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_deploy_confluence.html">Confluence文档服务器部署</a></li>
@@ -114,7 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="devops_ffmpeg_codec.html">FFmpeg批量转码工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_filelocator_pro.html">FileLocator Pro全盘检索工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_freenas.html">FreeNAS文件系统</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">软件安装：Clarisse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_install_clarisse.html">软件安装：Clarisse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_install_katana.html">软件安装：Katana</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_install_marvelous_designer.html">软件安装：Marvelous Designer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_install_ue4.html">软件安装：UE4</a></li>
@@ -191,13 +191,13 @@
         
           <li><a href="../parts/Devops.html">Devops</a> &raquo;</li>
         
-      <li>软件安装：Clarisse</li>
+      <li>电脑配置一些坑</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Devops/devops_install_clarisse.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Devops/devops_computer.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -210,16 +210,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="clarisse">
-<h1>软件安装：Clarisse<a class="headerlink" href="#clarisse" title="永久链接至标题">¶</a></h1>
-<ul class="simple">
-<li><p>选择isotropix_clarisse_ifx_4.0_win64.exe，右键以管理员身份运行。</p></li>
-<li><p>一直Next傻瓜式安装，遇到python安装可以先不安装（如果安装过python27的话）。</p></li>
-<li><p>修改配置文件C:Program FilesIsotropixClarisse iFX 3.0Clarisseclarisse.env</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PYTHONHOME</span><span class="o">=</span><span class="n">C</span><span class="p">:</span>\<span class="n">Python27</span>
-</pre></div>
-</div>
+  <div class="section" id="id1">
+<h1>电脑配置一些坑<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>[×] CPU（认准核心数和线程数以及算力赫兹），AMD的算力比Intel要好很多，渲染不然，个人使用建议AMD 3950x往上，如果单纯CPU渲染，可以淘二手志强双路的洋垃圾，也是相当不错的。</p>
+<p>[√] 显卡（认准显存大小，8G往上） 1070，2070往上（如果有GPU渲染，可以上2080Ti往上）。</p>
+<p>[×] 主板（要考虑是否板载显卡，以及集成显卡和独立显卡切换问题，还有是否支持温度监控以及网卡唤醒功能，要考虑内存卡槽以及使用什么级别的内存，比如DDR3还是DDR4要注意一下，再有就是大板还是小板，用哪个实际无所谓，要注意能插大显卡，如果想插多张显卡也要考虑一下）</p>
+<p>[×] 主机箱（考虑散热的情况下尽量小而轻一些，搬家太费劲）</p>
+<p>[×] 内存（16G暂时够用，要注意看下内存品牌以及等级，这个看你主板的内存槽个数，个数少建议单根内存要大些，比如32G一根，四根就是128G，不要搞太多根，很多时候主板内存插槽不是每个都能使用）</p>
+<p>[×] 网卡（正常都是千兆网卡，如果有带宽传输需求，可以考虑万兆网卡）</p>
+<p>[×] 声卡（主板不带板载声卡，需要另外安装，可以让商家赠送）</p>
+<p>[√] 硬盘（搞块1T SSD固态硬盘足够使用）</p>
+<p>[×] 键盘鼠标（让商家赠送吧，实际没必要讲究，有钱玩玩机械硬盘，个人感觉又贵又不好用）</p>
+<p>[×] 显示器（选dell吧，普通选1080分辨率，23.8寸够用，高级一点选2K分辨率，25寸尚可，比如U2518D，显示器的坑比较多，比如检查有没有坏点，便宜显示器色差比较大，这个很影响渲染图效果，所以还是要选贵点的显示器做灯光渲染合成会比较好，连接线用mDP或者HDMI，如果配置双屏注意和显卡的配合，显卡上的插槽和显示器的插槽要对应上，贵的一般都有很多插槽，如果插槽搞的不对，只能自己买转接线才能玩）</p>
 </div>
 
 
@@ -230,10 +232,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="devops_install_katana.html" class="btn btn-neutral float-right" title="软件安装：Katana" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="devops_custom_shortcut.html" class="btn btn-neutral float-right" title="Windows自定义快捷方式" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="devops_freenas.html" class="btn btn-neutral float-left" title="FreeNAS文件系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="devops_chrome_switchomega.html" class="btn btn-neutral float-left" title="谷歌浏览器代理插件SwithyOmega" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
