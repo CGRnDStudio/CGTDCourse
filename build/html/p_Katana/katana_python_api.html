@@ -224,6 +224,67 @@
     <span class="n">parm</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">newPath</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>创建节点，自动组装</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rootNode</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">GetRootNode</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rootNode</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">rootNode</span><span class="p">))</span>
+
+<span class="n">primNode</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">CreateNode</span><span class="p">(</span><span class="s2">&quot;PrimitiveCreate&quot;</span><span class="p">,</span> <span class="n">rootNode</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">primNode</span><span class="p">)</span>
+
+<span class="n">mergeNode</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">CreateNode</span><span class="p">(</span><span class="s2">&quot;Merge&quot;</span><span class="p">,</span> <span class="n">rootNode</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mergeNode</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">mergeNode</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">mergeNode</span><span class="o">.</span><span class="n">addInputPort</span><span class="p">))</span>
+
+<span class="n">port</span> <span class="o">=</span> <span class="n">mergeNode</span><span class="o">.</span><span class="n">addInputPort</span><span class="p">(</span><span class="s2">&quot;i11&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">port</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">port</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">primNode</span><span class="p">))</span>
+<span class="n">port</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">primNode</span><span class="o">.</span><span class="n">getOutputPorts</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="n">node</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">GetNode</span><span class="p">(</span><span class="s2">&quot;InChar&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getBaseType</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getParameter</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getValue</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mergeNode</span><span class="o">.</span><span class="n">getInputPorts</span><span class="p">())</span>
+
+<span class="kn">import</span> <span class="nn">NodegraphAPI</span>
+
+<span class="n">node</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">GetNode</span><span class="p">(</span><span class="s2">&quot;Material_Stack&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">node</span><span class="p">))</span>
+
+<span class="n">node</span><span class="o">.</span><span class="n">getChildNodes</span><span class="p">()</span>
+
+<span class="n">material</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">CreateNode</span><span class="p">(</span><span class="s2">&quot;Material&quot;</span><span class="p">,</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">GetRootNode</span><span class="p">())</span>
+
+<span class="n">node</span><span class="o">.</span><span class="n">buildChildNode</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">material</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">NodegraphAPI</span><span class="p">))</span>
+
+<span class="n">material</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">CreateNode</span><span class="p">(</span><span class="s2">&quot;Material&quot;</span><span class="p">)</span>
+<span class="n">material</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span><span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">GetRootNode</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">material</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">GetAllNodes</span><span class="p">())</span>
+</pre></div>
+</div>
 <div class="section" id="id1">
 <h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">

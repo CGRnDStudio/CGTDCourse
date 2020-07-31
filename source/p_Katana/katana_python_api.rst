@@ -53,6 +53,70 @@ Katana开发文档
         parm.setValue(newPath, 0)
 
 
+创建节点，自动组装
+
+.. code-block:: python
+
+    rootNode = NodegraphAPI.GetRootNode()
+
+    print(rootNode)
+
+    print(dir(rootNode))
+
+    primNode = NodegraphAPI.CreateNode("PrimitiveCreate", rootNode)
+
+    print(primNode)
+
+    mergeNode = NodegraphAPI.CreateNode("Merge", rootNode)
+
+    print(mergeNode)
+
+    print(dir(mergeNode))
+
+    print(help(mergeNode.addInputPort))
+
+    port = mergeNode.addInputPort("i11")
+
+    print(port)
+    print(dir(port))
+    print(dir(primNode))
+    port.connect(primNode.getOutputPorts()[0])
+
+
+    node = NodegraphAPI.GetNode("InChar")
+
+    print(node)
+
+    print(node.getBaseType())
+    print(node.getParameter("type").getValue(0))
+
+    print(mergeNode.getInputPorts())
+
+    import NodegraphAPI
+
+    node = NodegraphAPI.GetNode("Material_Stack")
+
+    print(type(node))
+    print(dir(node))
+
+    node.getChildNodes()
+
+    material = NodegraphAPI.CreateNode("Material", NodegraphAPI.GetRootNode())
+
+    node.buildChildNode(material)
+
+    print(dir(material))
+
+    print(dir(NodegraphAPI))
+
+    material = NodegraphAPI.CreateNode("Material")
+    material.setParent(NodegraphAPI.GetRootNode())
+
+    print(material)
+
+    print(NodegraphAPI.GetAllNodes())
+
+
 -----------------------
 参考文档
 -----------------------
