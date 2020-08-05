@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Katana开发文档" href="katana_python_api.html" />
-    <link rel="prev" title="Katana配置本地离线帮助文档" href="katana_config_local_docs.html" /> 
+    <link rel="next" title="Katana加载模块文件的三种方案" href="katana_load_module.html" />
+    <link rel="prev" title="Katana自定义插件层级结构" href="katana_custom_plugin.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,7 +99,9 @@
 <li class="toctree-l2"><a class="reference internal" href="katana_basic_operator.html">Katana基础操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_callback_events.html">Katana回调事件处理机制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_config_local_docs.html">Katana配置本地离线帮助文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_custom_plugin.html">Katana自定义插件层级结构</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Katana自定义工具架工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="katana_load_module.html">Katana加载模块文件的三种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_python_api.html">Katana开发文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_python_env.html">Katana开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_xgen_arnold_pipeline.html">Katana XGen毛发渲染流程</a></li>
@@ -179,8 +181,45 @@
 <p>工具架工具有几个地方可以定义Shelf Actions，主菜单上的齿轮菜单、Scene Graph中的齿轮菜单、节点参数面板中的齿轮菜单。</p>
 <p>点击齿轮菜单&gt;Add&gt;New Shelf&gt;New Item，工具架工具会存储在下面路径。</p>
 <p>C:Users&lt;USERNAME&gt;.katanaShelves</p>
+<p>工具架的几个参数定义</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">NAME: Set abcAsset Path</span>
+<span class="sd">ICON: icon.png</span>
+<span class="sd">KEYBOARD_SHORTCUT:</span>
+<span class="sd">SCOPE:</span>
+<span class="sd">Enter Description Here</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>每个工具架工具代码中开头都有这么一段配置脚本。</p>
+<p>NAME即工具的名称，ICON设置工具图标，KEYBOARD_SHORTCUT设置工具的快捷方式。</p>
+<p>图标文件在这里C:Program FilesKatana3.5v2binpythonUI4ResourcesIcons</p>
+<p>即$KATANA_HOMEbinpythonUI4ResourcesIcons</p>
+<p>SCOPE限制特定节点类型，写描述。</p>
+<p>我们可以在.katana/Shelves创建文件夹Custom_Shelves，然后创建一个firstShelfTool.py文件，写入如下内容。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">NAME: Float Selected</span>
+<span class="sd">ICON: Icons\Scenegraph\camera128.png</span>
+<span class="sd">KEYBOARD_SHORTCUT: T</span>
+<span class="sd">SCOPE: none</span>
+<span class="sd">Float Selected Nodes via Keyboard Shortcut</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Get list of selected nodes</span>
+<span class="n">nodeList</span> <span class="o">=</span> <span class="n">NodegraphAPI</span><span class="o">.</span><span class="n">GetAllSelectedNodes</span><span class="p">()</span>
+
+<span class="c1"># Find Nodegraph tab and float nodes</span>
+<span class="n">nodegraphTab</span> <span class="o">=</span> <span class="n">UI4</span><span class="o">.</span><span class="n">App</span><span class="o">.</span><span class="n">Tabs</span><span class="o">.</span><span class="n">FindTopTab</span><span class="p">(</span><span class="s2">&quot;Node Graph&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">nodegraphTab</span><span class="p">:</span>
+    <span class="n">nodegraphTab</span><span class="o">.</span><span class="n">floatNodes</span><span class="p">(</span><span class="n">nodeList</span><span class="p">)</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p><a class="reference external" href="https://support.foundry.com/hc/en-us/articles/360001163884-Q100401-Creating-a-Shelf-Item-in-Katana">https://support.foundry.com/hc/en-us/articles/360001163884-Q100401-Creating-a-Shelf-Item-in-Katana</a></p></li>
+<li><p><a class="reference external" href="https://support.foundry.com/hc/en-us/articles/360001235064">https://support.foundry.com/hc/en-us/articles/360001235064</a></p></li>
+<li><p><a class="reference external" href="https://learn.foundry.com/katana/content/tg/shelf_item_scripts/shelf_item_scripts.html?TocPath=Technical%20Information%7C_____5#User-def">https://learn.foundry.com/katana/content/tg/shelf_item_scripts/shelf_item_scripts.html?TocPath=Technical%20Information%7C_____5#User-def</a></p></li>
 </ul>
 </div>
 
@@ -192,10 +231,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="katana_python_api.html" class="btn btn-neutral float-right" title="Katana开发文档" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="katana_load_module.html" class="btn btn-neutral float-right" title="Katana加载模块文件的三种方案" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="katana_config_local_docs.html" class="btn btn-neutral float-left" title="Katana配置本地离线帮助文档" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="katana_custom_plugin.html" class="btn btn-neutral float-left" title="Katana自定义插件层级结构" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

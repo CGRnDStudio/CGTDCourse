@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Katana基础操作 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>Katana加载模块文件的三种方案 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Katana回调事件处理机制" href="katana_callback_events.html" />
-    <link rel="prev" title="Katana" href="../parts/Katana.html" /> 
+    <link rel="next" title="Katana开发文档" href="katana_python_api.html" />
+    <link rel="prev" title="Katana自定义工具架工具" href="katana_custom_shelf.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,15 +96,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Katana.html">Katana</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Katana基础操作</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="katana_basic_operator.html">Katana基础操作</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_callback_events.html">Katana回调事件处理机制</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_config_local_docs.html">Katana配置本地离线帮助文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_custom_plugin.html">Katana自定义插件层级结构</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_custom_shelf.html">Katana自定义工具架工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="katana_load_module.html">Katana加载模块文件的三种方案</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Katana加载模块文件的三种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_python_api.html">Katana开发文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_python_env.html">Katana开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="katana_xgen_arnold_pipeline.html">Katana XGen毛发渲染流程</a></li>
@@ -160,13 +157,13 @@
         
           <li><a href="../parts/Katana.html">Katana</a> &raquo;</li>
         
-      <li>Katana基础操作</li>
+      <li>Katana加载模块文件的三种方案</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Katana/katana_basic_operator.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Katana/katana_load_module.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -180,89 +177,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="katana">
-<h1>Katana基础操作<a class="headerlink" href="#katana" title="永久链接至标题">¶</a></h1>
-<p>默认视窗分为五大块: 渲染窗口、大纲窗口、三维视窗、节点编辑窗口和属性面板。</p>
-<p>三维视窗的操作和Maya相同，非常简单，结合Alt+左中右键可以调整视窗，按F居中显示场景物体。</p>
-<p>选中相应的物体可以通过WER键来移动、旋转、缩放。</p>
-<p>可以自定义视窗布局，通过Layouts&gt;Save Current Layout保存自定义视窗。</p>
-<p>在Node Graph窗口可以通过Tab来创建节点（也可以通过New菜单来创建节点）。</p>
-<p>节点的左侧方格是在Scene Graph中显示，节点右侧方格是显示节点的属性面板，对应快捷键V和E。</p>
-<p>修改节点名称可以通过属性面板修改或者选中节点按N键修改。</p>
-<p>快捷键G可以将选中节点打组Group，Alt+G可以将选中节点打组GroupStack，可以使用Ctrl+鼠标中键或者Ctrl+Enter可以进组修改。</p>
-<p>Node Graph&gt;Edit&gt;Fit Backdrop Node to Selected Nodes给节点归类添加Backdrop。</p>
-<p>Viewer(Hydra)&gt;Viewer&gt;Monitor Layer: 视窗渲染</p>
-<p>Viewer(Hydra)&gt;Viewer&gt;Monitor Layer Options&gt;Display While Manipulating: 视窗实时监视渲染</p>
-<p>Viewer(Hydra)&gt;Viewer&gt;Monitor Layer Options&gt;Ignore Alpha: 视窗透明渲染</p>
-<p>Scene Graph&gt;Live Render Updates: 勾选需要实时渲染的选项。</p>
-<p>常用一些节点解释</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 72%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>节点类型</p></td>
-<td><p>节点描述</p></td>
-</tr>
-<tr class="row-even"><td><p>PrimitiveCreate</p></td>
-<td><p>模型节点</p></td>
-</tr>
-<tr class="row-odd"><td><p>Merge</p></td>
-<td><p>合并节点</p></td>
-</tr>
-<tr class="row-even"><td><p>Dot</p></td>
-<td><p>点节点</p></td>
-</tr>
-<tr class="row-odd"><td><p>HierarchyCopy</p></td>
-<td><p>复制节点</p></td>
-</tr>
-<tr class="row-even"><td><p>Transform3D</p></td>
-<td><p>移动节点</p></td>
-</tr>
-<tr class="row-odd"><td><p>CameraCreate</p></td>
-<td><p>相机节点</p></td>
-</tr>
-<tr class="row-even"><td><p>Material</p></td>
-<td><p>材质节点</p></td>
-</tr>
-<tr class="row-odd"><td><p>MaterialAssign</p></td>
-<td><p>材质赋予节点</p></td>
-</tr>
-<tr class="row-even"><td><p>GafferThree</p></td>
-<td><p>灯光组节点</p></td>
-</tr>
-<tr class="row-odd"><td><p>RenderSettings</p></td>
-<td><p>渲染设置节点</p></td>
-</tr>
-<tr class="row-even"><td><p>DISettings</p></td>
-<td><p>采样设置节点</p></td>
-</tr>
-<tr class="row-odd"><td><p>Render</p></td>
-<td><p>渲染节点</p></td>
-</tr>
-</tbody>
-</table>
-<p>XGen毛发进Katana步骤</p>
-<ul class="simple">
-<li><p>[ ] 如何导入显示？</p></li>
-<li><p>[ ] 默认渲染器如何渲染？</p></li>
-<li><p>[ ] Katana中心化部署流程？</p></li>
-<li><p>[ ] Arnold如何渲染，配置与渲染？</p></li>
-</ul>
-<p>文字Katana部署Arnold
-文字Katana导入XGen流程
-文字Katana中心化部署</p>
-<p>Katana中隐藏模型渲染？</p>
-<p>Katana渲染图保存对比？</p>
-<p>Katana背景色怎么设置？</p>
-<p>Katana帧数范围在哪设置？</p>
-<div class="section" id="id1">
-<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://rmanwiki.pixar.com/display/RFK/XGen+in+Katana">https://rmanwiki.pixar.com/display/RFK/XGen+in+Katana</a></p></li>
-<li><p><a class="reference external" href="https://docs.arnoldrenderer.com/display/A5KTN/Installation">https://docs.arnoldrenderer.com/display/A5KTN/Installation</a></p></li>
-</ul>
-</div>
+<h1>Katana加载模块文件的三种方案<a class="headerlink" href="#katana" title="永久链接至标题">¶</a></h1>
+<p>最基本的方案就是在代码中将模块路径添加到sys.path</p>
+<p>另一种是写bat文件，设置PYTHONPATH环境变量</p>
+<p>还有一种麻烦一点通过Startup/init.py文件配置sys.path</p>
 </div>
 
 
@@ -273,10 +191,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="katana_callback_events.html" class="btn btn-neutral float-right" title="Katana回调事件处理机制" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="katana_python_api.html" class="btn btn-neutral float-right" title="Katana开发文档" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../parts/Katana.html" class="btn btn-neutral float-left" title="Katana" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="katana_custom_shelf.html" class="btn btn-neutral float-left" title="Katana自定义工具架工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
