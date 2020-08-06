@@ -2,7 +2,7 @@
 Python自定义类
 =============================
 
-自定义类的一些标识符
+自定义类也称自定义数据类型，下面是自定义类的一些标识。
 
 - class
 - 类命名首字母大写
@@ -26,8 +26,6 @@ Python自定义类
 - 类属性和类方法
 - 静态方法
 
-自定义数据类型
-
 .. code-block:: python
 
     class MyClass(object):
@@ -43,7 +41,7 @@ Python自定义类
     print(a)
     print(a.sum())
 
-特殊方法__repr__
+理解特殊方法__repr__，特殊方法也称魔法方法或者双下方法。
 
 .. code-block:: python
 
@@ -170,7 +168,7 @@ Python自定义类
     v1[2] = 10
     print(v1)
 
-实例方法&类方法&静态方法
+实例方法、类方法和静态方法
 
 .. code-block:: python
 
@@ -191,13 +189,11 @@ Python自定义类
     for i in generateChars():
         print("Letter: {0} - Index: {1}".format(*i))
 
-语法糖
+语法糖与装饰器
 
-@property
-@classmethod
-@staticmethod
-
-装饰器
+- @property
+- @classmethod
+- @staticmethod
 
 .. code-block:: python
 
@@ -264,6 +260,8 @@ Python自定义类
     a, b = A(1), A(2)
     print(a is b)
 
+类专属的装饰器
+
 .. code-block:: python
 
     class Artist(object):
@@ -305,6 +303,10 @@ Python自定义类
     rr = Artist("Andy")
     print(rr.random_artist())
     # print(rr.hits())
+
+私有属性与私有方法
+
+在定义方法前面加__method即声明私有方法，理论上私有方法是不能被继承的，只能在当下定义的类中被调用，但Python的私有方法只是约定上的私有，实际是可以通过类名来访问。
 
 - 类属性和类方法可以被实例对象来调用，也可以通过类名直接调用，一般是通过类名调用
 - 静态方法可以被实例对象来调用

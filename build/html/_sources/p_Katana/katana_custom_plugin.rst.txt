@@ -13,14 +13,14 @@ Katana自定义插件层级结构
 - Macros
 - Ops
 - Plugins
-- [√] Python
+- Python: 配置PYTHONPATH或通过Startup添加sys.path或直接在插件中添加sys.path。
 - RenderBin
 - Resolutions
 - Shaders
-- Shelves
-- ShelvesNodeSpecific
-- ShelvesScenegraph
-- Startup: init.py
+- Shelves: 自定义主菜单工具架工具
+- ShelvesNodeSpecific: 自定义节点参数面板工具架工具
+- ShelvesScenegraph: 自定义Scene Graph面板工具架工具
+- Startup: init.py自启动执行脚本
 - SuperTools*
 - Tabs*
 - UIPlugins
