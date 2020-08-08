@@ -82,6 +82,36 @@ Python自定义类
     truck = Truck("Benz", 800, 2008)
     truck.orderParts("Wheels", "Silencer")
 
+类继承分单继承和多继承，注意__init__的用法。
+
+- 如果子类没有定义初始化函数，父类的初始化函数默认被调用。
+- 如果子类定义了自己的初始化函数，但没有显示调用父类的初始化函数，则父类属性不会被初始化。
+- 如果子类定义了自己的初始化函数，在子类中显示调用父类，子类和父类的属性都会被初始化。
+
+初始化方案
+
+.. code-block:: python
+
+    # python 2.x
+    def __init__(self, args):
+        super(ClassName, self).__init__(args)
+
+    # python 3.x
+    def __init__(self, args):
+        super().__init__(args)
+
+    def __init__(self, args):
+        ClassName.__init__(args)
+
+    # PyQt中
+    # python 2.x
+    def __init__(self, parent=None):
+        super(ClassName, self).__init__(parent)
+
+    # python 3.x
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
 自定义向量类型
 
 .. code-block:: python

@@ -186,39 +186,108 @@
             
   <div class="section" id="pyqt-designer">
 <h1>PyQt Designer安装与使用<a class="headerlink" href="#pyqt-designer" title="永久链接至标题">¶</a></h1>
-<p>Houdini、Maya与Nuke中内置PySide2</p>
-<p>了解PyQt的历史以及协议
-PySide &amp; PyQt4 &amp; Qt4
-PySide2 &amp; PyQt5 &amp; Qt5</p>
-<p><a class="reference external" href="https://github.com/mottosso">https://github.com/mottosso</a></p>
-<p>Qt.py如何使用?</p>
-<p>PySide2安装&amp;部署
-PySide2层级结构
-- QtCore 核心算法库
-- QtGui 界面图形算法库
-- QtWidgets 界面控件库
-- uic ui文件到py文件的桥梁
-- sip C++对象到Python转换库</p>
-<p>Designer使用</p>
-<p>setModel
-QThread
-QSQL</p>
+<p>了解PyQt的历史以及协议，Qt实际是C++的一套GUI编程的套件，底层就是C++ Qt，Python将其做了封装之后才有了PyQt的UI库。</p>
 <ul class="simple">
-<li><p>配置左下角托盘</p></li>
-<li><p>修改图标</p></li>
-<li><p>如何部署自己的app</p></li>
-<li><p>编译qrc相对路径</p></li>
+<li><p>Qt4-&gt;PyQt4-&gt;PySide</p></li>
+<li><p>Qt5-&gt;PyQt5-&gt;PySide2</p></li>
 </ul>
-<p>创建resource.qrc
-“C:Python27Scriptspyside-uic.exe” -o deploy.py deploy.ui
-“C:Python27Libsite-packagesPySidepyside-rcc.exe” -o resource_rc.py resource.qrc</p>
-<p>loadUi</p>
-<p>认识qss
-下载qss
-修改qss</p>
+<p>PySide和PyQt实际是一回事，只是开源协议有所不同，从我使用的角度来说有些高级功能可能不太一样，比如数据库的支持，比如uic的支持，最新版本的Houdini、Maya与Nuke中内置PySide2，以前老版本是内置PySide，内置使用起来就比较方便，当然你非得使用PyQt5，就得基于具体的软件的Python环境去编译一套PyQt库来使用。</p>
+<p>PyQt5和PySide2可以直接通过pip安装即可，如果有特殊版本得费点心思，一般安装好PySide2，你就可以找到这个C:Python37Libsite-packagesPySide2designer.exe</p>
+<p>PySide2库的层级结构</p>
+<ul class="simple">
+<li><p>QtCore 核心算法库</p></li>
+<li><p>QtGui 界面图形算法库</p></li>
+<li><p>QtWidgets 界面控件库</p></li>
+<li><p>uic ui文件到py文件的桥梁</p></li>
+<li><p>sip C++对象到Python转换库</p></li>
+</ul>
+<p>一般PyQt的代码分手写与Designer设计，Designer设计出来的.ui文件又分两种使用方法，要么编译成.py文件去使用，要么直接通过方法load这个.ui文件来使用。按Python环境来验证哪种更方便。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+
+<span class="k">class</span> <span class="nc">CustomDialog</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">dialog</span> <span class="o">=</span> <span class="n">CustomDialog</span><span class="p">()</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+
+<span class="k">class</span> <span class="nc">CustomDialog</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">dialog</span> <span class="o">=</span> <span class="n">CustomDialog</span><span class="p">()</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">app</span><span class="p">))</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+
+<span class="k">class</span> <span class="nc">CustomDialog</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">dialog</span> <span class="o">=</span> <span class="n">CustomDialog</span><span class="p">()</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">app</span><span class="p">))</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>手写代码</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+
+<span class="k">class</span> <span class="nc">CustomDialog</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># super().__init__(parent)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CustomDialog</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+        <span class="c1"># mainLayout = QtWidgets.QVBoxLayout()</span>
+        <span class="c1"># self.setLayout(mainLayout)</span>
+        <span class="n">vblLayout</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">gbSim</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QGroupBox</span><span class="p">()</span>
+        <span class="n">gbSim</span><span class="o">.</span><span class="n">setTitle</span><span class="p">(</span><span class="s2">&quot;Sim or Seq:&quot;</span><span class="p">)</span>
+        <span class="n">hblLayout</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QHBoxLayout</span><span class="p">(</span><span class="n">gbSim</span><span class="p">)</span>
+        <span class="n">rbSim</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QRadioButton</span><span class="p">(</span><span class="s2">&quot;Simulation&quot;</span><span class="p">)</span>
+        <span class="n">rbSeq</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QRadioButton</span><span class="p">(</span><span class="s2">&quot;Sequence&quot;</span><span class="p">)</span>
+
+        <span class="n">hblLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">rbSim</span><span class="p">)</span>
+        <span class="n">hblLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">rbSeq</span><span class="p">)</span>
+
+        <span class="n">pbSubmit</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Submit&quot;</span><span class="p">)</span>
+        <span class="n">vblLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">gbSim</span><span class="p">)</span>
+        <span class="n">vblLayout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">pbSubmit</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">dialog</span> <span class="o">=</span> <span class="n">CustomDialog</span><span class="p">()</span>
+    <span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="section" id="id1">
 <h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
+<li><p><a class="reference external" href="https://www.cnblogs.com/jakeyChen/articles/4103494.html">https://www.cnblogs.com/jakeyChen/articles/4103494.html</a></p></li>
+<li><p><a class="reference external" href="https://wiki.python.org/moin/PyQt4">https://wiki.python.org/moin/PyQt4</a></p></li>
+<li><p><a class="reference external" href="https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html">https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html</a></p></li>
+<li><p><a class="reference external" href="https://doc.qt.io/qtforpython/PySide2/QtWidgets/QPushButton.html">https://doc.qt.io/qtforpython/PySide2/QtWidgets/QPushButton.html</a></p></li>
 <li><p><a class="reference external" href="https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html">https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html</a></p></li>
 <li><p><a class="reference external" href="https://doc.bccnsoft.com/docs/PyQt5/class_reference.html">https://doc.bccnsoft.com/docs/PyQt5/class_reference.html</a></p></li>
 <li><p><a class="reference external" href="https://build-system.fman.io/qt-designer-download">https://build-system.fman.io/qt-designer-download</a></p></li>
