@@ -105,6 +105,59 @@ PySide2库的层级结构
         dialog = CustomDialog()
         dialog.show()
 
+PySide2加载.ui文件模式
+
+.. code-block:: python
+
+    from PySide2 import QtUiTools
+    from PySide2 import QtWidgets
+    from PySide2 import QtGui
+    from PySide2 import QtCore
+
+    class CustomDialog(QtWidgets.QDialog):
+        def __init__(self, parent=None):
+            super(CustomDialog, self).__init__(parent)
+
+            loader = QtUiTools.QUiLoader()
+
+            self.ui = loader.load(r"D:\2020\test.ui")
+
+            mainLayout = QtWidgets.QVBoxLayout()
+            mainLayout.setContentsMargins(0, 0, 0, 0)
+            mainLayout.addWidget(self.ui)
+            self.setLayout(mainLayout)
+
+    dialog = CustomDialog()
+    dialog.show()
+
+
+转py文件
+
+.. code-block:: python
+
+    # C:\Python37\Scripts\pyside2-uic.exe -o D:\2020\mainWin.py D:\2020\test.ui
+
+    import sys
+
+    path = "D:/2020"
+
+    path in sys.path or sys.path.insert(0, path)
+
+    from PySide2 import QtWidgets
+    from PySide2 import QtGui
+    from PySide2 import QtCore
+    import mainWin
+    reload(mainWin)
+
+    class CustomDialog(QtWidgets.QDialog, mainWin.Ui_Dialog):
+        def __init__(self, parent=None):
+            super(CustomDialog, self).__init__(parent)
+
+            self.setupUi(self)
+
+    dialog = CustomDialog()
+    dialog.show()
+
 
 ------------------
 参考文档
