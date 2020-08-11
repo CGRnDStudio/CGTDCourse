@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PyQt美化界面皮肤qss &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>PyQt VS PySide &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="PyQt之Qt.py的使用" href="pyqt_qt.html" />
-    <link rel="prev" title="PyQt MVC设计模式" href="pyqt_model.html" /> 
+    <link rel="next" title="Git" href="../parts/Git.html" />
+    <link rel="prev" title="PyQt Designer安装与使用" href="pyqt_uic.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,17 +92,14 @@
 <li class="toctree-l2"><a class="reference internal" href="pyqt_in_nuke.html">PyQt在Nuke中执行的模板代码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_line_edit.html">PyQt重写QLineEdit支持拖拽功能</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_model.html">PyQt MVC设计模式</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">PyQt美化界面皮肤qss</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_qss.html">PyQt美化界面皮肤qss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_qt.html">PyQt之Qt.py的使用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_rcc.html">PyQt Designer安装与使用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_resources.html">PyQt设置图标的相对路径</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_rich_text.html">PyQt富文本</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_tray_icon.html">PyQt定义应用程序任务栏图标</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pyqt_uic.html">PyQt Designer安装与使用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyqt_vs_pyside.html">PyQt VS PySide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyQt VS PySide</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
@@ -166,13 +163,13 @@
         
           <li><a href="../parts/PyQt.html">PyQt</a> &raquo;</li>
         
-      <li>PyQt美化界面皮肤qss</li>
+      <li>PyQt VS PySide</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_PyQt/pyqt_qss.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_PyQt/pyqt_vs_pyside.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -185,19 +182,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="pyqtqss">
-<h1>PyQt美化界面皮肤qss<a class="headerlink" href="#pyqtqss" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="pyqt-vs-pyside">
+<h1>PyQt VS PySide<a class="headerlink" href="#pyqt-vs-pyside" title="永久链接至标题">¶</a></h1>
+<p>PyQt是GPLv3协议，大意是你的程序中用了它，你的程序就要开源，如果闭源商用就会违反协议（后果自负，脸皮够厚无所谓）。除非你搞封装动态加载那一套来强行规避。</p>
+<p>PySide是LGPL协议，如果你只是作为库用用它，你的程序还是可以闭源商用。</p>
+<p>所以很多人喜欢PySide。如果不做商业项目，强烈建议使用PyQt，资料多，稳定。需要开发闭源商用软件的就用PySide。</p>
+<p>GPL(General Public License)和LGPL( Lesser General Public License)是GNU的两种License。越来越多的自由软件(Free Software)使用GPL作为其授权声明，如果对GPL一点都不了解，有可能在使用自由软件时违反了GPL的授权。如果是个人或不正规的公司倒也无所谓，但如果是有规模的公司，恐怕会有被起诉的风险。</p>
+<p>LGPL是GPL的变种，也是GNU为了得到更多的甚至是商用软件开发商的支持而提出的。与 GPL的最大不同是，可以私有使用LGPL授权的自由软件，开发出来的新软件可以是私有的而不需要是自由软件。所以任何公司在使用自由软件之前应该保证在 LGPL或其它GPL变种的授权下。</p>
+<p>pyside2-uic.exe VS pyuic5.exe</p>
+<p>pyside2-rcc.exe VS pyrcc5.exe</p>
+<p>pyqtSignal VS Signal</p>
+<p>pyqtSlot VS Slot</p>
 <ul class="simple">
-<li><p>认识qss</p></li>
-<li><p>下载qss</p></li>
-<li><p>修改qss</p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/The_Time_Runner/article/details/89329556">https://blog.csdn.net/The_Time_Runner/article/details/89329556</a></p></li>
+<li><p><a class="reference external" href="https://wiki.qt.io/Differences_Between_PySide_and_PyQt/zh">https://wiki.qt.io/Differences_Between_PySide_and_PyQt/zh</a></p></li>
+<li><p><a class="reference external" href="https://www.zhihu.com/question/21237276">https://www.zhihu.com/question/21237276</a></p></li>
+<li><p><a class="reference external" href="https://maicss.gitbooks.io/pyqt5/content/%E4%BA%8B%E4%BB%B6%E5%92%8C%E4%BF%A1%E5%8F%B7.html">https://maicss.gitbooks.io/pyqt5/content/%E4%BA%8B%E4%BB%B6%E5%92%8C%E4%BF%A1%E5%8F%B7.html</a></p></li>
 </ul>
-<div class="section" id="id1">
-<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/ColinDuquesnoy/QDarkStyleSheet">https://github.com/ColinDuquesnoy/QDarkStyleSheet</a></p></li>
-</ul>
-</div>
 </div>
 
 
@@ -208,10 +209,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pyqt_qt.html" class="btn btn-neutral float-right" title="PyQt之Qt.py的使用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../parts/Git.html" class="btn btn-neutral float-right" title="Git" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pyqt_model.html" class="btn btn-neutral float-left" title="PyQt MVC设计模式" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pyqt_uic.html" class="btn btn-neutral float-left" title="PyQt Designer安装与使用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

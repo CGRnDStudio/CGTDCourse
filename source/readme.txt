@@ -19,3 +19,11 @@
 - [ ] Maya Program
 
 课件注重案例与练习
+
+胡安迪工具盒
+
+- qLib
+- Arnold
+- Redshift
+- Realflow
+- Deadline Submit
