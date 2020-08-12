@@ -23,4 +23,5 @@ pyqtSlot VS Slot
 - https://blog.csdn.net/The_Time_Runner/article/details/89329556
 - https://wiki.qt.io/Differences_Between_PySide_and_PyQt/zh
 - https://www.zhihu.com/question/21237276
-- https://maicss.gitbooks.io/pyqt5/content/%E4%BA%8B%E4%BB%B6%E5%92%8C%E4%BF%A1%E5%8F%B7.html
+- https://maicss.gitbooks.io/pyqt5/content/
+- https://github.com/maicss/PyQt5-Chinese-tutorial

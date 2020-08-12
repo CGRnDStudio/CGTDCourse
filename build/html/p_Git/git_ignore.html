@@ -87,10 +87,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Git.html">Git</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="git_all_commands.html">Git指令大全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_code_review.html">Git Code Review流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_config_proxy.html">Git配置代理网络访问</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Git使用.gitignore过滤上传文件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_install_tortoisegit.html">Git以及TortoiseGit安装以及使用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_repo_hosts.html">Git代码仓库托管平台有哪些？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_release_version.html">Git发布版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_repo_hosts.html">Git代码仓库托管平台</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_simple_workflow.html">Git基本工作流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_speed_up.html">Git国外服务器加速方案</a></li>
 </ul>
@@ -176,6 +178,14 @@
             
   <div class="section" id="git-gitignore">
 <h1>Git使用.gitignore过滤上传文件<a class="headerlink" href="#git-gitignore" title="永久链接至标题">¶</a></h1>
+<p>很多时候我们并不想仓库中所有文件都要推送到远程仓库中，此时可以在仓库的根目录上创建一个.gitignore文件。</p>
+<p>记事本打开写入如下内容：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">*.</span><span class="n">py</span><span class="p">[</span><span class="n">cod</span><span class="p">]</span>
+<span class="o">.</span><span class="n">vscode</span>
+<span class="o">*.</span><span class="n">nk</span><span class="o">.</span><span class="n">autosave</span>
+<span class="o">*.</span><span class="n">nk</span><span class="o">~</span>
+</pre></div>
+</div>
 </div>
 
 
