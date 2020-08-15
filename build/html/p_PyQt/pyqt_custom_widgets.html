@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PyQt自定义控件玩法 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="PyQt Designer安装与使用" href="pyqt_designer.html" />
+    <link rel="prev" title="PyQt使用bat伪装应用程序" href="pyqt_bat.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/PyQt.html">PyQt</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pyqt_bat.html">PyQt使用bat伪装应用程序</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyQt自定义控件玩法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_designer.html">PyQt Designer安装与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_frame_layout.html">PyQt实现Maya中frameLayout布局功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_in_houdini.html">PyQt在Houdini中执行的模板代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_in_maya.html">PyQt在Maya中执行的模板代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_in_nuke.html">PyQt在Nuke中执行的模板代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_line_edit.html">PyQt重写QLineEdit支持拖拽功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_model.html">PyQt MVC设计模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_qss.html">PyQt美化界面皮肤qss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_qt.html">PyQt之Qt.py的使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_rcc.html">PyQt Designer安装与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_resources.html">PyQt设置图标的相对路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_rich_text.html">PyQt富文本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_singals_slots.html">PyQt信号与槽事件机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_tray_icon.html">PyQt定义应用程序任务栏图标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_uic.html">PyQt Designer安装与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_vs_pyside.html">PyQt VS PySide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE4.html">UE4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/C4D.html">C4D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/PyQt.html">PyQt</a> &raquo;</li>
+        
+      <li>PyQt自定义控件玩法</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_PyQt/pyqt_custom_widgets.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pyqt">
+<h1>PyQt自定义控件玩法<a class="headerlink" href="#pyqt" title="永久链接至标题">¶</a></h1>
+<p>自定义控件，事件机制，如何让UI元素更丰富!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>from PySide2 import QtWidgets</p>
+<blockquote>
+<div><p>class QLineEditPath(QtWidgets.QLineEdit):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def __init__(self, parent=None):</dt><dd><p>super(QLineEditPath, self).__init__(parent)</p>
+</dd>
+</dl>
+<p>def dragEnterEvent(self, event):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if event.mimeData().hasUrls():</dt><dd><p>event.accept()</p>
+</dd>
+<dt>else:</dt><dd><p>event.ignore()</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>def dropEvent(self, event):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>if event.mimeData().hasUrls():</dt><dd><p>url = event.mimeData().urls()[0]
+self.setText(url.toLocalFile())</p>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>dialog = QLineEditPath()
+dialog.show()</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+
+<span class="k">class</span> <span class="nc">QLineEditPath</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">QLineEditPath</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">keyPressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">key</span><span class="p">()</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">Key_Return</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLineEdit</span><span class="o">.</span><span class="n">keyPressEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">)</span>
+
+<span class="n">dialog</span> <span class="o">=</span> <span class="n">QLineEditPath</span><span class="p">()</span>
+<span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QPublishedFileItem</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QWidget</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">QPublishedFileItem</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+        <span class="n">vblFile</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
+
+        <span class="n">lPublishedFileName</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+        <span class="n">lPublishedFileType</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLabel</span><span class="p">(</span><span class="n">file_type</span><span class="p">)</span>
+        <span class="c1"># lPublishedFileName = QtWidgets.QLabel(&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;lgt_autosphere_02.v007.nk&lt;/span&gt; Version 007 (Task lgt_autosphere_02)&quot;)</span>
+        <span class="c1"># lPublishedFileType = QtWidgets.QLabel(&quot;&lt;span style=&#39;font-size: 10px;&#39;&gt;&lt;span style=&#39;color: #2e93e2;&#39;&gt;Nuke Script&lt;/span&gt; by xu tao at 2020-02-05 17:40&lt;/span&gt;&quot;)</span>
+        <span class="n">vblFile</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">lPublishedFileName</span><span class="p">)</span>
+        <span class="n">vblFile</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">lPublishedFileType</span><span class="p">)</span>
+
+        <span class="n">hblAction</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pbAction</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Action&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pbAction</span><span class="o">.</span><span class="n">hide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mAction</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMenu</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pbAction</span><span class="o">.</span><span class="n">setMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mAction</span><span class="p">)</span>
+        <span class="n">hblAction</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">vblFile</span><span class="p">)</span>
+        <span class="n">spacerItem</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QSpacerItem</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Expanding</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Minimum</span><span class="p">)</span>
+        <span class="n">hblAction</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">spacerItem</span><span class="p">)</span>
+        <span class="n">hblAction</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pbAction</span><span class="p">)</span>
+
+        <span class="n">vblPublishedFile</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="c1"># vblPublishedFile.addLayout(vblThumbnail)</span>
+        <span class="n">vblPublishedFile</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">hblAction</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">vblPublishedFile</span><span class="p">)</span>
+
+<span class="n">fileName</span> <span class="o">=</span> <span class="s2">&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;lgt_autosphere_02.v007.nk&lt;/span&gt; Version 007 (Task lgt_autosphere_02)&quot;</span>
+<span class="n">fileType</span> <span class="o">=</span> <span class="s2">&quot;&lt;span style=&#39;font-size: 10px;&#39;&gt;&lt;span style=&#39;color: #2e93e2;&#39;&gt;Nuke Script&lt;/span&gt; by xu tao at 2020-02-05 17:40&lt;/span&gt;&quot;</span>
+<span class="n">dialog</span> <span class="o">=</span> <span class="n">QPublishedFileItem</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">fileType</span><span class="p">)</span>
+<span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pyqt_designer.html" class="btn btn-neutral float-right" title="PyQt Designer安装与使用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pyqt_bat.html" class="btn btn-neutral float-left" title="PyQt使用bat伪装应用程序" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PyQt实现Maya中frameLayout布局功能 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="PyQt在Houdini中执行的模板代码" href="pyqt_in_houdini.html" />
+    <link rel="prev" title="PyQt Designer安装与使用" href="pyqt_designer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/PyQt.html">PyQt</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pyqt_bat.html">PyQt使用bat伪装应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_custom_widgets.html">PyQt自定义控件玩法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_designer.html">PyQt Designer安装与使用</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyQt实现Maya中frameLayout布局功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_in_houdini.html">PyQt在Houdini中执行的模板代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_in_maya.html">PyQt在Maya中执行的模板代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_in_nuke.html">PyQt在Nuke中执行的模板代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_line_edit.html">PyQt重写QLineEdit支持拖拽功能</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_model.html">PyQt MVC设计模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_qss.html">PyQt美化界面皮肤qss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_qt.html">PyQt之Qt.py的使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_rcc.html">PyQt Designer安装与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_resources.html">PyQt设置图标的相对路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_rich_text.html">PyQt富文本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_singals_slots.html">PyQt信号与槽事件机制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_tray_icon.html">PyQt定义应用程序任务栏图标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_uic.html">PyQt Designer安装与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqt_vs_pyside.html">PyQt VS PySide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Maya.html">Maya</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE4.html">UE4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/C4D.html">C4D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/PyQt.html">PyQt</a> &raquo;</li>
+        
+      <li>PyQt实现Maya中frameLayout布局功能</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_PyQt/pyqt_frame_layout.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pyqtmayaframelayout">
+<h1>PyQt实现Maya中frameLayout布局功能<a class="headerlink" href="#pyqtmayaframelayout" title="永久链接至标题">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+
+<span class="n">cmds</span><span class="o">.</span><span class="n">window</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">scrollLayout</span><span class="p">(</span> <span class="s1">&#39;scrollLayout&#39;</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">(</span> <span class="n">adjustableColumn</span><span class="o">=</span><span class="kc">True</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">frameLayout</span><span class="p">(</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buttons&#39;</span><span class="p">,</span> <span class="n">collapsable</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">button</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">button</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">button</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span> <span class="s1">&#39;..&#39;</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span> <span class="s1">&#39;..&#39;</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">frameLayout</span><span class="p">(</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Scroll Bars&#39;</span><span class="p">,</span> <span class="n">collapsable</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">intSlider</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">intSlider</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">intSlider</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span> <span class="s1">&#39;..&#39;</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span> <span class="s1">&#39;..&#39;</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">frameLayout</span><span class="p">(</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fields&#39;</span><span class="p">,</span> <span class="n">collapsable</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">intField</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">intField</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">intField</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span> <span class="s1">&#39;..&#39;</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span> <span class="s1">&#39;..&#39;</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">frameLayout</span><span class="p">(</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Check Boxes&#39;</span><span class="p">,</span> <span class="n">collapsable</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">columnLayout</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">checkBox</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">checkBox</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">checkBox</span><span class="p">()</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span> <span class="s1">&#39;..&#39;</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">setParent</span><span class="p">(</span> <span class="s1">&#39;..&#39;</span> <span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">showWindow</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide</span> <span class="kn">import</span> <span class="n">QtGui</span>
+
+<span class="k">class</span> <span class="nc">FrameWidget</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QGroupBox</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FrameWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setSpacing</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FrameWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QFrame</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setFrameShape</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QFrame</span><span class="o">.</span><span class="n">Panel</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setFrameShadow</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QFrame</span><span class="o">.</span><span class="n">Plain</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setLineWidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__collapsed</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">setLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">expandCollapseRect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">expandCollapseRect</span><span class="p">()</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">toggleCollapsed</span><span class="p">()</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">ignore</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">toggleCollapsed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setCollapsed</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collapsed</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setCollapsed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__collapsed</span> <span class="o">=</span> <span class="n">state</span>
+
+        <span class="k">if</span> <span class="n">state</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumHeight</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumHeight</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumHeight</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumHeight</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">painter</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QPainter</span><span class="p">()</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">font</span> <span class="o">=</span> <span class="n">painter</span><span class="o">.</span><span class="n">font</span><span class="p">()</span>
+        <span class="n">font</span><span class="o">.</span><span class="n">setBold</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span><span class="o">.</span><span class="n">width</span><span class="p">()</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mi">25</span>
+
+        <span class="n">painter</span><span class="o">.</span><span class="n">setRenderHint</span><span class="p">(</span><span class="n">painter</span><span class="o">.</span><span class="n">Antialiasing</span><span class="p">)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">fillRect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expandCollapseRect</span><span class="p">(),</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="mi">93</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">93</span><span class="p">))</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span>
+            <span class="n">x</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>
+            <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignLeft</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignTop</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__drawTriangle</span><span class="p">(</span><span class="n">painter</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="c1">#(1)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setRenderHint</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPainter</span><span class="o">.</span><span class="n">Antialiasing</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__drawTriangle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">painter</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span><span class="c1">#(2)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collapsed</span><span class="p">:</span><span class="c1">#(3)</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>  <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span>  <span class="n">y</span><span class="o">+</span><span class="mi">6</span> <span class="p">),</span>
+                        <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">6</span> <span class="p">),</span>
+                        <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">15</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">11</span><span class="p">)</span>
+                        <span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>  <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">4</span> <span class="p">),</span>
+                        <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">15</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">9</span> <span class="p">),</span>
+                        <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">14</span><span class="p">)</span>
+                        <span class="p">]</span>
+
+        <span class="n">currentBrush</span> <span class="o">=</span> <span class="n">painter</span><span class="o">.</span><span class="n">brush</span><span class="p">()</span><span class="c1">#(4)</span>
+        <span class="n">currentPen</span>   <span class="o">=</span> <span class="n">painter</span><span class="o">.</span><span class="n">pen</span><span class="p">()</span>
+
+        <span class="n">painter</span><span class="o">.</span><span class="n">setBrush</span><span class="p">(</span>
+            <span class="n">QtGui</span><span class="o">.</span><span class="n">QBrush</span><span class="p">(</span>
+                <span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="mi">187</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mi">187</span><span class="p">),</span>
+                <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">SolidPattern</span>
+                <span class="p">)</span>
+            <span class="p">)</span><span class="c1">#(5)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPen</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">NoPen</span><span class="p">))</span><span class="c1">#(6)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">drawPolygon</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPolygon</span><span class="p">(</span><span class="n">points</span><span class="p">))</span><span class="c1">#(7)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setBrush</span><span class="p">(</span><span class="n">currentBrush</span><span class="p">)</span><span class="c1">#(8)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">currentPen</span><span class="p">)</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s1">&#39;Frame Widget Test&#39;</span><span class="p">)</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">FrameWidget</span><span class="p">(</span><span class="s1">&#39;Frame Title&#39;</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+
+<span class="n">widget</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QWidget</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s1">&#39;Button </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">,</span> <span class="n">widget</span><span class="p">))</span>
+
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+
+<span class="k">class</span> <span class="nc">FrameWidget</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QGroupBox</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FrameWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">setSpacing</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FrameWidget</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QFrame</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setFrameShape</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QFrame</span><span class="o">.</span><span class="n">Panel</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setFrameShadow</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QFrame</span><span class="o">.</span><span class="n">Plain</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setLineWidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__collapsed</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">setLayout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">expandCollapseRect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">QRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">mouseReleaseEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">expandCollapseRect</span><span class="p">()</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">()):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">toggleCollapsed</span><span class="p">()</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">ignore</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">toggleCollapsed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setCollapsed</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collapsed</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">setCollapsed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__collapsed</span> <span class="o">=</span> <span class="n">state</span>
+
+        <span class="k">if</span> <span class="n">state</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumHeight</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumHeight</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setMinimumHeight</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setMaximumHeight</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__widget</span><span class="o">.</span><span class="n">setVisible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">paintEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">painter</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QPainter</span><span class="p">()</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">font</span> <span class="o">=</span> <span class="n">painter</span><span class="o">.</span><span class="n">font</span><span class="p">()</span>
+        <span class="n">font</span><span class="o">.</span><span class="n">setBold</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span><span class="o">.</span><span class="n">width</span><span class="p">()</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mi">25</span>
+
+        <span class="n">painter</span><span class="o">.</span><span class="n">setRenderHint</span><span class="p">(</span><span class="n">painter</span><span class="o">.</span><span class="n">Antialiasing</span><span class="p">)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">fillRect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expandCollapseRect</span><span class="p">(),</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="mi">93</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">93</span><span class="p">))</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">drawText</span><span class="p">(</span>
+            <span class="n">x</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span>
+            <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignLeft</span> <span class="o">|</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignTop</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__drawTriangle</span><span class="p">(</span><span class="n">painter</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="c1">#(1)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setRenderHint</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPainter</span><span class="o">.</span><span class="n">Antialiasing</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__drawTriangle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">painter</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span><span class="c1">#(2)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collapsed</span><span class="p">:</span><span class="c1">#(3)</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>  <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span>  <span class="n">y</span><span class="o">+</span><span class="mi">6</span> <span class="p">),</span>
+                        <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">6</span> <span class="p">),</span>
+                        <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">15</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">11</span><span class="p">)</span>
+                        <span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">=</span> <span class="p">[</span>  <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">4</span> <span class="p">),</span>
+                        <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">15</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">9</span> <span class="p">),</span>
+                        <span class="n">QtCore</span><span class="o">.</span><span class="n">QPoint</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">14</span><span class="p">)</span>
+                        <span class="p">]</span>
+
+        <span class="n">currentBrush</span> <span class="o">=</span> <span class="n">painter</span><span class="o">.</span><span class="n">brush</span><span class="p">()</span><span class="c1">#(4)</span>
+        <span class="n">currentPen</span> <span class="o">=</span> <span class="n">painter</span><span class="o">.</span><span class="n">pen</span><span class="p">()</span>
+
+        <span class="n">painter</span><span class="o">.</span><span class="n">setBrush</span><span class="p">(</span>
+            <span class="n">QtGui</span><span class="o">.</span><span class="n">QBrush</span><span class="p">(</span>
+                <span class="n">QtGui</span><span class="o">.</span><span class="n">QColor</span><span class="p">(</span><span class="mi">187</span><span class="p">,</span> <span class="mi">187</span><span class="p">,</span> <span class="mi">187</span><span class="p">),</span>
+                <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">SolidPattern</span>
+                <span class="p">)</span>
+            <span class="p">)</span><span class="c1">#(5)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPen</span><span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">NoPen</span><span class="p">))</span><span class="c1">#(6)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">drawPolygon</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPolygon</span><span class="p">(</span><span class="n">points</span><span class="p">))</span><span class="c1">#(7)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setBrush</span><span class="p">(</span><span class="n">currentBrush</span><span class="p">)</span><span class="c1">#(8)</span>
+        <span class="n">painter</span><span class="o">.</span><span class="n">setPen</span><span class="p">(</span><span class="n">currentPen</span><span class="p">)</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s1">&#39;Frame Widget Test&#39;</span><span class="p">)</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">FrameWidget</span><span class="p">(</span><span class="s1">&#39;Frame Title&#39;</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+
+<span class="n">widget</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QWidget</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QVBoxLayout</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QPushButton</span><span class="p">(</span><span class="s1">&#39;Button </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">,</span> <span class="n">widget</span><span class="p">))</span>
+
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://kiwamiden.com/make-mayas-framelayout-with-pyside">https://kiwamiden.com/make-mayas-framelayout-with-pyside</a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pyqt_in_houdini.html" class="btn btn-neutral float-right" title="PyQt在Houdini中执行的模板代码" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pyqt_designer.html" class="btn btn-neutral float-left" title="PyQt Designer安装与使用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
