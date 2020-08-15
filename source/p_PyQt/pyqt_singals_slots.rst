@@ -218,3 +218,32 @@ PyQt信号与槽事件机制
         app = QApplication(sys.argv)
         ex = Example()
         sys.exit(app.exec_())
+
+.. code-block:: python
+
+    import sys
+
+    path = "D:/2020"
+
+    path in sys.path or sys.path.insert(0, path)
+
+    from PySide2 import QtWidgets
+    from PySide2 import QtGui
+    from PySide2 import QtCore
+    import mainWin
+
+    class CustomDialog(QtWidgets.QDialog, mainWin.Ui_Dialog):
+        def __init__(self, parent=None):
+            super(CustomDialog, self).__init__(parent)
+
+            self.setupUi(self)
+
+        @QtCore.Slot()
+        def on_pushButton_clicked(self):
+            print(100)
+
+    if __name__ == "__main__":
+        app = QtWidgets.QApplication(sys.argv)
+        dialog = CustomDialog()
+        dialog.show()
+        sys.exit(app.exec_())
