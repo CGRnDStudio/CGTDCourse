@@ -6,7 +6,7 @@ PyQt自定义控件玩法
 
 .. code-block:: python
 
-from PySide2 import QtWidgets
+    from PySide2 import QtWidgets
 
     class QLineEditPath(QtWidgets.QLineEdit):
 

@@ -188,38 +188,30 @@
   <div class="section" id="pyqt">
 <h1>PyQt自定义控件玩法<a class="headerlink" href="#pyqt" title="永久链接至标题">¶</a></h1>
 <p>自定义控件，事件机制，如何让UI元素更丰富!</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+
+<span class="k">class</span> <span class="nc">QLineEditPath</span><span class="p">(</span><span class="n">QtWidgets</span><span class="o">.</span><span class="n">QLineEdit</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">QLineEditPath</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">dragEnterEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">hasUrls</span><span class="p">():</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">event</span><span class="o">.</span><span class="n">ignore</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">dropEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">hasUrls</span><span class="p">():</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mimeData</span><span class="p">()</span><span class="o">.</span><span class="n">urls</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">toLocalFile</span><span class="p">())</span>
+
+<span class="n">dialog</span> <span class="o">=</span> <span class="n">QLineEditPath</span><span class="p">()</span>
+<span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>from PySide2 import QtWidgets</p>
-<blockquote>
-<div><p>class QLineEditPath(QtWidgets.QLineEdit):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>def __init__(self, parent=None):</dt><dd><p>super(QLineEditPath, self).__init__(parent)</p>
-</dd>
-</dl>
-<p>def dragEnterEvent(self, event):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>if event.mimeData().hasUrls():</dt><dd><p>event.accept()</p>
-</dd>
-<dt>else:</dt><dd><p>event.ignore()</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>def dropEvent(self, event):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>if event.mimeData().hasUrls():</dt><dd><p>url = event.mimeData().urls()[0]
-self.setText(url.toLocalFile())</p>
-</dd>
-</dl>
-</div></blockquote>
-</div></blockquote>
-<p>dialog = QLineEditPath()
-dialog.show()</p>
-</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtCore</span>
 <span class="kn">from</span> <span class="nn">PySide2</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
 
