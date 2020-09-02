@@ -126,3 +126,6 @@ Python 2.x VS 3.x
 - 3.x版本中添加海象运算符
 
 - 3.x版本中添加F-Strings格式化字符串方法
+
+- 3.x版本中将reload加入到importlib模块中，不能直接使用
+

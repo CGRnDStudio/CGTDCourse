@@ -4,25 +4,25 @@
 
 - 火绒安全
 - Rocket.Chat
-- Foxmail
+- 网易邮箱大师
 - WPS
 - 钉钉
-- 钉邮
+- 阿里云邮箱
 - Snipaste
 - Deadline
 - Shotgun
 - 腾讯会议
 - Splashtop
 - 7-Zip
+- XMind
 - Navicat
 - VS Code
 - Notepad++
 - Seafile
 - 拖把更名器
-- Seafile
-- Confluence
 - QuickTime
 - Chrome
+- Firefox
 - Git
 - Connector
 - Python
@@ -32,3 +32,7 @@
 - CentOS
 - KMS
 - Squid
+- Bandicam
+- IObit
+- 格式工厂
+

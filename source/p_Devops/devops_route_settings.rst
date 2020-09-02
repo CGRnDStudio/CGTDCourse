@@ -25,7 +25,7 @@
 
 192.168.0.201-192.168.0.254
 
-192.168.0.136 HP printer
+192.168.0.137 HP printer
 
 192.168.0.201 rendernode01
 192.168.0.202 rendernode02 2020.07.16 maintenance

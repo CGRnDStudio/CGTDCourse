@@ -12,3 +12,5 @@ Python内置模块：datetime
     >>> dir(datetime)
     ['MAXYEAR', 'MINYEAR', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'date', 'datetime', 'datetime_CAPI', 'sys', 'time', 'timedelta', 'timezone', 'tzinfo']
     >>>
+    >>> datetime.datetime(2020, 8, 18, 18, 48)
+    datetime.datetime(2020, 8, 18, 18, 48)

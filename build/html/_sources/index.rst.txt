@@ -18,6 +18,7 @@ CG TD Pipeline's documentation
    parts/Houdini
    parts/Maya
    parts/Nuke
+   parts/Ftrack
    parts/Shotgun
    parts/Deadline
    parts/Linux
