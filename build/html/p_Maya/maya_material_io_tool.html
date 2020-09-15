@@ -91,8 +91,11 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_aov_tool.html">Maya AOV分层工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_batch_script.html">Maya命令行脚本</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_check_topology.html">Maya检查拓扑结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_command.html">Maya自定义mel命令</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_menu.html">Maya自定义菜单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_mll_plugin.html">Maya自定义mll插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_plugin.html">Maya自定义插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_py_plugin.html">Maya自定义py插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_shelf.html">Maya自定义工具架</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_development_environment.html">Maya开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_environment_variables.html">Maya环境变量</a></li>
@@ -203,16 +206,18 @@
             
   <div class="section" id="maya">
 <h1>Maya材质导入导出工具<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>获取所有shading group
-cmds.ls(type=”shadingEngine”)
-获取选择物体的shape
-cmds.listRelatives(geo, children=True, path=True)
-cmds.listConnections(shp, destination=True, t=”shadingEngine”)
-cmds.file(file_path, options=”v=0;”, typ=”mayaAscii”, pr=True, es=True)
-cmds.sets(sg, q=True)
-# reference
-cmds.file(file_path, r=True, ns=name_space)
-cmds.sets(filter_items, e=True, forceElement=sg)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取所有shading group</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;shadingEngine&quot;</span><span class="p">)</span>
+<span class="c1"># 获取选择物体的shape</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listRelatives</span><span class="p">(</span><span class="n">geo</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">listConnections</span><span class="p">(</span><span class="n">shp</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="s2">&quot;shadingEngine&quot;</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="s2">&quot;v=0;&quot;</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="s2">&quot;mayaAscii&quot;</span><span class="p">,</span> <span class="n">pr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">es</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">sg</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># reference</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ns</span><span class="o">=</span><span class="n">name_space</span><span class="p">)</span>
+<span class="n">cmds</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">filter_items</span><span class="p">,</span> <span class="n">e</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">forceElement</span><span class="o">=</span><span class="n">sg</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
@@ -367,6 +372,9 @@ cmds.sets(filter_items, e=True, forceElement=sg)</p>
             <span class="k">pass</span>
 </pre></div>
 </div>
+<p># export_sel_sg_nodes(“D:/andy/lanzu.ma”)
+# export_sel_sg_members(“D:/andy/lanzu.json”)</p>
+<p>assign_data_to_all(“D:/andy/lanzu.json”, “lanzu”)</p>
 </div>
 
 

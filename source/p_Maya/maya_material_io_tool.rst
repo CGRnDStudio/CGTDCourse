@@ -2,18 +2,18 @@
 Maya材质导入导出工具
 ==============================
 
+.. code-block:: python
 
-获取所有shading group
-cmds.ls(type="shadingEngine")
-获取选择物体的shape
-cmds.listRelatives(geo, children=True, path=True)
-cmds.listConnections(shp, destination=True, t="shadingEngine")
-cmds.file(file_path, options="v=0;", typ="mayaAscii", pr=True, es=True)
-cmds.sets(sg, q=True)
-# reference
-cmds.file(file_path, r=True, ns=name_space)
-cmds.sets(filter_items, e=True, forceElement=sg)
-
+    # 获取所有shading group
+    cmds.ls(type="shadingEngine")
+    # 获取选择物体的shape
+    cmds.listRelatives(geo, children=True, path=True)
+    cmds.listConnections(shp, destination=True, t="shadingEngine")
+    cmds.file(file_path, options="v=0;", typ="mayaAscii", pr=True, es=True)
+    cmds.sets(sg, q=True)
+    # reference
+    cmds.file(file_path, r=True, ns=name_space)
+    cmds.sets(filter_items, e=True, forceElement=sg)
 
 .. code-block:: python
 
@@ -170,4 +170,7 @@ cmds.sets(filter_items, e=True, forceElement=sg)
             except:
                 pass
 
+# export_sel_sg_nodes("D:/andy/lanzu.ma")
+# export_sel_sg_members("D:/andy/lanzu.json")
 
+assign_data_to_all("D:/andy/lanzu.json", "lanzu")

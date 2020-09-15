@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Maya自定义mll插件 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Maya自定义插件" href="maya_custom_plugin.html" />
+    <link rel="prev" title="Maya自定义菜单" href="maya_custom_menu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CG TD Pipeline
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Python.html">Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/PyQt.html">PyQt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Houdini.html">Houdini</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../parts/Maya.html">Maya</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="maya_aov_tool.html">Maya AOV分层工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_batch_script.html">Maya命令行脚本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_check_topology.html">Maya检查拓扑结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_command.html">Maya自定义mel命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_menu.html">Maya自定义菜单</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya自定义mll插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_plugin.html">Maya自定义插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_py_plugin.html">Maya自定义py插件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_custom_shelf.html">Maya自定义工具架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_development_environment.html">Maya开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_environment_variables.html">Maya环境变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_execute_script_nodes.html">Maya配置Execute script nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_front_render.html">Maya前台渲染脚本解决方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_globals.html">Maya插件：Yeti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_help_document.html">Maya帮助文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_linear_tool.html">Maya线性工作流工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_material_io_tool.html">Maya材质导入导出工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_mel_basics.html">Maya MEL基础</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_mel_command.html">Maya MEL常用命令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya打包工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_playblast_settings.html">Maya如何获取拍屏面板参数？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_playblast_tool.html">Maya拍屏工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_arnold.html">Maya插件：Arnold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_p+.html">Maya插件：p+</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_qualoth.html">Maya插件：Qualoth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_redshift.html">Maya插件：Redshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_shave.html">Maya插件：Shave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_plugin_yeti.html">Maya插件：Yeti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_proxy_texture.html">Maya代理文件贴图获取方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_pymel.html">Maya PyMEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_redshift_cache.html">Maya Redshift修改缓存路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_redshift_rstexbin.html">Maya Redshift批量转贴图rstexbin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_rename_tool.html">Maya重命名工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_shelf_tools.html">Maya自定义工具架工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_user_interface.html">Maya用户界面</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_xgen_linux_win.html">Maya XGen Linux资产切换Win版本</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Ftrack.html">Ftrack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Devops.html">Devops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE4.html">UE4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/C4D.html">C4D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CG TD Pipeline</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
+        
+      <li>Maya自定义mll插件</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/p_Maya/maya_custom_mll_plugin.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mayamll">
+<h1>Maya自定义mll插件<a class="headerlink" href="#mayamll" title="永久链接至标题">¶</a></h1>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="maya_custom_plugin.html" class="btn btn-neutral float-right" title="Maya自定义插件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="maya_custom_menu.html" class="btn btn-neutral float-left" title="Maya自定义菜单" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Andy Hu
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
