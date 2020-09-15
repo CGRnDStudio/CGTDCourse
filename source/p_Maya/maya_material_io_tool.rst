@@ -170,7 +170,7 @@ Maya材质导入导出工具
             except:
                 pass
 
-# export_sel_sg_nodes("D:/andy/lanzu.ma")
-# export_sel_sg_members("D:/andy/lanzu.json")
+    # export_sel_sg_nodes("D:/andy/lanzu.ma")
+    # export_sel_sg_members("D:/andy/lanzu.json")
 
-assign_data_to_all("D:/andy/lanzu.json", "lanzu")
+    assign_data_to_all("D:/andy/lanzu.json", "lanzu")
