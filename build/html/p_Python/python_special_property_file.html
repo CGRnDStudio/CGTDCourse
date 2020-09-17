@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python特殊属性：__file__ &amp; __path__ &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>Python特殊属性：__file__ &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -145,7 +145,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_special_method_repr.html">Python特殊方法：__repr__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_dict.html">Python特殊属性：__dict__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_doc.html">Python特殊属性：__doc__</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python特殊属性：__file__ &amp; __path__</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python特殊属性：__file__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_name.html">Python特殊属性：__name__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_special_property_path.html">Python特殊属性：__path__</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_third_party_module_pillow.html">Python第三方模块：Pillow</a></li>
@@ -218,13 +218,13 @@
         
           <li><a href="../parts/Python.html">Python</a> &raquo;</li>
         
-      <li>Python特殊属性：__file__ &amp; __path__</li>
+      <li>Python特殊属性：__file__</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Python/python_special_property_file_path.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Python/python_special_property_file.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -237,20 +237,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="python-file-path">
-<h1>Python特殊属性：__file__ &amp; __path__<a class="headerlink" href="#python-file-path" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="python-file">
+<h1>Python特殊属性：__file__<a class="headerlink" href="#python-file" title="永久链接至标题">¶</a></h1>
 <p>__file__是模块对象的特殊属性，它会返回模块文件的完整路径，如果模块是包的话，则返回包的__init__.py的完整路径。这在工作中非常实用，比如我自定义了一个命名污染的模块platform.py，在使用的时候一直报错，就可以通过代码查找此模块的路径，就会发现系统已经存在这个模块，是因为导入的不是我写的这个模块导致的错误，很多时候很方便检查代码在什么地方。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">platform</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="vm">__file__</span>
 <span class="go">&#39;C:\\Python27\\lib\\platform.pyc&#39;</span>
-</pre></div>
-</div>
-<p>__path__是模块包的特殊属性，它会返回模块包的文件夹完整路径。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">PySide</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">PySide</span><span class="o">.</span><span class="vm">__file__</span>
-<span class="go">&#39;C:\\Python27\\lib\\site-packages\\PySide\\__init__.pyc&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">PySide</span><span class="o">.</span><span class="n">__path__</span>
-<span class="go">[&#39;C:\\Python27\\lib\\site-packages\\PySide&#39;]</span>
 </pre></div>
 </div>
 </div>
