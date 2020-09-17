@@ -38,7 +38,7 @@ https://github.com/CGRnDStudio/CGTDCourse
 致谢
 -----------
 
-劲爆羊、薛定谔是铲屎官、徐国梁、A·Better、鹅大、热冬、Taka
+劲爆羊、薛定谔是铲屎官、徐国梁、臧长龙、鹅大、机器猫、A·Better、热冬、Taka
 
 -----------
 赞赏
