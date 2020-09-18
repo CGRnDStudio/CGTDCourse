@@ -1,5 +1,5 @@
 =============================
-PyQt Designer安装与使用
+PyQt uic使用
 =============================
 
 Houdini、Maya与Nuke中内置PySide2
