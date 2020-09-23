@@ -33,6 +33,14 @@ mayapy后面可以接.py文件运行，然后通过sys.argv来获取额外参数
 
     "C:\Program Files\Autodesk\Maya2016\bin\mayapy.exe" D:\centralizeTools\maya\env\2018\scripts\checkTools\relationship_check.py Z:\YYDTENN\Production\Department\LGT\EP01\sc006\YY_CG_sc006_lgt_color_v001_01.ma
 
+在使用mayapy.exe的时候，一定要将maya.standalone初始化。
+
+.. code-block:: python
+
+    import maya.standalone
+
+    maya.standalone.initialize()
+
 .. code-block:: python
 
     #!/usr/bin/python

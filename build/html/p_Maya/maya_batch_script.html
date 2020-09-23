@@ -233,6 +233,12 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Autodesk\Maya2016</span><span class="se">\b</span><span class="s2">in\mayapy.exe&quot;</span> <span class="n">D</span><span class="p">:</span>\<span class="n">centralizeTools</span>\<span class="n">maya</span>\<span class="n">env</span>\<span class="mi">2018</span>\<span class="n">scripts</span>\<span class="n">checkTools</span>\<span class="n">relationship_check</span><span class="o">.</span><span class="n">py</span> <span class="n">Z</span><span class="p">:</span>\<span class="n">YYDTENN</span>\<span class="n">Production</span>\<span class="n">Department</span>\<span class="n">LGT</span>\<span class="n">EP01</span>\<span class="n">sc006</span>\<span class="n">YY_CG_sc006_lgt_color_v001_01</span><span class="o">.</span><span class="n">ma</span>
 </pre></div>
 </div>
+<p>在使用mayapy.exe的时候，一定要将maya.standalone初始化。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.standalone</span>
+
+<span class="n">maya</span><span class="o">.</span><span class="n">standalone</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
