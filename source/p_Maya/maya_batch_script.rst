@@ -41,6 +41,12 @@ mayapy后面可以接.py文件运行，然后通过sys.argv来获取额外参数
 
     maya.standalone.initialize()
 
+    # ----------------
+    # main function
+    # ----------------
+
+    maya.standalone.uninitialize()
+
 .. code-block:: python
 
     #!/usr/bin/python

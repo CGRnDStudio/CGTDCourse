@@ -96,6 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_datetime.html">Python内置模块：datetime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_functools.html">Python内置模块：functools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_getpass.html">Python内置模块：getpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_importlib.html">Python内置模块：importlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_inspect.html">Python内置模块：inspect</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_itertools.html">Python内置模块：itertools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_json.html">Python内置模块：json</a></li>
@@ -104,6 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_operator.html">Python内置模块：operator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_os.html">Python内置模块：os</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_pprint.html">Python内置模块：pprint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_built_in_module_py_compile.html">Python内置模块：py_compile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_random.html">Python内置模块：random</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_re.html">Python内置模块：re</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_built_in_module_shutil.html">Python内置模块：shutil</a></li>
@@ -248,6 +250,29 @@
 <span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">exePath</span> <span class="o">=</span> <span class="s2">&quot;C:/Python27/python.exe&quot;</span>
+
+<span class="n">pyFile</span> <span class="o">=</span> <span class="s2">&quot;D:/andy/tests_subprocess.py&quot;</span>
+
+<span class="n">commands</span> <span class="o">=</span> <span class="s1">&#39;&quot;</span><span class="si">{0}</span><span class="s1">&quot; &quot;</span><span class="si">{1}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exePath</span><span class="p">,</span> <span class="n">pyFile</span><span class="p">)</span>
+
+<span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">(</span><span class="n">commands</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">exePath</span> <span class="o">=</span> <span class="s2">&quot;C:/Program Files/Nuke10.5v1/Nuke10.5.exe&quot;</span>
+
+<span class="n">commands</span> <span class="o">=</span> <span class="s1">&#39;&quot;</span><span class="si">{0}</span><span class="s1">&quot; --nukex&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exePath</span><span class="p">)</span>
+
+<span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">(</span><span class="n">commands</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>subprocess.check_call-&gt;会卡主程序</p>
+<p>subprocess.check_output-&gt;会卡主程序，会返回一些结果</p>
+<p>subprocess.Popen-&gt;独立程序，不会卡主程序</p>
 </div>
 
 
