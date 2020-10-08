@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Python装饰器 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>Python高级功能 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Python开发环境" href="python_development_environment.html" />
-    <link rel="prev" title="Python数据库操作" href="python_database_connect.html" /> 
+    <link rel="next" title="Python Anaconda" href="python_anaconda.html" />
+    <link rel="prev" title="Python 2.x VS 3.x" href="python_2_vs_3.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,7 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../preface.html">前言</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Python.html">Python</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_2_vs_3.html">Python 2.x VS 3.x</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_advanced_features.html">Python高级功能</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python高级功能</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_anaconda.html">Python Anaconda</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_anonymous_function.html">Python匿名函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_api.html">Python API</a></li>
@@ -127,7 +127,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_int_float.html">Python数据类型：整型 &amp; 浮点型</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_data_types_string.html">Python数据类型：字符串</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_database_connect.html">Python数据库操作</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_decorator.html">Python装饰器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_development_environment.html">Python开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_docstring.html">Python注释文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_file_operator.html">Python文件操作</a></li>
@@ -222,13 +222,13 @@
         
           <li><a href="../parts/Python.html">Python</a> &raquo;</li>
         
-      <li>Python装饰器</li>
+      <li>Python高级功能</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Python/python_decorator.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Python/python_advanced_features.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -242,34 +242,30 @@
            <div itemprop="articleBody">
             
   <div class="section" id="python">
-<h1>Python装饰器<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
-
-
-<span class="k">def</span> <span class="nf">wrap_func_log</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;info&quot;</span><span class="p">):</span>
-    <span class="n">LOG_LEVELS</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">,</span>
-        <span class="s2">&quot;info&quot;</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">,</span>
-        <span class="s2">&quot;warning&quot;</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">,</span>
-        <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">error</span>
-    <span class="p">}</span>
-    <span class="n">log_command</span> <span class="o">=</span> <span class="n">LOG_LEVELS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">level</span><span class="p">)</span> <span class="ow">or</span> <span class="n">logging</span><span class="o">.</span><span class="n">info</span>
-
-    <span class="k">def</span> <span class="nf">dec_wrapper</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="n">log_command</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot; is running...&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">wrapper</span>
-    <span class="k">return</span> <span class="n">dec_wrapper</span>
-
-
-<span class="nd">@wrap_func_log</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">add1</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">add1</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
+<h1>Python高级功能<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li><p>Python小整数池</p></li>
+<li><p>Python异常处理</p></li>
+<li><p>Python生成器yield以及迭代器</p></li>
+<li><p>Python函数式编程</p></li>
+<li><p>Python高阶函数，匿名函数，闭包函数以及装饰器</p></li>
+<li><p>Python递归函数</p></li>
+<li><p>Python anaconda</p></li>
+<li><p>IPython</p></li>
+<li><p>Jupyter lab</p></li>
+<li><p>Jupyter notebook</p></li>
+<li><p>import this</p></li>
+<li><p>import __hello__</p></li>
+<li><p>import antigravity</p></li>
+<li><p>Python 3 f-string格式化</p></li>
+<li><p>__builtin__</p></li>
+<li><p>__file__ &amp; __path__</p></li>
+<li><p>__name__</p></li>
+<li><p>Python列表推导</p></li>
+<li><p>Python字典推导</p></li>
+<li><p>Python生成器表达式</p></li>
+<li><p>locals &amp; globals</p></li>
+</ul>
 </div>
 
 
@@ -280,10 +276,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="python_development_environment.html" class="btn btn-neutral float-right" title="Python开发环境" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python_anaconda.html" class="btn btn-neutral float-right" title="Python Anaconda" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="python_database_connect.html" class="btn btn-neutral float-left" title="Python数据库操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="python_2_vs_3.html" class="btn btn-neutral float-left" title="Python 2.x VS 3.x" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
