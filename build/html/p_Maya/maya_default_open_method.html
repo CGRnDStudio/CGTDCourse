@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Maya如何获取拍屏面板参数？ &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>Maya默认打开方式 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Maya拍屏工具" href="maya_playblast_tool.html" />
-    <link rel="prev" title="Maya打包工具" href="maya_pack_tool.html" /> 
+    <link rel="next" title="Maya开发环境" href="maya_development_environment.html" />
+    <link rel="prev" title="Maya自定义工具架" href="maya_custom_shelf.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_plugin.html">Maya自定义插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_py_plugin.html">Maya自定义py插件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_custom_shelf.html">Maya自定义工具架</a></li>
-<li class="toctree-l2"><a class="reference internal" href="maya_default_open_method.html">Maya默认打开方式</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya默认打开方式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_development_environment.html">Maya开发环境</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_environment_variables.html">Maya环境变量</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_execute_script_nodes.html">Maya配置Execute script nodes</a></li>
@@ -109,7 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_mel_basics.html">Maya MEL基础</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_mel_command.html">Maya MEL常用命令</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_pack_tool.html">Maya打包工具</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya如何获取拍屏面板参数？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_playblast_settings.html">Maya如何获取拍屏面板参数？</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_playblast_tool.html">Maya拍屏工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_arnold.html">Maya插件：Arnold</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_plugin_p+.html">Maya插件：p+</a></li>
@@ -186,13 +186,13 @@
         
           <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
         
-      <li>Maya如何获取拍屏面板参数？</li>
+      <li>Maya默认打开方式</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Maya/maya_playblast_settings.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Maya/maya_default_open_method.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -206,116 +206,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="maya">
-<h1>Maya如何获取拍屏面板参数？<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
-<p>optionVar命令可以获取一些Maya选项设置的参数</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
-
-<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">cmds</span><span class="o">.</span><span class="n">optionVar</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-
-    <span class="k">if</span> <span class="s2">&quot;playblast&quot;</span> <span class="ow">in</span> <span class="n">elem</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">cmds</span><span class="o">.</span><span class="n">optionVar</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="n">elem</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>通过上面的代码可以将与拍屏相关的参数筛选出来。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PlayblastCmdAvi</span>
-
-<span class="n">PlayblastCmdFormatAvi</span>
-
-<span class="n">PlayblastCmdFormatQuicktime</span>
-
-<span class="n">PlayblastCmdQuicktime</span>
-
-<span class="n">optionBoxDimensionsPlayblast</span>
-<span class="p">[</span><span class="mi">546</span><span class="n">L</span><span class="p">,</span> <span class="mi">350</span><span class="n">L</span><span class="p">]</span>
-<span class="n">playblastClearCache</span>
-<span class="mi">1</span>
-<span class="n">playblastCompression</span>
-<span class="n">H</span><span class="o">.</span><span class="mi">264</span>
-<span class="n">playblastDisplaySizeSource</span>
-<span class="mi">1</span>
-<span class="n">playblastEndTime</span>
-<span class="mf">10.0</span>
-<span class="n">playblastFile</span>
-<span class="n">playblast</span>
-<span class="n">playblastFormat</span>
-<span class="n">qt</span>
-<span class="n">playblastHeight</span>
-<span class="mi">256</span>
-<span class="n">playblastMultiCamera</span>
-<span class="mi">0</span>
-<span class="n">playblastOffscreen</span>
-<span class="mi">0</span>
-<span class="n">playblastPadding</span>
-<span class="mi">4</span>
-<span class="n">playblastQuality</span>
-<span class="mi">70</span>
-<span class="n">playblastSaveToFile</span>
-<span class="mi">0</span>
-<span class="n">playblastScale</span>
-<span class="mf">0.5</span>
-<span class="n">playblastShowOrnaments</span>
-<span class="mi">1</span>
-<span class="n">playblastStartTime</span>
-<span class="mf">1.0</span>
-<span class="n">playblastUseSequenceTime</span>
-<span class="mi">0</span>
-<span class="n">playblastUseStartEnd</span>
-<span class="mi">0</span>
-<span class="n">playblastViewerOn</span>
-<span class="mi">1</span>
-<span class="n">playblastWidth</span>
-<span class="mi">256</span>
-</pre></div>
-</div>
-<p>参数与具体option的对照表</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p>View:</p></td>
-<td><p>playblastViewerOn</p></td>
-</tr>
-<tr class="row-even"><td><p>Show ornaments:</p></td>
-<td><p>playblastShowOrnaments</p></td>
-</tr>
-<tr class="row-odd"><td><p>Render offscreen:</p></td>
-<td><p>playblastOffscreen</p></td>
-</tr>
-<tr class="row-even"><td><p>Multi-Camera Output:</p></td>
-<td><p>playblastMultiCamera</p></td>
-</tr>
-<tr class="row-odd"><td><p>Format:</p></td>
-<td><p>playblastFormat</p></td>
-</tr>
-<tr class="row-even"><td><p>Encoding:</p></td>
-<td><p>playblastCompression</p></td>
-</tr>
-<tr class="row-odd"><td><p>Quality:</p></td>
-<td><p>playblastQuality</p></td>
-</tr>
-<tr class="row-even"><td><p>Display size:</p></td>
-<td><p>playblastWidth playblastHeight</p></td>
-</tr>
-<tr class="row-odd"><td><p>Scale:</p></td>
-<td><p>playblastScale</p></td>
-</tr>
-<tr class="row-even"><td><p>Frame padding:</p></td>
-<td><p>playblastPadding</p></td>
-</tr>
-<tr class="row-odd"><td><p>Remove temporary files:</p></td>
-<td><p>playblastClearCache</p></td>
-</tr>
-<tr class="row-even"><td><p>Save to file:</p></td>
-<td><p>playblastSaveToFile</p></td>
-</tr>
-<tr class="row-odd"><td><p>Movie file:</p></td>
-<td><p>playblastFile</p></td>
-</tr>
-</tbody>
-</table>
+<h1>Maya默认打开方式<a class="headerlink" href="#maya" title="永久链接至标题">¶</a></h1>
+<p>管理员打开注册表</p>
+<p>计算机HKEY_CLASSES_ROOTMayaBinaryFileshellopencommand</p>
+<p>计算机HKEY_CLASSES_ROOTMayaAsciiFileshellopencommand</p>
 </div>
 
 
@@ -326,10 +220,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="maya_playblast_tool.html" class="btn btn-neutral float-right" title="Maya拍屏工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="maya_development_environment.html" class="btn btn-neutral float-right" title="Maya开发环境" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="maya_pack_tool.html" class="btn btn-neutral float-left" title="Maya打包工具" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="maya_custom_shelf.html" class="btn btn-neutral float-left" title="Maya自定义工具架" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
