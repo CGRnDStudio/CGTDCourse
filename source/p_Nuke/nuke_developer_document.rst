@@ -8,6 +8,11 @@ Nuke开发者文档
 - NukePythonAPI
 - NukePythonDevGuide
 
+.. code-block:: HTML
+
+    Nuke Python Developer’s Guide: https://learn.foundry.com/nuke/developers/latest/pythondevguide/
+    Nuke Python API: https://learn.foundry.com/nuke/developers/latest/pythonreference/
+
 ---------------------------
 参考文档
 ---------------------------

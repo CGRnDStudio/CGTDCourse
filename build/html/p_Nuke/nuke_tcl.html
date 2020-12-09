@@ -114,7 +114,10 @@
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_arguments.html">Nuke Python命令行传参的两种方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_import.html">Nuke Python导入nk文件的几种方式</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nuke_python_panel.html">Nuke Python Panel</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke TCL</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nuke TCL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">参考文档</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Ftrack.html">Ftrack</a></li>
@@ -196,6 +199,16 @@
             
   <div class="section" id="nuke-tcl">
 <h1>Nuke TCL<a class="headerlink" href="#nuke-tcl" title="永久链接至标题">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">file</span> <span class="n">dirname</span> <span class="p">[</span><span class="n">value</span> <span class="n">root</span><span class="o">.</span><span class="n">name</span><span class="p">]]</span> <span class="c1"># 当前nuke文件所在的文件夹</span>
+<span class="p">[</span><span class="n">join</span> <span class="p">[</span><span class="n">lrange</span> <span class="p">[</span><span class="n">split</span> <span class="p">[</span><span class="n">file</span> <span class="n">dirname</span> <span class="p">[</span><span class="n">value</span> <span class="n">root</span><span class="o">.</span><span class="n">name</span><span class="p">]]</span> <span class="o">/</span><span class="p">]</span> <span class="mi">0</span> <span class="n">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span><span class="p">]</span> <span class="c1"># 当前nuke文件所在文件夹的上一个层级</span>
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2>参考文档<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.jeangjenq.com/tcl-python-snippets/">http://www.jeangjenq.com/tcl-python-snippets/</a></p></li>
+</ul>
+</div>
 </div>
 
 
