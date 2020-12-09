@@ -8,7 +8,7 @@ Katana配置本地离线帮助文档
 
 NukeX本地离线帮助文档会遇到一点问题，虽然NukeX菜单Edit>Preferences...>Behaviors>Documentation中也有设置documentation source为local的选项，但是设置和不设置好像是一样的，我们只能魔改本地index.html文件了。以Nuke 12.1v2为例，找到C:\Program Files\Nuke12.1v2\Documentation\index.html文件，用记事本打开。
 
-.. code-block:: python
+.. code-block:: HTML
 
     <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
     <html>
@@ -106,7 +106,7 @@ NukeX本地离线帮助文档会遇到一点问题，虽然NukeX菜单Edit>Prefe
 
 直接修改链接的网址路径，像下面这样。
 
-.. code-block:: python
+.. code-block:: HTML
 
     <!doctype html public "-//w3c//dtd html 4.0 transitional//en">
     <html>

@@ -183,193 +183,193 @@
 <p>非常有用的小功能，默认Katana菜单Help中的帮助文档都是链接到在线文档，虽然在线文档可能是访问最新版本文档，但很多时候限于网速原因以及大多时候不能上网的局限，需要配置本地离线帮助文档，查看当前版本的帮助文档。</p>
 <p>找到主菜单Edit&gt;Perferences&gt;documentation将source从Remote(via learn.foundry.com)配置成Local即可，此时查看Online Help、Developer Guide以及API Reference都是本地离线帮助文档了，玩API特别方便吧。</p>
 <p>NukeX本地离线帮助文档会遇到一点问题，虽然NukeX菜单Edit&gt;Preferences…&gt;Behaviors&gt;Documentation中也有设置documentation source为local的选项，但是设置和不设置好像是一样的，我们只能魔改本地index.html文件了。以Nuke 12.1v2为例，找到C:Program FilesNuke12.1v2Documentationindex.html文件，用记事本打开。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&lt;!doctype html public &quot;-//w3c//dtd html 4.0 transitional//en&quot;&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;
+<div class="highlight-HTML notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!doctype html public &quot;-//w3c//dtd html 4.0 transitional//en&quot;&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>
     Nuke 12.1.2
-&lt;/title&gt;
-&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot;&gt;
-&lt;link href=&quot;img/visionmongers.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;
-    &lt;img src=&quot;img/nuke.png&quot; alt=&quot;[Nuke Logo]&quot;&gt;
-&lt;/h1&gt;
-&lt;blockquote&gt;
-    &lt;p&gt;
+<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;text/html; charset=iso-8859-1&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;img/visionmongers.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;img/nuke.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;[Nuke Logo]&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
     Nuke is an Academy Award winning compositor.
     It has been used to create extraordinary images on scores of
-    feature films including &lt;em&gt;Avatar&lt;/em&gt;, &lt;em&gt;Harry Potter And The Deathly Hallows&lt;/em&gt;,
-    &lt;em&gt;Tron: Legacy&lt;/em&gt;, &lt;em&gt;Super 8&lt;/em&gt; and &lt;em&gt;The Curious Case Of Benjamin Button&lt;/em&gt;
+    feature films including <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Avatar<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>, <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Harry Potter And The Deathly Hallows<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>,
+    <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Tron: Legacy<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>, <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Super 8<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> and <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>The Curious Case Of Benjamin Button<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>
     as well as countless commercials and music videos.
     The following
     links take you to Nuke user documentation in various forms,
     here you&#39;ll find answers to your questions, whether you&#39;re
     a beginner, an experienced Nuke user or a Nuke developer.
-    &lt;/p&gt;
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-    &lt;h3&gt;Links&lt;/h3&gt;
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Links<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
 
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;https://www.foundry.com/products/nuke/online-help&quot;&gt;Nuke User Guide Tutorial Resources&lt;/a&gt;
-    &lt;/b&gt; - A link to the Tutorial resources used in the Nuke User Guide.
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.foundry.com/products/nuke/online-help&quot;</span><span class="p">&gt;</span>Nuke User Guide Tutorial Resources<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - A link to the Tutorial resources used in the Nuke User Guide.
     (These can be located on our website on the Support &gt; User guides page.).
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;http://learn.foundry.com/nuke/12.1/&quot;&gt;Foundry Online Help&lt;/a&gt;
-    &lt;/b&gt; - The Foundry online help for Nuke.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;http://docs.thefoundry.co.uk/nuke/12.1/pythondevguide/&quot;&gt;Nuke Python Developers Guide&lt;/a&gt;
-    &lt;/b&gt; - HTML documentation for Nuke Python developers.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;http://docs.thefoundry.co.uk/hiero/12.1/hieropythondevguide/&quot;&gt;Hiero Python Developers Guide&lt;/a&gt;
-    &lt;/b&gt; - HTML documentation for Hiero Python developers.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;http://docs.thefoundry.co.uk/nuke/12.1/pythonreference/&quot;&gt;Python Scripting Reference&lt;/a&gt;
-    &lt;/b&gt; - An HTML reference for all of Nuke&#39;s Python methods and types.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;&lt;a href=&quot;Tcl/index.html&quot;&gt;TCL Scripting&lt;/a&gt;&lt;/b&gt; - An HTML resource for TCL scripting.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;Tcl/group__tcl__expressions.html&quot;&gt;Knob Math Expressions&lt;/a&gt;
-    &lt;/b&gt; - An HTML list of functions you can use in Nuke expressions.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;NDKExamples/index.html&quot;&gt;C++ Plug-in Development&lt;/a&gt;
-    &lt;/b&gt; - A link to Nuke Developer Kit (NDK) resources.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;http://docs.thefoundry.co.uk/nuke/12.1/BlinkKernels/&quot;&gt;Guide to Writing Blink Kernels&lt;/a&gt;
-    &lt;/b&gt; - An HTML guide for users of the BlinkScript node in Nuke.
-    &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;br&gt;
-&lt;hr&gt;
-    &lt;table width=&quot;100%&quot;  border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
-    &lt;tr&gt;
-        &lt;td&gt;
-        &lt;span class=&quot;legal&quot;&gt;
-            &amp;copy;2020 The Foundry Visionmongers, Ltd.  All Rights Reserved.
-        &lt;/span&gt;&lt;/td&gt;
-        &lt;td&gt;
-        &lt;div align=&quot;right&quot;&gt;
-            &lt;span class=&quot;legal&quot;&gt;
-            &lt;a href=&quot;http://www.foundry.com&quot; target=&quot;_blank&quot;&gt;www.foundry.com&lt;/a&gt;
-            &lt;/span&gt;
-        &lt;/div&gt;
-        &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;/table&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://learn.foundry.com/nuke/12.1/&quot;</span><span class="p">&gt;</span>Foundry Online Help<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - The Foundry online help for Nuke.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://docs.thefoundry.co.uk/nuke/12.1/pythondevguide/&quot;</span><span class="p">&gt;</span>Nuke Python Developers Guide<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - HTML documentation for Nuke Python developers.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://docs.thefoundry.co.uk/hiero/12.1/hieropythondevguide/&quot;</span><span class="p">&gt;</span>Hiero Python Developers Guide<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - HTML documentation for Hiero Python developers.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://docs.thefoundry.co.uk/nuke/12.1/pythonreference/&quot;</span><span class="p">&gt;</span>Python Scripting Reference<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - An HTML reference for all of Nuke&#39;s Python methods and types.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;Tcl/index.html&quot;</span><span class="p">&gt;</span>TCL Scripting<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - An HTML resource for TCL scripting.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;Tcl/group__tcl__expressions.html&quot;</span><span class="p">&gt;</span>Knob Math Expressions<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - An HTML list of functions you can use in Nuke expressions.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;NDKExamples/index.html&quot;</span><span class="p">&gt;</span>C++ Plug-in Development<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - A link to Nuke Developer Kit (NDK) resources.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://docs.thefoundry.co.uk/nuke/12.1/BlinkKernels/&quot;</span><span class="p">&gt;</span>Guide to Writing Blink Kernels<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - An HTML guide for users of the BlinkScript node in Nuke.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span>  <span class="na">border</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">cellspacing</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">cellpadding</span><span class="o">=</span><span class="s">&quot;0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;legal&quot;</span><span class="p">&gt;</span>
+            <span class="ni">&amp;copy;</span>2020 The Foundry Visionmongers, Ltd.  All Rights Reserved.
+        <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;legal&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://www.foundry.com&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>www.foundry.com<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>直接修改链接的网址路径，像下面这样。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&lt;!doctype html public &quot;-//w3c//dtd html 4.0 transitional//en&quot;&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;
+<div class="highlight-HTML notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!doctype html public &quot;-//w3c//dtd html 4.0 transitional//en&quot;&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>
     Nuke 12.1.2
-&lt;/title&gt;
-&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=iso-8859-1&quot;&gt;
-&lt;link href=&quot;img/visionmongers.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;
-    &lt;img src=&quot;img/nuke.png&quot; alt=&quot;[Nuke Logo]&quot;&gt;
-&lt;/h1&gt;
-&lt;blockquote&gt;
-    &lt;p&gt;
+<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;text/html; charset=iso-8859-1&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;img/visionmongers.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;img/nuke.png&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;[Nuke Logo]&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
     Nuke is an Academy Award winning compositor.
     It has been used to create extraordinary images on scores of
-    feature films including &lt;em&gt;Avatar&lt;/em&gt;, &lt;em&gt;Harry Potter And The Deathly Hallows&lt;/em&gt;,
-    &lt;em&gt;Tron: Legacy&lt;/em&gt;, &lt;em&gt;Super 8&lt;/em&gt; and &lt;em&gt;The Curious Case Of Benjamin Button&lt;/em&gt;
+    feature films including <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Avatar<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>, <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Harry Potter And The Deathly Hallows<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>,
+    <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Tron: Legacy<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>, <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Super 8<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span> and <span class="p">&lt;</span><span class="nt">em</span><span class="p">&gt;</span>The Curious Case Of Benjamin Button<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;</span>
     as well as countless commercials and music videos.
     The following
     links take you to Nuke user documentation in various forms,
     here you&#39;ll find answers to your questions, whether you&#39;re
     a beginner, an experienced Nuke user or a Nuke developer.
-    &lt;/p&gt;
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-    &lt;h3&gt;Links&lt;/h3&gt;
+    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Links<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
 
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;https://www.foundry.com/products/nuke/online-help&quot;&gt;Nuke User Guide Tutorial Resources&lt;/a&gt;
-    &lt;/b&gt; - A link to the Tutorial resources used in the Nuke User Guide.
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://www.foundry.com/products/nuke/online-help&quot;</span><span class="p">&gt;</span>Nuke User Guide Tutorial Resources<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - A link to the Tutorial resources used in the Nuke User Guide.
     (These can be located on our website on the Support &gt; User guides page.).
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;html/content/learn_nuke.html&quot;&gt;Foundry Online Help&lt;/a&gt;
-    &lt;/b&gt; - The Foundry online help for Nuke.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;PythonDevGuide/Nuke/index.html&quot;&gt;Nuke Python Developers Guide&lt;/a&gt;
-    &lt;/b&gt; - HTML documentation for Nuke Python developers.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;PythonDevGuide/Hiero/index.html&quot;&gt;Hiero Python Developers Guide&lt;/a&gt;
-    &lt;/b&gt; - HTML documentation for Hiero Python developers.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;PythonReference/index.html&quot;&gt;Python Scripting Reference&lt;/a&gt;
-    &lt;/b&gt; - An HTML reference for all of Nuke&#39;s Python methods and types.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;&lt;a href=&quot;Tcl/index.html&quot;&gt;TCL Scripting&lt;/a&gt;&lt;/b&gt; - An HTML resource for TCL scripting.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;Tcl/group__tcl__expressions.html&quot;&gt;Knob Math Expressions&lt;/a&gt;
-    &lt;/b&gt; - An HTML list of functions you can use in Nuke expressions.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;NDKExamples/index.html&quot;&gt;C++ Plug-in Development&lt;/a&gt;
-    &lt;/b&gt; - A link to Nuke Developer Kit (NDK) resources.
-    &lt;/p&gt;
-    &lt;p&gt;
-    &lt;b&gt;
-        &lt;a href=&quot;Blink/index.html&quot;&gt;Guide to Writing Blink Kernels&lt;/a&gt;
-    &lt;/b&gt; - An HTML guide for users of the BlinkScript node in Nuke.
-    &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;br&gt;
-&lt;hr&gt;
-    &lt;table width=&quot;100%&quot;  border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
-    &lt;tr&gt;
-        &lt;td&gt;
-        &lt;span class=&quot;legal&quot;&gt;
-            &amp;copy;2020 The Foundry Visionmongers, Ltd.  All Rights Reserved.
-        &lt;/span&gt;&lt;/td&gt;
-        &lt;td&gt;
-        &lt;div align=&quot;right&quot;&gt;
-            &lt;span class=&quot;legal&quot;&gt;
-            &lt;a href=&quot;http://www.foundry.com&quot; target=&quot;_blank&quot;&gt;www.foundry.com&lt;/a&gt;
-            &lt;/span&gt;
-        &lt;/div&gt;
-        &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;/table&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;html/content/learn_nuke.html&quot;</span><span class="p">&gt;</span>Foundry Online Help<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - The Foundry online help for Nuke.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;PythonDevGuide/Nuke/index.html&quot;</span><span class="p">&gt;</span>Nuke Python Developers Guide<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - HTML documentation for Nuke Python developers.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;PythonDevGuide/Hiero/index.html&quot;</span><span class="p">&gt;</span>Hiero Python Developers Guide<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - HTML documentation for Hiero Python developers.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;PythonReference/index.html&quot;</span><span class="p">&gt;</span>Python Scripting Reference<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - An HTML reference for all of Nuke&#39;s Python methods and types.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;Tcl/index.html&quot;</span><span class="p">&gt;</span>TCL Scripting<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - An HTML resource for TCL scripting.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;Tcl/group__tcl__expressions.html&quot;</span><span class="p">&gt;</span>Knob Math Expressions<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - An HTML list of functions you can use in Nuke expressions.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;NDKExamples/index.html&quot;</span><span class="p">&gt;</span>C++ Plug-in Development<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - A link to Nuke Developer Kit (NDK) resources.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;Blink/index.html&quot;</span><span class="p">&gt;</span>Guide to Writing Blink Kernels<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> - An HTML guide for users of the BlinkScript node in Nuke.
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">hr</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100%&quot;</span>  <span class="na">border</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">cellspacing</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">cellpadding</span><span class="o">=</span><span class="s">&quot;0&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;legal&quot;</span><span class="p">&gt;</span>
+            <span class="ni">&amp;copy;</span>2020 The Foundry Visionmongers, Ltd.  All Rights Reserved.
+        <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;legal&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://www.foundry.com&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>www.foundry.com<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>重启NukeX，选择菜单Help&gt;Documentation，就可以直接查看本地的离线帮助文档了，美滋滋，美中不足的是还有一部分链接是在线链接，但大部分都是OK的，也无关紧要。</p>

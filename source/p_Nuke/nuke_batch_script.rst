@@ -2,11 +2,13 @@
 Nuke执行后台命令脚本方案
 ==============================
 
-
 两种后台命令脚本的模式
 
 打开命令行可以通过标签-h或者--help查询帮助
-"C:\Program Files\Nuke10.5v1\Nuke10.5.exe" -h
+
+.. code-block:: python
+
+    "C:\Program Files\Nuke10.5v1\Nuke10.5.exe" -h
 
 基本语法
 

@@ -129,3 +129,5 @@ Python 2.x VS 3.x
 
 - 3.x版本中将reload加入到importlib模块中，不能直接使用
 
+- __builtin__ VS builtins
+
