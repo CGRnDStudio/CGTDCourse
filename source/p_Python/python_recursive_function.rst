@@ -27,20 +27,23 @@ Python递归函数
         return fibonacci(n - 2) + fibonacci(n - 1)
 
 从递归函数谈
-os.walk()
-os.listdir()
-os.mkdir()
-os.makedirs()
-os.rmdir()
-os.removedirs()
-copy.copy()
-copy.deepcopy()
+
+.. code-block:: python
+
+    os.walk()
+    os.listdir()
+    os.mkdir()
+    os.makedirs()
+    os.rmdir()
+    os.removedirs()
+    copy.copy()
+    copy.deepcopy()
+
 深浅拷贝
 
 从递归函数谈reduce
 
 os.listdir递归查找文件
-
 
 children递归查找filecache
 
