@@ -217,3 +217,33 @@ Python装饰器
         print(n + 1)
 
     add1(10)
+
+如果装饰器本身需要传入参数，则需要像下面这样处理
+
+.. code-block:: python
+
+    def log(text):
+        def decorator(func):
+            def wrapper(*args, **kwargs):
+                print("%s %s():" % (text, func.__name__))
+                return func(*args, **kwargs)
+            return wrapper
+        return decorator
+
+
+    @log("execute")
+    def now():
+        print("2021/01/14")
+
+装饰器的缺点是会改变原来函数的一些属性，比如__name__
+
+.. code-block:: python
+
+    import functools
+
+    def log(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            print("call %s():" % func.__name__)
+            return func(*args, **kwargs)
+        return wrapper
