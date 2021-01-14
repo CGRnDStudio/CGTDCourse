@@ -2,98 +2,164 @@
 Python装饰器
 =============================
 
-Python装饰器的理论依据：Python中一切皆对象，函数也是对象。使用到Python闭包函数以及高阶函数的知识。
+装饰器在Python中也称为语法糖，使用到的知识点是高阶函数与闭包函数，而高阶函数的依据是Python中一切皆对象，函数也是对象，所以装饰器也是以此为依据。
+
+.. code-block:: python
+
+    def myFunc():
+        l = []
+
+        for i in range(1000000):
+            l.append(i)
+
+        return l
+
+    if __name__ == "__main__":
+        myFunc()
+
+.. code-block:: python
+
+    import time
+
+
+    def myFunc():
+        l = []
+
+        for i in range(1000000):
+            l.append(i)
+
+        return l
+
+    if __name__ == "__main__":
+        print("start...")
+        start = time.time()
+        myFunc()
+        end = time.time()
+        print("end...")
+        print("execute time: %.6f" % (end - start))
+
+.. code-block:: python
+
+    import time
+
+
+    def myFunc():
+        print("start...")
+        start = time.time()
+
+        l = []
+
+        for i in range(1000000):
+            l.append(i)
+
+        end = time.time()
+        print("end...")
+        print("execute time: %.6f" % (end - start))
+
+        return l
+
+    if __name__ == "__main__":
+        myFunc()
+
+.. code-block:: python
+
+    import time
+
+
+    def measureTime(fun):
+        def wrapped():
+            print("start...")
+            start = time.time()
+
+            result = fun()
+
+            end = time.time()
+            print("end...")
+            print("execute time: %.6f" % (end - start))
+
+            return result
+
+        return wrapped
+
+
+    def myFunc():
+        l = []
+
+        for i in range(1000000):
+            l.append(i)
+
+        return l
+
+    if __name__ == "__main__":
+        myFunc = measureTime(myFunc)
+        myFunc()
+
+.. code-block:: python
+
+    import time
+
+
+    def measureTime(fun):
+        def wrapped():
+            print("start...")
+            start = time.time()
+
+            result = fun()
+
+            end = time.time()
+            print("end...")
+            print("execute time: %.6f" % (end - start))
+
+            return result
+
+        return wrapped
+
+
+    @measureTime # Python会自动执行measureTime(myFunc)，执行完之后会将结果给到myFunc，相当于myFunc = measureTime(myFunc)
+    def myFunc():
+        l = []
+
+        for i in range(1000000):
+            l.append(i)
+
+        return l
+
+    if __name__ == "__main__":
+        yFunc()
 
 
 .. code-block:: python
 
-    def fac(num):
-        print("This is fac function!")
-        return range(num)
+    import time
 
 
-    result = fac(6)
-    print(result)
+    def measureTime(fun):
+        def wrapped(*args, **kwargs):
+            print("start...")
+            start = time.time()
 
-.. code-block:: python
+            result = fun(*args, **kwargs)
 
-    def fac(num):
-        print("before")
-        print("This is fac function!")
-        print("after")
-        return range(num)
+            end = time.time()
+            print("end...")
+            print("execute time: %.6f" % (end - start))
 
+            return result
 
-    result = fac(6)
-    print(result)
-
-
-.. code-block:: python
-
-    def fac():
-        print("This is fac function!")
-        return range(5)
-
-    def mesause(func):
-        def inner():
-            func()
-        return inner
-
-    fac = mesause(fac)
-
-    result = fac()
-    print(result)
+        return wrapped
 
 
-.. code-block:: python
+    @measureTime
+    def myFunc(num):
+        l = []
 
-    def fac():
-        print("This is fac function!")
-        return range(5)
+        for i in range(num):
+            l.append(i)
 
-    def mesause(func):
-        def inner():
-            res = func()
-            return res
-        return inner
+        return l
 
-    fac = mesause(fac)
-
-    result = fac()
-    print(result)
-
-.. code-block:: python
-
-
-    def mesause(func):
-        def inner():
-            print("before")
-            res = func()
-            return res
-            print("after")
-        return inner
-
-    @mesause
-    def fac():
-        print("This is fac function!")
-        return range(5)
-
-    result = fac()
-    print(result)
-
-Python会自动执行mesause(fac)，执行完之后会将结果给到fac
-
-相当于fac = mesause(fac)
-
-Python高阶函数
-
-Python闭包函数
-
-Python装饰器函数传参
-
-Python装饰器传参
-
-类中的语法糖
+    if __name__ == "__main__":
+        yFunc(1000000)
 
 
 .. code-block:: python
@@ -123,9 +189,6 @@ Python装饰器传参
 
     if __name__ == "__main__":
         f()
-
-
-
 
 .. code-block:: python
 
