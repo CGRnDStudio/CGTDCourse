@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Maya XGen Linux资产切换Win版本 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>Maya Redshift渲染Xgen毛发流程 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="Nuke" href="../parts/Nuke.html" />
-    <link rel="prev" title="Maya用户界面" href="maya_user_interface.html" /> 
+    <link rel="next" title="Maya重命名工具" href="maya_rename_tool.html" />
+    <link rel="prev" title="Maya Redshift批量转贴图rstexbin" href="maya_redshift_rstexbin.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -121,11 +121,11 @@
 <li class="toctree-l2"><a class="reference internal" href="maya_pymel.html">Maya PyMEL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_redshift_cache.html">Maya Redshift修改缓存路径</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_redshift_rstexbin.html">Maya Redshift批量转贴图rstexbin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="maya_redshift_xgen.html">Maya Redshift渲染Xgen毛发流程</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya Redshift渲染Xgen毛发流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_rename_tool.html">Maya重命名工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_shelf_tools.html">Maya自定义工具架工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maya_user_interface.html">Maya用户界面</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Maya XGen Linux资产切换Win版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maya_xgen_linux_win.html">Maya XGen Linux资产切换Win版本</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
@@ -187,13 +187,13 @@
         
           <li><a href="../parts/Maya.html">Maya</a> &raquo;</li>
         
-      <li>Maya XGen Linux资产切换Win版本</li>
+      <li>Maya Redshift渲染Xgen毛发流程</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Maya/maya_xgen_linux_win.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Maya/maya_redshift_xgen.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -206,14 +206,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="maya-xgen-linuxwin">
-<h1>Maya XGen Linux资产切换Win版本<a class="headerlink" href="#maya-xgen-linuxwin" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="maya-redshiftxgen">
+<h1>Maya Redshift渲染Xgen毛发流程<a class="headerlink" href="#maya-redshiftxgen" title="永久链接至标题">¶</a></h1>
 <ul class="simple">
-<li><p>notepad++文本修改.xgen文件中的路径</p></li>
-<li><p>DG模式</p></li>
-<li><p>Arnold要先加载，mtoa的版本要对应</p></li>
-<li><p>修改Xg Version路径</p></li>
+<li><p>创建个球和地面，选择球Import Preset From Library，选择Bear预设</p></li>
+<li><p>创建Redshift Physical Light，修改Light Type&gt;Directional，Intensity Multiplier&gt;1</p></li>
+<li><p>创建Redshift Dome Light，降低Tint</p></li>
+<li><p>创建RedshiftHair材质，选择description给上材质</p></li>
+<li><p>修改Xgen面板Renderer为Redshift</p></li>
+<li><p>修改Render Settings&gt;GI&gt;Brute Force，采样32-128</p></li>
 </ul>
+<p>效果图：</p>
+<img alt="../_images/xgen_hair.png" src="../_images/xgen_hair.png" />
 </div>
 
 
@@ -224,10 +228,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../parts/Nuke.html" class="btn btn-neutral float-right" title="Nuke" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="maya_rename_tool.html" class="btn btn-neutral float-right" title="Maya重命名工具" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="maya_user_interface.html" class="btn btn-neutral float-left" title="Maya用户界面" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="maya_redshift_rstexbin.html" class="btn btn-neutral float-left" title="Maya Redshift批量转贴图rstexbin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
