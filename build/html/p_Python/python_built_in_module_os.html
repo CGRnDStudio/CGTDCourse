@@ -363,16 +363,19 @@ os.path.splitext(path)</p>
 <span class="c1"># print l</span>
 </pre></div>
 </div>
-<p>python中默认编码是unicode
-s1.decode(“gb2312”) 将gb2312编码的字符串转换成unicode
-s2.encode(“gb2312”) 将unicode编码的字符串转换成gp2312</p>
-<p>from urllib.request import urlopen
-# 正常网页是utf-8，所以要转unicode
-import json
-u = urlopen(网址)
-resp = json.loads(u.read().decode(“utf-8”))
-from pprint import pprint
-pprint(resp)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python2中默认编码是ASCII，Python3中默认编码是Unicode</span>
+<span class="n">s1</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;gb2312&quot;</span><span class="p">)</span> <span class="c1"># 将gb2312编码的字符串转换成unicode</span>
+<span class="n">s2</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;gb2312&quot;</span><span class="p">)</span> <span class="c1"># 将unicode编码的字符串转换成gb2312</span>
+
+<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="c1"># 正常网页是utf-8，所以要转unicode</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">网址</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">shutil</span>

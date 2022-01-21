@@ -120,12 +120,7 @@
 <li class="toctree-l2"><a class="reference internal" href="python_container_set.html">Python容器：集合 {}</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_container_tuple.html">Python容器：元组 ()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_class.html">Python自定义类</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Python自定义函数</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">函数的几个概念</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">形参的几种形式</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">作用域</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python自定义函数</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_module.html">Python自定义模块</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_custom_package.html">Python自定义包</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python_daemon_thread.html">Python守护线程</a></li>
@@ -251,8 +246,7 @@
   <div class="section" id="python">
 <h1>Python自定义函数<a class="headerlink" href="#python" title="永久链接至标题">¶</a></h1>
 <p>函数是Python内建的一种封装，我们把大段代码拆成函数，通过一层一层的函数调用，就可以把复杂的任务分解成简单的任务，这种分解称为面向过程的程序设计。函数就是面向过程的程序设计的基本单元。Python提供了很多内置函数，比如print()，你也可以自己创建函数，这被叫做自定义函数。</p>
-<div class="section" id="id1">
-<h2>函数的几个概念<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>函数的几个概念</p>
 <ul class="simple">
 <li><p>基本语法</p></li>
 </ul>
@@ -261,15 +255,13 @@
     <span class="k">return</span> <span class="n">返回值</span>
 </pre></div>
 </div>
-<p>形式参数和返回值不是必须的，但函数都是有返回值的，如果没有使用关键字return返回值，则函数默认返回None。</p>
+<p>形式参数和返回值不是必须的，但函数都是有返回值的，如果没有使用关键字return关键字，则函数默认返回None。</p>
 <ul class="simple">
 <li><p>形式参数(形参)</p></li>
 <li><p>实际参数(实参)</p></li>
 <li><p>返回值</p></li>
 </ul>
-</div>
-<div class="section" id="id2">
-<h2>形参的几种形式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>形参的几种形式</p>
 <ul class="simple">
 <li><p>缺省参数，又叫默认参数</p></li>
 <li><p>可变参数 <code class="docutils literal notranslate"><span class="pre">*args</span></code></p></li>
@@ -282,10 +274,8 @@
 <ul class="simple">
 <li><p>不同形式参数之间组合</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
-<h2>作用域<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>在函数外部，locals()和globals()作用完全相同。而当在函数内部调用时，locals()则是获取当前函数堆栈中的名字空间，其中存储的时函数参数、局部变量等信息。</p>
+<p>作用域</p>
+<p>在函数外部，locals()和globals()作用完全相同。而当在函数内部调用时，locals()则是获取当前函数堆栈中的名字空间，其中存储的是函数参数、局部变量等信息。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">locals</span><span class="p">()</span>
 <span class="go">{&#39;__builtins__&#39;: &lt;module &#39;__builtin__&#39; (built-in)&gt;, &#39;__name__&#39;: &#39;__main__&#39;, &#39;__doc__&#39;: None, &#39;__package__&#39;: None}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">globals</span><span class="p">()</span>
@@ -401,116 +391,14 @@
 <span class="n">funcBase</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>正则表达式</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### Various Sorting methods for lists and dicts</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">calendar</span>
-<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
-<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tank_1_color_v0.rat&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;tank_2_color_v5.rat&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;tank_1_color_v3.rat&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;tank_3_color_v1.rat&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;tank_4_color_v2.rat&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;tank_4_color_v4.rat&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;tank_5_color_v1.rat&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;tank_6_color_v6.rat&#39;</span><span class="p">]</span>
-
-<span class="n">pat_num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\D+_(\d+)_&#39;</span><span class="p">)</span>
-<span class="n">pat_ver</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(\d+)\D+$&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">sorter_num</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_num</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">sorter_ver</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_ver</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="c1"># pprint(sorted(files, key=sorter_num))</span>
-<span class="c1"># pprint(sorted(files, key=sorter_ver))</span>
-
-<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;February January  May October August September April  November July March December&quot;</span>
-
-<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
-    <span class="n">d</span><span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
-<span class="k">def</span> <span class="nf">sorter</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span>
-<span class="c1"># month_names = sorted(s2.split(), key=sorter)</span>
-
-<span class="n">month_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
-
-<span class="n">pprint</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">month_names</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>处理路径</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">houVersion</span> <span class="o">=</span> <span class="s1">&#39;12.1&#39;</span>
-<span class="n">version</span> <span class="o">=</span> <span class="mi">2</span>
-
-<span class="c1">###### Do not do this !!!!! #####</span>
-<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;c:\Users</span><span class="se">\a</span><span class="s2">lex\Documents\houdini&quot;</span> <span class="o">+</span> <span class="n">houVersion</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">mp&quot;</span> <span class="o">+</span> <span class="s2">&quot;\example_v0&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">version</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;.py&quot;</span>
-<span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;c:\Users</span><span class="se">\\</span><span class="s2">alex\Documents\houdini&quot;</span><span class="p">,</span> <span class="n">houVersion</span><span class="p">,</span> <span class="s2">&quot;tmp&quot;</span><span class="p">,</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">version</span><span class="p">),</span> <span class="s2">&quot;.py&quot;</span><span class="p">)</span>
-<span class="c1">####################################</span>
-<span class="c1"># print filepath</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/Documents/houdini</span><span class="si">{0}</span><span class="s1">/tmp/example_v</span><span class="si">{1:02}</span><span class="s1">.py&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">houVersion</span><span class="p">,</span> <span class="n">version</span><span class="p">))</span>
-<span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-<span class="c1"># print filepath</span>
-<span class="c1"># print &#39;This is a file ? :&#39;, os.path.isfile(filepath)</span>
-<span class="c1"># print &#39;This is a directory ? :&#39;, os.path.isdir(r&quot;c:\temp&quot;)</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1"># tempFolder = &#39;temp_2&#39;</span>
-<span class="c1"># cacheType = &#39;bgeo&#39;</span>
-<span class="c1"># cacheName = &#39;waterSplash.bgeo.gz&#39;</span>
-<span class="c1"># filepath = os.path.join(r&quot;c:\nrojects//bla&quot;, tempFolder, cacheType, cacheName)</span>
-<span class="c1"># print filepath</span>
-<span class="c1"># print os.path.normpath(filepath)</span>
-<span class="c1">#####</span>
-<span class="c1">#</span>
-<span class="c1">######</span>
-<span class="c1"># print os.path.split(filepath)</span>
-<span class="c1">#</span>
-<span class="c1">######</span>
-<span class="c1"># print os.path.dirname(filepath)</span>
-<span class="c1">#</span>
-<span class="c1">#####</span>
-<span class="c1"># print os.path.basename(filepath)</span>
-
-<span class="c1">#### PATH SEPARATOR #####</span>
-<span class="n">HOUDINI_OTLSCAN_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~/houdini12.1/otls&#39;</span><span class="p">),</span>
-                                    <span class="s1">&#39;/houdini_install/houdini/otls&#39;</span><span class="p">,</span>
-                                    <span class="s1">&#39;/mnt/repo/houdini/otls&#39;</span><span class="p">,</span>
-                                    <span class="s1">&#39;/mnt/projects/xyzproject/otls&#39;</span><span class="p">])</span>
-<span class="c1"># print HOUDINI_OTLSCAN_PATH</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="n">t</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;c:\temp&#39;</span>
-<span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1">#</span>
-<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">)))</span>
-
-<span class="nb">print</span> <span class="n">l</span>
-</pre></div>
-</div>
-<p>形式参数
-实际参数</p>
 <p>默认值（缺省值）对函数重载的作用</p>
-<p>len多态函数
-len(“andy”)
-len(range(10))
-+运算符 多态性
+<p>len多态函数</p>
+<p>len(“andy”)
+len(range(10))</p>
+<p>运算符重载多态性
 100 + 200
 “hello ” + “python”</p>
 <p>Python函数没有重载的概念主要是因为动态语言特性以及缺省值</p>
-<p><code class="docutils literal notranslate"><span class="pre">*args</span></code> 如何打包参数
-<code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> 如何打包参数</p>
-<p>复用性
-可扩展性</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="n">code</span>
     <span class="k">return</span>
@@ -574,20 +462,6 @@ len(range(10))
 <span class="n">foo</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
 <span class="n">foo</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
-</div>
-<p>作用域
-内建作用域
-全局作用域
-闭包函数外的函数中
-局部作用域</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
-    <span class="k">global</span> <span class="n">b</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 </div>
 

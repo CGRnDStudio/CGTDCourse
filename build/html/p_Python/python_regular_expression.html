@@ -542,6 +542,48 @@
 <span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### Various Sorting methods for lists and dicts</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">calendar</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tank_1_color_v0.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_2_color_v5.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_1_color_v3.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_3_color_v1.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_4_color_v2.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_4_color_v4.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_5_color_v1.rat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;tank_6_color_v6.rat&#39;</span><span class="p">]</span>
+
+<span class="n">pat_num</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\D+_(\d+)_&#39;</span><span class="p">)</span>
+<span class="n">pat_ver</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(\d+)\D+$&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sorter_num</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_num</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">sorter_ver</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat_ver</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># pprint(sorted(files, key=sorter_num))</span>
+<span class="c1"># pprint(sorted(files, key=sorter_ver))</span>
+
+<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;February January  May October August September April  November July March December&quot;</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">):</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+<span class="k">def</span> <span class="nf">sorter</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span>
+<span class="c1"># month_names = sorted(s2.split(), key=sorter)</span>
+
+<span class="n">month_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">month_names</span><span class="o">.</span><span class="n">index</span><span class="p">))</span>
+</pre></div>
+</div>
 </div>
 
 
