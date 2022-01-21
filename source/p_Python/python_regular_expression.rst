@@ -323,3 +323,46 @@ re.subn和re.sub用法一样，只是返回值不同，返回(新的字符串，
     >>> print(re.sub(r"[A-Z]+", lambda x: "_" + x.group().lower(), s))
     magic_fire_nezha_spirit
     >>>
+
+.. code-block:: python
+
+    ### Various Sorting methods for lists and dicts
+    import re
+    import random
+    import calendar
+    from pprint import pprint
+    files = ['tank_1_color_v0.rat',
+            'tank_2_color_v5.rat',
+            'tank_1_color_v3.rat',
+            'tank_3_color_v1.rat',
+            'tank_4_color_v2.rat',
+            'tank_4_color_v4.rat',
+            'tank_5_color_v1.rat',
+            'tank_6_color_v6.rat']
+
+    pat_num = re.compile('\D+_(\d+)_')
+    pat_ver = re.compile('(\d+)\D+$')
+
+    def sorter_num(elem):
+        res = re.search(pat_num, elem)
+        return res.groups()[0]
+
+    def sorter_ver(elem):
+        res = re.search(pat_ver, elem)
+        return res.groups()[0]
+
+    # pprint(sorted(files, key=sorter_num))
+    # pprint(sorted(files, key=sorter_ver))
+
+    s2 = "February January  May October August September April  November July March December"
+
+    d = {}
+    for i in range(1, 13):
+        d[calendar.month_name[i]] = i
+    def sorter(elem):
+        return d[elem]
+    # month_names = sorted(s2.split(), key=sorter)
+
+    month_names = [calendar.month_name[i] for i in range(1, 13)]
+
+    pprint(sorted(s2.split(), key=month_names.index))

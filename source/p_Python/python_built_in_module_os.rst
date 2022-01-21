@@ -134,18 +134,19 @@ os.path.splitext(path)
 
     # print l
 
+.. code-block:: python
 
-python中默认编码是unicode
-s1.decode(“gb2312”) 将gb2312编码的字符串转换成unicode
-s2.encode(“gb2312”) 将unicode编码的字符串转换成gp2312
+    # Python2中默认编码是ASCII，Python3中默认编码是Unicode
+    s1.decode("gb2312") # 将gb2312编码的字符串转换成unicode
+    s2.encode("gb2312") # 将unicode编码的字符串转换成gb2312
 
-from urllib.request import urlopen
-# 正常网页是utf-8，所以要转unicode
-import json
-u = urlopen(网址)
-resp = json.loads(u.read().decode("utf-8"))
-from pprint import pprint
-pprint(resp)
+    from urllib.request import urlopen
+    # 正常网页是utf-8，所以要转unicode
+    import json
+    u = urlopen(网址)
+    resp = json.loads(u.read().decode("utf-8"))
+    from pprint import pprint
+    pprint(resp)
 
 .. code-block:: python
 

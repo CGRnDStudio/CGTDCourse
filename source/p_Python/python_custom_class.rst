@@ -2,17 +2,58 @@
 Python自定义类
 =============================
 
+私有属性获取与修改可以通过方法，这样可以在修改属性之前做些check。
+
 .. code-block:: python
 
-    class MyClass(object):
-        def __init__(self, name):
+    class Student(object):
+        def __init__(self, name, score):
             self.__name = name
+            self.__score = score
 
         def getName(self):
             return self.__name
 
+        def getScore(self):
+            return self.__score
+
         def setName(self, name):
             self.__name = name
+
+        def setScore(self, score):
+            if score >= 0 and score <= 100: 
+                self.__score = score
+            else:
+                print("value wrong")
+
+.. code-block:: python
+
+    class Student(object):
+        def __init__(self, name, score):
+            self.__name = name
+            self.__score = score
+
+        @property
+        def score(self):
+            return self.__score
+
+        @score.setter
+        def score(self, value):
+            if value >= 0 and value <= 100:
+                self.__score = value
+            else:
+                print("value wrong")
+
+
+    s1 = Student("Andy", 90)
+
+    print(s1.score)
+
+    s1.score = 80
+
+    print(s1.score)
+
+
 
 自定义类也称自定义数据类型，下面是自定义类的一些标识。
 

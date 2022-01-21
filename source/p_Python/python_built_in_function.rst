@@ -4,6 +4,11 @@ Python内置函数
 
 Python内置函数也叫内建函数（built-in function），大概有60来个内置函数，版本不同个数不同，功能也有所更新，具体Python环境具体分析（以下内置函数是基于Python 3.8版本）。
 
+.. code-block:: python
+
+    import __builtin__
+    print(dir(__builtin__))
+
 =============== ===============================================================
   abs()         # 求绝对值
   all()         # 容器中所有元素都为真返回True，否则返回False
