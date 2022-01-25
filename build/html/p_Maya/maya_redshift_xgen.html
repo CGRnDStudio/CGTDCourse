@@ -209,15 +209,21 @@
   <div class="section" id="maya-redshiftxgen">
 <h1>Maya Redshift渲染Xgen毛发流程<a class="headerlink" href="#maya-redshiftxgen" title="永久链接至标题">¶</a></h1>
 <ul class="simple">
-<li><p>创建个球和地面，选择球Import Preset From Library，选择Bear预设</p></li>
+<li><p>创建个球和地面，选择球Import Preset From Library，选择Sheep预设</p></li>
 <li><p>创建Redshift Physical Light，修改Light Type&gt;Directional，Intensity Multiplier&gt;1</p></li>
 <li><p>创建Redshift Dome Light，降低Tint</p></li>
 <li><p>创建RedshiftHair材质，选择description给上材质</p></li>
 <li><p>修改Xgen面板Renderer为Redshift</p></li>
 <li><p>修改Render Settings&gt;GI&gt;Brute Force，采样32-128</p></li>
+<li><p>创建RedshiftUserDataColor节点连接到rsHair节点</p></li>
 </ul>
-<p>效果图：</p>
-<img alt="../_images/xgen_hair.png" src="../_images/xgen_hair.png" />
+<img alt="../_images/rshair.png" src="../_images/rshair.png" />
+<img alt="../_images/xgen_hair1.png" src="../_images/xgen_hair1.png" />
+<ul class="simple">
+<li><p>实现颜色过度，创建RedshiftHairPosition和ramp[Texture]节点连接</p></li>
+</ul>
+<img alt="../_images/rsramp.png" src="../_images/rsramp.png" />
+<img alt="../_images/xgen_hair2.png" src="../_images/xgen_hair2.png" />
 </div>
 
 
