@@ -208,53 +208,62 @@
             
   <div class="section" id="maya-pymel">
 <h1>Maya PyMEL<a class="headerlink" href="#maya-pymel" title="永久链接至标题">¶</a></h1>
-<p>什么是pymel?
-pymel 与mel以及cmds区别?</p>
-<p>import pymel.core as pm
-import maya.cmds as cmds</p>
-<p>返回类型不同
-cmds只返回字符串
-pymel返回实例对象，可以用type，dir以及help内置函数</p>
-<p>渲染设置节点
-大纲视图中Show DAG Objects Only</p>
-<p>aiDriver = pm.PyNode(“defaultArnoldDriver”)
-om.listAttr(aiDirver)</p>
-<p>defaultRenderGlobals不在大纲中
-Select by name</p>
-<p>pm.PyNode() 节点实例化</p>
-<p>resNode = pm.PyNode(“defaultResolution”)
-resNode.listAttr() 列出节点所有属性
-resNode.width.set(720)
-resNode.width.get()
-pm.selected()</p>
-<p>Node Editor</p>
-<p>node.inputs()</p>
-<p>pm.sceneName() 获取的是实例化对象，有属性和方法
-pm.env.minTime
-pm.env.maxTime
-pm.listCameras()</p>
-<p>import pymel.core as pm</p>
-<dl class="simple">
-<dt>for k, v in pm.language.Env.envVars.items():</dt><dd><p>print(k, v)</p>
-</dd>
-</dl>
-<p>fileName = pm.sceneName().splitext()[0].basename()
-startFrame = pm.env.minTime
-endFrame = pm.env.maxTime
-cameraName = “%s_f%03d_f%03d” % (fileName, startFrame, endFrame)
-cameraList = [cam for cam in pm.listCameras(p = True)]
-selPanel = pm.getPanel(withFocus = True)
-selCam = pm.modelPanel(selPanel, q=True, camera=True)
-cam = pm.PyNode(selCam)
-cam.rename(cameraName)</p>
-<p>node = pm.PyNode(“defaultRenderGlobals”)
-pm.listAttr(node)
-node.imageFilePrefix.set(“&lt;Scene&gt;/&lt;RenderLayer&gt;”)
-node.animation.set(1)
-node.startFrame.set(startFrame)
-node.endFrame.set(endFrame)
-pm.setAttr(“defaultResolution.width”, 1280)
-pm.setAttr(“defaultResolution.height”, 720)</p>
+<p>什么是pymel?</p>
+<p>pymel 与mel以及cmds区别?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+<span class="kn">import</span> <span class="nn">maya.cmds</span> <span class="k">as</span> <span class="nn">cmds</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>返回类型不同</p></li>
+</ul>
+<p>cmds只返回字符串</p>
+<p>pymel返回实例对象，可以用type，dir以及help内置函数</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 通过pm.PyNode()将节点实例化</span>
+
+<span class="n">resNode</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="s2">&quot;defaultResolution&quot;</span><span class="p">)</span>
+<span class="c1"># 列出节点所有属性</span>
+<span class="n">resNode</span><span class="o">.</span><span class="n">listAttr</span><span class="p">()</span>
+<span class="n">resNode</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">720</span><span class="p">)</span>
+<span class="n">resNode</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">selected</span><span class="p">()</span>
+
+<span class="n">Node</span> <span class="n">Editor</span>
+
+<span class="n">node</span><span class="o">.</span><span class="n">inputs</span><span class="p">()</span>
+
+<span class="c1"># 获取的是实例化对象，有属性和方法</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">sceneName</span><span class="p">()</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">minTime</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">maxTime</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">listCameras</span><span class="p">()</span>
+
+<span class="kn">import</span> <span class="nn">pymel.core</span> <span class="k">as</span> <span class="nn">pm</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pm</span><span class="o">.</span><span class="n">language</span><span class="o">.</span><span class="n">Env</span><span class="o">.</span><span class="n">envVars</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+
+<span class="n">fileName</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">sceneName</span><span class="p">()</span><span class="o">.</span><span class="n">splitext</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">basename</span><span class="p">()</span>
+<span class="n">startFrame</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">minTime</span>
+<span class="n">endFrame</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">maxTime</span>
+<span class="n">cameraName</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_f</span><span class="si">%03d</span><span class="s2">_f</span><span class="si">%03d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">startFrame</span><span class="p">,</span> <span class="n">endFrame</span><span class="p">)</span>
+<span class="n">cameraList</span> <span class="o">=</span> <span class="p">[</span><span class="n">cam</span> <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <span class="n">pm</span><span class="o">.</span><span class="n">listCameras</span><span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)]</span>
+<span class="n">selPanel</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">getPanel</span><span class="p">(</span><span class="n">withFocus</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">selCam</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">modelPanel</span><span class="p">(</span><span class="n">selPanel</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">camera</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cam</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="n">selCam</span><span class="p">)</span>
+<span class="n">cam</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">cameraName</span><span class="p">)</span>
+
+<span class="n">node</span> <span class="o">=</span> <span class="n">pm</span><span class="o">.</span><span class="n">PyNode</span><span class="p">(</span><span class="s2">&quot;defaultRenderGlobals&quot;</span><span class="p">)</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">listAttr</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="n">node</span><span class="o">.</span><span class="n">imageFilePrefix</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;&lt;Scene&gt;/&lt;RenderLayer&gt;&quot;</span><span class="p">)</span>
+<span class="n">node</span><span class="o">.</span><span class="n">animation</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">node</span><span class="o">.</span><span class="n">startFrame</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">startFrame</span><span class="p">)</span>
+<span class="n">node</span><span class="o">.</span><span class="n">endFrame</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">endFrame</span><span class="p">)</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">setAttr</span><span class="p">(</span><span class="s2">&quot;defaultResolution.width&quot;</span><span class="p">,</span> <span class="mi">1280</span><span class="p">)</span>
+<span class="n">pm</span><span class="o">.</span><span class="n">setAttr</span><span class="p">(</span><span class="s2">&quot;defaultResolution.height&quot;</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+</pre></div>
+</div>
 <p><a class="reference external" href="https://help.autodesk.com/cloudhelp/2017/ENU/Maya-Tech-Docs/PyMel/">https://help.autodesk.com/cloudhelp/2017/ENU/Maya-Tech-Docs/PyMel/</a></p>
 </div>
 
