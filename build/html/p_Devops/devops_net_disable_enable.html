@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>WPS Office、Foxmail办公软件推荐 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>命令行禁用网卡再启用操作 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="OneDrive协同办公流程" href="devops_onedrive.html" />
-    <link rel="prev" title="命令行禁用网卡再启用操作" href="devops_net_disable_enable.html" /> 
+    <link rel="next" title="WPS Office、Foxmail办公软件推荐" href="devops_office_mail.html" />
+    <link rel="prev" title="mklink符号链接技术" href="devops_mklink.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -126,8 +126,8 @@
 <li class="toctree-l2"><a class="reference internal" href="devops_install_zbrush.html">软件安装：ZBrush</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_intranet_penetration.html">花生壳内网穿透技术解析</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_mklink.html">mklink符号链接技术</a></li>
-<li class="toctree-l2"><a class="reference internal" href="devops_net_disable_enable.html">命令行禁用网卡再启用操作</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">WPS Office、Foxmail办公软件推荐</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">命令行禁用网卡再启用操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_office_mail.html">WPS Office、Foxmail办公软件推荐</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_onedrive.html">OneDrive协同办公流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_photo_viewer.html">Win10调出照片查看器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_pip_manual.html">pip命令使用手册</a></li>
@@ -199,13 +199,13 @@
         
           <li><a href="../parts/Devops.html">Devops</a> &raquo;</li>
         
-      <li>WPS Office、Foxmail办公软件推荐</li>
+      <li>命令行禁用网卡再启用操作</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Devops/devops_office_mail.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Devops/devops_net_disable_enable.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -218,47 +218,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="wps-officefoxmail">
-<h1>WPS Office、Foxmail办公软件推荐<a class="headerlink" href="#wps-officefoxmail" title="永久链接至标题">¶</a></h1>
-<p>Office推荐WPS个人版</p>
-<p>邮箱推荐Foxmail，选择手动配置</p>
-<ul class="simple">
-<li><p>接收服务器类型：POP3</p></li>
-<li><p>邮件账号： <a class="reference external" href="mailto:huweiguo&#37;&#52;&#48;do-vfx&#46;com">huweiguo<span>&#64;</span>do-vfx<span>&#46;</span>com</a></p></li>
-<li><p>POP服务器：pop3.mxhichina.com 端口：110</p></li>
-<li><p>SMTP服务器：smtp.mxhichina.com 端口：25</p></li>
-<li><p>设置最小化时，在任务栏显示</p></li>
-<li><p>关闭主窗口时，退出程序</p></li>
-</ul>
-<p>内网禁网机制，添加钉邮IP</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>route print
-
-route delete <span class="m">0</span>.0.0.0/0
-
-:: email
-route -p add <span class="m">106</span>.11.252.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">140</span>.205.106.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">140</span>.205.2.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">140</span>.205.23.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">140</span>.205.28.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">140</span>.205.77.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">140</span>.205.80.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">140</span>.205.97.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.120.149.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.120.151.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.120.158.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.120.214.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.120.219.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.120.226.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.120.230.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.156.140.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.156.141.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">42</span>.156.235.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">198</span>.11.189.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">205</span>.204.101.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">47</span>.89.74.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">47</span>.89.80.0/24 <span class="m">192</span>.168.0.1
-route -p add <span class="m">47</span>.88.68.0/24 <span class="m">192</span>.168.0.1
+  <div class="section" id="id1">
+<h1>命令行禁用网卡再启用操作<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>有时候域网络首次无法识别，需要禁用网卡再启用才能识别，但很多时候需要远程操作就比较麻烦，网络被禁用就无法远程，所以写两条指令自动禁用再启用比较OK。</p>
+<p>管理员身份运行cmd，然后将下面三行shell脚本粘贴到命名行窗口执行即可，注意网卡名称“以太网”需要改成对应的名称，pause是必须的，不然无法执行第二条指令。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">netsh</span> <span class="n">interface</span> <span class="nb">set</span> <span class="n">interface</span> <span class="s2">&quot;以太网&quot;</span> <span class="n">disabled</span>
+<span class="n">netsh</span> <span class="n">interface</span> <span class="nb">set</span> <span class="n">interface</span> <span class="s2">&quot;以太网&quot;</span> <span class="n">enabled</span>
+<span class="n">pause</span>
 </pre></div>
 </div>
 </div>
@@ -271,10 +237,10 @@ route -p add <span class="m">47</span>.88.68.0/24 <span class="m">192</span>.168
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="devops_onedrive.html" class="btn btn-neutral float-right" title="OneDrive协同办公流程" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="devops_office_mail.html" class="btn btn-neutral float-right" title="WPS Office、Foxmail办公软件推荐" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="devops_net_disable_enable.html" class="btn btn-neutral float-left" title="命令行禁用网卡再启用操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="devops_mklink.html" class="btn btn-neutral float-left" title="mklink符号链接技术" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
