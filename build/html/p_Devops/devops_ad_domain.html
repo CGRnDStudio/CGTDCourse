@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Windows AD域服务器搭建 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>局域网子网掩码 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -95,7 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../parts/Devops.html">Devops</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Windows AD域服务器搭建</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">局域网子网掩码</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_c_drive_space.html">C盘空间清理几个方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_chrome_switchomega.html">谷歌浏览器代理插件SwithyOmega</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_computer.html">电脑配置一些坑</a></li>
@@ -141,6 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="devops_rst_syntax.html">reStructuredText(rst)语法说明文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_shell.html">Shell技术</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_software.html">中小型企业好用的软件推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_subnet_mask.html">Windows AD域服务器搭建</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_traceroute.html">路由跟踪指令traceroute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_wiki.html">维基百科镜像</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_win_server_priority.html">Win Server 2012文件共享权限管理</a></li>
@@ -199,7 +200,7 @@
         
           <li><a href="../parts/Devops.html">Devops</a> &raquo;</li>
         
-      <li>Windows AD域服务器搭建</li>
+      <li>局域网子网掩码</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -218,8 +219,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="windows-ad">
-<h1>Windows AD域服务器搭建<a class="headerlink" href="#windows-ad" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="id1">
+<h1>局域网子网掩码<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>一般家用没有交换机，只有个路由器，此时路由器充当数据交换的作用，关闭路由器DHCP服务，手动设置IP，只要在同一个IP段，数据就可以互相访问</p>
+<p>企业有交换机的情况下，实际是不需要路由器就可以连局域网的</p>
+<p>正常192.168.x.0~192.168.x.255这样是一个IP段，默认子网掩码是255.255.255.0，比如192.168.8.0~192.168.8.255</p>
+<p>上面的IP段除掉头尾只有254个IP可供使用，想要扩展更多的IP在同一个局域网可以通过子网掩码，比如设置成255.255.254.0</p>
+<p>这样192.168.8.0~192.168.8.255和192.168.9.0~192.168.9.255这样是在同一个IP段，IP翻倍变成512个</p>
+<p>机器如果是固定IP得自己配置子网掩码，如果是通过路由器DHCP服务自动获取IP，可以将路由器子网掩码设置成255.255.254.0</p>
+<p>freenas可在网络&gt;接口&gt;编辑钟设置IP地址为192.168.0.123/23，23代表这255.255.254.0</p>
+<p>群晖在控制面板&gt;网络&gt;网络界面&gt;编辑&gt;子网掩码</p>
 </div>
 
 
