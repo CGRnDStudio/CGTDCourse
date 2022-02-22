@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RenderBus客户端配置Sock5代理 &mdash; CG TD Pipeline 1.0.4 文档</title>
+  <title>FreeNAS：回收站无权访问刷新ACL控制列表 &mdash; CG TD Pipeline 1.0.4 文档</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="路由器配置固定IP" href="devops_route_settings.html" />
-    <link rel="prev" title="移除CD驱动器" href="devops_remove_cd_driver.html" /> 
+    <link rel="next" title="软件安装：Clarisse" href="devops_install_clarisse.html" />
+    <link rel="prev" title="FreeNAS文件系统" href="devops_freenas.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -119,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="devops_ffmpeg_codec.html">FFmpeg批量转码工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_filelocator_pro.html">FileLocator Pro全盘检索工具</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_freenas.html">FreeNAS文件系统</a></li>
-<li class="toctree-l2"><a class="reference internal" href="devops_freenas_acl.html">FreeNAS：回收站无权访问刷新ACL控制列表</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FreeNAS：回收站无权访问刷新ACL控制列表</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_install_clarisse.html">软件安装：Clarisse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_install_katana.html">软件安装：Katana</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_install_marvelous_designer.html">软件安装：Marvelous Designer</a></li>
@@ -137,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="devops_redshift_crash_houdini.html">Redshift导致Houdini渲崩的可能原因</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_remote_oracle.html">Win10远程桌面出现身份验证错误</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_remove_cd_driver.html">移除CD驱动器</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">RenderBus客户端配置Sock5代理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devops_renderbus_proxy.html">RenderBus客户端配置Sock5代理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_route_settings.html">路由器配置固定IP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_rst_syntax.html">reStructuredText(rst)语法说明文档</a></li>
 <li class="toctree-l2"><a class="reference internal" href="devops_shell.html">Shell技术</a></li>
@@ -201,13 +201,13 @@
         
           <li><a href="../parts/Devops.html">Devops</a> &raquo;</li>
         
-      <li>RenderBus客户端配置Sock5代理</li>
+      <li>FreeNAS：回收站无权访问刷新ACL控制列表</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/p_Devops/devops_renderbus_proxy.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/p_Devops/devops_freenas_acl.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -220,11 +220,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="renderbussock5">
-<h1>RenderBus客户端配置Sock5代理<a class="headerlink" href="#renderbussock5" title="永久链接至标题">¶</a></h1>
-<p>参考下面两篇文章，配置Sock5代理即可解析文件提交任务。</p>
-<p><a class="reference external" href="https://www.renderbus.com/support-new/inssub">https://www.renderbus.com/support-new/inssub</a>
-<a class="reference external" href="https://www.renderbus.com/support-new/network-requirements">https://www.renderbus.com/support-new/network-requirements</a></p>
+  <div class="section" id="freenas-acl">
+<h1>FreeNAS：回收站无权访问刷新ACL控制列表<a class="headerlink" href="#freenas-acl" title="永久链接至标题">¶</a></h1>
+<p>FreeNAS配置的回收站.recycle文件夹时间久了不知道为什么权限就消失了，无法访问别人删除的文件</p>
+<p>此时进FreeNAS网页端，找到共享&gt;Windows共享（SMB）&gt;编辑访问控制列表&gt;递归应用权限&gt;将权限应用于子数据集&gt;保存就行</p>
 </div>
 
 
@@ -235,10 +234,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="devops_route_settings.html" class="btn btn-neutral float-right" title="路由器配置固定IP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="devops_install_clarisse.html" class="btn btn-neutral float-right" title="软件安装：Clarisse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="devops_remove_cd_driver.html" class="btn btn-neutral float-left" title="移除CD驱动器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="devops_freenas.html" class="btn btn-neutral float-left" title="FreeNAS文件系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
