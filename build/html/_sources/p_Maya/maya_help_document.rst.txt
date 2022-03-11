@@ -148,9 +148,7 @@ MEL是一种强类型语言
         fnDependNode = om.MFnDependencyNode(mobject)
         print(fnDependnode.name())
 
-----------------------
-参考文档
-----------------------
+参考文档：
 
 - https://vfxplatform.com/
 - https://www.youtube.com/watch?v=GiWkXufclTY

@@ -142,9 +142,7 @@ string         s@           "hello world"
     + .zz 指向[2][2]元素。
     + .ax 指向[3][0]元素。
 
---------------------
-参考文档
---------------------
+参考文档：
 
 - http://www.sidefx.com/docs/houdini/vex/index.html
 - http://www.sidefx.com/docs/houdini/vex/snippets.html

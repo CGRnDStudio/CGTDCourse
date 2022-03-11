@@ -85,8 +85,6 @@ ramppos值域[0, 1]，任何可以区别开来的属性都可以借这个值域�
 
 .. 上一层级
 
----------------
-参考文档
----------------
+参考文档：
 
 - http://www.sidefx.com/docs/houdini/ref/expression_cookbook

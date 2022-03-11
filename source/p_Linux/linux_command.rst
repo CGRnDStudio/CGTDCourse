@@ -12,9 +12,7 @@ Linux常用指令大全
     systemctl disable firewalld
     systemctl enable firewalld
 
--------------------------
-参考文档
--------------------------
+参考文档：
 
 - https://www.bilibili.com/video/BV1nW411L7xm
 - https://www.bilibili.com/video/BV1DW411G7VB

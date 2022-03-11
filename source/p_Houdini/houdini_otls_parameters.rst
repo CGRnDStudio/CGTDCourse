@@ -48,8 +48,6 @@ String>Menu
 
 Action Button
 
--------------------
 参考文档
--------------------
 
 https://www.sidefx.com/docs/houdini/assets/index.html

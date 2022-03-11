@@ -7,7 +7,8 @@ DevOps（Development和Operations的组合詞）是一种重视「软件开发�
 Contents:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
 
-   ../p_Devops/*
+   ../p_Devops/FreeNAS
+   ../p_Devops/Others

@@ -101,14 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="houdini_jump_path.html">Houdini添加侧边栏快捷路径</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_miss_dialog.html">Houdini输出进度条不在显示器内的解决方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_miss_icons.html">Houdini图标丢失解决方案</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini模块：hou</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#sub-modules">子模块（sub-modules）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#classes">类（classes）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#functions">函数（functions）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">案例代码</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">参考文档</a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Houdini模块：hou</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_stateutils.html">Houdini模块：stateutils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_module_toolutils.html">Houdini模块：toolutils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="houdini_multi_loader.html">Houdini批量导入工具</a></li>
@@ -165,6 +158,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Nuke.html">Nuke</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Ftrack.html">Ftrack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Shotgun.html">Shotgun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/CGTeamwork.html">CGTeamwork</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Deadline.html">Deadline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Linux.html">Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/SQL.html">SQL</a></li>
@@ -172,6 +166,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../parts/Clarisse.html">Clarisse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/Katana.html">Katana</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/UE4.html">UE4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/UE5.html">UE5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parts/Blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parts/C4D.html">C4D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference.html">后记</a></li>
 </ul>
@@ -253,8 +249,7 @@
 <li><p>类（classes）：首字母大写，不带括号为class。class必须实例化使用，实例的属性以及方法必须通过实例化对象调用。</p></li>
 <li><p>函数（functions）：首字母小写，带括号为function。</p></li>
 </ul>
-<div class="section" id="sub-modules">
-<h2>子模块（sub-modules）<a class="headerlink" href="#sub-modules" title="永久链接至标题">¶</a></h2>
+<p>子模块（sub-modules）</p>
 <ul class="simple">
 <li><p>hou.hipFile</p></li>
 </ul>
@@ -287,9 +282,7 @@
 <li><p>hou.qt</p></li>
 <li><p>hou.hotkeys</p></li>
 </ul>
-</div>
-<div class="section" id="classes">
-<h2>类（classes）<a class="headerlink" href="#classes" title="永久链接至标题">¶</a></h2>
+<p>类（classes）</p>
 <ul class="simple">
 <li><p>hou.Node</p></li>
 </ul>
@@ -301,9 +294,7 @@
 <ul class="simple">
 <li><p>hou.Parm</p></li>
 </ul>
-</div>
-<div class="section" id="functions">
-<h2>函数（functions）<a class="headerlink" href="#functions" title="永久链接至标题">¶</a></h2>
+<p>函数（functions）</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hou</span>
 
 <span class="c1"># 获取环境变量值</span>
@@ -328,9 +319,7 @@
 <span class="o">&gt;&gt;&gt;</span> <span class="n">hou</span><span class="o">.</span><span class="n">setSimulationEnabled</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id1">
-<h2>案例代码<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>案例代码：</p>
 <ul class="simple">
 <li><p>获取当前帧范围</p></li>
 </ul>
@@ -360,13 +349,10 @@
     <span class="n">hou</span><span class="o">.</span><span class="n">playbar</span><span class="o">.</span><span class="n">setPlaybackRange</span><span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="n">fout</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id2">
-<h2>参考文档<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>参考文档：</p>
 <p><a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/index.html">https://www.sidefx.com/docs/houdini/hom/index.html</a>
 <a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/intro.html">https://www.sidefx.com/docs/houdini/hom/intro.html</a>
 <a class="reference external" href="https://www.sidefx.com/docs/houdini/hom/hou/index.html">https://www.sidefx.com/docs/houdini/hom/hou/index.html</a></p>
-</div>
 </div>
 
 

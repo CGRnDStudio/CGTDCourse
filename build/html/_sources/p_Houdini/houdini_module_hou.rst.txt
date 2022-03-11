@@ -16,9 +16,7 @@ hou模块按功能可以分为三大类子模块（sub-modules）、类（classe
 * 类（classes）：首字母大写，不带括号为class。class必须实例化使用，实例的属性以及方法必须通过实例化对象调用。
 * 函数（functions）：首字母小写，带括号为function。
 
-----------------------
 子模块（sub-modules）
-----------------------
 
 * hou.hipFile
 
@@ -51,9 +49,7 @@ hou模块按功能可以分为三大类子模块（sub-modules）、类（classe
 * hou.qt
 * hou.hotkeys
 
-----------------------
 类（classes）
-----------------------
 
 * hou.Node
 
@@ -66,9 +62,7 @@ hou模块按功能可以分为三大类子模块（sub-modules）、类（classe
 
 * hou.Parm
 
-----------------------
 函数（functions）
-----------------------
 
 .. code-block:: python
 
@@ -95,9 +89,8 @@ hou模块按功能可以分为三大类子模块（sub-modules）、类（classe
     >>> hou.setSimulationEnabled(0)
     >>> hou.setSimulationEnabled(1)
 
--------------------
-案例代码
--------------------
+
+案例代码：
 
 * 获取当前帧范围
 
@@ -128,9 +121,7 @@ hou模块按功能可以分为三大类子模块（sub-modules）、类（classe
         hou.script("tset `((%s-1)/$FPS)` `(%s/$FPS)`" % (fin, fout))
         hou.playbar.setPlaybackRange(fin, fout)
 
--------------------
-参考文档
--------------------
+参考文档：
 
 https://www.sidefx.com/docs/houdini/hom/index.html
 https://www.sidefx.com/docs/houdini/hom/intro.html

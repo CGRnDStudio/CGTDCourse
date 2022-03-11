@@ -16,8 +16,6 @@ Deadline 10.1版本所要求的MongoDB版本在3.2.12~3.6.16之间。
 
 我这里下下来是这样一个安装包mongodb-win32-x86_64-2008plus-ssl-3.4.24.zip，在安装DeadlineRepository选择这个离线安装包安装就可以了。
 
--------------------
-参考文档
--------------------
+参考文档：
 
 - https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/install-db-repo.html

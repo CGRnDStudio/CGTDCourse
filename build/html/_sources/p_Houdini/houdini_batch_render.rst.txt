@@ -2,9 +2,9 @@
 Houdini后台输出那些事儿
 =================================
 
-----------------------
+
 几种渲染器介绍
-----------------------
+
 
 Mantra
 Karma
@@ -15,9 +15,7 @@ Redshift
 V-Ray
 RenderMan
 
-------------------------
 认识环境变量HOUDINI_PATH
-------------------------
 
 环境变量可以让所有扩展插件共存，HOUDINI_PATH。
 
@@ -39,9 +37,9 @@ RenderMan
     # HOUDINI_PATH
     HOUDINI_PATH = $HTOA;&
 
-----------------------
+
 渲染的模式
-----------------------
+
 
 串联与并联的区别
 
@@ -59,9 +57,9 @@ FrameByFrame与RopByRop区别
         method=RopByRop, ignore_bypass_flags=False, ignore_lock_flags=False,
         verbose=False, output_progress=False)
 
-----------------------
+
 后台渲染的三种方案
-----------------------
+
 
 Houdini后台输出一般支持所有的ROP节点，比如：
 
@@ -247,9 +245,8 @@ hrender是通过csh.exe来调用的，所以得编写csh脚本。
     hython -c "hou.hipFile.load('hip文件路径'); ropNode = hou.node('输出节点路径'); ropNode.render(frame_range=(1, 10), verbose=True)"
     hython rRop.py
 
-------------------------
+
 认识hou模块
-------------------------
 
 hou模块可以分为三大类sub-modules、classes、functions。
 
@@ -257,8 +254,6 @@ hou模块可以分为三大类sub-modules、classes、functions。
 * classes：首字母大写，不带括号为class。class必须实例化使用，class的属性以及方法必须通过实例化对象调用。
 * functions：首字母小写，带括号为function。
 
-------------------------
-参考文档
-------------------------
+参考文档：
 
 * https://www.sidefx.com/docs/houdini/render/batch.html#hython-and-hbatch

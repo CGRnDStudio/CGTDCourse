@@ -91,10 +91,3 @@ Python 2.x和3.x包导入的区别
 
     def foo():
         print("fool")
-
-------------------------
-参考文档
-------------------------
-
-
-- https://python3-cookbook.readthedocs.io/zh_CN/latest/chapters/p10_modules_and_packages.html

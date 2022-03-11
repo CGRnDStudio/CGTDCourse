@@ -24,8 +24,6 @@ Asset Manager 对话框中在当前选择的节点上右键选择 Duplicate... �
 第二种方案是在 Save to Library 的时候将版本号添加到otl文件名上，保持 Operator Name 和 Operator Label 不变。这样做会另外存一个otl文件出来，相当于重新做了一个otl的方案。因为 Operator Name 是相同的，所以节点也只有一个，可以通过otl参数面板上的 Asset Path 来切换版本，默认优先使用的都是最新版本。
 
 
--------------------
 参考文档
--------------------
 
 https://www.sidefx.com/docs/houdini/assets/index.html

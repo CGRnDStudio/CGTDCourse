@@ -220,9 +220,3 @@ Python内置函数也叫内建函数（built-in function），大概有60来个�
     >>> dict(zip(keys, values))
     {'age': 30, 'name': 'Andy'}
     >>> 
-
-----------------
-参考文档
-----------------
-
-- https://docs.python.org/zh-cn/3/library/functions.html

@@ -67,8 +67,6 @@ scriptArgs怎么用
     ]]>
     </scriptCode>
 
-------------------
-参考文档
-------------------
+参考文档：
 
 * https://www.sidefx.com/docs/houdini/basics/config_menus

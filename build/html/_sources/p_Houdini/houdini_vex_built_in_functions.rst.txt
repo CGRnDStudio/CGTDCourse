@@ -208,8 +208,6 @@ VOLUME                      体积
 
     addprim(0, "polyline", @ptnum, np);
 
----------------
-参考文档
----------------
+参考文档：
 
 - http://www.sidefx.com/docs/houdini/vex/functions/index.html

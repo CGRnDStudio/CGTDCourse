@@ -48,8 +48,6 @@ HOUDINI_PATH & HOUDINI_OTLSCAN_PATH
 Operator Name & Operator Label
 自定义参数齿轮菜单
 
--------------------
-参考文档
--------------------
+参考文档：
 
 https://www.sidefx.com/docs/houdini/assets/index.html

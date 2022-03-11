@@ -19,8 +19,3 @@ Python内置模块：itertools
     >>> list(itertools.starmap(lambda x, y: x + y, [(1, 2), (10, 20)]))
     [3, 30]
 
-----------------
-参考文档
-----------------
-
-* 《Python学习笔记 第二版 雨痕》 第79页

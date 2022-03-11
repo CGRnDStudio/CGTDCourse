@@ -26,9 +26,7 @@ Shotgun API访问方案
 
 如果是写工具来访问Shotgun数据，推荐使用Scripts的方法来访问。
 
-------------------
-参考文档
-------------------
+参考文档：
 
 - https://developer.shotgunsoftware.com/
 - https://developer.shotgunsoftware.com/python-api/

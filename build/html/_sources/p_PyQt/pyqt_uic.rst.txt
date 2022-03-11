@@ -39,15 +39,3 @@ QSQL
 "C:\Python27\Lib\site-packages\PySide\pyside-rcc.exe" -o resource_rc.py resource.qrc
 
 loadUi
-
-认识qss
-下载qss
-修改qss
-
-
-------------------
-参考文档
-------------------
-
-- https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html
-- https://doc.bccnsoft.com/docs/PyQt5/class_reference.html

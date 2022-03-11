@@ -56,8 +56,6 @@ Python Script Button中添加可执行代码。
     nuke.PyScript_Knob()
     nuke.Tab_Knob()
 
----------------------------
-参考文档
----------------------------
+参考文档：
 
 - https://www.foundry.com/products/nuke/developers

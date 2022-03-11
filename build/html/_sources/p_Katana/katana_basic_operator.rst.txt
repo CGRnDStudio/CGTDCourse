@@ -65,10 +65,7 @@ Katana背景色怎么设置？
 
 Katana帧数范围在哪设置？
 
------------------------------
-参考文档
------------------------------
-
+参考文档：
 
 - https://rmanwiki.pixar.com/display/RFK/XGen+in+Katana
 - https://docs.arnoldrenderer.com/display/A5KTN/Installation

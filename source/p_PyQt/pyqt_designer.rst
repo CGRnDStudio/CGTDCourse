@@ -205,9 +205,7 @@ PySide2加载.ui文件模式
         ex = Example()
         sys.exit(app.exec_())
 
-------------------
-参考文档
-------------------
+参考文档：
 
 - https://www.cnblogs.com/jakeyChen/articles/4103494.html
 - https://wiki.python.org/moin/PyQt4

@@ -121,8 +121,6 @@ mayapy后面可以接.py文件运行，然后通过sys.argv来获取额外参数
     if __name__ == "__main__":
         main(sys.argv[1])
 
--------------------------------
-参考文档
--------------------------------
+参考文档：
 
 - http://help.autodesk.com/view/MAYAUL/2020/ENU/

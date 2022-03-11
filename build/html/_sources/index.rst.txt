@@ -8,7 +8,7 @@ CG TD Pipeline's documentation
 ========================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :glob:
 
    preface
@@ -20,6 +20,7 @@ CG TD Pipeline's documentation
    parts/Nuke
    parts/Ftrack
    parts/Shotgun
+   parts/CGTeamwork
    parts/Deadline
    parts/Linux
    parts/SQL
@@ -27,5 +28,7 @@ CG TD Pipeline's documentation
    parts/Clarisse
    parts/Katana
    parts/UE4
+   parts/UE5
+   parts/Blender
    parts/C4D
    reference

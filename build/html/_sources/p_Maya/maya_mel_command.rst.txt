@@ -146,9 +146,3 @@ Windows>General Editors>Hypergraph: Connections
     cmds.listConnections(object, s=0, d=1)
     # 节点属性
     cmds.listConnections(object, s=0, d=1, p=1)
-
--------------------
-案例&练习
--------------------
-
-- 经常我们会遇到Shape节点和模型命名不匹配的问题，如何批量重命名？

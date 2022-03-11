@@ -2,9 +2,7 @@
 PyQt rcc使用
 =============================
 
-------------------
 基本概况
-------------------
 
 Houdini、Maya与Nuke中内置PySide2
 
@@ -44,14 +42,8 @@ QSQL
 
 loadUi
 
-认识qss
-下载qss
-修改qss
 
-
-------------------
-参考文档
-------------------
+参考文档：
 
 - https://www.riverbankcomputing.com/static/Docs/PyQt4/classes.html
 - https://doc.bccnsoft.com/docs/PyQt5/class_reference.html
